@@ -1,7 +1,7 @@
 (() => {
 'use strict';
 const d=window.ARCHIVE_DATA,view=document.getElementById('view');
-const esc=(s='')=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
+const esc=(s='')=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const link=(href,text)=>`<a class="arrowlink" href="${href}">${text}<span aria-hidden="true">↗</span></a>`;
 const photo=(name,alt)=>`<img src="assets/${name}.jpg" alt="${esc(alt)}" loading="lazy">`;
 const archiveLink=chapter=>link('#/home','Back to the three chapters');
