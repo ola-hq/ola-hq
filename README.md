@@ -1,6 +1,9 @@
-# OLA HQ — Public Site
+# OLA HQ
 
-Public publishing repository. Only intentionally approved material belongs here.
+Visitor site for OLA HQ: one building connecting four Major Rooms, seven More Waves, building systems and orientation.
 
-Current public candidate included: Blockbuster Wave.
-La Ola de Amor and browser/personal tools remain excluded pending explicit public approval.
+This repository is the reviewed public projection. The canonical website sources and export policy are maintained privately in `ola-hq-master`. Edit there, review the generated visitor files and publish only the approved projection.
+
+La Ola de Amor opens its existing filtered journey; Blockbuster Wave opens its preserved complete gallery. Our Polaroid Wave contains six collections with 949 original source positions. Photographs currently load from the original Wix CDN; ten source positions lack usable image URLs and display an honest placeholder. Wave 26 presents La Ola de Amor, OUI SI YES and To AI or Not with the verified Suno artist link. Release status is not implied.
+
+Private working records, source evidence, browser tools, owner applications and access settings are excluded. The visitor site does not include an owner privacy editor.
