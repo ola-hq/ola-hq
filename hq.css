@@ -9,3 +9,7 @@
 .music-shelf .album{justify-content:flex-start}.music-shelf .album h2{font-size:30px}.album .text-link{margin-top:24px;color:inherit;font-weight:700}.ep-art{width:45%;border-radius:10px}
 .world-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:35px 0}.world-gallery figure{margin:0;padding:15px;background:var(--white);border:1px solid var(--line);border-radius:10px}.world-gallery img{width:100%;max-height:650px;object-fit:contain}.world-gallery figcaption{font-size:13px;color:var(--muted);margin-top:14px}
 @media(max-width:760px){.world-gallery{grid-template-columns:1fr}.ep-art{width:100%;margin-top:24px}.visual.love img,.visual.film img,.visual.music img{height:auto;max-height:300px}.visual.love,.visual.film,.visual.music{min-height:0}}
+
+/* User visual corrections: branded world and four album worlds. */
+.music-shelf{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-art{background:var(--ink)}.visual.love{background:#fffdf8}
+@media(max-width:760px){.music-shelf{grid-template-columns:1fr}}
