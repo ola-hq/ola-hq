@@ -1,6 +1,6 @@
 # OLA HQ
 
-Visitor site for OLA HQ: one building connecting four Major Rooms, seven More Waves, building systems and orientation.
+Visitor site for OLA HQ: one building connecting four Worlds, seven More Waves, building systems and orientation.
 
 This repository is the reviewed public projection. The canonical website sources and export policy are maintained privately in `ola-hq-master`. Edit there, review the generated visitor files and publish only the approved projection.
 
