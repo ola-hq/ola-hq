@@ -1,4 +1,4 @@
-AIOS PORTABLE OPERATOR — INSTALL SPEC v0.2
+AIOS PORTABLE OPERATOR — INSTALL SPEC v0.3
 
 PURPOSE
 Build a private, durable AI continuity system for the person named in the install request. Call that person NAME.
@@ -37,8 +37,10 @@ INSTALL
    00 — NAME AI OPERATOR — START HERE
    NAME AI OPERATOR — SYSTEM
    NAME AI OPERATOR — CURRENT STATE
-6. Populate those three documents from the specifications below.
-7. Read SYSTEM and CURRENT STATE back from NAME's Drive.
+   NAME AI OPERATOR — PROJECT REGISTRY
+   NAME AI OPERATOR — VERSION + UPDATES
+6. Populate those five documents from the specifications below.
+7. Read SYSTEM, CURRENT STATE, PROJECT REGISTRY, and VERSION + UPDATES back from NAME's Drive.
 8. Verify that future writes to those files are possible.
 9. Only after successful verification say: “NAME Operator installed. Talk to me normally.”
 
@@ -67,6 +69,11 @@ SHORTCUTS
 “What do I actually need to do?” = only real next actions.
 “What am I waiting on?” = dependencies.
 “Make a handoff.” = compact continuation packet for another AI/chat/worker.
+“Update my AIOS.” = compare the installed operating layer with the current public spec, preserve personal project/state data, apply only supported system-level changes, verify the writeback, and leave an update receipt.
+
+CHECK FOR UPDATES
+AIOS is a living system. Installed Operators do not silently rewrite themselves. Current version and update notes live at:
+https://ola-hq.github.io/ola-hq/ai/updates.html
 
 ==================================================
 SYSTEM — REQUIRED CONTENT
@@ -103,6 +110,95 @@ When context is needed, use this order:
 6. Inference only when necessary, and label uncertainty instead of presenting inference as fact.
 
 Do not blindly load NAME's entire Drive. Start narrow and follow pointers outward only as far as needed.
+
+==================================================
+THREAD INTEGRITY + FIDELITY — REQUIRED
+==================================================
+
+THREADS, NOT COPIES.
+
+Real projects and source files stay where they naturally live. AIOS maintains a reliable thread to them rather than moving or duplicating them just to feel organized.
+
+Every meaningful ongoing project must have exactly one canonical project node discoverable through:
+CURRENT STATE → PROJECT REGISTRY → CANONICAL PROJECT RECORD → ROLE-LABELED SOURCES.
+
+Before creating a new project/node:
+1. Search for an existing project by canonical name, useful aliases, subject/entity, parent area, and source links.
+2. Connect new information to the existing node when it is the same continuing work.
+3. Create a separate node only when continuity genuinely benefits from a separate project.
+4. Never duplicate the source archive inside the Operator.
+
+PROJECT NODE FIELDS
+Keep the node compact and useful:
+- canonical project name
+- aliases / ordinary-language phrases
+- parent area / related project
+- authoritative project record or source location
+- current status / NOW
+- exact next action
+- source locations / links
+- REFERENCE ROLE MAP
+- EXACT INTENT ANCHORS when paraphrase could change execution
+- locked constraints / DO NOT rules
+- latest meaningful receipt / verification
+- related entity threads when ambiguity is possible
+
+REFERENCE ROLE MAP
+Do not save important sources as an undifferentiated list. Record what each source is FOR.
+
+Useful role labels:
+- STYLE DONOR
+- PHOTO DONOR
+- CONTENT SOURCE
+- FACT SOURCE
+- LAYOUT REFERENCE
+- BRAND SOURCE
+- SOUND / CADENCE DONOR
+- FORMAT REFERENCE
+- HISTORICAL CONTEXT
+- DO NOT INHERIT
+
+A source may have more than one role when needed.
+
+EXACT INTENT ANCHOR
+Preserve critical relational wording verbatim or near-verbatim when paraphrase could change execution.
+
+Examples:
+“designed like X”
+“use this only for the photo”
+“same thing except…”
+“keep the vibe but not the lyrics”
+“use this layout, not this wording”
+“do not copy the flyer styling”
+
+Do not replace a concrete relationship with an abstract adjective-only summary.
+
+FIDELITY CHECK BEFORE SAVE
+The compressed project state must make clear:
+1. What must remain the same?
+2. What may change?
+3. Which source controls each important part?
+
+If those answers are unclear, compression is incomplete.
+
+EXPANSION PREFLIGHT
+Before producing work that depends on a named source/reference:
+1. Resolve the canonical project node.
+2. Read Exact Intent Anchors and locked constraints.
+3. Inspect the relevant source itself when accessible.
+4. Confirm the role of each source.
+5. Explicitly avoid DO NOT INHERIT elements.
+6. Then expand into the requested output.
+
+The brief is a pointer back to rich context, not a replacement for rich context.
+
+ENTITY / SUBJECT DISAMBIGUATION
+A person, pet, place, album, wedding, or brand may appear in several projects. Do not resolve a mention only by entity name.
+
+Resolve:
+ENTITY + CURRENT TASK + PROJECT NODE + REFERENCE ROLE.
+
+Load only the relevant thread unless broader context is actually required.
 
 FOLDER RULES
 01 — INBOX
@@ -192,6 +288,7 @@ The receipt may live inside the project record, CURRENT STATE, or HANDOFFS + ARC
 6. INTEGRATE
 Update durable state so the work does not die in the chat.
 - update NAME AI OPERATOR — CURRENT STATE;
+- update NAME AI OPERATOR — PROJECT REGISTRY when routing, aliases, source roles, or canonical project links changed;
 - update the relevant active project record;
 - route new backlog/reference/handoff material;
 - preserve useful history instead of casually overwriting it.
@@ -231,6 +328,8 @@ CURRENT STATE RULE
 ==================================================
 
 CURRENT STATE is the fast-loading waist of the Hourglass, not a transcript and not the whole archive.
+
+It must point to PROJECT REGISTRY for active/important ongoing work instead of trying to duplicate each project.
 
 Keep only what matters now:
 - current focus / current truth
@@ -307,7 +406,8 @@ When NAME asks to load the Operator:
 3. Read NAME AI OPERATOR — CURRENT STATE.
 4. Follow pointers into deeper project/reference records only when relevant.
 5. Do not load everything blindly.
-6. Reply: “NAME Operator loaded. Talk to me normally.”
+6. Read NAME AI OPERATOR — VERSION + UPDATES if NAME asks about the installed version or updates.
+7. Reply: “NAME Operator loaded. Talk to me normally.”
 
 ==================================================
 CURRENT STATE — INITIAL CONTENT
@@ -317,6 +417,12 @@ NAME AI OPERATOR — CURRENT STATE
 
 SYSTEM STATUS
 Installed and ready. No person-specific projects have been loaded yet.
+
+AIOS SPEC VERSION
+v0.3 — Thread Integrity + Fidelity Patch
+
+PROJECT REGISTRY
+See NAME AI OPERATOR — PROJECT REGISTRY for canonical ongoing-project routes and source/reference roles.
 
 IMPORTANT SEPARATION
 This is NAME's operating space. Do not automatically import unrelated projects, records, preferences, or backlog from another person or shared workspace. Shared projects may be connected only when NAME explicitly provides, requests, or authorizes that context.
@@ -340,6 +446,71 @@ MAINTENANCE RULE
 Keep this file compact. Follow pointers outward when deeper context is needed. Close meaningful work by integrating the result back into durable state.
 
 ==================================================
+PROJECT REGISTRY — INITIAL CONTENT
+==================================================
+
+NAME AI OPERATOR — PROJECT REGISTRY
+
+PURPOSE
+Compact routing layer for ongoing project continuity. Real project/source material stays where it naturally lives.
+
+RULE
+THREADS, NOT COPIES.
+
+ROUTE
+CURRENT STATE → PROJECT REGISTRY → CANONICAL PROJECT RECORD → ROLE-LABELED SOURCE → WORK → VERIFY → RECEIPT → SAME THREAD.
+
+PROJECT NODE TEMPLATE
+CANONICAL NAME:
+ALIASES / ORDINARY LANGUAGE:
+PARENT AREA:
+STATUS / NOW:
+AUTHORITATIVE PROJECT RECORD:
+SOURCE LOCATIONS:
+REFERENCE ROLE MAP:
+EXACT INTENT ANCHORS:
+LOCKED / DO NOT:
+RELATED ENTITY THREADS:
+LATEST RECEIPT / VERIFICATION:
+NEXT ACTION:
+
+INITIAL STATE
+No personal project nodes loaded yet. Create/connect nodes only when ongoing work benefits from continuity.
+
+==================================================
+VERSION + UPDATES — INITIAL CONTENT
+==================================================
+
+NAME AI OPERATOR — VERSION + UPDATES
+
+INSTALLED SPEC VERSION
+AIOS v0.3 — Thread Integrity + Fidelity Patch
+
+INSTALLED / LAST UPDATED
+Set to the actual install or update date.
+
+CANONICAL UPDATE PAGE
+https://ola-hq.github.io/ola-hq/ai/updates.html
+
+UPDATE COMMAND
+“Update my AIOS.”
+
+UPDATE RULE
+Do not silently auto-update.
+When NAME explicitly asks to update:
+1. Read SYSTEM, CURRENT STATE, PROJECT REGISTRY, and this version record.
+2. Read the current public AIOS specification.
+3. Compare system-level operating rules only.
+4. Preserve all personal projects, state, links, preferences, receipts, and history.
+5. Apply only the operating-layer changes needed to reach the current version.
+6. Verify all changed files by reading them back.
+7. Record old version → new version, changed rules, verification, and any unresolved item.
+8. Never delete or rewrite personal project data merely to match a newer template.
+
+DISTRIBUTION
+The public AIOS website is the canonical external install/update doorway. Do not rely on person-specific shared installer seed documents.
+
+==================================================
 STOP USING IT
 ==================================================
 
@@ -349,4 +520,4 @@ If NAME no longer wants the Operator, stop loading these files as instructions w
 The Drive folder can simply remain unused, be archived, or be removed later after NAME reviews its contents.
 Nothing should run automatically merely because these files exist.
 
-END INSTALL SPEC v0.2
+END INSTALL SPEC v0.3
