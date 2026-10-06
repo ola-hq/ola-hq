@@ -1,1 +1,167 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="AIOS Portable Operator — keep the richness, lose the mess."><title>AIOS · Portable Operator · OLA HQ</title><link rel="stylesheet" href="aios-brand.css"><style>*{box-sizing:border-box}html,body{min-height:100%;margin:0}body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#082033;color:#f7f4e9;overflow-x:hidden}.stage{min-height:100vh;position:relative;background-image:linear-gradient(180deg,rgba(4,18,29,.08),rgba(4,18,29,.28)),url('aios-wave.svg');background-size:cover;background-position:center center;isolation:isolate}.stage:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.03),rgba(3,18,30,.18) 72%);pointer-events:none;z-index:-1}.home-link{position:fixed;top:20px;left:22px;z-index:30;color:#f7f4e9;text-decoration:none;font-size:.88rem;font-weight:800;text-shadow:0 2px 18px rgba(0,0,0,.45);opacity:.9}.home-link:hover{text-decoration:underline;text-underline-offset:3px}.gate{min-height:100vh;display:grid;place-items:center;padding:80px 24px 34px;transition:opacity .35s ease,transform .35s ease}.gate.hidden{opacity:0;pointer-events:none;transform:scale(.985);position:absolute;inset:0}.gate-button{appearance:none;border:1px solid rgba(247,244,233,.56);background:rgba(247,244,233,.88);backdrop-filter:blur(12px);color:#082033;border-radius:22px;padding:16px 34px 15px;min-width:210px;cursor:pointer;box-shadow:0 18px 60px rgba(4,18,29,.24);transition:transform .2s ease,box-shadow .2s ease,background .2s ease}.gate-button:hover{transform:translateY(-3px);box-shadow:0 24px 78px rgba(4,18,29,.3);background:#fffdf5}.gate-title{display:block;font-size:1.52rem;line-height:1;font-weight:950;letter-spacing:.06em}.gate-sub{display:block;font-size:.72rem;line-height:1.2;margin-top:7px;letter-spacing:.14em;text-transform:uppercase;opacity:.68}.operator{min-height:100vh;display:none;align-items:center;justify-content:center;padding:74px 18px 42px}.operator.open{display:flex}.panel{width:min(680px,100%);border:1px solid rgba(8,32,51,.14);border-radius:26px;padding:30px;background:rgba(247,244,233,.94);color:#082033;box-shadow:0 26px 90px rgba(4,18,29,.3);backdrop-filter:blur(18px)}.eyebrow{font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;font-weight:850;opacity:.55;margin:0 0 13px}.panel h1{font-size:clamp(1.85rem,5vw,2.55rem);line-height:1.02;letter-spacing:-.04em;margin:.1em 0 .48em}.lead{font-size:1.02rem;line-height:1.62;color:#45606b;margin:0 0 24px}.inline-link,.textlink{appearance:none;border:0;background:none;color:inherit;font:inherit;padding:0;text-decoration:underline;text-underline-offset:3px;cursor:pointer}.inline-link{color:#0c5576;font-weight:750}.textlink{font-size:.9rem;color:#49636e}label{display:block;font-size:.84rem;color:#526b76;margin-bottom:7px}.input{width:100%;padding:14px 15px;border-radius:13px;border:1px solid rgba(8,32,51,.16);background:rgba(255,255,255,.72);color:#082033;font:inherit;outline:none}.input:focus{border-color:rgba(31,100,130,.55);box-shadow:0 0 0 3px rgba(43,124,154,.08)}.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px}.primary{appearance:none;border:0;border-radius:999px;background:#173a5b;color:#f7f4e9;padding:12px 18px;font:850 .95rem/1 inherit;cursor:pointer}.primary:hover{background:#0c2f50}.prompt-wrap{display:none;margin-top:18px}.prompt-wrap.show{display:block}.prompt{width:100%;min-height:150px;padding:15px;border-radius:14px;border:1px solid rgba(8,32,51,.15);background:rgba(255,255,255,.65);color:#082033;font:12.7px/1.52 ui-monospace,SFMono-Regular,Menlo,monospace;resize:vertical}.status{min-height:1.2em;font-size:.88rem;color:#536c76;margin-top:10px}.then{padding-top:18px;margin-top:20px;border-top:1px solid rgba(8,32,51,.12);font-size:.94rem;line-height:1.55;color:#516a74}.bottom-links{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:20px;font-size:.84rem;color:#5a7079}.bottom-links a{color:inherit}.modal{display:none;position:fixed;inset:0;z-index:50;background:rgba(3,15,25,.78);backdrop-filter:blur(12px);padding:20px;overflow:auto}.modal.open{display:grid;place-items:center}.modal-card{width:min(820px,100%);max-height:calc(100vh - 40px);overflow:auto;background:#f4efe2;color:#082033;border:1px solid rgba(247,244,233,.35);border-radius:24px;padding:26px;box-shadow:0 30px 90px rgba(0,0,0,.38)}.modal-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.modal-head h2{font-size:1.45rem;margin:0}.close{appearance:none;border:1px solid rgba(8,32,51,.15);background:transparent;color:#082033;border-radius:999px;width:36px;height:36px;cursor:pointer}.hourglass{margin:24px 0}.bulb{border:1px solid rgba(8,32,51,.14);border-radius:18px;padding:18px;text-align:center;background:rgba(255,255,255,.48)}.neck{width:min(430px,78%);margin:10px auto;border:1px solid rgba(31,100,130,.35);border-radius:999px;padding:9px 13px;text-align:center;font-size:.86rem;font-weight:850;color:#0c2f50}.flow{text-align:center;opacity:.46}.steps{display:grid;gap:10px;margin:20px 0}.step{border-left:2px solid rgba(31,100,130,.36);padding:2px 0 2px 14px;line-height:1.55;color:#45606b}.step strong{color:#082033}.manual-box{width:100%;min-height:52vh;padding:16px;border-radius:14px;border:1px solid rgba(8,32,51,.15);background:rgba(255,255,255,.6);color:#082033;font:12.5px/1.52 ui-monospace,SFMono-Regular,Menlo,monospace;resize:vertical}.note{font-size:.9rem;line-height:1.58;color:#45606b}@media(max-width:680px){.panel{padding:24px 20px}.row .primary{width:100%}.bottom-links{flex-direction:column}.modal-card{padding:22px 18px}.home-link{top:16px;left:18px}}</style></head><body><a class="home-link" href="../index.html">← Back to OLA HQ</a><main class="stage"><section class="gate" id="gate"><button class="gate-button" id="open-operator" type="button" aria-label="Open AIOS Portable Operator"><span class="gate-title">AIOS</span><span class="gate-sub">Portable Operator</span></button></section><section class="operator" id="operator" aria-hidden="true"><div class="panel"><p class="eyebrow">AIOS · Portable Operator</p><h1>Keep the richness. Lose the mess.</h1><p class="lead">AIOS gives your AI a small, reloadable <button class="inline-link" id="open-system" type="button">system</button> so you can talk normally instead of constantly rebuilding context.</p><label for="name">Your name</label><input id="name" class="input" placeholder="Your name" autocomplete="name"><div class="row"><button class="primary" id="build" type="button">Build my install prompt</button><button class="textlink" id="manual" type="button">Manual Install</button></div><div class="prompt-wrap" id="prompt-wrap"><textarea id="prompt" class="prompt" readonly aria-label="Quick install prompt"></textarea><div class="row"><button class="primary" id="copy" type="button">Copy prompt</button><a class="textlink" href="story.html#how">How this works</a></div></div><div class="status" id="status" aria-live="polite"></div><p class="then"><strong>Then:</strong> paste it into ChatGPT or Gemini while connected to the Google Drive you want it to use. After that, talk normally. Your AI maintains the continuity underneath.</p><div class="bottom-links"><button class="textlink" id="privacy" type="button">Privacy + technical details</button><a class="textlink" href="story.html#why">Why does this exist?</a></div></div></section></main><section class="modal" id="system-modal" aria-hidden="true"><div class="modal-card"><div class="modal-head"><div><p class="eyebrow">THE HOURGLASS</p><h2>How the system actually works</h2></div><button class="close" data-close="system-modal" aria-label="Close">×</button></div><p class="note">You keep doing what humans are good at: dumping context, talking, correcting, creating, changing your mind. The AI's job is to turn that mess into a trail it can reliably follow.</p><div class="hourglass"><div class="bulb"><strong>TOP — RICH, MESSY REALITY</strong><br><span class="note">voice notes · screenshots · conversations · files · half-formed ideas · decisions · corrections · history</span></div><div class="flow">↓</div><div class="neck">CURRENT STATE · PROJECT POINTERS · SOURCE PATHS</div><div class="flow">↓</div><div class="bulb"><strong>BOTTOM — RICH, SPECIFIC WORK AGAIN</strong><br><span class="note">writing · plans · decisions · builds · handoffs · finished outputs · next cycles</span></div></div><div class="steps"><div class="step"><strong>1. Start at the top.</strong> Capture what the person actually means, not just the last sentence.</div><div class="step"><strong>2. Funnel down.</strong> Compress the useful truth into a small current state instead of leaving everything trapped in the chat.</div><div class="step"><strong>3. Descend only as deep as needed.</strong> Start with current state, then follow pointers into the relevant project, references, and source files. Do not blindly load everything.</div><div class="step"><strong>4. Expand again.</strong> Use the clean state plus the right source context to create rich work instead of bland little summaries.</div><div class="step"><strong>5. Verify and sign off.</strong> The AI checks what it actually changed, returns a compact receipt, updates the durable state, and closes the loop.</div><div class="step"><strong>6. Repeat from the new truth.</strong> The next chat or worker starts from the updated state instead of making you explain everything again.</div></div><p class="note"><strong>Preservation rule:</strong> evolve, do not bulldoze. Prefer append → refine → supersede. Never casually overwrite history or claim an action happened unless it was verified.</p></div></section><section class="modal" id="manual-modal" aria-hidden="true"><div class="modal-card"><div class="modal-head"><div><p class="eyebrow">MANUAL INSTALL</p><h2>Read the whole thing. Copy the whole thing.</h2></div><button class="close" data-close="manual-modal" aria-label="Close">×</button></div><p class="note">This is the transparent version. It is the full self-contained instruction set your AI receives — no mystery installer hop required after you copy it.</p><textarea id="manual-prompt" class="manual-box" readonly aria-label="Full self-contained AIOS install prompt">Loading full install instructions…</textarea><div class="row"><button class="primary" id="copy-manual" type="button">Copy full install prompt</button><a class="textlink" href="operator-installer.txt" target="_blank" rel="noopener">View raw TXT</a></div><div class="status" id="manual-status"></div></div></section><section class="modal" id="privacy-modal" aria-hidden="true"><div class="modal-card"><div class="modal-head"><div><p class="eyebrow">PRIVACY + TECHNICAL</p><h2>What this page does — and does not do</h2></div><button class="close" data-close="privacy-modal" aria-label="Close">×</button></div><div class="steps"><div class="step"><strong>Your typed name stays in this browser.</strong> It is used to personalize the prompt.</div><div class="step"><strong>Your live Operator belongs in your Drive.</strong> The public website is only the instruction doorway.</div><div class="step"><strong>Quick Install reads one public plain-text spec.</strong> Manual Install lets you inspect and copy that entire spec directly.</div><div class="step"><strong>No fake installs.</strong> The AI is instructed to verify created files and write access before claiming success.</div><div class="step"><strong>Nothing runs by itself.</strong> The Drive files are instructions/state, not a background daemon.</div></div></div></section><script>const gate=document.getElementById('gate'),operator=document.getElementById('operator'),nameInput=document.getElementById('name'),prompt=document.getElementById('prompt'),promptWrap=document.getElementById('prompt-wrap'),status=document.getElementById('status'),manualPrompt=document.getElementById('manual-prompt'),manualStatus=document.getElementById('manual-status');let spec='';function openOperator(){gate.classList.add('hidden');operator.classList.add('open');operator.setAttribute('aria-hidden','false');setTimeout(()=>nameInput.focus(),250)}document.getElementById('open-operator').addEventListener('click',openOperator);function openModal(id){const el=document.getElementById(id);el.classList.add('open');el.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}function closeModal(id){const el=document.getElementById(id);el.classList.remove('open');el.setAttribute('aria-hidden','true');document.body.style.overflow=''}document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>closeModal(b.dataset.close)));document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModal(m.id)}));document.getElementById('open-system').addEventListener('click',()=>openModal('system-modal'));document.getElementById('privacy').addEventListener('click',()=>openModal('privacy-modal'));async function loadSpec(){if(spec)return spec;try{const r=await fetch('operator-installer.txt',{cache:'no-store'});if(!r.ok)throw new Error();spec=await r.text();return spec}catch(e){spec='';return ''}}function quickPrompt(n){return `Install my personal AI Operator. My name is ${n}. Read and follow this one public plain-text AIOS specification completely: https://ola-hq.github.io/ola-hq/ai/operator-installer.txt . Do not use any other external installer or source. Build the live system only in the Google Drive I authorize. Personalize every NAME placeholder for me. Read the created SYSTEM and CURRENT STATE back after installation, verify future write access, and do not claim success unless the files actually exist and can be read back. If this chat cannot write to my Drive, give me the INSTALL PACKET instead.`}function build(){const n=nameInput.value.trim();if(!n){status.textContent='Add your name first.';nameInput.focus();return}prompt.value=quickPrompt(n);promptWrap.classList.add('show');status.textContent='Ready. Copy it into your AI.'}document.getElementById('build').addEventListener('click',build);nameInput.addEventListener('keydown',e=>{if(e.key==='Enter')build()});document.getElementById('copy').addEventListener('click',async()=>{if(!prompt.value)build();if(!prompt.value)return;try{await navigator.clipboard.writeText(prompt.value)}catch(e){prompt.select();document.execCommand('copy')}status.textContent='Copied. Paste it into ChatGPT or Gemini.'});async function openManual(){openModal('manual-modal');const raw=await loadSpec();if(!raw){manualPrompt.value='Could not load the full instructions right now. Open the raw TXT link below or refresh.';return}const n=nameInput.value.trim()||'YOUR NAME';manualPrompt.value=`Install my personal AI Operator using the complete self-contained instructions below. Do not fetch or rely on another installer URL. Create the live system only in the Google Drive I authorize, verify every required file after creation, and do not claim success unless the writes actually happened and can be read back.\n\n${raw.replace(/\bNAME\b/g,n)}`;manualStatus.textContent=n==='YOUR NAME'?'You can inspect this now. Enter your name on the main screen first if you want a personalized copy.':'Personalized full prompt ready.'}document.getElementById('manual').addEventListener('click',openManual);document.getElementById('copy-manual').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(manualPrompt.value)}catch(e){manualPrompt.select();document.execCommand('copy')}manualStatus.textContent='Copied. Paste the entire prompt into your AI.'});const preset=new URLSearchParams(location.search).get('name');if(preset){nameInput.value=preset;openOperator()}loadSpec();</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="AIOS Portable Operator — keep the richness, lose the mess.">
+<title>AIOS · Portable Operator · OLA HQ</title>
+<link rel="stylesheet" href="aios-brand.css">
+<style>
+*{box-sizing:border-box}
+html,body{min-height:100%;margin:0}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#082033;color:#f7f4e9;overflow-x:hidden}
+.stage{min-height:100vh;position:relative;background-image:linear-gradient(180deg,rgba(4,18,29,.08),rgba(4,18,29,.28)),url('aios-wave.svg');background-size:cover;background-position:center center;isolation:isolate}
+.stage:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.03),rgba(3,18,30,.18) 72%);pointer-events:none;z-index:-1}
+.home-link{position:fixed;top:20px;left:22px;z-index:30;color:#f7f4e9;text-decoration:none;font-size:.88rem;font-weight:800;text-shadow:0 2px 18px rgba(0,0,0,.45);opacity:.9}
+.home-link:hover{text-decoration:underline;text-underline-offset:3px}
+.gate{min-height:100vh;display:grid;place-items:center;padding:80px 24px 34px;transition:opacity .35s ease,transform .35s ease}
+.gate.hidden{opacity:0;pointer-events:none;transform:scale(.985);position:absolute;inset:0}
+.gate-button{appearance:none;border:1px solid rgba(247,244,233,.56);background:rgba(247,244,233,.88);backdrop-filter:blur(12px);color:#082033;border-radius:22px;padding:16px 34px 15px;min-width:210px;cursor:pointer;box-shadow:0 18px 60px rgba(4,18,29,.24);transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.gate-button:hover{transform:translateY(-3px);box-shadow:0 24px 78px rgba(4,18,29,.3);background:#fffdf5}
+.gate-title{display:block;font-size:1.52rem;line-height:1;font-weight:950;letter-spacing:.06em}
+.gate-sub{display:block;font-size:.72rem;line-height:1.2;margin-top:7px;letter-spacing:.14em;text-transform:uppercase;opacity:.68}
+.operator{min-height:100vh;display:none;align-items:center;justify-content:center;padding:74px 18px 42px}
+.operator.open{display:flex}
+.panel{width:min(680px,100%);border:1px solid rgba(8,32,51,.14);border-radius:26px;padding:30px;background:rgba(247,244,233,.94);color:#082033;box-shadow:0 26px 90px rgba(4,18,29,.3);backdrop-filter:blur(18px)}
+.eyebrow{font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;font-weight:850;opacity:.55;margin:0 0 13px}
+.panel h1{font-size:clamp(1.85rem,5vw,2.55rem);line-height:1.02;letter-spacing:-.04em;margin:.1em 0 .48em}
+.lead{font-size:1.02rem;line-height:1.62;color:#45606b;margin:0 0 24px}
+.inline-link,.textlink{appearance:none;border:0;background:none;color:inherit;font:inherit;padding:0;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.inline-link{color:#0c5576;font-weight:750}
+.textlink{font-size:.9rem;color:#49636e}
+label{display:block;font-size:.84rem;color:#526b76;margin-bottom:7px}
+.input{width:100%;padding:14px 15px;border-radius:13px;border:1px solid rgba(8,32,51,.16);background:rgba(255,255,255,.72);color:#082033;font:inherit;outline:none}
+.input:focus{border-color:rgba(31,100,130,.55);box-shadow:0 0 0 3px rgba(43,124,154,.08)}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.primary{appearance:none;border:0;border-radius:999px;background:#173a5b;color:#f7f4e9;padding:12px 18px;font:850 .95rem/1 inherit;cursor:pointer}
+.primary:hover{background:#0c2f50}
+.prompt-wrap{display:none;margin-top:18px}
+.prompt-wrap.show{display:block}
+.prompt{width:100%;min-height:150px;padding:15px;border-radius:14px;border:1px solid rgba(8,32,51,.15);background:rgba(255,255,255,.65);color:#082033;font:12.7px/1.52 ui-monospace,SFMono-Regular,Menlo,monospace;resize:vertical}
+.status{min-height:1.2em;font-size:.88rem;color:#536c76;margin-top:10px}
+.then{padding-top:18px;margin-top:20px;border-top:1px solid rgba(8,32,51,.12);font-size:.94rem;line-height:1.55;color:#516a74}
+.question-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:20px}
+.question-link{appearance:none;text-decoration:none;text-align:center;border:1px solid rgba(8,32,51,.14);background:rgba(255,255,255,.38);color:#173a5b;border-radius:999px;padding:10px 13px;font:800 .82rem/1.2 inherit;cursor:pointer;transition:background .18s ease,border-color .18s ease,transform .18s ease}
+.question-link:hover{background:rgba(255,255,255,.72);border-color:rgba(31,100,130,.3);transform:translateY(-1px)}
+.question-link.privacy-link{grid-column:1/-1;background:transparent;color:#5a7079;font-weight:700}
+.modal{display:none;position:fixed;inset:0;z-index:50;background:rgba(3,15,25,.78);backdrop-filter:blur(12px);padding:20px;overflow:auto}
+.modal.open{display:grid;place-items:center}
+.modal-card{width:min(820px,100%);max-height:calc(100vh - 40px);overflow:auto;background:#f4efe2;color:#082033;border:1px solid rgba(247,244,233,.35);border-radius:24px;padding:26px;box-shadow:0 30px 90px rgba(0,0,0,.38)}
+.modal-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.modal-head h2{font-size:1.45rem;margin:0}
+.close{appearance:none;border:1px solid rgba(8,32,51,.15);background:transparent;color:#082033;border-radius:999px;width:36px;height:36px;cursor:pointer}
+.hourglass{margin:24px 0}
+.bulb{border:1px solid rgba(8,32,51,.14);border-radius:18px;padding:18px;text-align:center;background:rgba(255,255,255,.48)}
+.neck{width:min(430px,78%);margin:10px auto;border:1px solid rgba(31,100,130,.35);border-radius:999px;padding:9px 13px;text-align:center;font-size:.86rem;font-weight:850;color:#0c2f50}
+.flow{text-align:center;opacity:.46}
+.steps{display:grid;gap:10px;margin:20px 0}
+.step{border-left:2px solid rgba(31,100,130,.36);padding:2px 0 2px 14px;line-height:1.55;color:#45606b}
+.step strong{color:#082033}
+.manual-box{width:100%;min-height:52vh;padding:16px;border-radius:14px;border:1px solid rgba(8,32,51,.15);background:rgba(255,255,255,.6);color:#082033;font:12.5px/1.52 ui-monospace,SFMono-Regular,Menlo,monospace;resize:vertical}
+.note{font-size:.9rem;line-height:1.58;color:#45606b}
+@media(max-width:680px){.panel{padding:24px 20px}.row .primary{width:100%}.question-nav{grid-template-columns:1fr}.question-link.privacy-link{grid-column:auto}.modal-card{padding:22px 18px}.home-link{top:16px;left:18px}}
+</style>
+</head>
+<body>
+<a class="home-link" href="../index.html">← Back to OLA HQ</a>
+<main class="stage">
+<section class="gate" id="gate">
+<button class="gate-button" id="open-operator" type="button" aria-label="Open AIOS Portable Operator">
+<span class="gate-title">AIOS</span>
+<span class="gate-sub">Portable Operator</span>
+</button>
+</section>
+<section class="operator" id="operator" aria-hidden="true">
+<div class="panel">
+<p class="eyebrow">AIOS · Portable Operator</p>
+<h1>Keep the richness. Lose the mess.</h1>
+<p class="lead">AIOS gives your AI a small, reloadable <button class="inline-link" id="open-system" type="button">system</button> so you can talk normally instead of constantly rebuilding context.</p>
+<label for="name">Your name</label>
+<input id="name" class="input" placeholder="Your name" autocomplete="name">
+<div class="row">
+<button class="primary" id="build" type="button">Build my install prompt</button>
+<button class="textlink" id="manual" type="button">Manual Install</button>
+</div>
+<div class="prompt-wrap" id="prompt-wrap">
+<textarea id="prompt" class="prompt" readonly aria-label="Quick install prompt"></textarea>
+<div class="row"><button class="primary" id="copy" type="button">Copy prompt</button></div>
+</div>
+<div class="status" id="status" aria-live="polite"></div>
+<p class="then"><strong>Then:</strong> paste it into ChatGPT or Gemini while connected to the Google Drive you want it to use. After that, talk normally. Your AI maintains the continuity underneath.</p>
+<nav class="question-nav" aria-label="Learn more about AIOS">
+<a class="question-link" href="story.html#how">How does this work?</a>
+<a class="question-link" href="story.html#why">Why does this exist?</a>
+<button class="question-link privacy-link" id="privacy" type="button">Privacy + technical details</button>
+</nav>
+</div>
+</section>
+</main>
+<section class="modal" id="system-modal" aria-hidden="true">
+<div class="modal-card">
+<div class="modal-head"><div><p class="eyebrow">THE HOURGLASS</p><h2>How the system actually works</h2></div><button class="close" data-close="system-modal" aria-label="Close">×</button></div>
+<p class="note">You keep doing what humans are good at: dumping context, talking, correcting, creating, changing your mind. The AI's job is to turn that mess into a trail it can reliably follow.</p>
+<div class="hourglass">
+<div class="bulb"><strong>TOP — RICH, MESSY REALITY</strong><br><span class="note">voice notes · screenshots · conversations · files · half-formed ideas · decisions · corrections · history</span></div>
+<div class="flow">↓</div>
+<div class="neck">CURRENT STATE · PROJECT POINTERS · SOURCE PATHS</div>
+<div class="flow">↓</div>
+<div class="bulb"><strong>BOTTOM — RICH, SPECIFIC WORK AGAIN</strong><br><span class="note">writing · plans · decisions · builds · handoffs · finished outputs · next cycles</span></div>
+</div>
+<div class="steps">
+<div class="step"><strong>1. Start at the top.</strong> Capture what the person actually means, not just the last sentence.</div>
+<div class="step"><strong>2. Funnel down.</strong> Compress the useful truth into a small current state instead of leaving everything trapped in the chat.</div>
+<div class="step"><strong>3. Descend only as deep as needed.</strong> Start with current state, then follow pointers into the relevant project, references, and source files. Do not blindly load everything.</div>
+<div class="step"><strong>4. Expand again.</strong> Use the clean state plus the right source context to create rich work instead of bland little summaries.</div>
+<div class="step"><strong>5. Verify and sign off.</strong> The AI checks what it actually changed, returns a compact receipt, updates the durable state, and closes the loop.</div>
+<div class="step"><strong>6. Repeat from the new truth.</strong> The next chat or worker starts from the updated state instead of making you explain everything again.</div>
+</div>
+<p class="note"><strong>Preservation rule:</strong> evolve, do not bulldoze. Prefer append → refine → supersede. Never casually overwrite history or claim an action happened unless it was verified.</p>
+</div>
+</section>
+<section class="modal" id="manual-modal" aria-hidden="true">
+<div class="modal-card">
+<div class="modal-head"><div><p class="eyebrow">MANUAL INSTALL</p><h2>Read the whole thing. Copy the whole thing.</h2></div><button class="close" data-close="manual-modal" aria-label="Close">×</button></div>
+<p class="note">This is the transparent version. It is the full self-contained instruction set your AI receives — no mystery installer hop required after you copy it.</p>
+<textarea id="manual-prompt" class="manual-box" readonly aria-label="Full self-contained AIOS install prompt">Loading full install instructions…</textarea>
+<div class="row"><button class="primary" id="copy-manual" type="button">Copy full install prompt</button><a class="textlink" href="operator-installer.txt" target="_blank" rel="noopener">View raw TXT</a></div>
+<div class="status" id="manual-status"></div>
+</div>
+</section>
+<section class="modal" id="privacy-modal" aria-hidden="true">
+<div class="modal-card">
+<div class="modal-head"><div><p class="eyebrow">PRIVACY + TECHNICAL</p><h2>What this page does — and does not do</h2></div><button class="close" data-close="privacy-modal" aria-label="Close">×</button></div>
+<div class="steps">
+<div class="step"><strong>Your typed name stays in this browser.</strong> It is used to personalize the prompt.</div>
+<div class="step"><strong>Your live Operator belongs in your Drive.</strong> The public website is only the instruction doorway.</div>
+<div class="step"><strong>Quick Install reads one public plain-text spec.</strong> Manual Install lets you inspect and copy that entire spec directly.</div>
+<div class="step"><strong>No fake installs.</strong> The AI is instructed to verify created files and write access before claiming success.</div>
+<div class="step"><strong>Nothing runs by itself.</strong> The Drive files are instructions/state, not a background daemon.</div>
+</div>
+</div>
+</section>
+<script>
+const gate=document.getElementById('gate'),operator=document.getElementById('operator'),nameInput=document.getElementById('name'),prompt=document.getElementById('prompt'),promptWrap=document.getElementById('prompt-wrap'),status=document.getElementById('status'),manualPrompt=document.getElementById('manual-prompt'),manualStatus=document.getElementById('manual-status');
+let spec='';
+function openOperator(){gate.classList.add('hidden');operator.classList.add('open');operator.setAttribute('aria-hidden','false');setTimeout(()=>nameInput.focus(),250)}
+document.getElementById('open-operator').addEventListener('click',openOperator);
+function openModal(id){const el=document.getElementById(id);el.classList.add('open');el.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+function closeModal(id){const el=document.getElementById(id);el.classList.remove('open');el.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>closeModal(b.dataset.close)));
+document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModal(m.id)}));
+document.getElementById('open-system').addEventListener('click',()=>openModal('system-modal'));
+document.getElementById('privacy').addEventListener('click',()=>openModal('privacy-modal'));
+async function loadSpec(){if(spec)return spec;try{const r=await fetch('operator-installer.txt',{cache:'no-store'});if(!r.ok)throw new Error();spec=await r.text();return spec}catch(e){spec='';return ''}}
+function quickPrompt(n){return `Install my personal AI Operator. My name is ${n}. Read and follow this one public plain-text AIOS specification completely: https://ola-hq.github.io/ola-hq/ai/operator-installer.txt . Do not use any other external installer or source. Build the live system only in the Google Drive I authorize. Personalize every NAME placeholder for me. Read the created SYSTEM and CURRENT STATE back after installation, verify future write access, and do not claim success unless the files actually exist and can be read back. If this chat cannot write to my Drive, give me the INSTALL PACKET instead.`}
+function build(){const n=nameInput.value.trim();if(!n){status.textContent='Add your name first.';nameInput.focus();return}prompt.value=quickPrompt(n);promptWrap.classList.add('show');status.textContent='Ready. Copy it into your AI.'}
+document.getElementById('build').addEventListener('click',build);
+nameInput.addEventListener('keydown',e=>{if(e.key==='Enter')build()});
+document.getElementById('copy').addEventListener('click',async()=>{if(!prompt.value)build();if(!prompt.value)return;try{await navigator.clipboard.writeText(prompt.value)}catch(e){prompt.select();document.execCommand('copy')}status.textContent='Copied. Paste it into ChatGPT or Gemini.'});
+async function openManual(){openModal('manual-modal');const raw=await loadSpec();if(!raw){manualPrompt.value='Could not load the full instructions right now. Open the raw TXT link below or refresh.';return}const n=nameInput.value.trim()||'YOUR NAME';manualPrompt.value=`Install my personal AI Operator using the complete self-contained instructions below. Do not fetch or rely on another installer URL. Create the live system only in the Google Drive I authorize, verify every required file after creation, and do not claim success unless the writes actually happened and can be read back.\n\n${raw.replace(/\bNAME\b/g,n)}`;manualStatus.textContent=n==='YOUR NAME'?'You can inspect this now. Enter your name on the main screen first if you want a personalized copy.':'Personalized full prompt ready.'}
+document.getElementById('manual').addEventListener('click',openManual);
+document.getElementById('copy-manual').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(manualPrompt.value)}catch(e){manualPrompt.select();document.execCommand('copy')}manualStatus.textContent='Copied. Paste the entire prompt into your AI.'});
+const preset=new URLSearchParams(location.search).get('name');
+if(preset){nameInput.value=preset;openOperator()}
+loadSpec();
+</script>
+</body>
+</html>
