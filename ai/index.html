@@ -73,7 +73,7 @@ label{display:block;font-size:.84rem;color:#526b76;margin-bottom:7px}
 </section>
 <section class="operator" id="operator" aria-hidden="true">
 <div class="panel">
-<p class="eyebrow">AIOS · Portable Operator</p>
+<p class="eyebrow">AIOS v0.3 · Portable Operator</p>
 <h1>Keep the richness. Lose the mess.</h1>
 <p class="lead">AIOS gives your AI a small, reloadable <button class="inline-link" id="open-system" type="button">system</button> so you can talk normally instead of constantly rebuilding context.</p>
 <label for="name">Your name</label>
@@ -88,9 +88,11 @@ label{display:block;font-size:.84rem;color:#526b76;margin-bottom:7px}
 </div>
 <div class="status" id="status" aria-live="polite"></div>
 <p class="then"><strong>Then:</strong> paste it into ChatGPT or Gemini with the Google Drive you want it to use connected. AIOS is live only after the AI creates the Operator there, reads it back, and verifies it can keep writing new state to it. After that, talk normally.</p>
+<p class="then"><strong>Living system:</strong> AIOS is actively tested and patched as real use exposes weak spots. Installed Operators do not silently change. <a class="inline-link" href="updates.html">Check the current version + updates.</a></p>
 <nav class="question-nav" aria-label="Learn more about AIOS">
 <a class="question-link" href="story.html#how">How does this work?</a>
 <a class="question-link" href="story.html#why">Why does this exist?</a>
+<a class="question-link" href="updates.html">What’s new / updates?</a>
 <button class="question-link privacy-link" id="privacy" type="button">Privacy + technical details</button>
 </nav>
 </div>
@@ -103,19 +105,19 @@ label{display:block;font-size:.84rem;color:#526b76;margin-bottom:7px}
 <div class="hourglass">
 <div class="bulb"><strong>TOP — RICH, MESSY REALITY</strong><br><span class="note">voice notes · screenshots · conversations · files · half-formed ideas · decisions · corrections · history</span></div>
 <div class="flow">↓</div>
-<div class="neck">CURRENT STATE · PROJECT POINTERS · SOURCE PATHS</div>
+<div class="neck">CURRENT STATE · PROJECT THREADS · SOURCE PATHS</div>
 <div class="flow">↓</div>
 <div class="bulb"><strong>BOTTOM — RICH, SPECIFIC WORK AGAIN</strong><br><span class="note">writing · plans · decisions · builds · handoffs · finished outputs · next cycles</span></div>
 </div>
 <div class="steps">
 <div class="step"><strong>1. Start at the top.</strong> Capture what the person actually means, not just the last sentence.</div>
 <div class="step"><strong>2. Funnel down.</strong> Compress the useful truth into a small current state instead of leaving everything trapped in the chat.</div>
-<div class="step"><strong>3. Descend only as deep as needed.</strong> Start with current state, then follow pointers into the relevant project, references, and source files. Do not blindly load everything.</div>
-<div class="step"><strong>4. Expand again.</strong> Use the clean state plus the right source context to create rich work instead of bland little summaries.</div>
+<div class="step"><strong>3. Follow the thread.</strong> Start with current state, resolve the canonical project node, then follow role-labeled pointers into the relevant references and source files. Threads, not copies.</div>
+<div class="step"><strong>4. Preserve reference roles.</strong> A style donor, photo donor, fact source, layout reference, or DO NOT INHERIT source are not interchangeable. Then expand from the clean state plus the actual source context.</div>
 <div class="step"><strong>5. Verify and sign off.</strong> The AI checks what it actually changed, returns a compact receipt, updates the durable state, and closes the loop.</div>
 <div class="step"><strong>6. Repeat from the new truth.</strong> The next chat or worker starts from the updated state instead of making you explain everything again.</div>
 </div>
-<p class="note"><strong>Preservation rule:</strong> evolve, do not bulldoze. Prefer append → refine → supersede. Never casually overwrite history or claim an action happened unless it was verified.</p>
+<p class="note"><strong>Preservation rule:</strong> evolve, do not bulldoze. Prefer append → refine → supersede. Keep the real project where it lives and maintain the thread to it. Never casually overwrite history or claim an action happened unless it was verified.</p>
 </div>
 </section>
 <section class="modal" id="manual-modal" aria-hidden="true">
@@ -152,7 +154,7 @@ document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if
 document.getElementById('open-system').addEventListener('click',()=>openModal('system-modal'));
 document.getElementById('privacy').addEventListener('click',()=>openModal('privacy-modal'));
 async function loadSpec(){if(spec)return spec;try{const r=await fetch('operator-installer.txt',{cache:'no-store'});if(!r.ok)throw new Error();spec=await r.text();return spec}catch(e){spec='';return ''}}
-function quickPrompt(n){return `Install my personal AI Operator. My name is ${n}. Read and follow this one public plain-text AIOS specification completely: https://ola-hq.github.io/ola-hq/ai/operator-installer.txt . Do not use any other external installer or source. Build the live system only in the Google Drive I authorize. Personalize every NAME placeholder for me. Read the created SYSTEM and CURRENT STATE back after installation, verify future write access, and do not claim success unless the files actually exist and can be read back. If this chat cannot write to my Drive, give me the INSTALL PACKET instead.`}
+function quickPrompt(n){return `Install my personal AI Operator. My name is ${n}. Read and follow this one public plain-text AIOS specification completely: https://ola-hq.github.io/ola-hq/ai/operator-installer.txt . Do not use any other external installer or source. Build the live system only in the Google Drive I authorize. Personalize every NAME placeholder for me. Read the created SYSTEM, CURRENT STATE, PROJECT REGISTRY, and VERSION + UPDATES back after installation, verify future write access, and do not claim success unless the files actually exist and can be read back. If this chat cannot write to my Drive, give me the INSTALL PACKET instead.`}
 function build(){const n=nameInput.value.trim();if(!n){status.textContent='Add your name first.';nameInput.focus();return}prompt.value=quickPrompt(n);promptWrap.classList.add('show');status.textContent='Ready. Copy it into your AI.'}
 document.getElementById('build').addEventListener('click',build);
 nameInput.addEventListener('keydown',e=>{if(e.key==='Enter')build()});
