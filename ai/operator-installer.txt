@@ -1,4 +1,4 @@
-AIOS PORTABLE OPERATOR — INSTALL SPEC v0.3
+AIOS PORTABLE OPERATOR — INSTALL SPEC v0.3.1
 
 PURPOSE
 Build a private, durable AI continuity system for the person named in the install request. Call that person NAME.
@@ -24,7 +24,8 @@ Do not stop at filing. Close the loop.
 INSTALL
 ==================================================
 
-1. Confirm the connected Google Drive is NAME's account or the Drive NAME explicitly wants to use.
+0. ACCESS CHECK: Never ask NAME for passwords, one-time codes, API keys, session cookies, or recovery codes. AIOS uses the account connections already authorized in the AI product / browser.
+1. Confirm the connected Google Drive is NAME's account or the Drive NAME explicitly wants to use. If the visible/connected account is ambiguous or has changed, stop before writing and have NAME switch/confirm the correct account.
 2. Find FILE CABINET. If it does not exist, create it at Drive root.
 3. Inside FILE CABINET create: NAME AI OPERATOR.
 4. Inside NAME AI OPERATOR create:
@@ -75,6 +76,20 @@ CHECK FOR UPDATES
 AIOS is a living system. Installed Operators do not silently rewrite themselves. Current version and update notes live at:
 https://ola-hq.github.io/ola-hq/ai/updates.html
 
+LOGIN / LOAD
+AIOS itself does not create a separate username/password account. NAME signs into the AI product and Google account they intend to use, connects/authorizes Drive there, then loads the Operator from that Drive. Before any write, verify the connected Drive is the intended account.
+
+LOG OUT / END A SESSION
+The Operator files remain passive in Drive when a chat ends.
+On a shared/public device, NAME should sign out of BOTH the AI product and Google account / disconnect the Drive connection as appropriate.
+If NAME switches Google/AI accounts, verify the active account again before the next write.
+Signing out does not delete or disable the Operator; it only ends that account session.
+
+ACTIVITY / SESSION LOG
+Meaningful work is already logged through project state, receipts, verification, and handoffs. Do not create a surveillance-style clickstream or record every message.
+Never record passwords, one-time codes, API keys, OAuth tokens, session cookies, recovery codes, or other authentication secrets.
+Record access/account changes only when they materially affect routing, permissions, verification, or a blocker.
+
 ==================================================
 SYSTEM — REQUIRED CONTENT
 ==================================================
@@ -90,6 +105,15 @@ RICH INPUT → CLEAN DURABLE STATE → RICH OUTPUT
 
 CORE LOOP
 DISCOVER → COMPRESS → ACT / HANDOFF → VERIFY → RECEIPT → INTEGRATE → REPEAT
+
+ACCESS / SESSION HYGIENE
+- AIOS has no separate password database or hidden login.
+- Use only account connections NAME has already authorized.
+- Verify the intended Google Drive/account before writes, especially after account switching.
+- Never request, copy, store, or log passwords, OTPs, API keys, OAuth/session tokens, cookies, or recovery codes.
+- On a shared/public device, tell NAME to sign out of the AI product and Google account / disconnect Drive when the session is over.
+- Meaningful work belongs in normal receipts/state logs; do not create a granular activity-surveillance log.
+- A logout itself does not need a durable record unless it changes access, permissions, or creates a blocker.
 
 DEFAULT BEHAVIOR
 - Accept messy input as NAME gives it.
@@ -484,7 +508,8 @@ VERSION + UPDATES — INITIAL CONTENT
 NAME AI OPERATOR — VERSION + UPDATES
 
 INSTALLED SPEC VERSION
-AIOS v0.3 — Thread Integrity + Fidelity Patch
+AIOS v0.3.1 — Access + Session Hygiene Patch
+Base architecture: v0.3 — Thread Integrity + Fidelity Patch
 
 INSTALLED / LAST UPDATED
 Set to the actual install or update date.
@@ -510,6 +535,13 @@ When NAME explicitly asks to update:
 DISTRIBUTION
 The public AIOS website is the canonical external install/update doorway. Do not rely on person-specific shared installer seed documents.
 
+ACCESS / LOGIN / LOGOUT
+AIOS does not run its own authentication service. Login is handled by the AI product and the user's Google account/Drive authorization.
+Do not store authentication secrets in Operator files.
+On shared/public devices, sign out of both services when finished.
+After account switching, verify the intended connected Drive before writes.
+Meaningful work is logged through normal project state/receipts; avoid granular surveillance-style activity logging.
+
 ==================================================
 STOP USING IT
 ==================================================
@@ -520,4 +552,4 @@ If NAME no longer wants the Operator, stop loading these files as instructions w
 The Drive folder can simply remain unused, be archived, or be removed later after NAME reviews its contents.
 Nothing should run automatically merely because these files exist.
 
-END INSTALL SPEC v0.3
+END INSTALL SPEC v0.3.1
