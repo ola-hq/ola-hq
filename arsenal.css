@@ -967,3 +967,96 @@
   .heritage-crest-panel{min-height:360px;padding:30px!important}
   .heritage-crest-panel figcaption{flex-direction:column}
 }
+
+
+/* CLUB SWITCH + FINAL CREST + RICHER VISUAL LAYERS */
+.arsenal-nav .club-switch{
+  color:#f0d08b;
+  padding:10px 13px;
+  border:1px solid #d3ab5855;
+  border-radius:999px;
+  background:#ffffff05;
+}
+.arsenal-nav .club-switch:hover{background:#d3ab5812;color:#fff}
+.arsenal-shield{width:50px;height:58px}
+.arsenal-shield img{width:48px;height:56px;object-fit:contain}
+.arsenal-photo-hero{position:relative;overflow:hidden}
+.hero-crest-medallion{
+  position:absolute!important;
+  right:24px;top:24px;
+  width:112px!important;height:auto!important;
+  object-fit:contain!important;
+  filter:drop-shadow(0 12px 20px #0008)!important;
+  z-index:3;
+}
+.arsenal-photo-hero:after{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,#00000012 0%,#00000000 42%,#0000004f 100%),
+    url("assets/deeper/arsenal-wave-lines.svg") right bottom/70% auto no-repeat;
+  opacity:.62;
+  pointer-events:none;
+}
+.arsenal-photo-hero figcaption{position:relative;z-index:4}
+.arsenal-hero{
+  background:
+    radial-gradient(circle at 74% 30%,#7d121b48,transparent 30%),
+    linear-gradient(90deg,#09090a 0%,#100b0d 52%,#471017 100%);
+}
+.arsenal-season{
+  background:
+    linear-gradient(180deg,#f6efe4 0%,#f3ede4 100%)!important;
+}
+.arsenal-world-section{
+  background:
+    radial-gradient(circle at 85% 10%,#7d121b24,transparent 28%),
+    linear-gradient(180deg,#0b0b0c,#0e0c0d 70%,#111012)!important;
+}
+.arsenal-collection{
+  background:
+    linear-gradient(180deg,#f5efe5,#eee6db)!important;
+}
+.arsenal-crossover{
+  background:
+    radial-gradient(circle at 12% 10%,#8e111b2e,transparent 28%),
+    linear-gradient(145deg,#0a141b,#0d2029)!important;
+}
+.real-stadium-card:before{
+  content:"";
+  position:absolute;inset:0;
+  background:url("assets/deeper/arsenal-wave-lines.svg") left bottom/70% auto no-repeat;
+  opacity:.18;
+  z-index:1;
+}
+.feature-main{overflow:hidden}
+.feature-copy{
+  position:relative;
+  background:
+    radial-gradient(circle at 100% 100%,#8d151d1f,transparent 30%),
+    #151516!important;
+}
+.feature-copy:after{
+  content:"";position:absolute;right:-40px;bottom:-20px;width:180px;height:80px;
+  background:url("assets/deeper/arsenal-wave-lines.svg") center/contain no-repeat;
+  opacity:.12;
+}
+.heritage-crest-panel{
+  background:
+    radial-gradient(circle at 50% 20%,#ffffff70,transparent 38%),
+    linear-gradient(180deg,#eee5d7,#e2d7c7)!important;
+}
+.heritage-crest-panel img{width:min(46%,250px)!important}
+.arsenal-editorial{
+  background:
+    linear-gradient(90deg,#f7f1e7 0%,#f2eadf 100%)!important;
+}
+.arsenal-editorial blockquote:before{
+  content:"";display:block;width:110px;height:26px;margin-bottom:24px;
+  background:url("assets/deeper/arsenal-wave-lines.svg") left center/110px auto no-repeat;
+  opacity:.45;
+}
+@media(max-width:760px){
+  .arsenal-nav .club-switch{padding:8px 10px}
+  .hero-crest-medallion{width:84px!important;right:16px;top:16px}
+}
