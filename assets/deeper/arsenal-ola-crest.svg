@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 380" role="img" aria-labelledby="title">
+<title id="title">Arsenal OLA crest</title>
+<defs>
+  <linearGradient id="r" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b81624"/><stop offset="1" stop-color="#5a0a10"/></linearGradient>
+  <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f1d08b"/><stop offset="1" stop-color="#b9893e"/></linearGradient>
+</defs>
+<path d="M160 16 286 58v112c0 87-50 154-126 194C84 324 34 257 34 170V58Z" fill="#0b0b0c" stroke="url(#g)" stroke-width="8"/>
+<path d="M160 30 272 67v100c0 76-42 136-112 174C90 303 48 243 48 167V67Z" fill="url(#r)" stroke="#d7b05e" stroke-opacity=".35" stroke-width="2"/>
+<path d="M64 248c30-28 56-32 86-5s56 30 106-10" fill="none" stroke="#f3eadc" stroke-opacity=".45" stroke-width="4"/>
+<path d="M65 265c35-29 61-31 90-4s52 28 101-10" fill="none" stroke="#d3ab58" stroke-opacity=".7" stroke-width="4"/>
+<g transform="translate(47 88)" fill="none" stroke="#f1d08b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="72" cy="85" r="34"/><circle cx="72" cy="85" r="8"/>
+  <path d="M72 51v68M38 85h68M48 61l48 48M96 61 48 109"/>
+  <path d="M96 69h72l38-15v30l-38-15"/>
+  <path d="M111 69 97 43h30l15 26"/>
+</g>
+<text x="160" y="304" text-anchor="middle" fill="#f5ead7" font-family="Georgia,serif" font-size="34" font-weight="700" letter-spacing="5">ARSENAL</text>
+<text x="160" y="334" text-anchor="middle" fill="#e1b768" font-family="Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="4">NORTH LONDON · N5</text>
+</svg>
