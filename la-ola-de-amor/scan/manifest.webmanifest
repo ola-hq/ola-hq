@@ -1,0 +1,27 @@
+{
+  "id": "./guide/",
+  "name": "La Ola de Amor · Guía del Festival / Festival Guide",
+  "short_name": "La Ola",
+  "description": "Brianna + Jon · Guía del Festival / Festival Guide",
+  "lang": "en",
+  "start_url": "./guide/",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fff7e3",
+  "theme_color": "#071d38",
+  "icons": [
+    {
+      "src": "./guide/art/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./guide/art/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "dir": "ltr"
+}
