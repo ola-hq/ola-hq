@@ -15,3 +15,179 @@
 @media(max-width:1000px){.arsenal-header{grid-template-columns:auto auto}.arsenal-nav{display:none}.arsenal-hero{grid-template-columns:1fr .68fr;min-height:auto;padding-top:70px}.world-grid{grid-template-columns:1fr 1fr}.stat-card{grid-column:1/-1}.collection-grid,.crossover-grid{grid-template-columns:1fr}.gunner-list{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:760px){.arsenal-header{padding:12px 18px}.arsenal-return{font-size:9px}.arsenal-name{font-size:14px}.arsenal-shield{width:40px;height:46px}.arsenal-hero{grid-template-columns:1fr;padding:60px 22px 48px;gap:45px}.arsenal-hero h1{font-size:clamp(62px,20vw,100px)}.hero-art{width:min(92vw,480px)}.season-strip{grid-template-columns:repeat(2,1fr)}.arsenal-subnav{grid-template-columns:repeat(2,1fr);padding:0}.arsenal-season,.arsenal-world-section,.arsenal-collection,.arsenal-crossover,.arsenal-archive{padding:62px 22px}.section-head,.feature-grid,.feature-main,.world-grid{grid-template-columns:1fr}.feature-main{display:block}.feature-image{height:330px}.world-card,.stat-card{grid-column:auto}.archive-grid{grid-template-columns:1fr 1fr}.gunner-list{grid-template-columns:1fr}.matchday-mini{grid-template-columns:1fr}.matchday-mini div{border-right:0;border-bottom:1px solid #ffffff2b}.arsenal-footer{align-items:flex-start;flex-direction:column}.arsenal-footer div{margin-right:0}}
 @media(max-width:420px){.archive-grid{grid-template-columns:1fr}.arsenal-hero h1{font-size:58px}}
+
+
+/* ARSENAL FLAGSHIP REPAIR — sister page to La Ola FC */
+.arsenal-world{
+  --ars-red:#b31220;--ars-deep:#4a070d;--ars-ink:#050608;--ars-cream:#f4ecdf;--ars-gold:#d0a252;
+  background:#050608;
+}
+.arsenal-header{
+  background:#050608e8;
+  border-bottom:1px solid #d0a25235;
+  box-shadow:0 10px 30px #0004;
+}
+.arsenal-shield{
+  width:50px;height:58px;
+  background:linear-gradient(165deg,#b91824 0%,#6b0910 72%);
+  box-shadow:inset 0 0 0 3px #7b0b13,inset 0 0 0 4px #d8ad6070,0 8px 20px #0007;
+  font:900 13px/1 "Arial Black",Arial,sans-serif;
+  letter-spacing:-.08em;
+}
+.arsenal-name{letter-spacing:.055em}
+.arsenal-name small{color:#c6b99e}
+.arsenal-nav a,.arsenal-return{font-size:11px}
+.arsenal-hero{
+  min-height:790px;
+  grid-template-columns:minmax(0,1.12fr) minmax(320px,.68fr);
+  background:
+    linear-gradient(90deg,#040506f6 0%,#080708e7 34%,#24080bd0 55%,#490a0fb0 75%,#750e164f 100%),
+    linear-gradient(0deg,#040506e8 0%,transparent 58%),
+    url("assets/deeper/arsenal-premium-pack-collection.png") 76% center/cover no-repeat;
+  isolation:isolate;
+}
+.arsenal-hero:before{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 75% 36%,#d0a2522b 0 1px,transparent 2px),
+    repeating-linear-gradient(120deg,#ffffff08 0 1px,transparent 1px 14px);
+  opacity:.28;pointer-events:none;z-index:0;
+}
+.arsenal-hero:after{
+  width:800px;height:800px;right:-300px;top:-250px;
+  border-color:#d0a25224;
+  box-shadow:0 0 0 85px #d0a25208,0 0 0 170px #d0a25205;
+  z-index:0;
+}
+.arsenal-hero .hero-copy{max-width:860px}
+.arsenal-hero h1{
+  text-shadow:0 7px 35px #0009;
+  max-width:900px;
+}
+.arsenal-lead{max-width:690px;color:#ded3c6}
+.arsenal-button{border-radius:2px;transition:.2s ease}
+.arsenal-button:hover{transform:translateY(-2px)}
+.arsenal-button.gold{background:linear-gradient(135deg,#d9ac5a,#b98231)}
+.hero-art{
+  width:min(100%,455px);
+  transform:rotate(2.25deg);
+  background:#0a0a0c;
+  padding:9px 9px 0;
+  border:1px solid #d0a25255;
+  box-shadow:0 32px 80px #000a;
+  transition:.3s ease;
+}
+.hero-art:hover{transform:rotate(.4deg) translateY(-7px)}
+.hero-art img{border:0}
+.hero-art span{padding:13px 3px 14px}
+.season-strip{max-width:700px}
+.season-strip strong{font-size:24px}
+.arsenal-subnav{box-shadow:0 10px 28px #0002;position:relative;z-index:2}
+.arsenal-season,.arsenal-collection,.arsenal-archive{position:relative}
+.arsenal-season:before,.arsenal-collection:before,.arsenal-archive:before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(135deg,#6a44120a,transparent 28%,transparent 72%,#85151b0a);
+}
+.arsenal-season>*,
+.arsenal-collection>*,
+.arsenal-archive>*{position:relative}
+.feature-main{
+  box-shadow:0 22px 48px #1c090c24;
+  border:1px solid #3e3030;
+}
+.feature-image{position:relative}
+.feature-image:after{
+  content:"";position:absolute;inset:0;
+  box-shadow:inset -70px 0 75px #10121788;
+  pointer-events:none;
+}
+.feature-side{
+  box-shadow:0 22px 48px #4b080d25;
+  background:
+    radial-gradient(circle at 90% 10%,#f0cf8c2b,transparent 28%),
+    linear-gradient(145deg,#ad1520,#5d090f);
+}
+.arsenal-world-section{
+  background:
+    radial-gradient(circle at 10% 0%,#7d10182c,transparent 28%),
+    radial-gradient(circle at 90% 100%,#d0a25216,transparent 25%),
+    #080a0d;
+}
+.world-card{
+  box-shadow:0 18px 45px #0005;
+  transition:.25s ease;
+}
+.world-card:hover{transform:translateY(-4px);border-color:#a47a3c}
+.visual-fill{height:390px}
+.stadium-visual{
+  background:
+    linear-gradient(0deg,#06070beb 0%,#08090d55 55%),
+    radial-gradient(ellipse at 50% 92%,#d4a2538a 0 4%,transparent 30%),
+    repeating-linear-gradient(90deg,transparent 0 10%,#ffffff08 10% 10.5%),
+    linear-gradient(145deg,#7e0f17,#07090d 68%);
+}
+.shirt-visual{
+  background:
+    linear-gradient(0deg,#08090caa,#08090c22),
+    linear-gradient(135deg,#b41622 0 43%,#f5ecde 43% 52%,#0a1b28 52% 100%);
+}
+.visual-fill span{text-shadow:0 5px 20px #0009}
+.collection-grid{gap:26px}
+.collection-hero{
+  box-shadow:0 24px 55px #65101722;
+  position:relative;
+}
+.collection-hero:after{
+  content:"COLLECTIBLE  /  ARCHIVE  /  CULTURE";
+  position:absolute;top:16px;left:16px;
+  padding:8px 10px;background:#07080bcf;border:1px solid #d0a25266;
+  color:#e5bd70;font:900 7px/1 Arial,sans-serif;letter-spacing:.14em;
+}
+.collection-copy{
+  background:
+    radial-gradient(circle at 100% 0%,#f0cc7a2b,transparent 35%),
+    linear-gradient(155deg,#9e121b,#63090f);
+  box-shadow:0 24px 55px #65101722;
+}
+.arsenal-crossover{
+  background:
+    radial-gradient(circle at 14% 15%,#9b14204a,transparent 26%),
+    radial-gradient(circle at 90% 82%,#d3ab5822,transparent 25%),
+    linear-gradient(135deg,#061721,#081f2b);
+}
+.gunner-card,.laola-bridge{box-shadow:0 20px 50px #0005}
+.archive-grid article{
+  overflow:hidden;transition:.22s ease;
+  box-shadow:0 8px 24px #28130a0d;
+}
+.archive-grid article:after{
+  content:"";position:absolute;width:120px;height:120px;border-radius:50%;
+  border:24px solid #a9161e09;right:-48px;bottom:-58px;
+}
+.archive-grid article:hover{
+  transform:translateY(-4px);
+  border-color:#b79358;
+  box-shadow:0 18px 35px #28130a16;
+}
+.arsenal-closing{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 15% 20%,#efbd6238,transparent 24%),
+    linear-gradient(100deg,#680b11,#b31620 50%,#7c0c13);
+}
+.arsenal-closing:before{
+  content:"ARSENAL";
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-53%);
+  font:900 clamp(120px,20vw,310px)/.8 "Arial Black",Arial,sans-serif;
+  letter-spacing:-.08em;color:#ffffff08;white-space:nowrap;
+}
+.arsenal-closing>*{position:relative}
+@media(max-width:760px){
+  .arsenal-hero{
+    background-position:68% center;
+    min-height:auto;
+  }
+  .hero-art{width:min(88vw,420px)}
+  .visual-fill{height:330px}
+}
