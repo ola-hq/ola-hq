@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 90" role="img" aria-labelledby="t">
+<title id="t">Arsenal cannon mark</title>
+<g fill="none" stroke="#d0a252" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="68" cy="54" r="24"/>
+  <circle cx="68" cy="54" r="6"/>
+  <path d="M68 30v48M44 54h48M51 37l34 34M85 37L51 71"/>
+  <path d="M84 42h72l30-13v26l-30-13"/>
+  <path d="M94 42l-12-18h28l12 18"/>
+</g>
+</svg>
