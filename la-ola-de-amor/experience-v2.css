@@ -542,3 +542,67 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
  .night-stop{flex-basis:165px;min-height:190px}
  .gdl-guide-scene{padding-top:70px;padding-bottom:80px}
 }
+
+
+/* 2026-10-06 — Guadalajara V4: OG restraint + Hourglass */
+.gdl-final{background:#0c203b;color:#f5eee2}
+.gdl-final-hero{position:relative;min-height:86svh;overflow:hidden;background:#0c203b;border-top:12px solid transparent;border-bottom:12px solid transparent;border-image:url("assets/tile.svg") 12 round}
+.gdl-final-glow{position:absolute;inset:0;background:
+ radial-gradient(circle at 78% 42%,rgba(38,86,155,.55) 0%,rgba(38,86,155,.16) 24%,transparent 48%),
+ linear-gradient(180deg,#0b1e38 0%,#0c203b 100%)}
+.gdl-final-sunmoon{position:absolute;right:5vw;top:50%;transform:translateY(-50%);width:min(520px,37vw);height:auto;max-height:72%;object-fit:contain;opacity:.95}
+.gdl-final-copy{position:relative;z-index:2;min-height:86svh;display:flex;flex-direction:column;justify-content:center;padding:8vh 7vw;max-width:860px}
+.gdl-final-wordmark{width:min(560px,58vw);max-height:105px;object-fit:contain;object-position:left center;margin-bottom:26px}
+.gdl-final-copy .eyebrow,.gdl-final-date{color:#e2bd6e}
+.gdl-final-date{font:800 9px/1.2 Arial,sans-serif;letter-spacing:.16em;margin-top:5px}
+.gdl-final-copy h1{font-size:clamp(60px,7.5vw,108px);line-height:.89;letter-spacing:-.04em;margin:.12em 0 .24em;max-width:780px}
+.gdl-final-copy h1 em{font-weight:400;color:#e2bd6e}
+.gdl-final-copy p{font:clamp(20px,2vw,27px)/1.5 Georgia,serif;max-width:700px;color:#f0e7d9}
+.gdl-final-values{margin:18px 0 8px;font:800 9px/1.2 Arial,sans-serif;letter-spacing:.19em;color:#e2bd6e}
+
+.gdl-final-plaza{padding:96px 8vw;background:#f0e6d7;color:#183252;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);gap:8vw;align-items:center}
+.gdl-final-map{background:#f8f2e8;padding:14px;box-shadow:0 22px 58px rgba(24,50,82,.14)}
+.gdl-final-map img{display:block;width:100%;height:auto;max-height:820px;object-fit:contain}
+.gdl-final-plaza-copy h2{font-size:clamp(50px,6vw,82px);line-height:.93;margin:.14em 0 .28em}
+.gdl-final-plaza-copy>p{font:22px/1.5 Georgia,serif;max-width:610px}
+.gdl-final-places{display:flex;flex-wrap:wrap;gap:9px 10px;margin:28px 0 18px}
+.gdl-final-places span{padding:9px 11px;border:1px solid rgba(24,50,82,.28);font:800 8px/1 Arial,sans-serif;letter-spacing:.1em;background:#f8f2e8}
+
+.gdl-final-world{padding:100px 8vw 112px;background:#10294a;color:#f5eee2;border-top:14px solid transparent;border-image:url("assets/tile.svg") 14 round}
+.gdl-final-world-title{display:grid;grid-template-columns:.78fr 1.22fr;gap:8vw;align-items:end;margin-bottom:55px}
+.gdl-final-world-title h2{font-size:clamp(50px,6vw,82px);line-height:.93;margin:.14em 0}
+.gdl-final-world-title p{font:21px/1.55 Georgia,serif;color:#eadfce;max-width:760px}
+.gdl-final-world-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.gdl-final-world-grid article{padding-top:20px;border-top:1px solid rgba(226,189,110,.5)}
+.gdl-final-world-grid span{font:800 9px/1 Arial,sans-serif;letter-spacing:.15em;color:#e2bd6e}
+.gdl-final-world-grid h3{font-size:clamp(32px,3.4vw,46px);line-height:1.02;margin:.3em 0}
+.gdl-final-world-grid p{font-size:14px;color:#e7dccb}
+.gdl-final-world-grid a{display:inline-block;margin-top:9px;color:#f5eee2;text-decoration:none;border-bottom:1px solid #e2bd6e;padding-bottom:5px;font-size:11px}
+
+.gdl-final-guide{padding:96px 8vw;background:#f5efe4;color:#183252;display:grid;grid-template-columns:1fr minmax(260px,410px);gap:10vw;align-items:center}
+.gdl-final-guide-copy h2{font-size:clamp(52px,6.4vw,86px);line-height:.93;margin:.16em 0}
+.gdl-final-guide-copy p{font:20px/1.55 Georgia,serif;max-width:680px}
+.gdl-final-crest{width:92px;height:92px;object-fit:contain;margin-bottom:20px}
+.gdl-final-guide-object{text-decoration:none;text-align:center;transform:rotate(.6deg)}
+.gdl-final-guide-object img{display:block;width:100%;max-height:630px;object-fit:contain;box-shadow:0 22px 55px rgba(24,50,82,.18)}
+.gdl-final-guide-object span{display:block;margin-top:12px;font:800 8px/1 Arial,sans-serif;letter-spacing:.14em;color:#183252}
+.gdl-final .endnav{background:#0a1b31;color:#f5eee2}
+
+@media(max-width:960px){
+ .gdl-final-sunmoon{right:-8vw;width:52vw;opacity:.78}
+ .gdl-final-plaza,.gdl-final-guide{grid-template-columns:1fr}
+ .gdl-final-map{max-width:760px;margin:0 auto}
+ .gdl-final-world-title{grid-template-columns:1fr}
+ .gdl-final-guide-object{max-width:400px;margin:0 auto}
+}
+@media(max-width:650px){
+ .gdl-final-hero{min-height:80svh}
+ .gdl-final-copy{min-height:80svh;padding:58px 7vw 68px}
+ .gdl-final-wordmark{width:84vw;max-height:76px}
+ .gdl-final-copy h1{font-size:60px}
+ .gdl-final-sunmoon{width:118vw;right:-58vw;top:43%;opacity:.5}
+ .gdl-final-plaza,.gdl-final-world,.gdl-final-guide{padding-left:7vw;padding-right:7vw}
+ .gdl-final-world-grid{grid-template-columns:1fr}
+ .gdl-final-world-title{margin-bottom:35px}
+ .gdl-final-places{gap:7px}
+}
