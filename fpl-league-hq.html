@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Fantasy Premier League 26/27 — live Draft League HQ for La Ola FC. Standings, gameweeks, records, roster and archive.">
+<title>FPL 26/27 · League HQ</title>
+<link rel="stylesheet" href="hq.css">
+<link rel="stylesheet" href="fpl.css">
+</head>
+<body class="league-center-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="league-sports-header">
+  <a class="league-brand" href="fpl-wave.html" aria-label="Back to La Ola FC">
+    <span class="real-crest" aria-hidden="true"></span>
+    <span><strong>LA OLA FC</strong><small>FANTASY PREMIER LEAGUE · 26/27</small></span>
+  </a>
+  <nav aria-label="League HQ">
+    <a href="#live-table">Table</a>
+    <a href="#gameweek-center">Gameweek</a>
+    <a href="#records-book">Records</a>
+    <a href="#ola-roster">La Ola FC</a>
+  </nav>
+  <a class="league-back" href="fpl-wave.html">← CLUB SITE</a>
+</header>
+
+<main id="main">
+<section class="league-center-hero">
+  <div>
+    <p class="league-eyebrow"><span></span> FPL DRAFT · LIVE SEASON CENTER</p>
+    <h1>LEAGUE<br><em>HQ</em></h1>
+    <p>Fantasy Premier League 26/27. Twelve clubs. Head-to-head. Every gameweek becomes part of the record.</p>
+  </div>
+  <div class="league-center-meta">
+    <div><span>LEAGUE</span><strong>18767</strong></div>
+    <div><span>FORMAT</span><strong>12-TEAM H2H</strong></div>
+    <div><span>SEASON</span><strong>GW1—GW38</strong></div>
+  </div>
+</section>
+<section class="league-hq league-hq-page" id="league-hq">
+  <div class="section-head live-head"><div><p class="club-kicker">FPL DRAFT · LEAGUE HQ · LIVE SEASON</p><h2>League HQ.</h2></div><div><p>The magazine made the call before GW1. This is where the season answers back — live table, weekly matchups, La Ola FC, records and the growing archive.</p><p class="data-status" id="fpl-data-status"><span></span>Connecting to league data…</p></div></div>
+  <div class="live-scoreboard">
+    <article class="ola-live-card">
+      <div class="live-card-top"><p class="club-kicker">LA OLA FC · JONATHAN LIZARDI</p><span id="ola-movement" class="movement">—</span></div>
+      <div class="ola-rank"><span id="ola-rank">#4</span><small>LIVE TABLE</small></div>
+      <div class="ola-live-stats"><div><strong id="ola-record">3–2</strong><span>Record</span></div><div><strong id="ola-pf">218</strong><span>Fantasy pts</span></div><div><strong id="ola-league-points">9</strong><span>League pts</span></div><div><strong id="ola-gw-points">36</strong><span>Latest GW</span></div></div>
+      <div class="ola-matchup" id="ola-matchup">GW5 · Red Devils of SD 40 — 36 La Ola FC</div>
+    </article>
+    <article class="forecast-card">
+      <p class="club-kicker">MAGAZINE vs REALITY</p>
+      <h3>Before the season,<br>the models said <em>#1.</em></h3>
+      <div class="forecast-comparison"><div><span>PRESEASON</span><strong>#1</strong><small>Consensus</small></div><b>→</b><div><span>LIVE</span><strong id="forecast-live-rank">#4</strong><small id="forecast-gap">3 places off</small></div></div>
+      <p id="forecast-copy">Fantasy Reimagined put La Ola FC at the top of the preseason board. The live table now gets to grade the call every week.</p>
+      <a href="fpl-publication.html?issue=fantasy2026#page=25">See the preseason board →</a>
+    </article>
+  </div>
+
+  <div class="league-live-grid">
+    <article class="live-panel table-panel" id="live-table">
+      <div class="panel-head"><div><p class="club-kicker">LIVE TABLE</p><h3>Fantasy Premier League 26/27</h3></div><span>12-team H2H</span></div>
+      <div class="table-wrap"><table class="league-table"><thead><tr><th>RK</th><th>Club</th><th>Manager</th><th>W–D–L</th><th>LP</th><th>PF</th><th>PA</th><th>Δ</th></tr></thead><tbody id="league-table-body"><tr class="is-laola"><td>4</td><td><strong>La Ola FC</strong></td><td>Jonathan</td><td>3–0–2</td><td>9</td><td>218</td><td>186</td><td>—</td></tr></tbody></table></div>
+    </article>
+
+    <article class="live-panel gw-panel" id="gameweek-center">
+      <div class="panel-head"><div><p class="club-kicker">GAMEWEEK CENTER</p><h3 id="gw-title">GW5</h3></div><div class="gw-controls"><button id="gw-prev" type="button">←</button><select id="gw-select" aria-label="Choose gameweek"></select><button id="gw-next" type="button">→</button></div></div>
+      <div class="matchup-list" id="matchup-list"><p class="loading-copy">Loading all six matchups…</p></div>
+    </article>
+  </div>
+
+  <div class="league-live-grid lower">
+    <article class="live-panel records-panel" id="records-book">
+      <div class="panel-head"><div><p class="club-kicker">LEAGUE STATISTICS</p><h3>Records book</h3></div><span>Derived from completed GWs</span></div>
+      <div class="record-grid" id="record-grid"><div><span>HIGH SCORE</span><strong>—</strong><small>Waiting for live snapshot</small></div><div><span>BIGGEST WIN</span><strong>—</strong><small>Waiting for live snapshot</small></div><div><span>CLOSEST</span><strong>—</strong><small>Waiting for live snapshot</small></div><div><span>WIN STREAK</span><strong>—</strong><small>Waiting for live snapshot</small></div></div>
+    </article>
+    <article class="live-panel roster-panel" id="ola-roster">
+      <div class="panel-head"><div><p class="club-kicker">LA OLA FC</p><h3>Current roster</h3></div><span id="roster-count">Live ownership</span></div>
+      <div class="roster-list" id="roster-list"><p class="loading-copy">Roster will populate from Draft ownership data.</p></div>
+    </article>
+  </div>
+
+  <article class="season-archive-live">
+    <div><p class="club-kicker">THE LONG GAME</p><h3>Every season becomes evidence.</h3><p>The current league is marked as renewed. The archive is wired to preserve verified predecessor seasons as they are recovered — champions, final tables, old team names, La Ola history and all-time head-to-head — without inventing what cannot be verified.</p></div>
+    <div class="archive-status"><span>2026/27</span><strong>LIVE</strong><small id="archive-renewal">Current recurring league · predecessor discovery active</small></div>
+  </article>
+</section>\n
+</main>
+<footer class="league-center-footer">
+  <span>LA OLA FC · FPL 26/27</span>
+  <a href="fpl-wave.html">Club site</a>
+  <a href="index.html">OLA HQ</a>
+</footer>
+<script src="fpl-hub.js" defer></script>
+</body>
+</html>
