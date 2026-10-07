@@ -613,3 +613,6 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .vegas-night{inset:0 0 0 42%}
 .vegas-night img{object-position:center 58%}
 @media(max-width:650px){.brand-heart{width:32px;height:32px}.vegas-night{inset:0}.vegas-night img{object-position:center 58%}}
+
+/* pre-Bri header alignment */
+@media(max-width:650px){.brand{justify-content:flex-start}.brand>span{margin-left:auto}}
