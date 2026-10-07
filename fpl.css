@@ -73,3 +73,53 @@
 .league-center-footer{padding:24px clamp(24px,6vw,96px);display:flex;gap:24px;align-items:center;border-top:1px solid var(--sport-line);background:#020609;color:#83979f;font:800 9px/1 Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}.league-center-footer span{margin-right:auto}.league-center-footer a{text-decoration:none}.league-center-footer a:hover{color:white}
 @media(max-width:900px){.league-entrance{grid-template-columns:1fr}.league-sports-header nav{display:none}.league-brand{min-width:0}.league-back{margin-left:auto}.league-center-hero{grid-template-columns:1fr}.league-center-meta{min-width:0;width:100%}.league-center-hero:before{font-size:120px}.league-center-meta strong{font-size:11px}}
 @media(max-width:620px){.league-sports-header{height:72px;padding:0 14px}.league-brand .real-crest{width:39px;height:45px}.league-brand strong{font-size:15px}.league-brand small{font-size:6px}.league-back{font-size:8px;padding:9px}.league-center-hero{padding:48px 20px 34px}.league-center-meta{grid-template-columns:1fr}.league-center-meta div{border-right:0;border-bottom:1px solid var(--sport-line)}.league-center-meta div:last-child{border-bottom:0}.league-hq-page{padding-left:18px!important;padding-right:18px!important}.league-entrance{padding:54px 20px}}
+
+
+/* FPL FINAL PASS — generated hero, canonical crest, live standings, League HQ rail */
+.club-hero{
+  background:
+    linear-gradient(90deg,#030c13f2 0%,#030c13c7 35%,#030c136a 58%,#030c131f 78%),
+    linear-gradient(0deg,#030c13c7 0%,transparent 54%),
+    url("assets/deeper/la-ola-fc-hero.png") center center/cover no-repeat !important;
+}
+.club-crest{
+  width:48px;height:56px;display:block;flex:0 0 auto;object-fit:contain;
+  filter:drop-shadow(0 3px 8px #0007)
+}
+.league-brand .club-crest{width:48px;height:56px}
+.lafc-reader .club-crest{width:48px;height:56px}
+
+.league-standings-card{transform:none!important;min-height:0!important;padding:26px!important;cursor:default}
+.league-standings-card:hover{transform:none!important}
+.mini-table-head{display:grid;grid-template-columns:1fr 44px 34px;gap:8px;padding:22px 0 9px;border-bottom:1px solid #ffffff20;color:#78909a;font:900 8px/1 Arial,sans-serif;letter-spacing:.13em}
+.mini-table-head span:first-child{padding-left:34px}
+.mini-standings{display:flex;flex-direction:column}
+.mini-standings>div{display:grid;grid-template-columns:26px minmax(0,1fr) 44px 34px;gap:8px;align-items:center;min-height:42px;border-bottom:1px solid #ffffff12;font:800 11px/1.15 Arial,sans-serif}
+.mini-standings>div b{color:#738b95;text-align:center}.mini-standings>div span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mini-standings>div small{font:800 10px/1 Arial,sans-serif;color:#9fb0b5}.mini-standings>div strong{font:900 11px/1 Arial,sans-serif;text-align:right;color:#dce6e7}
+.mini-standings>div.is-laola{background:#d3ab5817;border-left:3px solid var(--gold);padding-left:4px}.mini-standings>div.is-laola span,.mini-standings>div.is-laola strong{color:var(--gold2)}
+.league-enter-button{display:block;margin-top:22px;padding:14px 16px;background:var(--gold);color:#071924!important;text-align:center;text-decoration:none;font:900 10px/1 Arial,sans-serif;letter-spacing:.11em;position:relative;z-index:2}
+.league-enter-button:hover{filter:brightness(1.06)}
+
+.league-main-with-rail{display:grid!important;grid-template-columns:190px minmax(0,1fr);align-items:start}
+.league-main-content{min-width:0}
+.league-side-nav{
+  position:sticky;top:82px;height:calc(100vh - 82px);z-index:18;
+  padding:32px 18px;background:#02090e;border-right:1px solid #243743;
+  display:flex;flex-direction:column;gap:6px
+}
+.league-side-nav>span{font:900 9px/1 Arial,sans-serif;letter-spacing:.15em;color:var(--sport-gold);padding:0 10px 17px;border-bottom:1px solid #243743;margin-bottom:8px}
+.league-side-nav a{padding:12px 10px;text-decoration:none;border-left:2px solid transparent;color:#91a5ad;font:900 9px/1 Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.league-side-nav a:hover,.league-side-nav a:focus{color:#fff;border-left-color:var(--sport-gold);background:#ffffff08}
+.league-main-content #live-table,.league-main-content #gameweek-center,.league-main-content #records-book,.league-main-content #ola-roster,.league-main-content #season-archive{scroll-margin-top:110px}
+
+@media(max-width:900px){
+  .league-main-with-rail{grid-template-columns:1fr}
+  .league-side-nav{position:sticky;top:72px;height:auto;flex-direction:row;overflow-x:auto;padding:10px 14px;border-right:0;border-bottom:1px solid #243743;white-space:nowrap}
+  .league-side-nav>span{display:none}
+  .league-side-nav a{border-left:0;border-bottom:2px solid transparent}
+  .league-side-nav a:hover,.league-side-nav a:focus{border-bottom-color:var(--sport-gold)}
+}
+@media(max-width:760px){
+  .club-crest{width:40px;height:46px}
+  .club-hero{background-position:58% center!important}
+}
