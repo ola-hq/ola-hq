@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "schema": "ola-fpl-draft-v1",
+    "league_id": 18767,
+    "fetched_at": null,
+    "source": "validation-fallback",
+    "renewal_hints": [
+      "league.is_renewed=true"
+    ]
+  },
+  "details": null,
+  "element_status": [],
+  "players": []
+}
