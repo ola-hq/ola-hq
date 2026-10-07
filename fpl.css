@@ -202,3 +202,20 @@
   .lafc.club-home-reference .team-scorebar div:nth-child(2){border-right:0}
   .lafc.club-home-reference .league-home-live{grid-template-columns:1fr 1fr}
 }
+
+
+/* APPROVED SPORTS-HOME — live League HQ teaser */
+.sports-home .league-live-preview{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);gap:18px;margin:0 0 28px}
+.sports-home .league-live-numbers{display:grid;grid-template-columns:repeat(4,1fr);background:#0b2636;border:1px solid #284454}
+.sports-home .league-live-numbers>div{padding:22px 20px;border-right:1px solid #284454}
+.sports-home .league-live-numbers>div:last-child{border-right:0}
+.sports-home .league-live-numbers small{display:block;font:900 8px/1 Arial,sans-serif;letter-spacing:.13em;color:#d2aa56;margin-bottom:10px}
+.sports-home .league-live-numbers strong{display:block;font:900 28px/1 Arial,sans-serif;color:#f2ebdd}
+.sports-home .league-live-numbers span{display:block;margin-top:9px;font-size:11px;line-height:1.35;color:#aebdc2}
+.sports-home .league-live-enter{padding:24px;display:flex;flex-direction:column;justify-content:center;text-decoration:none;background:#d2aa56;color:#071924}
+.sports-home .league-live-enter>span{font:900 8px/1 Arial,sans-serif;letter-spacing:.13em}
+.sports-home .league-live-enter>strong{font:900 24px/1.05 Arial,sans-serif;margin:16px 0 12px}
+.sports-home .league-live-enter>small{font:700 10px/1.4 Arial,sans-serif}
+.sports-home .league-live-enter:hover{filter:brightness(1.06)}
+@media(max-width:900px){.sports-home .league-live-preview{grid-template-columns:1fr}.sports-home .league-live-numbers{grid-template-columns:1fr 1fr}.sports-home .league-live-numbers>div:nth-child(2){border-right:0}.sports-home .league-live-numbers>div:nth-child(-n+2){border-bottom:1px solid #284454}}
+@media(max-width:560px){.sports-home .league-live-numbers{grid-template-columns:1fr}.sports-home .league-live-numbers>div{border-right:0;border-bottom:1px solid #284454}.sports-home .league-live-numbers>div:last-child{border-bottom:0}}
