@@ -325,3 +325,86 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
   .endnav{padding:30px 7vw 55px;flex-direction:column}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+
+/* 2026-10-06 — Guadalajara reground: place > people > food/music > guide */
+.gdl-hero-regrounded{min-height:88svh;position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,34vw);overflow:hidden;background:#0c203b;color:#f6efe3;border-top:12px solid transparent;border-bottom:12px solid transparent;border-image:url("assets/tile.svg") 12 round}
+.gdl-hero-field{position:absolute;inset:0;z-index:0;background:radial-gradient(circle at 73% 48%,#316ba0 0%,#173b67 27%,#0c203b 68%)}
+.gdl-hero-field:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,32,59,.99) 0%,rgba(12,32,59,.9) 45%,rgba(12,32,59,.32) 77%,rgba(12,32,59,.08))}
+.gdl-hero-field img{position:absolute;right:-3%;top:6%;width:min(820px,61vw);height:88%;object-fit:contain;opacity:.72}
+.gdl-hero-copy{position:relative;z-index:3;padding:8vh 7vw;display:flex;flex-direction:column;justify-content:center;max-width:900px}
+.gdl-hero-copy .eyebrow,.gdl-hero-copy .planned{color:#e2bd6e}
+.gdl-hero-copy h1{font-size:clamp(58px,7.4vw,108px);line-height:.89;letter-spacing:-.04em;margin:.12em 0 .22em}
+.gdl-hero-copy h1 em{color:#e2bd6e;font-weight:400}
+.gdl-manifesto{font:clamp(20px,2.1vw,28px)/1.46 Georgia,serif;max-width:720px;color:#f1e8da}
+.gdl-manifesto strong{color:#fff}
+.gdl-values{font:800 9px/1.2 Arial,sans-serif;letter-spacing:.2em;color:#e2bd6e;margin:12px 0 8px}
+.gdl-hero-guide{position:relative;z-index:4;align-self:center;justify-self:end;width:min(250px,25vw);margin-right:5vw;text-decoration:none;text-align:center;transform:rotate(1.5deg)}
+.gdl-hero-guide img{display:block;width:100%;height:auto;box-shadow:0 26px 70px rgba(0,0,0,.5)}
+.gdl-hero-guide span{display:block;margin-top:12px;color:#fff;font:800 8px/1 Arial,sans-serif;letter-spacing:.16em}
+
+.gdl-why{padding:88px 8vw;display:grid;grid-template-columns:.78fr 1.22fr;gap:8vw;background:#f1e7d5;color:#183252}
+.gdl-why h2{font-size:clamp(48px,6.4vw,84px);line-height:.93;margin:.15em 0}
+.gdl-why>div:last-child p:first-child{font:26px/1.45 Georgia,serif;color:#9e3428}
+.gdl-why>div:last-child p:last-child{font:19px/1.6 Georgia,serif;max-width:760px}
+
+.gdl-plaza{padding:84px 7vw;background:#10294a;color:#f5eee2;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(330px,.88fr);gap:6vw;align-items:center}
+.gdl-map-wrap{background:#f4ead9;padding:16px;box-shadow:0 24px 70px rgba(0,0,0,.28);transform:rotate(-.5deg)}
+.gdl-map-wrap img{width:100%;max-height:920px;object-fit:contain;display:block}
+.gdl-plaza-copy h2{font-size:clamp(50px,6vw,82px);line-height:.93;margin:.15em 0 .3em}
+.gdl-plaza-copy>p{font:19px/1.55 Georgia,serif;color:#e9dfd0}
+.gdl-place-list{margin:30px 0}
+.gdl-place-list a{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:baseline;padding:13px 0;border-top:1px solid rgba(244,238,226,.22);text-decoration:none}
+.gdl-place-list span{font-size:9px;color:#e2bd6e;font-weight:800}
+.gdl-place-list strong{font:23px/1.1 Georgia,serif}
+.gdl-place-list small{font-size:9px;letter-spacing:.08em;text-transform:uppercase;opacity:.68;text-align:right}
+
+.gdl-stories{padding:92px 7vw 100px;background:#eee2cf;color:#203630;border-top:14px solid transparent;border-image:url("assets/tile.svg") 14 round}
+.gdl-stories-intro{display:grid;grid-template-columns:.72fr 1.28fr;gap:7vw;align-items:end;margin-bottom:45px}
+.gdl-stories-intro h2{font-size:clamp(50px,6vw,82px);line-height:.93;margin:.15em 0}
+.gdl-stories-intro p{font:19px/1.55 Georgia,serif;max-width:730px}
+.gdl-story-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gdl-story-cards a{position:relative;min-height:360px;overflow:hidden;background:#0c203b;color:#fff;text-decoration:none}
+.gdl-story-cards img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.gdl-story-cards a:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 46%,rgba(7,20,37,.86) 100%)}
+.gdl-story-cards a:hover img{transform:scale(1.035)}
+.gdl-story-cards span,.gdl-story-cards strong{position:absolute;z-index:2;left:16px;right:16px}
+.gdl-story-cards span{bottom:48px;font:800 8px/1 Arial,sans-serif;letter-spacing:.15em;color:#e2bd6e}
+.gdl-story-cards strong{bottom:17px;font:23px/1.05 Georgia,serif}
+
+.gdl-waves{padding:70px 7vw 88px;background:#f5efe4;display:grid;grid-template-columns:1fr 1fr;gap:20px;color:#183252}
+.gdl-wave-card{display:grid;grid-template-columns:.95fr 1.05fr;background:#fff;border:1px solid rgba(24,50,82,.15);min-height:360px}
+.gdl-wave-card img{width:100%;height:100%;object-fit:cover;display:block}
+.gdl-wave-card>div{padding:32px;display:flex;flex-direction:column;justify-content:center}
+.gdl-wave-card h3{font-size:40px;line-height:1;margin:.2em 0}
+.gdl-wave-card p{font-size:14px}
+.gdl-wave-card a{margin-top:12px;text-decoration:none;font-size:11px;font-weight:800;letter-spacing:.05em}
+
+.gdl-guide-door{padding:94px 8vw;background:#0c203b;color:#f5eee2;display:grid;grid-template-columns:1fr minmax(260px,410px);gap:9vw;align-items:center}
+.gdl-guide-door h2{font-size:clamp(52px,6.5vw,86px);line-height:.93;margin:.15em 0}
+.gdl-guide-door p{font:20px/1.55 Georgia,serif;max-width:700px}
+.gdl-guide-door>a{text-decoration:none}
+.gdl-guide-door>a img{width:100%;max-height:650px;object-fit:contain;display:block;box-shadow:0 24px 65px rgba(0,0,0,.45);transform:rotate(1deg)}
+
+@media(max-width:980px){
+  .gdl-hero-regrounded{grid-template-columns:1fr}
+  .gdl-hero-copy{min-height:70svh}
+  .gdl-hero-guide{display:none}
+  .gdl-why,.gdl-plaza,.gdl-stories-intro,.gdl-guide-door{grid-template-columns:1fr}
+  .gdl-story-cards{grid-template-columns:1fr 1fr}
+  .gdl-waves{grid-template-columns:1fr}
+  .gdl-map-wrap{max-width:720px;margin:0 auto}
+}
+@media(max-width:650px){
+  .gdl-hero-regrounded{min-height:80svh}
+  .gdl-hero-copy{min-height:80svh;padding:58px 7vw}
+  .gdl-hero-copy h1{font-size:60px}
+  .gdl-hero-field img{width:125vw;right:-43vw;opacity:.5}
+  .gdl-why,.gdl-plaza,.gdl-stories,.gdl-waves,.gdl-guide-door{padding-left:7vw;padding-right:7vw}
+  .gdl-place-list a{grid-template-columns:28px 1fr}
+  .gdl-place-list small{grid-column:2;text-align:left}
+  .gdl-story-cards{grid-template-columns:1fr}
+  .gdl-story-cards a{min-height:390px}
+  .gdl-wave-card{grid-template-columns:1fr}
+  .gdl-wave-card img{height:280px}
+}
