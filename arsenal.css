@@ -833,3 +833,137 @@
   .collectible-wall{padding:20px}
   .collectible-card img{width:62px}
 }
+
+
+/* FINAL ARSENAL FINISH — real imagery, restrained editorial framing */
+.arsenal-shield{
+  width:46px;height:46px;
+  display:grid;place-items:center;
+  background:transparent!important;
+}
+.arsenal-shield img{
+  width:42px;height:42px;object-fit:contain;
+  filter:none!important;
+}
+
+/* hero now led by photography */
+.arsenal-photo-hero{
+  margin:0;
+  width:min(100%,460px);
+  background:#0d0d0e;
+  border:1px solid #ffffff16;
+  box-shadow:0 28px 70px #0008;
+  transform:none!important;
+  padding:0!important;
+}
+.arsenal-photo-hero img{
+  width:100%;height:520px;object-fit:cover;display:block;
+  filter:saturate(.85) contrast(1.02) brightness(.82);
+}
+.arsenal-photo-hero figcaption{
+  display:flex;justify-content:space-between;gap:18px;align-items:center;
+  padding:14px 16px;border-top:1px solid #ffffff12;
+  color:#cfc5b7;background:#0c0c0d;
+}
+.arsenal-photo-hero figcaption span{
+  font:800 9px/1 Arial,sans-serif;letter-spacing:.12em;color:#d8b66d;
+}
+.arsenal-photo-hero figcaption small{
+  font-size:8px;color:#8f8981;text-align:right;
+}
+
+/* current feature photo */
+.real-matchday-photo{position:relative;min-height:420px;overflow:hidden;background:#0d0d0e}
+.real-matchday-photo img{
+  width:100%;height:100%;min-height:420px;object-fit:cover;display:block;
+  filter:saturate(.88) contrast(1.03) brightness(.8);
+}
+.real-matchday-photo:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,#08080999 0%,transparent 44%);
+  pointer-events:none;
+}
+.real-matchday-photo small{
+  position:absolute;left:18px;bottom:16px;z-index:2;
+  font:700 8px/1.2 Arial,sans-serif;letter-spacing:.08em;color:#e7dfd4;
+  background:#080809aa;padding:7px 9px;
+}
+
+/* culture photo */
+.real-stadium-card{padding:0!important;display:block!important;position:relative}
+.real-stadium-card img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  filter:saturate(.82) contrast(1.03) brightness(.72);
+}
+.real-stadium-card:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,#0a0a0bd6 0%,transparent 58%);
+}
+.real-stadium-card span{
+  position:absolute;left:24px;bottom:22px;z-index:2;
+  font:700 clamp(34px,4vw,58px)/.9 Georgia,serif!important;
+  letter-spacing:-.04em!important;
+}
+
+/* replace synthetic collection cards with one heritage plate */
+.heritage-crest-panel{
+  min-height:460px;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  background:#ebe4d8!important;
+  border:1px solid #cfc4b3!important;
+  box-shadow:none!important;
+  padding:44px!important;
+}
+.heritage-crest-panel img{
+  width:min(58%,330px);height:auto;display:block;
+  filter:grayscale(.05) sepia(.08);
+}
+.heritage-crest-panel figcaption{
+  width:100%;margin-top:38px;padding-top:16px;border-top:1px solid #c9beae;
+  display:flex;justify-content:space-between;gap:18px;
+  color:#30241d!important;background:transparent!important;
+}
+.heritage-crest-panel figcaption span{color:#8d1a21!important}
+.heritage-crest-panel figcaption strong{font-family:Georgia,serif;font-size:15px}
+
+/* kill remaining swatch-like visual blocks */
+.shirt-visual{
+  background:
+    linear-gradient(180deg,#141415,#0d0d0e)!important;
+}
+.shirt-visual:after{
+  content:"";position:absolute;inset:24px;
+  border:1px solid #ffffff12;
+  background:
+    linear-gradient(120deg,transparent 0 43%,#8e151d55 43% 46%,transparent 46%),
+    url("assets/deeper/arsenal-wave-lines.svg") center bottom/120% auto no-repeat;
+  opacity:.85;
+}
+.shirt-visual span{z-index:2}
+.collection-copy{
+  background:#f7f1e8!important;
+  border:0!important;
+  border-left:1px solid #cfc4b3!important;
+  border-top:0!important;
+  color:#171311!important;
+}
+.collection-copy .arsenal-kicker{color:#8d1a21}
+.collection-copy h3{font-family:Georgia,serif;color:#1f1814}
+.collection-copy p:not(.arsenal-kicker){color:#6b625a!important}
+.collection-tags span{background:transparent;border:0;border-bottom:1px solid #c8bdad;padding:8px 0}
+
+/* quieter archive and crossover */
+.gunner-card,.laola-bridge{border-color:#ffffff0f!important}
+.archive-grid article{background:transparent!important}
+.archive-grid article:hover{background:transparent!important}
+
+/* credits stay tiny */
+.arsenal-world a[href*="wikimedia"]{text-decoration:none}
+
+@media(max-width:760px){
+  .arsenal-photo-hero{width:100%}
+  .arsenal-photo-hero img{height:360px}
+  .real-matchday-photo,.real-matchday-photo img{min-height:300px}
+  .heritage-crest-panel{min-height:360px;padding:30px!important}
+  .heritage-crest-panel figcaption{flex-direction:column}
+}
