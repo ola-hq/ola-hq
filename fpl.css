@@ -73,3 +73,59 @@
 .league-center-footer{padding:24px clamp(24px,6vw,96px);display:flex;gap:24px;align-items:center;border-top:1px solid var(--sport-line);background:#020609;color:#83979f;font:800 9px/1 Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}.league-center-footer span{margin-right:auto}.league-center-footer a{text-decoration:none}.league-center-footer a:hover{color:white}
 @media(max-width:900px){.league-entrance{grid-template-columns:1fr}.league-sports-header nav{display:none}.league-brand{min-width:0}.league-back{margin-left:auto}.league-center-hero{grid-template-columns:1fr}.league-center-meta{min-width:0;width:100%}.league-center-hero:before{font-size:120px}.league-center-meta strong{font-size:11px}}
 @media(max-width:620px){.league-sports-header{height:72px;padding:0 14px}.league-brand .real-crest{width:39px;height:45px}.league-brand strong{font-size:15px}.league-brand small{font-size:6px}.league-back{font-size:8px;padding:9px}.league-center-hero{padding:48px 20px 34px}.league-center-meta{grid-template-columns:1fr}.league-center-meta div{border-right:0;border-bottom:1px solid var(--sport-line)}.league-center-meta div:last-child{border-bottom:0}.league-hq-page{padding-left:18px!important;padding-right:18px!important}.league-entrance{padding:54px 20px}}
+
+
+/* FANTASY REIMAGINED — authoritative stadium cover hero */
+.lafc .club-hero{
+  min-height:780px;
+  grid-template-columns:minmax(0,1.05fr) minmax(280px,.62fr);
+  background:
+    linear-gradient(90deg,#030a10f7 0%,#041019e8 34%,#06131e9e 57%,#06131e3d 78%,#06131e14 100%),
+    linear-gradient(0deg,#041019e0 0%,transparent 48%),
+    url("assets/deeper/fpl26-01.jpg") center 43%/cover no-repeat;
+}
+.lafc .club-hero:before{
+  background:linear-gradient(115deg,#071a2855,transparent 62%);
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  width:100%;
+  height:100%;
+  inset:0;
+}
+.lafc .club-hero .hero-copy{max-width:760px}
+.lafc .hero-cover{
+  align-self:end;
+  justify-self:end;
+  width:min(330px,100%);
+  background:#06131ee8;
+  border:1px solid #d3ab5866;
+  box-shadow:0 22px 70px #0008;
+  backdrop-filter:blur(10px);
+}
+.lafc .hero-cover img{display:none}
+.lafc .hero-cover span{
+  min-height:112px;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:18px;
+  font:800 10px/1.25 Arial,sans-serif;
+  letter-spacing:.13em;
+  color:#dbe5e6;
+}
+.lafc .hero-cover span b{color:var(--gold);font-size:12px}
+.lafc .issue-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px}
+.lafc .issue-actions a{font:800 10px/1.2 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+@media(max-width:760px){
+  .lafc .club-hero{
+    min-height:720px;
+    grid-template-columns:1fr;
+    align-content:end;
+    background:
+      linear-gradient(0deg,#030a10fa 0%,#041019dc 47%,#06131e55 78%,#06131e22 100%),
+      url("assets/deeper/fpl26-01.jpg") 57% 25%/cover no-repeat;
+  }
+  .lafc .hero-cover{justify-self:start;width:100%;max-width:360px}
+}
