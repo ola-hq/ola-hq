@@ -37,17 +37,6 @@ jobs:
           node-version: '22'
       - name: Fetch and sanitize FPL Draft data
         run: node scripts/fpl-sync.mjs
-      - name: Commit snapshot when changed
-        run: |
-          if git diff --quiet -- data/fpl/league-18767.json; then
-            echo "No FPL data changes."
-          else
-            git config user.name "ola-hq-data-bot"
-            git config user.email "actions@users.noreply.github.com"
-            git add data/fpl/league-18767.json
-            git commit -m "Update FPL Draft snapshot"
-            git push
-          fi
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload current site
