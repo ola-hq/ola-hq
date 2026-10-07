@@ -9,7 +9,7 @@ window.FPL_PUBLICATIONS = {
     "return_anchor": "guide",
     "pages": [
       {
-        "image": "assets/deeper/fpl26-01.jpg",
+        "image": "assets/deeper/fpl26-cover-2026.jpg",
         "title": "Fantasy Reimagined — cover",
         "number": 1
       },
@@ -155,7 +155,7 @@ window.FPL_PUBLICATIONS = {
     "pdf_path": null,
     "pages": [
       {
-        "image": "assets/deeper/fpl26-01.jpg",
+        "image": "assets/deeper/fpl26-evolution-01.jpg",
         "title": "Cover",
         "number": 1
       },
