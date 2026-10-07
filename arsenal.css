@@ -191,3 +191,21 @@
   .hero-art{width:min(88vw,420px)}
   .visual-fill{height:330px}
 }
+
+
+/* ARSENAL CONTENT + PARENT NAV REFINEMENT */
+.arsenal-header-lockup{display:flex;align-items:center;gap:14px}
+.arsenal-parent{display:inline-flex;align-items:center;white-space:nowrap;padding:8px 10px;border:1px solid #d0a25255;color:#d9b96f!important;text-decoration:none;font:900 8px/1 Arial,sans-serif;letter-spacing:.11em;text-transform:uppercase;background:#07192388}
+.arsenal-parent:hover{background:#0b2636;color:#fff!important}
+.text-world-card{padding:28px;display:flex;flex-direction:column;justify-content:flex-end;min-height:390px;background:linear-gradient(155deg,#171116,#090c0f 72%);position:relative;overflow:hidden}
+.text-world-card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 10%,#c9973f18,transparent 26%),repeating-linear-gradient(135deg,#ffffff05 0 1px,transparent 1px 10px)}
+.text-world-card>*{position:relative}
+.text-world-card h3{font:700 34px/1.05 Georgia,serif;margin:8px 0 18px}
+.text-world-card p{color:#b7aea2;line-height:1.58}
+.text-world-card>span{margin-top:28px;color:#8f8378;font:900 7px/1 Arial,sans-serif;letter-spacing:.13em}
+.arsenal-editorial{padding:84px clamp(24px,7vw,110px);background:#f3eadc;color:#1a1310;display:grid;grid-template-columns:.42fr 1.2fr 1fr;gap:42px;align-items:start;border-top:1px solid #d5c4aa;border-bottom:1px solid #d5c4aa}
+.editorial-rule{font:900 9px/1 Arial,sans-serif;letter-spacing:.2em;color:#9b171f;border-top:4px solid #9b171f;padding-top:14px}
+.arsenal-editorial blockquote{font:italic 700 clamp(28px,3.3vw,48px)/1.08 Georgia,serif;margin:0;color:#2a1b16}
+.arsenal-editorial p{margin:0;color:#675e56;line-height:1.75;font-size:15px}
+@media(max-width:1000px){.arsenal-header-lockup{gap:9px}.arsenal-parent{font-size:7px;padding:7px}.arsenal-editorial{grid-template-columns:1fr 1fr}.editorial-rule{grid-column:1/-1}.world-grid{grid-template-columns:1fr 1fr}.stat-card{grid-column:1/-1}}
+@media(max-width:760px){.arsenal-header-lockup{gap:8px}.arsenal-parent{padding:6px 7px;font-size:6px}.arsenal-editorial{grid-template-columns:1fr;padding:58px 22px}.text-world-card{min-height:300px}}
