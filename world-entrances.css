@@ -89,3 +89,20 @@
  .entrance-page .world-entrances .wave-26-banner{aspect-ratio:640/427}
  .entrance-page .world-entrances .supplied-banner img{height:auto;max-height:100%}
 }
+
+/* Locked pass-through: globe identity and three HQ entrance windows only. */
+.entrance-page .globe-lockup{display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none}
+.entrance-page .globe-lockup>img{display:block;width:44px;height:44px;flex-shrink:0}
+.entrance-page .globe-lockup .wordmark-text{display:block;text-align:left;letter-spacing:0}
+.entrance-page .globe-lockup strong{display:block;font:normal 30px/1.1 Georgia,serif;letter-spacing:.015em;color:var(--ink)}
+.entrance-page .globe-lockup .wordmark-text>span{font-size:8px;letter-spacing:.14em;margin-top:5px}
+.entrance-page .hero-art{border-radius:0;background:transparent;overflow:visible}
+.entrance-page .hero-art img{object-fit:contain;mix-blend-mode:multiply}
+.entrance-page .world-entrances .visual.film img{height:100%;width:100%;max-height:none;object-fit:cover;object-position:50% 50%}
+.entrance-page .world-entrances .simulation-visual img{height:100%;width:100%;object-fit:cover;object-position:50% 48%}
+.entrance-page .world-entrances .fc-visual .club-house{height:100%;width:100%;object-fit:cover;object-position:50% 50%}
+@media(max-width:760px){
+ .entrance-page .hero-art{width:100%;max-width:280px}
+ .entrance-page .world-entrances .visual.film,.entrance-page .world-entrances .simulation-visual,.entrance-page .world-entrances .fc-visual{height:auto;min-height:0;aspect-ratio:1672/941}
+ .entrance-page .home-topbar .globe-lockup{flex-direction:row}
+}
