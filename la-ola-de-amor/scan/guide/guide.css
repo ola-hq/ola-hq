@@ -6,3 +6,14 @@
 /* Source-derived V3.3 card captions and album listening detail. */
 .food .art-card>span{min-height:130px}.food .art-card small{line-height:1.5}.album-detail{border:1px solid var(--gold);background:var(--navy);color:var(--paper);padding:18px;margin-top:20px}.album-detail .detail-art{width:100%;max-height:none;margin:0 auto}.album-detail .album-credit{color:#f6d48b;font-size:12px;letter-spacing:.08em}.album-detail .album-art-caption{font-size:12px;color:#e4d5b5}.album-detail .album-play{width:100%;background:#f3d58e;color:var(--navy);border-color:#f3d58e;gap:12px;box-shadow:none;padding:18px}.album-play .play-symbol{font-size:25px}.album-detail .detail-links{display:block}.album-detail .source-tag{color:#e4d5b5}.image-fallback{min-width:0;overflow-wrap:anywhere}
 @media(max-width:650px){.food .art-card>span{min-height:140px}.album-detail{padding:12px}}
+
+/* V3.4: the Plaza title and memory card share the existing printed serif/ribbon family. */
+#plaza-title{font-family:Georgia,var(--serif);font-weight:900;letter-spacing:-.035em;text-align:center;margin:4px auto 18px;max-width:660px}
+#plaza-title .plaza-title-main{display:block;font-size:clamp(38px,5.8vw,68px);font-style:normal;line-height:1;text-transform:uppercase}
+#plaza-title .plaza-title-name{display:inline-block;font-size:clamp(21px,3vw,34px);font-style:normal;line-height:1.1;letter-spacing:.025em;text-transform:uppercase;background:#f3d58e;border-top:1px solid var(--gold);border-bottom:2px solid var(--gold);padding:4px 18px;margin-top:7px}
+#plaza>.section-intro:first-child{text-align:center}
+.legacy-visual{position:relative;width:100%;aspect-ratio:3/4}
+.legacy-visual>img{width:100%;height:100%;object-fit:contain}
+.legacy-visual-title{position:absolute;top:10%;left:14%;right:14%;font-family:Georgia,var(--serif);font-size:clamp(17px,2vw,26px);font-weight:900;line-height:1.03;letter-spacing:-.035em;text-transform:uppercase;text-align:center;color:var(--navy);pointer-events:none}
+dialog .legacy-detail{width:min(100%,420px);margin:20px auto;aspect-ratio:2/3}
+dialog .legacy-detail .legacy-visual-title{font-size:clamp(24px,6vw,36px);top:10%}
