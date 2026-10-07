@@ -17,8 +17,7 @@
   byId('publication-subtitle').textContent = issue.subtitle;
   byId('publication-note').textContent = issue.note;
   for (const id of ['publication-return', 'end-return']) byId(id).href = `fpl-wave.html#${issue.return_anchor}`;
-  if (issue.pdf_path) byId('publication-pdf').href = issue.pdf_path;
-  else byId('publication-pdf').hidden = true;
+  if (issue.pdf_path) { byId('publication-pdf').href = issue.pdf_path; byId('publication-pdf').hidden = false; }
   else byId('publication-pdf').hidden = true;
   issue.pages.forEach((page, index) => {
     const option = document.createElement('option');
