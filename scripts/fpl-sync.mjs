@@ -1,4 +1,4 @@
-import { mkdir, writeFile, readFile } from 'node:fs/promises';\nimport { createHash } from 'node:crypto';
+import { mkdir, writeFile } from 'node:fs/promises';
 
 const LEAGUE_ID=18767;
 const BASE='https://draft.premierleague.com/api/';
