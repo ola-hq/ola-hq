@@ -5,7 +5,7 @@ window.FPL_PUBLICATIONS = {
     "season": "2026/27",
     "role": "Primary publication",
     "note": "The finished draft magazine: twelve clubs, three models, one board. Preseason projections and creative editorial opinion, preserved in their original sequence. This is a draft-time publication, not live standings.",
-    "pdf_path": null,
+    "pdf_path": "https://drive.google.com/file/d/1SyJSZigsKwobm6n6Z3NFRHyN_vpRyJ9N/view",
     "return_anchor": "guide",
     "pages": [
       {
