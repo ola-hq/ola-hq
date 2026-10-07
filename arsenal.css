@@ -1060,3 +1060,398 @@
   .arsenal-nav .club-switch{padding:8px 10px}
   .hero-crest-medallion{width:84px!important;right:16px;top:16px}
 }
+
+
+/* ARSENAL MOCKUP HARNESS PASS — preserve structure, unify whole page */
+.arsenal-world{
+  background:#080809;
+}
+
+/* subtle global paper/ink texture */
+.arsenal-world main{
+  position:relative;
+  isolation:isolate;
+}
+.arsenal-world main:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.045;
+  z-index:100;
+  background-image:
+    radial-gradient(circle at 20% 20%,#fff 0 1px,transparent 1.2px),
+    radial-gradient(circle at 80% 70%,#fff 0 1px,transparent 1.2px);
+  background-size:17px 17px,23px 23px;
+  mix-blend-mode:soft-light;
+}
+
+/* hero = magazine cover, not generic website hero */
+.arsenal-hero{
+  min-height:760px;
+  padding-top:96px;
+  padding-bottom:82px;
+  background:
+    linear-gradient(90deg,#070708f7 0%,#0b090af0 42%,#1d0a0ddb 63%,#4f0f17b5 100%),
+    url("https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/London_Emirates_Stadium_arsenal.jpg/1280px-London_Emirates_Stadium_arsenal.jpg") center/cover no-repeat;
+}
+.arsenal-hero:before{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,#00000038 0%,transparent 30%,#00000066 100%),
+    url("assets/deeper/arsenal-wave-lines.svg") left bottom/48% auto no-repeat;
+  opacity:.52;
+  z-index:0;
+}
+.arsenal-hero .hero-copy,
+.arsenal-hero .hero-art{position:relative;z-index:2}
+.arsenal-hero h1{
+  font-family:Georgia,serif!important;
+  font-weight:700!important;
+  letter-spacing:-.055em!important;
+  text-transform:none!important;
+  font-size:clamp(72px,8vw,132px);
+  line-height:.82;
+}
+.arsenal-hero h1 em{color:#e2bc72;font-style:italic;font-weight:400}
+.arsenal-kicker{letter-spacing:.2em}
+.hero-actions .arsenal-button.gold{
+  background:#8d151d;
+  color:#fff4e6;
+  border:1px solid #bc4a51;
+  box-shadow:0 12px 32px #0004;
+}
+.hero-actions .arsenal-button.ghost{
+  background:#09090a88;
+  backdrop-filter:blur(5px);
+}
+.season-strip{
+  border-top:1px solid #ffffff24;
+  margin-top:34px;
+}
+.season-strip div{
+  border-right:1px solid #ffffff17;
+  padding-right:18px;
+}
+
+/* hero card now behaves like a floating cover insert */
+.arsenal-photo-hero{
+  width:min(100%,430px);
+  transform:rotate(1.2deg)!important;
+  border:1px solid #d1ab625c;
+  box-shadow:0 36px 90px #000b;
+}
+.arsenal-photo-hero:hover{transform:rotate(0deg) translateY(-4px)!important}
+.arsenal-photo-hero img:first-child{
+  height:500px;
+  filter:saturate(.78) contrast(1.06) brightness(.68);
+}
+.hero-crest-medallion{
+  width:126px!important;
+  right:26px!important;
+  top:24px!important;
+}
+.arsenal-photo-hero figcaption{
+  background:#0b0b0c;
+  border-top:1px solid #d1ab6238;
+}
+
+/* subnav = issue contents strip */
+.arsenal-subnav{
+  background:#eee5d8;
+  border-top:1px solid #cfc3b2;
+  border-bottom:1px solid #cfc3b2;
+}
+.arsenal-subnav a{
+  font-family:Georgia,serif;
+  font-weight:700;
+  letter-spacing:-.01em;
+}
+.arsenal-subnav span{
+  font-family:Arial,sans-serif;
+  letter-spacing:.12em;
+  color:#8e171f;
+}
+
+/* light editorial spreads */
+.arsenal-season,
+.arsenal-collection,
+.arsenal-archive{
+  background:
+    linear-gradient(180deg,#f5eee3 0%,#efe5d8 100%)!important;
+}
+.arsenal-season:after,
+.arsenal-collection:after,
+.arsenal-archive:after{
+  content:"";
+  position:absolute;
+  right:clamp(24px,7vw,110px);
+  top:32px;
+  width:150px;
+  height:36px;
+  background:url("assets/deeper/arsenal-wave-lines.svg") right center/150px auto no-repeat;
+  opacity:.18;
+  pointer-events:none;
+}
+.section-head{
+  position:relative;
+}
+.section-head:after{
+  content:"";
+  position:absolute;
+  left:0;bottom:-22px;
+  width:56px;height:2px;
+  background:#8d151d;
+}
+.section-head h2{
+  font-family:Georgia,serif!important;
+  font-size:clamp(44px,5.4vw,76px)!important;
+  font-weight:700!important;
+}
+
+/* current feature = cinematic spread with strong photograph */
+.feature-main{
+  grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr)!important;
+  min-height:470px;
+  border:1px solid #161313;
+  background:#101011;
+}
+.real-matchday-photo{
+  min-height:470px;
+}
+.real-matchday-photo img{min-height:470px;filter:saturate(.86) contrast(1.08) brightness(.74)}
+.real-matchday-photo:before{
+  content:"";
+  position:absolute;inset:0;
+  z-index:1;
+  background:
+    linear-gradient(90deg,transparent 58%,#0b0b0ca8 100%),
+    url("assets/deeper/arsenal-wave-lines.svg") left bottom/65% auto no-repeat;
+  opacity:.42;
+}
+.feature-copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:54px 42px!important;
+}
+.feature-copy h3{
+  font-family:Georgia,serif;
+  font-size:clamp(38px,4vw,58px);
+  line-height:.95;
+  margin:10px 0 20px;
+}
+.feature-copy>a{
+  margin-top:20px;
+  color:#e1b96d;
+}
+
+/* matchday live = refined scorecard */
+.feature-side{
+  background:
+    linear-gradient(180deg,#fcf8f0 0%,#f2e8dc 100%)!important;
+  border:1px solid #cfc1ae!important;
+  border-top:4px solid #8d151d!important;
+}
+.feature-side h3{
+  font-family:Georgia,serif;
+  font-size:40px;
+}
+.matchday-mini strong{
+  font-family:Georgia,serif;
+}
+
+/* dark club-world spread */
+.arsenal-world-section{
+  background:
+    linear-gradient(180deg,#09090a 0%,#0c0a0b 70%,#120d0f 100%)!important;
+}
+.arsenal-world-section:after{
+  content:"";
+  position:absolute;
+  right:5%;top:7%;
+  width:34%;height:24%;
+  background:url("assets/deeper/arsenal-wave-lines.svg") right top/contain no-repeat;
+  opacity:.08;
+  pointer-events:none;
+}
+.world-grid{
+  gap:18px;
+}
+.world-card{
+  overflow:hidden;
+  border:1px solid #ffffff13;
+}
+.world-card>div:last-child,
+.text-world-card,
+.stat-card{
+  position:relative;
+}
+.world-card>div:last-child:before,
+.text-world-card:after{
+  content:"";
+  position:absolute;
+  width:70px;height:16px;
+  right:18px;top:18px;
+  background:url("assets/deeper/arsenal-wave-lines.svg") right center/70px auto no-repeat;
+  opacity:.14;
+}
+.world-card h3,
+.text-world-card h3{
+  font-family:Georgia,serif;
+}
+.stadium-visual{
+  min-height:470px;
+}
+.real-stadium-card img{filter:saturate(.82) contrast(1.08) brightness(.66)}
+.shirt-visual{
+  background:
+    linear-gradient(180deg,#121213,#0b0b0c)!important;
+}
+.shirt-visual:before{
+  content:"";
+  position:absolute;
+  left:50%;top:50%;
+  width:190px;height:230px;
+  transform:translate(-50%,-47%);
+  border-radius:34% 34% 18% 18%;
+  border:1px solid #ffffff18;
+  background:
+    linear-gradient(90deg,transparent 0 18%,#8d151d 18% 82%,transparent 82%),
+    linear-gradient(180deg,#f0e5d5 0 14%,transparent 14%);
+  opacity:.48;
+}
+
+/* quote spread feels like magazine pull-quote */
+.arsenal-editorial{
+  background:
+    linear-gradient(90deg,#f7f1e8 0%,#eee4d6 100%)!important;
+}
+.arsenal-editorial blockquote{
+  position:relative;
+}
+.arsenal-editorial blockquote:after{
+  content:"ARSENAL";
+  position:absolute;
+  left:-18px;bottom:-42px;
+  font:900 clamp(70px,9vw,150px)/.8 Arial,sans-serif;
+  letter-spacing:-.07em;
+  color:#8d151d0c;
+  pointer-events:none;
+}
+
+/* collection = heritage spread */
+.collection-grid{
+  align-items:stretch;
+}
+.heritage-crest-panel{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,#eee3d4,#ded0be)!important;
+}
+.heritage-crest-panel:before{
+  content:"";
+  position:absolute;inset:0;
+  background:url("assets/deeper/arsenal-wave-lines.svg") left bottom/100% auto no-repeat;
+  opacity:.16;
+}
+.heritage-crest-panel img{
+  width:min(54%,290px)!important;
+  position:relative;z-index:2;
+  filter:drop-shadow(0 16px 22px #4c2e1820);
+}
+.collection-copy{
+  padding:50px!important;
+  background:
+    radial-gradient(circle at 85% 15%,#8d151d12,transparent 32%),
+    #f7f1e8!important;
+}
+
+/* crossover = sister-club feature, not utility box */
+.arsenal-crossover{
+  background:
+    linear-gradient(130deg,#08131a 0%,#0a202a 50%,#220d12 100%)!important;
+}
+.crossover-grid{
+  gap:18px;
+}
+.gunner-card,
+.laola-bridge{
+  min-height:360px;
+  background:
+    linear-gradient(180deg,#0c171d,#0a1115)!important;
+}
+.laola-bridge{
+  position:relative;
+  overflow:hidden;
+}
+.laola-bridge:before{
+  content:"";
+  position:absolute;
+  inset:auto -12% -18% 16%;
+  height:55%;
+  background:url("assets/deeper/arsenal-wave-lines.svg") center/100% auto no-repeat;
+  opacity:.14;
+}
+.laola-bridge>*{position:relative}
+
+/* archive = quiet closing index */
+.archive-grid article{
+  position:relative;
+}
+.archive-grid article:before{
+  content:"";
+  position:absolute;
+  left:0;top:0;
+  width:26px;height:1px;
+  background:#8d151d;
+}
+.archive-grid h3{
+  font-family:Georgia,serif;
+  font-size:30px;
+}
+
+/* ending = full-bleed cinematic footer */
+.arsenal-closing{
+  min-height:440px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  background:
+    linear-gradient(180deg,#060607aa,#060607e8),
+    url("https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Emirate_Stadim.jpg/1280px-Emirate_Stadim.jpg") center/cover no-repeat!important;
+}
+.arsenal-closing:before{
+  width:540px;height:150px;
+  background:url("assets/deeper/arsenal-wave-lines.svg") center/contain no-repeat;
+  opacity:.22;
+}
+.arsenal-closing h2{
+  font-family:Georgia,serif!important;
+  font-size:clamp(64px,8vw,112px)!important;
+}
+.arsenal-closing p:not(.arsenal-kicker){
+  font-size:16px;
+  line-height:1.7;
+}
+
+/* polish responsive behavior */
+@media(max-width:1000px){
+  .arsenal-hero{background-position:62% center}
+  .feature-main{grid-template-columns:1fr!important}
+  .real-matchday-photo,
+  .real-matchday-photo img{min-height:360px}
+}
+@media(max-width:760px){
+  .arsenal-hero{
+    padding-top:72px;
+    background-position:68% center;
+  }
+  .arsenal-hero h1{font-size:clamp(58px,18vw,92px)}
+  .arsenal-photo-hero{transform:none!important}
+  .feature-copy{padding:34px 28px!important}
+  .section-head:after{bottom:-14px}
+  .arsenal-closing{min-height:360px}
+}
