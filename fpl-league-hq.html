@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Fantasy Premier League 26/27 — live Draft League HQ for La Ola FC. Standings, gameweeks, records, roster and archive.">
 <title>FPL 26/27 · League HQ</title>
+<link rel="icon" type="image/svg+xml" href="assets/deeper/la-ola-fc-crest.svg">
 <link rel="stylesheet" href="hq.css">
 <link rel="stylesheet" href="fpl.css">
 </head>
@@ -12,7 +13,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="league-sports-header">
   <a class="league-brand" href="fpl-wave.html" aria-label="Back to La Ola FC">
-    <span class="real-crest" aria-hidden="true"></span>
+    <img class="club-crest" src="assets/deeper/la-ola-fc-crest.svg" alt="">
     <span><strong>LA OLA FC</strong><small>FANTASY PREMIER LEAGUE · 26/27</small></span>
   </a>
   <nav aria-label="League HQ">
@@ -24,7 +25,9 @@
   <a class="league-back" href="fpl-wave.html">← CLUB SITE</a>
 </header>
 
-<main id="main">
+<main id="main" class="league-main-with-rail">
+<aside class="league-side-nav" aria-label="League HQ sections"><span>LEAGUE HQ</span><a href="#live-table">Standings</a><a href="#gameweek-center">Gameweek</a><a href="#records-book">Records</a><a href="#ola-roster">La Ola FC</a><a href="#season-archive">Archive</a></aside>
+<div class="league-main-content">
 <section class="league-center-hero">
   <div>
     <p class="league-eyebrow"><span></span> FPL DRAFT · LIVE SEASON CENTER</p>
@@ -78,11 +81,12 @@
     </article>
   </div>
 
-  <article class="season-archive-live">
+  <article class="season-archive-live" id="season-archive">
     <div><p class="club-kicker">THE LONG GAME</p><h3>Every season becomes evidence.</h3><p>The current league is marked as renewed. The archive is wired to preserve verified predecessor seasons as they are recovered — champions, final tables, old team names, La Ola history and all-time head-to-head — without inventing what cannot be verified.</p></div>
     <div class="archive-status"><span>2026/27</span><strong>LIVE</strong><small id="archive-renewal">Current recurring league · predecessor discovery active</small></div>
   </article>
 </section>\n
+</div>
 </main>
 <footer class="league-center-footer">
   <span>LA OLA FC · FPL 26/27</span>
