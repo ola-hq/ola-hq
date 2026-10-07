@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="La Ola FC — club world, 2026/27 season, Fantasy Reimagined editorial, kits, films and archive.">
 <title>La Ola FC · The Club</title>
+<link rel="icon" type="image/svg+xml" href="assets/deeper/la-ola-fc-crest.svg">
 <link rel="stylesheet" href="hq.css">
 <link rel="stylesheet" href="deeper.css">
 <link rel="stylesheet" href="fpl.css">
@@ -12,7 +13,7 @@
 <body class="lafc">
 <a class="skip" href="#main">Skip to content</a>
 <header class="club-header">
-  <a class="club-lockup" href="#club" aria-label="La Ola FC home"><span class="real-crest" aria-hidden="true"></span><span class="club-name">LA OLA FC<small>FANTASY PREMIER LEAGUE · 26/27</small></span></a>
+  <a class="club-lockup" href="#club" aria-label="La Ola FC home"><img class="club-crest" src="assets/deeper/la-ola-fc-crest.svg" alt=""><span class="club-name">LA OLA FC<small>FANTASY PREMIER LEAGUE · 26/27</small></span></a>
   <nav class="club-nav" aria-label="La Ola FC"><a href="#season-2026">Season</a><a href="#league-hq">League HQ</a><a href="#squad">Squad</a><a href="#kits">Kits</a><a href="#editorial">Editorial</a><a href="#films">Films</a><a href="#archive">Archive</a></nav>
   <a class="hq-return" href="more-waves.html">OLA HQ ↗</a>
 </header>
@@ -22,10 +23,10 @@
     <p class="club-kicker">LA OLA FC · CURRENT SEASON</p>
     <h1>The current<br><em>returns.</em></h1>
     <p class="club-lead">A football club built like an editorial world. The squad, the shirts, the draft room and every story the season leaves behind.</p>
-    <div class="hero-actions"><a class="club-button gold" href="fpl-publication.html?issue=fantasy2026">Read Fantasy Reimagined →</a><a class="club-button ghost" href="#season-2026">Enter 2026/27</a></div>
+    <div class="hero-actions"><a class="club-button gold" href="https://drive.google.com/file/d/1SyJSZigsKwobm6n6Z3NFRHyN_vpRyJ9N/view" target="_blank" rel="noopener">Read Fantasy Reimagined →</a><a class="club-button ghost" href="fpl-publication.html?issue=fantasy2026">Read Online</a></div>
     <div class="season-strip" aria-label="Season snapshot"><div><strong>2026/27</strong><span>Current season</span></div><div><strong>12</strong><span>League clubs</span></div><div><strong>27</strong><span>Magazine pages</span></div><div><strong>3</strong><span>Model lenses</span></div></div>
   </div>
-  <a class="hero-cover" href="fpl-publication.html?issue=fantasy2026" aria-label="Open Fantasy Reimagined"><img src="assets/deeper/fpl26-01.jpg" alt="Fantasy Reimagined 2026/27 cover"><span>THE 2026/27 ISSUE <b>READ →</b></span></a>
+  <a class="hero-cover" href="https://drive.google.com/file/d/1SyJSZigsKwobm6n6Z3NFRHyN_vpRyJ9N/view" target="_blank" rel="noopener" aria-label="Open the original Fantasy Reimagined PDF"><img src="assets/deeper/fpl26-01.jpg" alt="Fantasy Reimagined 2026/27 cover"><span>THE 2026/27 ISSUE <b>READ →</b></span></a>
 </section>
 <nav class="club-subnav" aria-label="Explore the club"><a href="#season-2026"><span>01</span>Current Season</a><a href="#league-hq"><span>02</span>League HQ</a><a href="#draft-room"><span>03</span>Draft Room</a><a href="#squad"><span>04</span>Squad</a><a href="#kits"><span>05</span>Kits</a><a href="#editorial"><span>06</span>Editorial</a><a href="#archive"><span>07</span>Archive</a></nav>
 <section class="current-season" id="season-2026">
@@ -43,12 +44,18 @@
     <p>The club site stays the club site. The live league now has its own sports center — standings, every matchup, La Ola FC, records, roster data and the season archive in one place.</p>
     <div class="league-entrance-tags"><span>12 CLUBS</span><span>38 GAMEWEEKS</span><span>H2H</span><span>LIVE DATA</span></div>
   </div>
-  <a class="league-portal-card" href="fpl-league-hq.html">
+  <div class="league-portal-card league-standings-card">
     <span class="portal-live"><i></i> LIVE LEAGUE CENTER</span>
-    <strong>FANTASY PREMIER LEAGUE<br><em>26/27</em></strong>
-    <span class="portal-copy">Table · Gameweek Center · Records · La Ola FC roster · Archive</span>
-    <b>ENTER LEAGUE HQ →</b>
-  </a>
+    <div class="mini-table-head"><span>STANDINGS</span><span>W–L</span><span>LP</span></div>
+    <div class="mini-standings" id="home-mini-standings">
+      <div><b>1</b><span>Micky &amp; Friends</span><small>4–1</small><strong>12</strong></div>
+      <div><b>2</b><span>Atzenal</span><small>4–1</small><strong>12</strong></div>
+      <div><b>3</b><span>Futbol Not Saka**</span><small>3–2</small><strong>9</strong></div>
+      <div class="is-laola"><b>4</b><span>La Ola FC</span><small>3–2</small><strong>9</strong></div>
+      <div><b>5</b><span>Le Fée Fi Fo Fum **</span><small>3–2</small><strong>9</strong></div>
+    </div>
+    <a class="league-enter-button" href="fpl-league-hq.html">ENTER LEAGUE HQ →</a>
+  </div>
 </section>
 <section class="club-world" id="squad">
   <div class="section-head"><div><p class="club-kicker">LA OLA FC · FIRST TEAM</p><h2>The club world.</h2></div><p>Not a generic FPL gallery. La Ola FC is the front door; league analysis and publications live inside the club.</p></div>
@@ -83,4 +90,5 @@
 <section class="coming"><p class="club-kicker">THE SEASON KEEPS MOVING</p><h2>Built to accumulate.</h2><p>Every gameweek adds evidence. Every season adds history. The club world grows without replacing what came before.</p></section>
 </main>
 <footer class="club-footer"><div><strong>LA OLA FC</strong><span>THE CLUB · OLA HQ</span></div><a href="more-waves.html">← Back to Deeper Waves</a><a href="index.html">OLA HQ</a></footer>
+<script src="fpl-home.js" defer></script>
 </body></html>
