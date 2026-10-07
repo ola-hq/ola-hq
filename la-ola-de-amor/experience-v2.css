@@ -1,0 +1,327 @@
+:root{
+  --navy:#0c203b;
+  --navy2:#132e51;
+  --ink:#182e50;
+  --porcelain:#f6f2e8;
+  --cream:#eee5d5;
+  --paper:#fbf7ef;
+  --gold:#e2bd6e;
+  --red:#9e3428;
+  --green:#203630;
+  --line:rgba(24,46,80,.18);
+  --shadow:0 22px 70px rgba(6,21,38,.18);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--porcelain);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+body,input,button{font-size:16px}
+a{color:inherit}
+img{max-width:100%}
+h1,h2,h3,blockquote{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Baskerville,Georgia,serif;font-weight:400}
+h1,h2,h3,p,figure{margin-top:0}
+p{line-height:1.58}
+.eyebrow{font:800 10px/1.25 Arial,Helvetica,sans-serif;letter-spacing:.17em;text-transform:uppercase}
+.skip{position:absolute;top:-100px;left:12px;z-index:100;background:#fff;padding:10px 14px}.skip:focus{top:12px}
+.masthead{min-height:88px;padding:16px 4.5vw;display:flex;align-items:center;justify-content:space-between;gap:30px;background:rgba(246,242,232,.96);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;flex:0 0 auto}
+.brand-wordmark{width:220px;height:auto;display:block}
+.brand>span{font:800 8px/1 Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;opacity:.6;white-space:nowrap}
+nav{display:flex;align-items:center;justify-content:flex-end;gap:22px;flex-wrap:wrap;font-size:11px}
+nav a{text-decoration:none;padding:5px 0;border-bottom:1px solid transparent}
+nav a:hover,nav a[aria-current="page"]{border-color:currentColor}
+#view{min-height:70vh;outline:0}
+footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;background:var(--paper);font-size:11px}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+.arrowlink{display:inline-flex;align-items:center;justify-content:space-between;gap:18px;text-decoration:none;border-bottom:1px solid currentColor;padding:10px 0;font-weight:700;font-size:12px;letter-spacing:.02em}
+.arrowlink span{transition:transform .2s ease}.arrowlink:hover span{transform:translate(3px,-3px)}
+.endnav{padding:38px 8vw 70px;display:flex;justify-content:space-between;gap:30px;background:var(--paper)}
+.backlink{display:block;padding:18px 8vw;text-decoration:none;font-size:12px}
+
+/* HOME */
+.home-gateway{min-height:calc(92svh - 88px);position:relative;overflow:hidden;background:#071625;color:#fff}
+.home-collage{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1.06fr 1fr}
+.home-panel{position:relative;overflow:hidden;text-decoration:none;min-width:0}
+.home-panel img{width:100%;height:100%;object-fit:cover;display:block}
+.home-panel>span{position:absolute;z-index:4;bottom:24px;right:24px;font:800 9px/1 Arial,sans-serif;letter-spacing:.18em;color:#fff;background:rgba(7,22,37,.72);padding:9px 10px}
+.home-panel-vegas{clip-path:polygon(0 0,100% 0,84% 100%,0 100%)}
+.home-panel-paris{margin-left:-16%;clip-path:polygon(16% 0,100% 0,84% 100%,0 100%);z-index:1}
+.home-panel-gdl{margin-left:-16%;clip-path:polygon(16% 0,100% 0,100% 100%,0 100%);background:var(--navy);z-index:2}
+.home-panel-gdl .home-gdl-art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:12%;opacity:.95}
+.home-panel-gdl .home-gdl-guide{position:absolute;right:8%;bottom:8%;width:33%;height:auto;max-height:62%;object-fit:contain;filter:drop-shadow(0 18px 22px rgba(0,0,0,.45));transform:rotate(3deg)}
+.home-gateway-shade{position:absolute;inset:0;z-index:3;background:linear-gradient(90deg,rgba(4,14,26,.94) 0%,rgba(4,14,26,.78) 26%,rgba(4,14,26,.34) 52%,rgba(4,14,26,.08) 76%,rgba(4,14,26,0) 100%)}
+.home-gateway-copy{position:relative;z-index:5;min-height:calc(92svh - 88px);padding:8vh 7vw;display:flex;flex-direction:column;justify-content:center;max-width:850px}
+.home-wordmark{width:min(570px,56vw);max-height:110px;object-fit:contain;object-position:left center;margin-bottom:24px}
+.home-gateway-copy h1{font-size:clamp(58px,7.8vw,112px);line-height:.88;letter-spacing:-.045em;margin:.08em 0 .24em;max-width:780px}
+.home-gateway-copy h1 em{color:var(--gold);font-weight:400}
+.home-gateway-copy p{font:21px/1.5 Georgia,serif;max-width:650px;color:#f2eadc}
+.home-gateway-copy p strong{color:var(--gold)}
+.hero-actions{display:flex;gap:24px;flex-wrap:wrap;margin-top:10px}
+.home-gateway:after{content:"";position:absolute;left:0;right:0;bottom:0;height:12px;z-index:8;background-image:url("assets/tile.svg");background-size:48px 48px}
+.year-invite{padding:86px 8vw;display:grid;grid-template-columns:.9fr 1.1fr;gap:8vw;background:var(--cream)}
+.year-invite h2{font-size:clamp(48px,6vw,80px);line-height:.95;margin:.18em 0}
+.year-invite p{font:21px/1.55 Georgia,serif;max-width:720px}
+.chapters{padding:70px 6vw 100px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;background:var(--paper)}
+.chapter-door{text-decoration:none;display:flex;flex-direction:column;min-width:0;overflow:hidden;border:1px solid var(--line);transition:transform .2s ease,box-shadow .2s ease}
+.chapter-door:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.door-image{height:460px;overflow:hidden;background:#ddd}
+.door-image img{width:100%;height:100%;object-fit:cover;display:block}
+.festival-door img{object-fit:cover}
+.chapter-copy{padding:26px 26px 30px;display:flex;flex-direction:column;flex:1}
+.chapter-copy h3{font-size:38px;line-height:1;margin:.28em 0}
+.chapter-copy p{font-size:14px}
+.chapter-copy>span{margin-top:auto;padding-top:20px;font-size:11px;font-weight:800;letter-spacing:.05em}
+.chapter-vegas{background:#111820;color:#f7f0e5;border-color:#111820}
+.chapter-paris{background:#f8f2e8}
+.chapter-gdl{background:var(--navy);color:#f6efe3;border-color:var(--navy)}
+.chapter-gdl .chapter-copy .eyebrow{color:var(--gold)}
+
+/* VEGAS */
+.vegas{background:#0d1218;color:#f4eee3}
+.vegas-hero-composed{min-height:88svh;position:relative;overflow:hidden;background:#090d12}
+.vegas-night{position:absolute;inset:0 0 0 38%}
+.vegas-night:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#090d12 0%,rgba(9,13,18,.58) 35%,rgba(9,13,18,.06) 76%)}
+.vegas-night img{width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block}
+.vegas-copy{position:relative;z-index:5;width:54%;padding:12vh 7vw 10vh}
+.vegas-copy h1{font-size:clamp(62px,8vw,118px);line-height:.87;letter-spacing:-.04em;margin:.12em 0 .26em}
+.vegas-copy h1 em{color:#f2d8c1;font-weight:400}
+.vegas-copy p{font:20px/1.55 Georgia,serif;max-width:590px;color:#ded7cf}
+.vegas-ceremony,.vegas-selfie{position:absolute;z-index:4;margin:0;background:#fff;padding:8px;box-shadow:0 18px 45px rgba(0,0,0,.4)}
+.vegas-ceremony{right:7vw;bottom:8vh;width:min(300px,23vw);transform:rotate(-3deg)}
+.vegas-selfie{right:25vw;top:7vh;width:min(210px,17vw);transform:rotate(4deg)}
+.vegas-ceremony img,.vegas-selfie img{width:100%;display:block}
+.vegas-ceremony figcaption,.vegas-selfie figcaption{color:#18202a;padding:8px 3px 2px;font-size:8px;letter-spacing:.14em;font-weight:800}
+.vegas-stamps{position:absolute;z-index:6;left:7vw;bottom:7vh;display:flex;gap:10px;flex-wrap:wrap;max-width:540px}
+.vegas-stamps span{border:1px solid #f4eee3aa;padding:8px 11px;font-size:8px;letter-spacing:.14em;transform:rotate(-2deg)}
+.vegas-stamps span:nth-child(2){transform:rotate(2deg);background:#f4eee3;color:#10151c}
+.vegas-stamps span:nth-child(3){transform:rotate(-1deg);border-radius:999px}
+.sequence{padding:90px 8vw;display:grid;grid-template-columns:minmax(220px,.7fr) 1.3fr;gap:8vw;background:#efe7da;color:#202b37}
+.sequence aside{position:sticky;top:120px;align-self:start}
+.sequence aside h2{font-size:clamp(48px,5.5vw,78px);line-height:.92}
+.sequence ol{list-style:none;padding:0;margin:35px 0 0}
+.sequence li a{display:grid;grid-template-columns:34px 1fr;gap:10px;padding:11px 0;border-top:1px solid rgba(32,43,55,.18);text-decoration:none;font-size:12px}
+.sequence li span{color:#9f3429;font-weight:800}
+.sequence li.active a{font-weight:800}
+.beat{padding:0 0 70px;margin:0 0 70px;border-bottom:1px solid rgba(32,43,55,.18)}
+.beat h3{font-size:clamp(38px,4.5vw,64px);line-height:1;margin:.15em 0}
+.beat p{max-width:720px}
+.beat img{width:100%;max-height:640px;object-fit:cover;margin-top:28px}
+.clock{font:italic 54px/1 Georgia,serif;color:#9f3429;margin:16px 0}.clock small{font-size:18px}
+.caption{display:block;font-size:10px;margin-top:8px;opacity:.72}
+.quote{padding:110px 8vw;background:#171f28;text-align:center}
+.quote blockquote{font-size:clamp(54px,8vw,112px);line-height:.9;margin:0 auto 28px;max-width:980px;color:#f3e8dc}
+.quote cite{font-style:normal;font-size:9px;letter-spacing:.18em;color:#d8b68e}
+.memory{padding:90px 8vw 110px;background:#f4eee3;color:#202b37;display:grid;grid-template-columns:.7fr 1.3fr;gap:8vw}
+.memory>div>h2{font-size:clamp(48px,6vw,80px);line-height:.92}
+.memory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.memory-grid article{border-top:2px solid #9f3429;padding-top:18px}
+.memory-grid h3{font-size:28px}
+.memory-grid p{font-size:13px}
+.vegas .endnav{background:#10161d;color:#f4eee3}
+
+/* PARIS */
+.paris{background:#f7f2e9;color:#17233a}
+.paris-hero-editorial{min-height:calc(88svh - 88px);display:grid;grid-template-columns:.82fr 1.18fr;background:#f3ede3;overflow:hidden}
+.paris-editorial-copy{padding:8vh 7vw;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.paris-editorial-copy h1{font-size:clamp(62px,7.8vw,112px);line-height:.9;letter-spacing:-.045em;margin:.13em 0 .28em;color:#111d32}
+.paris-editorial-copy h1 em{font-weight:400;color:#5f6c7e}
+.paris-editorial-copy>p{font:20px/1.55 Georgia,serif;max-width:560px;color:#39465a}
+.paris-newspaper-artifact{width:min(390px,100%);margin-top:34px;padding:22px 22px 18px;background:#fffdf8;border:1px solid rgba(17,29,50,.25);box-shadow:9px 10px 0 #d7c9b5;text-decoration:none;transform:rotate(-1deg)}
+.paris-newspaper-artifact span,.paris-newspaper-artifact small{display:block;font-size:8px;letter-spacing:.14em;font-weight:800}
+.paris-newspaper-artifact strong{display:block;font:34px/1.02 Georgia,serif;margin:12px 0 16px}
+.paris-photo-stack{position:relative;min-height:760px;background:#d9d2c7}
+.paris-photo-stack figure{margin:0;position:absolute;overflow:hidden;background:#fff;border:9px solid #fff;box-shadow:0 20px 55px rgba(16,27,46,.2)}
+.paris-photo-stack figure img{width:100%;height:100%;object-fit:cover;display:block}
+.paris-photo-stack figcaption{position:absolute;left:12px;bottom:10px;background:#fff;color:#1a273b;padding:5px 7px;font-size:7px;letter-spacing:.14em;font-weight:800}
+.paris-main-photo{inset:7% 9% 7% 10%;transform:rotate(.5deg)}
+.paris-inset-one{width:34%;height:38%;left:2%;bottom:2%;transform:rotate(-4deg);z-index:3}
+.paris-inset-two{width:30%;height:33%;right:2%;top:4%;transform:rotate(4deg);z-index:3}
+.paris-source-world{padding:92px 8vw;display:grid;grid-template-columns:.82fr 1.18fr;gap:8vw;background:#fbf7ef;border-top:1px solid var(--line)}
+.paris-source-world h2{font-size:clamp(48px,6vw,80px);line-height:.94}
+.paris-source-world p{font:18px/1.55 Georgia,serif}
+.source-door{display:flex;justify-content:space-between;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:17px 0;margin-top:28px;text-decoration:none}
+.source-door strong{font:24px Georgia,serif}.source-door span{font-size:10px}
+.paris-week-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.paris-week-grid article{background:#f2ebdf;border:1px solid var(--line);padding:24px;min-height:250px}
+.paris-week-grid span{font-size:9px;letter-spacing:.13em;font-weight:800}
+.paris-week-grid h3{font-size:30px;line-height:1;margin:.35em 0}
+.paris-week-grid p{font:13px/1.55 Arial,sans-serif}
+.paris-artifacts{padding:0 8vw 90px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;background:#fbf7ef}
+.paris-artifacts a{min-height:220px;padding:22px;background:#17233a;color:#f4eee3;text-decoration:none;display:flex;flex-direction:column;justify-content:space-between}
+.paris-artifacts a:nth-child(even){background:#d9cbb8;color:#18243a}
+.paris-artifacts span,.paris-artifacts small{font-size:8px;letter-spacing:.13em;font-weight:800}
+.paris-artifacts strong{font:30px/1.05 Georgia,serif}
+.journal{padding:90px 8vw;display:grid;grid-template-columns:1fr 1fr;gap:7vw;background:#eee5d8}
+.journal figure{margin:0}
+.journal figure img{width:100%;height:720px;object-fit:cover}
+.journal figcaption{font-size:10px;margin-top:10px}
+.journal article{padding:25px 0;border-top:1px solid var(--line)}
+.journal article h3{font-size:38px;line-height:1;margin:.22em 0}
+.day{font-size:9px;letter-spacing:.13em;font-weight:800}
+.paris .endnav{background:#111d32;color:#f4eee3}
+
+/* GUADALAJARA */
+.gdl{background:var(--navy);color:#f4eee3}
+.gdl-hero-festival{min-height:88svh;position:relative;display:grid;grid-template-columns:.9fr 1.1fr;overflow:hidden;border-top:12px solid transparent;border-bottom:12px solid transparent;border-image:url("assets/tile.svg") 12 round}
+.gdl-hero-bg{position:absolute;inset:0;background:radial-gradient(circle at 75% 45%,#2f699f 0%,#173a65 28%,#0c203b 70%)}
+.gdl-hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,32,59,.98) 0%,rgba(12,32,59,.84) 42%,rgba(12,32,59,.30) 72%,rgba(12,32,59,.08))}
+.gdl-hero-bg img{position:absolute;right:-6%;top:5%;width:65%;height:90%;object-fit:contain;opacity:.64}
+.gdl-copy{position:relative;z-index:4;padding:8vh 7vw;display:flex;flex-direction:column;justify-content:center}
+.gdl-wordmark{width:min(560px,55vw);height:auto;max-height:105px;object-fit:contain;object-position:left center;margin-bottom:22px}
+.gdl-copy .eyebrow,.planned{color:var(--gold)}
+.planned{font-size:9px;letter-spacing:.14em;margin:6px 0}
+.gdl-copy h1{font-size:clamp(58px,7.2vw,104px);line-height:.9;margin:.12em 0 .24em}
+.gdl-copy h1 em{font-weight:400;color:var(--gold)}
+.gdl-copy p{font:20px/1.55 Georgia,serif;max-width:650px}
+.gdl-actions{display:flex;gap:22px;flex-wrap:wrap;margin-top:14px}
+.gdl-collage{position:relative;z-index:4;min-height:760px}
+.gdl-collage img{position:absolute;display:block;object-fit:cover;box-shadow:0 20px 55px rgba(0,0,0,.38)}
+.gdl-cover{position:absolute;right:8%;top:8%;width:38%;z-index:5;text-decoration:none;transform:rotate(2deg)}
+.gdl-cover img{position:relative;width:100%;height:auto;box-shadow:0 24px 70px rgba(0,0,0,.48)}
+.gdl-cover span{display:block;text-align:center;font-size:8px;letter-spacing:.14em;color:#fff;margin-top:10px}
+.gdl-card-music{width:43%;height:32%;left:6%;top:12%;transform:rotate(-3deg)}
+.gdl-card-food{width:42%;height:30%;left:3%;bottom:11%;transform:rotate(3deg)}
+.gdl-card-legacy{width:36%;height:26%;right:7%;bottom:7%;transform:rotate(-2deg)}
+.gdl-artifact-ribbon{padding:24px 5vw 32px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;background:#f1e7d5}
+.gdl-artifact-ribbon a{position:relative;height:240px;overflow:hidden;text-decoration:none;background:#ddd}
+.gdl-artifact-ribbon img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.gdl-artifact-ribbon a:hover img{transform:scale(1.035)}
+.gdl-artifact-ribbon span{position:absolute;left:12px;bottom:12px;background:#0c203bdc;color:#fff;padding:8px 10px;font-size:9px;letter-spacing:.14em;font-weight:800}
+.gdl-experience{padding:90px 8vw;background:#f1e7d5;color:#183252;display:grid;grid-template-columns:.75fr 1.25fr;gap:8vw}
+.gdl-experience h2{font-size:clamp(50px,6vw,82px);line-height:.94}
+.gdl-experience>div:first-child p{font:18px/1.55 Georgia,serif}
+.experience-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.experience-grid article{border-top:3px solid #26569b;padding-top:18px}
+.experience-grid h3{font-size:31px;margin:.2em 0}
+.experience-grid p{font-size:13px}
+.festival-lore{padding:90px 8vw;background:#eee2cf;color:#203630;border-top:14px solid transparent;border-image:url("assets/tile.svg") 14 round}
+.festival-lore h2{font-size:clamp(50px,6vw,82px);line-height:.94}
+.festival-lore .lede{font:21px/1.5 Georgia,serif;max-width:800px}
+.festival-film{display:grid;grid-template-columns:minmax(220px,360px) 1fr;gap:8vw;align-items:center;margin-top:55px}
+.festival-film img{width:100%;box-shadow:12px 14px 0 rgba(38,86,155,.14)}
+.festival-film p{font:21px/1.5 Georgia,serif}
+.world-shelf{padding:90px 8vw;background:#10294a;color:#f4eee3;display:grid;grid-template-columns:1fr minmax(260px,420px);gap:10vw;align-items:center}
+.world-shelf h2{font-size:clamp(50px,6vw,82px);line-height:.94}
+.world-shelf p{font:18px/1.55 Georgia,serif}
+.guide-cover-link{text-decoration:none;text-align:center}
+.guide-cover-link img{width:100%;max-height:620px;object-fit:contain;box-shadow:0 22px 60px rgba(0,0,0,.42)}
+.guide-cover-link span{display:block;font-size:10px;letter-spacing:.12em;margin-top:14px}
+.gdl .endnav{background:#0a1a30;color:#f4eee3}
+
+/* YEAR */
+.yearbook{background:#f4efe5;color:#203630}
+.year-open{padding:90px 9vw 60px;background:#142823;color:#f4efe5}
+.year-open h1{font-size:clamp(64px,9vw,120px);line-height:.88;margin:.15em 0}
+.year-open h1 em{font-weight:400;color:#e3b784}
+.year-open p{font:19px/1.55 Georgia,serif;max-width:720px}
+.postmark{margin-top:45px;padding-top:14px;border-top:1px solid rgba(227,183,132,.45);color:#e3b784;font-size:9px;letter-spacing:.14em}
+.year-arc{padding:18px 9vw 55px}
+.year-stop{display:grid;grid-template-columns:minmax(150px,230px) 48px 1fr 28px;gap:24px;align-items:center;padding:28px 0;border-bottom:1px solid rgba(32,54,48,.18);text-decoration:none}
+.year-stop-image{aspect-ratio:4/3;overflow:hidden;background:#ded4c3}
+.year-stop-image img{width:100%;height:100%;object-fit:cover;display:block}
+.year-stop:nth-child(5) .year-stop-image img{object-fit:contain;background:#0c203b}
+.entry-index{font:italic 24px Georgia,serif;color:#26569b}
+.year-stop h2{font-size:clamp(31px,4vw,52px);line-height:1;margin:.2em 0}
+.year-stop p{font-size:13px;max-width:720px}
+.entry-arrow{font-size:24px;color:#26569b}
+.year-trip-bridge{margin:35px 9vw 80px;padding:40px;background:#eee7da;border:1px solid rgba(32,54,48,.18);display:flex;align-items:center;justify-content:space-between;gap:40px}
+.year-trip-bridge h2{font-size:clamp(36px,4.8vw,60px);line-height:.95;margin:.15em 0}
+.year-trip-bridge p{max-width:680px}
+
+/* JOURNEY STOPS */
+.stop-page{background:#f4efe5;color:#203630}
+.stop-opening{padding:80px 12vw 58px;background:#142823;color:#f4efe5}
+.stop-opening h1{font-size:clamp(68px,10vw,128px);line-height:.88;margin:.15em 0}
+.stop-lede{font:29px/1.25 Georgia,serif;color:#e3b784;max-width:850px}
+.stop-opening>p:last-child{max-width:800px}
+.stop-photo{margin:0;background:#eee7da}
+.stop-photo img{display:block;width:100%;height:min(76svh,760px);object-fit:cover}
+.stop-photo figcaption{padding:12px 8vw;font-size:10px}
+.letter-art{min-height:380px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:repeating-linear-gradient(135deg,#eee7da 0 32px,#f4efe5 32px 64px)}
+.letter-art span{font:clamp(58px,10vw,128px) Georgia,serif}.letter-art small{font-size:9px;letter-spacing:.18em}
+.stop-log{padding:80px 12vw;background:#eee7da}
+.stop-log h2,.stop-more h2{font-size:clamp(46px,6vw,74px);line-height:.95}
+.stop-log ol{max-width:760px;padding-left:20px}.stop-log li{padding:10px 0;border-bottom:1px solid rgba(32,54,48,.16)}
+.stop-more{padding:80px 12vw;background:#142823;color:#f4efe5}
+
+/* GUIDEBOOK */
+.guidebook-page{padding:50px 6vw 90px;background:#f5f0e6;color:#182e50}
+.guidebook-page h1{font-size:clamp(58px,8vw,104px);line-height:.9;margin:.2em 0}
+.guidebook-page .lede{font:20px/1.55 Georgia,serif;max-width:760px}
+.guidebook-frame{height:min(82vh,1000px);margin:35px 0;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow)}
+.guidebook-frame iframe{width:100%;height:100%;border:0}
+.guidebook-actions{display:flex;gap:22px;flex-wrap:wrap}
+.archive{padding:100px 8vw;min-height:70vh}.archive h1{font-size:72px}
+
+/* RESPONSIVE */
+@media(max-width:980px){
+  .masthead{align-items:flex-start;flex-direction:column;gap:14px}
+  nav{justify-content:flex-start}
+  .home-collage{grid-template-columns:1fr 1fr}
+  .home-panel-vegas{display:none}
+  .home-panel-paris{clip-path:polygon(0 0,100% 0,84% 100%,0 100%);margin-left:0}
+  .home-panel-gdl{margin-left:-16%;clip-path:polygon(16% 0,100% 0,100% 100%,0 100%)}
+  .home-gateway-shade{background:linear-gradient(90deg,rgba(4,14,26,.9),rgba(4,14,26,.55) 45%,rgba(4,14,26,.12))}
+  .home-wordmark{width:min(520px,68vw)}
+  .chapters{grid-template-columns:1fr}
+  .chapter-door{display:grid;grid-template-columns:1fr 1fr}
+  .door-image{height:390px}
+  .sequence,.memory,.paris-source-world,.gdl-experience,.world-shelf{grid-template-columns:1fr}
+  .sequence aside{position:relative;top:auto}
+  .memory-grid{grid-template-columns:repeat(3,1fr)}
+  .paris-hero-editorial{grid-template-columns:1fr}
+  .paris-photo-stack{min-height:680px}
+  .paris-artifacts{grid-template-columns:1fr 1fr}
+  .gdl-hero-festival{grid-template-columns:1fr}
+  .gdl-copy{min-height:65svh}
+  .gdl-collage{min-height:650px}
+  .gdl-artifact-ribbon{grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+  .masthead{position:relative;padding:15px 5vw}
+  .brand{width:100%;justify-content:space-between}
+  .brand-wordmark{width:175px}.brand>span{font-size:7px}
+  nav{gap:11px 16px;font-size:10px}
+  .home-gateway{min-height:78svh}
+  .home-collage{display:block}.home-panel{display:none}.home-panel-paris{display:block;position:absolute;inset:0;clip-path:none;margin:0}
+  .home-gateway-shade{background:linear-gradient(180deg,rgba(4,14,26,.2),rgba(4,14,26,.88) 65%,rgba(4,14,26,.97))}
+  .home-gateway-copy{min-height:78svh;padding:55px 7vw;justify-content:flex-end}
+  .home-wordmark{width:82vw;max-height:75px}
+  .home-gateway-copy h1{font-size:58px}
+  .year-invite{grid-template-columns:1fr;padding:60px 7vw}
+  .chapter-door{display:block}.door-image{height:420px}
+  .vegas-hero-composed{min-height:86svh}
+  .vegas-night{inset:0}
+  .vegas-night:after{background:linear-gradient(180deg,rgba(9,13,18,.15),rgba(9,13,18,.95) 66%)}
+  .vegas-copy{width:100%;padding:48vh 7vw 95px}
+  .vegas-copy h1{font-size:64px}
+  .vegas-ceremony{width:42vw;right:5vw;top:6vh;bottom:auto}
+  .vegas-selfie{width:31vw;left:5vw;right:auto;top:12vh}
+  .vegas-stamps{left:7vw;bottom:34px}
+  .sequence,.memory{padding:60px 7vw}
+  .memory-grid{grid-template-columns:1fr}
+  .paris-editorial-copy{padding:60px 7vw}
+  .paris-editorial-copy h1{font-size:60px}
+  .paris-photo-stack{min-height:560px}
+  .paris-main-photo{inset:8% 5% 8% 5%}
+  .paris-inset-one{width:42%;height:34%}.paris-inset-two{width:38%;height:30%}
+  .paris-source-world{padding:65px 7vw}
+  .paris-week-grid,.paris-artifacts{grid-template-columns:1fr}
+  .journal{grid-template-columns:1fr;padding:65px 7vw}.journal figure img{height:560px}
+  .gdl-copy{padding:60px 7vw}
+  .gdl-wordmark{width:84vw;max-height:75px}
+  .gdl-copy h1{font-size:59px}
+  .gdl-hero-bg img{width:120%;right:-35%;opacity:.45}
+  .gdl-collage{min-height:520px}
+  .gdl-cover{width:43%;right:5%}.gdl-card-music{width:48%;left:3%;top:7%}.gdl-card-food{width:46%;left:5%;bottom:9%}.gdl-card-legacy{width:41%;right:5%;bottom:5%}
+  .gdl-artifact-ribbon{grid-template-columns:1fr;padding:16px 5vw 24px}.gdl-artifact-ribbon a{height:280px}
+  .gdl-experience,.festival-lore,.world-shelf{padding:65px 7vw}
+  .experience-grid{grid-template-columns:1fr}
+  .festival-film{grid-template-columns:1fr}
+  .year-open{padding:65px 7vw}.year-open h1{font-size:62px}
+  .year-arc{padding:10px 7vw 40px}
+  .year-stop{grid-template-columns:1fr;gap:10px}.year-stop .entry-index,.year-stop .entry-arrow{display:none}
+  .year-trip-bridge{margin:25px 7vw 60px;padding:28px;display:block}
+  .stop-opening,.stop-log,.stop-more{padding-left:8vw;padding-right:8vw}
+  .endnav{padding:30px 7vw 55px;flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
