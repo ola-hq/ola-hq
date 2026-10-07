@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#071d38">
+<meta name="description" content="Festival Guide · Brianna + Jon · La Ola de Amor · Guadalajara">
+<link rel="manifest" href="../manifest.webmanifest"><link rel="icon" href="art/icon-192.png"><link rel="apple-touch-icon" href="art/icon-192.png">
+<link rel="stylesheet" href="guide.css"><script src="guide.js" defer></script>
+<title>Festival Guide · La Ola de Amor</title>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+<header class="masthead">
+  <a href="../../#/chapter/guadalajara" data-i18n="backLaOla">← La Ola de Amor</a>
+  <div class="masthead-center">
+    <span data-i18n="guideLabel">FESTIVAL GUIDE</span>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" id="lang-es" data-lang="es" aria-pressed="false">ES</button>
+      <button type="button" id="lang-en" data-lang="en" aria-pressed="true">EN</button>
+    </div>
+  </div>
+  <a href="../../../">OLA HQ ↑</a>
+</header>
+<div class="connection" id="connection" role="status" aria-live="polite">Preparing the guide for offline use…</div>
+<div class="update" id="update" hidden><span data-i18n="updateAvailable">Nueva edición disponible.</span> <button id="apply-update" data-i18n="updateButton">Actualizar guía</button></div>
+<main id="main" tabindex="-1">
+<section class="entrance" id="entrance" aria-labelledby="entrance-title">
+<img src="art/page-01.webp" data-i18n-alt="coverAlt" alt="Official La Ola de Amor cover: Brianna and Jon, flowers, waves, and La Tijera, October 16, 2026" width="1400" height="2182">
+<div class="welcome"><p class="eyebrow">10 · 16 · 26 / LA TIJERA, GUADALAJARA</p><h1 id="entrance-title"><span class="hero-primary" data-i18n="guideTitle">Festival Guide</span></h1><p class="couple">Brianna <span>+</span> Jon</p><p data-i18n-html="festivalIntro">This isn’t just a wedding.<br>It’s our festival.</p><a class="ribbon" href="#today" data-i18n="enterGuide">Enter the guide ↓</a><button class="text-button" data-open="welcome" data-i18n="welcomeOpen">Welcome to the party! ↗</button><button class="text-button" data-open="ride" data-i18n="rideOpen">How to ride La Ola ↗</button><p class="date-status" id="date-status"></p></div>
+</section>
+<div id="panels">
+<section id="today" class="panel" hidden aria-labelledby="today-title"><img class="section-art" src="art/header-04.webp" data-i18n-alt="timelineAlt" alt="La Ola de Amor · Festival Timeline · The flow of our day and night"><div class="section-intro"><h2 id="today-title" data-i18n="todayTitle">Today</h2><p data-i18n-html="approxTimes">All times are approximate.<br>The best moments happen when you go with the flow.</p><div class="actions"><button class="text-button" data-open="timeline-source" data-i18n="viewSchedule">Ver página del horario ↗</button><a class="text-button" href="#food" data-i18n="foodWavesLink">Las olas de comida →</a></div></div><ol class="timeline" id="timeline"></ol><aside class="all-day"><h3 data-i18n="allDayTitle">Experiencias todo el día</h3><p data-i18n="allDayBody">Juegos de feria · Magic Mirror (Photo Booth) · Puestos y comida · Barra y bebidas · Sorpresas y detalles en cada rincón.</p><a class="ribbon" href="#plaza" data-i18n="explorePlaza">Explora la Plaza →</a></aside></section>
+<section id="music" class="panel" hidden aria-labelledby="music-title"><img class="section-art" src="art/header-07.webp" data-i18n-alt="musicAlt" alt="Meet the Artists · Six sounds. One night. One wave."><div class="section-intro"><p class="eyebrow" data-i18n="sixSounds">SEIS SONIDOS. UNA NOCHE. UNA OLA.</p><h2 id="music-title" data-i18n="musicTitle">Música</h2><p data-i18n-html="musicIntro">De tradición a festival. De día a noche.<br>Toca un artista para conocer su ola.</p></div><div class="art-grid artists" id="artists"></div><aside class="all-day"><h3 data-i18n="betweenActs">Between the acts</h3><p data-i18n="betweenActsBody">8:00–9:00 PM · A moment for toasts, first dances, and the best speeches.</p><a class="text-button" href="#today" data-i18n="backSchedule">Back to the timeline →</a></aside><button class="album-banner" data-open="music/album"><span class="album-banner-kicker" data-i18n="albumKicker">OFFICIAL ALBUM · OLA</span><strong>La Ola de Amor</strong><span class="album-banner-cta" data-i18n="albumCTA">Enter the album world ↗</span></button></section>
+<section id="plaza" class="panel" hidden aria-labelledby="plaza-title"><div class="section-intro"><p class="eyebrow" data-i18n="plazaEyebrow">ESTE ES NUESTRO RINCÓN FAVORITO. HOY ES TUYO.</p><h2 id="plaza-title">La Plaza San Roberto</h2><p data-i18n-html="plazaIntro">Toca los números del mapa o elige un lugar.<br>Pregunta qué hay aquí. Sigue la música.</p><button class="text-button" data-open="map-source" data-i18n="enlargeMap">Ampliar el mapa ↗</button></div><div class="map" id="map"><img src="art/page-05.webp" data-i18n-alt="mapAlt" alt="Official illustrated map: games at upper left, Casa Sol in the center, stalls on the left, Sol y Luna stage on the right, and the entrance at the bottom" width="1400" height="2182"><div id="hotspots"></div></div><ol class="map-key" id="map-key"></ol><div class="section-intro"><h3 data-i18n="meetWaveTitle">Meet the Wave</h3><p data-i18n-html="meetWaveBody">Cada nombre que ves en La Ola tiene una historia.<br>Conoce las historias detrás de La Ola.</p></div><div class="art-grid identities" id="identities"></div><button class="source-footer" data-open="shug"><img src="art/shug-shugy.webp" data-i18n-alt="shugAlt" alt="SHUG + SHUGY · The two who became the wave"></button></section>
+<section id="food" class="panel" hidden aria-labelledby="food-title"><img class="section-art" src="art/header-12.webp" data-i18n-alt="foodAlt" alt="Don’t Wait for Dinner · and don’t fill up too soon"><div class="section-intro"><p class="eyebrow" data-i18n="foodEyebrow">PRUEBA UN POQUITO DE TODO. VUELVE POR MÁS.</p><h2 id="food-title" data-i18n="foodTitle">Food</h2><p data-i18n-html="foodIntro">Food arrives in waves throughout the night.<br>Don’t fill up on the first one. Share the experience.</p></div><div class="art-grid food" id="food-cards"></div><div class="section-intro"><h3 data-i18n="foodWavesTitle">Las olas de comida</h3><p data-i18n="foodWavesBody">El ritmo aproximado de la noche · Festival Timeline</p></div><div class="food-waves" id="food-waves"></div></section>
+</div>
+<footer><p class="closing" data-i18n="closing">EAT · DANCE · LAUGH · LOVE · ENJOY</p><a href="../../#/chapter/guadalajara" data-i18n="backLaOla">← La Ola de Amor</a><a href="../../../">OLA HQ ↑</a><a href="https://linkie.to/laoladeamor" target="_blank" rel="noopener noreferrer" data-i18n="linkieLabel">Linkie · Wedding Home ↗</a><a href="https://www.zola.com/wedding/brianna-and-jonathan" target="_blank" rel="noopener noreferrer" data-i18n="weddingDetails">Wedding Details + RSVP ↗</a><button class="text-button" data-open="ride" data-i18n="rideFooter">How to ride La Ola</button><p class="offline-note" data-i18n="offlineNote">El modo sin conexión guarda esta guía en tu dispositivo. Los sitios externos necesitan internet.</p></footer>
+</main>
+<nav class="bottomnav" aria-label="Guide sections"><a href="#today" aria-current="page"><span aria-hidden="true">◷</span><b data-i18n="navToday">Today</b></a><a href="#music"><span aria-hidden="true">♫</span><b data-i18n="navMusic">Music</b></a><a href="#plaza"><span aria-hidden="true">⌂</span><b>Plaza</b></a><a href="#food"><span aria-hidden="true">✦</span><b data-i18n="navFood">Food</b></a></nav>
+<dialog id="detail" aria-labelledby="detail-title"><div class="dialog-top"><p id="detail-kicker" class="eyebrow"></p><button id="close-detail" aria-label="Close detail">×</button></div><h2 id="detail-title"></h2><div id="detail-body"></div></dialog>
+<noscript><p>Para las fichas y el mapa interactivo, activa JavaScript. / For interactive cards and the map, enable JavaScript. <a href="art/page-04.webp">Horario · Timeline</a> · <a href="art/page-05.webp">Mapa · Map</a> · <a href="art/page-07.webp">Artistas · Artists</a> · <a href="art/page-12.webp">Comida · Food</a></p></noscript>
+</body></html>
