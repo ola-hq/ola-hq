@@ -128,3 +128,14 @@
 .arsenal-crossover{padding:86px clamp(24px,7vw,110px);background:#f5f0e6;color:#071a28;scroll-margin-top:90px;border-top:8px solid #d71920}
 .arsenal-crossover-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,520px);gap:44px;align-items:end;margin-bottom:34px}.arsenal-crossover-head h2{font:900 clamp(46px,6vw,82px)/.9 "Arial Black",Arial,sans-serif;letter-spacing:-.06em;text-transform:uppercase;margin:0}.arsenal-crossover-head>p{margin:0;line-height:1.6;color:#56636a}.arsenal-accent{color:#c8102e!important}.arsenal-crossover-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}.gunner-roster-card,.north-london-card{padding:30px;border:1px solid #d4c9b8;background:#fffaf2;box-shadow:0 14px 30px #071a2810}.gunner-roster-card{border-top:4px solid #d71920}.north-london-card{border-top:4px solid #071a28}.gunner-roster-card h3,.north-london-card h3{font:700 clamp(28px,3vw,42px)/1 Georgia,serif;margin:8px 0 24px}.gunner-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.gunner-list>div{padding:16px;background:#f4eee4;border:1px solid #dfd4c5}.gunner-list strong,.gunner-list span,.gunner-list small{display:block}.gunner-list strong{font:800 17px/1.1 Arial,sans-serif}.gunner-list span{margin-top:11px;font:800 12px/1 Arial,sans-serif;color:#c8102e}.gunner-list small{margin-top:6px;color:#6b777c}.arsenal-context{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #d7ccbb;border-bottom:1px solid #d7ccbb}.arsenal-context>div{padding:18px 14px;border-right:1px solid #d7ccbb}.arsenal-context>div:last-child{border-right:0}.arsenal-context span,.arsenal-context strong,.arsenal-context small{display:block}.arsenal-context span{font:900 8px/1 Arial,sans-serif;letter-spacing:.12em;color:#9d1b2f}.arsenal-context strong{font:800 24px/1.05 Georgia,serif;margin:7px 0}.arsenal-context small{color:#647176}.north-london-card>a{display:inline-block;margin-top:22px;text-decoration:none;font:900 10px/1 Arial,sans-serif;letter-spacing:.1em;color:#c8102e}
 @media(max-width:900px){.arsenal-crossover-head,.arsenal-crossover-grid{grid-template-columns:1fr}.gunner-list{grid-template-columns:1fr 1fr}}@media(max-width:620px){.arsenal-crossover{padding:58px 20px}.gunner-list,.arsenal-context{grid-template-columns:1fr}.arsenal-context>div{border-right:0;border-bottom:1px solid #d7ccbb}.arsenal-context>div:last-child{border-bottom:0}}
+
+
+/* SYMMETRIC ARSENAL ↔ LA OLA FC SWITCH */
+.club-nav .club-switch{
+  color:var(--gold2);
+  padding:10px 13px;
+  border:1px solid #d3ab5855;
+  border-radius:999px;
+  background:#ffffff05;
+}
+.club-nav .club-switch:hover{background:#d3ab5812;color:#fff}
