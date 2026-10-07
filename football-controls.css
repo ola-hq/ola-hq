@@ -31,3 +31,6 @@
  .league-sports-header .league-brand{order:1;flex-basis:100%}
 }
 @media(prefers-reduced-motion:reduce){.arsenal-photo-hero{transition:none}}
+
+/* Live QA: contain original publication page images without altering the reader/source. */
+#publication-image{display:block;max-width:100%;height:auto}
