@@ -583,3 +583,253 @@
   .archive-grid article{padding:24px 0 28px}
   .arsenal-subnav a{padding:17px 8px}
 }
+
+
+/* ARSENAL EDITORIAL REBUILD — remove paint-swatch feeling */
+.arsenal-world{background:#0a0a0b;color:#eee6d8}
+.arsenal-header{background:#0a0a0bf2}
+.arsenal-shield{
+  clip-path:none!important;
+  width:58px;height:44px;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  display:grid;place-items:center;
+}
+.arsenal-shield img{width:56px;height:auto;color:#d0a252;filter:drop-shadow(0 2px 8px #0008)}
+.arsenal-name small{color:#8f887e}
+
+.arsenal-hero{
+  min-height:700px;
+  background:
+    linear-gradient(90deg,#080809 0%,#0c0a0b 54%,#160a0c 100%);
+}
+.arsenal-hero:after{display:none}
+.arsenal-hero .hero-copy:after{
+  content:"";display:block;width:150px;height:34px;margin-top:34px;
+  background:url("assets/deeper/arsenal-wave-lines.svg") left center/150px 42px no-repeat;
+  opacity:.55;
+}
+.arsenal-original-hero{
+  aspect-ratio:4/5;
+  min-height:470px;
+  background:
+    linear-gradient(180deg,#171315 0%,#0e0d0e 100%);
+  border:1px solid #ffffff17!important;
+}
+.arsenal-original-hero:before{border-color:#d0a25235}
+.hero-cannon{display:none}
+.hero-stadium-lines{opacity:.11}
+.hero-wave-field{
+  opacity:.42;
+  right:-12%;bottom:12%;width:88%;
+  background:url("assets/deeper/arsenal-wave-lines.svg") right bottom/115% auto no-repeat;
+}
+.hero-art-topline span{font-family:Georgia,serif;font-weight:700;letter-spacing:.08em;font-size:clamp(30px,3.5vw,48px)}
+.hero-art-topline b{color:#a89980}
+.hero-art-caption{border-color:#ffffff14}
+.hero-art-caption small{color:#ba9a60}
+.hero-art-caption strong{color:#aaa39a;font-weight:700}
+
+/* paper sections */
+.arsenal-season,.arsenal-collection,.arsenal-archive,.arsenal-editorial{
+  background:#f3eee5!important;color:#171311;
+}
+.arsenal-season,.arsenal-collection,.arsenal-archive{border-top:1px solid #d6cfc3}
+.section-head h2{font-family:Georgia,serif!important;font-weight:700!important;text-transform:none!important;letter-spacing:-.045em}
+.section-head .arsenal-kicker{color:#8d1a21}
+.section-head>p{color:#6b655e}
+.arsenal-subnav{background:#f3eee5;color:#1d1714}
+.arsenal-subnav a{border-color:#d8d1c6}
+.arsenal-subnav a:hover{background:#ebe4d9}
+
+/* current feature as editorial spread, not a red paint chip */
+.feature-main{
+  background:#171718;
+  color:#eee6d8;
+  border:0;
+}
+.arsenal-feature-art{
+  min-height:420px;
+  background:
+    linear-gradient(180deg,#1a1718 0%,#0e0e0f 100%);
+  overflow:hidden;
+}
+.arsenal-feature-art:before{
+  inset:28px;
+  border:1px solid #ffffff14;
+  background:
+    url("assets/deeper/arsenal-wave-lines.svg") center 80%/130% auto no-repeat;
+  opacity:.9;
+}
+.arsenal-feature-art:after{
+  content:"";position:absolute;left:8%;right:8%;top:18%;height:48%;
+  background:
+    radial-gradient(ellipse at 50% 100%,#7c11184a 0%,transparent 60%),
+    repeating-linear-gradient(90deg,transparent 0 9%,#ffffff0a 9% 9.4%);
+  border-bottom:1px solid #d0a25255;
+}
+.feature-card-mark{
+  width:100px;height:auto;top:38px;right:38px;
+  border:0;background:transparent;clip-path:none;
+}
+.feature-card-mark img{width:100%;height:auto;color:#d0a252}
+.feature-card-copy{left:48px;bottom:44px}
+.feature-card-copy strong{font-family:Georgia,serif;font-weight:700;letter-spacing:-.04em}
+.feature-card-copy span,.feature-card-copy small{color:#b49b70}
+.feature-card-wave{display:none}
+.feature-copy{background:#151516}
+.feature-copy .arsenal-kicker{color:#c7a15d}
+.feature-copy p:not(.arsenal-kicker){color:#aaa39a}
+
+/* live matchday becomes a paper data card */
+.feature-side{
+  background:#fbf8f1!important;
+  color:#181311!important;
+  border:1px solid #d8cec0!important;
+  border-top:3px solid #991822!important;
+  box-shadow:none!important;
+}
+.feature-side .arsenal-kicker{color:#991822!important}
+.feature-side h3{color:#181311}
+.feature-side>p:not(.arsenal-kicker):not(.ars-data-status){color:#6d655e!important}
+.matchday-mini{border-color:#d8cec0}
+.matchday-mini div{border-color:#d8cec0}
+.matchday-mini span{color:#991822}
+.matchday-mini strong{color:#171311}
+.matchday-mini small{color:#7b736a}
+.ars-data-status{color:#8b8175!important}
+
+/* culture: editorial cards with imagery implied by linework, not solid colors */
+.arsenal-world-section{
+  background:#0b0b0c;
+  border-top:1px solid #ffffff0f;
+}
+.arsenal-world-section .section-head h2{color:#eee7dc}
+.world-card{
+  background:#111113;
+  border-color:#ffffff12;
+}
+.visual-fill{position:relative;overflow:hidden}
+.visual-fill:before{
+  background:url("assets/deeper/arsenal-wave-lines.svg") center bottom/140% auto no-repeat!important;
+  opacity:.22;
+}
+.stadium-visual{
+  background:
+    radial-gradient(ellipse at 50% 90%,#8f151d38 0%,transparent 52%),
+    linear-gradient(180deg,#161617,#0b0b0c)!important;
+}
+.shirt-visual{
+  background:
+    linear-gradient(135deg,#151516 0 48%,#7c1118 48% 51%,#161617 51% 100%)!important;
+}
+.visual-fill span{
+  font-family:Georgia,serif!important;
+  font-weight:700!important;
+  letter-spacing:-.03em!important;
+  color:#e8dfd1;
+}
+.text-world-card{background:#101011}
+.stat-card{background:#0f0f10!important}
+.stat-card blockquote{color:#d0a252}
+
+/* editorial statement */
+.arsenal-editorial{
+  border-top:1px solid #d9d1c5;
+  border-bottom:1px solid #d9d1c5;
+}
+.editorial-rule{color:#8d1a21;border-color:#8d1a21}
+.arsenal-editorial blockquote{color:#211915}
+.arsenal-editorial p{color:#6b625a}
+
+/* collection: three quiet plates, one logo, no paint samples */
+.arsenal-collection-art{
+  min-height:430px;
+  background:#151516!important;
+}
+.collectible-wall{
+  min-height:400px;
+  padding:40px;
+  gap:18px;
+  background:
+    url("assets/deeper/arsenal-wave-lines.svg") center 90%/120% auto no-repeat,
+    #151516!important;
+}
+.collectible-card{
+  min-height:250px;
+  background:#181819!important;
+  color:#eee5d6!important;
+  border:1px solid #ffffff17!important;
+  box-shadow:none!important;
+  justify-content:flex-end;
+  padding:24px;
+}
+.collectible-card:before{border-color:#d0a25230}
+.collectible-card img{
+  position:absolute;left:22px;top:22px;width:78px;height:auto;color:#d0a252;
+  opacity:.9;
+}
+.collectible-card span{color:#8d8377!important}
+.collectible-card strong{font-family:Georgia,serif;font-weight:700;letter-spacing:-.03em}
+.collectible-card small{color:#aa9470!important}
+.card-b{transform:translateY(-6px)!important}
+.collection-copy{
+  background:#fbf8f1!important;
+  color:#1a1512!important;
+  border:1px solid #d8cec0!important;
+  border-top:3px solid #991822!important;
+}
+.collection-copy .arsenal-kicker{color:#991822}
+.collection-copy h3{color:#1a1512;font-family:Georgia,serif}
+.collection-copy p:not(.arsenal-kicker){color:#6c645c!important}
+.collection-tags span{border-color:#c9bca9;color:#675e55}
+
+/* crossover: dark ink, restrained Arsenal red */
+.arsenal-crossover{
+  background:#0b1217!important;
+  border-top:1px solid #ffffff12;
+}
+.arsenal-crossover .section-head h2{color:#eee7dc}
+.gunner-card,.laola-bridge{
+  background:#10181d!important;
+  border-color:#ffffff13!important;
+}
+.gunner-card{border-top:2px solid #991822!important}
+.laola-bridge strong{font-family:Georgia,serif;font-weight:700}
+.laola-bridge i,.laola-bridge a,.gunner-card>a{color:#c7a15d}
+
+/* archive as magazine index */
+.archive-grid{border-color:#cbc2b5}
+.archive-grid article{border-color:#cbc2b5}
+.archive-grid h3{font-family:Georgia,serif;color:#1d1714}
+.archive-grid p{color:#6c655e}
+.archive-grid span{color:#8d1a21}
+
+/* closing: black editorial end page, not another red wall */
+.arsenal-closing{
+  background:#0a0a0b!important;
+  border-top:1px solid #ffffff12;
+}
+.arsenal-closing:before{
+  content:"";
+  width:420px;height:120px;
+  left:50%;top:50%;transform:translate(-50%,-50%);
+  background:url("assets/deeper/arsenal-wave-lines.svg") center/contain no-repeat;
+  opacity:.16;
+}
+.arsenal-closing h2{font-family:Georgia,serif!important;text-transform:none!important;letter-spacing:-.04em}
+.arsenal-closing p:not(.arsenal-kicker){color:#a59d92}
+
+/* footer */
+.arsenal-footer{background:#060607;border-top:1px solid #ffffff0f}
+
+@media(max-width:760px){
+  .arsenal-shield{width:48px;height:36px}
+  .arsenal-shield img{width:46px}
+  .arsenal-original-hero{min-height:420px}
+  .feature-card-mark{width:76px;right:26px;top:28px}
+  .feature-card-copy{left:30px;bottom:30px}
+  .collectible-wall{padding:20px}
+  .collectible-card img{width:62px}
+}
