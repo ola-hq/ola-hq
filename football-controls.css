@@ -1,0 +1,33 @@
+/* Bounded football parent/switch controls. Native club palettes retained. */
+.club-header{grid-template-columns:auto auto minmax(0,1fr) auto;gap:20px}
+.club-header .parent-left{justify-self:start;color:var(--gold);display:inline-flex;align-items:center;min-height:44px;font-size:10px;white-space:nowrap}
+.arsenal-header .arsenal-parent{display:inline-flex;align-items:center;min-height:44px;font-size:10px;padding:8px 10px;white-space:nowrap}
+.club-header .paired-club-switch,.arsenal-header .paired-club-switch{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:130px;padding:10px 16px;border:1px solid #d3ab5866;border-radius:999px;color:#f0d08b;text-decoration:none;font:800 11px/1.2 Arial,sans-serif;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap;box-sizing:border-box;background:#ffffff05}
+.club-header .paired-club-switch:hover,.arsenal-header .paired-club-switch:hover{background:#d3ab581c;color:#fff}
+.club-header a:focus-visible,.arsenal-header a:focus-visible,.league-sports-header a:focus-visible{outline:2px solid #e2bc72;outline-offset:4px}
+.league-sports-header .league-back{margin-left:0;margin-right:12px;min-height:44px;display:inline-flex;align-items:center;white-space:nowrap}
+.arsenal-hero{min-height:clamp(580px,calc(100svh - 95px),760px);padding-top:clamp(44px,5vw,72px);padding-bottom:clamp(44px,5vw,72px);grid-template-columns:minmax(0,1.08fr) minmax(0,.78fr);gap:clamp(30px,5vw,80px)}
+.arsenal-hero .hero-copy,.arsenal-hero .hero-art{min-width:0}
+.arsenal-hero h1{font-size:clamp(60px,7.5vw,112px);line-height:.9}
+.arsenal-hero .hero-art{margin:0;aspect-ratio:auto;border-radius:2px;width:100%;max-width:430px}
+.arsenal-photo-hero img:first-child{height:clamp(300px,32vw,470px)}
+@media(max-width:1200px){.club-header{gap:14px}.club-header .club-nav{display:none}.club-header{grid-template-columns:auto 1fr auto}.arsenal-header{grid-template-columns:1fr auto;gap:16px}.arsenal-header .arsenal-nav{display:none}}
+@media(max-width:760px){
+ .club-header{padding:14px 18px;grid-template-columns:1fr auto;gap:12px}
+ .club-header .parent-left{grid-row:1;grid-column:1}
+ .club-header .club-lockup{grid-row:2;grid-column:1/-1}
+ .club-header .paired-club-switch{grid-row:1;grid-column:2}
+ .arsenal-header{padding:14px 18px;grid-template-columns:1fr auto;gap:12px}
+ .arsenal-header-lockup{display:contents}
+ .arsenal-header .arsenal-parent{grid-row:1;grid-column:1;justify-self:start;padding:8px 10px}
+ .arsenal-header .arsenal-lockup{grid-row:2;grid-column:1/-1}
+ .arsenal-header .paired-club-switch{grid-row:1;grid-column:2}
+ .arsenal-hero{min-height:0;grid-template-columns:1fr;padding:44px 22px 48px;gap:32px}
+ .arsenal-hero h1{font-size:clamp(54px,16vw,92px);line-height:.94}
+ .arsenal-hero .hero-art{justify-self:center}
+ .arsenal-photo-hero img:first-child{height:360px}
+ .league-sports-header{height:auto;min-height:100px;flex-wrap:wrap;justify-content:flex-start;gap:10px;padding:14px 18px}
+ .league-sports-header .league-back{margin:0;order:0}
+ .league-sports-header .league-brand{order:1;flex-basis:100%}
+}
+@media(prefers-reduced-motion:reduce){.arsenal-photo-hero{transition:none}}
