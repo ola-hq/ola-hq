@@ -1,0 +1,64 @@
+/* Parent entrances only. Protected world pages do not load this stylesheet. */
+.entrance-page .world-entrances{gap:28px}
+.entrance-page .world-entrances .room{border-radius:10px;min-width:0}
+.entrance-page .world-entrances .visual{height:280px;min-height:280px;padding:0}
+.entrance-page .world-entrances .room-copy{flex:1;display:flex;flex-direction:column;padding:26px 28px 28px}
+.entrance-page .world-entrances .room-copy p{font-size:16px;line-height:1.6}
+.entrance-page .world-entrances .enter{margin-top:auto}
+.entrance-page .portal-label{position:absolute;left:16px;top:14px;z-index:1;background:#172c3ded;color:#fff7e9;padding:6px 10px;border-radius:3px;font:700 9px/1.5 Arial,sans-serif;letter-spacing:.13em;max-width:calc(100% - 32px)}
+.entrance-page .visual.love img,.entrance-page .visual.film img,.entrance-page .visual.music img{height:240px;width:100%;object-fit:contain}
+.entrance-page .visual.love{background:#fffdf8}.entrance-page .visual.film{background:#173744}.entrance-page .visual.music{background:#e5d6c7}
+.entrance-page .visual.film .portal-label{padding:6px 10px;border:0;border-radius:3px;transform:none;text-align:left}
+.entrance-page .visual.photo{padding:38px 28px 12px;gap:14px}
+.entrance-page .visual.photo img{height:225px;max-width:30%;object-fit:contain}
+.entrance-page .fc-visual{background:#0d2035}
+.entrance-page .fc-visual .stadium{width:100%;height:100%;object-fit:cover;object-position:center}
+.entrance-page .fc-visual .fc-badge{position:absolute;right:18px;bottom:16px;width:72px;height:86px;object-fit:contain;filter:drop-shadow(0 3px 4px #0008)}
+.entrance-page .fc-entrance{border-color:#ac9058}.entrance-page .fc-entrance .enter{color:#725622}
+.entrance-page .simulation-visual{background:#071b3e}
+.entrance-page .simulation-visual img{object-fit:contain;height:100%;width:100%}
+.entrance-page .simulation-entrance{border-color:#a889b3}.entrance-page .simulation-entrance .enter{color:#785196}
+.entrance-page .room-copy .entrance-category{font:700 9px/1.6 Arial,sans-serif;letter-spacing:.12em;margin:0 0 10px;color:var(--muted)}
+.entrance-page .gdb-visual{background:#f4eddc;display:flex;align-items:center;justify-content:center;gap:22px;padding:24px}
+.entrance-page .gdb-visual img{height:218px;width:218px;max-width:52%;object-fit:contain;mix-blend-mode:multiply}
+.entrance-page .campus-copy{color:#690f21;display:grid;gap:15px}
+.entrance-page .campus-copy span{font:700 9px/1.7 Arial,sans-serif;letter-spacing:.11em}
+.entrance-page .campus-copy strong{font:700 clamp(21px,2.5vw,34px)/1.05 Georgia,serif;letter-spacing:-.025em}
+.entrance-page .gdb-entrance{border-color:#c7afa7}.entrance-page .gdb-entrance .enter{color:#690f21}
+.entrance-page .arsenal-visual{background:linear-gradient(135deg,#8c1727,#541524);color:#f4e8cb;display:flex;flex-direction:column;justify-content:center;gap:10px;border-bottom:3px solid #b59658}
+.entrance-page .arsenal-visual img{height:85px;width:160px;object-fit:contain}
+.entrance-page .arsenal-visual strong{font:900 clamp(32px,4vw,54px)/1 Arial,sans-serif;letter-spacing:-.05em}
+.entrance-page .arsenal-bottom{font:700 9px/1.6 Arial,sans-serif;letter-spacing:.18em}
+.entrance-page .arsenal-entrance{border-color:#c7aa96}.entrance-page .arsenal-entrance .enter{color:#8c1727}
+.entrance-page .offbrand-visual{background:#eae2d3;display:flex;padding:25px;gap:22px;align-items:center}
+.entrance-page .life-log-stills{display:flex;width:58%;height:208px;gap:5px;align-items:center}
+.entrance-page .life-log-stills img{width:50%;height:180px;object-fit:cover;background:#121212;border:7px solid #fffdf4;border-bottom-width:22px;transform:rotate(-6deg)}
+.entrance-page .life-log-stills img+img{transform:rotate(7deg);margin-top:20px}
+.entrance-page .offbrand-visual strong{font:900 clamp(29px,3vw,43px)/.92 Arial,sans-serif;letter-spacing:-.06em;color:#191b18}
+.entrance-page .willpwr-visual{background:#223d35;color:#f3ead9;display:flex;align-items:center;justify-content:center;gap:35px;padding:35px 25px 18px}
+.entrance-page .willpwr-visual strong{font:900 clamp(40px,5vw,65px)/.88 Arial,sans-serif;letter-spacing:-.06em}
+.entrance-page .practice-lines{display:grid;gap:13px;font-size:12px;width:35%}
+.entrance-page .practice-lines span{border-bottom:1px solid #d0d4b765;padding-bottom:9px}
+.entrance-page .wuwei-visual{background:#e7dcc6;color:#344637;display:flex;justify-content:center;align-items:center;gap:25px;padding:18px 25px}
+.entrance-page .wuwei-visual img{width:40%;height:244px;object-fit:contain}
+.entrance-page .wuwei-visual>div{display:grid;gap:19px}
+.entrance-page .wuwei-visual strong{font:normal clamp(26px,3vw,39px)/1.15 Georgia,serif;letter-spacing:-.04em}
+.entrance-page .wuwei-visual span{font:700 8px/1.7 Arial,sans-serif;letter-spacing:.1em}
+.entrance-page .capy-visual{background:#33291f;padding:15px}
+.entrance-page .capy-visual img{object-fit:contain}
+@media(max-width:760px){
+ .entrance-page .section-title{align-items:flex-start;flex-direction:column;gap:8px}
+ .entrance-page .section-title span{display:block}
+ .entrance-page .world-entrances{gap:22px}
+ .entrance-page .world-entrances .visual{height:248px;min-height:248px}
+ .entrance-page .world-entrances .room-copy{padding:23px}
+ .entrance-page .world-entrances h2{font-size:26px}
+ .entrance-page .visual.love img,.entrance-page .visual.film img,.entrance-page .visual.music img{height:216px;max-height:none}
+ .entrance-page .visual.photo img{height:195px}
+ .entrance-page .gdb-visual{padding:16px;gap:13px}.entrance-page .gdb-visual img{height:156px;width:44%;max-width:156px;flex-shrink:0}
+ .entrance-page .campus-copy strong{font-size:20px}.entrance-page .campus-copy span{font-size:8px}
+ .entrance-page .offbrand-visual{padding:30px 18px 14px;gap:14px}.entrance-page .life-log-stills{height:185px;width:58%}.entrance-page .life-log-stills img{height:156px;border-width:5px;border-bottom-width:17px}.entrance-page .offbrand-visual strong{font-size:30px}
+ .entrance-page .willpwr-visual{gap:20px}.entrance-page .willpwr-visual strong{font-size:56px}
+ .entrance-page .wuwei-visual{padding:15px;gap:15px}.entrance-page .wuwei-visual img{height:218px;width:42%}.entrance-page .wuwei-visual strong{font-size:28px}
+}
+@media(hover:none){.entrance-page .world-entrances .room:hover{transform:none;box-shadow:none}.entrance-page .world-entrances .room:active{outline:2px solid var(--gold);outline-offset:2px}}
