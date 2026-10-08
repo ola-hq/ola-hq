@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#06152b">
+  <meta name="description" content="OLA HQ — Our Waves, One Home. A home-screen prototype for an expanding universe.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="OLA HQ">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="../assets/entrances/ola-hq-globe-only-favicon-20261007.png">
+  <link rel="icon" href="../assets/entrances/ola-hq-globe-only-favicon-20261007.png">
+  <link rel="stylesheet" href="style.css?v=1">
+  <script defer src="app.js?v=1"></script>
+  <title>OLA HQ · App Prototype 01</title>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+  <div class="app">
+    <header class="appbar">
+      <button type="button" id="hq-home" class="brand" aria-label="Go to OLA HQ app home">
+        <img src="../assets/entrances/ola-hq-globe-only-header-20261007.webp" width="40" height="40" alt="">
+        <span><strong>OLA HQ</strong><small>OUR WAVES · ONE HOME</small></span>
+      </button>
+      <button type="button" id="install" class="appbar-action">Get the app <span aria-hidden="true">↗</span></button>
+    </header>
+
+    <main id="main">
+      <section id="universe" aria-label="Explore the OLA HQ universe">
+        <div class="hero">
+          <div class="starfield" aria-hidden="true"></div>
+          <div class="hero-content">
+            <p class="eyebrow">WELCOME TO THE UNIVERSE</p>
+            <img class="hero-globe" src="../assets/entrances/ola-hq-floating-hero-20261007.webp" alt="Floating OLA HQ globe artwork" width="1000" height="1000">
+            <h1>Our Waves.<br><em>One Home.</em></h1>
+            <p class="intro">One universe. Distinct worlds. Follow whatever pulls you in.</p>
+            <a class="enter-hint" href="#worlds">Explore the worlds <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <section id="worlds" class="worlds" aria-labelledby="worlds-title">
+          <div class="section-head"><p class="eyebrow">CHOOSE YOUR CURRENT</p><h2 id="worlds-title">The Worlds</h2><p>Simple to enter. Endless to explore.</p></div>
+          <div class="world-grid">
+            <button class="world-card featured" data-world="la-ola" type="button"><img src="../assets/entrances/la-ola-de-amor-entrance-20261008.webp" alt="" loading="lazy"><span class="world-card-copy"><small>LOVE · FESTIVAL · MEMORY</small><strong>La Ola de Amor</strong><span>Step into our story ↗</span></span></button>
+            <button class="world-card" data-world="wave26" type="button"><img src="../assets/entrances/wave-26-entrance-20261007.jpg" alt="" loading="lazy"><span class="world-card-copy"><small>MUSIC · EXPERIMENTS</small><strong>Wave 26</strong><span>Enter the music ↗</span></span></button>
+            <button class="world-card" data-world="polaroid" type="button"><img src="../assets/entrances/polaroid-entrance-20261007.webp" alt="" loading="lazy"><span class="world-card-copy"><small>PHOTOGRAPHY · LIFE</small><strong>Polaroid Wave</strong><span>Through our lens ↗</span></span></button>
+            <button class="world-card" data-world="blockbuster" type="button"><img src="../assets/worlds/blockbuster-banner.png" alt="" loading="lazy"><span class="world-card-copy"><small>FILM · REVIEWS</small><strong>Blockbuster Wave</strong><span>Enter the gallery ↗</span></span></button>
+            <button class="world-card" data-world="fpl" type="button"><img src="../assets/entrances/la-ola-fc-club-house-20261007.webp" alt="" loading="lazy"><span class="world-card-copy"><small>SPORTS · THE CLUB</small><strong>La Ola FC</strong><span>Enter the clubhouse ↗</span></span></button>
+            <button class="world-card" data-world="simulation" type="button"><img src="../assets/entrances/simulation-portal.webp" alt="" loading="lazy"><span class="world-card-copy"><small>ART · IMPOSSIBLE IDEAS</small><strong>Simulation Wave</strong><span>Enter the playground ↗</span></span></button>
+          </div>
+          <div class="deeper">
+            <p class="eyebrow">MORE WORLDS TO WANDER</p>
+            <div class="smaller-worlds">
+              <button data-world="gdb" type="button">GDB Wave <span>↗</span></button>
+              <button data-world="university" type="button">GDB University <span>↗</span></button>
+              <button data-world="arsenal" type="button">Arsenal Wave <span>↗</span></button>
+              <button data-world="wu-wei" type="button">Wu Wei Wave <span>↗</span></button>
+              <button data-world="willpwr" type="button">Willpwr Wave <span>↗</span></button>
+              <button data-world="offbrand" type="button">Offbrand Wave <span>↗</span></button>
+              <button data-world="capybara" type="button">Capybara Wave <span>↗</span></button>
+            </div>
+          </div>
+        </section>
+        <footer class="home-footer"><p>Prototype 01 · The universe is growing.</p><a href="../" target="_blank" rel="noopener">Visit the classic OLA HQ website ↗</a></footer>
+      </section>
+
+      <section id="experience" hidden aria-label="Selected OLA HQ world">
+        <div class="world-toolbar">
+          <button type="button" id="up" class="up-button">← OLA HQ</button>
+          <span id="world-label" class="active-world" aria-live="polite"></span>
+          <a id="open-alone" href="../" target="_blank" rel="noopener" title="Open this world on its own">Open ↗</a>
+        </div>
+        <iframe id="world-frame" title="OLA HQ world" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <p id="frame-help">If this world doesn't display correctly here, select Open ↗ to view it directly.</p>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="install-info" aria-labelledby="install-title">
+    <div class="install-panel">
+      <button class="close-install" type="button" aria-label="Close">×</button>
+      <img src="../assets/entrances/ola-hq-globe-only-header-20261007.webp" alt="" width="68" height="68">
+      <h2 id="install-title">Take the universe home.</h2>
+      <p>On iPhone: open this page in Safari, tap Share, then <strong>Add to Home Screen</strong>. Enable <strong>Open as Web App</strong> if offered and tap Add.</p>
+      <p>On Android: use your browser's Install app or Add to Home Screen option.</p>
+      <button id="native-install" type="button" hidden>Install OLA HQ</button>
+      <p class="note">No App Store required. This prototype requires internet for most worlds; La Ola's separate Festival Guide retains its own offline support.</p>
+    </div>
+  </dialog>
+</body>
+</html>
