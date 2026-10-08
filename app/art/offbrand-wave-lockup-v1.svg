@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" role="img" aria-label="offbrand wave temporary app lockup">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".43" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".11"/></feComponentTransfer></filter></defs>
+<rect width="960" height="620" fill="#f2e9d4"/>
+<rect x="24" y="21" width="912" height="578" fill="none" stroke="#14151d" stroke-width="9" transform="rotate(-1 480 310)"/>
+<g fill="none" stroke="#1c273a" stroke-width="16" stroke-linecap="round" opacity=".94"><path d="M-50 230c88-130 173-135 251-34 67 84 109 93 162 27 61-75 124-88 180-15"/><path d="M457 215c69-94 123-87 172-23 63 82 138 73 194 5 53-65 121-57 196 14"/><path d="M-60 266c93-91 168-83 236-3 80 95 142 90 211-4"/></g>
+<path d="M739 53c55 7 93 28 117 68-43-15-82-4-107 25 12-41-5-72-52-89z" fill="#db557c"/>
+<g transform="rotate(-3 480 350)">
+<rect x="95" y="265" width="792" height="179" rx="0" fill="#11171e"/>
+<text x="123" y="387" fill="#f6eedc" font-family="Arial Black,Arial,sans-serif" font-size="119" font-weight="900" textLength="740" lengthAdjust="spacingAndGlyphs">offbrand</text>
+</g>
+<g transform="rotate(3 635 490)"><rect x="482" y="441" width="383" height="96" fill="#ff6090"/><text x="505" y="515" fill="#11171e" font-family="Arial Black,Arial,sans-serif" font-size="92" font-weight="900" textLength="335" lengthAdjust="spacingAndGlyphs">wave.</text></g>
+<path d="M108 529h236" stroke="#131620" stroke-width="11"/><text x="108" y="567" fill="#1a1c21" font-family="Arial,sans-serif" font-weight="700" font-size="19" letter-spacing="4">UNFILTERED BY DESIGN</text>
+<rect width="960" height="620" filter="url(#grain)" opacity=".37"/>
+</svg>
