@@ -104,3 +104,59 @@ GDB University is now a published proof-of-world, not a mockup-only concept.
 Do not collapse the department identities back into one generic GDB style.  
 Do not replace the existing GDB/LES archive with invented substitute art.  
 Future work should deepen individual campus buildings and departments additively.
+
+
+## 2026-10-08 · Source-led depth pass 01
+
+Direct Jonathan review from current live screenshots.
+
+### Scope
+
+Five GDB-only files changed:
+- `gdb-university/index.html`
+- `gdb-university/academics.html`
+- `gdb-university/faculty.html`
+- `gdb-university/campus-life.html`
+- `gdb-university/gdbu.css`
+
+### Corrections
+
+**Orientation home card**
+- Removed the photo crop that visibly cut through a person.
+- Replaced it with a responsive source-led GDBU Orientation panel using the verified crest, GDB.000.26 and Hall Pass / Campus Open language.
+- No historical artifact was retouched.
+
+**Academics**
+- Removed the LES-only hero treatment as the visual representative of all Academics.
+- Added a four-program GDBU banner using the current canonical badge family:
+  - LES-001
+  - DFP-002
+  - CLS-003
+  - RVE-004
+- The same four-program language is now used on the University home Academics card.
+
+**Faculty**
+- Replaced the AYYBO Matrix poster as the Faculty hero image with the already-published verified AYYBO public portrait.
+- Kept AYYBO central as fictional Dean / Chair of Low End Studies.
+- Existing individual faculty profiles and real artist links remain unchanged.
+
+**Campus Life**
+- Rewrote the page from source language in the GDB Orientation Guide and Community Preview rather than generic university filler.
+- Restored the durable themes: community through sound/style/shared experience; everyday moments; coffee runs and hanging out; field labs; participation; widening the circle; honoring the floor; crediting builders; leaving the night better.
+- Preserved established campus-world locations and expanded them into source-aligned meaning rather than removing them.
+
+### Source authority used
+
+- GDB WAVE — INTAKE + WEBSITE HANDOFF — 2026-10-05
+- OLA HQ — Next Pass Work Brief — 2026-10-07 — CURRENT
+- GDB University Orientation Guide — GDB.000
+- GDB University Community Preview Deck
+- GDB University Brand Bible
+- Existing published four-program badge family and verified AYYBO faculty asset
+
+### Preservation
+
+No unrelated OLA HQ world files changed.
+No private photo/video asset was newly exposed.
+No historical GDB.000.91 artifact was modified.
+No faculty role or external artist link was removed.
