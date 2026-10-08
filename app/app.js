@@ -25,6 +25,7 @@ const universe = document.querySelector('#universe');
 const experience = document.querySelector('#experience');
 const frame = document.querySelector('#world-frame');
 const up = document.querySelector('#up');
+const upLabel = document.querySelector('#up-label');
 const label = document.querySelector('#world-label');
 const openAlone = document.querySelector('#open-alone');
 const home = document.querySelector('#hq-home');
@@ -70,7 +71,7 @@ function renderNav() {
   const world = current?.world;
   if (!world) return;
   const target = upTarget();
-  up.textContent = target ? '← ' + worlds[target].name : '← OLA HQ';
+  upLabel.textContent = target ? worlds[target].name : 'OLA HQ';
   up.setAttribute('aria-label', target ? 'Return to ' + worlds[target].name + ' home' : 'Return to OLA HQ app home');
   label.textContent = worlds[world].name;
   frame.title = worlds[world].name + ' inside OLA HQ';
