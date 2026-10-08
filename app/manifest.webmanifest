@@ -1,0 +1,14 @@
+{
+  "id": "/ola-hq/app/",
+  "name": "OLA HQ — Our Waves, One Home",
+  "short_name": "OLA HQ",
+  "description": "One home for the worlds, music, memories and work of OLA HQ.",
+  "start_url": "/ola-hq/app/",
+  "scope": "/ola-hq/",
+  "display": "standalone",
+  "background_color": "#06152b",
+  "theme_color": "#06152b",
+  "icons": [
+    {"src": "../assets/entrances/ola-hq-globe-only-favicon-20261007.png", "sizes": "any", "type": "image/png", "purpose": "any"}
+  ]
+}
