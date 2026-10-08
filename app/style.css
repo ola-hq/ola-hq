@@ -55,3 +55,13 @@ dialog::backdrop{background:#000b;backdrop-filter:blur(3px)}.install-panel{paddi
 /* In installed, standalone PWA mode do not advertise installing the app again. */
 @media (display-mode: standalone){#install{display:none!important}}
 html.is-installed #install{display:none!important}
+
+/* App-only logo pass 04: exact published GDB University source crest,
+   source-informed but provisional Willpwr and Offbrand type lockups.
+   These cards are not changed on their independent world websites. */
+.world-card.logo-portal.gdb-university{background:radial-gradient(circle at 50% 34%,#6b364a,#290e24 64%,#170816 100%)}
+.world-card.logo-portal.gdb-university img{object-fit:contain;object-position:center 26%;padding:12px 15% 65px;filter:drop-shadow(0 13px 18px rgba(0,0,0,.42))}
+.world-card.logo-portal.willpwr{background:#101e2b}
+.world-card.logo-portal.offbrand{background:#f2e9d4}
+.world-card.logo-portal.willpwr img,.world-card.logo-portal.offbrand img{object-fit:cover;object-position:center center}
+.world-card.logo-portal .world-card-copy{z-index:2}
