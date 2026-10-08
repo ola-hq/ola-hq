@@ -1,0 +1,13 @@
+/* Reading and practice: scoped to the two writing rooms. */
+:root{color-scheme:only light;background:#fffdf7;color:#182624}
+body.world-wu-wei,body.world-willpwr{color-scheme:only light;background:#fffdf7;color:#182624;--paper:#fffdf7;--ink:#182624;--muted:#465651;--line:#aebbb4}
+.world-wu-wei main,.world-willpwr main,.world-head{background:#fffdf7;color:#182624}
+.hq-return{background:#e4eee7;color:#18372c;border-bottom:1px solid #9aafa2}
+.label,.source-note,.reading-context{color:#465651}.label{font-size:.78rem}.source-note{font-size:.92rem}
+.journal-section{border-top:1px solid var(--line)}.journal-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 28px}
+.journal-card{padding:26px 12px}.journal-card p{font-size:1rem}.journal-card h3{font-size:1.65rem}
+.journal-card>span:last-child,.back-reading{font-size:.95rem}.prose{font-size:1.22rem;line-height:1.95;color:#182624}
+.reading-entry,.reading-card{background:#fffdf7;color:#182624}.practice-connection{font-size:.95rem;margin:24px 0}
+.quiet-film,.practice-reading{background:#eaf1e9;color:#182624}.practice-card{background:transparent}.practice-card h3{font-family:inherit;font-weight:750;font-size:1.6rem}.practice-prompt{border-top:1px solid var(--line);padding-top:18px;margin-top:24px}
+.check-in{background:#fffdf7;color:#182624}.check-in input,.check-in textarea{color-scheme:only light;background:#fff;color:#182624;border-color:#70857a}
+@media(max-width:850px){.journal-grid{grid-template-columns:1fr 1fr}}@media(max-width:540px){.journal-grid{grid-template-columns:1fr}.journal-card{padding-inline:0}.prose{font-size:1.16rem}}
