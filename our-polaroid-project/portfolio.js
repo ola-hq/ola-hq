@@ -1,9 +1,9 @@
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const all=portfolioData.collections;let activePhotos=[],lightboxIndex=0,shown=48,currentCollection=null;const baseCover=c=>c.photos.find(p=>p.src)?.src||'';
 const portfolioCoverOverrides = {
   "favorites": "img20220627_18591595_17",
-  "after-dark": "escape-polaroid-scans-2_0003_25",
-  "framed-faces": "img20240911_17165486_25",
-  "unfiltered-moments": "img20240911_17281638_37",
+  "after-dark": "img20220419_20125132_10",
+  "framed-faces": "img20220517_19591017_10",
+  "unfiltered-moments": "img20220502_17485999_0",
   "decks-and-moments": "img20240805_17510760_7"
 };
 const currentCollectionDescriptions = {
@@ -19,8 +19,8 @@ function cover(c){
   return (id&&c.photos.find(p=>p.sourceId===id&&p.src)?.src)||baseCover(c);
 }
 const homeHeroAssets=[
-  "assets/home-hero-bj-10001.jpg",
-  "assets/home-hero-bj-10004.jpg"
+  "assets/home-hero-bj-10004.jpg",
+  "assets/home-hero-bj-10001.jpg"
 ];
 function homeHeroPhoto(index){
   return homeHeroAssets[index] || (index===0?cover(all[0]):cover(all[2]));
