@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" role="img" aria-label="WILLPWR WAVE temporary app lockup">
+<defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#111e2a"/><stop offset="1" stop-color="#030b11"/></linearGradient><linearGradient id="rule" x1="0" x2="1"><stop stop-color="#ec9849"/><stop offset="1" stop-color="#f1d89e"/></linearGradient></defs>
+<rect width="960" height="620" fill="url(#bg)"/>
+<g opacity=".13" stroke="#a7c4c4"><path d="M0 100h960M0 140h960M0 180h960M0 220h960M0 260h960M0 300h960M0 340h960M0 380h960M0 420h960M0 460h960M0 500h960M0 540h960M0 580h960"/><path d="M120 0v620M240 0v620M360 0v620M480 0v620M600 0v620M720 0v620M840 0v620"/></g>
+<path d="M146 96H816" stroke="url(#rule)" stroke-width="9"/><path d="M146 96v26" stroke="#f1c785" stroke-width="9"/><path d="M816 96v26" stroke="#f1c785" stroke-width="9"/>
+<g transform="translate(166 173)" stroke="url(#rule)" stroke-linejoin="miter" fill="none" stroke-width="20"><path d="M2 16 52 132 95 51 138 132 188 16"/><path d="M219 16v116M252 16v116" opacity=".65"/><path d="M290 132l93-116h39" opacity=".75"/></g>
+<text x="152" y="404" fill="#fffaf0" font-family="Arial Black,Arial,sans-serif" font-size="108" font-weight="900" textLength="676" lengthAdjust="spacingAndGlyphs">WILLPWR</text>
+<path d="M150 438h660" stroke="#f1c785" stroke-width="7"/>
+<text x="153" y="491" fill="#f1c785" font-family="Arial,sans-serif" font-size="30" font-weight="700" letter-spacing="11">WAVE · SHOW UP</text>
+<text x="154" y="557" fill="#bcc8c9" font-family="Arial,sans-serif" font-size="17" letter-spacing="4">ROUTINE    •    INTENTION    •    PRACTICE</text>
+</svg>
