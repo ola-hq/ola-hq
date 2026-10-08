@@ -49,3 +49,5 @@ dialog::backdrop{background:#000b;backdrop-filter:blur(3px)}.install-panel{paddi
 .world-card.illustration-only.willpwr{background:radial-gradient(circle at 72% 20%,#d3a7578c,transparent 50%),linear-gradient(145deg,#293e52,#0b1b30)}
 .world-card.illustration-only.offbrand{background:radial-gradient(circle at 30% 25%,#c76b9b9c,transparent 53%),linear-gradient(135deg,#502b72,#101b40)}
 .world-emblem{position:absolute;inset:15% 0 auto;text-align:center;font:800 clamp(78px,20vw,160px)/1 Outfit,sans-serif;color:#f6d5a9;opacity:.56;transform:rotate(-10deg);pointer-events:none}
+
+@media (max-width:380px){.world-card.featured{min-height:300px}}
