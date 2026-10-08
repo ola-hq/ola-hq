@@ -18,3 +18,6 @@ a:focus-visible,button:focus-visible,video:focus-visible{outline:3px solid var(-
 @media(max-width:980px){.nav a{width:100%}.nav .apply{text-align:center;margin-top:4px}.hero-card{margin-top:8px}}
 @media(max-width:600px){.parentbar{align-items:center}.parentbar span{text-align:right}.headinner{gap:12px}.brand{min-width:0}.brand strong{font-size:1.15rem}.hero-card{padding:18px}.artifact img{height:auto;aspect-ratio:4/3}.sectionhead p{max-width:none}.faculty.dean h3{font-size:2.55rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+/* Job 2: exact source crest; campus copy and mobile behavior. */
+.source-crest{width:62px;height:62px;object-fit:contain;flex:none}.brand{flex-shrink:0}.founding-link{text-decoration:none;display:block}.founding-link:hover{background:var(--paper);outline:2px solid var(--accent2)}.founding-link .cardlink{font-size:.75rem}.headinner{flex-wrap:wrap}.nav{gap:1px}.nav a{padding-inline:7px}.sitehead .brand small{letter-spacing:.11em}@media(max-width:600px){.source-crest{width:54px;height:54px}.brand small{display:block;font-size:.56rem}.headinner{gap:10px}.brand strong{font-size:1.08rem}.course-table{max-width:100%}}
