@@ -30,9 +30,6 @@ h1{font-size:clamp(43px,9vw,85px);letter-spacing:-.06em;line-height:.97;margin:1
 .world-card:after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#09193004 15%,#03152bde 75%,#06152bf5)}
 .world-card-copy{position:absolute;inset:auto 18px 18px;display:grid;gap:6px}.world-card-copy small{font-size:9px;font-weight:700;letter-spacing:.16em;color:#f2d3a2}.world-card-copy strong{font:700 clamp(20px,3vw,32px)/1.05 Outfit,sans-serif}.world-card-copy>span{font-size:12px;color:#d7e8fb}
 .featured{grid-column:1/-1;min-height:320px}.featured .world-card-copy strong{font-size:clamp(28px,5vw,43px)}
-.deeper{margin-top:52px;text-align:center}.smaller-worlds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:20px}
-.smaller-worlds button{border:1px solid var(--line);border-radius:14px;background:linear-gradient(135deg,#102f52,#0a1c36);color:#f6f8ff;text-align:left;display:flex;justify-content:space-between;gap:8px;padding:17px 15px;font-size:13px;font-weight:700}
-.smaller-worlds span{color:var(--gold)}
 .home-footer{padding:20px 24px 42px;text-align:center;color:#b7cde2;font-size:12px}.home-footer a{display:inline-block;margin-top:6px}
 #experience{height:calc(100dvh - 67px - env(safe-area-inset-top));min-height:350px;display:flex;flex-direction:column}#experience[hidden]{display:none}
 .world-toolbar{min-height:52px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 12px;background:#102946;border-bottom:1px solid var(--line)}
@@ -43,6 +40,12 @@ h1{font-size:clamp(43px,9vw,85px);letter-spacing:-.06em;line-height:.97;margin:1
 #frame-help{padding:5px 8px;margin:0;background:#102946;color:#d1e3f2;text-align:center;font-size:10px}
 dialog{border:1px solid #ffffff44;padding:0;color:#fff;background:#0a2444;border-radius:20px;width:min(92vw,420px);max-height:90dvh;box-shadow:0 20px 90px #0009}
 dialog::backdrop{background:#000b;backdrop-filter:blur(3px)}.install-panel{padding:30px 25px;position:relative;text-align:center}.install-panel h2{font-size:28px;margin:10px 0}.install-panel p{line-height:1.65;font-size:14px;color:#d7e6f5}.install-panel img{margin:auto}.install-panel .note{font-size:12px;color:#a6c2da}.close-install{position:absolute;right:12px;top:12px;background:none;color:#fff;border:0;font-size:28px}#native-install{background:#f2cc87;color:#102037;border:none;border-radius:30px;padding:12px 18px;font-weight:800}
-@media (min-width:800px){.world-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.featured{grid-column:span 2}.world-card{min-height:300px}.smaller-worlds{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media (max-width:380px){.brand small{font-size:8px}.appbar-action{font-size:11px;padding:10px}.world-card{min-height:215px}.world-card-copy{inset:auto 12px 14px}.world-card-copy strong{font-size:19px}.worlds{padding-top:40px}.smaller-worlds{grid-template-columns:1fr}}
+@media (min-width:800px){.world-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.world-card{min-height:300px}.featured{min-height:400px}}
+@media (max-width:380px){.brand small{font-size:8px}.appbar-action{font-size:11px;padding:10px}.world-card{min-height:215px}.world-card-copy{inset:auto 12px 14px}.world-card-copy strong{font-size:19px}.worlds{padding-top:40px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+/* Prototype 01 world-size revision: three art showcases, all other worlds equally sized. */
+.world-card.illustration-only{background:radial-gradient(circle at 67% 17%,#638fd279 0%,transparent 45%),linear-gradient(145deg,#16375b,#0b1a38)}
+.world-card.illustration-only.willpwr{background:radial-gradient(circle at 72% 20%,#d3a7578c,transparent 50%),linear-gradient(145deg,#293e52,#0b1b30)}
+.world-card.illustration-only.offbrand{background:radial-gradient(circle at 30% 25%,#c76b9b9c,transparent 53%),linear-gradient(135deg,#502b72,#101b40)}
+.world-emblem{position:absolute;inset:15% 0 auto;text-align:center;font:800 clamp(78px,20vw,160px)/1 Outfit,sans-serif;color:#f6d5a9;opacity:.56;transform:rotate(-10deg);pointer-events:none}
