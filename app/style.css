@@ -65,3 +65,17 @@ html.is-installed #install{display:none!important}
 .world-card.logo-portal.offbrand{background:#f2e9d4}
 .world-card.logo-portal.willpwr img,.world-card.logo-portal.offbrand img{object-fit:cover;object-position:center center}
 .world-card.logo-portal .world-card-copy{z-index:2}
+
+/* Polish pass 06: distinct, text-safe SVG arrow icons. No emoji glyph fallbacks. */
+.ui-arrow{display:inline-block;vertical-align:-.12em;width:1em;height:1em;flex:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+.appbar-action .ui-arrow{width:14px;height:14px;color:var(--gold);vertical-align:-.15em}
+.enter-hint .ui-arrow{width:29px;height:29px;vertical-align:middle}
+.world-card-copy .ui-arrow{width:13px;height:13px;vertical-align:-.13em;margin-left:2px}
+.home-footer .ui-arrow,#open-alone .ui-arrow{width:13px;height:13px;vertical-align:-.14em}
+.up-button{display:inline-flex;justify-content:center;align-items:center;gap:5px}
+.up-button .ui-arrow{width:15px;height:15px}
+.world-card.logo-portal.gdb-wave{background:#f1e6c8}
+.world-card.logo-portal.gdb-wave img{object-fit:contain;object-position:center 27%;padding:14px 15% 64px;filter:drop-shadow(0 12px 12px rgba(73,22,35,.24))}
+.world-card.logo-portal.gdb-wave:after{background:linear-gradient(180deg,transparent 5%,rgba(6,21,43,.04) 39%,rgba(6,21,43,.87) 81%,rgba(6,21,43,.96) 100%)}
+.world-card.logo-portal.willpwr{background:#eff0e9}
+.world-card.logo-portal.offbrand{background:#f0edde}
