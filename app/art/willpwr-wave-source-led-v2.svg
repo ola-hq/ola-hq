@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" role="img" aria-labelledby="title desc">
+<title id="title">WILLPWR Wave: source-led app portal study</title>
+<desc id="desc">Minimal discipline and practice portal drawn from the existing Willpwr website paper, dark-green, check-in and daily-evidence system. Provisional identity study.</desc>
+<rect width="960" height="620" fill="#eff0e9"/>
+<path d="M0 570h960" stroke="#bec8bc" stroke-width="3"/>
+<g stroke="#bec8bc" opacity=".8"><path d="M70 64h820M70 128h820M70 192h820M70 256h820M70 320h820M70 384h820M70 448h820M70 512h820"/></g>
+<rect x="68" y="55" width="88" height="88" fill="#182620"/>
+<g stroke="#eff0e9" stroke-width="8" fill="none" stroke-linecap="square"><path d="M90 99l18 20 35-41"/></g>
+<text x="184" y="107" fill="#52644f" font-family="Arial,sans-serif" font-size="27" font-weight="800" letter-spacing="7">ONE SMALL WIN, EVERY DAY</text>
+<path d="M70 181h820" stroke="#182620" stroke-width="9"/>
+<text x="65" y="314" fill="#182620" font-family="Arial Black,Arial,sans-serif" font-size="152" font-weight="900" textLength="815" lengthAdjust="spacingAndGlyphs">WILLPWR</text>
+<text x="72" y="419" fill="#4b6550" font-family="Arial,sans-serif" font-weight="900" font-size="83" letter-spacing="29">WAVE</text>
+<rect x="66" y="457" width="680" height="66" fill="#182620"/>
+<text x="89" y="502" fill="#eff0e9" font-family="Arial,sans-serif" font-size="36" font-weight="800" letter-spacing="9">SHOW UP.</text>
+<text x="68" y="578" fill="#52644f" font-family="Arial,sans-serif" font-size="18" letter-spacing="5">INTENT • PRACTICE • EVIDENCE</text>
+</svg>
