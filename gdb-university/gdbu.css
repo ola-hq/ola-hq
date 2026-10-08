@@ -21,3 +21,5 @@ a:focus-visible,button:focus-visible,video:focus-visible{outline:3px solid var(-
 
 /* Job 2: exact source crest; campus copy and mobile behavior. */
 .source-crest{width:62px;height:62px;object-fit:contain;flex:none}.brand{flex-shrink:0}.founding-link{text-decoration:none;display:block}.founding-link:hover{background:var(--paper);outline:2px solid var(--accent2)}.founding-link .cardlink{font-size:.75rem}.headinner{flex-wrap:wrap}.nav{gap:1px}.nav a{padding-inline:7px}.sitehead .brand small{letter-spacing:.11em}@media(max-width:600px){.source-crest{width:54px;height:54px}.brand small{display:block;font-size:.56rem}.headinner{gap:10px}.brand strong{font-size:1.08rem}.course-table{max-width:100%}}
+
+.hero .gdb-home-title{font-size:clamp(3rem,6.2vw,5.6rem);line-height:.96}
