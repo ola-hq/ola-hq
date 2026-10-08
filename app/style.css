@@ -20,8 +20,8 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offse
 @keyframes levitate{50%{transform:translateY(-10px)}}
 h1,h2,h3,p{margin-top:0}h1,h2{font-family:Outfit,system-ui,sans-serif}
 h1{font-size:clamp(43px,9vw,85px);letter-spacing:-.06em;line-height:.97;margin:12px 0 17px}h1 em{color:var(--gold);font-style:normal}
-.intro{font-size:clamp(14px,2.5vw,18px);color:var(--mist);line-height:1.6;max-width:460px;margin:0 auto 26px}
-.enter-hint{display:inline-flex;gap:18px;text-decoration:none;text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:800;padding:13px 23px;background:#fff6df;color:#092645;border-radius:80px}
+.intro{font-size:clamp(14px,2.5vw,18px);color:var(--mist);line-height:1.6;max-width:460px;margin:0 auto 9px}
+.enter-hint{display:inline-grid;place-items:center;width:46px;height:46px;margin:0 auto;color:var(--gold);text-decoration:none;font-size:31px;line-height:1;border-radius:50%;background:transparent;border:1px solid transparent;transition:transform .18s ease,color .18s ease}.enter-hint:hover{color:var(--light);transform:translateY(4px)}
 .worlds{max-width:1160px;margin:0 auto;padding:65px clamp(16px,4vw,52px) 36px}
 .section-head{text-align:center;margin-bottom:32px}.section-head h2{font-size:clamp(36px,6vw,59px);letter-spacing:-.05em;margin:3px 0}.section-head p:last-child{color:var(--mist);font-size:14px}
 .world-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
