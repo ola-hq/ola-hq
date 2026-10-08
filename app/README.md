@@ -54,3 +54,6 @@ No backend, accounts, content ingestion or private file links are exposed in v0.
 This README is the public implementation note. A Google Drive handoff document should hold the full current decision record.
 Related existing: OLA HQ WORLD ROLLOUT + APPLICATION BOARD — CURRENT; OLA HQ BRAND SYSTEM + WORLD DESIGN LANGUAGES — CURRENT; OLA HQ / HTML + GitHub Publishing project packet; Festival Guide APP PLAN; WAVE_PORTAL_BUILD.
 Historical plan claims that the Festival Guide alone is the starting architecture are superseded for HQ PWA scope, but the Festival Guide remains a preserved standalone release.
+
+## 2026-10-08 — Featured-world card hierarchy
+Large, full-width world art: La Ola de Amor, Polaroid Wave, Blockbuster Wave. All remaining worlds, including the former text-only More Worlds list, now have the same standard portal-card footprint as Wave 26 and La Ola FC. Reuse existing world images when available and use nonliteral decorative fallback for Willpwr/Offbrand until their source-authoritative banner assets are ready. Scope is app/ only. The unchanged printed Festival Guide QR is the hard lock; review mobile rendering before treating this as a final approved visual pass.
