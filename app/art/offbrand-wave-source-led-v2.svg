@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" role="img" aria-labelledby="title desc">
+<title id="title">offbrand wave: source-led app portal study</title>
+<desc id="desc">Cream and ink collage portal with a stylized ocean-wave motif, lowercase offbrand wave lettering, and tiny archival labels. Provisional, not the recovered official master.</desc>
+<defs><pattern id="paper" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1" fill="#181818" opacity=".12"/></pattern></defs>
+<rect width="960" height="620" fill="#f0edde"/>
+<rect width="960" height="620" fill="url(#paper)"/>
+<g fill="none" stroke="#181818" stroke-linecap="round" stroke-linejoin="round">
+<path stroke-width="21" d="M-64 305C82 223 120 75 240 61c112-13 168 85 141 150-34 81-95 92-158 41 93 28 146-51 93-98-53-48-110-1-151 67-32 54-65 98-123 115"/>
+<path stroke-width="13" d="M392 224c124-77 174-207 289-165 65 24 84 101 44 151-41 51-99 36-116 10 53 18 99-14 88-60-17-64-86-39-134 15-48 54-115 108-188 116"/>
+<path stroke-width="11" d="M-20 347c182 36 227 49 350-17 115-62 168-32 275 17 112 51 203 44 383-37"/>
+<path stroke-width="6" d="M-20 374c175 38 240 42 354-8 125-57 175-18 284 18 109 36 234 16 353-36"/>
+</g>
+<g transform="rotate(-2 480 385)">
+<rect x="53" y="293" width="835" height="211" fill="#181818"/>
+<text x="77" y="420" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="139" fill="#f0edde" textLength="776" lengthAdjust="spacingAndGlyphs">offbrand</text>
+</g>
+<g transform="rotate(2.5 655 523)">
+<rect x="574" y="452" width="284" height="117" fill="#f7e961" stroke="#181818" stroke-width="4"/>
+<text x="596" y="540" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="95" fill="#181818" textLength="239" lengthAdjust="spacingAndGlyphs">wave</text>
+</g>
+<text x="58" y="580" fill="#181818" font-family="Arial,sans-serif" font-size="19" font-weight="700" letter-spacing="6">THE UNFILTERED ARCHIVE</text>
+</svg>
