@@ -1,17 +1,49 @@
 const journalPosts = [
   {
-    "id": "a-camera-that-leaves-room-for-the-trip",
-    "title": "A Camera That Leaves Room for the Trip",
+    "id": "our-polaroid-wave-in-this-chapter",
+    "title": "Our Polaroid Wave, in This Chapter",
     "paragraphs": [
-      "I love the commitment of instant film. You choose a moment, take the picture, and wait to see what you caught. I also know what it feels like to pack for a trip and start calculating how much space the camera and film will take. Sometimes the thing I want to bring becomes the thing I leave behind.",
-      "When I wrote about getting the Instax Evo for Christmas, I was excited about having another way to carry that habit with me. The Guadalajara weekend made the reason clear. Two weddings, light luggage, a personal item each. I wanted to be there with everyone and still bring something home from it.",
-      "Being able to take pictures first and choose which ones to print changed the pace for me. I could try a frame without turning every attempt into a decision about film. Later, I could look again and pick the photograph I wanted to hold. That second look became part of the process.",
-      "A print asks a different question from a camera roll. Which one would I give someone? Which one would I put beside the other memories? Which one takes me back to the feeling of that weekend? The answer can be a small, ordinary frame that I barely noticed when I took it.",
-      "I still like the uncertainty of shooting straight onto film. I like learning the quirks of each camera, too. I don’t need every trip to use the same method. I need a method that leaves enough space for the trip itself: the conversation, the wedding, the walk, the person standing beside me.",
-      "That is where Our Polaroid Wave keeps finding its direction. Bring the camera when you can. Pay attention while you are there. Give the photographs another look when you get home. A few will tell you why you brought it."
+      "Our Polaroid Project began as a way to gather the photographs and the ideas around them. The collection kept growing. Now it has a name that feels closer to how it moves through the rest of our life: Our Polaroid Wave.",
+      "It has its own space inside OLA HQ, alongside love, cinema, music, and the other worlds taking shape. One home, many worlds. You can follow a photograph into a collection, spend time with the story behind it, and find your way back to the rest of what we are making.",
+      "This chapter is partly about giving work we already made a better home. The photographs stay together. The earlier writing stays preserved. Some of those older pieces are still worth reading in their original voice; others have done their job and can live quietly in the archive instead of standing in the front room forever.",
+      "The journal works the same way the photographs do. We keep what happened, look again, and decide what still carries the feeling. A rewrite does not erase the first version. It gives us a chance to say what became clearer after living with the idea for a while.",
+      "AI helps with drafts, organization, and building the pages. I bring the memories, make the choices, and decide whether the result sounds and feels like us. The point is not to make the archive look cleaner than life was. The point is to make the public version honest about where the work is now.",
+      "There is more to make, and we can let it take its time. For this chapter, I am happy to have the photographs, a few pieces of the old voice, and the current voice here together. We can keep looking, keep choosing, and keep going."
     ],
     "date": "October 5, 2026",
-    "kind": "Current rewrite",
+    "kind": "Chapter note",
+    "section": "chapter"
+  },
+  {
+    "id": "where-the-camera-went",
+    "title": "Where the Camera Went",
+    "paragraphs": [
+      "It started with a little push from my wife, Brianna, who insisted on bringing her Polaroid 300 to Life is Beautiful. We took fewer than ten shots that weekend, but a couple of them were pure magic. That was enough to make me want to keep carrying instant film into the places we were already going.",
+      "What began as a simple experiment grew into a way of documenting life, music, and joy: festivals, nightclubs, trips, friends, and the spontaneous encounters that happen in between. I kept gravitating toward candid slices of life—people radiating happiness, moments unfolding naturally, and scenes I knew I would want to remember later.",
+      "Instant photography became less about getting a perfect photograph and more about keeping a physical trace of the moment. Sometimes I document a whole weekend in sequence. Sometimes I make one quick portrait and hand it to the person in the frame. Either way, the photograph carries a little of the place and the people with it.",
+      "The camera has moved through Night Bass nights, Dr. Fresch pop-ups and performances, SNBRN’s album release party, Coachella, EDC Las Vegas, EDSea, Holy Ship! Wrecked, Life is Beautiful, Lightning in a Bottle, Tomorrowland, and plenty of ordinary days that mattered just as much.",
+      "The old About page used to carry all of that history at once. It eventually became too much for an introduction, but the story itself still belonged somewhere. So it moved here. The About page can say who I am now; this piece can remember where the camera went."
+    ],
+    "date": "October 2026",
+    "kind": "Current essay · Origin story",
+    "section": "canonical",
+    "lineage": "Originally part of the About page · Reframed October 2026"
+  },
+  {
+    "id": "the-evo-still-makes-sense-i-just-dont-use-it",
+    "title": "The Evo Still Makes Sense. I Just Don’t Use It.",
+    "paragraphs": [
+      "When I first wrote about the Instax Evo, I meant it. It solved a real problem for me. Instant film asks you to commit to a camera, film, space in the bag, and every frame you decide to take. The Evo gave me a way to travel lighter, shoot first, and decide later which pictures actually deserved to become prints.",
+      "That mattered on a weekend in Guadalajara when we were traveling for two weddings with almost nothing. A personal item each, no real room for my usual setup. The Evo was a flex for exactly that kind of trip. It let me bring the feeling of instant photography without asking the trip to make room for the whole ritual.",
+      "The funny part is that the opinion survived longer than the habit. I still think the Evo makes sense. I just almost never use it. That does not make the first review fake; it tells me something different about cameras. A camera can solve a problem perfectly and still not become the one your hand reaches for.",
+      "For years, that hand kept reaching for the Mini 11 and then the Mini 12. I loved how little there was to negotiate with. Point it. Shoot it. Wait. Keep moving. I could upgrade the camera without really changing the relationship. The simplicity was not a limitation to me. It was the reason the camera stayed in my life.",
+      "Then I finally started using the Instax Mini 99, after somehow letting the camera I had been waiting for sit outside my routine for way too long. That was the one that made me think: what the hell was I waiting for? It gave me more room to play without taking away the directness I loved. It still felt like instant film first, just with more ways to shape the frame before I committed to it.",
+      "So the Evo still has a place. If I am trying to travel light and want selective printing, I understand exactly why I bought it. But the Mini 99 changed the habit. That distinction matters more to me now than a feature list: the best camera is not always the smartest solution. Sometimes it is the one that makes you want to take another picture."
+    ],
+    "date": "October 2026",
+    "kind": "Current essay",
+    "section": "canonical",
+    "lineage": "First written February 10, 2025 · Revisited October 2026",
     "originalId": "the-instax-evo-a-hybrid-game-changer-for-travel-photography"
   },
   {
@@ -19,44 +51,48 @@ const journalPosts = [
     "title": "A Photograph Can Be a Small Piece of Belonging",
     "paragraphs": [
       "There is a little pause after you hand someone an instant photograph. They look at it, then at you, then back at the picture. Something that was happening a minute ago is now sitting in their hand. I keep coming back to that exchange.",
-      "The earlier campaign post was trying to describe how far that feeling could travel. Artists, music, collectors, little pieces of a larger story. Reading it now, I can hear the excitement. I also want to give the idea some breathing space. A photograph already has a lot to offer before we promise anything around it.",
+      "An earlier version of this idea tried to scale that feeling too quickly. Artists, collectibles, editions, a whole structure around the object. I can still hear the excitement in it. I just understand the order better now. The photograph already has a lot to offer before we build anything around it.",
       "Our Polaroid Wave begins with people and the moments they let us share. A friend after a set. A face in the crowd. Someone laughing before they have composed themselves for the camera. Those frames carry a piece of the atmosphere with them, and the person in the picture deserves a say in where it goes.",
       "I want the work to make room for that care. Ask before taking the photograph. Be clear about how it may be shared. Keep the context with the image. If we make something together, decide together what belongs in the gallery and what belongs with the people who were there.",
-      "There is still a place for collaborations and collections. I can imagine a sequence of prints that tells the story of an evening, or a small edition built around a real creative partnership. Those ideas can grow through the work, with the details agreed when the people and the project are actually in place.",
+      "There is still a place for collaborations and collections. A sequence of prints can tell the story of an evening. A physical photograph can move away from the archive and into somebody else’s life. Those ideas get more interesting when they grow out of something real instead of being promised in advance.",
       "For now, the part I want to hold onto is simple: a picture can help someone feel included in a memory. You were here. You were part of this. Here is a little piece of it to keep. That is a good place for the next idea to begin."
     ],
-    "date": "October 5, 2026",
-    "kind": "Current rewrite",
-    "originalId": "our-polaroid-project-campaign-freezing-time-creating-community"
+    "date": "October 2026",
+    "kind": "Current essay",
+    "section": "canonical",
+    "lineage": "First explored February 7, 2025 · Revisited October 2026"
   },
   {
     "id": "a-tour-remembered-one-frame-at-a-time",
     "title": "A Tour, Remembered One Frame at a Time",
     "paragraphs": [
-      "I still like the idea of following a tour with instant film. A row of photographs, city after city, with the quieter parts of the road mixed in beside the shows. The journey would have its own rhythm when you laid the frames out together.",
-      "The first version of this idea was written with the volume turned up. It imagined a big collection, named artists, and pictured what the finished project might become. This version starts closer to the ground: who is going, what can we carry, and which moments will we have enough trust and time to photograph?",
-      "I would want to see the whole day. The room before anyone arrives. Someone checking a bag. The meal between soundcheck and doors. The familiar face who appears in another city. A show has a lot of life around it, and those small scenes can tell you how it felt to be on the road.",
-      "The photographs would stay in order, with a place and a little context beside them. Where a print is given away, a record of that frame could keep its place in the sequence. The person receiving it becomes part of how the story travels.",
-      "Making something like this would mean agreeing on access, consent, the pace of shooting, and what can be shown. A private moment can stay private. A missed frame can stay missed. The collection should feel like the journey people actually lived, including the gaps.",
-      "This remains a collaboration idea for Our Polaroid Wave. I would love to develop it with someone whose music and way of moving through the world make the connection feel right. Begin with a stretch of road, a camera, and a clear understanding. See what comes back."
+      "The strange thing about this idea is that I already do it. I take instant film into weekends, festivals, trips, parties, and ordinary stretches of life, then come home with a physical timeline. The frames sit next to each other in order and turn a bunch of little decisions into a story I can walk back through later.",
+      "Most of those timelines do not need an audience. They matter because we were there. A friend can recognize the exact point in the night when something changed. A blurry frame can explain the energy better than the clean one beside it. Some photographs stay with us. Some get handed to the person in them and disappear into somebody else’s drawer, wallet, wall, or box of things they decided not to throw away.",
+      "That is why the tour idea still gets me, but not for the reason I first wrote it down. I do not need to invent a new system for an artist. The system already exists. The interesting part is putting it around a person, a tour, or a community whose timeline people already care about and want to feel part of.",
+      "Imagine the same kind of sequence moving city to city. A frame from load-in. A meal before doors. Somebody who keeps appearing in different places. The crowd before a set. The quiet part after. One print goes home with a fan. Another stays with the artist. Another ends up in our archive. The physical collection becomes scattered while the scanned chronology keeps the whole story intact.",
+      "That tension is what makes it feel special to me: physically dispersed, historically whole. Somebody can hold one unique piece without needing to own the entire story. The larger timeline gives that little photograph context, and the little photograph gives the larger timeline a human scale.",
+      "It would still need trust, access, consent, and enough restraint to let private moments stay private. But I no longer think of it as a campaign waiting to happen. It is a way of remembering that already works for us. The opportunity is to let it move through a bigger community and see how much more life that timeline can carry when people genuinely want to be inside it."
     ],
-    "date": "October 5, 2026",
-    "kind": "Current rewrite",
-    "originalId": "our-polaroid-project-on-tour-a-polaroid-collaboration-for-artists-musicians"
+    "date": "October 2026",
+    "kind": "Current essay · Flagship idea",
+    "section": "canonical",
+    "lineage": "First explored February 6, 2025 · Rebuilt October 2026"
   },
   {
     "id": "what-i-want-to-bring-home-from-a-festival",
     "title": "What I Want to Bring Home from a Festival",
     "paragraphs": [
       "A festival leaves you with more memories than you can sort on the way home. A song arrives in the middle of another conversation. Someone finds you in the crowd. The light changes, the set ends, and suddenly you are trying to explain a whole weekend through a handful of pictures.",
-      "The older post listed some of the places where I have brought a camera: Coachella, EDC, Tomorrowland, festivals on the water, and release parties closer to the music itself. Those names tell you where we were. The photographs help me remember who we were with and what we noticed while we were there.",
+      "The older version of this story listed some of the places where I have brought a camera: Coachella, EDC, Tomorrowland, festivals on the water, and release parties closer to the music itself. Those names tell you where we were. The photographs help me remember who we were with and what we noticed while we were there.",
       "I like the way instant film makes me pause. There is a frame to choose and a person to ask. Sometimes the best moment has passed before I lift the camera. Sometimes taking the photograph opens a conversation that becomes its own memory.",
       "I want to come home with a few of those conversations still inside the pictures. The friend who stayed for one more song. The people we kept meeting in different places. The expression on someone’s face when they recognized the music. You can feel the scale of a festival through a very small moment.",
-      "Giving someone their print is part of it. I don’t need every photograph to end up in my collection. Some belong with the person in the frame. Others can find a place in Our Polaroid Wave, carrying enough context to remember the night without pretending to contain all of it.",
+      "Giving someone their print is part of it. I do not need every photograph to end up in my collection. Some belong with the person in the frame. Others can find a place in Our Polaroid Wave, carrying enough context to remember the night without pretending to contain all of it.",
       "That is what I want to bring home: a sequence that takes me back, and a few pictures that have already gone home with someone else. The weekend keeps moving through the people who were there."
     ],
-    "date": "October 5, 2026",
-    "kind": "Current rewrite",
+    "date": "October 2026",
+    "kind": "Current essay",
+    "section": "canonical",
+    "lineage": "First written February 6, 2025 · Revisited October 2026",
     "originalId": "behind-the-lens-capturing-music-festival-magic-on-polaroid"
   },
   {
@@ -65,32 +101,21 @@ const journalPosts = [
     "paragraphs": [
       "Before you throw away the blurry one, look at it again. There may be something in the way the person is moving, or in the light behind them, that the sharper photograph has already lost.",
       "I like photographs that leave a little room for the moment to show through. A face caught halfway into a laugh. A frame tilted because I was moving too. A bright patch where the camera and the room disagreed about the light. You can sometimes feel the evening more clearly in those pictures.",
-      "Keeping an imperfect photograph is still a choice. Some frames don’t tell me much. Others become more interesting beside the pictures around them. The sequence gives the blur a place: we were walking here, we were rushing there, we had just turned toward someone calling our names.",
+      "Keeping an imperfect photograph is still a choice. Some frames do not tell me much. Others become more interesting beside the pictures around them. The sequence gives the blur a place: we were walking here, we were rushing there, we had just turned toward someone calling our names.",
       "That is one reason I like looking through a collection instead of treating every image as a final answer. A quiet frame can sit beside a loud one. A portrait can lead into a place. The pictures start talking to each other, and I remember details I would not have reached through any one of them.",
       "The same thing happens when we make the gallery. We can organize the photographs and make them easier to find. We can change the way a page feels. Choosing which frames carry the memory still takes a person looking at them, remembering, and deciding.",
       "Keep the imperfect one long enough to give it that look. It may turn out to be the photograph you reach for when someone asks what the night was like."
     ],
     "date": "October 5, 2026",
-    "kind": "New in this chapter"
-  },
-  {
-    "id": "our-polaroid-wave-in-this-chapter",
-    "title": "Our Polaroid Wave, in This Chapter",
-    "paragraphs": [
-      "Our Polaroid Project began as a way to gather the photographs and the ideas around them. The collection kept growing. Now it has a name that feels closer to how it moves through the rest of our life: Our Polaroid Wave.",
-      "It has its own space inside OLA HQ, alongside love, cinema, music, and the other worlds taking shape. One home, many worlds. You can follow a photograph into a collection, spend time with the story behind it, and find your way back to the rest of what we are making.",
-      "This chapter is partly about giving work we already made a better home. The six collections stay together. The earlier writing stays here, too. These new pieces sit beside it so I can read the versions, hear what has changed, and choose what I want to carry forward.",
-      "Our process has grown along with the work. We gather the source material, give an idea a shape, try it, look closely, and revise. AI helps with drafts, organization, and building the pages. I bring the memories, make the choices, and decide whether the result sounds and feels like us. Looking at the actual result matters as much as talking about the plan.",
-      "I want that care to be visible without making every visitor learn the process behind the page. The portfolio should open into the photographs. A story should have space to be read. The artwork should be framed well. A link should take you where you expected to go.",
-      "There is more to make, and we can let it take its time. For this chapter, I am happy to have the photographs, the old voice, and the current voice here together. We can look around, keep what matters, and keep going."
-    ],
-    "date": "October 5, 2026",
-    "kind": "New in this chapter"
+    "kind": "Current essay",
+    "section": "canonical"
   },
   {
     "id": "the-instax-evo-a-hybrid-game-changer-for-travel-photography",
     "title": "The Instax Evo: A Hybrid Game Changer for Travel Photography",
     "date": "February 10, 2025",
+    "kind": "From the archive · Old voice",
+    "section": "archive",
     "sourceUrl": "https://jonathan43100.wixsite.com/our-polaroid-project/post/the-instax-evo-a-hybrid-game-changer-for-travel-photography",
     "paragraphs": [
       "Spontaneity and Polaroids don’t always go hand in hand. As much as I love instant film, bringing my Instax everywhere just isn’t practical. Film is expensive, it takes up space, and it requires a level of commitment that doesn’t always fit into light travel. That’s where my new hybrid camera—the Instax Evo—changes everything.",
@@ -103,76 +128,28 @@ const journalPosts = [
       "I’m still learning how to push its strengths and work around its quirks, but that’s part of the fun. Every camera has a personality, and the Evo is like an old-school soul with a modern twist. If anything, it’s making me fall in love with instant photography all over again."
     ],
     "updated": "",
-    "currentId": "a-camera-that-leaves-room-for-the-trip"
-  },
-  {
-    "id": "our-polaroid-project-campaign-freezing-time-creating-community",
-    "title": "Our Polaroid Project Campaign: Freezing Time, Creating Community",
-    "date": "February 7, 2025",
-    "sourceUrl": "https://jonathan43100.wixsite.com/our-polaroid-project/post/our-polaroid-project-campaign-freezing-time-creating-community",
-    "paragraphs": [
-      "There’s something magical about a Polaroid.",
-      "Maybe it’s the way the film develops in your hands—watching colors slowly bleed into life, each shot a one-of-a-kind moment that can never be duplicated. Or maybe it’s the way holding a Polaroid feels different from scrolling past a digital photo—a physical memory frozen in time.",
-      "For years, we’ve seen how powerful collectibles can be. Vinyl records, vintage concert posters, autographed memorabilia—things that last, things that matter. But in a world where everything is instant and digital, those real, tangible moments feel rarer than ever.",
-      "That’s where Our Polaroid Project Campaign comes in.",
-      "We’re capturing raw, unfiltered, once-in-a-lifetime moments with artists, creatives, and visionaries—all on real Polaroid film. No edits. No do-overs. Just a snapshot of time, exactly as it was.",
-      "A Moment in Time, Yours to Keep",
-      "Each project is its own story. A late-night studio session. A chaotic backstage moment. A quiet, reflective second before the lights go on. These aren’t staged press shots or recycled promo images—this is the real stuff, the kind of moments only a handful of people ever get to see.",
-      "🎞 One-of-a-kind Polaroids",
-      "Each campaign has a limited run—a set number of Polaroids, never to be reproduced. Every single one is unique, numbered, and marked with authenticity.",
-      "🔥 Not just a photo—a connection.",
-      "Owning one means more than just having an image—it’s a piece of the story. Some will come with handwritten notes. Some might be signed. Some will unlock exclusive access to things only a few people in the world will ever experience.",
-      "💡 Built for collectors, made for the culture.",
-      "Forget mass-produced merch. These are real artifacts. Some will be sold, some might be auctioned, and some will only be available to those who truly understand the vision.",
-      "It’s Already Happening. Are You In?",
-      "Our Polaroid Project Campaign isn’t an idea we’re hoping to make work—it’s something that’s already in motion. The first artists are coming on board. The first moments are being captured. And soon, the first collectors will hold their own piece of something that can never be duplicated.",
-      "This isn’t about funding. It’s not about hype. It’s about real moments, real memories, and real people—the kind of things you can’t fake.",
-      "If you get it, you get it.",
-      "And if you don’t? Well, you will soon.",
-      "🚀 This is Our moment."
-    ],
-    "updated": "Feb 10, 2025",
-    "currentId": "a-photograph-can-be-a-small-piece-of-belonging"
-  },
-  {
-    "id": "our-polaroid-project-on-tour-a-polaroid-collaboration-for-artists-musicians",
-    "title": "Our Polaroid Project on Tour – A Polaroid Collaboration for Artists & Musicians",
-    "date": "February 6, 2025",
-    "sourceUrl": "https://jonathan43100.wixsite.com/our-polaroid-project/post/our-polaroid-project-on-tour-a-polaroid-collaboration-for-artists-musicians",
-    "paragraphs": [
-      "Imagine an entire tour captured on instant film—each city, each night, each moment frozen in time through Polaroid photography. The excitement, the exhaustion, the laughter, the fans—it’s all documented in a way that digital simply can’t replicate. That’s the vision behind Our Polaroid Project on Tour, a Polaroid-driven campaign that brings together artists and musicians to create a tangible, visual story of their journey.",
-      "This project isn’t just about taking photos—it’s about building a chronological timeline of an entire tour in a way that feels personal, authentic, and completely irreplaceable. Whether you’re an artist like Fred Again.., Dillon Francis, Chris Lake, Fisher, or an emerging name like Ayybo, Tobehonest, or HorsegiirL, this is an opportunity to document the road in a way that has never been done before.",
-      "Each show, city, and moment is captured on Polaroid film—from backstage laughs to the energy of packed crowds.",
-      "Between 200-2000 Polaroids are taken throughout the tour.",
-      "A percentage of Polaroids will be gifted to fans along the road—at meet-and-greets, afterparties, or through social media giveaways.",
-      "All digital versions will be documented in an online chronological gallery showcasing each stop of the tour.",
-      "A final video slideshow will bring the full journey together.",
-      "Authenticity – These images are raw, unfiltered, and impossible to replicate.",
-      "Connection – Every Polaroid gifted to a fan is a unique, one-of-a-kind piece of the tour.",
-      "Memories That Last – A digital gallery is great, but a physical Polaroid in a fan’s hands is unforgettable.",
-      "Let’s document your tour in a way that’s never been done before. Reach out if you’re ready to create something legendary with Our Polaroid Project!"
-    ],
-    "updated": "",
-    "currentId": "a-tour-remembered-one-frame-at-a-time"
+    "currentId": "the-evo-still-makes-sense-i-just-dont-use-it"
   },
   {
     "id": "behind-the-lens-capturing-music-festival-magic-on-polaroid",
     "title": "Behind the Lens – Capturing Music Festival Magic on Polaroid",
     "date": "February 6, 2025",
+    "kind": "From the archive · Old voice",
+    "section": "archive",
     "sourceUrl": "https://jonathan43100.wixsite.com/our-polaroid-project/post/behind-the-lens-capturing-music-festival-magic-on-polaroid",
     "paragraphs": [
       "Music festivals are playgrounds of color, energy, and unfiltered emotion. From the first beat drop to the last sunrise set, there’s an entire universe of moments waiting to be captured. While most people rely on their phones for documentation, I’ve made it my mission to do it differently—with instant film.",
       "Polaroid photography forces you to be intentional. Unlike digital, where you can snap endlessly, each Polaroid is a single, committed decision. It changes the way you view a festival—focusing on moments worth preserving rather than taking dozens of forgettable photos.",
-      "Another reason I love Polaroid at festivals? The community aspect. When you take a photo of someone and hand it to them, it becomes more than a picture—it’s a keepsake, a reminder of that exact moment they were truly alive. I always make sure to share the experience with those around me.",
+      "Another reason I love Polaroid at festivals? The community aspect. When you take a photo of someone and hand it to them, it becomes more than a picture—it’s a keepsake, a reminder of that exact moment they were truly alive. I always make sure to share the experience with those around me.",
       "I’ve been fortunate enough to bring my Polaroid camera to some of the biggest festivals in the world, capturing entire weekends in chronological order. Some of my favorites include:",
-      "Coachella – Sun-drenched landscapes, outlandish fashion, and larger-than-life performances.",
-      "EDC Las Vegas – The neon-lit wonderland, where the bass shakes the ground and the visuals are straight out of a dream.",
-      "Tomorrowland – Pure magic. The scale, the people, the international energy—it’s unmatched.",
-      "EDSea & Holy Ship! Wrecked – Festivals on water. The ocean as a backdrop makes for some of the most surreal Polaroids I’ve ever taken.",
-      "SNBRN’s Album Release Party – A special moment where New World Order (Shaun Frank, SNBRN, Dr. Fresch) performed together again.",
+      "Coachella – Sun-drenched landscapes, outlandish fashion, and larger-than-life performances.",
+      "EDC Las Vegas – The neon-lit wonderland, where the bass shakes the ground and the visuals are straight out of a dream.",
+      "Tomorrowland – Pure magic. The scale, the people, the international energy—it’s unmatched.",
+      "EDSea & Holy Ship! Wrecked – Festivals on water. The ocean as a backdrop makes for some of the most surreal Polaroids I’ve ever taken.",
+      "SNBRN’s Album Release Party – A special moment where New World Order (Shaun Frank, SNBRN, Dr. Fresch) performed together again.",
       "Each of these experiences brought something unique, and through Polaroid, I was able to capture their raw, fleeting magic in a way no other medium can.",
       "Some of my favorite festival Polaroids aren’t even of the biggest headliners or grandest stages—they’re of people in their happiest, most uninhibited states. The laughter of new friends under fireworks. A shared sunset moment with strangers. A DJ mid-set, lost in the music.",
-      "That’s what Our Polaroid Project is about—freezing these emotions in time, making sure they never fade, and sharing the joy of instant photography with the world.",
+      "That’s what Our Polaroid Project is about—freezing these emotions in time, making sure they never fade, and sharing the joy of instant photography with the world.",
       "If you ever see me at a festival, ask for a Polaroid—I’ll gladly take one for you. Who knows? It might just be the one photo that sticks with you forever."
     ],
     "updated": "Feb 7, 2025",
