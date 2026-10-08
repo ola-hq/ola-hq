@@ -152,6 +152,20 @@ if (requested && isAllowed(new URL(requested, ROOT).href)) {
   const world = matchWorld(href);
   if (world) openWorld(world, href, false);
 }
+// Safari Home Screen web apps and installed PWAs should not show "Get the app".
+const installMode = window.matchMedia('(display-mode: standalone)');
+const getAppButton = document.querySelector('#install');
+const isAppWindow = () => installMode.matches || window.navigator.standalone === true;
+const syncInstallPresentation = () => {
+  const installedWindow = isAppWindow();
+  document.documentElement.classList.toggle('is-installed', installedWindow);
+  getAppButton.hidden = installedWindow;
+};
+syncInstallPresentation();
+if (installMode.addEventListener) installMode.addEventListener('change', syncInstallPresentation);
+else if (installMode.addListener) installMode.addListener(syncInstallPresentation);
+window.addEventListener('appinstalled', () => { getAppButton.hidden = true; });
+
 const installDialog = document.querySelector('#install-info');
 const nativeInstall = document.querySelector('#native-install');
 document.querySelector('#install').addEventListener('click', () => installDialog.showModal());
