@@ -11,7 +11,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="../assets/entrances/ola-hq-globe-only-favicon-20261007.png">
   <link rel="icon" href="../assets/entrances/ola-hq-globe-only-favicon-20261007.png">
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=8">
   <script defer src="app.js?v=3"></script>
   <title>OLA HQ · App Prototype 01</title>
 </head>
@@ -32,16 +32,16 @@
           <div class="starfield" aria-hidden="true"></div>
           <div class="hero-content">
             <p class="eyebrow">WELCOME TO OUR WORLD</p>
-            <img class="hero-globe" src="../assets/entrances/ola-hq-floating-hero-20261007.webp" alt="Floating OLA HQ globe artwork" width="1000" height="1000">
+            <a class="hero-globe-link" href="#world-la-ola" aria-label="Jump to the waves"><img class="hero-globe" src="../assets/entrances/ola-hq-floating-hero-20261007.webp" alt="Floating OLA HQ globe artwork" width="1000" height="1000"></a>
             <h1>Our Waves.<br><em>One Home.</em></h1>
             <p class="intro">One wave. Distinct worlds. Follow whatever pulls you in.</p>
-            <a class="enter-hint" href="#worlds" aria-label="Scroll down to the waves"><span aria-hidden="true"><svg class="ui-arrow ui-arrow-down" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 3v14M4 11l6 6 6-6"/></svg></span></a>
+            <a class="enter-hint" href="#world-la-ola" aria-label="Jump to the waves"><span aria-hidden="true"><svg class="ui-arrow ui-arrow-down" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 3v14M4 11l6 6 6-6"/></svg></span></a>
           </div>
         </div>
         <section id="worlds" class="worlds" aria-labelledby="worlds-title">
           <div class="section-head"><p class="eyebrow">CHOOSE YOUR CURRENT</p><h2 id="worlds-title">The Waves</h2><p>Simple to enter. Endless to explore.</p></div>
           <div class="world-grid">
-            <button class="world-card featured" data-world="la-ola" type="button"><img src="../assets/entrances/la-ola-de-amor-entrance-20261008.webp" alt="" loading="lazy"><span class="world-card-copy"><small>LOVE · FESTIVAL · MEMORY</small><strong>La Ola de Amor</strong><span>Step into our story <svg class="ui-arrow ui-arrow-out" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></span></span></button>
+            <button id="world-la-ola" class="world-card featured" data-world="la-ola" type="button"><img src="../assets/entrances/la-ola-de-amor-entrance-20261008.webp" alt="" loading="lazy"><span class="world-card-copy"><small>LOVE · FESTIVAL · MEMORY</small><strong>La Ola de Amor</strong><span>Step into our story <svg class="ui-arrow ui-arrow-out" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></span></span></button>
             <button class="world-card featured" data-world="polaroid" type="button"><img src="../assets/entrances/polaroid-entrance-20261007.webp" alt="" loading="lazy"><span class="world-card-copy"><small>PHOTOGRAPHY · LIFE</small><strong>Polaroid Wave</strong><span>Through our lens <svg class="ui-arrow ui-arrow-out" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></span></span></button>
             <button class="world-card featured" data-world="blockbuster" type="button"><img src="../assets/worlds/blockbuster-banner.png" alt="" loading="lazy"><span class="world-card-copy"><small>FILM · REVIEWS</small><strong>Blockbuster Wave</strong><span>Enter the gallery <svg class="ui-arrow ui-arrow-out" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></span></span></button>
             <button class="world-card" data-world="wave26" type="button"><img src="../assets/entrances/wave-26-entrance-20261007.jpg" alt="" loading="lazy"><span class="world-card-copy"><small>MUSIC · EXPERIMENTS</small><strong>Wave 26</strong><span>Enter the music <svg class="ui-arrow ui-arrow-out" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></span></span></button>
