@@ -107,6 +107,3 @@ html.is-installed #install{display:none!important}
   .hero-content>.eyebrow{margin-bottom:72px}
   .hero-globe-link{margin-bottom:92px}
 }
-
-/* Installed globe fast-travel now lands on the Waves section heading, not the first card. */
-#worlds{scroll-margin-top:calc(77px + env(safe-area-inset-top))}
