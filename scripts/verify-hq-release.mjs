@@ -73,6 +73,19 @@ if(inline){
  }catch(e){failures.push('Marathon unit check: '+e.message)}
 }
 
+
+// October 9 user-approved polish: restore the surprise route, not new trivia.
+requireThat(tools.includes('id="wave-random"') && tools.includes('id="wave-random-result"') && tools.includes('id="wave-random-again"'), 'Random Wave reveal controls are missing');
+requireThat(toolsJS.includes('function revealRandomWave(') && toolsJS.includes("randomWorldKeys=Object.keys(worldCatalog)"), 'Random Wave logic is missing');
+requireThat(tools.includes('<h3>Find Your Current</h3>') && !tools.includes('<h3>Creative Starting Points</h3>'), 'Grounding tool title has regressed');
+requireThat(tools.includes('id="letterboxd-sync-state"'), 'Letterboxd RSS sync status is not visible');
+requireThat(toolsJS.includes("letterboxdSyncURL='data/letterboxd-recent.json'") && toolsJS.includes('loadLetterboxdDiarySync()'), 'Public Letterboxd diary reader not wired');
+requireThat(toolsJS.includes("not the complete all-time library") && toolsJS.includes('letterboxdRecords()'), 'Letterboxd limited-feed honesty or aggregation lost');
+const pagesWorkflow=readFileSync('.github/workflows/pages.yml','utf8');
+requireThat(pagesWorkflow.includes("python3 scripts/sync-letterboxd.py --self-test") && pagesWorkflow.includes("python3 scripts/sync-letterboxd.py") && pagesWorkflow.includes('schedule:'), 'Recurring Letterboxd RSS sync missing from Pages build');
+const rssScript=readFileSync('scripts/sync-letterboxd.py','utf8');
+requireThat(rssScript.includes('ACCOUNT="ourpolaroidproj"') && rssScript.includes('recent_public_diary_entries_not_complete_library') && rssScript.includes('status="ok"'), 'Letterboxd public RSS sync script is missing or no longer honest about scope');
+
 if (failures.length) {
   console.error('OLA HQ PUBLIC RELEASE CHECK FAILED:\n' + failures.map(x => ' - ' + x).join('\n'));
   process.exit(1);
