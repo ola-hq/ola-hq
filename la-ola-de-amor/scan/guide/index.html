@@ -5,7 +5,7 @@
 <meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#071d38">
 <meta name="description" content="Festival Guide · Bri + Jon · La Ola de Amor · Guadalajara">
 <link rel="manifest" href="../manifest.webmanifest"><link rel="icon" href="../../assets/heart-transparent.png"><link rel="apple-touch-icon" href="../../assets/heart-transparent.png">
-<link rel="stylesheet" href="guide.css"><script src="festival-updates.js" defer></script><script src="guide.js" defer></script>
+<link rel="stylesheet" href="guide.css"><link rel="stylesheet" href="la-platica.css"><script src="festival-updates.js" defer></script><script src="guide.js" defer></script><script src="la-platica.js" defer></script>
 <title>Festival Guide · La Ola de Amor</title>
 </head>
 <body>
@@ -62,6 +62,32 @@
 <section id="updates" class="panel" hidden aria-labelledby="updates-title">
   <div class="section-intro updates-intro"><p class="eyebrow" data-i18n="updatesEyebrow">THE LATEST FROM LA OLA</p><h2 id="updates-title" data-i18n="updatesTitle">Festival Updates</h2><p data-i18n="updatesIntro">A place to check the latest plans before you join the wave.</p><p class="edition-note" data-i18n="updatesEdition">October 8 edition · Offline, you see your saved edition. Reconnect and update the guide for newer announcements.</p></div>
   <ol class="updates-feed" id="updates-feed"></ol>
+  <section class="platica" aria-labelledby="platica-title">
+    <div class="platica-flags" aria-hidden="true"><span>✺</span><span>♥</span><span>✽</span><span>≈</span><span>✺</span><span>♥</span><span>✽</span></div>
+    <div class="platica-head">
+      <p class="platica-overline">LA OLA DE AMOR · THE GUESTBOOK</p>
+      <h3 id="platica-title"><span>La Plática</span></h3>
+      <div class="platica-stack" aria-label="Bri and Jon. Our People. Our Festival."><strong>BRI + JON</strong><strong>OUR PEOPLE</strong><strong>OUR FESTIVAL</strong></div>
+      <p class="platica-subtitle" data-platica-copy="intro">Una mesita para nuestras palabras, nuestros abrazos, nuestra gente.</p>
+    </div>
+    <div class="platica-guestbook">
+      <div class="platica-feed-head"><h4 data-platica-copy="wallTitle">Notes from our people</h4><p data-platica-copy="wallNote">Your words live here, together.</p></div>
+      <p class="platica-feedback" id="platica-load-status" role="status" aria-live="polite"></p>
+      <ol id="platica-messages" class="platica-messages" aria-label="Guest messages"></ol>
+      <form id="platica-form" class="platica-form">
+        <h4 data-platica-copy="writeTitle">Leave a little love</h4>
+        <label for="platica-name" data-platica-copy="nameLabel">Your name</label>
+        <input id="platica-name" name="name" required minlength="2" maxlength="48" autocomplete="name" placeholder="Tu nombre">
+        <label for="platica-message" data-platica-copy="messageLabel">Your message</label>
+        <textarea id="platica-message" name="message" required maxlength="500" rows="4" placeholder="Un saludo, un recuerdo, un poco de amor..."></textarea>
+        <input class="platica-honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="platica-form-foot"><span id="platica-count" aria-live="off">0 / 500</span><button id="platica-submit" type="submit" data-platica-copy="send">Send a little love ♥</button></div>
+        <p id="platica-form-status" class="platica-feedback" role="status" aria-live="polite"></p>
+      </form>
+      <p class="platica-guideline" data-platica-copy="guideline">Kind words only. Messages appear for everyone after you post; the hosts may remove anything inappropriate.</p>
+    </div>
+    <div class="platica-end" aria-hidden="true">≈ ♥ ≈</div>
+  </section>
   <aside class="all-day guest-connections"><p class="eyebrow" data-i18n="guestConnectionsEyebrow">KEEP THE WAVE TOGETHER</p><h3 data-i18n="guestConnectionsTitle">Photos &amp; conversations</h3><p data-i18n="guestConnectionsBody">The wedding’s existing guest links, also available on Linkie.</p><div class="guest-links"><a class="ribbon" href="https://photos.app.goo.gl/kJ8Z6H8yZbG11K7o6" target="_blank" rel="noopener noreferrer" data-i18n="guestPhotos">Google Photos collection ↗</a><a class="text-button" href="https://linkie.to/laoladeamor" target="_blank" rel="noopener noreferrer" data-i18n="guestWhatsApp">WhatsApp group via Linkie ↗</a></div><p class="small-note" data-i18n="guestPhotosNote">Google sign-in is needed to contribute photos. Contributions depend on the album’s settings. External links need internet.</p></aside>
   <div class="section-intro"><a class="ribbon" href="#tornaboda" data-i18n="viewDayTwo">Explore Day 2 →</a><br><a class="text-button" href="#today" data-i18n="returnFriday">Return to Friday’s festival →</a></div>
 </section>
@@ -72,7 +98,7 @@
 </div>
 <footer><p class="closing" data-i18n="closing">EAT · DANCE · LAUGH · LOVE · ENJOY</p><a href="../../#/chapter/guadalajara" data-i18n="backLaOla">← La Ola de Amor</a><a href="../../../">OLA HQ ↑</a><a href="https://linkie.to/laoladeamor" target="_blank" rel="noopener noreferrer" data-i18n="linkieLabel">Linkie · Wedding Home ↗</a><a href="https://www.zola.com/wedding/brianna-and-jonathan" target="_blank" rel="noopener noreferrer" data-i18n="weddingDetails">Wedding Details + RSVP ↗</a><button class="text-button" data-open="ride" data-i18n="rideFooter">How to ride La Ola</button><p class="offline-note" data-i18n="offlineNote">El modo sin conexión guarda esta guía en tu dispositivo. Los sitios externos necesitan internet.</p></footer>
 </main>
-<nav class="bottomnav" aria-label="Guide sections"><a href="#today" aria-current="page"><span aria-hidden="true">◷</span><b data-i18n="navToday">Today</b></a><a href="#music"><span aria-hidden="true">♫</span><b data-i18n="navMusic">Music</b></a><a href="#plaza"><span aria-hidden="true">⌂</span><b>Plaza</b></a><a href="#food"><span aria-hidden="true">✦</span><b data-i18n="navFood">Food</b></a></nav>
+<nav class="bottomnav" aria-label="Guide sections"><a href="#today" aria-current="page"><span aria-hidden="true">◷</span><b data-i18n="navToday">Today</b></a><a href="#music"><span aria-hidden="true">♫</span><b data-i18n="navMusic">Music</b></a><a href="#plaza"><span aria-hidden="true">⌂</span><b>Plaza</b></a><a href="#food"><span aria-hidden="true">✦</span><b data-i18n="navFood">Food</b></a><a class="updates-nav-tab" href="#updates"><span aria-hidden="true">✉</span><b data-i18n="updatesTitle">Updates</b><i class="updates-nav-dot" aria-hidden="true"></i></a></nav>
 <dialog id="detail" aria-labelledby="detail-title"><div class="dialog-top"><p id="detail-kicker" class="eyebrow"></p><button id="close-detail" aria-label="Close detail">×</button></div><h2 id="detail-title"></h2><div id="detail-body"></div></dialog>
 <noscript><p>Para las fichas y el mapa interactivo, activa JavaScript. / For interactive cards and the map, enable JavaScript. <a href="art/page-04.webp">Horario · Timeline</a> · <a href="art/page-05.webp">Mapa · Map</a> · <a href="art/page-07.webp">Artistas · Artists</a> · <a href="art/page-12.webp">Comida · Food</a></p></noscript>
 </body></html>
