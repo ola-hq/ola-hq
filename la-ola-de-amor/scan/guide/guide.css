@@ -308,3 +308,326 @@ dialog .legacy-detail .legacy-visual-title{font-size:clamp(24px,6vw,36px);top:10
  #tornaboda .after-five::after{height:42px;background-size:42px 42px}
  #tornaboda .saturday-activities h3{font-size:clamp(25px,7vw,34px)}
 }
+
+
+/* DAY 1 FESTIVAL — LOWER-SECTION POLISH / REVIEW ONLY — 2026-10-09 */
+/* Uses existing approved wedding tile art and Festival Guide paper/navy/gold.
+   Scope: Friday Today/Music/Food and compact Updates cards. Plaza and Saturday untouched. */
+#today,#music,#food{
+ --day1-blue:#26569b;--day1-deep:#143967;--day1-cream:#fffdf5;
+}
+#today .timeline{
+ position:relative;isolation:isolate;
+ margin:14px 24px 36px;
+ padding:8px 48px 12px;
+ border:2px solid #26569b;
+ background:linear-gradient(150deg,#fffdfa 0%,#f3f6fa 55%,#fff8e9 100%);
+ box-shadow:0 0 0 4px #fffdf5,0 0 0 6px #26569b,0 12px 24px #071d3812;
+}
+#today .timeline::before,#today .timeline::after{
+ content:"";position:absolute;top:0;bottom:0;width:26px;pointer-events:none;
+ background:url('../../assets/tile.svg') center top / 26px 26px repeat-y #f6f2e8;
+ border-inline:1px solid #26569b;z-index:0;
+}
+#today .timeline::before{left:0}
+#today .timeline::after{right:0}
+#today .timeline li{position:relative;z-index:1;border-bottom:1px solid #d0b77e}
+#today .timeline li:last-child{border-bottom:0}
+#today .timeline li button:hover{background:#eaf2fa66}
+#today .timeline li button:focus-visible{outline:3px solid #167eac;outline-offset:2px}
+#today .all-day,#music .all-day{
+ position:relative;isolation:isolate;overflow:hidden;
+ margin:34px 24px;padding:67px 24px 60px;
+ background:linear-gradient(135deg,#fffdf5,#eaf2fb);
+ border:2px solid #143967;
+ box-shadow:0 0 0 4px #fffdf5,0 0 0 6px #26569b,0 12px 24px #071d3814;
+}
+#today .all-day::before,#today .all-day::after,
+#music .all-day::before,#music .all-day::after{
+ content:"";position:absolute;left:0;right:0;height:42px;pointer-events:none;
+ background:url('../../assets/tile.svg') center / 42px 42px repeat-x #f6f2e8;
+ border-block:1px solid #26569b;
+}
+#today .all-day::before,#music .all-day::before{top:0}
+#today .all-day::after,#music .all-day::after{bottom:0}
+#today .all-day h3,#music .all-day h3{
+ font:700 clamp(23px,3.3vw,33px)/1.2 Georgia,var(--serif);
+ color:#143967;
+}
+#today .all-day p,#music .all-day p{line-height:1.65;color:#344f64}
+#today .all-day .ribbon{
+ display:inline-flex;align-items:center;justify-content:center;min-height:46px;
+ margin:16px auto 0;border:1px solid #b5842f;box-shadow:3px 3px 0 #b5842f;
+}
+
+/* Make the existing album-world button read like an invitation, not a plain footer. */
+#music .album-banner{
+ position:relative;isolation:isolate;display:grid;justify-items:start;
+ gap:12px;
+ margin:37px 24px 34px;width:calc(100% - 48px);
+ min-height:228px;padding:76px 34px 40px;
+ text-align:left;border:2px solid #c6a052;border-radius:4px;
+ background:radial-gradient(circle at 90% 60%,#2a638d 0%,#102f56 48%,#071d38 100%);
+ box-shadow:0 0 0 4px #fffaf0,0 0 0 6px #26569b,0 15px 30px #071d3838;
+ color:#fffaf0;overflow:hidden;cursor:pointer;
+ transition:transform .18s ease,box-shadow .18s ease;
+}
+#music .album-banner::before{
+ content:"";position:absolute;left:0;right:0;top:0;height:42px;
+ background:url('../../assets/tile.svg') center / 42px 42px repeat-x #f6f2e8;
+ border-bottom:2px solid #b5842f;
+}
+#music .album-banner::after{
+ content:"♪";position:absolute;right:30px;top:91px;bottom:auto;
+ font:normal clamp(65px,12vw,130px)/1 Georgia,serif;
+ transform:rotate(-15deg);
+ color:#fff4cc22;pointer-events:none;
+}
+#music .album-banner-kicker{
+ position:relative;z-index:1;
+ font-size:11px;font-weight:800;letter-spacing:.17em;color:#f5d58d;
+}
+#music .album-banner strong{
+ position:relative;z-index:1;max-width:80%;
+ font:700 clamp(33px,5vw,54px)/1.08 Georgia,var(--serif);
+ letter-spacing:-.045em;color:#fffaf0;
+}
+#music .album-banner-cta{
+ position:relative;z-index:1;
+ display:inline-flex;align-items:center;justify-content:center;gap:9px;
+ min-height:48px;padding:12px 20px;margin-top:9px;
+ font-size:14px;font-weight:800;line-height:1.3;letter-spacing:.02em;
+ background:#f2cc7e;color:#112e50;border:2px solid #fff2d9;
+ border-radius:3px;box-shadow:4px 4px 0 #071d38;
+}
+#music .album-banner:hover,#music .album-banner:focus-visible{
+ transform:translateY(-3px);
+ box-shadow:0 0 0 4px #fffaf0,0 0 0 6px #26569b,0 20px 38px #071d3850;
+}
+#music .album-banner:hover .album-banner-cta,#music .album-banner:focus-visible .album-banner-cta{background:#fff0bc}
+#music .album-banner:focus-visible{outline:4px solid #1594b9;outline-offset:7px}
+
+/* Six food waves: one deliberate aligned grid, not six loose pills at the bottom. */
+#food>.section-intro:has(+ .food-waves){
+ margin:32px 24px 0;padding:64px 24px 22px;
+ position:relative;
+ background:linear-gradient(140deg,#fffdf7,#edf4fb);
+ border:2px solid #26569b;border-bottom:0;
+}
+#food>.section-intro:has(+ .food-waves)::before{
+ content:"";position:absolute;top:0;left:0;right:0;height:42px;
+ background:url('../../assets/tile.svg') center / 42px 42px repeat-x #f6f2e8;
+ border-bottom:1px solid #26569b;
+}
+#food>.section-intro:has(+ .food-waves) h3{
+ font:700 clamp(25px,3.5vw,37px)/1.1 Georgia,var(--serif);
+ color:#143967;margin:0;
+}
+#food>.section-intro:has(+ .food-waves) p{color:#4b6074}
+#food .food-waves{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:13px;margin:0 24px 36px;padding:19px 22px 58px;
+ position:relative;isolation:isolate;
+ border:2px solid #26569b;border-top:0;
+ background:linear-gradient(140deg,#fffdf7,#edf4fb);
+ box-shadow:0 6px 0 #d9b876,0 13px 28px #071d3815;
+}
+#food .food-waves::after{
+ content:"";position:absolute;left:0;right:0;bottom:0;height:38px;
+ background:url('../../assets/tile.svg') center / 38px 38px repeat-x #f6f2e8;
+ border-top:1px solid #26569b;pointer-events:none;
+}
+#food .food-waves a{
+ min-width:0;min-height:128px;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+ padding:18px 11px;text-align:center;
+ text-decoration:none;border:1px solid #c9ac71;border-radius:3px;
+ background:#fffaf0;box-shadow:0 3px 0 #d6c19d;
+ color:#143967;transition:transform .15s ease,background .15s ease;
+}
+#food .food-waves b{
+ display:block;margin:0;font:700 clamp(22px,3vw,29px)/1.1 Georgia,var(--serif);
+ color:#143967;
+}
+#food .food-waves span{margin:0;font-size:12px;line-height:1.45;overflow-wrap:anywhere}
+#food .food-waves a:hover,#food .food-waves a:focus-visible{background:#e5effb;transform:translateY(-2px);border-color:#26569b}
+#food .food-waves a:focus-visible{outline:3px solid #1594b9;outline-offset:3px}
+
+/* Actual festival-news behavior: compact announcement header opens existing accessible details dialog. */
+#updates .updates-feed{gap:12px}
+#updates .update-card{
+ padding:16px 20px;gap:6px;border-left:4px solid #26569b;border-radius:3px;
+ background:#fffdf6;min-height:96px;
+}
+#updates .update-card>strong{font-size:clamp(19px,2.4vw,24px);line-height:1.2}
+#updates .update-meta{gap:7px}
+#updates .update-card-cta{justify-self:start;color:#214e86;text-underline-offset:4px;margin-top:3px}
+#updates .update-card:hover{background:#eef4fc}
+#updates .update-card:focus-visible{outline:3px solid #1594b9;outline-offset:3px}
+#updates .update-audience{display:none}
+#updates .update-card .new-update{justify-self:start}
+
+/* The closing sign-off is a centered, symmetrical ribbon, not an oversized stray wave. */
+body:has(#today:not([hidden])) footer .closing,
+body:has(#music:not([hidden])) footer .closing,
+body:has(#food:not([hidden])) footer .closing{
+ display:block;max-width:590px;margin:0 auto 19px;padding:13px 18px;
+ text-align:center;line-height:1.6;font-size:clamp(12px,2vw,15px);letter-spacing:.11em;
+ color:#143967;background:#f6f2e8;
+ border-block:2px solid #26569b;
+}
+body:has(#today:not([hidden])) footer .closing::before,
+body:has(#today:not([hidden])) footer .closing::after,
+body:has(#music:not([hidden])) footer .closing::before,
+body:has(#music:not([hidden])) footer .closing::after,
+body:has(#food:not([hidden])) footer .closing::before,
+body:has(#food:not([hidden])) footer .closing::after{
+ content:"❧";display:inline-block;color:#b5842f;margin:0 12px;font-size:20px;vertical-align:middle;
+}
+@media(max-width:650px){
+ #today .timeline{margin:10px 16px 29px;padding:5px 23px 8px}
+ #today .timeline::before,#today .timeline::after{width:14px;background-size:14px 14px}
+ #today .timeline button{gap:8px;grid-template-columns:57px 40px minmax(0,1fr) 10px}
+ #today .timeline img{width:40px}
+ #today .timeline time{font-size:14px}
+ #today .timeline strong{font-size:clamp(16px,4.3vw,20px)}
+ #today .all-day,#music .all-day{margin:27px 18px;padding:59px 17px 55px}
+ #today .all-day::before,#today .all-day::after,
+ #music .all-day::before,#music .all-day::after{height:37px;background-size:37px 37px}
+ #music .album-banner{width:calc(100% - 36px);margin:31px 18px;padding:70px 20px 29px;min-height:216px}
+ #music .album-banner::before{height:36px;background-size:36px 36px}
+ #music .album-banner strong{max-width:95%;font-size:clamp(31px,9vw,45px)}
+ #music .album-banner::after{right:9px;top:92px;font-size:75px}
+ #music .album-banner-cta{font-size:13px;padding:11px 16px}
+ #food>.section-intro:has(+ .food-waves){margin:23px 16px 0;padding:57px 14px 18px}
+ #food>.section-intro:has(+ .food-waves)::before{height:36px;background-size:36px 36px}
+ #food .food-waves{margin:0 16px 29px;gap:10px;padding:13px 12px 52px;grid-template-columns:repeat(2,minmax(0,1fr))}
+ #food .food-waves a{min-height:116px;padding:13px 9px}
+ #food .food-waves b{font-size:clamp(22px,6vw,27px)}
+ #food .food-waves::after{height:34px;background-size:34px 34px}
+ #updates .update-card{padding:14px 16px;min-height:88px}
+ body:has(#today:not([hidden])) footer .closing,
+ body:has(#music:not([hidden])) footer .closing,
+ body:has(#food:not([hidden])) footer .closing{font-size:12px;letter-spacing:.035em;padding:10px 6px}
+ body:has(#today:not([hidden])) footer .closing::before,
+ body:has(#today:not([hidden])) footer .closing::after,
+ body:has(#music:not([hidden])) footer .closing::before,
+ body:has(#music:not([hidden])) footer .closing::after,
+ body:has(#food:not([hidden])) footer .closing::before,
+ body:has(#food:not([hidden])) footer .closing::after{margin:0 4px;font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){
+ #music .album-banner,#food .food-waves a{transition:none}
+ #music .album-banner:hover,#food .food-waves a:hover{transform:none}
+}
+
+
+/* FINAL FESTIVAL GUIDE POLISH: readable Talavera + continuous footer navigation. */
+/* Keep the accessible La Plaza heading but avoid repeating art's visible title. */
+#plaza .visually-hidden{
+ position:absolute!important;inline-size:1px!important;block-size:1px!important;
+ margin:-1px!important;padding:0!important;border:0!important;overflow:hidden!important;
+ clip:rect(0,0,0,0)!important;white-space:nowrap!important;clip-path:inset(50%)!important;
+}
+/* Saturday: reserve a real bottom safe area for the decorative band.
+   Covers the exact text/border collision shown in the desktop screenshot. */
+#tornaboda .saturday-activities{
+ padding-top:76px;
+ padding-bottom:112px;
+ display:flow-root;
+}
+#tornaboda .after-five{
+ padding-top:79px;
+ padding-bottom:112px;
+ display:flow-root;
+}
+#tornaboda .day-two-details .weekend-note{padding-bottom:76px}
+#tornaboda .saturday-activities::after,
+#tornaboda .after-five::after,
+#tornaboda .day-two-details .weekend-note::after{z-index:0}
+#tornaboda .saturday-activities>*,
+#tornaboda .after-five>*,
+#tornaboda .day-two-details .weekend-note>*{position:relative;z-index:1}
+#tornaboda .saturday-activities>p:last-child,
+#tornaboda .after-five>p:last-child{
+ margin:20px auto 0;
+ max-width:680px;
+ line-height:1.65;
+ clear:both;
+}
+#tornaboda .saturday-activities .activity-chips{margin:26px 0 25px}
+#tornaboda .after-five h3{margin:16px auto 20px;line-height:1.15}
+/* One bottom navigation rail per panel, with a coherent next invitation. */
+#today .section-next,
+#music .section-next,
+#plaza .section-next,
+#food .section-next,
+#updates .section-next,
+#tornaboda .section-next{
+ position:relative;
+ display:flex;
+ flex-wrap:wrap;
+ align-items:center;
+ justify-content:center;
+ gap:12px;
+ margin:34px 24px 30px;
+ padding:53px 18px 24px;
+ background:linear-gradient(160deg,#fffdf6,#edf3fb);
+ border:2px solid #26569b;
+ box-shadow:0 5px 0 #dfc48d,0 11px 22px rgba(7,29,56,.1);
+}
+#today .section-next::before,
+#music .section-next::before,
+#plaza .section-next::before,
+#food .section-next::before,
+#updates .section-next::before,
+#tornaboda .section-next::before{
+ content:"";height:32px;position:absolute;inset:0 0 auto;
+ background:url('../../assets/tile.svg') center / 32px 32px repeat-x #f6f2e8;
+ border-bottom:1px solid #26569b;pointer-events:none;
+}
+#today .section-next .ribbon,
+#music .section-next .ribbon,
+#plaza .section-next .ribbon,
+#food .section-next .ribbon,
+#updates .section-next .ribbon,
+#tornaboda .section-next .ribbon{
+ margin:0;
+ min-height:49px;
+ max-width:100%;
+ border-color:#bd9d59;
+ white-space:normal;
+ text-align:center;
+ text-wrap:balance;
+}
+#today .section-next .ribbon:hover,
+#music .section-next .ribbon:hover,
+#plaza .section-next .ribbon:hover,
+#food .section-next .ribbon:hover,
+#updates .section-next .ribbon:hover,
+#tornaboda .section-next .ribbon:hover{background:#28518a}
+#updates .section-next .secondary-ribbon,
+#tornaboda .section-next .secondary-ribbon{
+ color:#143967;background:#fffdf6;border:1px solid #26569b;
+}
+#updates .section-next .secondary-ribbon:hover,
+#tornaboda .section-next .secondary-ribbon:hover{background:#e5effb}
+#today .section-next a:focus-visible,
+#music .section-next a:focus-visible,
+#plaza .section-next a:focus-visible,
+#food .section-next a:focus-visible,
+#updates .section-next a:focus-visible,
+#tornaboda .section-next a:focus-visible{outline:3px solid #1585b6;outline-offset:4px}
+@media(max-width:650px){
+ #tornaboda .saturday-activities{padding-top:71px;padding-bottom:103px}
+ #tornaboda .after-five{padding-top:74px;padding-bottom:101px}
+ #tornaboda .day-two-details .weekend-note{padding-bottom:72px}
+ #today .section-next,#music .section-next,#plaza .section-next,
+ #food .section-next,#updates .section-next,#tornaboda .section-next{
+   margin:28px 18px 26px;padding:49px 12px 19px;gap:10px;
+ }
+ #today .section-next .ribbon,#music .section-next .ribbon,#plaza .section-next .ribbon,
+ #food .section-next .ribbon,#updates .section-next .ribbon,#tornaboda .section-next .ribbon{
+  width:100%;font-size:13px;min-height:46px;
+ }
+}
