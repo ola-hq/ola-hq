@@ -1,25 +1,37 @@
-# La Ola de Amor — Tornaboda Talavera Recovery (isolated review)
+# La Ola de Amor — Tornaboda Talavera + Interactive Map — Recovery Review
 
-**Status:** PARTIAL IMPLEMENTATION; NOT MERGED OR DEPLOYED.
-**Branch:** `review/tornaboda-talavera-recovery-20261009` (on public-source GitHub repository; branch contents are visible, but Pages production is unchanged).
-**Recovery source:** live two-day Festival Guide on `main`, with existing original artwork, wordmark and `la-ola-de-amor/assets/tile.svg`.
-**Business-account interrupted worker:** private `work/talavera` prototype, worker reported 10 location dots and matching directory plus some tests; unpublished/untransferred source and coordinates have NOT been recovered.
+**Status:** IMPLEMENTED AS AN ISOLATED GITHUB REVIEW CANDIDATE. **NOT MERGED OR DEPLOYED.** Browser-integration and real-device release QA remain open.
+**GitHub branch:** `review/tornaboda-talavera-recovery-20261009` (public-source branch, visible to people who can view the public repo; does NOT change the deployed site).
+**Starting baseline:** existing approved two-day Festival Guide from public `main`; printed QR destination unchanged.
 
-## Implemented in this branch
-- Existing Saturday map illustration stays inline, and its image button remains the enlargement trigger. The extra visible caption is visually hidden, but kept screen-reader accessible in both languages.
-- Saturday-only Talavera framing uses the actual existing navy/blue/cream/gold brand tile. Friday's structural HTML is untouched.
-- Accessible Saturday-only enlarged map zoom controls (+ / − / reset) and a keyboard-focusable scroll region; preserve existing dialog focus/ESC.
-- Previously approved Today text #012 is reconciled in English and Spanish. Do **not** remove older official Friday game-area identities/maps indiscriminately.
-- New source: `la-ola-de-amor/scan/guide/guide.css`, `guide.js` only. No change to `index.html`, original PNG, Friday map, festival-updates.js, printed QR path, or service worker.
+## Major recovery breakthrough — original illustrated map verified
 
-## Verification performed
-13/13 isolated source/invariant checks passed: JavaScript parse; code scaffolding for zoom/accessibility; original map preserved; #012 English/Spanish; existing Friday map record still present; authored original tile usage; only two changed files versus `main`; no production merge/push.
-These are NOT full browser end-to-end QA, NOT physical iPhone QA, and NOT offline/privacy test results. CSS visual polish is a candidate until inspected in a real browser.
+The native Library image **La Tornaboda: Fiesta Garden Map.png** is 1086×1448 and has **Git blob hash `b789b100508d93c9b9ad429760dd44dc0b134e53`**, exactly matching the current published `la-ola-de-amor/scan/guide/art/tornaboda-map-corrected-draft.png` blob in GitHub. Therefore no stand-in map was used; the source image underlying the website is independently recovered. This is a byte-for-byte proof, not just an artwork resemblance.
 
-## Critical remaining work / release blockers
-1. Locate the original private `work/talavera` project or complete `TORNABODA_EMERGENCY_RECOVERY.txt`; it contains the workers' source-checked 10-marker layout. This file was not available from connected Google Drive or GitHub when checked. Do not fabricate point coordinates, mistake racquetball direction arrow for an actual court pin, or mistake the illustrated fountain for the swimming pool.
-2. Restore ten precise on-artwork interactive hotspot dots AND paired accessible directory cards in the enlarged Saturday map from actual documented anchors. Recheck right-edge marker visibility and scrollbars.
-3. Review real Talavera desktop/mobile visuals and before/after screenshots. Finish Spanish (360/400/1440px), English width checks, keyboard/focus/zoom, offline/service worker cache revision and privacy checks.
-4. Reconcile other concurrent website review changes before final release. Approve merge/publish only after Jon visually reviews.
+The interrupted Business worker’s private `work/talavera` code and coordinates were NOT retrieved, but the equivalent ten marker placements were recreated by locating each icon/feature directly on this now-verified exact artwork. It would be inaccurate to call them an exact copy of the interrupted worker's coordinates.
 
-**Never present this partial branch as the final 10-marker prototype. Never merge or publish without explicit approval.**
+## Current implementation (review branch only)
+
+- **Saturday-only Talavera identity:** canonical pre-existing `la-ola-de-amor/assets/tile.svg` blue/white decorative borders, cream/navy/gold framing, typography hierarchy; Friday visual HTML unchanged.
+- **Inline map:** original corrected artwork remains in the page as a tappable button. The redundant visible “Open the Saturday map” caption is hidden visually but preserved as a screen-reader label. No markers intrude on the default inline artwork.
+- **Interactive map viewer:** same exact image with ten numbered selectable markers and below-map directory. Marker selection and directory selection stay synchronized. Scrollable zoom (+, −, reset) and keyboard-accessible controls; number and descriptions in English and Spanish.
+- **Ten real visual anchors:** Inflagol, Taquería, central fountain (NOT a pool), Casa Sol, garden tables, garden lounge chairs, Baños, Súper Farmacia Domingo, Camino de Entrada, and right-pointing racquetball direction arrow (NOT a court pin). These are **illustrated references**, never confirmations of operational vendors, available facilities, access or safety routes.
+- **Approved #012 copy reconciliation:** removed unsupported “Fair games” / “Juegos de feria” from the Today overview's experiences line; preserved historical official map/identity records elsewhere.
+- **Offline preflight:** advanced `la-ola-de-amor/scan/sw.js` cache revision and included the existing `../assets/tile.svg` resource; no printed QR/URL changes; no privacy rule or content permission change.
+
+## Verification receipts
+
+- 15/15 source-level/invariant checks passed on the 10-marker branch before cache update: valid JavaScript parse, ten unique markers within artwork dimensions, matching registry and directory, both languages, source SHA, preserved inline map, Friday content and branch isolation.
+- Headless Chromium **isolated QA fixture** using the exact recovered 1086×1448 image: at **1440, 400, and 360 px**, ten dots and directory rendered, both direction selections worked, zoom/reset, Escape and return focus, Spanish text, and zero JS page errors passed.
+- Additional physical browser click test: **10/10 on-image dots were clickable at each of 360, 400, and 1440 px**, including far-right racquetball marker. This specifically addresses prior overflow/scrollbar blocking.
+- The isolated preview and screenshots are **not the full live Festival Guide runtime**. Full guide-integrated browser QA, the service worker’s actual offline replay, privacy checks, iPhone Safari pinch zoom, and final Talavera visual user approval have NOT been completed. Do not call them passed based on this fixture.
+
+## Outstanding before release
+
+1. Review the real staged visual candidate against the user-approved appearance. QA fixture: `/mnt/data/tornaboda-review/Tornaboda_Talavera_Interactive_Review.html` (self-contained), with desktop/mobile screenshots in that generated artifact directory. The fixture is a *visual and interaction companion*; GitHub branch is authoritative code.
+2. Run full integrated EN/ES browser QA and iPhone Safari check, especially opening/closing the real hash-route dialog, the complete scrollable ten-marker map, zoom/focus, mobile width and legend, current Friday content, URL/QR, and all four tabs' top Updates shortcut.
+3. Test actual PWA install/update/offline cache behavior with the new version and tile asset, and all privacy exclusions.
+4. Confirm no conflicting OLA HQ website correction changes were overwritten. Compare to active `main` and worker branch before integration.
+5. Show source-backed 10-spot overlay and Talavera before/after to Jonathan. **Explicit approval is required before any merge or deploy.**
+
+The prior Business worker's original private prototype may still be a useful comparison if it resurfaces, but **is not required to rebuild the released Guide**; this review branch already uses the exact published map artwork and a documented, reconstructable hotspot registry.
