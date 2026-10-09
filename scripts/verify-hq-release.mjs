@@ -92,9 +92,9 @@ requireThat(rssScript.includes('ACCOUNT="ourpolaroidproj"') && rssScript.include
 // Strict Last 30 Days contract: use any rated film with a verified recent watch date;
 // never populate with an older movie, even when no recent film exists.
 requireThat(tools.includes('Overall: 4★+ · Last 30 days: any rating.'), 'The movie shelf must distinguish overall threshold and all-rated recent view');
-requireThat(toolsJS.includes('const recent=movieRanking(records.filter(f=>within30(f.watchedDate)),0.5);'), 'Recent Letterboxd filter must include sub-4-star films');
+requireThat(toolsJS.includes('const recent=movieRanking(records.filter(f=>within30(f.activityDate||f.watchedDate)),0.5);'), 'Recent Letterboxd filter must use rating activity dates and include sub-4-star films');
 requireThat(toolsJS.includes("const ranking=(moviePeriod==='recent'?recent:overall).slice(0,5);"), 'Recent view cannot use overall ratings as fallback');
-requireThat(toolsJS.includes('letterboxdEntries=movieRanking(letterboxdEntries.concat(imported),0.5)'), 'CSV import must preserve sub-4-star recent ratings');
+requireThat(toolsJS.includes('letterboxdEntries=movieRanking(letterboxdEntries.concat(imported),0.5)')&&toolsJS.includes("activityAt=index('Date')")&&toolsJS.includes('activityDate=activityAt>=0?isoDate(row[activityAt]):null'), 'CSV import must preserve all rating scores and their rating dates');
 requireThat(toolsJS.includes("if(moviePeriod==='recent'){") && toolsJS.includes('Blockbuster Wave archive. Its records do not contain exact viewing dates.'), 'Undated Blockbuster view must remain empty for Last 30 Days');
 requireThat(!toolsJS.includes('Showing its overall Top 5 instead.')&&!toolsJS.includes('Showing this account’s best available rated entries instead.'), 'Old 30-day fallback copy is still present');
 {
@@ -105,14 +105,14 @@ requireThat(!toolsJS.includes('Showing its overall Top 5 instead.')&&!toolsJS.in
   const now=new Date();
   const formatDate=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
   const old=new Date(now.getFullYear(),now.getMonth(),now.getDate()-40);
-  const sample=[{title:'Recent Low',score:2.5,watchedDate:formatDate(now)},
-   {title:'Old High',score:5,watchedDate:formatDate(old)},
-   {title:'Undated High',score:4.5,watchedDate:null}];
-  const latest=movieRanking(sample.filter(x=>within30(x.watchedDate)),0.5);
+  const sample=[{title:'Recent Low',score:2.5,watchedDate:formatDate(old),activityDate:formatDate(now)},
+   {title:'Old High',score:5,watchedDate:formatDate(old),activityDate:formatDate(old)},
+   {title:'Undated High',score:4.5,watchedDate:null,activityDate:null}];
+  const latest=movieRanking(sample.filter(x=>within30(x.activityDate||x.watchedDate)),0.5);
   const overall=movieRanking(sample,4);
   requireThat(latest.length===1&&latest[0].title==='Recent Low','Last 30 Days must show low ratings and exclude all older and undated titles');
   requireThat(overall.length===2,'All-time Top 5 threshold of 4+ should remain intact');
-  requireThat(movieRanking(sample.filter(x=>within30('2001-01-01')&&within30(x.watchedDate)),0.5).length===0,'Zero-date view must not backfill old records');
+  requireThat(movieRanking(sample.filter(x=>within30('2001-01-01')&&within30(x.activityDate||x.watchedDate)),0.5).length===0,'Zero-date view must not backfill old records');
  }catch(e){failures.push('Recent film ranking test failed: '+e.message)}
 }
 
