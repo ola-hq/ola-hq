@@ -29,6 +29,7 @@ const upLabel = document.querySelector('#up-label');
 const label = document.querySelector('#world-label');
 const openAlone = document.querySelector('#open-alone');
 const home = document.querySelector('#hq-home');
+const heroWorldJump = document.querySelector('#hero-world-jump');
 let current = null;
 let deferredInstall = null;
 let frameTimer = null;
@@ -133,6 +134,10 @@ frame.addEventListener('load', () => {
 });
 document.querySelectorAll('[data-world]').forEach(button => button.addEventListener('click', () => openWorld(button.dataset.world)));
 home.addEventListener('click', () => showHome());
+if (heroWorldJump) heroWorldJump.addEventListener('click', () => {
+  if (!isAppWindow()) return;
+  document.querySelector('#world-la-ola')?.scrollIntoView({behavior:'smooth',block:'start'});
+});
 up.addEventListener('click', () => {
   const target = upTarget();
   if (target) openWorld(target);
@@ -161,6 +166,7 @@ const syncInstallPresentation = () => {
   const installedWindow = isAppWindow();
   document.documentElement.classList.toggle('is-installed', installedWindow);
   getAppButton.hidden = installedWindow;
+  if (heroWorldJump) heroWorldJump.disabled = !installedWindow;
 };
 syncInstallPresentation();
 if (installMode.addEventListener) installMode.addEventListener('change', syncInstallPresentation);
