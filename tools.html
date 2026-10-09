@@ -309,7 +309,7 @@ const box=el('section','movie-list'),h=el('h4','',title+' ('+list.length+')');bo
 let shown=0;const more=el('button','movie-more','Show more');
 more.type='button';
 function batch(){const next=Math.min(list.length,shown+15);for(;shown<next;shown++)box.append(el('div','movie-chain',formatChain(list[shown],rows)));more.hidden=shown>=list.length;}
-more.addEventListener('click',batch);box.append(more);batch();root.append(box);
+more.addEventListener('click',batch);batch();box.append(more);root.append(box);
 }
 function runPlanner(){
 const error=byId('movie-error'),root=byId('movie-results');error.hidden=true;error.textContent='';root.replaceChildren();let rows,output;
