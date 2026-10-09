@@ -626,3 +626,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 
 /* pre-Bri header alignment */
 @media(max-width:650px){.brand{justify-content:flex-start}.brand>span{margin-left:auto}}
+
+/* Mobile review #003: an unquoted, unattributed narrative. */
+.quote .vegas-narrative{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Baskerville,Georgia,serif;font-size:clamp(32px,5.5vw,76px);line-height:1.22;margin:0 auto;max-width:980px;color:#f3e8dc}
+@media(max-width:650px){.quote{padding:72px 7vw}}
