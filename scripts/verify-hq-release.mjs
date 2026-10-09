@@ -59,7 +59,7 @@ requireThat(toolsJS.includes('const worldCatalog=')&&toolsJS.includes('const wor
 for(const id of ['love','cinema','polaroid','music','fpl','simulation','gdb','arsenal','offbrand','willpwr','wuwei','capybara'])requireThat(toolsJS.includes(id+":{name:"), 'World finder dropped a canonical world: '+id);
 requireThat(toolsJS.includes('function csvEntries(')&&toolsJS.includes('function parseCSV(')&&toolsJS.includes('function renderTopFilms('), 'CSV-driven Letterboxd ranking logic missing');
 requireThat(toolsJS.includes('movieSource=')&&toolsJS.includes('letterboxdEntries')&&toolsJS.includes('blockbusterTop5'), 'Independent film sources not implemented');
-requireThat(toolsJS.includes('!letterboxdEntries.length')&&toolsJS.includes('not been loaded into this browser'), 'Unsourced Letterboxd ratings must remain clearly unavailable');
+requireThat(toolsJS.includes('!letterboxdRecords().length')&&toolsJS.includes('No verified ratings have synced yet'), 'Unsourced Letterboxd ratings must remain transparently empty');
 requireThat(toolsJS.includes('Exact viewing dates are not documented'), 'Blockbuster last-30-days caveat missing');
 requireThat(toolsJS.includes('const starts=')&&toolsJS.includes('renderCreative()')&&toolsJS.includes("querySelectorAll('[data-timer-use]')"), 'Creative or timer tools missing');
 requireThat(app.includes('href="../tools.html"')&&app.includes('Visit OLA HQ'), 'App return link to Tools missing');
