@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "schema": "arsenal-wave-scores-v1",
+    "fetched_at": "2026-10-09T04:22:48.854Z",
+    "refresh_strategy": "pending_initial_sync",
+    "refresh_target_minutes": 15,
+    "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
+    "note": "Full multi-match board connects on the first successful score sync. This is a verified single fixture only."
+  },
+  "matches": [
+    {
+      "id": "pl-51",
+      "kickoff": "2026-10-10T11:30:00.000Z",
+      "home": {
+        "name": "Arsenal",
+        "short": "ARS"
+      },
+      "away": {
+        "name": "Leeds United",
+        "short": "LEE"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": "Emirates Stadium",
+      "competition": "Premier League",
+      "match_url": "https://www.premierleague.com/en/match/2645245/essenal-vs-leeds-united/info",
+      "stats": [],
+      "events": [],
+      "lineups": null
+    }
+  ]
+}
