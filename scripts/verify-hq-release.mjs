@@ -50,10 +50,37 @@ if (inlineScript) {
   catch (error) { failures.push('AI Toolbox JavaScript failed syntax check: ' + error.message); }
 }
 requireThat(tools.includes('id="start"') && tools.includes('Protected Personal Tools'), 'Other existing website tools were accidentally removed');
+
+// Real unit checks for the same scheduling functions shipped to visitors.
+if (inlineScript) {
+  const start = inlineScript.indexOf('function clock(');
+  const end = inlineScript.indexOf('function formatChain(', start);
+  if (start < 0 || end <= start) failures.push('Cannot isolate the actual movie calculation functions');
+  else {
+    try {
+      const {parseShowtimes, plan} = new Function(inlineScript.slice(start, end)+'return {parseShowtimes,plan};')();
+      const demo = parseShowtimes([
+        'Opening Wave | 12:00 PM | 1:40 PM', 'Side Quest | 1:45 PM | 3:20 PM',
+        'The Detour | 1:50 PM | 3:15 PM', 'Midnight Signal | 3:25 PM | 5:00 PM',
+        'Neon Dreams | 5:10 PM | 6:45 PM', 'Last Train | 7:05 PM | 8:40 PM'
+      ].join('\n'));
+      const found = plan(demo,0);
+      requireThat(found.combos[0]?.ids.length === 5 && found.combos[0]?.idle === 40, 'Movie demo best schedule calculation regressed');
+      requireThat(found.combos.every(c => c.gaps.every(g => g >= 0 && g <= 30)), 'Movie default gap bounds regressed');
+      requireThat(found.combos.every(c => new Set(c.ids.map(i=>demo[i].title.toLowerCase())).size === c.ids.length), 'Duplicate titles allowed in a chain');
+      const overlap = parseShowtimes('A | 1:00 PM | 2:00 PM\nB | 1:55 PM | 3:00 PM');
+      requireThat(plan(overlap,0).combos.length === 0 && plan(overlap,5).combos.length === 1, 'Movie overlap toggle regressed');
+      const tooWide = parseShowtimes('A | 1:00 PM | 2:00 PM\nB | 2:31 PM | 3:00 PM');
+      requireThat(plan(tooWide,0).combos.length === 0, '31 minute invalid gap incorrectly accepted');
+    } catch(error){failures.push('Movie calculation checks threw: ' + error.message);}
+  }
+}
+requireThat(tools.includes("const questions=[") && tools.includes("function renderQuiz()") && tools.includes("function answerQuiz("), 'Scored Showtime Challenge quiz behavior is missing');
+
 requireThat(app.includes('href="../tools.html"') && app.includes('Visit OLA HQ'), 'OLA HQ App must link to the real website Tools page');
 
 if (failures.length) {
   console.error('OLA HQ PUBLIC RELEASE CHECK FAILED:\n' + failures.map(x => ' - ' + x).join('\n'));
   process.exit(1);
 }
-console.log('OLA HQ public release guard PASS: six labeled wave cards; '+cards.length+' complete prompt cards; app ↔ Tools entry intact.');
+console.log('OLA HQ public release guard PASS: six labeled wave cards; '+cards.length+' working Toolbox cards; app ↔ Tools entry intact.');
