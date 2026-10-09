@@ -29,6 +29,8 @@ jobs:
           node-version: '22'
       - name: Fetch and sanitize FPL Draft data
         run: node scripts/fpl-sync.mjs
+      - name: Verify approved public entrypoints before updating data
+        run: node scripts/verify-hq-release.mjs
       - name: Commit verified FPL snapshot to public main
         shell: bash
         run: |
@@ -48,8 +50,9 @@ jobs:
               echo "::error::FPL refresh conflicted with current main. No publish."
               exit 1
             fi
+            node scripts/verify-hq-release.mjs
             if git push origin HEAD:main; then
-              echo "FPL data committed to canonical main; Pages owns deployment."
+              echo "FPL data committed to canonical main. Publication handoff still requires verification."
               exit 0
             fi
             echo "Concurrent update detected; retry $attempt/3."
