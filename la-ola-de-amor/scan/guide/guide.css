@@ -162,18 +162,31 @@ dialog .legacy-detail .legacy-visual-title{font-size:clamp(24px,6vw,36px);top:10
 /* SOURCE-CHECKED SATURDAY HOTSPOTS AND BILINGUAL DIRECTORY */
 .sat-map-image-stage{position:relative;width:760px;min-width:0;max-width:none!important;line-height:0;background:#fff8e8;overflow:visible}
 .sat-map-image-stage>img{display:block;width:100%;height:auto;max-width:none!important;margin:0}
+/* One seven-stop Saturday hotspot system: 25px visible badge / 44px hit target. */
 .sat-map-hotspot{
  position:absolute;transform:translate(-50%,-50%);z-index:2;
  display:grid;place-items:center;
- width:42px;height:42px;min-width:42px;min-height:42px;
- padding:0;border:3px solid #fff8e5;border-radius:50%;
- background:#143967;color:#fff;font:800 15px/1 system-ui,Arial,sans-serif;
- box-shadow:0 0 0 2px #b5842f,0 3px 7px rgba(0,0,0,.55);
+ width:44px;height:44px;min-width:44px;min-height:44px;
+ padding:0;border:0;border-radius:50%;
+ background:transparent;color:#fff8e7;
  cursor:pointer;touch-action:manipulation;
 }
-.sat-map-hotspot:hover{background:#26569b;z-index:3}
-.sat-map-hotspot.active,.sat-map-hotspot[aria-pressed=true]{background:#ac342c;box-shadow:0 0 0 4px #efc873,0 4px 10px rgba(0,0,0,.4);z-index:4}
-.sat-map-hotspot:focus-visible{outline:4px solid #1594b9;outline-offset:4px;z-index:5}
+.sat-map-hotspot-label{
+ display:grid;place-items:center;width:25px;height:25px;
+ border:1.5px solid #e2bd6e;border-radius:50%;
+ background:#143967;color:#fff8e7;
+ font:800 11px/1 system-ui,Arial,sans-serif;
+ box-shadow:0 2px 5px rgba(7,29,56,.55);
+ pointer-events:none;
+}
+.sat-map-hotspot:hover{z-index:3}
+.sat-map-hotspot:hover .sat-map-hotspot-label{background:#26569b}
+.sat-map-hotspot.active,.sat-map-hotspot[aria-pressed=true]{z-index:4}
+.sat-map-hotspot.active .sat-map-hotspot-label,.sat-map-hotspot[aria-pressed=true] .sat-map-hotspot-label{
+ background:#ac342c;border-color:#fff;
+ box-shadow:0 0 0 2px #f1d088,0 2px 5px rgba(7,29,56,.45);
+}
+.sat-map-hotspot:focus-visible{outline:3px solid #1594b9;outline-offset:2px;z-index:5}
 .sat-map-directory{margin:12px 0 26px;padding:18px 16px 22px;background:#fff9ec;border:2px solid #26569b;box-shadow:inset 0 0 0 5px #eaf2fb}
 .sat-map-directory h3{font-size:clamp(23px,3vw,30px);color:#143967;margin:4px 4px 10px;text-align:center}
 .sat-map-directory-note{font-size:13px;line-height:1.5;margin:8px 6px 16px;text-align:center}

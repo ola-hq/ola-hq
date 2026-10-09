@@ -150,17 +150,17 @@ function renderRoute(){
    published 1086x1448 PNG (Git blob b789b100508d93c9b9ad429760dd44dc0b134e53).
    These are illustrative anchors, not confirmed day-of access or operations.
    Nine locations are illustrated; point 10 is a directional arrow, NOT a court pin. */
+/* OWNER-SELECTED VERSION A: seven art-grounded illustrated points in approved order.
+   Exact art canvas 1086x1448; x/y are percent anchors converted to pixels.
+   Descriptions are tentative, never operational or safety guarantees. */
 const SATURDAY_MARKERS=[
- {id:'inflagol',x:212,y:392,en:'Inflagol',es:'Inflagol',de:'Illustrated soccer inflatable in the upper-left garden. Saturday setup is still pending confirmation.',ds:'Inflable de fútbol dibujado arriba a la izquierda. Su instalación del sábado está pendiente de confirmar.'},
- {id:'taqueria',x:109,y:804,en:'Taquería',es:'Taquería',de:'Illustrated food-stall area on the left. The Saturday vendor and serving hours have not been confirmed.',ds:'Área de tacos ilustrada a la izquierda. El proveedor y el horario del sábado aún no están confirmados.'},
- {id:'fountain',x:617,y:492,en:'Central fountain',es:'Fuente central',de:'Fountain shown near the center of the illustration. This is not a confirmed swimming-pool location.',ds:'Fuente dibujada cerca del centro. No indica una ubicación confirmada de la alberca.'},
- {id:'casa-sol',x:541,y:724,en:'Casa Sol',es:'Casa Sol',de:'The central house on the illustration. Individual rooms and access arrangements are not confirmed here.',ds:'La casa central en la ilustración. Este mapa no confirma el acceso a habitaciones o áreas específicas.'},
- {id:'garden-tables',x:318,y:978,en:'Garden tables',es:'Mesas del jardín',de:'Tables and seating depicted in the left garden. The final arrangement remains tentative.',ds:'Mesas y asientos dibujados en el jardín izquierdo. La distribución final es tentativa.'},
- {id:'garden-loungers',x:847,y:1071,en:'Garden lounge area',es:'Zona de descanso',de:'Garden loungers pictured on the right. Their availability and placement are not confirmed.',ds:'Camastros ilustrados a la derecha. Su disponibilidad y ubicación no están confirmadas.'},
- {id:'restrooms',x:108,y:1094,en:'Baños · restroom sign',es:'Baños',de:'Restroom signage illustrated on the left. Confirm actual day-of access on site.',ds:'Señal de baños dibujada a la izquierda. Confirma el acceso real el día del evento.'},
- {id:'farmacia',x:108,y:1181,en:'Súper Farmacia Domingo',es:'Súper Farmacia Domingo',de:'A named sign in the illustration, not a promise of pharmacy service on Saturday.',ds:'Letrero conmemorativo en la ilustración; no confirma servicio de farmacia el sábado.'},
- {id:'entrance',x:919,y:1337,en:'Camino de Entrada',es:'Camino de Entrada',de:'Illustrated entrance path at the lower right; not a verified access or safety route.',ds:'Camino ilustrado abajo a la derecha; no es un plano de acceso o seguridad verificado.'},
- {id:'racquetball',x:966,y:571,en:'Racquetball courts · direction only',es:'Canchas de racquetball · solo dirección',de:'The artwork shows a right-pointing direction arrow only. The actual courts are outside this illustrated map; access is unconfirmed.',ds:'La ilustración solo muestra una flecha hacia la derecha. Las canchas quedan fuera del plano y el acceso no está confirmado.'}
+ {id:"entrada",x:880,y:1376,en:"Entrance",es:"Entrada",de:"Illustrated entrance path at the lower-right edge. Follow confirmed on-site directions; this is not a verified safety or access map.",ds:"Camino de entrada ilustrado abajo a la derecha. Sigue las indicaciones confirmadas en el lugar; no es un plano verificado de acceso o seguridad."},
+ {id:"raquetbol",x:988,y:521,en:"Toward racquetball courts",es:"Hacia las canchas de raquetbol",de:"The right-pointing arrow shows a direction toward courts beyond the illustration, not the actual court location. Access is unconfirmed.",ds:"La flecha apunta hacia las canchas fuera de la ilustración; no marca su ubicación. El acceso aún no está confirmado."},
+ {id:"alberca",x:673,y:492,en:"Pool",es:"Alberca",de:"The illustration shows a central water feature. The intended pool location, swimming access and readiness have not been verified.",ds:"La ilustración muestra una zona de agua central. No se han confirmado la ubicación de la alberca, el acceso para nadar ni su disponibilidad."},
+ {id:"inflagol",x:228,y:420,en:"Inflagol",es:"Inflagol",de:"Inflatable soccer illustrated near the upper-left garden. Saturday setup remains to be confirmed.",ds:"Inflable de fútbol ilustrado arriba a la izquierda. Su montaje del sábado sigue pendiente de confirmar."},
+ {id:"taqueria",x:206,y:840,en:"Taquería",es:"Taquería",de:"Illustrated taco stand to the left. The vendor and serving hours are still being confirmed.",ds:"Puesto de tacos ilustrado a la izquierda. El proveedor y el horario de servicio siguen pendientes de confirmar."},
+ {id:"banos",x:217,y:1144,en:"Bathrooms",es:"Baños",de:"The restroom sign is shown in the illustration. Confirm the actual day-of access on site.",ds:"El letrero de baños aparece en la ilustración. Confirma el acceso real el día del evento."},
+ {id:"casa-sol",x:597,y:782,en:"Casa Sol",es:"Casa Sol",de:"The central house shown on the Saturday illustration. Interior access is not specified by this map.",ds:"La casa central dibujada en el mapa del sábado. El mapa no especifica el acceso a espacios interiores."},
 ];
 function setupSaturdayMapZoom(){
  const body=document.querySelector('#detail-body');
@@ -194,7 +194,7 @@ function setupSaturdayMapZoom(){
   dot.style.left=(m.x/1086*100).toFixed(4)+'%';dot.style.top=(m.y/1448*100).toFixed(4)+'%';
   dot.setAttribute('aria-label',(i+1)+'. '+(isEn?m.en:m.es));
   dot.setAttribute('aria-pressed','false');
-  dot.textContent=String(i+1);stage.append(dot);dotById.set(m.id,dot);
+  const visibleNumber=document.createElement('span');visibleNumber.className='sat-map-hotspot-label';visibleNumber.textContent=String(i+1);dot.append(visibleNumber);stage.append(dot);dotById.set(m.id,dot);
  });
  viewport.append(stage);
  frame.append(toolbar,viewport);
@@ -218,7 +218,7 @@ function setupSaturdayMapZoom(){
  body.prepend(frame);frame.after(legend);
  let zoom=100;const dots=[...dotById.values()];const labels=[...listById.values()];
  const apply=()=>{
-  stage.style.width=(Math.max(760,viewport.clientWidth-12)*zoom/100)+'px';
+  stage.style.width=(Math.max(240,viewport.clientWidth-12)*zoom/100)+'px';
   out.disabled=zoom<=100;plus.disabled=zoom>=300;
  };
  const focusSpot=(id,scroll)=>{
