@@ -53,6 +53,8 @@ for(const id of ['movies','handoff'])requireThat((prompts.find(m=>m[1]===id)?.[2
 const inline=tools.match(/<script id="ai-toolbox-script">([\s\S]*?)<\/script>/)?.[1]||'';
 requireThat(Boolean(inline)&&tools.includes('id="ai-tool-modal"'),'Toolbox modal missing');
 if(inline){try{new Function(inline);}catch(e){failures.push('Toolbox script syntax failed: '+e.message)}}
+// A versioned script URL prevents an old browser-cached tools.js from running against newer HTML.
+requireThat(/<script src="tools\\.js\\?v=[^"]+"><\\/script>/.test(tools), 'Tools external JS must have a fresh versioned URL');
 const toolsJS=readFileSync('tools.js','utf8');
 try{new Function(toolsJS)}catch(e){failures.push('Everyday tools JS syntax failed: '+e.message)}
 requireThat(toolsJS.includes('const worldCatalog=')&&toolsJS.includes('const worldQuiz=')&&toolsJS.includes('function renderWorldQuiz('), 'World-discovery quiz logic missing');
