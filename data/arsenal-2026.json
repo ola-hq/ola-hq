@@ -44,7 +44,7 @@
     "league_source": "https://site.api.espn.com/apis/v2/sports/soccer/eng.1/standings",
     "league_updated_at": "2026-10-09T04:15:00.339Z",
     "fixture_source": "verified_cache",
-    "fixture_updated_at": "2026-10-08T20:00:00-07:00"
+    "fixture_updated_at": "2026-10-09T04:14:00Z"
   },
   "snapshot": {
     "next_match": {
