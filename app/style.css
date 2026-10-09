@@ -156,3 +156,63 @@ html.is-installed #install{display:none!important}
   .off-word{font-size:34px}
   .willpwr-art,.offbrand-art{inset:12px 10px auto}
 }
+
+/* APP HOME PASS 12 — three actual scenes: single-globe entry, typographic welcome, Wave selector.
+   The website homepage's large globe remains unchanged and still enters /app/.
+   This overrides the legacy combined-hero layout without touching world cards. */
+#app-launch.hero {
+  height:calc(100svh - 67px - env(safe-area-inset-top));
+  min-height:calc(100svh - 67px - env(safe-area-inset-top));
+  height:calc(100dvh - 67px - env(safe-area-inset-top));
+  min-height:calc(100dvh - 67px - env(safe-area-inset-top));
+  padding:24px;
+  display:grid;
+  place-items:center;
+}
+#app-launch .hero-content{
+  min-height:0;
+  height:100%;
+  width:100%;
+  max-width:none;
+  display:grid;
+  place-items:center;
+}
+#app-launch .hero-globe-link{
+  display:grid;
+  place-items:center;
+  width:clamp(100px,23vw,138px);
+  height:clamp(100px,23vw,138px);
+  margin:0;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  text-decoration:none;
+  background:transparent;
+  cursor:pointer;
+  position:relative;
+}
+#app-launch .hero-globe-link:focus-visible{outline:3px solid var(--gold);outline-offset:11px}
+#app-launch .hero-globe-link .hero-globe{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  margin:0;
+  filter:drop-shadow(0 0 28px rgba(132,198,255,.35));
+}
+.world-intro {
+  position:relative;
+  display:grid;
+  place-items:center;
+  min-height:calc(100svh - 67px - env(safe-area-inset-top));
+  min-height:calc(100dvh - 67px - env(safe-area-inset-top));
+  padding:clamp(36px,8vh,80px) clamp(22px,6vw,64px);
+  text-align:center;
+  background:radial-gradient(ellipse at 48% 58%,#143a65 0%,#0a2748 43%,#06152b 78%);
+}
+.world-intro-content{position:relative;max-width:740px;margin:auto}
+.world-intro .eyebrow{margin-bottom:28px}
+.world-intro h1{font-size:clamp(42px,10vw,82px);margin:0 0 22px;line-height:.98}
+.world-intro .intro{margin:0 auto 18px}
+.world-intro .enter-hint{margin:2px auto 0}
+#worlds{scroll-margin-top:calc(77px + env(safe-area-inset-top))}
+@media (prefers-reduced-motion:reduce){#app-launch .hero-globe{animation:none}}

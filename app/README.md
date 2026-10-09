@@ -95,3 +95,11 @@ Jon clarified the intended installed OLA HQ App home: the first screen should fe
 
 ## 2026-10-08 — bounded GDB/cover recovery
 The OLA HQ app launcher exposes one GDB Wave card, not a duplicate GDB University card. Its canonical app destination is /gdb-university/, and the legacy gdb-wave.html alias still redirects. Existing GDB University identity inside the university site remains unchanged. The public website entrance and homepage deeper-waves mention now use GDB Wave. A source-grounded app-card treatment replaces the old logo-crop studies: GDB uses existing official campus photography; Wu Wei is an editorial wave/journal cover; Willpwr is a functional practice/intent poster; Offbrand combines an existing source photo with rough zine typography. These edits do not touch the app’s spacious hero design, Festival Guide, manifest or service workers. App CSS/JS revision labels advanced to v11/v6 to avoid stale visual assets.
+
+## 2026-10-08 — three-scene entry / fast-travel correction
+The app entrance is now deliberately THREE separate scroll sections, not one flexible hero:
+1. app-launch: one small centered OLA globe and only open space for approximately one viewport beneath the sticky header;
+2. world-intro: WELCOME TO OUR WORLD, Our Waves. One Home., short explanation and down cue as a distinct second viewport;
+3. worlds: the World selector and 12 approved cards.
+
+Tapping the globe in the /app/ route uses a semantic native href="#worlds" fallback and a ~220ms JavaScript glide to the Waves heading under the sticky top bar. The enhancement explicitly neutralizes html scroll-behavior:smooth during each animation frame: that older global rule likely competed with repeated scrollTo calls. The globe is no longer disabled in Safari /app/ previews; this does not change the separate WEBSITE home globe routing, which still opens /app/, nor the WEBSITE small top globe routing, which still returns to website home. It also means the gesture can be tested through a normal browser when reviewing the app route. This change does not touch Festival Guide, QR, manifest, service worker, world interiors or world cards. CSS/JS version now v12/v7.

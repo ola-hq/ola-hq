@@ -133,29 +133,41 @@ frame.addEventListener('load', () => {
 });
 document.querySelectorAll('[data-world]').forEach(button => button.addEventListener('click', () => openWorld(button.dataset.world)));
 home.addEventListener('click', () => showHome());
-function quickScrollToFirstWave() {
-  if (!isAppWindow()) return;
-  const target = document.querySelector('#world-la-ola');
-  if (!target) return;
+// The OLA HQ /app/ globe is a native anchor first, with an optional quick-glide enhancement.
+let globeJumpAnimation = 0;
+function quickScrollToWaves(event) {
+  const target = document.querySelector('#worlds');
+  if (!target) return; // Keep the native anchor fallback.
+  event.preventDefault();
   const appbar = document.querySelector('.appbar');
   const offset = (appbar?.getBoundingClientRect().height || 67) + 10;
   const start = window.scrollY;
   const end = Math.max(0, target.getBoundingClientRect().top + start - offset);
+  if (globeJumpAnimation) cancelAnimationFrame(globeJumpAnimation);
+
+  // The site's html scroll-behavior:smooth previously fought each tween frame.
+  // Temporarily disable it so iOS can actually complete the quick jump.
+  const root = document.documentElement;
+  const previousBehavior = root.style.scrollBehavior;
+  root.style.scrollBehavior = 'auto';
+  const restore = () => { root.style.scrollBehavior = previousBehavior; globeJumpAnimation = 0; };
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    window.scrollTo(0, end);
+    window.scrollTo({top:end, behavior:'instant'});
+    restore();
     return;
   }
-  const duration = 240;
   const started = performance.now();
-  const easeOut = t => 1 - Math.pow(1 - t, 3);
+  const duration = 220;
+  const easeOut = t => 1 - (1 - t) ** 3;
   const step = now => {
-    const p = Math.min(1, (now - started) / duration);
-    window.scrollTo(0, start + (end - start) * easeOut(p));
-    if (p < 1) requestAnimationFrame(step);
+    const t = Math.min(1, (now - started) / duration);
+    window.scrollTo({top:start + (end - start) * easeOut(t), behavior:'instant'});
+    if (t < 1) globeJumpAnimation = requestAnimationFrame(step);
+    else restore();
   };
-  requestAnimationFrame(step);
+  globeJumpAnimation = requestAnimationFrame(step);
 }
-if (heroWorldJump) heroWorldJump.addEventListener('click', quickScrollToFirstWave);
+heroWorldJump?.addEventListener('click', quickScrollToWaves);
 up.addEventListener('click', () => {
   const target = upTarget();
   if (target) openWorld(target);
@@ -184,7 +196,6 @@ const syncInstallPresentation = () => {
   const installedWindow = isAppWindow();
   document.documentElement.classList.toggle('is-installed', installedWindow);
   getAppButton.hidden = installedWindow;
-  if (heroWorldJump) heroWorldJump.disabled = !installedWindow;
 };
 syncInstallPresentation();
 if (installMode.addEventListener) installMode.addEventListener('change', syncInstallPresentation);
