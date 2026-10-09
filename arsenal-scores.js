@@ -9,7 +9,7 @@ const day=iso=>{const d=new Date(iso);return [d.getFullYear(),String(d.getMonth(
 const dated=iso=>new Intl.DateTimeFormat('en-US',{weekday:'short',month:'short',day:'numeric'}).format(new Date(iso));
 const clock=iso=>new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit',timeZoneName:'short'}).format(new Date(iso));
 const arsenal=m=>/arsenal/i.test(m.home?.name||'')||/arsenal/i.test(m.away?.name||'');
-const abbr=name=>name==='Arsenal'?'ARS':String(name||'—').split(/\s+/).map(x=>x[0]).join('').slice(0,3).toUpperCase();
+const abbr=(name,official)=>{const code=String(official||'').trim().toUpperCase();return /^[A-Z0-9]{2,4}$/.test(code)?code:name==='Arsenal'?'ARS':String(name||'—').split(/\s+/).map(x=>x[0]).join('').slice(0,3).toUpperCase()};
 const withScore=m=>Number.isInteger(m.home_score)&&Number.isInteger(m.away_score);
 const score=m=>withScore(m)&&m.status!=='pre'?m.home_score+' – '+m.away_score:'VS';
 const detailURL=m=>link(m?.match_url)||'https://www.premierleague.com/en/fixtures';
@@ -44,7 +44,7 @@ function render(){
  if(!ms.length){board.innerHTML='<p class="ars-scores-empty">'+(state.filter==='live'?'No Premier League games currently reported in play.':'No games in this view.')+'<br>Try another date or filter.</p>';details();return}
  if(!state.selected||!state.matches.some(x=>x.id===state.selected))state.selected=(ms.find(arsenal)||ms[0]).id;
  board.innerHTML=ms.map(m=>{
- const active=m.id===state.selected,ars=arsenal(m),home=abbr(m.home?.name),away=abbr(m.away?.name);
+ const active=m.id===state.selected,ars=arsenal(m),home=abbr(m.home?.name,m.home?.short),away=abbr(m.away?.name,m.away?.short);
  return '<button type="button" class="ars-scores-item'+(ars?' is-arsenal':'')+(active?' is-active':'')+'" data-match-id="'+esc(m.id)+'" aria-pressed="'+active+'" aria-label="'+esc(m.home.name+' against '+m.away.name+', '+when(m))+'">'+
  '<span class="ars-match-home"><span class="ars-match-emblem'+(m.home?.name==='Arsenal'?' ars-arsenal-emblem':'')+'">'+esc(home)+'</span><span class="ars-match-name">'+esc(m.home.name)+'</span></span>'+
  '<span class="ars-match-central"><span class="ars-match-result'+(m.status==='pre'?' is-upcoming':'')+'">'+esc(score(m))+'</span><span class="ars-match-status'+(m.status==='in'?' is-live':'')+'">'+esc(when(m))+'</span></span>'+
@@ -90,7 +90,17 @@ async function refresh(){
 }
 document.querySelectorAll('[data-ars-filter]').forEach(b=>b.addEventListener('click',()=>{state.filter=b.dataset.arsFilter;state.selected=null;render()}));
 document.querySelectorAll('[data-detail-tab]').forEach(b=>b.addEventListener('click',()=>{state.detail=b.dataset.detailTab;details()}));
-board.addEventListener('click',e=>{const b=e.target.closest('[data-match-id]');if(b){state.selected=b.dataset.matchId;render()}});
+board.addEventListener('click',e=>{
+ const b=e.target.closest('[data-match-id]');
+ if(!b)return;
+ state.selected=b.dataset.matchId;
+ render();
+ // On stacked tablet/phone layouts, the selected match file lives below the results list.
+ if(window.matchMedia('(max-width:1070px)').matches){
+  const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('ars-details-panel')?.scrollIntoView({behavior:prefersReducedMotion?'auto':'smooth',block:'start'});
+ }
+});
 $('ars-date-prev')?.addEventListener('click',()=>{const ds=matchdays(),i=ds.indexOf(state.date);if(i>0){state.date=ds[i-1];state.selected=null;render()}});
 $('ars-date-next')?.addEventListener('click',()=>{const ds=matchdays(),i=ds.indexOf(state.date);if(i>=0&&i<ds.length-1){state.date=ds[i+1];state.selected=null;render()}});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh()});
