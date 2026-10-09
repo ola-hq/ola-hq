@@ -120,4 +120,4 @@ function hookYouTube(){if(!ytApiLoaded){ytApiLoaded=true;var s=document.createEl
 function onYouTubeIframeAPIReady(){makePlayer()}
 function makePlayer(){var el=document.getElementById("ytPlayer");if(!el||!window.YT||!YT.Player)return;try{activePlayer=new YT.Player("ytPlayer",{events:{onStateChange:function(e){if(e.data===1){var a=albums.filter(function(x){return detail.innerHTML.indexOf(x.title)>-1})[0];if(!a)return;var key="wave26_play_"+a.id;var v=parseInt(localStorage.getItem(key)||"0",10)+1;localStorage.setItem(key,v);var pc=document.getElementById("playCount");if(pc)pc.textContent="Preview play events on this device: "+v}}}})}catch(e){}}
 </script>
-</body></html>
+<script src="ui-arrows.js?v=20261008-1" defer></script></body></html>
