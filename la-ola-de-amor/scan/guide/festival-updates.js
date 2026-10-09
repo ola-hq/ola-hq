@@ -4,6 +4,13 @@
 // This editorial board has no CMS, push subscription or notification backend.
 const FESTIVAL_UPDATES = [
   {
+    id:'one-week', revision:'2026-10-09-la-platica', publishedAt:'2026-10-09', priority:'confirmed',
+    audience:{en:'Our people · Our festival',es:'Nuestra gente · Nuestro festival'},
+    title:{en:'One week to La Ola · La Plática is here',es:'Falta una semana · Ya llegó La Plática'},
+    body:{en:'Bri + Jon · Our People · Our Festival. One week until Friday, October 16! Our guest message wall is open: leave a little love, share a hello, and check Festival Updates for confirmed plans. Messages appear for everyone as soon as they are posted.',es:'Bri + Jon · Our People · Our Festival. ¡Falta una semana para el viernes 16 de octubre! La Plática ya está abierta: deja un poquito de amor, manda un saludo y consulta las actualizaciones para ver los planes confirmados. Los mensajes aparecen para todos al enviarlos.'},
+    route:'updates'
+  },
+  {
     id:'day-two', revision:'2026-10-08-polish03', publishedAt:'2026-10-08', priority:'confirmed',
     audience:{en:'Festival guests',es:'Invitados del Festival'},
     title:{en:'Tornaboda · Saturday, together',es:'Tornaboda · Un sábado juntos'},
