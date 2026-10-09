@@ -43,8 +43,13 @@
       text('ars-kickoff-uk', ukKickoff ? ukKickoff + ' · UK' : 'Kickoff awaiting confirmation');
       text('ars-competition', next.competition || 'Competition pending');
       text('ars-venue', next.venue_name || (next.venue === 'Home' ? 'Emirates Stadium' : next.venue) || 'Venue pending');
-      text('ars-home-name', next.venue === 'Away' ? next.opponent : 'Arsenal');
-      text('ars-away-name', next.venue === 'Away' ? 'Arsenal' : next.opponent);
+      const homeName = next.venue === 'Away' ? next.opponent : 'Arsenal';
+      const awayName = next.venue === 'Away' ? 'Arsenal' : next.opponent;
+      const shortName = value => value === 'Arsenal' ? 'ARS' : (value || 'TBC').split(/\s+/).map(word => word[0] || '').join('').slice(0,3).toUpperCase();
+      text('ars-home-name', homeName);
+      text('ars-away-name', awayName);
+      text('ars-home-code', shortName(homeName));
+      text('ars-away-code', shortName(awayName));
       text('ars-last', s.latest_result?.score || '—');
       text('ars-last-opponent', s.latest_result?.opponent || 'Latest result pending');
       text('ars-position', s.league?.position ? '#' + s.league.position : '—');
