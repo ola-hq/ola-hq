@@ -38,7 +38,7 @@ for (const id of ['movies', 'handoff']) {
   requireThat(content.length >= 200, 'The complete source prompt is missing: ' + id);
 }
 requireThat(!['router', 'graveyard', 'release', 'funnel', 'library'].some(id => tools.includes('data-key="'+id+'"')), 'Unfinished AI Toolbox placeholder card has returned');
-requireThat(tools.includes('id="ai-tool-modal"') && tools.includes('dialog.showModal()'), 'The accessible Tools dialog is missing');
+requireThat(tools.includes('id="ai-tool-modal"') && tools.includes('modal.showModal()'), 'The accessible Tools dialog is missing');
 requireThat(tools.includes('id="movie-showtimes"') && tools.includes('id="movie-run"') && tools.includes('id="movie-results"'), 'The interactive movie planner interface is missing');
 requireThat(tools.includes('function parseShowtimes(') && tools.includes('function plan(') && tools.includes('function runPlanner('), 'Movie scheduling computation is missing');
 requireThat(tools.includes('id="quiz-answers"') && tools.includes('id="quiz-next"') && tools.includes('function answerQuiz('), 'The working Showtime Challenge quiz is missing');
