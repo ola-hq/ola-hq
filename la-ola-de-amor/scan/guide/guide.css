@@ -146,3 +146,14 @@ dialog .legacy-detail .legacy-visual-title{font-size:clamp(24px,6vw,36px);top:10
 @media(prefers-reduced-motion:reduce){
  #tornaboda .tornaboda-map-open{transition:none}
 }
+
+
+/* SATURDAY MAP DRAWER — accessibility + zoom; no fabricated markers. */
+.sat-map-review-frame{margin:12px auto 22px;max-width:100%;color:var(--navy)}
+.sat-map-zoom-controls{display:flex;justify-content:center;gap:10px;align-items:center;flex-wrap:wrap;padding:12px;background:#edf3fa;border:1px solid #26569b;border-bottom:0}
+.sat-map-zoom-controls button{min-width:48px;min-height:44px;border:1px solid #26569b;background:#fffaf0;color:#143967;font-size:19px;font-weight:800;padding:6px 16px}
+.sat-map-zoom-controls button:hover:not(:disabled){background:#d7e8f9}
+.sat-map-zoom-controls button:disabled{opacity:.45;cursor:not-allowed}
+.sat-map-zoom-viewport{border:2px solid #26569b;background:#fffaf0;overflow:auto;overscroll-behavior:contain;max-height:min(75vh,920px);scrollbar-gutter:stable both-edges}
+.sat-map-zoom-viewport img{width:100%;height:auto;max-width:none!important;display:block;margin:0 auto}
+.sat-map-zoom-viewport:focus-visible{outline:3px solid #1391be;outline-offset:3px}
