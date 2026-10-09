@@ -160,36 +160,3 @@
 .entrance-page .world-entrances.home-six-waves .room-copy .enter{
   margin-top:auto;
 }
-
-/* Mobile OLA HQ header: keep App at the right edge instead of letting
-   the four-link navigation wrap to an orphaned bottom-left line. */
-@media(max-width:760px){
-  .entrance-page .home-topbar .topbar-right{
-    display:flex;
-    width:100%;
-    min-width:0;
-    align-items:center;
-    justify-content:space-between;
-    flex-wrap:nowrap;
-    gap:clamp(7px,2vw,14px);
-  }
-  .entrance-page .home-topbar .topbar-right > a{
-    display:inline-flex;
-    flex:0 0 auto;
-    flex-direction:row;
-    align-items:center;
-    justify-content:center;
-    min-height:40px;
-    white-space:nowrap;
-    font-size:clamp(10px,2.8vw,13px);
-  }
-  .entrance-page .home-topbar .topbar-right > a[href="app/"]{
-    margin-left:auto;
-    padding:7px 11px;
-    border:1px solid var(--line);
-    border-radius:999px;
-    background:var(--white);
-    color:var(--ink);
-    font-weight:800;
-  }
-}
