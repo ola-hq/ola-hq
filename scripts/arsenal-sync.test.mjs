@@ -24,7 +24,7 @@ test('rejects unrelated games',() => {
 });
 test('keeps direct match link for the matching cached fixture only',() => {
   const old={meta:{sources:[]},snapshot:{next_match:{
-    opponent:'Leeds United',kickoff_utc:'2026-10-10T11:30:00.000Z',
+    opponent:'Leeds United',venue:'Home',kickoff_utc:'2026-10-10T11:30:00.000Z',
     match_center_url:'https://www.premierleague.com/en/match/2645245/essenal-vs-leeds-united/info'
   }}};
   const e=event('2026-10-10T11:30:00Z');
@@ -66,4 +66,14 @@ test('official Premier League fixtures identify Arsenal, opposition and localiza
   assert.equal(match.opponent,'Leeds United');
   assert.equal(match.status,'pre');
   assert.equal(match.date,'2026-10-10T11:30:00.000Z');
+});
+
+test('preserves verified match centre when official feed uses Leeds instead of Leeds United',() => {
+  const teams={teams:[{id:1,name:'Arsenal',short_name:'ARS'},{id:11,name:'Leeds',short_name:'LEE'}]};
+  const fixtures=[{id:51,team_h:1,team_a:11,kickoff_time:'2026-10-10T11:30:00Z',started:false,finished:false,team_h_score:null,team_a_score:null}];
+  const prior={meta:{},snapshot:{next_match:{opponent:'Leeds United',venue:'Home',kickoff_utc:'2026-10-10T11:30:00.000Z',match_center_url:'https://www.premierleague.com/en/match/2645245/essenal-vs-leeds-united/info'}}};
+  const next=buildSnapshot(prior,{events:parsePremierLeagueFixtures(teams,fixtures)},null,new Date('2026-10-09T04:15:00Z')).snapshot.next_match;
+  assert.equal(next.opponent,'Leeds United');
+  assert.equal(next.match_center_url,prior.snapshot.next_match.match_center_url);
+  assert.equal(next.event_id,'pl-51');
 });
