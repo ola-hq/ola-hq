@@ -110,7 +110,7 @@ export function enrichWithESPN(match,event,summary){
   venue:comp?.venue?.fullName||match.venue,
   match_url:link||match.match_url,
   stats,
-  events,
+  events:events.length?events:match.events,
   lineups:lineupHome||lineupAway?{home:lineupHome||[],away:lineupAway||[]}:null
  };
 }
