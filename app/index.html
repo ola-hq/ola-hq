@@ -11,22 +11,20 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="../assets/entrances/ola-hq-globe-only-favicon-20261007.png">
   <link rel="icon" href="../assets/entrances/ola-hq-globe-only-favicon-20261007.png">
-  <link rel="stylesheet" href="style.css?v=15">
-  <style id="installed-mobile-launch-center">
-    @media (max-width:767px) {
-      #app-launch.hero {position:relative!important; width:100%!important}
-      #app-launch.hero > .hero-content {
-        position:absolute!important; inset:0!important; left:0!important; right:0!important;
-        width:100%!important; max-width:100%!important; height:100%!important;
-        margin:0!important; padding:24px!important; transform:none!important;
-        display:flex!important; flex-direction:row!important; align-items:center!important;
-        justify-content:center!important; text-align:center!important;
-      }
-      #app-launch.hero #hero-world-jump {
-        display:flex!important; flex:0 0 auto!important; margin:0 auto!important;
-        align-items:center!important; justify-content:center!important;
-        position:relative!important; left:auto!important; right:auto!important;
-      }
+  <link rel="stylesheet" href="style.css?v=16">
+  <style id="app-launch-centered-globe">
+    /* The globe is positioned against the launch screen itself, not a nested
+       flex/grid wrapper. This avoids iPhone Safari's displaced-bottom layout. */
+    #app-launch.hero { position:relative; }
+    #app-launch.hero > #hero-world-jump {
+      position:absolute!important;
+      top:50%!important;
+      left:50%!important;
+      right:auto!important;
+      bottom:auto!important;
+      margin:0!important;
+      transform:translate(-50%,-50%)!important;
+      z-index:2;
     }
   </style>
   <script defer src="app.js?v=9"></script>
@@ -47,11 +45,9 @@
       <section id="universe" aria-label="Explore the OLA HQ universe">
         <section class="hero" id="app-launch" aria-label="The OLA HQ app entrance">
           <div class="starfield" aria-hidden="true"></div>
-          <div class="hero-content">
-            <a id="hero-world-jump" class="hero-globe-link" href="#worlds" aria-label="Fast travel to The Waves">
-              <img class="hero-globe" src="../assets/entrances/ola-hq-floating-hero-20261007.webp" alt="OLA HQ globe" width="1000" height="1000">
-            </a>
-          </div>
+          <a id="hero-world-jump" class="hero-globe-link" href="#worlds" aria-label="Fast travel to The Waves">
+            <img class="hero-globe" src="../assets/entrances/ola-hq-floating-hero-20261007.webp" alt="OLA HQ globe" width="1000" height="1000">
+          </a>
         </section>
         <section class="world-intro" aria-labelledby="world-intro-title">
           <div class="world-intro-content">
