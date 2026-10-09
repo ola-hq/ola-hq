@@ -82,3 +82,6 @@ The earlier intent is now explicit in the large homepage hero, not only the smal
 
 ## 2026-10-08 — Gateway clarification: header home vs hero app
 Corrected the website ↔ app gateway after user clarification. The small globe + OLA HQ wordmark in the persistent public website header is a **website Home control** and now points to `index.html`. The **large floating globe/world in the OLA HQ homepage hero** remains the intentional visual gateway into `app/`. The explicit top-nav App link also remains. The app's subtle bottom “Visit OLA HQ” return link remains. This creates a clear contract: persistent header identity = website home; giant homepage world = enter app. No Festival Guide, world interiors, app manifest, service worker, QR route, or app navigation hierarchy changed.
+
+## 2026-10-08 — Hero globe jump behavior
+The large OLA HQ globe inside the installed app home is now an interaction target: tapping it performs the same quick smooth in-page move as the down cue, landing the first wave (La Ola de Amor) directly under the sticky app bar so the user can continue scrolling through the rest of the worlds. The persistent small OLA HQ header globe retains its existing app-home behavior and is not repurposed. CSS bumped to v8. No world routes, iframe behavior, Festival Guide files, manifests or service workers changed.
