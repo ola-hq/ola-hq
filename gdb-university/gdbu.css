@@ -190,3 +190,73 @@ a:focus-visible,button:focus-visible,video:focus-visible{outline:3px solid var(-
 .gdb-programs-photo img{height:200px}
 .gdb-community-photo img{height:225px}
 }
+
+
+/* GDBU 10/08: original artifact framing on only three home cards. */
+.gdb-orientation-banner.gdb-home-centered{flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:5px;padding:12px;background:radial-gradient(circle at 50% -20%,#fff9e7,#f2e4cb 70%);border-bottom:3px solid #731220}
+.gdb-orientation-banner.gdb-home-centered>img{width:72px!important;height:72px!important;aspect-ratio:1!important;object-fit:contain!important;flex:none}
+.gdb-orientation-banner.gdb-home-centered>div{align-items:center;justify-content:center;text-align:center;max-width:100%;gap:2px}
+.gdb-orientation-banner.gdb-home-centered strong{font-size:clamp(1.35rem,1.9vw,1.9rem);margin:1px 0;line-height:1;overflow-wrap:anywhere}
+.gdb-orientation-banner.gdb-home-centered small{max-width:100%;font-size:.5rem}
+.card img.gdb-home-original-art{display:block;width:100%;aspect-ratio:16/10;object-fit:contain!important;object-position:center!important;padding:12px!important;background:#f3e8d5!important}
+.card img.gdb-home-archive{padding:14px!important}
+.gdb-passport-home-status{display:flex;align-items:center;gap:9px;color:var(--accent);font-size:.74rem;line-height:1.4;text-decoration:none;border:1px solid var(--line);padding:9px 10px;background:#f3e8d7;margin-top:15px}
+.gdb-passport-home-status[hidden]{display:none}
+.gdb-passport-home-status:hover{text-decoration:underline}
+.gdb-passport-home-seal{display:grid;place-items:center;min-width:23px;height:23px;border:2px solid currentColor;border-radius:50%;font-size:.75rem;font-weight:900}
+/* A small visitor-controlled paper artifact; no sign-in, server submissions or tracking. */
+.gdb-passport-section{scroll-margin-top:125px}
+.gdb-passport-layout{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:20px;align-items:start}
+.gdb-passport-controls{background:var(--paper);border:1px solid var(--line);padding:25px;min-width:0}
+.gdb-passport-field{margin-bottom:18px}
+.gdb-passport-field>label,.gdb-passport-fieldset legend{display:block;color:var(--accent);font:800 .73rem var(--sans);letter-spacing:.085em;text-transform:uppercase;margin-bottom:8px}
+.gdb-passport-field>label span{font-weight:500;letter-spacing:0;text-transform:none;color:var(--muted)}
+.gdb-passport-field input,.gdb-passport-field select{width:100%;display:block;border:1px solid #b5a08d;background:#fffdf7;border-radius:0;color:var(--ink);font:600 1rem var(--sans);padding:12px;min-height:47px}
+.gdb-passport-field input:focus-visible,.gdb-passport-field select:focus-visible,.gdb-passport-stamp-buttons button:focus-visible,.gdb-passport-clear:focus-visible{outline:3px solid var(--accent2);outline-offset:3px}
+.gdb-passport-fieldset{border:0;margin:0;padding:0;min-width:0}
+.gdb-passport-instruction{font-size:.84rem;margin:0 0 13px;color:var(--muted)}
+.gdb-passport-stamp-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.gdb-passport-stamp-buttons button{background:#f4e9d9;color:var(--ink);border:1px solid #d0bba7;padding:15px 12px;text-align:left;min-height:117px;display:flex;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;position:relative}
+.gdb-passport-stamp-buttons button .stamp-number{font:800 .58rem var(--sans);letter-spacing:.14em;color:var(--accent)}
+.gdb-passport-stamp-buttons button strong{font:700 1.22rem/1.08 var(--serif);color:var(--accent)}
+.gdb-passport-stamp-buttons button small{font:.77rem/1.35 var(--sans);color:var(--muted)}
+.gdb-passport-stamp-buttons button[aria-pressed="true"]{background:#731220;color:#fff3dd;border-color:#731220;box-shadow:inset 0 0 0 2px #c7a26c}
+.gdb-passport-stamp-buttons button[aria-pressed="true"] .stamp-number,.gdb-passport-stamp-buttons button[aria-pressed="true"] strong{color:#fff3dd}
+.gdb-passport-stamp-buttons button[aria-pressed="true"] small{color:#f1d6bf}
+.gdb-passport-stamp-buttons button[aria-pressed="true"]:after{content:"✓";font-weight:900;position:absolute;top:9px;right:11px}
+.gdb-passport-save{border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;padding-top:13px;flex-wrap:wrap}
+.gdb-passport-save p{color:var(--muted);margin:0;max-width:315px;font-size:.73rem}
+.gdb-passport-clear{background:none;border:1px solid var(--line);color:var(--accent);font:800 .66rem var(--sans);padding:10px 12px;text-transform:uppercase;letter-spacing:.06em;cursor:pointer}
+.gdb-passport-paper{background:linear-gradient(140deg,#fff9ed,#f0e2ce);border:5px double #731220;padding:24px;box-shadow:8px 10px 0 rgba(115,18,32,.13);color:#731220;min-width:0}
+.gdb-passport-paper-head{display:flex;gap:14px;align-items:center;border-bottom:2px solid #731220;padding-bottom:13px}
+.gdb-passport-paper-head img{width:74px;height:74px;object-fit:contain;flex:none}
+.gdb-passport-paper-head h3{font:800 clamp(1.26rem,2.4vw,2.05rem)/.99 var(--serif);letter-spacing:-.03em;margin:6px 0}
+.gdb-passport-paper-head span,.gdb-passport-holder>span,.gdb-passport-preview-count,.gdb-passport-paper-foot span{font:800 .63rem/1.3 var(--sans);letter-spacing:.11em;text-transform:uppercase}
+.gdb-passport-holder{display:grid;grid-template-columns:1fr 1fr;gap:7px 15px;padding:22px 0 14px}
+.gdb-passport-holder>strong{font:800 clamp(1.1rem,2vw,1.55rem)/1.08 var(--serif);overflow-wrap:anywhere}
+.gdb-passport-holder>strong:nth-of-type(2){font-size:clamp(.95rem,1.65vw,1.3rem)}
+.gdb-passport-preview-count{display:flex;justify-content:space-between;border-top:1px solid #c8b099;border-bottom:1px solid #c8b099;padding:12px 0}
+.gdb-passport-preview-count span{font-size:.95rem}
+.gdb-passport-mark-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;padding:25px 8px}
+.gdb-passport-mark-grid>div{aspect-ratio:1.58;border:2px dashed #b9a19a;border-radius:46%;opacity:.25;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transform:rotate(-8deg);padding:8px}
+.gdb-passport-mark-grid>div:nth-child(even){transform:rotate(8deg)}
+.gdb-passport-mark-grid>div.is-stamped{opacity:1;border:3px double #731220;box-shadow:inset 0 0 0 4px #f0e2ce,inset 0 0 0 6px rgba(115,18,32,.4)}
+.gdb-passport-mark-grid>div span{font:800 .67rem var(--sans)}
+.gdb-passport-mark-grid>div strong{font:800 clamp(.9rem,1.55vw,1.25rem) var(--serif)}
+.gdb-passport-mark-grid>div small{font:800 .59rem var(--sans);letter-spacing:.13em}
+.gdb-passport-paper-foot{border-top:2px solid #731220;padding-top:12px;display:flex;justify-content:space-between;gap:15px;align-items:center}
+.gdb-passport-paper-foot strong{font:800 .78rem var(--serif)}
+.gdb-id-personalized{margin:13px 0 0;text-align:right;color:#731220;font:800 .62rem var(--sans);letter-spacing:.08em;text-transform:uppercase}
+@media(max-width:900px){.gdb-passport-layout{grid-template-columns:1fr}.gdb-passport-paper{max-width:640px;width:100%;margin-inline:auto}}
+@media(max-width:600px){.gdb-orientation-banner.gdb-home-centered>img{width:74px!important;height:74px!important}
+.gdb-orientation-banner.gdb-home-centered strong{font-size:clamp(1.55rem,7vw,2.2rem)}
+.gdb-passport-controls{padding:17px}.gdb-passport-stamp-buttons{gap:8px}
+.gdb-passport-stamp-buttons button{padding:12px;min-height:124px}
+.gdb-passport-stamp-buttons button strong{font-size:1.14rem}
+.gdb-passport-paper{padding:15px;border-width:3px;box-shadow:4px 5px 0 rgba(115,18,32,.12)}
+.gdb-passport-paper-head img{width:54px;height:54px}
+.gdb-passport-paper-head span{font-size:.53rem}
+.gdb-passport-mark-grid{gap:10px;padding:19px 2px}
+.gdb-passport-paper-foot{flex-direction:column;align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){.gdb-passport-mark-grid>div{transition:none}}
