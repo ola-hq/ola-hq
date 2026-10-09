@@ -58,6 +58,8 @@ export function buildSnapshot(original, schedule, standings, now = new Date()) {
     (upcoming.id && existingNext.event_id === upcoming.id) ||
     (existingNext.opponent === upcoming.opponent && Date.parse(existingNext.kickoff_utc) === Date.parse(upcoming.date))
   );
+  const retainedUpcoming = !upcoming && prior.next_match && Number.isFinite(Date.parse(prior.next_match.kickoff_utc)) && Date.parse(prior.next_match.kickoff_utc) >= nowMs - 3*60*60*1000;
+  const fixtureSource = upcoming ? 'automated' : retainedUpcoming ? 'verified_cache' : 'unavailable';
   const next_match = upcoming ? {
     event_id: upcoming.id,
     opponent: upcoming.opponent,
@@ -68,7 +70,7 @@ export function buildSnapshot(original, schedule, standings, now = new Date()) {
     venue_name: upcoming.venue_name,
     status: upcoming.status,
     match_center_url: upcoming.match_center_url || (sameEvent ? existingNext.match_center_url : null)
-  } : null;
+  } : retainedUpcoming ? {...prior.next_match, status:'pre'} : null;
   const latest_result = previous ? {
     opponent: previous.opponent, venue:previous.venue,
     score: previous.ourScore + '–' + previous.theirScore,
@@ -82,6 +84,8 @@ export function buildSnapshot(original, schedule, standings, now = new Date()) {
     mode: 'Auto-refreshed ESPN schedule',
     refresh_strategy: 'scheduled',
     updated_at: now.toISOString(),
+    fixture_source: fixtureSource,
+    fixture_updated_at: upcoming ? now.toISOString() : retainedUpcoming ? (original.meta?.fixture_updated_at || original.meta?.updated_at || null) : null,
     schedule_source: ESPN_BASE + '/teams/' + TEAM_ID + '/schedule?season=' + (now.getUTCMonth() >= 6 ? now.getUTCFullYear() : now.getUTCFullYear() - 1),
     league_source: league ? STANDINGS_URL : null,
     league_updated_at: league ? now.toISOString() : null,
@@ -135,17 +139,30 @@ export async function run() {
   const now = new Date();
   const season = now.getUTCMonth() >= 6 ? now.getUTCFullYear() : now.getUTCFullYear() - 1;
   const schedule = await fetchJson(ESPN_BASE + '/teams/' + TEAM_ID + '/schedule?season=' + season);
+  // The team schedule sometimes lacks upcoming games. Supplement it with the dated scoreboard.
+  const today = new Date();
+  const inThirty = new Date(today.getTime() + 30*86400000);
+  const day = date => date.toISOString().slice(0,10).replace(/-/g,'');
+  let scoreboardEvents = [];
+  try {
+    const board = await fetchJson(ESPN_BASE + '/scoreboard?dates=' + day(today) + '-' + day(inThirty));
+    scoreboardEvents = Array.isArray(board?.events) ? board.events : [];
+  } catch (error) { console.warn('Upcoming scoreboard unavailable, preserving verified cache as needed:',error.message); }
+  const combined = new Map([...(schedule.events || []),...scoreboardEvents].map(e=>[String(e.id || e.date),e]));
+  const combinedSchedule = {...schedule,events:[...combined.values()]};
   let standings = null;
   try {
     standings = await fetchJson(STANDINGS_URL);
   } catch (error) {
     console.warn('Standings unavailable, hiding stale league position:',error.message);
   }
-  const snapshot = buildSnapshot(original,schedule,standings);
+  const snapshot = buildSnapshot(original,combinedSchedule,standings);
   await writeFile(FILE,JSON.stringify(snapshot,null,2)+'\n');
   console.log('Refreshed Arsenal snapshot at',snapshot.meta.updated_at,
     'next',snapshot.snapshot.next_match?.opponent || 'none',
-    'league',snapshot.snapshot.league?.position || 'unavailable');
+    'league',snapshot.snapshot.league?.position || 'unavailable',
+    'fixture source',snapshot.meta.fixture_source,
+    'scoreboard events',scoreboardEvents.length);
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

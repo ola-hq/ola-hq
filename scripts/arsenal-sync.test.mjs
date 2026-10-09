@@ -46,3 +46,13 @@ test('parses league position and points when given reliable standings',() => {
     wins:null,draws:null,losses:null,gf:null,ga:null,gd:null
   });
 });
+
+test('does not erase a verified upcoming fixture when schedule lists only completed games',() => {
+  const verified={opponent:'Leeds United',kickoff_utc:'2026-10-10T11:30:00Z',venue:'Home',venue_name:'Emirates Stadium',competition:'Premier League',match_center_url:'https://www.premierleague.com/en/match/2645245/essenal-vs-leeds-united/info',status:'pre'};
+  const old={meta:{updated_at:'2026-10-06T22:45:00-07:00',fixture_updated_at:'2026-10-08T21:00:00-07:00'},snapshot:{next_match:verified}};
+  const finished=event('2026-09-20T11:30:00Z','post');
+  const snapshot=buildSnapshot(old,{events:[finished]},null,new Date('2026-10-09T04:15:00Z'));
+  assert.deepEqual(snapshot.snapshot.next_match,verified);
+  assert.equal(snapshot.meta.fixture_source,'verified_cache');
+  assert.equal(snapshot.meta.fixture_updated_at,'2026-10-08T21:00:00-07:00');
+});

@@ -26,8 +26,9 @@
       const age = updated ? Date.now() - Date.parse(updated) : Infinity;
       const fresh = Number.isFinite(age) && age >= -300000 && age < 3 * 60 * 60 * 1000;
       const recentLive = Number.isFinite(age) && age >= -300000 && age < 15 * 60 * 1000;
-      const isLive = next.status === 'in' && recentLive;
-      const auto = data.meta?.refresh_strategy === 'scheduled' && fresh;
+      const fixtureAutomaticallyUpdated = data.meta?.fixture_source === 'automated';
+      const isLive = next.status === 'in' && recentLive && fixtureAutomaticallyUpdated;
+      const auto = data.meta?.refresh_strategy === 'scheduled' && fresh && fixtureAutomaticallyUpdated;
       const state = isLive ? 'live' : auto ? 'auto' : 'cached';
       const label = isLive ? 'LIVE NOW' : auto ? 'AUTO-REFRESHED' : 'CACHED SNAPSHOT';
       if (status) {
@@ -56,7 +57,10 @@
       text('ars-points', s.league?.points != null ? s.league.points + ' pts' : 'Table pending');
       text('ars-form', Array.isArray(s.recent_form) ? s.recent_form.join(' ') || '—' : '—');
       const updatedAt = fmt(updated, {month:'short', day:'numeric', hour:'numeric', minute:'2-digit', timeZoneName:'short'});
-      text('ars-data-status', updatedAt ? 'Last checked ' + updatedAt + (auto ? ' · scheduled sync' : ' · last saved data') : 'Saved data · update time unknown');
+      const fixtureAt = fmt(data.meta?.fixture_updated_at || updated, {month:'short', day:'numeric', hour:'numeric', minute:'2-digit', timeZoneName:'short'});
+      const sourceChecked = updatedAt ? ' · feed checked ' + updatedAt : '';
+      const freshnessCopy = data.meta?.fixture_source === 'verified_cache' ? 'Fixture verified ' + (fixtureAt || 'earlier') + sourceChecked : updatedAt ? 'Last checked ' + updatedAt + (auto ? ' · scheduled sync' : ' · last saved data') : 'Saved data · update time unknown';
+      text('ars-data-status', freshnessCopy);
       const matchLink = byId('ars-match-centre');
       const direct = safeUrl(next.match_center_url);
       if (matchLink) {
