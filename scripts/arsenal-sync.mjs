@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Arsenal Wave standalone scheduled refresh.
- * Source: ESPN's public soccer schedule and standings endpoints (unofficial, subject to availability).
+ * Sources: official Premier League fixture feed plus ESPN schedule/standings fallback.
  * Safety: never overwrite the last validated snapshot if fixture data is empty or malformed.
  * FPL Draft data is intentionally not touched.
  */
@@ -13,6 +13,8 @@ const FILE = new URL('../data/arsenal-2026.json', import.meta.url);
 const TEAM_ID = '359';
 const ESPN_BASE = 'https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1';
 const STANDINGS_URL = 'https://site.api.espn.com/apis/v2/sports/soccer/eng.1/standings';
+const PL_FIXTURES = 'https://fantasy.premierleague.com/api/fixtures/';
+const PL_TEAMS = 'https://fantasy.premierleague.com/api/bootstrap-static/';
 const FIXTURES_LINK = 'https://www.premierleague.com/en/clubs/3/arsenal/fixtures';
 const VALID_DIRECT = /^https:\/\/(?:www\.)?(?:espn\.com|premierleague\.com|arsenal\.com)\//i;
 
@@ -88,14 +90,40 @@ export function buildSnapshot(original, schedule, standings, now = new Date()) {
     fixture_updated_at: upcoming ? now.toISOString() : retainedUpcoming ? (original.meta?.fixture_updated_at || original.meta?.updated_at || null) : null,
     schedule_source: ESPN_BASE + '/teams/' + TEAM_ID + '/schedule?season=' + (now.getUTCMonth() >= 6 ? now.getUTCFullYear() : now.getUTCFullYear() - 1),
     league_source: league ? STANDINGS_URL : null,
+    official_fixture_feed:PL_FIXTURES,
     league_updated_at: league ? now.toISOString() : null,
     sources: [
       ...(original.meta?.sources || []).filter(x => !/ESPN/.test(x.label || '')),
+      {label:'Premier League official fixture feed',url:PL_FIXTURES},
       {label:'ESPN Arsenal schedule (automated, unofficial)',url:ESPN_BASE + '/teams/' + TEAM_ID + '/schedule'},
       ...(league ? [{label:'ESPN Premier League standings (automated, unofficial)',url:STANDINGS_URL}] : [])
     ]
   };
   return {...original,meta,snapshot:{...prior,next_match,latest_result,recent_form,league}};
+}
+
+/** Convert official PL fixtures into our existing, independently tested fixture schema. */
+export function parsePremierLeagueFixtures(bootstrap, fixtures) {
+  if (!Array.isArray(bootstrap?.teams) || !Array.isArray(fixtures)) return [];
+  const teams = new Map(bootstrap.teams.map(t => [Number(t.id),t]));
+  const arsenal = bootstrap.teams.find(t => t.short_name === 'ARS' || t.name === 'Arsenal');
+  if (!arsenal) return [];
+  return fixtures.filter(f => (Number(f.team_h) === Number(arsenal.id) || Number(f.team_a) === Number(arsenal.id)) && f.kickoff_time && Number.isFinite(Date.parse(f.kickoff_time))).map(f => {
+    const home=teams.get(Number(f.team_h));
+    const away=teams.get(Number(f.team_a));
+    if (!home || !away) return null;
+    const status = f.finished ? 'post' : f.started ? 'in' : 'pre';
+    return {
+      id:'pl-' + f.id,date:f.kickoff_time,status:{type:{state:status}},
+      competitions:[{
+        venue:{fullName:Number(f.team_h) === Number(arsenal.id) ? 'Emirates Stadium' : 'Away venue · check official match centre'},
+        competitors:[
+          {team:{id:Number(f.team_h) === Number(arsenal.id) ? TEAM_ID : String(f.team_h),displayName:home.name,abbreviation:home.short_name},homeAway:'home',score:f.team_h_score},
+          {team:{id:Number(f.team_a) === Number(arsenal.id) ? TEAM_ID : String(f.team_a),displayName:away.name,abbreviation:away.short_name},homeAway:'away',score:f.team_a_score}
+        ]
+      }]
+    };
+  }).filter(Boolean);
 }
 
 export function parseLeague(data) {
@@ -138,18 +166,18 @@ export async function run() {
   const original = JSON.parse(await readFile(FILE,'utf8'));
   const now = new Date();
   const season = now.getUTCMonth() >= 6 ? now.getUTCFullYear() : now.getUTCFullYear() - 1;
-  const schedule = await fetchJson(ESPN_BASE + '/teams/' + TEAM_ID + '/schedule?season=' + season);
-  // The team schedule sometimes lacks upcoming games. Supplement it with the dated scoreboard.
-  const today = new Date();
-  const inThirty = new Date(today.getTime() + 30*86400000);
-  const day = date => date.toISOString().slice(0,10).replace(/-/g,'');
-  let scoreboardEvents = [];
+  let scheduleEvents = [];
   try {
-    const board = await fetchJson(ESPN_BASE + '/scoreboard?dates=' + day(today) + '-' + day(inThirty));
-    scoreboardEvents = Array.isArray(board?.events) ? board.events : [];
-  } catch (error) { console.warn('Upcoming scoreboard unavailable, preserving verified cache as needed:',error.message); }
-  const combined = new Map([...(schedule.events || []),...scoreboardEvents].map(e=>[String(e.id || e.date),e]));
-  const combinedSchedule = {...schedule,events:[...combined.values()]};
+    const schedule = await fetchJson(ESPN_BASE + '/teams/' + TEAM_ID + '/schedule?season=' + season);
+    scheduleEvents = Array.isArray(schedule.events) ? schedule.events : [];
+  } catch(error) { console.warn('ESPN schedule unavailable:',error.message); }
+  let officialEvents = [];
+  try {
+    const [bootstrap,fixtures] = await Promise.all([fetchJson(PL_TEAMS),fetchJson(PL_FIXTURES)]);
+    officialEvents = parsePremierLeagueFixtures(bootstrap,fixtures);
+  } catch(error) { console.warn('Official PL fixtures unavailable:',error.message); }
+  // Put official fixtures first when sources disagree; retain the validated cached fixture otherwise.
+  const combinedSchedule = {events:[...officialEvents,...scheduleEvents]};
   let standings = null;
   try {
     standings = await fetchJson(STANDINGS_URL);
@@ -162,7 +190,8 @@ export async function run() {
     'next',snapshot.snapshot.next_match?.opponent || 'none',
     'league',snapshot.snapshot.league?.position || 'unavailable',
     'fixture source',snapshot.meta.fixture_source,
-    'scoreboard events',scoreboardEvents.length);
+    'official PL fixtures',officialEvents.length,
+    'ESPN fixtures',scheduleEvents.length);
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
