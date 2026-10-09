@@ -9,6 +9,12 @@ const root=resolve('.');
 const git=(cwd,...args)=>execFileSync('git',args,{cwd,encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim();
 const run=(cwd)=>spawnSync('bash',['scripts/commit-data.sh','data/fpl/league-18767.json','data: test snapshot'],{cwd,encoding:'utf8'});
 const files=['index.html','tools.html','tools.js','world-entrances.css','app/index.html','scripts/verify-hq-release.mjs','scripts/validate-fpl.mjs','scripts/sync-letterboxd.py','.github/workflows/pages.yml','data/fpl/league-18767.json','scripts/commit-data.sh'];
+const deployScript=readFileSync('.github/workflows/publish-site.yml','utf8').match(/          script: \|\n([\s\S]*?)\n      - name: Deploy/)[1].split('\n').map(line=>line.slice(12)).join('\n');
+const deploymentPreflight=new (Object.getPrototypeOf(async function(){}).constructor)('github','context','process',deployScript);
+const preflight=(buildType,mainSHA)=>deploymentPreflight({rest:{repos:{getPages:async()=>({data:{build_type:buildType}}),getBranch:async()=>({data:{commit:{sha:mainSHA}}})}}},{repo:{owner:'ola-hq',repo:'ola-hq'}},{env:{SOURCE_SHA:'verified-source'}});
+test('actual deployment preflight rejects branch publishing',async()=>{await assert.rejects(preflight('legacy','verified-source'),/Branch publishing must be retired/);});
+test('actual deployment preflight rejects main advancing after artifact verification',async()=>{await assert.rejects(preflight('workflow','newer-source'),/refusing stale artifact/);});
+test('actual deployment preflight accepts exactly the verified current main in workflow mode',async()=>{await preflight('workflow','verified-source');});
 function prepare() {
   const dir=mkdtempSync(join(tmpdir(),'ola-publishing-'));
   const remote=join(dir,'remote.git'), seed=join(dir,'seed'),worker=join(dir,'worker'),other=join(dir,'other');
