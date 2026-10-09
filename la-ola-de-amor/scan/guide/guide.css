@@ -311,21 +311,6 @@ dialog .legacy-detail .legacy-visual-title{font-size:clamp(24px,6vw,36px);top:10
  #tornaboda .saturday-activities h3{font-size:clamp(25px,7vw,34px)}
 }
 
-/* REAL GUIDE REVIEW: keep the approved Talavera art; clear its bands from content. */
-#tornaboda .saturday-activities,
-#tornaboda .after-five {
-  padding-top:calc(48px + 35px);
-  padding-bottom:calc(48px + 39px);
-}
-#tornaboda .saturday-activities::before,
-#tornaboda .saturday-activities::after,
-#tornaboda .after-five::before,
-#tornaboda .after-five::after { z-index:0; }
-#tornaboda .saturday-activities > *,
-#tornaboda .after-five > * { position:relative;z-index:1; }
-#tornaboda .saturday-activities > :last-child,
-#tornaboda .after-five > :last-child { margin-bottom:0; }
-
 /* Reuse the existing official wordmark only for the masthead back link. */
 .masthead > .masthead-brand-back {
   display:inline-flex;
@@ -352,11 +337,6 @@ dialog .legacy-detail .legacy-visual-title{font-size:clamp(24px,6vw,36px);top:10
   clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;
 }
 @media(max-width:650px) {
-  #tornaboda .saturday-activities,
-  #tornaboda .after-five {
-    padding-top:calc(42px + 35px);
-    padding-bottom:calc(42px + 41px);
-  }
   .masthead > .masthead-brand-back { gap:4px; }
   .masthead-brand-arrow { font-size:17px; }
   .masthead-brand-wordmark { width:clamp(79px,25vw,103px);max-height:25px; }
