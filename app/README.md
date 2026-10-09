@@ -92,3 +92,6 @@ Jon clarified the jump is an installed-app interaction only. The large globe ins
 
 ## 2026-10-08 — App home small-world spacing pass
 Jon clarified the intended installed OLA HQ App home: the first screen should feel spacious, with a small centered OLA globe floating almost like an app/download object rather than a giant hero image. Manual scrolling should reveal the lower title/copy and then the Waves naturally. Tapping the small globe in standalone app mode performs a short ~240ms glide directly to the first Wave (La Ola de Amor) positioned beneath the sticky app bar, effectively skipping the lower hero copy. Browser/Safari behavior remains non-interactive for that globe. App CSS/JS bumped to v10/v5. Website globe behavior remains unchanged.
+
+## 2026-10-08 — Globe fast-travel landing refined
+The installed-app globe quick-scroll now lands at the start of the Waves section (the “The Waves” heading and cards), rather than aligning directly to the first La Ola de Amor card. This keeps the spatial hero intact for manual scrolling while making globe-tap feel like a fast-travel jump into the world selector.
