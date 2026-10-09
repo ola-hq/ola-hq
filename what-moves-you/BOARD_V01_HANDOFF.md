@@ -1,6 +1,6 @@
 # The Open Current — board V01
 
-Status: UNPUBLISHED private design candidate on work/whats-moving-you-board-v01.
+Status: UNPUBLISHED FEATURE-BRANCH design candidate (source is visible in this public GitHub repository) on work/whats-moving-you-board-v01.
 
 Jon requested the thirteenth Wave in the prior unused final grid cell: a place for people to share "What's moving you?" / what they are into right now. This card is a standard World at the bottom, not a replacement for anything.
 
