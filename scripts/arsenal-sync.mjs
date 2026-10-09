@@ -56,7 +56,7 @@ export function buildSnapshot(original, schedule, standings, now = new Date()) {
   const previous = [...matches].reverse().find(x => x.status === 'post' && x.ourScore !== null && x.theirScore !== null);
   const prior = original.snapshot || {};
   const existingNext = prior.next_match || {};
-  const opponentKey = name => String(name || '').toLowerCase().replace(/\\b(fc|united|city|football club)\\b/g,'').replace(/[^a-z]/g,'').trim();
+  const opponentKey = name => String(name || '').toLowerCase().replace(/\b(fc|united|city|football club)\b/g,'').replace(/[^a-z]/g,'').trim();
   const sameKickoff = upcoming && Date.parse(existingNext.kickoff_utc) === Date.parse(upcoming.date);
   const sameEvent = upcoming && (
     (upcoming.id && existingNext.event_id === upcoming.id) ||
