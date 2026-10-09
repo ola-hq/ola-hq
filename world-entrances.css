@@ -112,3 +112,51 @@
  .entrance-page .world-entrances .visual.film,.entrance-page .world-entrances .simulation-visual,.entrance-page .world-entrances .fc-visual{height:auto;min-height:0;aspect-ratio:1672/941}
  .entrance-page .home-topbar .globe-lockup{flex-direction:row}
 }
+
+/* OLA HQ home: one consistent six-card display, desktop and mobile.
+   Applies ONLY to the six world entrances on the parent homepage.
+   Each media window is 16:9; rows share height; links align at the bottom. */
+.entrance-page .world-entrances.home-six-waves{
+  align-items:stretch;
+}
+@media(min-width:761px){
+  .entrance-page .world-entrances.home-six-waves{
+    grid-auto-rows:1fr;
+  }
+}
+.entrance-page .world-entrances.home-six-waves .room{
+  min-width:0;
+  height:100%;
+}
+.entrance-page .world-entrances.home-six-waves .visual{
+  display:block;
+  position:relative;
+  flex:0 0 auto;
+  width:100%;
+  height:auto;
+  min-height:0;
+  padding:0;
+  aspect-ratio:16/9;
+  overflow:hidden;
+}
+.entrance-page .world-entrances.home-six-waves .visual > img{
+  display:block;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  max-width:none;
+  max-height:none;
+  object-fit:cover;
+  border:0;
+  box-shadow:none;
+  transform:none;
+}
+.entrance-page .world-entrances.home-six-waves .room-copy{
+  flex:1 1 auto;
+  display:flex;
+  flex-direction:column;
+}
+.entrance-page .world-entrances.home-six-waves .room-copy .enter{
+  margin-top:auto;
+}
