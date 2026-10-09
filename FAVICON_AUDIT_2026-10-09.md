@@ -58,3 +58,17 @@ Reason: these worlds do not currently expose a clean, clearly canonical favicon-
 ## Preservation rule
 
 Favicon work should not redesign any world. Reuse established identity where it exists; generate only a compact mark derived from the current world language where no suitable source mark exists.
+
+
+## Follow-up — globe fallback approved
+
+Jonathan approved using the existing OLA HQ globe favicon anywhere a dedicated canonical world mark is not yet available.
+
+Applied to:
+- Blockbuster Wave (entry + complete gallery)
+- Our Polaroid Wave (all six public pages)
+- Wave 26 (main page + preview v4/v5/v6)
+- Offbrand Wave
+- Capybara Wave
+
+These are intentional fallback icons, not claims that the globe is the final world-specific identity. If a verified dedicated favicon is recovered later, it may replace the globe without changing page design.
