@@ -9,7 +9,7 @@
     cls: 'CLUB SCIENCE',
     rve: 'RAVE ETHICS'
   };
-  const STAMPS = ['bass', 'pocket', 'circle', 'last'];
+  const STAMPS = ['bass', 'pocket', 'circle', 'last', 'club', 'hourglass', 'hall', 'les', 'dfp', 'cls', 'rve', 'library'];
   const $ = id => document.getElementById(id);
   let storage = null;
   try {
@@ -39,7 +39,8 @@
 
   const editor = document.querySelector('[data-gdb-passport]');
   const home = $('gdb-passport-home-status');
-  if (!editor && !home) return;
+  const clubCheckin = document.querySelector('[data-gdb-club-checkin]');
+  if (!editor && !home && !clubCheckin) return;
   const displayAlias = () => (state.alias.trim() || 'NIGHT SCHOLAR').toLocaleUpperCase();
 
   const render = () => {
@@ -48,8 +49,19 @@
       home.hidden = !state.issued;
       const label = $('gdb-passport-home-summary');
       if (label) label.textContent = total
-        ? 'Your campus passport: ' + total + ' of 4 marks. Continue stamping →'
+        ? 'Your campus passport: ' + total + ' of ' + STAMPS.length + ' marks. Continue stamping →'
         : 'Your campus passport remembers you. Leave a mark →';
+    }
+    if (clubCheckin) {
+      const stamped = state.marks.includes('club');
+      clubCheckin.setAttribute('aria-pressed', String(stamped));
+      clubCheckin.textContent = stamped ? '✓ Club Night stamped' : '✳ Stamp Club Night';
+      const status = $('gdb-club-checkin-status');
+      if (status) status.textContent = stamped
+        ? 'Your Club Night mark is now in the Campus Passport. Tap again to undo.'
+        : 'Stamp your visit here. It saves on this browser, not a public attendance log.';
+      const totalNode = $('gdb-club-stamp-count');
+      if (totalNode) totalNode.textContent = state.marks.length + ' / ' + STAMPS.length + ' fieldwork stamps';
     }
     if (!editor) return;
     const previewAlias = $('gdb-passport-preview-alias');
@@ -59,7 +71,7 @@
     const idAlias = $('gdb-campus-id-alias');
     if (previewAlias) previewAlias.textContent = displayAlias();
     if (previewMajor) previewMajor.textContent = MAJORS[state.major];
-    if (count) count.textContent = total + ' / 4';
+    if (count) count.textContent = total + ' / ' + STAMPS.length;
     if (idMajor) idMajor.textContent = MAJORS[state.major];
     if (idAlias) {
       idAlias.hidden = !state.alias.trim();
@@ -130,6 +142,15 @@
       const status = $('gdb-passport-save-status');
       if (status) status.textContent = 'Local storage is unavailable. Marks will last only for this visit; no account or public log.';
     }
+  }
+  if (clubCheckin) {
+    clubCheckin.addEventListener('click', () => {
+      state.marks = state.marks.includes('club')
+        ? state.marks.filter(mark => mark !== 'club')
+        : STAMPS.filter(mark => state.marks.includes(mark) || mark === 'club');
+      state.issued = true;
+      save();
+    });
   }
   render();
 })();
