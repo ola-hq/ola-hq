@@ -56,7 +56,7 @@ export function buildSnapshot(original, schedule, standings, now = new Date()) {
   const existingNext = prior.next_match || {};
   const sameEvent = upcoming && (
     (upcoming.id && existingNext.event_id === upcoming.id) ||
-    (existingNext.opponent === upcoming.opponent && existingNext.kickoff_utc === upcoming.date)
+    (existingNext.opponent === upcoming.opponent && Date.parse(existingNext.kickoff_utc) === Date.parse(upcoming.date))
   );
   const next_match = upcoming ? {
     event_id: upcoming.id,
@@ -82,7 +82,7 @@ export function buildSnapshot(original, schedule, standings, now = new Date()) {
     mode: 'Auto-refreshed ESPN schedule',
     refresh_strategy: 'scheduled',
     updated_at: now.toISOString(),
-    schedule_source: ESPN_BASE + '/teams/' + TEAM_ID + '/schedule?season=' + now.getUTCFullYear(),
+    schedule_source: ESPN_BASE + '/teams/' + TEAM_ID + '/schedule?season=' + (now.getUTCMonth() >= 6 ? now.getUTCFullYear() : now.getUTCFullYear() - 1),
     league_source: league ? STANDINGS_URL : null,
     league_updated_at: league ? now.toISOString() : null,
     sources: [
@@ -132,7 +132,8 @@ async function fetchJson(url, timeout = 18000) {
 
 export async function run() {
   const original = JSON.parse(await readFile(FILE,'utf8'));
-  const season = new Date().getUTCFullYear();
+  const now = new Date();
+  const season = now.getUTCMonth() >= 6 ? now.getUTCFullYear() : now.getUTCFullYear() - 1;
   const schedule = await fetchJson(ESPN_BASE + '/teams/' + TEAM_ID + '/schedule?season=' + season);
   let standings = null;
   try {
