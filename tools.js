@@ -249,10 +249,10 @@ function renderTopFilms(){
  $('letterboxd-import').hidden=!isLB;
  const sourceLink=$('movie-source-link'),footnote=$('movie-source-footnote');
  sourceLink.href=isLB?diaryURL:'blockbuster-wave/blockbuster-wave-complete-gallery.html#insights';
- sourceLink.textContent=isLB?'Open Our Polaroid PROJ on Letterboxd ↗':'Explore Blockbuster Wave ↗';
+ sourceLink.textContent=isLB?'Open our movie diary ↗':'Explore Blockbuster Wave ↗';
  sourceLink.target=isLB?'_blank':'_self';
  if(isLB){
-  footnote.textContent='Source: Our Polaroid PROJ public Letterboxd diary RSS (when available) + optional browser-local export. RSS is a recent activity feed, not an all-time ratings API.';
+  footnote.textContent='Source: Our Polaroid Wave movie diary (via Letterboxd RSS when available) + optional browser-local export. RSS covers recent activity, not all-time ratings.';
   const records=letterboxdRecords();
   // Recent mode is strictly date-scoped and includes every valid rating, even below 4 stars.
   // Filter by verified diary watch date BEFORE ranking/deduplication. Never fall back to older records.
