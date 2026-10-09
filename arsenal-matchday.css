@@ -1,0 +1,81 @@
+/* Arsenal Wave · Matchday Pass 01 — additive, scoped and reduced-motion friendly */
+.arsenal-season .feature-grid{grid-template-columns:minmax(0,1.05fr) minmax(390px,.9fr);align-items:stretch;gap:22px}
+.arsenal-season .feature-main{min-width:0}
+.arsenal-season .feature-side.arsenal-matchday{
+  --match-ink:#f8ecda;--match-muted:#bdafa4;--match-gold:#f2c977;
+  position:relative;isolation:isolate;overflow:hidden;justify-content:flex-start;min-width:0;
+  padding:clamp(23px,2.7vw,38px)!important;border:1px solid #deab6650!important;
+  border-top:3px solid #e5b965!important;border-radius:20px;
+  background:radial-gradient(circle at 100% 0%,#a9243640,transparent 35%),linear-gradient(155deg,#241012,#100d13 48%,#1d0b12 100%)!important;
+  color:var(--match-ink)!important;box-shadow:0 22px 55px #0d080c28!important;
+}
+.arsenal-matchday-glow{position:absolute;z-index:-1;pointer-events:none;inset:-60% -70% auto auto;width:115%;aspect-ratio:1;border:1px solid #d5a15821;border-radius:50%;box-shadow:0 0 0 44px #d5a15804,0 0 0 100px #d5a15804;animation:ars-drift 13s ease-in-out infinite alternate}
+.arsenal-matchday:after{content:"";position:absolute;inset:auto -40% -30% -30%;height:45%;pointer-events:none;z-index:-1;background:radial-gradient(ellipse,#b5162621,transparent 67%)}
+.arsenal-matchday-top,.arsenal-matchday-date,.arsenal-fixture-stage,.arsenal-kickoff-wrap,.arsenal-matchday-actions{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.arsenal-matchday-top{flex-wrap:wrap}
+.arsenal-matchday-top .arsenal-kicker{color:var(--match-gold)!important;margin:0;font-size:10px}
+.arsenal-matchday-spark{display:inline-block;color:#ffdeaa;font-size:17px;margin-left:5px;animation:ars-twinkle 4s ease-in-out infinite}
+.arsenal-freshness{display:inline-flex;align-items:center;gap:7px;padding:8px 10px;min-height:31px;border:1px solid #dfc29848;border-radius:999px;background:#f5dbb611;color:#ffdda2;font:800 9px/1 Arial,sans-serif;letter-spacing:.1em;white-space:nowrap}
+.arsenal-freshness-dot{width:7px;height:7px;flex:none;border-radius:50%;background:#d6bd8b;box-shadow:0 0 0 3px #d6bd8b24}
+.arsenal-freshness[data-state="auto"]{color:#d2f6e7;border-color:#90e4b667;background:#4eb38d1c}
+.arsenal-freshness[data-state="auto"] .arsenal-freshness-dot{background:#76d5ae;box-shadow:0 0 0 4px #76d5ae24}
+.arsenal-freshness[data-state="live"]{color:#ffccd0;border-color:#ff6d7c88;background:#d5414c1e}
+.arsenal-freshness[data-state="live"] .arsenal-freshness-dot{background:#ff687b;animation:ars-pulse 1.4s ease-in-out infinite}
+.arsenal-freshness[data-state="offline"]{color:#b8b7b5;border-color:#97939055;background:#fff1dc0d}
+.arsenal-matchday-date{margin-top:29px;justify-content:center;color:#cabfad;text-align:center;font:800 10px/1.35 Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase}
+.arsenal-matchday-date-sep{color:var(--match-gold);font-size:17px}
+.arsenal-fixture-stage{padding:27px 0 30px;align-items:flex-start;gap:7px}
+.arsenal-fixture-team{min-width:0;flex:1;display:flex;align-items:center;flex-direction:column;gap:12px;text-align:center}
+.arsenal-team-token{display:grid;place-items:center;width:clamp(66px,7vw,98px);aspect-ratio:1;border:1px solid #ffffff32;border-radius:27px;box-shadow:inset 0 1px 2px #ffffff33,0 14px 34px #0006;font:900 clamp(18px,2.2vw,28px)/1 Arial,sans-serif;letter-spacing:-.04em;transition:transform .4s cubic-bezier(.2,1.7,.4,1),box-shadow .35s ease}
+.arsenal-team-token-red{background:linear-gradient(140deg,#d52d39,#75101a);color:#fff5df;transform:rotate(-5deg)}
+.arsenal-team-token-gold{background:linear-gradient(145deg,#d0a65b,#6c4825);color:#fff7dc;transform:rotate(5deg)}
+.arsenal-fixture-team strong{font:700 clamp(13px,1.4vw,18px)/1.25 Georgia,serif;overflow-wrap:anywhere;color:#f7efdf;text-align:center}
+.arsenal-fixture-versus{min-width:85px;display:flex;flex-direction:column;align-items:center;gap:7px;padding-top:9px;text-align:center}
+.arsenal-fixture-versus span{font:800 8px/1.35 Arial,sans-serif;color:#c4a675;letter-spacing:.08em}
+.arsenal-fixture-versus b{font:900 clamp(29px,4.1vw,43px)/1 Georgia,serif;letter-spacing:-.08em;color:#f6ebda;text-shadow:0 0 25px #f1b96a44}
+.arsenal-fixture-versus small{font:700 10px/1.25 Arial,sans-serif;color:#cbbbae;max-width:100px;overflow-wrap:anywhere}
+.arsenal-kickoff-wrap{background:#f5e8d012;border:1px solid #f1d6a92c;border-radius:13px;padding:18px;align-items:flex-end;flex-wrap:wrap}
+.arsenal-kickoff-big,.arsenal-kickoff-detail{display:flex;flex-direction:column;gap:7px}
+.arsenal-kickoff-label{font:900 9px/1 Arial,sans-serif;letter-spacing:.13em;color:var(--match-gold)}
+.arsenal-kickoff-big strong{font:700 clamp(22px,2.7vw,34px)/1.1 Georgia,serif;color:#fff6e5}
+.arsenal-kickoff-detail{text-align:right;color:#c7bbaf;font:700 10px/1.4 Arial,sans-serif}
+.arsenal-kickoff-detail span{color:#9d928c}
+.arsenal-season .arsenal-matchday-mini{grid-template-columns:repeat(3,minmax(0,1fr));border-color:#ffffff26;margin:23px 0 21px}
+.arsenal-season .arsenal-matchday-mini div{min-width:0;padding:13px 8px;border-color:#ffffff22;text-align:center}
+.arsenal-season .arsenal-matchday-mini span{color:#d9b77d}
+.arsenal-season .arsenal-matchday-mini strong{color:#f6eddd;font-size:22px;overflow-wrap:anywhere}
+.arsenal-season .arsenal-matchday-mini small{color:#b8a9a1;overflow-wrap:anywhere}
+.arsenal-matchday-actions{align-items:stretch}
+.arsenal-matchday-primary,.arsenal-energy-button{display:inline-flex;justify-content:center;align-items:center;min-height:47px;border-radius:11px;font:900 10px/1.25 Arial,sans-serif;letter-spacing:.05em;text-decoration:none;transition:transform .3s cubic-bezier(.2,1.5,.4,1),box-shadow .25s,border-color .25s;cursor:pointer;text-align:center}
+.arsenal-matchday-primary{padding:12px 16px;flex:1;color:#1b1010!important;background:linear-gradient(135deg,#ffda9c,#daaa65);border:1px solid #ffdfaa;box-shadow:0 8px 28px #e2a45824}
+.arsenal-energy-button{padding:12px;color:#e9d5b5;background:#ffffff0b;border:1px solid #e0bb8655;flex:none}
+.arsenal-matchday-primary:hover,.arsenal-energy-button:hover{transform:translateY(-3px);box-shadow:0 12px 25px #e2a45830}
+.arsenal-matchday-primary:focus-visible,.arsenal-energy-button:focus-visible{outline:3px solid #ffdda0;outline-offset:3px}
+.arsenal-season .arsenal-matchday>.ars-data-status{margin:17px 0 0!important;text-align:center;font:700 9px/1.5 Arial,sans-serif;letter-spacing:.02em;color:#a99d91!important;text-transform:none}
+.arsenal-matchday.is-energized .arsenal-team-token-red{animation:ars-hop-left .8s cubic-bezier(.2,1.2,.3,1)}
+.arsenal-matchday.is-energized .arsenal-team-token-gold{animation:ars-hop-right .8s cubic-bezier(.2,1.2,.3,1) .08s}
+.arsenal-matchday.is-energized .arsenal-fixture-versus b{animation:ars-pop .8s ease}
+@keyframes ars-drift{from{transform:translate(6%,0)}to{transform:translate(-13%,11%)}}
+@keyframes ars-pulse{50%{box-shadow:0 0 0 8px #ff687b10;opacity:.5}}
+@keyframes ars-twinkle{50%{transform:rotate(20deg) scale(1.2);opacity:.7}}
+@keyframes ars-hop-left{45%{transform:translate(-3px,-19px) rotate(-16deg) scale(1.1)}}
+@keyframes ars-hop-right{45%{transform:translate(3px,-17px) rotate(16deg) scale(1.1)}}
+@keyframes ars-pop{50%{transform:scale(1.32) rotate(-8deg)}}
+@media(max-width:1100px){.arsenal-season .feature-grid{grid-template-columns:1fr}.arsenal-season .feature-main{min-height:320px}.arsenal-season .feature-side.arsenal-matchday{width:100%;max-width:780px;justify-self:center;box-sizing:border-box}}
+@media(max-width:520px){
+  .arsenal-season .feature-side.arsenal-matchday{padding:21px 16px!important;border-radius:16px}
+  .arsenal-fixture-stage{padding:25px 0 27px}
+  .arsenal-fixture-versus{min-width:67px}
+  .arsenal-team-token{width:66px;border-radius:20px;font-size:21px}
+  .arsenal-matchday-date{font-size:9px;gap:7px}
+  .arsenal-kickoff-wrap{align-items:flex-start}
+  .arsenal-kickoff-detail{text-align:left}
+  .arsenal-matchday-actions{flex-direction:column}
+  .arsenal-season .arsenal-matchday-mini{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .arsenal-season .arsenal-matchday-mini div{padding:12px 4px}
+  .arsenal-season .arsenal-matchday-mini strong{font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){
+  .arsenal-matchday-glow,.arsenal-matchday-spark,.arsenal-freshness-dot,.arsenal-matchday.is-energized .arsenal-team-token,.arsenal-matchday.is-energized .arsenal-fixture-versus b{animation:none!important}
+  .arsenal-team-token,.arsenal-matchday-primary,.arsenal-energy-button{transition:none}
+}
