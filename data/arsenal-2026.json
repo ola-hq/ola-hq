@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-arsenal-v1",
     "mode": "Auto-refreshed ESPN schedule",
-    "updated_at": "2026-10-09T04:15:00.339Z",
+    "updated_at": "2026-10-09T04:17:31.146Z",
     "updated_display": "Oct 6, 2026",
     "architecture": [
       "live source",
@@ -42,7 +42,7 @@
     "refresh_strategy": "scheduled",
     "schedule_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/359/schedule?season=2026",
     "league_source": "https://site.api.espn.com/apis/v2/sports/soccer/eng.1/standings",
-    "league_updated_at": "2026-10-09T04:15:00.339Z",
+    "league_updated_at": "2026-10-09T04:17:31.146Z",
     "fixture_source": "verified_cache",
     "fixture_updated_at": "2026-10-09T04:14:00Z"
   },
