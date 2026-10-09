@@ -136,7 +136,7 @@ document.querySelectorAll('[data-world]').forEach(button => button.addEventListe
 home.addEventListener('click', () => showHome());
 function quickScrollToFirstWave() {
   if (!isAppWindow()) return;
-  const target = document.querySelector('#worlds');
+  const target = document.querySelector('#world-la-ola');
   if (!target) return;
   const appbar = document.querySelector('.appbar');
   const offset = (appbar?.getBoundingClientRect().height || 67) + 10;
