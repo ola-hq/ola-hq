@@ -79,3 +79,23 @@
   .bottomnav > a {padding-inline:2px;gap:4px;}
   .bottomnav > a > b {font-size:clamp(9px,2.45vw,10.5px);}
 }
+
+/* SURGICAL TORNABODA FIX: loaded after guide.css; preserve tile art and color.
+   The old shorthand above reset both lower cards' padding-top to 2px. */
+#tornaboda .saturday-activities,
+#tornaboda .after-five {
+  padding-top:60px;
+  padding-bottom:72px;
+}
+#tornaboda .saturday-activities::before,
+#tornaboda .saturday-activities::after,
+#tornaboda .after-five::before,
+#tornaboda .after-five::after { z-index:0; }
+#tornaboda .saturday-activities > *,
+#tornaboda .after-five > * { position:relative;z-index:1; }
+#tornaboda .saturday-activities > :last-child,
+#tornaboda .after-five > :last-child { margin-bottom:0; }
+@media(max-width:650px) {
+  #tornaboda .saturday-activities,
+  #tornaboda .after-five { padding-top:60px;padding-bottom:66px; }
+}
