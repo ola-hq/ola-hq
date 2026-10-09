@@ -75,6 +75,12 @@
 .entrance-page .world-entrances .supplied-banner{background:#eadcc5;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .entrance-page .world-entrances .supplied-banner img{display:block;object-fit:contain;object-position:center;width:100%;height:100%;max-width:none;max-height:none;transform:none;border:0;box-shadow:none}
 .entrance-page .world-entrances .wave-26-banner{background:#ede6d7}
+/* OLA HQ homepage Wave 26 entrance: preserve the full 640×427 illustration on desktop instead of letterboxing it in the fixed 280px card window. */
+@media(min-width:761px){
+ .entrance-page .world-entrances .wave-26-banner{height:auto;min-height:0;aspect-ratio:640/427}
+ .entrance-page .world-entrances .wave-26-banner img{width:100%;height:100%;object-fit:contain}
+}
+
 .entrance-page .world-entrances .arsenal-banner{background:#bb733e}
 .entrance-page .world-entrances .capybara-banner{background:#edb25c}
 .entrance-page .world-entrances .room:focus-visible{outline:3px solid #9b742f;outline-offset:5px}
