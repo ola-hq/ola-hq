@@ -306,10 +306,10 @@ function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className
 function group(root,title,list,rows){
 if(!list.length)return;
 const box=el('section','movie-list'),h=el('h4','',title+' ('+list.length+')');box.append(h);
-let shown=0;const more=el('button','movie-more','Show more');
+let shown=0;const items=el('div','movie-items'),more=el('button','movie-more','Show more');
 more.type='button';
-function batch(){const next=Math.min(list.length,shown+15);for(;shown<next;shown++)box.append(el('div','movie-chain',formatChain(list[shown],rows)));more.hidden=shown>=list.length;}
-more.addEventListener('click',batch);batch();box.append(more);root.append(box);
+function batch(){const next=Math.min(list.length,shown+15);for(;shown<next;shown++)items.append(el('div','movie-chain',formatChain(list[shown],rows)));more.hidden=shown>=list.length;}
+more.addEventListener('click',batch);box.append(items);batch();box.append(more);root.append(box);
 }
 function runPlanner(){
 const error=byId('movie-error'),root=byId('movie-results');error.hidden=true;error.textContent='';root.replaceChildren();let rows,output;
