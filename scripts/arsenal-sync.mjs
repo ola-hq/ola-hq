@@ -56,15 +56,17 @@ export function buildSnapshot(original, schedule, standings, now = new Date()) {
   const previous = [...matches].reverse().find(x => x.status === 'post' && x.ourScore !== null && x.theirScore !== null);
   const prior = original.snapshot || {};
   const existingNext = prior.next_match || {};
+  const opponentKey = name => String(name || '').toLowerCase().replace(/\\b(fc|united|city|football club)\\b/g,'').replace(/[^a-z]/g,'').trim();
+  const sameKickoff = upcoming && Date.parse(existingNext.kickoff_utc) === Date.parse(upcoming.date);
   const sameEvent = upcoming && (
     (upcoming.id && existingNext.event_id === upcoming.id) ||
-    (existingNext.opponent === upcoming.opponent && Date.parse(existingNext.kickoff_utc) === Date.parse(upcoming.date))
+    (sameKickoff && existingNext.venue === upcoming.venue && opponentKey(existingNext.opponent) === opponentKey(upcoming.opponent))
   );
   const retainedUpcoming = !upcoming && prior.next_match && Number.isFinite(Date.parse(prior.next_match.kickoff_utc)) && Date.parse(prior.next_match.kickoff_utc) >= nowMs - 3*60*60*1000;
   const fixtureSource = upcoming ? 'automated' : retainedUpcoming ? 'verified_cache' : 'unavailable';
   const next_match = upcoming ? {
     event_id: upcoming.id,
-    opponent: upcoming.opponent,
+    opponent: sameEvent && existingNext.opponent?.length > upcoming.opponent.length ? existingNext.opponent : upcoming.opponent,
     venue: upcoming.venue,
     when: new Intl.DateTimeFormat('en-US', {timeZone:'Europe/London',weekday:'short',month:'short',day:'numeric'}).format(new Date(upcoming.date)),
     kickoff_utc: upcoming.date,
