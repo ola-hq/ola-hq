@@ -79,3 +79,6 @@ html.is-installed #install{display:none!important}
 .world-card.logo-portal.gdb-wave:after{background:linear-gradient(180deg,transparent 5%,rgba(6,21,43,.04) 39%,rgba(6,21,43,.87) 81%,rgba(6,21,43,.96) 100%)}
 .world-card.logo-portal.willpwr{background:#eff0e9}
 .world-card.logo-portal.offbrand{background:#f0edde}
+
+/* Subtle return from the installed app to the classic website. */
+.home-footer .website-return{margin:9px 0 0;color:#9fb8cf;font-size:11px}.home-footer .website-return a{margin:0;color:#c9dbee;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
