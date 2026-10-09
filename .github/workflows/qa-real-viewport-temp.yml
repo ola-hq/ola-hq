@@ -57,6 +57,7 @@ jobs:
             // Test the real seven-marker map and the zoom/button interactions.
             await page.locator('.tornaboda-map-open').click();
             await page.waitForURL(/#tornaboda\/map/);
+            await page.waitForFunction(()=>document.querySelectorAll('.sat-map-hotspot').length===7,null,{timeout:15000});
             const marks=await page.locator('.sat-map-hotspot').count();
             if(marks!==7) throw Error(label+' '+width+' '+lang+' seven-marker map had '+marks);
             await page.locator('.sat-map-hotspot').first().click();
