@@ -1,0 +1,95 @@
+name: TEMP - Festival Guide Actual Viewports
+on:
+  push:
+    paths: [.github/workflows/qa-real-viewport-temp.yml]
+    branches: [review/festival-guide-real-qa-20261009]
+permissions:
+  contents: read
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Browser dependency
+        run: |
+          mkdir -p /tmp/qa-nav
+          npm install --no-save --no-package-lock --prefix /tmp/qa-nav playwright-core@1.56.0
+      - name: Real viewport screenshot check, before vs after
+        run: |
+          mkdir -p screens
+          cat > /tmp/qa-nav.cjs <<'JS'
+          const {chromium}=require('/tmp/qa-nav/node_modules/playwright-core');
+          const fs=require('fs');
+          const path=require('path');
+          (async()=>{
+          const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});
+          const label=process.env.LABEL,port=process.env.PORT;
+          const reports=[];
+          for(const width of [360,400,1440]) for(const lang of ['en','es']){
+            const context=await browser.newContext({viewport:{width,height:width===1440?900:800},deviceScaleFactor:1,serviceWorkers:'allow'});
+            const page=await context.newPage();
+            const errors=[];page.on('pageerror',e=>errors.push(e.message));
+            await page.goto('http://127.0.0.1:'+port+'/la-ola-de-amor/scan/guide/?lang='+lang+'#tornaboda',{waitUntil:'domcontentloaded'});
+            await page.locator('#tornaboda').waitFor({state:'visible'});
+            await page.evaluate(()=>document.fonts.ready);
+            await page.waitForTimeout(450);
+            await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
+            await page.waitForTimeout(150);
+            const prefix='screens/'+label+'-'+width+'-'+lang;
+            const top=await page.evaluate(()=>{
+              const bounds=s=>{const el=document.querySelector(s);if(!el)return null;const r=el.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height,left:r.left,right:r.right,top:r.top,bottom:r.bottom,visible:r.bottom>0&&r.top<innerHeight};};
+              const xOverflow=document.documentElement.scrollWidth-innerWidth;
+              const skip=document.querySelector('.skip');
+              const tabs=[...document.querySelectorAll('.day-selector a')].map(a=>({text:a.innerText,rect:(()=>{const r=a.getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom};})()}));
+              return {skip:{cssTop:getComputedStyle(skip).top,y:bounds('.skip')?.y,focused:document.activeElement===skip},dayTabs:tabs,header:bounds('.masthead'),nav:bounds('.bottomnav'),updates:bounds('.updates-shortcut'),brand:bounds('.masthead-brand-wordmark'),brandReady:document.querySelector('.masthead-brand-wordmark')?.naturalWidth,brandDestination:document.querySelector('.masthead-brand-back')?.getAttribute('href'),brandAccessibleText:document.querySelector('.masthead-brand-back')?.textContent.trim(),overflow:xOverflow,scrollY:scrollY};
+            });
+            await page.screenshot({path:prefix+'-01-top-VIEWPORT.png',fullPage:false});
+            await page.locator('#tornaboda .saturday-activities').scrollIntoViewIfNeeded();
+            await page.waitForTimeout(130);
+            await page.screenshot({path:prefix+'-02-activities-VIEWPORT.png',fullPage:false});
+            await page.locator('#tornaboda .after-five').scrollIntoViewIfNeeded();
+            await page.waitForTimeout(130);
+            await page.screenshot({path:prefix+'-03-night-VIEWPORT.png',fullPage:false});
+            const navigation=await page.evaluate(()=>{
+              const isVisible=(selector)=>{const r=document.querySelector(selector)?.getBoundingClientRect();return Boolean(r&&r.width>0&&r.height>0&&r.bottom>0&&r.top<innerHeight)};
+              return {navVisible:isVisible('.bottomnav'),updatesTop:isVisible('.updates-shortcut'),afterFiveVisible:isVisible('#tornaboda .after-five'),overflow:document.documentElement.scrollWidth-innerWidth};
+            });
+            // Test the real seven-marker map and the zoom/button interactions.
+            await page.locator('.tornaboda-map-open').click();
+            await page.waitForURL(/#tornaboda\/map/);
+            const marks=await page.locator('.sat-map-hotspot').count();
+            if(marks!==7) throw Error(label+' '+width+' '+lang+' seven-marker map had '+marks);
+            await page.locator('.sat-map-hotspot').first().click();
+            await page.locator('[data-zoom="in"]').click();
+            await page.screenshot({path:prefix+'-04-map-VIEWPORT.png',fullPage:false});
+            await page.locator('#close-detail').click();
+            await page.waitForURL(/#tornaboda$/);
+            // Festival Updates and bottom navigation must retain original routing.
+            await page.locator('.updates-shortcut').click();
+            await page.waitForURL(/#updates$/);
+            await page.goto('http://127.0.0.1:'+port+'/la-ola-de-amor/scan/guide/?lang='+lang+'#tornaboda');
+            await page.locator('#tornaboda').waitFor({state:'visible'});
+            const report={label,width,lang,top,navigation,mapMarkers:marks,errors};
+            reports.push(report);
+            if(top.overflow>1||navigation.overflow>1||errors.length||!navigation.navVisible||top.skip.y>=0)throw Error('Viewport failed '+JSON.stringify(report));
+            await context.close();
+          }
+          fs.writeFileSync('screens/'+label+'-metrics.json',JSON.stringify(reports,null,2));
+          console.log('REAL VIEWPORT QA',JSON.stringify(reports.map(r=>({width:r.width,lang:r.lang,skip:r.top.skip,overflow:r.top.overflow,navVisible:r.navigation.navVisible,brandReady:r.top.brandReady,mapMarkers:r.mapMarkers,errors:r.errors})),null,2));
+          await browser.close();
+          })().catch(e=>{console.error(e);process.exit(1)});
+          JS
+          git fetch --depth=1 origin 3049d90bfc8db63842be33589a413b29ff420c15
+          git worktree add --detach /tmp/guide-main 3049d90bfc8db63842be33589a413b29ff420c15
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/guide-after.log 2>&1 &
+          python3 -m http.server 8766 --bind 127.0.0.1 --directory /tmp/guide-main >/tmp/guide-before.log 2>&1 &
+          sleep 2
+          PORT=8766 LABEL=BEFORE node /tmp/qa-nav.cjs
+          PORT=8765 LABEL=AFTER node /tmp/qa-nav.cjs
+      - name: Upload real viewport evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: REAL-VIEWPORT-BEFORE-AFTER
+          path: screens
+          retention-days: 14
