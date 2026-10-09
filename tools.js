@@ -225,10 +225,16 @@ function topFilmCard(movie,index,fromLetterboxd){
  card.append(detail);return card;
 }
 function movieRanking(entries,minimumRating=4){
- const filtered=entries.filter(x=>Number.isFinite(x.score)&&x.score>=minimumRating);
+ // Letterboxd RSS links identify DIARY ENTRIES, not unique films. Deduplicate by title+year,
+ // use the newest recorded rating, and only THEN apply the overall 4-star threshold.
  const unique=new Map();
- filtered.forEach(f=>{const key=(f.url||f.title+'|'+(f.year||'')).toLowerCase();const prev=unique.get(key);if(!prev||f.score>prev.score||(f.score===prev.score&&(f.watchedDate||'')>(prev.watchedDate||'')))unique.set(key,f);});
- return [...unique.values()].sort((a,b)=>b.score-a.score||(b.watchedDate||'').localeCompare(a.watchedDate||'')||(a.order??Infinity)-(b.order??Infinity)||a.title.localeCompare(b.title));
+ entries.filter(x=>typeof x.title==='string'&&Number.isFinite(x.score)&&x.score>=0.5&&x.score<=5).forEach(f=>{
+  const key=(f.title.trim()+'|'+(f.year||'')).toLocaleLowerCase(),prev=unique.get(key);
+  const date=f.activityDate||f.watchedDate||'',older=prev?.activityDate||prev?.watchedDate||'';
+  if(!prev||date>older||(date===older&&f.score>prev.score))unique.set(key,f);
+ });
+ return [...unique.values()].filter(x=>x.score>=minimumRating)
+  .sort((a,b)=>b.score-a.score||(b.activityDate||b.watchedDate||'').localeCompare(a.activityDate||a.watchedDate||'')||(a.order??Infinity)-(b.order??Infinity)||a.title.localeCompare(b.title));
 }
 function within30(dateText){
  if(!/^\d{4}-\d{2}-\d{2}$/.test(dateText||''))return false;
