@@ -1,4 +1,3 @@
-
 #!/usr/bin/env node
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
