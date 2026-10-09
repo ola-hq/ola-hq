@@ -107,3 +107,52 @@ html.is-installed #install{display:none!important}
   .hero-content>.eyebrow{margin-bottom:72px}
   .hero-globe-link{margin-bottom:92px}
 }
+
+/* APP VISUAL RECOVERY 2026-10-08
+   Each below-the-fold Wave card uses its own source-grounded poster composition.
+   Homepage/hero globe sizing, install state and Festival Guide are intentionally untouched. */
+.world-card.gdb-poster,.world-card.editorial-poster{isolation:isolate}
+.world-card.gdb-poster .world-card-copy,.world-card.editorial-poster .world-card-copy{z-index:3}
+.world-card.gdb-poster:after{background:linear-gradient(180deg,rgba(6,16,28,.18) 3%,rgba(6,19,39,.36) 43%,rgba(5,17,34,.96) 81%,#06152b 100%)}
+.world-card.gdb-poster img{object-fit:cover;object-position:center 29%;filter:saturate(.96) contrast(1.06)}
+.poster-art{position:absolute;inset:12px 13px auto;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;height:63%;overflow:hidden;pointer-events:none;z-index:1;text-align:center}
+.gdb-art{color:#fbe2b2;text-shadow:0 3px 12px #151021;justify-content:center;gap:8px}
+.gdb-art .gdb-issuer{font-size:9px;font-weight:900;letter-spacing:.17em}
+.gdb-art strong{font:800 clamp(23px,5vw,39px)/.95 Georgia,serif;letter-spacing:.06em}
+.gdb-art .gdb-motto{font-size:8px;font-weight:800;letter-spacing:.13em}
+.world-card.wu-wei-poster{background:radial-gradient(circle at 80% 3%,#d9c6a6,#f0e5cf 35%,#cdbf9e 100%);color:#fff}
+.world-card.wu-wei-poster:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 22px,rgba(71,87,69,.075) 22px 23px);pointer-events:none}
+.world-card.wu-wei-poster:after{background:linear-gradient(180deg,transparent 9%,rgba(14,37,38,.04) 36%,rgba(8,27,39,.88) 79%,#06152b 100%)}
+.wu-wei-art{color:#344c46;inset:17px 18px auto;gap:13px}
+.poster-eyebrow{font:800 clamp(8px,1.2vw,10px)/1.2 'DM Sans',sans-serif;letter-spacing:.17em}
+.wu-title{font:700 clamp(29px,5.6vw,48px)/1.1 Georgia,serif;letter-spacing:-.035em;white-space:nowrap}
+.wu-title i{font-style:normal;font-size:.45em;vertical-align:middle}
+.wu-wei-art svg{width:100%;max-width:250px;height:auto}
+.poster-small{font:800 clamp(8px,1.3vw,10px)/1.2 'DM Sans',sans-serif;letter-spacing:.14em}
+.world-card.willpwr-poster{background:linear-gradient(140deg,#f4f3e9 0%,#e2e4d8 57%,#c6d0c3 100%)}
+.world-card.willpwr-poster:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 17%,rgba(54,80,68,.1) 17% calc(17% + 1px))}
+.world-card.willpwr-poster:after{background:linear-gradient(180deg,transparent 4%,rgba(15,35,33,.04) 39%,rgba(6,27,41,.88) 79%,#06152b 100%)}
+.willpwr-art{color:#254b3d;align-items:stretch;text-align:left;gap:10px;inset:15px 16px auto}
+.will-row{display:flex;align-items:center;gap:12px;border-top:2px solid #638172;border-bottom:2px solid #638172;padding:8px 0}
+.will-number{font:900 clamp(48px,11vw,85px)/.85 'Outfit',sans-serif;letter-spacing:-.09em}
+.will-steps{display:grid;gap:6px;font:800 clamp(8px,1.35vw,11px)/1 'DM Sans',sans-serif;letter-spacing:.06em}
+.will-logotype{font:900 clamp(28px,6vw,48px)/.9 'Outfit',sans-serif;letter-spacing:-.045em;white-space:nowrap}
+.will-logotype span{color:#a17a49}
+.offbrand-poster{background:#351f35}
+.offbrand-poster img{object-fit:cover;object-position:center center;filter:saturate(.75) contrast(1.08)}
+.offbrand-poster:before{content:"";position:absolute;inset:0;background:linear-gradient(140deg,rgba(78,32,40,.64),rgba(37,23,45,.14) 48%,rgba(6,21,43,.38))}
+.offbrand-poster:after{background:linear-gradient(180deg,rgba(10,17,29,.06) 4%,rgba(10,17,29,.06) 35%,rgba(7,20,39,.90) 79%,#06152b 100%)}
+.offbrand-art{inset:14px 13px auto;align-items:stretch;color:#f9e9cf;overflow:visible}
+.off-tape{align-self:flex-start;transform:rotate(-5deg);background:#f2ddbc;color:#5d2b27;padding:8px 12px;font:900 9px/1.1 'DM Sans',sans-serif;letter-spacing:.15em}
+.off-word{text-align:left;transform:rotate(-5deg);font:900 clamp(34px,8vw,66px)/.76 'Outfit',sans-serif;letter-spacing:-.07em;text-shadow:4px 4px #522a38}
+.off-word em{font-style:normal;background:#f2ddbc;color:#382a37;display:inline-block;padding:4px 7px 6px;text-shadow:none}
+.off-sticker{position:absolute;right:5px;top:44%;transform:rotate(14deg);background:#b65c42;color:#fff5e8;border:2px solid #f6e0be;border-radius:50%;width:clamp(52px,11vw,75px);aspect-ratio:1;display:grid;place-content:center;font:900 clamp(8px,1.5vw,11px)/1 'DM Sans',sans-serif;text-align:center;letter-spacing:.05em}
+@media (max-width:380px){
+  .poster-art{height:56%}
+  .gdb-art strong{font-size:25px}
+  .wu-title{font-size:29px}
+  .will-number{font-size:46px}
+  .will-logotype{font-size:27px}
+  .off-word{font-size:34px}
+  .willpwr-art,.offbrand-art{inset:12px 10px auto}
+}

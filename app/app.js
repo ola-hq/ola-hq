@@ -12,8 +12,7 @@ const worlds = {
   blockbuster: { name: 'Blockbuster Wave', path: 'blockbuster-wave/blockbuster-wave-complete-gallery.html', parent: null },
   fpl: { name: 'La Ola FC', path: 'fpl-wave.html', parent: null },
   simulation: { name: 'Simulation Wave', path: 'simulation-wave/', parent: null },
-  gdb: { name: 'GDB Wave', path: 'gdb-wave.html', parent: null },
-  university: { name: 'GDB University', path: 'gdb-university/', parent: 'gdb' },
+  gdb: { name: 'GDB Wave', path: 'gdb-university/', parent: null },
   arsenal: { name: 'Arsenal Wave', path: 'arsenal-wave.html', parent: 'fpl' },
   'wu-wei': { name: 'Wu Wei Wave', path: 'wu-wei-wave.html', parent: null },
   willpwr: { name: 'Willpwr Wave', path: 'willpwr-wave.html', parent: null },
@@ -50,7 +49,7 @@ function matchWorld(url) {
   if (/^blockbuster-wave\//.test(path)) return 'blockbuster';
   if (/^our-polaroid-project\//.test(path)) return 'polaroid';
   if (/^simulation-wave\//.test(path) || path === 'simulation-wave.html') return 'simulation';
-  if (/^gdb-university\//.test(path)) return 'university';
+  if (/^gdb-university\//.test(path) || path === 'gdb-wave.html') return 'gdb';
   if (path.startsWith('arsenal')) return 'arsenal';
   for (const [key, item] of Object.entries(worlds)) {
     if (path === item.path || path === item.path.replace(/\/$/, '')) return key;
