@@ -67,25 +67,189 @@ $('copy-prompt').addEventListener('click',async()=>{
 });
 renderCreative();
 
-// Snapshot from public Blockbuster Wave gallery JSON, as published Oct 2, 2026.
-// Original 192 movie entries; 43 >=4/5 ratings. Exact viewing days are NOT stored.
-// Avoid implying month-only records prove any screening happened in a 30-day window.
-const movieTopFive=[{"id":"cinema2025-71","title":"One of Them Days","score":5,"order":12,"thumb":"blockbuster-wave-thumbs/cinema2025-71.jpg","watchDate":null},{"id":"cinema2025-258","title":"Unity","score":5,"order":100,"thumb":"blockbuster-wave-thumbs/cinema2025-258.jpg","watchDate":null},{"id":"cinema2025-284","title":"Elf","score":4.75,"order":126,"thumb":"blockbuster-wave-thumbs/cinema2025-284.jpg","watchDate":null},{"id":"cinema2025-56","title":"Wicked","score":4.5,"order":5,"thumb":"blockbuster-wave-thumbs/cinema2025-56.jpg","watchDate":null},{"id":"cinema2025-57","title":"Anora","score":4.5,"order":6,"thumb":"blockbuster-wave-thumbs/cinema2025-57.jpg","watchDate":null}];
-function make(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
-function renderMovieTop(period){
- const list=$('top-movie-list'),status=$('top-movie-note');
- list.replaceChildren();
- const fallback=period==='recent';
- status.textContent=fallback
- ?'No exact theater-visit dates are available to verify the last 30 days. Showing the overall Top 5 instead.'
- :'Showing the five highest Wave scores (4/5 or higher) from our documented collection.';
- document.querySelectorAll('[data-top-period]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.topPeriod===period)));
- movieTopFive.forEach((r,i)=>{
-  const card=make('article','top-movie'),img=make('img'),detail=make('div','top-movie-content');
-  img.src='blockbuster-wave/'+r.thumb;img.alt='Original movie card artwork for '+r.title;img.loading='lazy';
-  detail.append(make('span','top-movie-position','#'+(i+1)),make('strong','',r.title),make('span','top-movie-score','🌊 '+r.score+'/5'));
-  card.append(img,detail);list.append(card);
- });
+
+// OLA HQ World Finder — subjective, playful discovery; no right/wrong scores.
+// All twelve destinations are linked to their real existing OLA HQ worlds.
+const worldCatalog={
+love:{name:'La Ola de Amor',url:'la-ola-de-amor/',about:'People, shared celebrations, love stories, and memories that become places.'},
+cinema:{name:'Blockbuster Wave',url:'blockbuster-wave/blockbuster-wave-complete-gallery.html',about:'Movies, reviews, ratings, and the stories wrapped around what we watch.'},
+polaroid:{name:'Our Polaroid Wave',url:'our-polaroid-project/',about:'Photographs, captured nights, portraits, and little moments worth keeping.'},
+music:{name:'Wave 26',url:'wave-26.html',about:'Music, releases, experiments, and feelings translated into sound.'},
+fpl:{name:'FPL Wave',url:'fpl-wave.html',about:'A fantasy-football clubhouse, fixtures, strategy, and shared competition.'},
+simulation:{name:'Simulation Wave',url:'simulation-wave/',about:'AI art, impossible ideas, and playful creative worlds.'},
+gdb:{name:'GDB Wave',url:'gdb-wave.html',about:'A fictional university of sound, dancefloor culture, and musical mythology.'},
+arsenal:{name:'Arsenal',url:'arsenal-wave.html',about:'Real football fandom, matchday traditions, and the culture of the club.'},
+offbrand:{name:'Offbrand Wave',url:'offbrand-wave.html',about:'Unfiltered life stories, moving images, and unexpected side quests.'},
+willpwr:{name:'Willpwr Wave',url:'willpwr-wave.html',about:'Small daily wins, movement, intention, and showing up.'},
+wuwei:{name:'Wu Wei Wave',url:'wu-wei-wave.html',about:'Quiet observation, journaling, reflection, and finding your flow.'},
+capybara:{name:'Capybara Wave',url:'capybara-wave.html',about:'Lighthearted play, slow joy, and not taking everything so seriously.'}
+};
+const worldQuiz=[
+{q:'What kind of world pulls you in first?',a:[
+['A story that means something to someone',['love','offbrand','polaroid']],
+['An atmosphere built around music',['music','gdb','love']],
+['Something unusual I can explore',['simulation','capybara','offbrand']],
+['A shared team, tradition or matchday',['arsenal','fpl','gdb']]]},
+{q:'You have a free afternoon. What sounds right?',a:[
+['A movie and a good conversation afterward',['cinema','polaroid','offbrand']],
+['A camera and somewhere to wander',['polaroid','offbrand','love']],
+['A playlist, mix or creative experiment',['music','gdb','simulation']],
+['A small reset, a walk and some space',['willpwr','wuwei','capybara']]]},
+{q:'Pick the room you would happily get lost in.',a:[
+['An archive of nights, people and memories',['love','polaroid','offbrand']],
+['A clubhouse of records, rivals and fixtures',['fpl','arsenal','cinema']],
+['A weird gallery where anything is possible',['simulation','capybara','music']],
+['A library of thoughts and little rituals',['wuwei','willpwr','gdb']]]},
+{q:'What would you rather make?',a:[
+['A mini film or photo journal',['polaroid','offbrand','cinema']],
+['A song, DJ set or campus radio show',['music','gdb','simulation']],
+['A plan to make something real together',['love','willpwr','fpl']],
+['A silly little creation that makes someone smile',['capybara','simulation','offbrand']]]},
+{q:'Which feeling sounds best today?',a:[
+['Connected and surrounded by my people',['love','arsenal','gdb']],
+['Curious about something I have never seen',['simulation','cinema','polaroid']],
+['Charged up and ready to move',['willpwr','fpl','music']],
+['Calm, present and unhurried',['wuwei','capybara','polaroid']]]},
+{q:'Follow the next current. Where does it go?',a:[
+['To the screening room',['cinema','offbrand','polaroid']],
+['To the pitch or the stands',['arsenal','fpl','willpwr']],
+['To the dancefloor or music studio',['music','gdb','love']],
+['Out into a quiet, unpredictable adventure',['wuwei','capybara','simulation']]]}
+];
+let waveResponses=[],wavePosition=0;
+const waveArea=$('wave-quiz-options');
+function node(tag,className,txt){const e=document.createElement(tag);if(className)e.className=className;if(txt!=null)e.textContent=txt;return e;}
+function renderWorldQuiz(){
+ const done=wavePosition>=worldQuiz.length;
+ $('wave-quiz-back').hidden=wavePosition===0||done;
+ $('wave-quiz-progress').textContent=done?'Your current':'Question '+(wavePosition+1)+' of '+worldQuiz.length;
+ $('wave-quiz-selected').textContent=done?'A place to start, not a permanent label':'Pick what feels right — no wrong answers';
+ $('wave-quiz-bar').style.width='100%'; // the interior span below carries visual progress
+ $('wave-quiz-bar').style.width=(Math.round(wavePosition/worldQuiz.length*100))+'%';
+ if(done){
+  $('wave-quiz-question').textContent='Your current points toward…';
+  waveArea.replaceChildren();$('wave-quiz-result').hidden=false;
+  const scores=Object.fromEntries(Object.keys(worldCatalog).map(k=>[k,0]));
+  waveResponses.forEach((answer,i)=>{const choices=worldQuiz[i].a[answer]?.[1]||[];choices.forEach((key,rank)=>{scores[key]+=3-rank;});});
+  const ordered=Object.entries(scores).sort((a,b)=>b[1]-a[1]||Object.keys(worldCatalog).indexOf(a[0])-Object.keys(worldCatalog).indexOf(b[0])).slice(0,3);
+  const result=$('wave-quiz-result');result.replaceChildren();
+  result.append(node('p','','These are three worlds you might enjoy. Explore them in any order.'));
+  ordered.forEach(([key],i)=>{const world=worldCatalog[key],card=node('article','wave-match'),h=node('h5','',(i===0?'First current · ':'Also try · ')+world.name),p=node('p','',world.about),link=node('a','','Explore '+world.name+' ↗');link.href=world.url;card.append(h,p,link);result.append(card);});
+  return;
+ }
+ $('wave-quiz-result').hidden=true;
+ const q=worldQuiz[wavePosition];$('wave-quiz-question').textContent=q.q;waveArea.replaceChildren();
+ q.a.forEach(([label],i)=>{const b=node('button','',label);b.type='button';b.setAttribute('aria-pressed',String(waveResponses[wavePosition]===i));b.addEventListener('click',()=>{waveResponses[wavePosition]=i;waveResponses.length=wavePosition+1;wavePosition++;renderWorldQuiz();});waveArea.append(b);});
 }
-document.querySelectorAll('[data-top-period]').forEach(button=>button.addEventListener('click',()=>renderMovieTop(button.dataset.topPeriod)));
-renderMovieTop('overall');
+$('wave-quiz-back').addEventListener('click',()=>{wavePosition=Math.max(0,wavePosition-1);renderWorldQuiz()});
+$('wave-quiz-reset').addEventListener('click',()=>{wavePosition=0;waveResponses=[];renderWorldQuiz()});
+renderWorldQuiz();
+
+// Two independent film archives — Letterboxd ratings must NEVER be invented
+// or silently replaced with Blockbuster Wave scores.
+const blockbusterTop5=[{"id":"cinema2025-71","title":"One of Them Days","score":5,"order":12,"thumb":"blockbuster-wave-thumbs/cinema2025-71.jpg"},{"id":"cinema2025-258","title":"Unity","score":5,"order":100,"thumb":"blockbuster-wave-thumbs/cinema2025-258.jpg"},{"id":"cinema2025-284","title":"Elf","score":4.75,"order":126,"thumb":"blockbuster-wave-thumbs/cinema2025-284.jpg"},{"id":"cinema2025-56","title":"Wicked","score":4.5,"order":5,"thumb":"blockbuster-wave-thumbs/cinema2025-56.jpg"},{"id":"cinema2025-57","title":"Anora","score":4.5,"order":6,"thumb":"blockbuster-wave-thumbs/cinema2025-57.jpg"}];
+const localMovieKey='ola-hq-letterboxd-ourpolaroidproj-v1';
+let letterboxdEntries=[];
+try{const saved=JSON.parse(localStorage.getItem(localMovieKey)||'[]');if(Array.isArray(saved))letterboxdEntries=saved.filter(x=>x&&typeof x.title==='string'&&Number.isFinite(x.score));}catch{}
+let movieSource='letterboxd',moviePeriod='overall';
+const movieList=$('top-movie-list'),movieNote=$('top-movie-note');
+const diaryURL='https://letterboxd.com/ourpolaroidproj/diary/films/';
+function topFilmCard(movie,index,fromLetterboxd){
+ const card=node('article','top-movie'),detail=node('div','top-movie-content');
+ if(!fromLetterboxd&&movie.thumb){const img=node('img','');img.src='blockbuster-wave/'+movie.thumb;img.alt='Blockbuster Wave artwork for '+movie.title;img.loading='lazy';card.append(img);}
+ detail.append(node('span','top-movie-position','#'+(index+1)),node('strong','',movie.title),node('span','top-movie-score',(fromLetterboxd?'★ ':'🌊 ')+movie.score+'/5'));
+ if(fromLetterboxd&&movie.url){const link=node('a','','View on Letterboxd ↗');link.href=movie.url;link.target='_blank';link.rel='noopener noreferrer';detail.append(link);}
+ if(fromLetterboxd&&movie.watchedDate)detail.append(node('span','top-movie-date','Watched '+movie.watchedDate));
+ card.append(detail);return card;
+}
+function movieRanking(entries){
+ const filtered=entries.filter(x=>Number.isFinite(x.score)&&x.score>=4);
+ const unique=new Map();
+ filtered.forEach(f=>{const key=(f.url||f.title+'|'+(f.year||'')).toLowerCase();const prev=unique.get(key);if(!prev||f.score>prev.score||(f.score===prev.score&&(f.watchedDate||'')>(prev.watchedDate||'')))unique.set(key,f);});
+ return [...unique.values()].sort((a,b)=>b.score-a.score||(b.watchedDate||'').localeCompare(a.watchedDate||'')||(a.order??Infinity)-(b.order??Infinity)||a.title.localeCompare(b.title));
+}
+function within30(dateText){
+ if(!/^\d{4}-\d{2}-\d{2}$/.test(dateText||''))return false;
+ const dt=new Date(dateText+'T12:00:00'),today=new Date();today.setHours(12,0,0,0);
+ return !Number.isNaN(dt.getTime())&&today.getTime()-dt.getTime()>=0&&today.getTime()-dt.getTime()<=30*86400000;
+}
+function renderTopFilms(){
+ movieList.replaceChildren();
+ document.querySelectorAll('[data-movie-source]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.movieSource===movieSource)));
+ document.querySelectorAll('[data-top-period]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.topPeriod===moviePeriod)));
+ const isLB=movieSource==='letterboxd';
+ $('letterboxd-import').hidden=!isLB;
+ const sourceLink=$('movie-source-link'),footnote=$('movie-source-footnote');
+ sourceLink.href=isLB?diaryURL:'blockbuster-wave/blockbuster-wave-complete-gallery.html#insights';
+ sourceLink.textContent=isLB?'Open Our Polaroid PROJ on Letterboxd ↗':'Explore Blockbuster Wave ↗';
+ sourceLink.target=isLB?'_blank':'_self';
+ if(isLB){
+  footnote.textContent='Source: ourpolaroidproj on Letterboxd. CSV imports stay in this browser; no live API connection or invented ratings.';
+  if(!letterboxdEntries.length){movieNote.textContent='Letterboxd ratings have not been loaded into this browser. Open the real diary or import your export to calculate the Top 5.';return;}
+  const overall=movieRanking(letterboxdEntries),recent=overall.filter(f=>within30(f.watchedDate));
+  const fallback=moviePeriod==='recent'&&recent.length===0;
+  const ranking=(moviePeriod==='recent'&&recent.length?recent:overall).slice(0,5);
+  movieNote.textContent=fallback?'No qualifying films with confirmed watch dates in the last 30 days. Showing this account’s overall Top 5 instead.':moviePeriod==='recent'?'Top rated films (4★+) with actual diary watch dates within the last 30 days.':'Highest-rated movies (4★+) imported from Our Polaroid PROJ’s Letterboxd.';
+  if(!ranking.length)movieList.append(node('p','quiet','No films rated 4 stars or higher in the imported records.'));
+  ranking.forEach((f,i)=>movieList.append(topFilmCard(f,i,true)));
+ }else{
+  footnote.textContent='Source: verified Blockbuster Wave archive snapshot; exact theater visit dates are unavailable.';
+  movieNote.textContent=moviePeriod==='recent'?'Exact viewing dates are not documented in Blockbuster Wave. Showing its overall Top 5 instead.':'These are Blockbuster Wave scores—not Letterboxd star ratings.';
+  movieRanking(blockbusterTop5).slice(0,5).forEach((f,i)=>movieList.append(topFilmCard(f,i,false)));
+ }
+}
+document.querySelectorAll('[data-movie-source]').forEach(button=>button.addEventListener('click',()=>{movieSource=button.dataset.movieSource;renderTopFilms()}));
+document.querySelectorAll('[data-top-period]').forEach(button=>button.addEventListener('click',()=>{moviePeriod=button.dataset.topPeriod;renderTopFilms()}));
+function parseCSV(source){
+ const out=[],line=[];let field='',quoted=false;
+ for(let i=0;i<source.length;i++){
+  const c=source[i];
+  if(c==='"'){if(quoted&&source[i+1]==='"'){field+='"';i++;}else quoted=!quoted;}
+  else if(c===','&&!quoted){line.push(field);field='';}
+  else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&source[i+1]==='\n')i++;line.push(field);field='';if(line.some(x=>x.trim()))out.push(line.slice());line.length=0;}
+  else field+=c;
+ }
+ line.push(field);if(line.some(x=>x.trim()))out.push(line);
+ return out;
+}
+function isoDate(date){
+ if(!date)return null;
+ const s=String(date).trim();const match=s.match(/^(\d{4})[-/](\d\d?)[-/](\d\d?)$/);
+ if(!match)return null;
+ const y=+match[1],m=+match[2],d=+match[3],dateObj=new Date(Date.UTC(y,m-1,d));
+ if(dateObj.getUTCFullYear()!==y||dateObj.getUTCMonth()!==m-1||dateObj.getUTCDate()!==d)return null;
+ return [y,String(m).padStart(2,'0'),String(d).padStart(2,'0')].join('-');
+}
+function csvEntries(csv,name){
+ const rows=parseCSV(csv.replace(/^\uFEFF/,''));if(rows.length<2)throw Error('The file contains no movie rows.');
+ const header=rows.shift().map(s=>s.trim().toLowerCase());const index=label=>header.indexOf(label.toLowerCase());
+ const titleAt=index('Name'),ratingAt=index('Rating');
+ if(titleAt<0||ratingAt<0)throw Error('Missing Name or Rating columns. Export diary.csv or ratings.csv from Letterboxd.');
+ const yearAt=index('Year'),urlAt=index('Letterboxd URI'),watchAt=index('Watched Date');
+ const isDiary=watchAt>=0||/diary/i.test(name||'');
+ return rows.map(row=>{
+  const title=(row[titleAt]||'').trim(),score=Number((row[ratingAt]||'').trim()),year=yearAt>=0?(row[yearAt]||'').trim():'';
+  const url=urlAt>=0?(row[urlAt]||'').trim():'';
+  const watchedDate=isDiary&&watchAt>=0?isoDate(row[watchAt]):null;
+  if(!title||!Number.isFinite(score)||score<0.5||score>5)return null;
+  return {title,score,year,url:/^https:\/\/letterboxd\.com\//.test(url)?url:null,watchedDate};
+ }).filter(Boolean);
+}
+$('letterboxd-files').addEventListener('change',async event=>{
+ const files=[...event.target.files].filter(x=>x.name.toLowerCase().endsWith('.csv'));
+ const status=$('letterboxd-import-status');
+ if(!files.length){status.textContent='Select diary.csv or ratings.csv from your Letterboxd export.';return;}
+ try{
+  let imported=[];for(const file of files){if(file.size>8*1024*1024)throw Error('Each CSV must be under 8 MB.');imported.push(...csvEntries(await file.text(),file.name));}
+  if(!imported.length)throw Error('No rated movies found in the CSV file(s).');
+  letterboxdEntries=movieRanking(letterboxdEntries.concat(imported));
+  try{localStorage.setItem(localMovieKey,JSON.stringify(letterboxdEntries));status.textContent='Loaded '+letterboxdEntries.length+' rated movies. Saved only in this browser.';}
+  catch{status.textContent='Loaded '+letterboxdEntries.length+' rated movies for this session; browser storage unavailable.';}
+  movieSource='letterboxd';renderTopFilms();
+ }catch(e){status.textContent=e.message;}
+});
+$('letterboxd-clear').addEventListener('click',()=>{
+ letterboxdEntries=[];try{localStorage.removeItem(localMovieKey)}catch{}
+ $('letterboxd-files').value='';$('letterboxd-import-status').textContent='Saved Letterboxd data cleared from this device.';movieSource='letterboxd';renderTopFilms();
+});
+renderTopFilms();
