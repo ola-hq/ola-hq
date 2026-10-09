@@ -242,3 +242,20 @@ html.is-installed #install{display:none!important}
   margin:0;
 }
 /* Keep all three scroll scenes intact; this fix affects only globe alignment. */
+
+/* APP HOME MOBILE V14 — installed-iPhone centering fall-through.
+   Mirrored as critical inline CSS in app/index.html so the installed WebKit
+   shell is not dependent on a cached prior external stylesheet. */
+@media (max-width:767px) {
+  #app-launch.hero {position:relative;width:100%}
+  #app-launch.hero > .hero-content {
+    position:absolute;inset:0;left:0;right:0;width:100%;max-width:100%;
+    height:100%;margin:0;padding:24px;transform:none;
+    display:flex;flex-direction:row;align-items:center;justify-content:center;
+    text-align:center;
+  }
+  #app-launch.hero #hero-world-jump {
+    display:flex;flex:0 0 auto;margin:0 auto;align-items:center;justify-content:center;
+    position:relative;left:auto;right:auto;
+  }
+}

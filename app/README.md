@@ -106,3 +106,6 @@ Tapping the globe in the /app/ route uses a semantic native href="#worlds" fallb
 
 ## 2026-10-08 — Desktop Safari globe centering patch
 A desktop Safari capture showed the globe centered vertically but left-aligned (the app launch was laid out using two nested auto-sized grids). Scoped CSS fix makes app-launch a normal positioning context and centers its hero-content as an absolute full-viewport flex overlay. No change to globe image, 100–138px globe dimensions, hero height, intro, Waves, links, world art, navigation, app.js, or Festival Guide. The CSS reference increments to v13 to bypass old cached CSS. Device/browser visual acceptance remains distinct from source verification.
+
+## 2026-10-08 — iPhone installed app centered launch safeguard
+After Safari desktop showed the small globe centered, Jon reported the installed/mobile view still left-aligned. Added a mobile-only (max-width:767px) centering safeguard to the app's critical head CSS and external CSS v14. This isolates the first launch scene to a full-width flex centering context, countering WebKit/cached styling without modifying the globe image or size, scene height, introduction, Waves, tap destination, website gateway, world routes, manifest, worker, or Festival Guide. Actual iPhone visual sign-off still required.
