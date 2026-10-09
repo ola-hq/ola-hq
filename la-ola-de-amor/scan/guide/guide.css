@@ -520,3 +520,114 @@ body:has(#food:not([hidden])) footer .closing::after{
  #music .album-banner,#food .food-waves a{transition:none}
  #music .album-banner:hover,#food .food-waves a:hover{transform:none}
 }
+
+
+/* FINAL FESTIVAL GUIDE POLISH: readable Talavera + continuous footer navigation. */
+/* Keep the accessible La Plaza heading but avoid repeating art's visible title. */
+#plaza .visually-hidden{
+ position:absolute!important;inline-size:1px!important;block-size:1px!important;
+ margin:-1px!important;padding:0!important;border:0!important;overflow:hidden!important;
+ clip:rect(0,0,0,0)!important;white-space:nowrap!important;clip-path:inset(50%)!important;
+}
+/* Saturday: reserve a real bottom safe area for the decorative band.
+   Covers the exact text/border collision shown in the desktop screenshot. */
+#tornaboda .saturday-activities{
+ padding-top:76px;
+ padding-bottom:112px;
+ display:flow-root;
+}
+#tornaboda .after-five{
+ padding-top:79px;
+ padding-bottom:112px;
+ display:flow-root;
+}
+#tornaboda .day-two-details .weekend-note{padding-bottom:76px}
+#tornaboda .saturday-activities::after,
+#tornaboda .after-five::after,
+#tornaboda .day-two-details .weekend-note::after{z-index:0}
+#tornaboda .saturday-activities>*,
+#tornaboda .after-five>*,
+#tornaboda .day-two-details .weekend-note>*{position:relative;z-index:1}
+#tornaboda .saturday-activities>p:last-child,
+#tornaboda .after-five>p:last-child{
+ margin:20px auto 0;
+ max-width:680px;
+ line-height:1.65;
+ clear:both;
+}
+#tornaboda .saturday-activities .activity-chips{margin:26px 0 25px}
+#tornaboda .after-five h3{margin:16px auto 20px;line-height:1.15}
+/* One bottom navigation rail per panel, with a coherent next invitation. */
+#today .section-next,
+#music .section-next,
+#plaza .section-next,
+#food .section-next,
+#updates .section-next,
+#tornaboda .section-next{
+ position:relative;
+ display:flex;
+ flex-wrap:wrap;
+ align-items:center;
+ justify-content:center;
+ gap:12px;
+ margin:34px 24px 30px;
+ padding:53px 18px 24px;
+ background:linear-gradient(160deg,#fffdf6,#edf3fb);
+ border:2px solid #26569b;
+ box-shadow:0 5px 0 #dfc48d,0 11px 22px rgba(7,29,56,.1);
+}
+#today .section-next::before,
+#music .section-next::before,
+#plaza .section-next::before,
+#food .section-next::before,
+#updates .section-next::before,
+#tornaboda .section-next::before{
+ content:"";height:32px;position:absolute;inset:0 0 auto;
+ background:url('../../assets/tile.svg') center / 32px 32px repeat-x #f6f2e8;
+ border-bottom:1px solid #26569b;pointer-events:none;
+}
+#today .section-next .ribbon,
+#music .section-next .ribbon,
+#plaza .section-next .ribbon,
+#food .section-next .ribbon,
+#updates .section-next .ribbon,
+#tornaboda .section-next .ribbon{
+ margin:0;
+ min-height:49px;
+ max-width:100%;
+ border-color:#bd9d59;
+ white-space:normal;
+ text-align:center;
+ text-wrap:balance;
+}
+#today .section-next .ribbon:hover,
+#music .section-next .ribbon:hover,
+#plaza .section-next .ribbon:hover,
+#food .section-next .ribbon:hover,
+#updates .section-next .ribbon:hover,
+#tornaboda .section-next .ribbon:hover{background:#28518a}
+#updates .section-next .secondary-ribbon,
+#tornaboda .section-next .secondary-ribbon{
+ color:#143967;background:#fffdf6;border:1px solid #26569b;
+}
+#updates .section-next .secondary-ribbon:hover,
+#tornaboda .section-next .secondary-ribbon:hover{background:#e5effb}
+#today .section-next a:focus-visible,
+#music .section-next a:focus-visible,
+#plaza .section-next a:focus-visible,
+#food .section-next a:focus-visible,
+#updates .section-next a:focus-visible,
+#tornaboda .section-next a:focus-visible{outline:3px solid #1585b6;outline-offset:4px}
+@media(max-width:650px){
+ #tornaboda .saturday-activities{padding-top:71px;padding-bottom:103px}
+ #tornaboda .after-five{padding-top:74px;padding-bottom:101px}
+ #tornaboda .day-two-details .weekend-note{padding-bottom:72px}
+ #today .section-next,#music .section-next,#plaza .section-next,
+ #food .section-next,#updates .section-next,#tornaboda .section-next{
+   margin:28px 18px 26px;padding:49px 12px 19px;gap:10px;
+ }
+ #today .section-next .ribbon,#music .section-next .ribbon,#plaza .section-next .ribbon,
+ #food .section-next .ribbon,#updates .section-next .ribbon,#tornaboda .section-next .ribbon{
+  width:100%;font-size:13px;min-height:46px;
+ }
+}
