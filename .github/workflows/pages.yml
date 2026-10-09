@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: '17 7,19 * * *' # Twice daily, UTC. Refresh public Letterboxd diary without writing to main.
 
 permissions:
   contents: read
@@ -25,6 +27,10 @@ jobs:
         uses: actions/checkout@v6
       - name: Verify OLA HQ release integrity
         run: node scripts/verify-hq-release.mjs
+      - name: Verify public Letterboxd RSS parser
+        run: python3 scripts/sync-letterboxd.py --self-test
+      - name: Generate recent Letterboxd diary snapshot
+        run: python3 scripts/sync-letterboxd.py
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload static site
