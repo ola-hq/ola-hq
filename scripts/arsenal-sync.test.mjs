@@ -24,7 +24,7 @@ test('rejects unrelated games',() => {
 });
 test('keeps direct match link for the matching cached fixture only',() => {
   const old={meta:{sources:[]},snapshot:{next_match:{
-    opponent:'Leeds United',kickoff_utc:'2026-10-10T11:30:00.000Z',
+    opponent:'Leeds United',venue:'Home',kickoff_utc:'2026-10-10T11:30:00.000Z',
     match_center_url:'https://www.premierleague.com/en/match/2645245/essenal-vs-leeds-united/info'
   }}};
   const e=event('2026-10-10T11:30:00Z');
