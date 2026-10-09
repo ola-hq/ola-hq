@@ -13,3 +13,6 @@
 /* User visual corrections: branded world and four album worlds. */
 .music-shelf{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-art{background:var(--ink)}.visual.love{background:#fffdf8}
 @media(max-width:760px){.music-shelf{grid-template-columns:1fr}}
+
+/* OLA HQ app gateway: the large homepage world/globe is intentionally clickable. */
+.hero-app-link{display:block;text-decoration:none;cursor:pointer}.hero-app-link:focus-visible{outline:3px solid var(--gold);outline-offset:8px}.hero-app-link img{display:block;width:100%;height:100%;object-fit:contain}
