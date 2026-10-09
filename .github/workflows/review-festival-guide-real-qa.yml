@@ -33,12 +33,13 @@ jobs:
            const reports = [];
            const changed = process.env.GITHUB_SHA || 'unknown';
            const label = process.env.QA_LABEL || 'guide';
+           const port = process.env.GUIDE_PORT || '8765';
            for(const width of [360,400,1440]) for(const lang of ['en','es']) {
             const ctx = await browser.newContext({viewport:{width,height:920},deviceScaleFactor:1,serviceWorkers:'block'});
             const page = await ctx.newPage();
             const errors=[];
             page.on('pageerror',e=>errors.push(String(e)));
-            const url='http://127.0.0.1:8765/la-ola-de-amor/scan/guide/?lang='+lang+'#tornaboda';
+            const url='http://127.0.0.1:'+port+'/la-ola-de-amor/scan/guide/?lang='+lang+'#tornaboda';
             await page.goto(url,{waitUntil:'domcontentloaded'});
             await page.locator('#tornaboda').waitFor({state:'visible',timeout:15000});
             await page.evaluate(()=>document.fonts.ready);
@@ -58,16 +59,12 @@ jobs:
             metrics.width=width; metrics.language=lang; metrics.errors=errors;
             const prefix='screenshots/'+label+'-'+width+'-'+lang;
             await page.screenshot({path:prefix+'-REAL-full-page.png',fullPage:true,animations:'disabled'});
-            const box = await page.locator('#tornaboda .saturday-activities').boundingBox();
-            const after = await page.locator('#tornaboda .after-five').boundingBox();
-            const docH=await page.evaluate(()=>document.documentElement.scrollHeight);
-            const y=Math.max(0,Math.floor(box.y-260)), h=Math.min(docH-y,Math.ceil(after.y+after.height-y+260));
-            await page.screenshot({path:prefix+'-REAL-surroundings.png',clip:{x:0,y,width,height:h},animations:'disabled'});
+            await page.locator('#tornaboda').screenshot({path:prefix+'-REAL-surroundings.png',animations:'disabled'});
             reports.push(metrics);
             tests.push({width,lang,fullScreenshot:prefix+'-REAL-full-page.png',surroundingScreenshot:prefix+'-REAL-surroundings.png'});
             await ctx.close();
            }
-           fs.writeFileSync('screenshots/metrics.json',JSON.stringify({sha:changed,shots:tests,reports},null,2));
+           fs.writeFileSync('screenshots/metrics-'+label+'.json',JSON.stringify({sha:changed,shots:tests,reports},null,2));
            console.log(JSON.stringify(reports.map(r=>({width:r.width,lang:r.language,overflow:r.documentOverflow,activityClearance:[r.activity.topClearance,r.activity.bottomClearance],afterFiveClearance:[r.afterFive.topClearance,r.afterFive.bottomClearance],branding:r.brandImg,route:r.hash,errors:r.errors})),null,2));
            const baseErrors=reports.filter(r=>r.documentOverflow>2||r.errors.length||!r.dayTwoVisible||!r.dayOneHidden||r.backHref!=='../../#/chapter/guadalajara'||r.hash!=='#tornaboda');
            if(baseErrors.length) throw new Error('Base integrated route / visual invariants failed: '+JSON.stringify(baseErrors.map(r=>({width:r.width,lang:r.language,overflow:r.documentOverflow,errors:r.errors,href:r.backHref}))));
@@ -78,7 +75,12 @@ jobs:
            await browser.close();
           })().catch(e=>{console.error(e);process.exit(1)});
           JS
-          node /tmp/real-guide-qa.cjs
+          GUIDE_PORT=8765 QA_LABEL=AFTER-${{ github.sha }} node /tmp/real-guide-qa.cjs
+          git fetch --depth=1 origin 3049d90bfc8db63842be33589a413b29ff420c15
+          git worktree add --detach /tmp/guide-before 3049d90bfc8db63842be33589a413b29ff420c15
+          python3 -m http.server 8766 --bind 127.0.0.1 --directory /tmp/guide-before >/tmp/guide-before-web.log 2>&1 &
+          sleep 2
+          GUIDE_PORT=8766 QA_LABEL=BEFORE-main-3049d90 node /tmp/real-guide-qa.cjs
       - name: Upload genuine screenshots and measurements
         if: always()
         uses: actions/upload-artifact@v4
