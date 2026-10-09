@@ -5,7 +5,7 @@
 <meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#071d38">
 <meta name="description" content="Festival Guide · Bri + Jon · La Ola de Amor · Guadalajara">
 <link rel="manifest" href="../manifest.webmanifest"><link rel="icon" href="../../assets/heart-transparent.png"><link rel="apple-touch-icon" href="../../assets/heart-transparent.png">
-<link rel="stylesheet" href="guide.css"><link rel="stylesheet" href="la-platica.css"><script src="festival-updates.js" defer></script><script src="guide.js" defer></script><script src="la-platica.js" defer></script>
+<link rel="stylesheet" href="guide.css"><link rel="stylesheet" href="la-platica.css"><script src="festival-updates.js" defer></script><script src="guide.js" defer></script><script src="la-platica.js" defer></script><script src="la-platica-host.js" defer></script>
 <title>Festival Guide · La Ola de Amor</title>
 </head>
 <body>
@@ -85,6 +85,19 @@
         <p id="platica-form-status" class="platica-feedback" role="status" aria-live="polite"></p>
       </form>
       <p class="platica-guideline" data-platica-copy="guideline">Kind words only. Messages appear for everyone after you post; the hosts may remove anything inappropriate.</p>
+      <details id="platica-hosts" class="platica-hosts">
+        <summary data-host-copy="hostLabel">Hosts only · Moderation</summary>
+        <form id="platica-host-login">
+          <label for="platica-host-key" data-host-copy="keyLabel">Private host access code</label>
+          <input id="platica-host-key" type="password" autocomplete="off" required minlength="64" maxlength="64" aria-describedby="platica-host-notice">
+          <button type="submit" data-host-copy="unlock">Unlock host tools</button>
+        </form>
+        <p id="platica-host-notice" role="status" aria-live="polite"></p>
+        <div id="platica-host-panel" hidden>
+          <p data-host-copy="hostDescription">Host tools are available on the published comments below.</p>
+          <button id="platica-host-logout" type="button" data-host-copy="lock">Lock host tools</button>
+        </div>
+      </details>
     </div>
     <div class="platica-end" aria-hidden="true">≈ ♥ ≈</div>
   </section>
