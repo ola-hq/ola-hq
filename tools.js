@@ -208,8 +208,8 @@ function topFilmCard(movie,index,fromLetterboxd){
  if(fromLetterboxd&&movie.watchedDate)detail.append(node('span','top-movie-date','Watched '+movie.watchedDate));
  card.append(detail);return card;
 }
-function movieRanking(entries){
- const filtered=entries.filter(x=>Number.isFinite(x.score)&&x.score>=4);
+function movieRanking(entries,minimumRating=4){
+ const filtered=entries.filter(x=>Number.isFinite(x.score)&&x.score>=minimumRating);
  const unique=new Map();
  filtered.forEach(f=>{const key=(f.url||f.title+'|'+(f.year||'')).toLowerCase();const prev=unique.get(key);if(!prev||f.score>prev.score||(f.score===prev.score&&(f.watchedDate||'')>(prev.watchedDate||'')))unique.set(key,f);});
  return [...unique.values()].sort((a,b)=>b.score-a.score||(b.watchedDate||'').localeCompare(a.watchedDate||'')||(a.order??Infinity)-(b.order??Infinity)||a.title.localeCompare(b.title));
@@ -231,16 +231,32 @@ function renderTopFilms(){
  sourceLink.target=isLB?'_blank':'_self';
  if(isLB){
   footnote.textContent='Source: Our Polaroid PROJ public Letterboxd diary RSS (when available) + optional browser-local export. RSS is a recent activity feed, not an all-time ratings API.';
-  if(!letterboxdRecords().length){movieNote.textContent='No verified ratings have synced yet. Open the real diary or import its export to calculate the Top 5.';return;}
-  const overall=movieRanking(letterboxdRecords()),recent=overall.filter(f=>within30(f.watchedDate));
-  const fallback=moviePeriod==='recent'&&recent.length===0;
-  const ranking=(moviePeriod==='recent'&&recent.length?recent:overall).slice(0,5);
-  movieNote.textContent=fallback?'No 4★+ titles with confirmed viewing dates in the last 30 days in the available data. Showing this account’s best available rated entries instead.':moviePeriod==='recent'?'4★+ ratings with confirmed diary watch dates from the last 30 days.':letterboxdEntries.length?'Highest-rated 4★+ films in the imported account records plus synced diary.':'Highest-rated 4★+ films in the recent public diary feed. Full all-time rankings require an account export.';
-  if(!ranking.length)movieList.append(node('p','quiet','No films rated 4 stars or higher in the imported records.'));
+  const records=letterboxdRecords();
+  // Recent mode is strictly date-scoped and includes every valid rating, even below 4 stars.
+  // Filter by verified diary watch date BEFORE ranking/deduplication. Never fall back to older records.
+  const overall=movieRanking(records,4);
+  const recent=movieRanking(records.filter(f=>within30(f.watchedDate)),0.5);
+  const ranking=(moviePeriod==='recent'?recent:overall).slice(0,5);
+  if(moviePeriod==='recent'){
+   movieNote.textContent=recent.length
+    ?'Up to five highest-rated movies with verified watch dates in the last 30 days, at any star rating.'
+    :'No rated movies with verified viewing dates in the last 30 days in the available Letterboxd data.';
+  }else{
+   movieNote.textContent=!records.length
+    ?'No verified ratings have synced yet. Open the real diary or import its export to calculate the Top 5.'
+    :letterboxdEntries.length
+     ?'Highest-rated 4★+ films in the imported account records plus synced diary.'
+     :'Highest-rated 4★+ films in the recent public diary feed. Full all-time rankings require an account export.';
+  }
   ranking.forEach((f,i)=>movieList.append(topFilmCard(f,i,true)));
  }else{
   footnote.textContent='Source: verified Blockbuster Wave archive snapshot; exact theater visit dates are unavailable.';
-  movieNote.textContent=moviePeriod==='recent'?'Exact viewing dates are not documented in Blockbuster Wave. Showing its overall Top 5 instead.':'These are Blockbuster Wave scores—not Letterboxd star ratings.';
+  if(moviePeriod==='recent'){
+   movieNote.textContent='No movies with verified viewing dates in the last 30 days in the Blockbuster Wave archive. Its records do not contain exact viewing dates.';
+   // Blockbuster's undated older favorites must never leak into Last 30 Days.
+   return;
+  }
+  movieNote.textContent='These are Blockbuster Wave scores—not Letterboxd star ratings.';
   movieRanking(blockbusterTop5).slice(0,5).forEach((f,i)=>movieList.append(topFilmCard(f,i,false)));
  }
 }
@@ -288,7 +304,8 @@ $('letterboxd-files').addEventListener('change',async event=>{
  try{
   let imported=[];for(const file of files){if(file.size>8*1024*1024)throw Error('Each CSV must be under 8 MB.');imported.push(...csvEntries(await file.text(),file.name));}
   if(!imported.length)throw Error('No rated movies found in the CSV file(s).');
-  letterboxdEntries=movieRanking(letterboxdEntries.concat(imported));
+  // Keep lower ratings too; the Last 30 Days view includes every star level.
+  letterboxdEntries=movieRanking(letterboxdEntries.concat(imported),0.5);
   try{localStorage.setItem(localMovieKey,JSON.stringify(letterboxdEntries));status.textContent='Loaded '+letterboxdEntries.length+' rated movies. Saved only in this browser.';}
   catch{status.textContent='Loaded '+letterboxdEntries.length+' rated movies for this session; browser storage unavailable.';}
   movieSource='letterboxd';renderTopFilms();
