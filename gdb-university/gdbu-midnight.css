@@ -1,0 +1,50 @@
+/* GDB University — Signed In After Midnight.
+   Dedicated additive layer; passport/stamp styles are deliberately untouched. */
+.gdb-midnight-preview{max-width:none;background:#100e10;color:#f8f2e6;padding:65px max(20px,calc((100vw - var(--max))/2));position:relative;overflow:hidden;border-top:6px double #b58b49}
+.gdb-midnight-preview:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.3;background:radial-gradient(circle at 84% 14%,rgba(122,44,44,.8),transparent 38%),repeating-linear-gradient(145deg,transparent 0 22px,rgba(248,242,230,.035) 23px 24px)}
+.gdb-midnight-preview-inner{max-width:var(--max);margin:auto;display:flex;justify-content:space-between;align-items:center;gap:30px;position:relative}
+.gdb-midnight-preview .eyebrow{color:#e3b979}
+.gdb-midnight-preview h2{font:700 clamp(2.25rem,5vw,4.2rem)/.92 var(--serif);letter-spacing:-.035em;margin:10px 0;color:#fff2d6}
+.gdb-midnight-preview p:not(.eyebrow){font-size:1rem;max-width:600px;color:#e4d1c4}
+.gdb-midnight-cta,.gdb-midnight-send,.gdb-midnight-reload{border:1px solid #b58b49;background:#f8f2e6;color:#661926;padding:15px 24px;font:800 .77rem/1.3 var(--sans);text-transform:uppercase;letter-spacing:.09em;cursor:pointer}
+.gdb-midnight-cta:hover,.gdb-midnight-send:hover,.gdb-midnight-reload:hover{background:#f0d7a8}
+.gdb-midnight-cta:focus-visible,.gdb-midnight-send:focus-visible,.gdb-midnight-reload:focus-visible,.gdb-midnight-dialog button:focus-visible,.gdb-midnight-dialog input:focus-visible,.gdb-midnight-dialog textarea:focus-visible,.gdb-midnight-dialog select:focus-visible{outline:3px solid #deb976;outline-offset:3px}
+.gdb-midnight-dialog{width:min(1100px,calc(100vw - 24px));max-height:min(92vh,1040px);border:2px solid #c7a36b;padding:0;background:#f4ead8;color:#1c1617;box-shadow:0 30px 90px rgba(0,0,0,.65);overflow-y:auto}
+.gdb-midnight-dialog::backdrop{background:rgba(8,6,8,.85);backdrop-filter:blur(6px)}
+.gdb-midnight-shell{position:relative;min-width:0}
+.gdb-midnight-head{padding:29px 32px;background:#651624;color:#f8f2e6;border-bottom:5px solid #b58b49}
+.gdb-midnight-head .eyebrow{color:#f5cb92;margin:0}
+.gdb-midnight-head h2{font:700 clamp(2.4rem,6vw,4.4rem)/.9 var(--serif);letter-spacing:-.045em;margin:13px 65px 15px 0}
+.gdb-midnight-head p:last-child{max-width:670px;color:#e7cbbd;margin:0}
+.gdb-midnight-close{position:absolute;top:17px;right:20px;width:42px;height:42px;background:#f8f2e6;border:1px solid #a16c5f;color:#651624;font:900 1.5rem var(--sans);cursor:pointer}
+.gdb-midnight-columns{display:grid;grid-template-columns:minmax(260px,.84fr) minmax(0,1.16fr);gap:0}
+.gdb-midnight-sign{padding:28px 27px;background:#f8f2e6;border-right:1px solid #d5baa1}
+.gdb-midnight-sign h3,.gdb-midnight-wall h3{font:700 2rem/1 var(--serif);color:#651624;margin:0 0 11px}
+.gdb-midnight-sign .fineprint{color:#775d56;font-size:.78rem;margin:0 0 18px}
+.gdb-midnight-sign form{display:grid;gap:13px}
+.gdb-midnight-sign label{display:grid;gap:6px;font-size:.75rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#651624}
+.gdb-midnight-sign input,.gdb-midnight-sign textarea,.gdb-midnight-sign select{width:100%;border:1px solid #bba796;border-radius:0;padding:12px 11px;background:white;font:500 1rem var(--sans);color:#231d1d}
+.gdb-midnight-sign textarea{min-height:104px;resize:vertical}
+.gdb-midnight-sign .gdb-midnight-honeypot{position:absolute;left:-99999px;height:1px;width:1px;overflow:hidden}
+.gdb-midnight-send{display:block;width:100%;margin-top:4px;background:#651624;color:#fff1d7}
+.gdb-midnight-send:hover{background:#86293a;color:white}
+.gdb-midnight-send:disabled{opacity:.55;cursor:wait}
+.gdb-midnight-notice{font-size:.83rem;min-height:2.5em;color:#6a3a37;margin:12px 0 0}
+.gdb-midnight-notice[data-kind=success]{color:#196346;font-weight:700}
+.gdb-midnight-notice[data-kind=error]{color:#a02d23;font-weight:700}
+.gdb-midnight-wall{padding:27px 26px;background:#ece0ce;background-image:radial-gradient(#c7bba8 0.7px,transparent 0.7px);background-size:14px 14px;min-width:0}
+.gdb-midnight-wallbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid #cbb7a4;padding-bottom:14px;margin-bottom:22px}
+.gdb-midnight-wallbar h3{margin:0}
+.gdb-midnight-wallbar span{display:block;font:800 .62rem var(--sans);letter-spacing:.12em;color:#7a2c2c}
+.gdb-midnight-reload{background:transparent;color:#651624;padding:10px;font-size:.62rem}
+.gdb-midnight-entries{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;align-items:start;padding:8px}
+.gdb-midnight-note{min-width:0;transform:rotate(var(--note-tilt,0deg));background:#fff8e6;box-shadow:1px 8px 18px rgba(52,32,19,.17);padding:18px 16px 17px;min-height:158px;border:1px solid #e6ceb0;position:relative}
+.gdb-midnight-note:before{content:"";position:absolute;top:-9px;left:44%;width:54px;height:17px;transform:rotate(-3deg);background:rgba(171,116,83,.24)}
+.gdb-midnight-note-dept{display:block;text-transform:uppercase;letter-spacing:.11em;font-size:.58rem;font-weight:800;color:#8f413d}
+.gdb-midnight-note h3{font:italic 700 clamp(1.35rem,2.2vw,1.7rem) var(--serif);color:#661926;margin:8px 0 10px;overflow-wrap:anywhere}
+.gdb-midnight-note p{font-size:.87rem;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 0 14px}
+.gdb-midnight-note time{color:#876c5d;font:700 .65rem var(--sans)}
+.gdb-midnight-empty{grid-column:1/-1;text-align:center;font:italic 1.1rem/1.5 var(--serif);color:#735a51;padding:45px 24px;border:1px dashed #b99f8c;background:#f9f0e2}
+@media(max-width:740px){.gdb-midnight-preview-inner{align-items:flex-start;flex-direction:column}.gdb-midnight-preview{padding:45px 18px}.gdb-midnight-columns{grid-template-columns:1fr}.gdb-midnight-sign{border-right:0;border-bottom:1px solid #d5baa1}.gdb-midnight-head{padding:25px 20px}.gdb-midnight-head h2{margin-right:35px}.gdb-midnight-dialog{width:calc(100vw - 12px);max-height:96vh}.gdb-midnight-close{top:12px;right:12px}.gdb-midnight-sign,.gdb-midnight-wall{padding:23px 18px}}
+@media(max-width:390px){.gdb-midnight-entries{grid-template-columns:1fr}.gdb-midnight-preview h2{font-size:2.3rem}}
+@media(prefers-reduced-motion:reduce){.gdb-midnight-note{transform:none}.gdb-midnight-dialog::backdrop{backdrop-filter:none}}
