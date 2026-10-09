@@ -1,5 +1,11 @@
 name: Refresh Arsenal Wave matchday
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/arsenal-sync.mjs'
+      - 'scripts/arsenal-sync.test.mjs'
+      - '.github/workflows/arsenal-data-sync.yml'
   schedule:
     - cron: '43 * * * *'
   workflow_dispatch:
