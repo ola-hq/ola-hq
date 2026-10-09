@@ -1,9 +1,12 @@
 name: Refresh FPL Draft Hub data
 
-# The scheduled FPL job refreshes data only. GitHub Pages publication is owned
-# solely by the canonical Pages workflow/source. Do not deploy a stale entire
-# site artifact from this periodic job.
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/fpl-sync.mjs'
+      - 'scripts/validate-fpl.mjs'
+      - '.github/workflows/fpl-data-sync.yml'
   schedule:
     - cron: '17 * * * *'
   workflow_dispatch:
@@ -17,46 +20,24 @@ concurrency:
 
 jobs:
   refresh:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout current canonical public source
         uses: actions/checkout@v4
         with:
-          persist-credentials: true
-      - name: Setup Node
-        uses: actions/setup-node@v4
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Fetch and sanitize FPL Draft data
-        run: node scripts/fpl-sync.mjs
-      - name: Verify approved public entrypoints before updating data
-        run: node scripts/verify-hq-release.mjs
-      - name: Commit verified FPL snapshot to public main
-        shell: bash
+      - name: Validate release and FPL failure handling
         run: |
-          if git diff --quiet -- data/fpl/league-18767.json; then
-            echo "FPL data unchanged; canonical Pages site remains as-is."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/fpl/league-18767.json
-          git diff --cached --quiet && exit 0
-          git commit -m "data: refresh FPL Draft Hub snapshot"
-          # Rebase the data-only commit onto the latest public main; do not
-          # overwrite code/approved site edits from concurrent contributors.
-          for attempt in 1 2 3; do
-            if ! git pull --rebase origin main; then
-              echo "::error::FPL refresh conflicted with current main. No publish."
-              exit 1
-            fi
-            node scripts/verify-hq-release.mjs
-            if git push origin HEAD:main; then
-              echo "FPL data committed to canonical main. Publication handoff still requires verification."
-              exit 0
-            fi
-            echo "Concurrent update detected; retry $attempt/3."
-            sleep $((attempt * 2))
-          done
-          echo "::error::Could not commit FPL snapshot safely."
-          exit 1
+          node scripts/verify-hq-release.mjs
+          node --test scripts/fpl-sync.test.mjs
+      - name: Fetch validated FPL snapshot atomically
+        run: node scripts/fpl-sync.mjs
+      - name: Commit data only; publisher handles workflow completion
+        run: |
+          bash scripts/commit-data.sh data/fpl/league-18767.json 'data: refresh FPL Draft Hub snapshot'

@@ -1,0 +1,123 @@
+name: Publish verified OLA HQ
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  # GITHUB_TOKEN data pushes do not trigger push/branch Pages builds.
+  # Completion events explicitly hand all durable snapshots to this publisher.
+  workflow_run:
+    workflows:
+      - Refresh FPL Draft Hub data
+      - Sync Our Polaroid PROJ Letterboxd Diary
+      - Refresh Arsenal Wave matchday
+      - Sync Arsenal Wave Premier League Scores
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: read
+
+# One full-site publication at a time. A queued run always checks out fresh main.
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('hq-review-{0}', github.event.pull_request.number) || 'hq-pages-publication' }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    if: >-
+      github.event_name == 'pull_request' ||
+      (github.ref == 'refs/heads/main' &&
+       (github.event_name != 'workflow_run' ||
+        (github.event.workflow_run.conclusion == 'success' &&
+         github.event.workflow_run.event != 'pull_request' &&
+         github.event.workflow_run.head_repository.full_name == github.repository)))
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      source_sha: ${{ steps.source.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.ref || 'main' }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned workflow parser
+        run: python3 -m pip install --quiet PyYAML==6.0.3
+      - name: Lint GitHub workflow syntax and expressions
+        run: |
+          curl --fail --location --max-time 60 -sS https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz -o /tmp/actionlint.tar.gz
+          echo '8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8  /tmp/actionlint.tar.gz' | sha256sum --check
+          tar --no-same-owner -xzf /tmp/actionlint.tar.gz -C /tmp actionlint
+          /tmp/actionlint -shellcheck=
+      - name: Verify release, FPL and concurrency behavior
+        run: |
+          node scripts/verify-hq-release.mjs
+          node scripts/validate-fpl.mjs
+          node --test scripts/fpl-sync.test.mjs scripts/publishing.test.mjs scripts/arsenal-sync.test.mjs scripts/arsenal-scores-sync.test.mjs
+          python3 scripts/sync-letterboxd.py --self-test
+          python3 scripts/verify-workflows.py
+      - name: Record exact source
+        id: source
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - name: Build tracked public projection and revision receipt
+        run: node scripts/build-public-site.mjs
+      - name: Upload verified site
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: .site
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Reject stale source or branch-mode Pages configuration
+        uses: actions/github-script@v7
+        env:
+          SOURCE_SHA: ${{ needs.verify.outputs.source_sha }}
+        with:
+          script: |
+            const repo = {owner: context.repo.owner, repo: context.repo.repo};
+            const {data: pages} = await github.rest.repos.getPages(repo);
+            if (pages.build_type !== 'workflow') {
+              throw new Error('Set Settings → Pages → Source to GitHub Actions before release. Branch publishing must be retired.');
+            }
+            const {data: main} = await github.rest.repos.getBranch({...repo, branch:'main'});
+            if (main.commit.sha !== process.env.SOURCE_SHA) {
+              throw new Error('Main advanced during verification; refusing stale artifact. A queued push/data completion will rebuild fresh main.');
+            }
+      - name: Deploy the sole verified full-site artifact
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Verify live revision, protected files and FPL snapshot
+        env:
+          SITE_URL: ${{ steps.deployment.outputs.page_url }}
+          SOURCE_SHA: ${{ needs.verify.outputs.source_sha }}
+        run: |
+          curl --fail --retry 3 --max-time 30 -sS "${SITE_URL}release.json?run=${GITHUB_RUN_ID}" -o /tmp/ola-release.json
+          python3 - <<'PY'
+          import hashlib,json,os,time,urllib.request
+          release=json.load(open('/tmp/ola-release.json'))
+          assert release['source_sha']==os.environ['SOURCE_SHA'], 'Live revision mismatch'
+          for path,expected in release['protected_sha256'].items():
+              url=os.environ['SITE_URL']+path+'?run='+os.environ['GITHUB_RUN_ID']
+              with urllib.request.urlopen(url,timeout=30) as response: actual=hashlib.sha256(response.read()).hexdigest()
+              assert actual==expected, 'Live byte mismatch: '+path
+          with urllib.request.urlopen(os.environ['SITE_URL']+'data/fpl/league-18767.json?run='+os.environ['GITHUB_RUN_ID'],timeout=30) as response: fpl=json.load(response)
+          assert fpl['meta']['fetched_at']==release['fpl_fetched_at'], 'Live FPL snapshot mismatch'
+          print('Live source and protected assets verified:',release['source_sha'],'FPL:',release['fpl_fetched_at'])
+          PY
