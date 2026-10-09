@@ -51,6 +51,13 @@
       text('ars-away-name', awayName);
       text('ars-home-code', shortName(homeName));
       text('ars-away-code', shortName(awayName));
+      // The Arsenal red tile follows the club, including on away fixtures.
+      const homeToken = byId('ars-home-code'), awayToken = byId('ars-away-code');
+      const arsenalAway = next.venue === 'Away';
+      homeToken?.classList.toggle('arsenal-team-token-red', !arsenalAway);
+      homeToken?.classList.toggle('arsenal-team-token-gold', arsenalAway);
+      awayToken?.classList.toggle('arsenal-team-token-red', arsenalAway);
+      awayToken?.classList.toggle('arsenal-team-token-gold', !arsenalAway);
       text('ars-last', s.latest_result?.score || '—');
       text('ars-last-opponent', s.latest_result?.opponent || 'Latest result pending');
       text('ars-position', s.league?.position ? '#' + s.league.position : '—');
