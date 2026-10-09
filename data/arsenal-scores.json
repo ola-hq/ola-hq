@@ -1,13 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-09T04:40:54.509Z",
+    "fetched_at": "2026-10-09T04:43:25.256Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
-    "note": "In-play status is based on the feed; snapshot is not guaranteed real-time."
+    "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
+    "details_checked_at": "2026-10-09T04:43:25.256Z"
   },
   "matches": [
     {
@@ -883,10 +884,56 @@
       "away_score": 1,
       "status": "post",
       "minute": null,
-      "venue": null,
+      "venue": "Elland Road",
       "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/401879280/newcastle-united-leeds-united",
+      "stats": [
+        {
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
+          "home": "8",
+          "away": "13"
+        },
+        {
+          "label": "wonCorners",
+          "home": "5",
+          "away": "5"
+        },
+        {
+          "label": "goalAssists",
+          "home": "2",
+          "away": "0"
+        },
+        {
+          "label": "possessionPct",
+          "home": "50.6",
+          "away": "49.4"
+        },
+        {
+          "label": "shotAssists",
+          "home": "10",
+          "away": "6"
+        },
+        {
+          "label": "shotsOnTarget",
+          "home": "6",
+          "away": "5"
+        },
+        {
+          "label": "totalGoals",
+          "home": "4",
+          "away": "1"
+        },
+        {
+          "label": "totalShots",
+          "home": "15",
+          "away": "7"
+        }
+      ],
       "events": [],
       "lineups": null
     },
@@ -905,12 +952,100 @@
       "away_score": 0,
       "status": "post",
       "minute": null,
-      "venue": null,
+      "venue": "Gtech Community Stadium",
       "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/401879275/chelsea-brentford",
+      "stats": [
+        {
+          "label": "Fouls",
+          "home": "10",
+          "away": "7"
+        },
+        {
+          "label": "Yellow Cards",
+          "home": "2",
+          "away": "0"
+        },
+        {
+          "label": "Red Cards",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "Offsides",
+          "home": "2",
+          "away": "2"
+        },
+        {
+          "label": "Corner Kicks",
+          "home": "4",
+          "away": "12"
+        },
+        {
+          "label": "Saves",
+          "home": "2",
+          "away": "3"
+        },
+        {
+          "label": "Possession",
+          "home": "40.6",
+          "away": "59.4"
+        },
+        {
+          "label": "SHOTS",
+          "home": "13",
+          "away": "12"
+        },
+        {
+          "label": "ON GOAL",
+          "home": "6",
+          "away": "2"
+        },
+        {
+          "label": "On Target %",
+          "home": "0.5",
+          "away": "0.2"
+        },
+        {
+          "label": "Penalty Goals",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "Penalty Kicks Taken",
+          "home": "0",
+          "away": "0"
+        }
+      ],
       "events": [],
-      "lineups": null
+      "lineups": {
+        "home": [
+          "Caoimhín Kelleher",
+          "Kristoffer Ajer",
+          "Jannik Schuster",
+          "Keane Lewis-Potter",
+          "Michael Kayode",
+          "Mikkel Damsgaard",
+          "Vitaly Janelt",
+          "Yehor Yarmoliuk",
+          "Igor Thiago",
+          "Kevin Schade",
+          "Jaidon Anthony"
+        ],
+        "away": [
+          "Emiliano Martínez",
+          "Maxence Lacroix",
+          "Levi Colwill",
+          "Wesley Fofana",
+          "Valentín Barco",
+          "Jordan Henderson",
+          "Pep Chavarría",
+          "Pedro Neto",
+          "Danny Welbeck",
+          "Morgan Rogers",
+          "Cole Palmer"
+        ]
+      }
     },
     {
       "id": "pl-48",
@@ -971,12 +1106,100 @@
       "away_score": 0,
       "status": "post",
       "minute": null,
-      "venue": null,
+      "venue": "Hill Dickinson Stadium",
       "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/401878778/ipswich-town-everton",
+      "stats": [
+        {
+          "label": "Fouls",
+          "home": "6",
+          "away": "12"
+        },
+        {
+          "label": "Yellow Cards",
+          "home": "2",
+          "away": "1"
+        },
+        {
+          "label": "Red Cards",
+          "home": "0",
+          "away": "1"
+        },
+        {
+          "label": "Offsides",
+          "home": "1",
+          "away": "0"
+        },
+        {
+          "label": "Corner Kicks",
+          "home": "4",
+          "away": "4"
+        },
+        {
+          "label": "Saves",
+          "home": "4",
+          "away": "1"
+        },
+        {
+          "label": "Possession",
+          "home": "51.7",
+          "away": "48.3"
+        },
+        {
+          "label": "SHOTS",
+          "home": "21",
+          "away": "13"
+        },
+        {
+          "label": "ON GOAL",
+          "home": "2",
+          "away": "4"
+        },
+        {
+          "label": "On Target %",
+          "home": "0.1",
+          "away": "0.3"
+        },
+        {
+          "label": "Penalty Goals",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "Penalty Kicks Taken",
+          "home": "0",
+          "away": "0"
+        }
+      ],
       "events": [],
-      "lineups": null
+      "lineups": {
+        "home": [
+          "Jordan Pickford",
+          "Jarrad Branthwaite",
+          "James Tarkowski",
+          "Vitaliy Mykolenko",
+          "Ainsley Maitland-Niles",
+          "Kiernan Dewsbury-Hall",
+          "James Garner",
+          "Harrison Armstrong",
+          "Thierno Barry",
+          "Jack Grealish",
+          "Brennan Johnson"
+        ],
+        "away": [
+          "Christian Walton",
+          "Dara O'Shea",
+          "Issa Diop",
+          "Leif Davis",
+          "Abdoul Ouattara",
+          "Julio Enciso",
+          "Exequiel Palacios",
+          "Sasa Lukic",
+          "Emersonn",
+          "Jack Clarke",
+          "Fatawu Issahaku"
+        ]
+      }
     },
     {
       "id": "pl-46",
@@ -993,12 +1216,100 @@
       "away_score": 1,
       "status": "post",
       "minute": null,
-      "venue": null,
+      "venue": "St. James' Park",
       "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/401879271/hull-city-newcastle-united",
+      "stats": [
+        {
+          "label": "Fouls",
+          "home": "4",
+          "away": "10"
+        },
+        {
+          "label": "Yellow Cards",
+          "home": "1",
+          "away": "4"
+        },
+        {
+          "label": "Red Cards",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "Offsides",
+          "home": "2",
+          "away": "1"
+        },
+        {
+          "label": "Corner Kicks",
+          "home": "4",
+          "away": "7"
+        },
+        {
+          "label": "Saves",
+          "home": "3",
+          "away": "3"
+        },
+        {
+          "label": "Possession",
+          "home": "56.2",
+          "away": "43.8"
+        },
+        {
+          "label": "SHOTS",
+          "home": "12",
+          "away": "21"
+        },
+        {
+          "label": "ON GOAL",
+          "home": "5",
+          "away": "4"
+        },
+        {
+          "label": "On Target %",
+          "home": "0.4",
+          "away": "0.2"
+        },
+        {
+          "label": "Penalty Goals",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "Penalty Kicks Taken",
+          "home": "1",
+          "away": "0"
+        }
+      ],
       "events": [],
-      "lineups": null
+      "lineups": {
+        "home": [
+          "Lukás Hornícek",
+          "Sven Botman",
+          "Malick Thiaw",
+          "Lewis Hall",
+          "Lewis Miley",
+          "Matias Fernandez-Pardo",
+          "Joe Willock",
+          "Sean Steur",
+          "Yoane Wissa",
+          "Harvey Barnes",
+          "Jacob Murphy"
+        ],
+        "away": [
+          "Konstantinos Tzolakis",
+          "John Egan",
+          "Lucas Herrington",
+          "Semi Ajayi",
+          "Ryan Giles",
+          "Lewie Coyle",
+          "Regan Slater",
+          "Matt Crooks",
+          "Sorba Thomas",
+          "Mohamed Belloumi",
+          "Oliver McBurnie"
+        ]
+      }
     },
     {
       "id": "pl-47",
@@ -1059,12 +1370,100 @@
       "away_score": 0,
       "status": "post",
       "minute": null,
-      "venue": null,
+      "venue": "Elland Road",
       "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/401879273/crystal-palace-leeds-united",
+      "stats": [
+        {
+          "label": "Fouls",
+          "home": "10",
+          "away": "12"
+        },
+        {
+          "label": "Yellow Cards",
+          "home": "2",
+          "away": "3"
+        },
+        {
+          "label": "Red Cards",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "Offsides",
+          "home": "2",
+          "away": "2"
+        },
+        {
+          "label": "Corner Kicks",
+          "home": "4",
+          "away": "3"
+        },
+        {
+          "label": "Saves",
+          "home": "5",
+          "away": "2"
+        },
+        {
+          "label": "Possession",
+          "home": "50.6",
+          "away": "49.4"
+        },
+        {
+          "label": "SHOTS",
+          "home": "13",
+          "away": "12"
+        },
+        {
+          "label": "ON GOAL",
+          "home": "2",
+          "away": "4"
+        },
+        {
+          "label": "On Target %",
+          "home": "0.2",
+          "away": "0.3"
+        },
+        {
+          "label": "Penalty Goals",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "Penalty Kicks Taken",
+          "home": "0",
+          "away": "0"
+        }
+      ],
       "events": [],
-      "lineups": null
+      "lineups": {
+        "home": [
+          "James Trafford",
+          "Nico Elvedi",
+          "Tarik Muharemovic",
+          "James Justin",
+          "Ao Tanaka",
+          "Anton Stach",
+          "Ethan Ampadu",
+          "Gabriel Gudmundsson",
+          "Jayden Bogle",
+          "Noah Okafor",
+          "Dominic Calvert-Lewin"
+        ],
+        "away": [
+          "Walter Benítez",
+          "Takehiro Tomiyasu",
+          "Jaydee Canvot",
+          "Chris Richards",
+          "Adam Wharton",
+          "Quinten Timber",
+          "Tyrick Mitchell",
+          "Anan Khalaili",
+          "Jørgen Strand Larsen",
+          "Yéremy Pino",
+          "Daichi Kamada"
+        ]
+      }
     },
     {
       "id": "pl-45",
