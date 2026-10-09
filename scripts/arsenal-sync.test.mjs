@@ -1,0 +1,48 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {parseMatch,parseLeague,buildSnapshot} from './arsenal-sync.mjs';
+const event = (date,state='pre') => ({
+  id:'sample-123',date,status:{type:{state}},
+  links:[{href:'https://www.espn.com/soccer/match/_/gameId/123'}],
+  competitions:[{venue:{fullName:'Emirates Stadium'},competitors:[
+    {team:{id:'359',displayName:'Arsenal',abbreviation:'ARS'},homeAway:'home',score:'2'},
+    {team:{id:'357',displayName:'Leeds United'},homeAway:'away',score:'1'}
+  ]}]
+});
+test('validates and normalizes a fixture',() => {
+  const m=parseMatch(event('2026-10-10T11:30:00Z'));
+  assert.equal(m.opponent,'Leeds United');
+  assert.equal(m.date,'2026-10-10T11:30:00.000Z');
+  assert.equal(m.status,'pre');
+  assert.match(m.match_center_url,/gameId\/123/);
+});
+test('rejects unrelated games',() => {
+  const other=event('2026-10-10T11:30:00Z');
+  other.competitions[0].competitors[0].team.id='888';
+  other.competitions[0].competitors[0].team.abbreviation='NOT';
+  assert.equal(parseMatch(other),null);
+});
+test('keeps direct match link for the matching cached fixture only',() => {
+  const old={meta:{sources:[]},snapshot:{next_match:{
+    opponent:'Leeds United',kickoff_utc:'2026-10-10T11:30:00.000Z',
+    match_center_url:'https://www.premierleague.com/en/match/2645245/essenal-vs-leeds-united/info'
+  }}};
+  const e=event('2026-10-10T11:30:00Z');
+  delete e.links;
+  const snapshot=buildSnapshot(old,{events:[e]},null,new Date('2026-10-08T20:00:00Z'));
+  assert.equal(snapshot.snapshot.next_match.match_center_url,old.snapshot.next_match.match_center_url);
+  assert.equal(snapshot.snapshot.league,null);
+  assert.equal(snapshot.meta.refresh_strategy,'scheduled');
+});
+test('refuses an empty or invalid API response',() => {
+  assert.throws(()=>buildSnapshot({snapshot:{}},{events:[]},null),/No valid Arsenal fixtures/);
+});
+test('parses league position and points when given reliable standings',() => {
+  const table={children:[{standings:{entries:[{team:{id:'359'},stats:[
+    {name:'rank',value:2},{name:'points',value:12},{name:'gamesPlayed',value:5}
+  ]}]}}]};
+  assert.deepEqual(parseLeague(table),{
+    competition:'Premier League',position:2,points:12,played:5,
+    wins:null,draws:null,losses:null,gf:null,ga:null,gd:null
+  });
+});
