@@ -82,3 +82,6 @@ html.is-installed #install{display:none!important}
 
 /* Subtle return from the installed app to the classic website. */
 .home-footer .website-return{margin:9px 0 0;color:#9fb8cf;font-size:11px}.home-footer .website-return a{margin:0;color:#c9dbee;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+
+/* App-home jump target: tapping the hero globe or cue brings the first wave flush under the sticky app bar. */
+.hero-globe-link{display:block;width:min(66vw,390px);margin:0 auto;text-decoration:none;border-radius:50%}.hero-globe-link .hero-globe{width:100%;height:auto}.hero-globe-link:focus-visible{outline-offset:8px}#world-la-ola{scroll-margin-top:calc(79px + env(safe-area-inset-top))}
