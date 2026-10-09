@@ -1,5 +1,8 @@
 name: Refresh FPL Draft Hub data
 
+# The scheduled FPL job refreshes data only. GitHub Pages publication is owned
+# solely by the canonical Pages workflow/source. Do not deploy a stale entire
+# site artifact from this periodic job.
 on:
   schedule:
     - cron: '17 * * * *'
@@ -7,34 +10,50 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
   group: fpl-data-sync
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+      - name: Checkout current canonical public source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v4
         with:
           node-version: '22'
       - name: Fetch and sanitize FPL Draft data
         run: node scripts/fpl-sync.mjs
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-      - name: Upload current site
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: .
-      - name: Deploy refreshed site
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Commit verified FPL snapshot to public main
+        shell: bash
+        run: |
+          if git diff --quiet -- data/fpl/league-18767.json; then
+            echo "FPL data unchanged; canonical Pages site remains as-is."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/fpl/league-18767.json
+          git diff --cached --quiet && exit 0
+          git commit -m "data: refresh FPL Draft Hub snapshot"
+          # Rebase the data-only commit onto the latest public main; do not
+          # overwrite code/approved site edits from concurrent contributors.
+          for attempt in 1 2 3; do
+            if ! git pull --rebase origin main; then
+              echo "::error::FPL refresh conflicted with current main. No publish."
+              exit 1
+            fi
+            if git push origin HEAD:main; then
+              echo "FPL data committed to canonical main; Pages owns deployment."
+              exit 0
+            fi
+            echo "Concurrent update detected; retry $attempt/3."
+            sleep $((attempt * 2))
+          done
+          echo "::error::Could not commit FPL snapshot safely."
+          exit 1
