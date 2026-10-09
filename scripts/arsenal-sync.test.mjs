@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {parseMatch,parseLeague,buildSnapshot} from './arsenal-sync.mjs';
+import {parseMatch,parseLeague,buildSnapshot,parsePremierLeagueFixtures} from './arsenal-sync.mjs';
 const event = (date,state='pre') => ({
   id:'sample-123',date,status:{type:{state}},
   links:[{href:'https://www.espn.com/soccer/match/_/gameId/123'}],
@@ -55,4 +55,15 @@ test('does not erase a verified upcoming fixture when schedule lists only comple
   assert.deepEqual(snapshot.snapshot.next_match,verified);
   assert.equal(snapshot.meta.fixture_source,'verified_cache');
   assert.equal(snapshot.meta.fixture_updated_at,'2026-10-08T21:00:00-07:00');
+});
+
+test('official Premier League fixtures identify Arsenal, opposition and localizable kickoff',() => {
+  const teams={teams:[{id:1,name:'Arsenal',short_name:'ARS'},{id:11,name:'Leeds United',short_name:'LEE'}]};
+  const fixtures=[{id:123,team_h:1,team_a:11,kickoff_time:'2026-10-10T11:30:00Z',started:false,finished:false,team_h_score:null,team_a_score:null}];
+  const events=parsePremierLeagueFixtures(teams,fixtures);
+  assert.equal(events.length,1);
+  const match=parseMatch(events[0]);
+  assert.equal(match.opponent,'Leeds United');
+  assert.equal(match.status,'pre');
+  assert.equal(match.date,'2026-10-10T11:30:00.000Z');
 });
