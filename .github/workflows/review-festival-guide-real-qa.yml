@@ -32,18 +32,20 @@ jobs:
            const tests = [];
            const reports = [];
            const changed = process.env.GITHUB_SHA || 'unknown';
+           const ctx = await browser.newContext({viewport:{width:360,height:920},deviceScaleFactor:1,serviceWorkers:'allow'});
            const label = process.env.QA_LABEL || 'guide';
            const port = process.env.GUIDE_PORT || '8765';
            for(const width of [360,400,1440]) for(const lang of ['en','es']) {
-            const ctx = await browser.newContext({viewport:{width,height:920},deviceScaleFactor:1,serviceWorkers:'block'});
             const page = await ctx.newPage();
+            await page.setViewportSize({width,height:920});
             const errors=[];
             page.on('pageerror',e=>errors.push(String(e)));
             const url='http://127.0.0.1:'+port+'/la-ola-de-amor/scan/guide/?lang='+lang+'#tornaboda';
             await page.goto(url,{waitUntil:'domcontentloaded'});
             await page.locator('#tornaboda').waitFor({state:'visible',timeout:15000});
             await page.evaluate(()=>document.fonts.ready);
-            await page.waitForTimeout(600);
+            await page.waitForFunction(()=>['full','partial'].includes(document.querySelector('#connection')?.dataset.offlineState),null,{timeout:80000});
+            await page.waitForTimeout(150);
             const metrics=await page.evaluate(()=>{
              const cardInfo=(sel)=>{
               const card=document.querySelector(sel), b=card.getBoundingClientRect();
@@ -62,7 +64,7 @@ jobs:
             await page.locator('#tornaboda').screenshot({path:prefix+'-REAL-surroundings.png',animations:'disabled'});
             reports.push(metrics);
             tests.push({width,lang,fullScreenshot:prefix+'-REAL-full-page.png',surroundingScreenshot:prefix+'-REAL-surroundings.png'});
-            await ctx.close();
+            await page.close();
            }
            fs.writeFileSync('screenshots/metrics-'+label+'.json',JSON.stringify({sha:changed,shots:tests,reports},null,2));
            console.log(JSON.stringify(reports.map(r=>({width:r.width,lang:r.language,overflow:r.documentOverflow,activityClearance:[r.activity.topClearance,r.activity.bottomClearance],afterFiveClearance:[r.afterFive.topClearance,r.afterFive.bottomClearance],branding:r.brandImg,route:r.hash,errors:r.errors})),null,2));
@@ -72,6 +74,17 @@ jobs:
             const failures=reports.filter(r=>r.activity.topClearance<1||r.activity.bottomClearance<1||r.afterFive.topClearance<1||r.afterFive.bottomClearance<1||!r.brandImg);
             if(failures.length)throw new Error('Text clearance failed: '+JSON.stringify(failures.map(r=>({width:r.width,lang:r.language,activity:[r.activity.topClearance,r.activity.bottomClearance],after:[r.afterFive.topClearance,r.afterFive.bottomClearance]}))));
            }
+           const off = await ctx.newPage();
+           await off.goto('http://127.0.0.1:'+port+'/la-ola-de-amor/scan/guide/?lang=en#tornaboda');
+           await off.waitForFunction(()=>['full','partial'].includes(document.querySelector('#connection')?.dataset.offlineState),null,{timeout:80000});
+           await ctx.setOffline(true);
+           await off.reload({waitUntil:'domcontentloaded',timeout:20000});
+           await off.locator('#tornaboda').waitFor({state:'visible',timeout:15000});
+           const offlineOK=await off.evaluate(()=>({title:document.querySelector('#tornaboda-title')?.textContent,css:getComputedStyle(document.querySelector('#tornaboda .saturday-activities')).paddingTop,brand:document.querySelector('.masthead-brand-wordmark')?.naturalWidth??null,offline:!navigator.onLine}));
+           console.log('OFFLINE SMOKE',label,JSON.stringify(offlineOK));
+           if(!offlineOK.title||!offlineOK.offline||(reports[0].brandImg&&(!offlineOK.brand||offlineOK.brand<1)))throw Error('Offline guide failed: '+JSON.stringify(offlineOK));
+           await ctx.setOffline(false);
+           await ctx.close();
            await browser.close();
           })().catch(e=>{console.error(e);process.exit(1)});
           JS
