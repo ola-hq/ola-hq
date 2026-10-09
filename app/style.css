@@ -259,3 +259,13 @@ html.is-installed #install{display:none!important}
     position:relative;left:auto;right:auto;
   }
 }
+
+/* Mobile PWA launch anchor: independent of nested grid/intrinsic element widths. */
+@media(max-width:767px){#app-launch.hero #hero-world-jump{position:absolute!important;left:50%!important;top:50%!important;right:auto!important;margin:0!important;transform:translate(-50%,-50%)!important}}
+/* Community-wave entrance: intentionally a 13th, standard-size bottom card. */
+.world-card.what-wave-card{background:radial-gradient(circle at 55% 28%,#337b83 0%,#14436b 50%,#07182f 100%)}
+.what-wave-card:after{background:linear-gradient(180deg,transparent 5%,rgba(6,21,43,.05) 40%,rgba(6,21,43,.93) 87%,#06152b 100%)}
+.what-wave-art{position:absolute;inset:8% 5% 28%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#f7dfb5;text-align:center;transform:rotate(-5deg);gap:13px}
+.what-wave-art>span:first-child{font:800 12px/1 'DM Sans',sans-serif;letter-spacing:.25em}
+.what-wave-art strong{font:900 clamp(28px,6vw,48px)/.97 'Outfit',sans-serif;letter-spacing:-.05em}
+.what-wave-ripples{font-size:38px;letter-spacing:.22em;color:#8bd2d0}

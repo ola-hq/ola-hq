@@ -17,7 +17,8 @@ const worlds = {
   'wu-wei': { name: 'Wu Wei Wave', path: 'wu-wei-wave.html', parent: null },
   willpwr: { name: 'Willpwr Wave', path: 'willpwr-wave.html', parent: null },
   offbrand: { name: 'Offbrand Wave', path: 'offbrand-wave.html', parent: null },
-  capybara: { name: 'Capybara Wave', path: 'capybara-wave.html', parent: null }
+  capybara: { name: 'Capybara Wave', path: 'capybara-wave.html', parent: null },
+  'what-wave': { name: "What's Your Wave?", path: 'what-wave.html', parent: null }
 };
 const rootPath = ROOT.pathname;
 const universe = document.querySelector('#universe');
