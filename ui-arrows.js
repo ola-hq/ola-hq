@@ -3,13 +3,13 @@
 
   const NS = 'http://www.w3.org/2000/svg';
   const directions = new Map([
-    ['←', 'left'], ['⬅', 'left'],
+    ['←', 'left'], ['⬅', 'left'], ['↔', 'both'],
     ['→', 'right'], ['➡', 'right'], ['➜', 'right'], ['➔', 'right'], ['➝', 'right'], ['❯', 'right'], ['⮕', 'right'],
     ['↑', 'up'], ['⬆', 'up'],
     ['↓', 'down'], ['⬇', 'down'],
     ['↗', 'up-right'], ['↖', 'up-left'], ['↘', 'down-right'], ['↙', 'down-left']
   ]);
-  const arrowRE = /[←→↗↘↖↙↑↓⬅⬆⬇➡➜➔➝❯⮕]/g;
+  const arrowRE = /[←→↔↗↘↖↙↑↓⬅⬆⬇➡➜➔➝❯⮕]/g;
   const skip = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'SELECT', 'OPTION', 'INPUT', 'CODE', 'PRE', 'SVG', 'MATH', 'TITLE', 'TEMPLATE']);
 
   const style = document.createElement('style');
@@ -33,6 +33,7 @@
     const paths = {
       left: 'M16 10H4m5-5-5 5 5 5',
       right: 'M4 10h12m-5-5 5 5-5 5',
+      both: 'M16 10H4m5-5-5 5 5 5m2-10 5 5-5 5',
       up: 'M10 16V4m-5 5 5-5 5 5',
       down: 'M10 4v12m-5-5 5 5 5-5',
       'up-right': 'M5 15 15 5M8 5h7v7',
