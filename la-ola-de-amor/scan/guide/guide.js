@@ -146,39 +146,101 @@ function renderRoute(){
  else{if(route&&!['today','music','plaza','food','tornaboda','updates'].includes(route)){document.querySelector('#connection').textContent=tr('Ese enlace no está en la guía. Elige Hoy, Música, Plaza o Comida.');}if(opener&&opener.isConnected&&!opener.closest('[hidden]'))opener.focus({preventScroll:true});else if(lastPanel!==panel||!openedFromApp)main.focus({preventScroll:true});if(lastPanel!==panel)window.scrollTo(0,scrollPositions[panel]||0);openedFromApp=false;}
  lastPanel=panel;imageFallbacks();
 }
-/* Saturday-only review enhancement. Original art preserved; dot coordinates must
-   come from the unrecovered, source-checked worker prototype before final release. */
+/* Source-checked Saturday map locations — visual source is the EXACT
+   published 1086x1448 PNG (Git blob b789b100508d93c9b9ad429760dd44dc0b134e53).
+   These are illustrative anchors, not confirmed day-of access or operations.
+   Nine locations are illustrated; point 10 is a directional arrow, NOT a court pin. */
+const SATURDAY_MARKERS=[
+ {id:'inflagol',x:212,y:392,en:'Inflagol',es:'Inflagol',de:'Illustrated soccer inflatable in the upper-left garden. Saturday setup is still pending confirmation.',ds:'Inflable de fútbol dibujado arriba a la izquierda. Su instalación del sábado está pendiente de confirmar.'},
+ {id:'taqueria',x:109,y:804,en:'Taquería',es:'Taquería',de:'Illustrated food-stall area on the left. The Saturday vendor and serving hours have not been confirmed.',ds:'Área de tacos ilustrada a la izquierda. El proveedor y el horario del sábado aún no están confirmados.'},
+ {id:'fountain',x:617,y:492,en:'Central fountain',es:'Fuente central',de:'Fountain shown near the center of the illustration. This is not a confirmed swimming-pool location.',ds:'Fuente dibujada cerca del centro. No indica una ubicación confirmada de la alberca.'},
+ {id:'casa-sol',x:541,y:724,en:'Casa Sol',es:'Casa Sol',de:'The central house on the illustration. Individual rooms and access arrangements are not confirmed here.',ds:'La casa central en la ilustración. Este mapa no confirma el acceso a habitaciones o áreas específicas.'},
+ {id:'garden-tables',x:318,y:978,en:'Garden tables',es:'Mesas del jardín',de:'Tables and seating depicted in the left garden. The final arrangement remains tentative.',ds:'Mesas y asientos dibujados en el jardín izquierdo. La distribución final es tentativa.'},
+ {id:'garden-loungers',x:847,y:1071,en:'Garden lounge area',es:'Zona de descanso',de:'Garden loungers pictured on the right. Their availability and placement are not confirmed.',ds:'Camastros ilustrados a la derecha. Su disponibilidad y ubicación no están confirmadas.'},
+ {id:'restrooms',x:108,y:1094,en:'Baños · restroom sign',es:'Baños',de:'Restroom signage illustrated on the left. Confirm actual day-of access on site.',ds:'Señal de baños dibujada a la izquierda. Confirma el acceso real el día del evento.'},
+ {id:'farmacia',x:108,y:1181,en:'Súper Farmacia Domingo',es:'Súper Farmacia Domingo',de:'A named sign in the illustration, not a promise of pharmacy service on Saturday.',ds:'Letrero conmemorativo en la ilustración; no confirma servicio de farmacia el sábado.'},
+ {id:'entrance',x:919,y:1337,en:'Camino de Entrada',es:'Camino de Entrada',de:'Illustrated entrance path at the lower right; not a verified access or safety route.',ds:'Camino ilustrado abajo a la derecha; no es un plano de acceso o seguridad verificado.'},
+ {id:'racquetball',x:966,y:571,en:'Racquetball courts · direction only',es:'Canchas de racquetball · solo dirección',de:'The artwork shows a right-pointing direction arrow only. The actual courts are outside this illustrated map; access is unconfirmed.',ds:'La ilustración solo muestra una flecha hacia la derecha. Las canchas quedan fuera del plano y el acceso no está confirmado.'}
+];
 function setupSaturdayMapZoom(){
  const body=document.querySelector('#detail-body');
  const img=body?.querySelector('img.page-art');
  if(!img)return;
- const t=lang==='en';
- const frame=document.createElement('div');
+ const isEn=lang==='en',choose=(en,es)=>isEn?en:es;
+ const frame=document.createElement('section');
  frame.className='sat-map-review-frame';
+ frame.setAttribute('aria-label',choose('Interactive Saturday map','Mapa interactivo del sábado'));
  const toolbar=document.createElement('div');
  toolbar.className='sat-map-zoom-controls';
  toolbar.setAttribute('role','group');
- toolbar.setAttribute('aria-label',t?'Saturday map zoom':'Zoom del mapa del sábado');
- toolbar.innerHTML='<button type="button" data-zoom="out" aria-label="'+(t?'Zoom out':'Alejar')+'">−</button>'+
-   '<button type="button" data-zoom="reset" aria-label="'+(t?'Reset zoom':'Restablecer zoom')+'">'+(t?'Reset':'Restablecer')+'</button>'+
-   '<button type="button" data-zoom="in" aria-label="'+(t?'Zoom in':'Acercar')+'">+</button>';
+ toolbar.setAttribute('aria-label',choose('Saturday map zoom controls','Controles de zoom del mapa del sábado'));
+ const out=document.createElement('button');out.type='button';out.textContent='−';out.dataset.zoom='out';out.setAttribute('aria-label',choose('Zoom out','Alejar'));
+ const reset=document.createElement('button');reset.type='button';reset.textContent=choose('Reset','Restablecer');reset.dataset.zoom='reset';
+ const plus=document.createElement('button');plus.type='button';plus.textContent='+';plus.dataset.zoom='in';plus.setAttribute('aria-label',choose('Zoom in','Acercar'));
+ toolbar.append(out,reset,plus);
  const viewport=document.createElement('div');
  viewport.className='sat-map-zoom-viewport';
  viewport.tabIndex=0;
  viewport.setAttribute('role','region');
- viewport.setAttribute('aria-label',t?'Scrollable Saturday map':'Mapa del sábado desplazable');
- viewport.append(img);
+ viewport.setAttribute('aria-label',choose('Scrollable annotated Saturday map','Mapa anotado del sábado, desplazable'));
+ const stage=document.createElement('div');stage.className='sat-map-image-stage';
+ img.classList.remove('page-art');
+ img.style.width='100%';img.style.maxWidth='none';img.style.height='auto';img.removeAttribute('loading');
+ stage.append(img);
+ const dotById=new Map(),listById=new Map();
+ SATURDAY_MARKERS.forEach((m,i)=>{
+  const dot=document.createElement('button');
+  dot.type='button';dot.className='sat-map-hotspot';dot.dataset.satSpot=m.id;
+  dot.style.left=(m.x/1086*100).toFixed(4)+'%';dot.style.top=(m.y/1448*100).toFixed(4)+'%';
+  dot.setAttribute('aria-label',(i+1)+'. '+(isEn?m.en:m.es));
+  dot.setAttribute('aria-pressed','false');
+  dot.textContent=String(i+1);stage.append(dot);dotById.set(m.id,dot);
+ });
+ viewport.append(stage);
  frame.append(toolbar,viewport);
- body.prepend(frame);
- let zoom=100;
- const apply=()=>{img.style.maxWidth='none';img.style.width=zoom+'%';toolbar.querySelector('[data-zoom="out"]').disabled=zoom<=100;toolbar.querySelector('[data-zoom="in"]').disabled=zoom>=300;};
+ const legend=document.createElement('section');legend.className='sat-map-directory';
+ const heading=document.createElement('h3');heading.textContent=choose('Explore the illustrated places','Explora los lugares ilustrados');legend.append(heading);
+ const caveat=document.createElement('p');caveat.className='sat-map-directory-note';
+ caveat.textContent=choose('Artwork locations are tentative. A marker does not confirm access, vendor hours, or activity availability.','Las ubicaciones de la ilustración son tentativas. Los números no confirman acceso, horarios ni disponibilidad.');
+ legend.append(caveat);
+ const list=document.createElement('ol');list.className='sat-map-stop-list';
+ SATURDAY_MARKERS.forEach((m,i)=>{
+  const li=document.createElement('li');const btn=document.createElement('button');
+  btn.type='button';btn.dataset.satSpot=m.id;btn.setAttribute('aria-pressed','false');
+  const number=document.createElement('span');number.className='sat-stop-number';number.textContent=String(i+1);
+  const details=document.createElement('span');details.className='sat-stop-copy';
+  const name=document.createElement('strong');name.textContent=isEn?m.en:m.es;
+  const note=document.createElement('small');note.textContent=isEn?m.de:m.ds;
+  details.append(name,note);btn.append(number,details);li.append(btn);list.append(li);listById.set(m.id,btn);
+ });
+ legend.append(list);
+ const status=document.createElement('p');status.className='sat-map-selection';status.setAttribute('role','status');status.setAttribute('aria-live','polite');legend.append(status);
+ body.prepend(frame);frame.after(legend);
+ let zoom=100;const dots=[...dotById.values()];const labels=[...listById.values()];
+ const apply=()=>{
+  stage.style.width=(Math.max(760,viewport.clientWidth-12)*zoom/100)+'px';
+  out.disabled=zoom<=100;plus.disabled=zoom>=300;
+ };
+ const focusSpot=(id,scroll)=>{
+  const m=SATURDAY_MARKERS.find(m=>m.id===id);if(!m)return;
+  dots.forEach(b=>{const active=b.dataset.satSpot===id;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});
+  labels.forEach(b=>{const active=b.dataset.satSpot===id;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});
+  status.textContent=(isEn?m.en:m.es)+' — '+(isEn?m.de:m.ds);
+  if(scroll){const d=dotById.get(id);viewport.scrollTo({left:Math.max(0,d.offsetLeft-viewport.clientWidth/2),top:Math.max(0,d.offsetTop-viewport.clientHeight/2),behavior:'auto'});}
+ };
+ stage.addEventListener('click',e=>{const b=e.target.closest('[data-sat-spot]');if(b)focusSpot(b.dataset.satSpot,false);});
+ list.addEventListener('click',e=>{const b=e.target.closest('[data-sat-spot]');if(b)focusSpot(b.dataset.satSpot,true);});
  toolbar.addEventListener('click',e=>{
   const action=e.target.closest('[data-zoom]')?.dataset.zoom;
   if(!action)return;
   zoom=action==='reset'?100:Math.min(300,Math.max(100,zoom+(action==='in'?50:-50)));
   apply();
  });
- apply();
+ const resize=()=>apply();
+ window.addEventListener('resize',resize);
+ const cleanup=()=>window.removeEventListener('resize',resize);
+ dialog.addEventListener('close',cleanup,{once:true});
+ apply();focusSpot('inflagol',false);
 }
 dialog.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const els=[...dialog.querySelectorAll('button,a[href],input,select,textarea,[tabindex]')].filter(el=>!el.disabled&&el.tabIndex>=0);const first=els[0],last=els.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
 function closeDetail(){if(openedFromApp){history.back();}else{location.replace('#'+lastPanel);} }
