@@ -30,15 +30,26 @@ requireThat(worldSection.includes('<h2>FPL Wave</h2>'), 'The fifth homepage sour
 requireThat(styles.includes('home-six-waves') && styles.includes('aspect-ratio:16/9'), 'Homepage six-card image treatment is missing');
 
 const cards = [...tools.matchAll(/<button type="button" class="ai-lab-card" data-key="([^"]+)"/g)].map(m => m[1]);
+const expectedCards = ['movie', 'quiz', 'handoff'];
+requireThat(JSON.stringify(cards) === JSON.stringify(expectedCards), 'Only the three approved, functional AI Toolbox cards may be published');
 const prompts = [...tools.matchAll(/<template id="ai-prompt-source-([^"]+)"><pre>([\s\S]*?)<\/pre><\/template>/g)];
-requireThat(cards.length >= 2, 'The Tools shelf lost its verified prompt cards');
-requireThat(new Set(cards).size === cards.length, 'Tool card ids must not be duplicated');
-for (const id of cards) {
+for (const id of ['movies', 'handoff']) {
   const content = prompts.find(m => m[1] === id)?.[2]?.trim() ?? '';
-  requireThat(content.length >= 200, 'Tool card has no complete source prompt: ' + id);
+  requireThat(content.length >= 200, 'The complete source prompt is missing: ' + id);
 }
-requireThat(tools.includes('id="ai-tool-modal"') && tools.includes('dialog.showModal()'), 'Tools prompt dialog is missing');
-requireThat(tools.includes('navigator.clipboard.writeText'), 'Tools prompt copy action is missing');
+requireThat(!['router', 'graveyard', 'release', 'funnel', 'library'].some(id => tools.includes('data-key="'+id+'"')), 'Unfinished AI Toolbox placeholder card has returned');
+requireThat(tools.includes('id="ai-tool-modal"') && tools.includes('dialog.showModal()'), 'The accessible Tools dialog is missing');
+requireThat(tools.includes('id="movie-showtimes"') && tools.includes('id="movie-run"') && tools.includes('id="movie-results"'), 'The interactive movie planner interface is missing');
+requireThat(tools.includes('function parseShowtimes(') && tools.includes('function plan(') && tools.includes('function runPlanner('), 'Movie scheduling computation is missing');
+requireThat(tools.includes('id="quiz-answers"') && tools.includes('id="quiz-next"') && tools.includes('function answerQuiz('), 'The working Showtime Challenge quiz is missing');
+requireThat(tools.includes('navigator.clipboard.writeText'), 'Complete-prompt copy action is missing');
+const inlineScript = tools.match(/<script id="ai-toolbox-script">([\s\S]*?)<\/script>/)?.[1];
+requireThat(Boolean(inlineScript), 'AI Toolbox script missing');
+if (inlineScript) {
+  try { new Function(inlineScript); }
+  catch (error) { failures.push('AI Toolbox JavaScript failed syntax check: ' + error.message); }
+}
+requireThat(tools.includes('id="start"') && tools.includes('Protected Personal Tools'), 'Other existing website tools were accidentally removed');
 requireThat(app.includes('href="../tools.html"') && app.includes('Visit OLA HQ'), 'OLA HQ App must link to the real website Tools page');
 
 if (failures.length) {
