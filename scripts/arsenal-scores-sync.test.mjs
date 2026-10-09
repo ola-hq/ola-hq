@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {normalizeScores,matchESPN,enrichWithESPN,attachVerifiedArsenalLink,buildScores} from './arsenal-scores-sync.mjs';
+import {normalizeScores,matchESPN,enrichWithESPN,attachVerifiedArsenalLink,buildScores,enrichmentDates,preserveDetails} from './arsenal-scores-sync.mjs';
 
 const teams=[{id:1,name:'Arsenal',short_name:'ARS'},{id:2,name:'Leeds',short_name:'LEE'},{id:3,name:'Liverpool',short_name:'LIV'}];
 const fixtures=Array.from({length:12},(_,i)=>({id:i+50,kickoff_time:new Date(Date.UTC(2026,9,10+i,11,30)).toISOString(),team_h:i%2?3:1,team_a:2,started:false,finished:false,team_h_score:null,team_a_score:null,minutes:0}));
@@ -59,4 +59,22 @@ test('built snapshot uses actual official data and metadata',async()=>{
  assert.equal(result.meta.refresh_target_minutes,15);
  assert.equal(result.matches[0].home.name,'Arsenal');
  assert.equal(result.matches[0].stats.length,0);
+});
+
+test('historic enrichment selects completed matchdays as well as upcoming matchdays',()=>{
+ const matches=normalizeScores(teams,fixtures);
+ matches[0].status='post';matches[1].status='post';
+ const dates=enrichmentDates(matches,Date.parse('2026-10-12T09:00:00Z'));
+ assert.ok(dates.includes('20261010'));
+ assert.ok(dates.includes('20261011'));
+ assert.ok(dates.includes('20261012'));
+});
+test('saved verified match stats survive later schedule-only refreshes',()=>{
+ const matches=normalizeScores(teams,fixtures);
+ const previous={matches:[{...matches[0],stats:[{label:'Shots',home:'9',away:'4'}],events:[{minute:44,description:'Goal'}],match_url:'https://www.espn.com/soccer/match/_/gameId/100'}]};
+ const next=preserveDetails(matches,previous);
+ assert.equal(next[0].stats[0].label,'Shots');
+ assert.equal(next[0].events[0].minute,44);
+ assert.equal(next[0].match_url,previous.matches[0].match_url);
+ assert.equal(next[1].stats.length,0);
 });
