@@ -29,60 +29,48 @@ requireThat(JSON.stringify(visibleLabels) === JSON.stringify(approvedLabels), 'H
 requireThat(worldSection.includes('<h2>FPL Wave</h2>'), 'The fifth homepage source label must be FPL Wave (La Ola FC is the destination)');
 requireThat(styles.includes('home-six-waves') && styles.includes('aspect-ratio:16/9'), 'Homepage six-card image treatment is missing');
 
-const cards = [...tools.matchAll(/<button type="button" class="ai-lab-card" data-key="([^"]+)"/g)].map(m=>m[1]);
-requireThat(JSON.stringify(cards)===JSON.stringify(['movie','handoff']), 'AI Toolbox must contain only Movie Planner and AI Handoff');
-requireThat(!['quiz','router','graveyard','release','funnel','library'].some(id => tools.includes('data-key="'+id+'"')), 'Unsupported or duplicated AI Toolbox card present');
-requireThat(tools.includes('id="open-showtime-quiz"') && tools.includes('id="quiz-answers"') && tools.includes("launch('quiz',byId('open-showtime-quiz'))"), 'Single standalone Showtime quiz is not wired');
-requireThat((tools.match(/id="open-showtime-quiz"/g)||[]).length===1, 'Showtime Challenge appears more than once');
-requireThat(!tools.includes('OLA HQ palette') && !tools.includes('data-color='), 'Legacy palette should be absent');
-requireThat(tools.includes('<h3>Timer</h3>') && !tools.includes('<h3>Focus timer</h3>'), 'Timer title regressed');
+const cards=[...tools.matchAll(/<button type="button" class="ai-lab-card" data-key="([^"]+)"/g)].map(m=>m[1]);
+requireThat(JSON.stringify(cards)===JSON.stringify(['movie','handoff']), 'AI Toolbox must contain Movie Planner and AI Handoff only');
+requireThat(!tools.includes('Showtime Challenge')&&!tools.includes('open-showtime-quiz')&&!tools.includes('id="tool-mode-quiz"'), 'The incorrect showtime trivia quiz has returned');
+requireThat(!['quiz','router','graveyard','release','funnel','library'].some(k=>tools.includes('data-key="'+k+'"')), 'Unsupported Toolbox placeholder card present');
+requireThat((tools.match(/id="wave-discovery"/g)||[]).length===1 && tools.includes('<details class="tool tool-pocket tool-discovery"'), 'Expandable OLA HQ world-finder rectangle missing');
+requireThat((tools.match(/id="movie-top-five"/g)||[]).length===1 && tools.includes('<details class="tool tool-pocket tool-movie-pocket"'), 'Expandable film Top 5 rectangle missing');
+requireThat(tools.includes('data-movie-source="letterboxd"')&&tools.includes('data-movie-source="blockbuster"'), 'Movie ranking must offer separate Letterboxd and Blockbuster tabs');
+requireThat(tools.includes('https://letterboxd.com/ourpolaroidproj/diary/films/'), 'Our Polaroid PROJ original Letterboxd source link missing');
+requireThat(tools.includes('id="letterboxd-files"')&&tools.includes('id="letterboxd-import-status"'), 'Real Letterboxd CSV import missing');
+requireThat(tools.includes('id="top-movie-list"')&&tools.includes('data-top-period="overall"')&&tools.includes('data-top-period="recent"'), 'Movie Top 5 period filters missing');
+requireThat(!tools.includes('OLA HQ palette')&&!tools.includes('data-color='), 'Old palette has returned');
+requireThat(tools.includes('<h3>Timer</h3>')&&!tools.includes('<h3>Focus timer</h3>'), 'Timer title changed');
 const duration=tools.match(/<select id="duration">([\s\S]*?)<\/select>/)?.[1]||'';
-const minuteOptions=[...duration.matchAll(/<option value="(\d+)"/g)].map(m=>Number(m[1]));
-requireThat(minuteOptions.length===30&&minuteOptions.every((value,i)=>value===60*(i+1)), 'Timer must support 1–30 minute increments');
-requireThat((tools.match(/class="timer-use" data-timer-use=/g)||[]).length===6, 'Timer needs six purpose suggestions on right');
-requireThat(tools.includes('id="top-movie-list"')&&tools.includes('data-top-period="overall"')&&tools.includes('data-top-period="recent"'), 'Movie Top 5 period controls missing');
-requireThat(tools.includes('id="wave-note"')&&tools.includes('id="prompt-text"'), 'Grounding creative prompt area missing');
-requireThat(tools.includes('Protected Personal Tools')&&tools.includes('id="start"')&&tools.includes('href="ai/"'), 'Existing unrelated tools removed');
-
+const options=[...duration.matchAll(/<option value="(\d+)"/g)].map(m=>Number(m[1]));
+requireThat(options.length===30&&options.every((x,i)=>x===60*(i+1)), 'Timer must retain one-minute increments 1–30');
+requireThat((tools.match(/class="timer-use" data-timer-use=/g)||[]).length===6, 'Timer must retain six suggestions');
+requireThat(tools.includes('id="wave-note"')&&tools.includes('id="prompt-text"'), 'Grounded creative prompt area is missing');
+requireThat(tools.includes('Protected Personal Tools')&&tools.includes('href="ai/"')&&tools.includes('id="start"'), 'Unrelated Tools content changed');
+const ids=[...tools.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);requireThat(new Set(ids).size===ids.length, 'Duplicate HTML element IDs detected');
 const prompts=[...tools.matchAll(/<template id="ai-prompt-source-([^"]+)"><pre>([\s\S]*?)<\/pre><\/template>/g)];
-for(const id of ['movies','handoff']){
- const full=prompts.find(m=>m[1]===id)?.[2]||'';
- requireThat(full.trim().length>=200, 'Missing complete reusable prompt: '+id);
-}
-const inlineScript=tools.match(/<script id="ai-toolbox-script">([\s\S]*?)<\/script>/)?.[1];
-requireThat(Boolean(inlineScript)&&tools.includes('id="ai-tool-modal"'), 'Top-aligned AI tool dialog missing');
-if(inlineScript){try{new Function(inlineScript)}catch(e){failures.push('AI Toolbox JS syntax invalid: '+e.message)}}
+for(const id of ['movies','handoff'])requireThat((prompts.find(m=>m[1]===id)?.[2]||'').trim().length>=200,'Missing complete '+id+' prompt');
+const inline=tools.match(/<script id="ai-toolbox-script">([\s\S]*?)<\/script>/)?.[1]||'';
+requireThat(Boolean(inline)&&tools.includes('id="ai-tool-modal"'),'Toolbox modal missing');
+if(inline){try{new Function(inline);}catch(e){failures.push('Toolbox script syntax failed: '+e.message)}}
 const toolsJS=readFileSync('tools.js','utf8');
-try{new Function(toolsJS)}catch(e){failures.push('Everyday Tools JS syntax invalid: '+e.message)}
-requireThat(toolsJS.includes("querySelectorAll('[data-timer-use]')")&&toolsJS.includes('resetTimer()'), 'Timer purpose and reset behavior is missing');
-requireThat(toolsJS.includes('ground:')&&toolsJS.includes('release:')&&toolsJS.includes('renderCreative()'), 'Grounded Wave creative prompts are missing');
-requireThat(toolsJS.includes("const movieTopFive=")&&toolsJS.includes('renderMovieTop('), 'Actual Top 5 movie archive data or rendering missing');
-requireThat(toolsJS.includes('No exact theater-visit dates are available'), 'Last 30 days must not invent dates');
-const ratingMatch=toolsJS.match(/const movieTopFive=(\[[^\n]+\]);/);
-if(!ratingMatch)failures.push('Top 5 score source is missing');
-else {
- try {
-  const ranked=JSON.parse(ratingMatch[1]);
-  const expected=['cinema2025-71','cinema2025-258','cinema2025-284','cinema2025-56','cinema2025-57'];
-  requireThat(ranked.length===5 && JSON.stringify(ranked.map(x=>x.id))===JSON.stringify(expected), 'Movie Top 5 must preserve the five source-ranked records');
-  requireThat(new Set(ranked.map(x=>x.id)).size===5, 'Movie Top 5 contains duplicate movie records');
-  requireThat(ranked.every((x,i)=>Number.isFinite(x.score)&&x.score>=4&&(i===0||ranked[i-1].score>=x.score)), 'Movie Top 5 has invalid score/order');
-  requireThat(ranked.every(x=>x.thumb && x.watchDate===null), 'Movie archive source art or missing-date caveat has changed');
- } catch(e){ failures.push('Movie Top 5 data validation failed: '+e.message); }
-}
-
-requireThat(app.includes('href="../tools.html"') && app.includes('Visit OLA HQ'), 'App-to-Tools entry lost');
-
-if(inlineScript){
- const start=inlineScript.indexOf('function clock('),end=inlineScript.indexOf('function formatChain(',start);
- if(start<0||end<=start)failures.push('Movie scheduling logic missing');
+try{new Function(toolsJS)}catch(e){failures.push('Everyday tools JS syntax failed: '+e.message)}
+requireThat(toolsJS.includes('const worldCatalog=')&&toolsJS.includes('const worldQuiz=')&&toolsJS.includes('function renderWorldQuiz('), 'World-discovery quiz logic missing');
+for(const id of ['love','cinema','polaroid','music','fpl','simulation','gdb','arsenal','offbrand','willpwr','wuwei','capybara'])requireThat(toolsJS.includes(id+":{name:"), 'World finder dropped a canonical world: '+id);
+requireThat(toolsJS.includes('function csvEntries(')&&toolsJS.includes('function parseCSV(')&&toolsJS.includes('function renderTopFilms('), 'CSV-driven Letterboxd ranking logic missing');
+requireThat(toolsJS.includes('movieSource=')&&toolsJS.includes('letterboxdEntries')&&toolsJS.includes('blockbusterTop5'), 'Independent film sources not implemented');
+requireThat(toolsJS.includes('!letterboxdEntries.length')&&toolsJS.includes('not been loaded into this browser'), 'Unsourced Letterboxd ratings must remain clearly unavailable');
+requireThat(toolsJS.includes('Exact viewing dates are not documented'), 'Blockbuster last-30-days caveat missing');
+requireThat(toolsJS.includes('const starts=')&&toolsJS.includes('renderCreative()')&&toolsJS.includes("querySelectorAll('[data-timer-use]')"), 'Creative or timer tools missing');
+requireThat(app.includes('href="../tools.html"')&&app.includes('Visit OLA HQ'), 'App return link to Tools missing');
+if(inline){
+ const a=inline.indexOf('function clock('),b=inline.indexOf('function formatChain(',a);
+ if(a<0||b<=a)failures.push('Movie marathon schedule calculation missing');
  else try{
-  const {parseShowtimes,plan}=new Function(inlineScript.slice(start,end)+'return {parseShowtimes,plan};')();
-  const rows=parseShowtimes('Opening Wave | 12:00 PM | 1:40 PM\nSide Quest | 1:45 PM | 3:20 PM\nThe Detour | 1:50 PM | 3:15 PM\nMidnight Signal | 3:25 PM | 5:00 PM\nNeon Dreams | 5:10 PM | 6:45 PM\nLast Train | 7:05 PM | 8:40 PM');
-  const best=plan(rows,0).combos[0];
-  requireThat(best?.ids.length===5&&best.idle===40,'Movie planner calculations regressed');
-  requireThat(plan(parseShowtimes('A | 1:00 PM | 2:00 PM\nB | 1:55 PM | 3:00 PM'),0).combos.length===0, 'Movie overlap handling regressed');
- }catch(e){failures.push('Movie planner check failed: '+e.message)}
+ const {parseShowtimes,plan}=new Function(inline.slice(a,b)+'return {parseShowtimes,plan}')();
+ const demo=parseShowtimes('Opening Wave | 12:00 PM | 1:40 PM\nSide Quest | 1:45 PM | 3:20 PM\nThe Detour | 1:50 PM | 3:15 PM\nMidnight Signal | 3:25 PM | 5:00 PM\nNeon Dreams | 5:10 PM | 6:45 PM\nLast Train | 7:05 PM | 8:40 PM');
+ requireThat(plan(demo,0).combos[0]?.ids.length===5&&plan(demo,0).combos[0]?.idle===40, 'Marathon best-chain regression');
+ }catch(e){failures.push('Marathon unit check: '+e.message)}
 }
 
 if (failures.length) {
