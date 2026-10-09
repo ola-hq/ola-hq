@@ -40,4 +40,4 @@ $('insights-toggle').onclick=()=>{$('insights').hidden=!$('insights').hidden;$('
 
 function openSection(){const section=location.hash.slice(1);if(section==='insights'){$('insights').hidden=false;$('insights-toggle').setAttribute('aria-expanded','true');renderInsights();$('insights').scrollIntoView()}if(['favorites','recaps','archive'].includes(section)){$('archive').open=true;if(section==='favorites')$('archive-group').value='Favorites';if(section==='recaps')$('archive-group').value='Season recaps';renderArchive();$('archive').scrollIntoView()}}
 if(typeof location!=='undefined'){openSection();window.addEventListener('hashchange',openSection)}
-</script></body></html>
+</script><script src="../assets/navigation-arrows.js" defer></script></body></html>
