@@ -10,7 +10,27 @@ const ESPN='https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1';
 const OFFICIAL='https://www.premierleague.com/en/fixtures';
 const duration=15;
 
-export function normalizeScores(teams,fixtures) {
+export function officialMatchEvents(f,elements=[]){
+ const players=new Map((elements||[]).filter(x=>Number.isInteger(x.id)).map(x=>[x.id,x.web_name||[x.first_name,x.second_name].filter(Boolean).join(' ')]));
+ const kinds={goals_scored:'Goal',own_goals:'Own goal',yellow_cards:'Yellow card',red_cards:'Red card',penalties_missed:'Missed penalty',penalties_saved:'Penalty saved'};
+ if(!f.started&&!f.finished&&!f.finished_provisional)return[];
+ if(!Array.isArray(f.stats))return[];
+ const result=[];
+ for(const stat of f.stats){
+  const eventType=kinds[stat?.identifier];
+  if(!eventType)continue;
+  for(const [team,rows] of [['Home',stat.h],['Away',stat.a]]){
+   for(const row of Array.isArray(rows)?rows:[]){
+    const n=Number(row.value),player=players.get(Number(row.element));
+    if(!Number.isInteger(n)||n<=0||!player)continue;
+    result.push({minute:null,type:eventType,description:eventType+' · '+player+(n>1?' ×'+n:'')+' ('+team+')'});
+   }
+  }
+ }
+ return result.slice(0,40);
+}
+
+export function normalizeScores(teams,fixtures,elements=[]) {
  if(!Array.isArray(teams)||!Array.isArray(fixtures))throw Error('Fixture feed missing required arrays');
  const teamMap=new Map(teams.filter(t=>Number.isInteger(t.id)&&t.name).map(t=>[t.id,t]));
  if(teamMap.size<2)throw Error('Not enough official PL team records');
@@ -28,7 +48,7 @@ export function normalizeScores(teams,fixtures) {
    status:state,
    minute:state==='in'&&Number.isInteger(f.minutes)&&f.minutes>=0?f.minutes:null,
    venue:f.team_h===1&&home.short_name==='ARS'?'Emirates Stadium':null,
-   competition:'Premier League',match_url:null,stats:[],events:[],lineups:null
+   competition:'Premier League',match_url:null,stats:[],events:officialMatchEvents(f,elements),lineups:null
   };
  });
  if(match.length<10)throw Error('Official feed has too few validated fixtures; preserving cache');
@@ -138,7 +158,7 @@ export function preserveDetails(matches,previous){
 }
 
 export async function buildScores(bootstrap,fixtures,events=[],summaries=new Map(),arsenalCache=null,now=new Date()){
- const matches=normalizeScores(bootstrap.teams,fixtures);
+ const matches=normalizeScores(bootstrap.teams,fixtures,bootstrap.elements);
  const scoreEvents=new Map();
  for(const match of matches){
   const ev=matchESPN(match,events);if(ev)scoreEvents.set(match.id,ev);
@@ -159,7 +179,7 @@ export async function buildScores(bootstrap,fixtures,events=[],summaries=new Map
 export async function run(){
  const now=new Date();
  const [bootstrap,fixtures]=await Promise.all([get(PL_BOOTSTRAP),get(PL_FIXTURES)]);
- const bare=normalizeScores(bootstrap.teams,fixtures);
+ const bare=normalizeScores(bootstrap.teams,fixtures,bootstrap.elements);
  let arsenalCache=null,existing=null;
  try{arsenalCache=JSON.parse(await readFile(new URL('../data/arsenal-2026.json',import.meta.url),'utf8'))}catch{}
  try{existing=JSON.parse(await readFile(OUT,'utf8'))}catch{}
