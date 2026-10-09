@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-arsenal-v1",
     "mode": "Auto-refreshed ESPN schedule",
-    "updated_at": "2026-10-09T04:17:31.146Z",
+    "updated_at": "2026-10-09T04:19:29.824Z",
     "updated_display": "Oct 6, 2026",
     "architecture": [
       "live source",
@@ -31,6 +31,10 @@
         "url": "https://www.premierleague.com/en/match/2645245/essenal-vs-leeds-united/info"
       },
       {
+        "label": "Premier League official fixture feed",
+        "url": "https://fantasy.premierleague.com/api/fixtures/"
+      },
+      {
         "label": "ESPN Arsenal schedule (automated, unofficial)",
         "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/359/schedule"
       },
@@ -42,21 +46,22 @@
     "refresh_strategy": "scheduled",
     "schedule_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/359/schedule?season=2026",
     "league_source": "https://site.api.espn.com/apis/v2/sports/soccer/eng.1/standings",
-    "league_updated_at": "2026-10-09T04:17:31.146Z",
-    "fixture_source": "verified_cache",
-    "fixture_updated_at": "2026-10-09T04:14:00Z"
+    "league_updated_at": "2026-10-09T04:19:29.824Z",
+    "fixture_source": "automated",
+    "fixture_updated_at": "2026-10-09T04:19:29.824Z",
+    "official_fixture_feed": "https://fantasy.premierleague.com/api/fixtures/"
   },
   "snapshot": {
     "next_match": {
-      "event_id": null,
-      "opponent": "Leeds United",
+      "event_id": "pl-51",
+      "opponent": "Leeds",
       "venue": "Home",
-      "when": "Sat Oct 10 · Emirates Stadium",
+      "when": "Sat, Oct 10",
+      "kickoff_utc": "2026-10-10T11:30:00.000Z",
       "competition": "Premier League",
-      "kickoff_utc": "2026-10-10T11:30:00Z",
       "venue_name": "Emirates Stadium",
-      "match_center_url": "https://www.premierleague.com/en/match/2645245/essenal-vs-leeds-united/info",
-      "status": "pre"
+      "status": "pre",
+      "match_center_url": null
     },
     "latest_result": {
       "opponent": "Brighton & Hove Albion",
@@ -80,7 +85,7 @@
       "W",
       "W",
       "W",
-      "W",
+      "L",
       "L"
     ],
     "context": "Defending 2025/26 Premier League champions."
