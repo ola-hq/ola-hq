@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {normalizeScores,matchESPN,enrichWithESPN,attachVerifiedArsenalLink,buildScores,enrichmentDates,preserveDetails} from './arsenal-scores-sync.mjs';
+import {normalizeScores,matchESPN,enrichWithESPN,attachVerifiedArsenalLink,buildScores,enrichmentDates,preserveDetails,officialMatchEvents} from './arsenal-scores-sync.mjs';
 
 const teams=[{id:1,name:'Arsenal',short_name:'ARS'},{id:2,name:'Leeds',short_name:'LEE'},{id:3,name:'Liverpool',short_name:'LIV'}];
 const fixtures=Array.from({length:12},(_,i)=>({id:i+50,kickoff_time:new Date(Date.UTC(2026,9,10+i,11,30)).toISOString(),team_h:i%2?3:1,team_a:2,started:false,finished:false,team_h_score:null,team_a_score:null,minutes:0}));
@@ -77,4 +77,20 @@ test('saved verified match stats survive later schedule-only refreshes',()=>{
  assert.equal(next[0].events[0].minute,44);
  assert.equal(next[0].match_url,previous.matches[0].match_url);
  assert.equal(next[1].stats.length,0);
+});
+
+test('official FPL game events name real credited players without inventing minutes',()=>{
+ const match={...fixtures[0],started:true,team_h_score:2,team_a_score:0,stats:[
+   {identifier:'goals_scored',h:[{element:101,value:2}],a:[]},
+   {identifier:'yellow_cards',h:[],a:[{element:201,value:1}]},
+   {identifier:'fake_stat',h:[{element:101,value:20}],a:[]}
+ ]};
+ const players=[{id:101,web_name:'Saka'},{id:201,web_name:'Player 201'}];
+ const events=officialMatchEvents(match,players);
+ assert.deepEqual(events,[
+   {minute:null,type:'Goal',description:'Goal · Saka ×2 (Home)'},
+   {minute:null,type:'Yellow card',description:'Yellow card · Player 201 (Away)'}
+ ]);
+ const rendered=normalizeScores(teams,[match,...fixtures.slice(1)],players);
+ assert.equal(rendered[0].events.length,2);
 });

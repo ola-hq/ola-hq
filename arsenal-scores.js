@@ -64,15 +64,18 @@ function details(){
  document.querySelectorAll('[data-detail-tab]').forEach(b=>{const a=b.dataset.detailTab===state.detail;b.classList.toggle('is-active',a);b.setAttribute('aria-pressed',String(a))});
  const panel=$('ars-details-content');
  if(state.detail==='stats'){
-  const stats=Array.isArray(m.stats)?m.stats.filter(x=>x&&x.label&&x.home!=null&&x.away!=null):[];
+  const statNames={foulsCommitted:'Fouls',wonCorners:'Corner kicks',goalAssists:'Assists',possessionPct:'Possession',shotAssists:'Chances created',shotsOnTarget:'Shots on target',totalGoals:'Goals',totalShots:'Total shots',SHOTS:'Total shots','ON GOAL':'Shots on target'};
+  const stats=Array.isArray(m.stats)?m.stats.filter(x=>x&&x.label&&x.home!=null&&x.away!=null&&!['appearances'].includes(x.label)):[];
   panel.innerHTML=stats.length?stats.slice(0,12).map(s=>{
    const a=Number(String(s.home).replace('%','')),b=Number(String(s.away).replace('%',''));
    const okay=Number.isFinite(a)&&Number.isFinite(b)&&a>=0&&b>=0&&a+b>0;
    const pct=okay?Math.max(0,Math.min(100,a/(a+b)*100)):50;
-   return '<div class="ars-stat-row"><div class="ars-stat-label"><strong>'+esc(s.home)+'</strong><span>'+esc(s.label)+'</span><strong>'+esc(s.away)+'</strong></div><div class="ars-stat-bars"><i style="width:'+pct.toFixed(1)+'%"></i><i style="width:'+(100-pct).toFixed(1)+'%"></i></div></div>';
+   const label=statNames[s.label]||s.label;
+   const value=x=>(s.label==='possessionPct'||s.label==='Possession')?String(x).replace(/%$/,'')+'%':s.label==='On Target %'&&Number(x)<=1?Math.round(Number(x)*100)+'%':String(x);
+   return '<div class="ars-stat-row"><div class="ars-stat-label"><strong>'+esc(value(s.home))+'</strong><span>'+esc(label)+'</span><strong>'+esc(value(s.away))+'</strong></div><div class="ars-stat-bars"><i style="width:'+pct.toFixed(1)+'%"></i><i style="width:'+(100-pct).toFixed(1)+'%"></i></div></div>';
   }).join(''):'<p>Detailed statistics have not been provided for this match yet. Scores and kickoff are still available.</p>';
  }else if(state.detail==='events'){
-  panel.innerHTML=Array.isArray(m.events)&&m.events.length?m.events.slice(0,30).map(e=>'<div class="ars-event-row"><strong>'+esc(e.minute??'—')+'′</strong><span>'+esc(e.description||e.type||'Event')+'</span></div>').join(''):'<p>Goals, cards and substitutions appear when the source provides verified events.</p>';
+  panel.innerHTML=Array.isArray(m.events)&&m.events.length?m.events.slice(0,30).map(e=>'<div class="ars-event-row"><strong>'+esc(e.minute!=null?String(e.minute)+'′':'✦')+'</strong><span>'+esc(e.description||e.type||'Event')+'</span></div>').join(''):'<p>Goals, cards and substitutions appear when the source provides verified events.</p>';
  }else{
   panel.innerHTML=m.lineups&&(Array.isArray(m.lineups.home)||Array.isArray(m.lineups.away))?'<div class="ars-lineup-side"><strong>'+esc(m.home.name)+'</strong><p>'+esc((m.lineups.home||[]).join(' · ')||'Pending')+'</p></div><div class="ars-lineup-side"><strong>'+esc(m.away.name)+'</strong><p>'+esc((m.lineups.away||[]).join(' · ')||'Pending')+'</p></div>':'<p>Starting XI information is not available in the source for this fixture.</p>';
  }
