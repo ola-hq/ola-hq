@@ -68,7 +68,7 @@ $('copy-prompt').addEventListener('click',async()=>{
 renderCreative();
 
 // Snapshot from public Blockbuster Wave gallery JSON, as published Oct 2, 2026.
-// Original 190 movie entries; 43 >=4/5 ratings. Exact viewing days are NOT stored.
+// Original 192 movie entries; 43 >=4/5 ratings. Exact viewing days are NOT stored.
 // Avoid implying month-only records prove any screening happened in a 30-day window.
 const movieTopFive=[{"id":"cinema2025-71","title":"One of Them Days","score":5,"order":12,"thumb":"blockbuster-wave-thumbs/cinema2025-71.jpg","watchDate":null},{"id":"cinema2025-258","title":"Unity","score":5,"order":100,"thumb":"blockbuster-wave-thumbs/cinema2025-258.jpg","watchDate":null},{"id":"cinema2025-284","title":"Elf","score":4.75,"order":126,"thumb":"blockbuster-wave-thumbs/cinema2025-284.jpg","watchDate":null},{"id":"cinema2025-56","title":"Wicked","score":4.5,"order":5,"thumb":"blockbuster-wave-thumbs/cinema2025-56.jpg","watchDate":null},{"id":"cinema2025-57","title":"Anora","score":4.5,"order":6,"thumb":"blockbuster-wave-thumbs/cinema2025-57.jpg","watchDate":null}];
 function make(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
