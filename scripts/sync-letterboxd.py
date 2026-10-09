@@ -3,6 +3,7 @@
 import argparse
 from datetime import date,datetime,timezone
 import json
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 import re
 from urllib.request import Request,urlopen
@@ -39,6 +40,13 @@ def parse_rss(data):
         if not (0.5<=score<=5.0 and score*2==round(score*2)):
             continue
         rawdate=child_text(item,"watchedDate")
+        raw_activity=child_text(item,"pubDate")
+        activity=None
+        if raw_activity:
+            try:
+                activity=parsedate_to_datetime(raw_activity).date().isoformat()
+            except (TypeError,ValueError,OverflowError):
+                pass
         watched=None
         if re.fullmatch(r"\d{4}-\d{2}-\d{2}",rawdate):
             try:
@@ -50,17 +58,18 @@ def parse_rss(data):
         if not url.startswith("https://letterboxd.com/"):
             url=None
         films.append({"title":title,"year":year if re.fullmatch(r"\d{4}",year) else None,
-                      "score":score,"watchedDate":watched,"url":url})
+                      "score":score,"watchedDate":watched,"activityDate":activity,"url":url})
     return films
 
 def self_test():
     sample=b'''<rss version="2.0" xmlns:letterboxd="https://letterboxd.com"><channel>
-    <item><letterboxd:filmTitle>Film, 2</letterboxd:filmTitle><letterboxd:filmYear>2025</letterboxd:filmYear><letterboxd:memberRating>4.5</letterboxd:memberRating><letterboxd:watchedDate>2026-10-08</letterboxd:watchedDate></item>
+    <item><letterboxd:filmTitle>Film, 2</letterboxd:filmTitle><letterboxd:filmYear>2025</letterboxd:filmYear><letterboxd:memberRating>4.5</letterboxd:memberRating><letterboxd:watchedDate>2026-09-04</letterboxd:watchedDate><pubDate>Thu, 08 Oct 2026 12:00:00 +0000</pubDate></item>
     <item><letterboxd:filmTitle>Unrated</letterboxd:filmTitle></item>
     </channel></rss>'''
     records=parse_rss(sample)
     assert len(records)==1 and records[0]["title"]=="Film, 2"
-    assert records[0]["score"]==4.5 and records[0]["watchedDate"]=="2026-10-08"
+    assert records[0]["score"]==4.5 and records[0]["watchedDate"]=="2026-09-04"
+    assert records[0]["activityDate"]=="2026-10-08"
     print("Letterboxd RSS parser self-test passed")
 
 def main():
@@ -86,7 +95,9 @@ def main():
         document.update(status="ok",entries=films,totalEntries=len(films))
         print("Letterboxd feed provided",len(films),"rated recent entries")
     except Exception as error:
-        print("Letterboxd feed unavailable; no fictional data:",type(error).__name__)
+        # Log the real failure cause for GitHub Actions, not only its Python type.
+        # This fetches a fixed public URL and contains no account credentials.
+        print("::warning::Letterboxd public RSS fetch unavailable:",type(error).__name__,str(error)[:300])
     path=Path(args.output)
     path.parent.mkdir(parents=True,exist_ok=True)
     path.write_text(json.dumps(document,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
