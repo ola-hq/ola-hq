@@ -1,0 +1,58 @@
+name: Sync Arsenal Wave Premier League Scores
+
+on:
+  schedule:
+    - cron: '9,24,39,54 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/arsenal-scores-sync.mjs'
+      - 'scripts/arsenal-scores-sync.test.mjs'
+      - '.github/workflows/arsenal-scores-sync.yml'
+  pull_request:
+    paths:
+      - 'arsenal-wave.html'
+      - 'arsenal-scores.js'
+      - 'arsenal-navigation.js'
+      - 'arsenal-scores.css'
+      - 'scripts/arsenal-scores-sync.mjs'
+      - 'scripts/arsenal-scores-sync.test.mjs'
+      - '.github/workflows/arsenal-scores-sync.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: arsenal-scores-sync-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate frontend and score sync
+        run: |
+          node --check arsenal-scores.js
+          node --check arsenal-navigation.js
+          node --check arsenal.js
+          node --test scripts/arsenal-scores-sync.test.mjs
+      - name: Pull official scores and verified match details
+        if: github.event_name != 'pull_request'
+        run: node scripts/arsenal-scores-sync.mjs
+      - name: Publish score snapshot when changes are meaningful
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: |
+          if git diff --quiet -- data/arsenal-scores.json; then
+            echo "No meaningful score changes; no site deployment needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/arsenal-scores.json
+          git commit -m "data: sync Arsenal Wave league scores"
+          git push origin HEAD:main

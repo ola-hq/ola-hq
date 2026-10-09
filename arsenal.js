@@ -107,7 +107,7 @@
 
   const energyButton = byId('ars-energy-button');
   energyButton?.addEventListener('click', () => {
-    const panel = byId('ars-matchday-panel');
+    const panel = byId('matchday');
     if (!panel || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     panel.classList.remove('is-energized');
     void panel.offsetWidth;
