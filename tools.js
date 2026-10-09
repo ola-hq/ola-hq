@@ -173,14 +173,23 @@ let letterboxdEntries=[];
 try{const saved=JSON.parse(localStorage.getItem(localMovieKey)||'[]');if(Array.isArray(saved))letterboxdEntries=saved.filter(x=>x&&typeof x.title==='string'&&Number.isFinite(x.score));}catch{}
 
 const letterboxdSyncURL='data/letterboxd-recent.json';
+const letterboxdFeedCacheKey='ola-hq-letterboxd-ourpolaroidproj-rss-cache-v1';
 let syncedLetterboxdEntries=[],letterboxdSyncInfo=null;
+// Retain only real, previously fetched diary ratings across site updates.
+try{
+ const prior=JSON.parse(localStorage.getItem(letterboxdFeedCacheKey)||'null');
+ if(prior?.account==='ourpolaroidproj'&&Array.isArray(prior.entries)){
+  syncedLetterboxdEntries=prior.entries.filter(x=>x&&typeof x.title==='string'&&Number.isFinite(x.score)&&x.score>=0.5&&x.score<=5);
+  letterboxdSyncInfo={checkedAt:prior.checkedAt,cached:true};
+ }
+}catch{}
 function letterboxdRecords(){
  // A user's optional full export supplements the publicly syndicated recent diary.
  return syncedLetterboxdEntries.concat(letterboxdEntries);
 }
 async function loadLetterboxdDiarySync(){
  const state=$('letterboxd-sync-state');
- if(typeof fetch!=='function'){state.textContent='Automatic RSS data is unavailable in this browser. Your own CSV still works.';return;}
+ if(typeof fetch!=='function'){state.textContent=syncedLetterboxdEntries.length?'Showing previously verified Letterboxd activity saved on this device. Live sync is unavailable.':'Automatic RSS data is unavailable in this browser. Your own CSV still works.';return;}
  try{
   const response=await fetch(letterboxdSyncURL+'?v='+Date.now(),{cache:'no-store',credentials:'omit'});
   if(!response.ok)throw Error('Not available yet');
@@ -189,10 +198,17 @@ async function loadLetterboxdDiarySync(){
   syncedLetterboxdEntries=result.entries.filter(x=>x&&typeof x.title==='string'&&Number.isFinite(x.score)&&x.score>=0.5&&x.score<=5)
    .map(x=>({title:x.title,score:x.score,year:String(x.year||''),watchedDate:x.watchedDate||null,activityDate:x.activityDate||null,url:x.url||null}));
   letterboxdSyncInfo={checkedAt:result.checkedAt,items:result.totalEntries||result.entries.length};
+  // Never replace a known-good stored feed with a network failure.
+  if(syncedLetterboxdEntries.length)try{
+   localStorage.setItem(letterboxdFeedCacheKey,JSON.stringify({account:'ourpolaroidproj',checkedAt:result.checkedAt,entries:syncedLetterboxdEntries}));
+  }catch{}
   const timestamp=result.checkedAt?new Date(result.checkedAt).toLocaleString():'recently';
   state.textContent='Recent diary synced: '+syncedLetterboxdEntries.length+' rated entries · Checked '+timestamp+'. Letterboxd RSS covers recent entries, not the complete all-time library.';
  }catch{
-  state.textContent='Automatic diary sync is not currently available. Letterboxd’s recent RSS may be unreachable; a complete export remains an option.';
+  const since=letterboxdSyncInfo?.checkedAt?new Date(letterboxdSyncInfo.checkedAt).toLocaleString():'an earlier sync';
+  state.textContent=syncedLetterboxdEntries.length
+   ?'Showing '+syncedLetterboxdEntries.length+' verified diary ratings from '+since+' saved on this device; live Letterboxd sync is unavailable.'
+   :'Automatic diary sync is not currently available. Letterboxd’s recent RSS may be unreachable; a complete export remains an option.';
  }
  renderTopFilms();
 }
