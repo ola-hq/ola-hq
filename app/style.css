@@ -259,3 +259,12 @@ html.is-installed #install{display:none!important}
     position:relative;left:auto;right:auto;
   }
 }
+
+/* The Open Current: last empty two-column grid space; not a featured takeover. */
+.community-poster{background:radial-gradient(circle at 66% 19%,#285d77,#0d294b 65%,#06152b)}
+.community-poster:after{background:linear-gradient(180deg,transparent 0%,#06152b12 39%,#06152bea 83%,#06152b 100%)}
+.current-art{position:absolute;inset:16px 12px auto;display:flex;align-items:center;flex-direction:column;gap:8px;color:#f7dca9;text-align:center;pointer-events:none}
+.current-eyebrow{font:800 9px system-ui;letter-spacing:.2em}
+.current-art svg{width:90%;max-width:210px;height:83px;color:#a5e4f0}
+.current-art strong{font:800 clamp(20px,4.8vw,35px)/.94 Outfit,system-ui;letter-spacing:-.04em}
+.community-poster .world-card-copy{z-index:2}
