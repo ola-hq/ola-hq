@@ -16,6 +16,17 @@ requireThat(Boolean(worldSection), 'Missing the canonical six-wave homepage sect
 requireThat(count(worldSection, /<a class="room(?: [^"]*)?" href="[^"]+"/g) === 6, 'Homepage must retain six clickable world cards');
 requireThat(count(worldSection, /<div class="room-copy"><h2>/g) === 6, 'Homepage must retain six named world cards');
 requireThat(count(worldSection, /<span class="portal-label">[^<]+<\/span>/g) === 6, 'All six homepage banner labels must exist');
+const approvedLabels = [
+  'LOVE · PLACES · MEMORIES',
+  'CINEMA · REVIEWS · COLLECTION',
+  'INSTANT FILM · REAL MOMENTS',
+  'MUSIC · ALBUMS · EXPERIMENTS',
+  'FANTASY FOOTBALL · THE CLUB',
+  'AI ART · IMPOSSIBLE IDEAS',
+];
+const visibleLabels = [...worldSection.matchAll(/<span class="portal-label">([^<]+)<\/span>/g)].map(m => m[1]);
+requireThat(JSON.stringify(visibleLabels) === JSON.stringify(approvedLabels), 'Homepage banner label content or order changed');
+requireThat(worldSection.includes('<h2>FPL Wave</h2>'), 'The fifth homepage source label must be FPL Wave (La Ola FC is the destination)');
 requireThat(styles.includes('home-six-waves') && styles.includes('aspect-ratio:16/9'), 'Homepage six-card image treatment is missing');
 
 const cards = [...tools.matchAll(/<button type="button" class="ai-lab-card" data-key="([^"]+)"/g)].map(m => m[1]);
