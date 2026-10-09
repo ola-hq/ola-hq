@@ -73,4 +73,16 @@ jobs:
           git add data/letterboxd-recent.json
           git diff --cached --quiet && exit 0
           git commit -m "data: refresh Our Polaroid PROJ public Letterboxd snapshot"
-          git push origin HEAD:main
+          # Other OLA HQ agents and score syncs may push between checkout and this step.
+          # Rebase our data-only commit onto current main; never force-push over their work.
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then
+              echo "Verified Letterboxd snapshot published to the single Pages source."
+              exit 0
+            fi
+            echo "Concurrent main update during snapshot push; retry $attempt/3."
+            sleep $((attempt * 2))
+          done
+          echo "::error::Could not publish Letterboxd snapshot after three safe attempts."
+          exit 1
