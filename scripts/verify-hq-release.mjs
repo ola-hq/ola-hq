@@ -58,6 +58,19 @@ requireThat(toolsJS.includes("querySelectorAll('[data-timer-use]')")&&toolsJS.in
 requireThat(toolsJS.includes('ground:')&&toolsJS.includes('release:')&&toolsJS.includes('renderCreative()'), 'Grounded Wave creative prompts are missing');
 requireThat(toolsJS.includes("const movieTopFive=")&&toolsJS.includes('renderMovieTop('), 'Actual Top 5 movie archive data or rendering missing');
 requireThat(toolsJS.includes('No exact theater-visit dates are available'), 'Last 30 days must not invent dates');
+const ratingMatch=toolsJS.match(/const movieTopFive=(\[[^\n]+\]);/);
+if(!ratingMatch)failures.push('Top 5 score source is missing');
+else {
+ try {
+  const ranked=JSON.parse(ratingMatch[1]);
+  const expected=['cinema2025-71','cinema2025-258','cinema2025-284','cinema2025-56','cinema2025-57'];
+  requireThat(ranked.length===5 && JSON.stringify(ranked.map(x=>x.id))===JSON.stringify(expected), 'Movie Top 5 must preserve the five source-ranked records');
+  requireThat(new Set(ranked.map(x=>x.id)).size===5, 'Movie Top 5 contains duplicate movie records');
+  requireThat(ranked.every((x,i)=>Number.isFinite(x.score)&&x.score>=4&&(i===0||ranked[i-1].score>=x.score)), 'Movie Top 5 has invalid score/order');
+  requireThat(ranked.every(x=>x.thumb && x.watchDate===null), 'Movie archive source art or missing-date caveat has changed');
+ } catch(e){ failures.push('Movie Top 5 data validation failed: '+e.message); }
+}
+
 requireThat(app.includes('href="../tools.html"') && app.includes('Visit OLA HQ'), 'App-to-Tools entry lost');
 
 if(inlineScript){
