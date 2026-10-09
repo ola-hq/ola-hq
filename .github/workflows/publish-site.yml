@@ -111,6 +111,7 @@ jobs:
           curl --fail --retry 3 --max-time 30 -sS "${SITE_URL}release.json?run=${GITHUB_RUN_ID}" -o /tmp/ola-release.json
           python3 - <<'PY'
           import hashlib,json,os,time,urllib.request
+          from datetime import datetime
           release=json.load(open('/tmp/ola-release.json'))
           assert release['source_sha']==os.environ['SOURCE_SHA'], 'Live revision mismatch'
           for path,expected in release['protected_sha256'].items():
@@ -119,5 +120,7 @@ jobs:
               assert actual==expected, 'Live byte mismatch: '+path
           with urllib.request.urlopen(os.environ['SITE_URL']+'data/fpl/league-18767.json?run='+os.environ['GITHUB_RUN_ID'],timeout=30) as response: fpl=json.load(response)
           assert fpl['meta']['fetched_at']==release['fpl_fetched_at'], 'Live FPL snapshot mismatch'
+          age=time.time()-datetime.fromisoformat(fpl['meta']['fetched_at'].replace('Z','+00:00')).timestamp()
+          assert -300 <= age <= 3*3600, 'FPL snapshot is not fresh; data refresh/handoff still needs repair'
           print('Live source and protected assets verified:',release['source_sha'],'FPL:',release['fpl_fetched_at'])
           PY
