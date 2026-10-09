@@ -31,6 +31,18 @@ jobs:
         run: python3 scripts/sync-letterboxd.py --self-test
       - name: Generate recent Letterboxd diary snapshot
         run: python3 scripts/sync-letterboxd.py
+      - name: Confirm Letterboxd snapshot status
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('data/letterboxd-recent.json').read_text(encoding='utf-8'))
+          assert data.get('account') == 'ourpolaroidproj'
+          if data.get('status') == 'ok':
+              print(f"Pulled {len(data.get('entries', []))} recent public Letterboxd ratings.")
+          else:
+              print("::warning::Our Polaroid PROJ public RSS was unreachable. Site will show a source-specific empty state, not invented ratings.")
+          PY
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload static site
