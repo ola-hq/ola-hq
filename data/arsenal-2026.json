@@ -1,8 +1,8 @@
 {
   "meta": {
     "schema": "ola-arsenal-v1",
-    "mode": "Cached source snapshot",
-    "updated_at": "2026-10-06T22:45:00-07:00",
+    "mode": "Auto-refreshed ESPN schedule",
+    "updated_at": "2026-10-09T04:15:00.339Z",
     "updated_display": "Oct 6, 2026",
     "architecture": [
       "live source",
@@ -29,21 +29,23 @@
       {
         "label": "Arsenal vs Leeds · Premier League match centre",
         "url": "https://www.premierleague.com/en/match/2645245/essenal-vs-leeds-united/info"
+      },
+      {
+        "label": "ESPN Arsenal schedule (automated, unofficial)",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/359/schedule"
+      },
+      {
+        "label": "ESPN Premier League standings (automated, unofficial)",
+        "url": "https://site.api.espn.com/apis/v2/sports/soccer/eng.1/standings"
       }
     ],
-    "refresh_strategy": "manual"
+    "refresh_strategy": "scheduled",
+    "schedule_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/359/schedule?season=2026",
+    "league_source": "https://site.api.espn.com/apis/v2/sports/soccer/eng.1/standings",
+    "league_updated_at": "2026-10-09T04:15:00.339Z"
   },
   "snapshot": {
-    "next_match": {
-      "opponent": "Leeds United",
-      "venue": "Home",
-      "when": "Sat Oct 10 · Emirates Stadium",
-      "competition": "Premier League",
-      "kickoff_utc": "2026-10-10T11:30:00Z",
-      "venue_name": "Emirates Stadium",
-      "match_center_url": "https://www.premierleague.com/en/match/2645245/essenal-vs-leeds-united/info",
-      "status": "pre"
-    },
+    "next_match": null,
     "latest_result": {
       "opponent": "Brighton & Hove Albion",
       "venue": "Away",
@@ -53,14 +55,14 @@
     "league": {
       "competition": "Premier League",
       "position": 2,
+      "points": 12,
       "played": 5,
       "wins": 4,
       "draws": 0,
       "losses": 1,
       "gf": 8,
       "ga": 4,
-      "gd": 4,
-      "points": 12
+      "gd": 4
     },
     "recent_form": [
       "W",
