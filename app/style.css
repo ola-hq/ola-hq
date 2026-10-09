@@ -85,3 +85,6 @@ html.is-installed #install{display:none!important}
 
 /* App-home jump target: tapping the hero globe or cue brings the first wave flush under the sticky app bar. */
 .hero-globe-link{display:block;width:min(66vw,390px);margin:0 auto;text-decoration:none;border-radius:50%}.hero-globe-link .hero-globe{width:100%;height:auto}.hero-globe-link:focus-visible{outline-offset:8px}#world-la-ola{scroll-margin-top:calc(79px + env(safe-area-inset-top))}
+
+/* The hero globe is interactive only in the installed PWA, never in a normal Safari/browser tab. */
+.hero-globe-link{appearance:none;-webkit-appearance:none;border:0;padding:0;background:transparent;color:inherit}.hero-globe-link:disabled{cursor:default;pointer-events:none}.is-installed .hero-globe-link{cursor:pointer}
