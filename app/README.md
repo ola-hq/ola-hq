@@ -88,3 +88,7 @@ The large OLA HQ globe inside the installed app home is now an interaction targe
 
 ## 2026-10-08 — Installed-only hero globe clarification
 Jon clarified the jump is an installed-app interaction only. The large globe inside /app/ now enables its quick-scroll-to-first-wave behavior only when the page is running in standalone PWA mode (display-mode: standalone or iOS navigator.standalone). In Safari or another ordinary browser tab the same globe is non-interactive. This does not affect the website homepage contract: the website's giant globe still enters /app/, while the website's small header globe still returns to website home. App CSS/JS bumped to v9/v4.
+
+
+## 2026-10-08 — App home small-world spacing pass
+Jon clarified the intended installed OLA HQ App home: the first screen should feel spacious, with a small centered OLA globe floating almost like an app/download object rather than a giant hero image. Manual scrolling should reveal the lower title/copy and then the Waves naturally. Tapping the small globe in standalone app mode performs a short ~240ms glide directly to the first Wave (La Ola de Amor) positioned beneath the sticky app bar, effectively skipping the lower hero copy. Browser/Safari behavior remains non-interactive for that globe. App CSS/JS bumped to v10/v5. Website globe behavior remains unchanged.
