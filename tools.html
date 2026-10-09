@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="OLA HQ — a home for our worlds, memories, and creative work."><title>Tools · OLA HQ</title><link rel="stylesheet" href="hq.css"><link rel="stylesheet" href="world-entrances.css?v=20261007-pass-through"><link rel="stylesheet" href="hq-polish.css?v=20261007-surgical"><link rel="icon" type="image/png" href="assets/entrances/ola-hq-globe-only-favicon-20261007.png"><style id="ai-toolbox-styles">
-/* Landing tiles: one compact entry opens the full interactive preview below the grid. */
+/* Compact two-tile Tools landing, with full prompts in a focused top-of-screen dialog. */
 .tools-landing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:770px;margin:28px 0 18px}
 .tools-landing-tile{border:1px solid #435b6d;background:#172c3d;color:#f5f0e6;border-radius:15px;padding:20px 22px;min-height:173px;display:flex;flex-direction:column;align-items:flex-start;gap:9px;text-align:left;text-decoration:none;font:inherit;line-height:1.35;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s}
 .tools-landing-tile--everyday{background:#25394c}
@@ -14,54 +14,46 @@
 .ai-lab{margin:0 0 36px;padding:clamp(18px,3vw,32px);border-radius:16px;background:#172c3d;color:#f5f0e6}
 .ai-lab .eyebrow{color:#e7c58a}
 .ai-lab h2{color:#fff;margin:9px 0;font-size:clamp(24px,3vw,34px)}
-.ai-lab-intro{max-width:68ch;color:#e4e5de;margin:0 0 22px}
+.ai-lab-intro{max-width:70ch;color:#e4e5de;margin:0 0 18px;line-height:1.55}
 .ai-lab-search{display:block;width:100%;box-sizing:border-box;background:#f8f4eb;color:#172c3d;border:1px solid #b7c1c9;border-radius:9px;padding:13px 15px;margin:8px 0 14px;font:inherit}
-.ai-lab-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
-.ai-lab-filter{border:1px solid #8ca0b0;color:#f5f0e6;border-radius:24px;padding:8px 13px;background:transparent;cursor:pointer;font:inherit;font-size:.85rem}
-.ai-lab-filter[aria-pressed="true"]{background:#be9347;color:#172c3d;border-color:#be9347;font-weight:800}
 .ai-lab-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;align-items:start}
-.ai-lab-card{display:flex;min-width:0;flex-direction:column;align-items:stretch;gap:8px;text-align:left;border-radius:12px;border:1px solid #526c7e;background:#243c51;color:#f5f0e6;padding:18px;cursor:pointer;font:inherit;line-height:1.45;min-height:180px}
+.ai-lab-card{display:flex;min-width:0;flex-direction:column;align-items:stretch;gap:8px;text-align:left;border-radius:12px;border:1px solid #526c7e;background:#243c51;color:#f5f0e6;padding:18px;cursor:pointer;font:inherit;line-height:1.45;min-height:175px}
 .ai-lab-card:hover{border-color:#e7c58a;background:#2c4860}
-.ai-lab-card[aria-pressed="true"]{border:2px solid #e7c58a;padding:17px;background:#2b4559}
-.ai-lab-card:focus-visible,.ai-lab-filter:focus-visible,.ai-lab-search:focus-visible,.ai-lab-copy:focus-visible{outline:3px solid #e7c58a;outline-offset:3px}
+.ai-lab-card:focus-visible,.ai-lab-search:focus-visible,.ai-tool-modal button:focus-visible{outline:3px solid #e7c58a;outline-offset:3px}
 .ai-lab-type{color:#e7c58a;font-weight:750;text-transform:uppercase;letter-spacing:.07em;font-size:.73rem}
 .ai-lab-name{color:white;font-weight:800;font-size:1.13rem}
 .ai-lab-description{color:#e3e6e9;font-size:.88rem}
 .ai-lab-card-action{margin-top:auto;color:#e7c58a;font-weight:750;font-size:.84rem}
-.ai-lab-detail{margin-top:18px;border:1px solid #6b8396;background:#20364a;color:#f5f0e6;border-radius:12px;padding:22px}
-.ai-lab-detail h3{color:#fff;font-size:1.4rem;margin:8px 0 10px}
-.ai-lab-detail p{line-height:1.6}
-.ai-lab-detail-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.07em;color:#e7c58a;font-weight:800}
-.ai-lab-prompt{white-space:pre-wrap;overflow-wrap:anywhere;max-height:420px;overflow:auto;padding:18px;background:#f5f0e6;color:#172c3d;border-radius:9px;font:inherit;font-size:.9rem;line-height:1.5}
-.ai-lab-copy{background:#be9347;color:#172c3d;border:0;padding:10px 16px;border-radius:7px;font:inherit;font-weight:800;cursor:pointer}
-.ai-lab-status{min-height:1.4em;color:#f5d99b}
 .ai-lab-disclaimer{font-size:.87rem;color:#d7e1e8;line-height:1.55}
-#ai-toolbox-panel[hidden],.ai-lab-card[hidden],.ai-lab-detail[hidden],.ai-lab-empty[hidden]{display:none!important}
-@media(max-width:620px){.tools-landing-grid{gap:10px}.tools-landing-tile{min-height:168px;padding:14px 12px}.tools-tile-title{font-size:1rem}.tools-tile-description{font-size:.79rem}.tools-tile-action{font-size:.73rem}.ai-lab-grid{grid-template-columns:1fr}.ai-lab-card{min-height:0}.ai-lab-detail{padding:15px}}
+.ai-lab-card[hidden],.ai-lab-empty[hidden],#ai-toolbox-panel[hidden]{display:none!important}
+.ai-tool-modal{position:fixed;top:3vh;left:50%;transform:translateX(-50%);margin:0;width:min(750px,calc(100vw - 24px));max-width:none;max-height:93vh;overflow:auto;border:2px solid #be9347;background:#172c3d;color:#f5f0e6;border-radius:16px;padding:clamp(16px,3vw,28px);box-shadow:0 20px 60px #0008;box-sizing:border-box}
+.ai-tool-modal::backdrop{background:rgba(11,21,35,.78)}
+.ai-tool-modal-top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px}
+.ai-tool-modal h3{font-size:clamp(23px,3vw,31px);line-height:1.2;color:#fff;margin:6px 0}
+.ai-tool-modal-tag{color:#e7c58a;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800}
+.ai-tool-modal-close{border:1px solid #be9347;background:transparent;color:#f5f0e6;border-radius:8px;padding:8px 12px;cursor:pointer;font:inherit;font-weight:700}
+.ai-tool-modal-summary{line-height:1.55;color:#e2e7ed}
+.ai-tool-modal-prompt{white-space:pre-wrap;overflow-wrap:anywhere;background:#f5f0e6;color:#172c3d;border-radius:10px;padding:17px;font:inherit;font-size:.91rem;line-height:1.55;max-height:48vh;overflow:auto}
+.ai-tool-modal-copy{background:#be9347;color:#172c3d;border:0;border-radius:8px;padding:11px 16px;font:inherit;font-weight:800;cursor:pointer}
+.ai-tool-modal-status{min-height:1.5em;color:#f3d392;font-size:.9rem}
+@media(max-width:620px){.tools-landing-grid{gap:10px}.tools-landing-tile{min-height:168px;padding:14px 12px}.tools-tile-title{font-size:1rem}.tools-tile-description{font-size:.79rem}.tools-tile-action{font-size:.73rem}.ai-lab-grid{grid-template-columns:1fr}.ai-lab-card{min-height:0}.ai-tool-modal{top:2vh;max-height:96vh}.ai-tool-modal-prompt{max-height:55vh}}
 @media(prefers-reduced-motion:reduce){.tools-landing-tile{transition:none}}
 </style></head><body class="hq-polish"><a class="skip" href="#main">Skip to content</a><header><a class="wordmark globe-lockup" href="index.html"><img src="assets/entrances/ola-hq-globe-only-header-20261007.webp" width="56" height="56" alt=""><span class="wordmark-text"><strong>OLA HQ</strong><span>OUR WAVES · ONE HOME</span></span></a><nav aria-label="Main"><a href="index.html">Home</a><a href="more-waves.html">Deeper Waves</a><a href="orientation.html">Start here</a></nav></header><main id="main"><p class="eyebrow">AROUND THE HOME</p><h1>Tools</h1><p class="lead">A small workbench for the next idea.</p><section class="tools-landing-grid" aria-label="Tools collections">
 <button type="button" class="tools-landing-tile" id="ai-toolbox" aria-controls="ai-toolbox-panel" aria-expanded="false">
 <span class="tools-tile-symbol" aria-hidden="true">✳</span><span class="tools-tile-title">AI Toolbox</span><span class="tools-tile-description">Prompts, methods and workflows from OLA HQ.</span><span class="tools-tile-action">Open interactive preview ↓</span></button>
 <a class="tools-landing-tile tools-landing-tile--everyday" href="#public-tools">
 <span class="tools-tile-symbol" aria-hidden="true">◷</span><span class="tools-tile-title">Everyday Tools</span><span class="tools-tile-description">AIOS, color palette, focus timer and creative starting points.</span><span class="tools-tile-action">Explore existing tools ↓</span></a>
-</section><section id="ai-toolbox-panel" class="ai-lab" aria-label="AI Toolbox interactive preview" hidden>
-<p class="eyebrow">OLA HQ / AI TOOLBOX</p><h2>Explore the AI Toolbox</h2>
-<p class="ai-lab-intro">A preview of prompts, methods and workflows. Choose a card to inspect it below. Only the AI-to-AI Handoff currently provides a complete reusable prompt.</p>
-<label for="ai-lab-search">Find a tool</label><input id="ai-lab-search" class="ai-lab-search" type="search" placeholder="Search tools and ideas…" autocomplete="off">
-<div class="ai-lab-filters" role="group" aria-label="Filter AI tools">
-<button type="button" class="ai-lab-filter" data-filter="all" aria-pressed="true">All</button>
-<button type="button" class="ai-lab-filter" data-filter="prompts" aria-pressed="false">Prompts</button>
-<button type="button" class="ai-lab-filter" data-filter="methods" aria-pressed="false">Methods</button>
-<button type="button" class="ai-lab-filter" data-filter="creative" aria-pressed="false">Creative</button>
-<button type="button" class="ai-lab-filter" data-filter="organization" aria-pressed="false">Organization</button>
-</div><div class="ai-lab-grid"><button type="button" class="ai-lab-card" data-key="handoff" data-kind="prompts" aria-pressed="true" aria-controls="ai-tool-detail-handoff"><span class="ai-lab-type">Prompt · Ready to copy</span><span class="ai-lab-name">AI-to-AI Handoff</span><span class="ai-lab-description">Carry project decisions, progress and next steps into another AI conversation.</span><span class="ai-lab-card-action">View details ↗</span></button>
-<button type="button" class="ai-lab-card" data-key="funnel" data-kind="methods" aria-pressed="false" aria-controls="ai-tool-detail-funnel"><span class="ai-lab-type">Method · Overview</span><span class="ai-lab-name">Funnel / Hourglass</span><span class="ai-lab-description">Narrow raw ideas, test a direction, then expand it into a finished result.</span><span class="ai-lab-card-action">View details ↗</span></button>
-<button type="button" class="ai-lab-card" data-key="router" data-kind="methods" aria-pressed="false" aria-controls="ai-tool-detail-router"><span class="ai-lab-type">Method · Overview</span><span class="ai-lab-name">AI Workforce Router</span><span class="ai-lab-description">Match an AI worker to a source, a task and an actual destination.</span><span class="ai-lab-card-action">View details ↗</span></button>
-<button type="button" class="ai-lab-card" data-key="library" data-kind="prompts" aria-pressed="false" aria-controls="ai-tool-detail-library"><span class="ai-lab-type">Collection · Preview</span><span class="ai-lab-name">Prompt Library</span><span class="ai-lab-description">A collection of reusable instructions still being reviewed for public sharing.</span><span class="ai-lab-card-action">View details ↗</span></button>
-<button type="button" class="ai-lab-card" data-key="release" data-kind="creative" aria-pressed="false" aria-controls="ai-tool-detail-release"><span class="ai-lab-type">Workflow · Overview</span><span class="ai-lab-name">Music Release Factory</span><span class="ai-lab-description">A production checklist from master audio through publishing and archiving.</span><span class="ai-lab-card-action">View details ↗</span></button>
-<button type="button" class="ai-lab-card" data-key="graveyard" data-kind="organization" aria-pressed="false" aria-controls="ai-tool-detail-graveyard"><span class="ai-lab-type">Workflow · Overview</span><span class="ai-lab-name">Project Graveyard</span><span class="ai-lab-description">Review unfinished and forgotten projects before deciding whether to resume or archive.</span><span class="ai-lab-card-action">View details ↗</span></button></div>
-<p class="ai-lab-empty" role="status" hidden>No tools match that search.</p>
-<section class="ai-lab-detail" id="ai-tool-detail-handoff" data-detail="handoff" aria-label="AI-to-AI Handoff"><span class="ai-lab-detail-label">Original reusable prompt</span><h3>AI-to-AI Handoff</h3><p>Paste this prompt into the existing AI project conversation, then use the resulting handoff to continue elsewhere.</p><pre id="ai-lab-handoff-prompt" class="ai-lab-prompt">Create a concise AI-to-AI handoff for this project/thread.
+</section><section id="ai-toolbox-panel" class="ai-lab" aria-label="AI Toolbox collection" hidden>
+<p class="eyebrow">OLA HQ / AI TOOLBOX</p><h2>Real Prompts, Ready to Use</h2>
+<p class="ai-lab-intro">Open a prompt to read the complete instructions and copy them into your own AI conversation. No empty demos or made-up applications.</p>
+<label for="ai-lab-search">Find a prompt</label><input id="ai-lab-search" class="ai-lab-search" type="search" placeholder="Search prompts…" autocomplete="off">
+<div class="ai-lab-grid">
+<button type="button" class="ai-lab-card" data-key="handoff"><span class="ai-lab-type">Original prompt · Continuity</span><span class="ai-lab-name">AI-to-AI Project Handoff</span><span class="ai-lab-description">Transfer decisions, progress and exact next steps into another AI conversation without restarting.</span><span class="ai-lab-card-action">Open complete prompt ↗</span></button>
+<button type="button" class="ai-lab-card" data-key="movies"><span class="ai-lab-type">Adapted prompt · Movie planning</span><span class="ai-lab-name">Movie Marathon Chain Builder</span><span class="ai-lab-description">Find every compatible movie pair and multi-movie schedule using actual showtimes and a clear gap rule.</span><span class="ai-lab-card-action">Open complete prompt ↗</span></button>
+</div>
+<p class="ai-lab-empty" role="status" hidden>No matching prompts.</p>
+<p class="ai-lab-disclaimer">Two complete, copyable prompts for now. The movie planner has been edited to resolve conflicting gap and overlap rules. The Flow Journal and inventory reconstruction are being held for review, not published as placeholder cards.</p>
+<template id="ai-prompt-source-handoff"><pre>Create a concise AI-to-AI handoff for this project/thread.
 
 This is NOT written for me. Write it for another ChatGPT/Work/Codex instance that needs to continue immediately with no loss of context.
 
@@ -90,29 +82,95 @@ Tell the next AI to continue the existing work rather than restart, redesign, br
 
 Be dense and specific. Preserve exact names, file/folder paths, filenames, URLs, IDs, numbers, dates, and terminology when relevant.
 
-Do not explain things for a human beginner. Optimize this entirely for AI-to-AI continuity.</pre><button type="button" id="ai-lab-copy-handoff" class="ai-lab-copy">Copy full prompt</button><p class="ai-lab-status" id="ai-lab-copy-status" role="status"></p></section>
-<section class="ai-lab-detail" id="ai-tool-detail-funnel" data-detail="funnel" aria-label="Funnel / Hourglass" hidden><span class="ai-lab-detail-label">Documented method · Preview</span><h3>Funnel / Hourglass</h3><p>Gather raw material → narrow candidates → test one real example → expand the strongest result → verify the finished artifact. This preview does not run the method automatically.</p></section>
-<section class="ai-lab-detail" id="ai-tool-detail-router" data-detail="router" aria-label="AI Workforce Router" hidden><span class="ai-lab-detail-label">Documented method · Preview</span><h3>AI Workforce Router</h3><p>Find the worker that can access the source, perform the operation, and verify the destination. This card shows the concept, not an interactive task-routing agent.</p></section>
-<section class="ai-lab-detail" id="ai-tool-detail-library" data-detail="library" aria-label="Prompt Library" hidden><span class="ai-lab-detail-label">Curated collection · Preview</span><h3>Prompt Library</h3><p>The private Master Launchpad holds 29 documented prompts and workflows. This page does not expose those private documents. The public selection is pending source review.</p></section>
-<section class="ai-lab-detail" id="ai-tool-detail-release" data-detail="release" aria-label="Music Release Factory" hidden><span class="ai-lab-detail-label">Production workflow · Preview</span><h3>Music Release Factory</h3><p>Master → Metadata → Artwork → Visualizer → YouTube → Distribution → Archive. The underlying source workflow exists, but this preview does not release music or access personal audio files.</p></section>
-<section class="ai-lab-detail" id="ai-tool-detail-graveyard" data-detail="graveyard" aria-label="Project Graveyard" hidden><span class="ai-lab-detail-label">Audit workflow · Preview</span><h3>Project Graveyard</h3><p>Review unfinished projects and classify next steps before any cleanup. No automatic modification or deletion is performed from this website.</p></section>
-<p class="ai-lab-disclaimer">The other five cards are clearly marked previews, not working AI applications. We’ll replace them with verified content from your actual AI Prompts collection when available.</p>
-</section><section aria-labelledby="public-tools"><h2 id="public-tools">Public Tools</h2><section class="tool"><p class="eyebrow">PUBLIC AI TOOL</p><h3>AIOS · Install Your Operator</h3><p>Give ChatGPT or Gemini a small home base in your own Google Drive so it can carry clean context forward instead of making you rebuild it every time.</p><a class="button" href="ai/">Install your Operator ↗</a></section><section class="tool"><h3>OLA HQ palette</h3><p>Tap a color to copy its value.</p><div class="swatches"><button class="swatch" data-color="#F5F0E6" style="background:#f5f0e6;color:#172c3d">Warm paper<br>#F5F0E6</button><button class="swatch" data-color="#172C3D" style="background:#172c3d;color:white">Deep navy<br>#172C3D</button><button class="swatch" data-color="#58666B" style="background:#58666b;color:white">Slate<br>#58666B</button><button class="swatch" data-color="#BE9347" style="background:#be9347;color:#172c3d">Soft gold<br>#BE9347</button></div><p id="color-status" role="status" class="quiet"></p></section><section class="tool"><h3>Focus timer</h3><label for="duration">Session</label> <select id="duration"><option value="1500">25 minute focus</option><option value="300">5 minute break</option><option value="900">15 minute focus</option></select><div id="time" class="timer" aria-label="Time remaining">25:00</div><div class="actions"><button id="start" class="button">Start</button><button id="reset" class="button secondary">Reset</button></div><p id="timer-status" role="status" class="quiet">Ready when you are.</p></section><section class="tool"><h3>Creative starting points</h3><label for="prompt">Choose a prompt</label><select id="prompt"><option value="story">Find the story</option><option value="surface">Build the first surface</option><option value="review">Review the experience</option></select><textarea id="prompt-text" aria-label="Creative prompt" readonly></textarea><button id="copy-prompt" class="button secondary">Copy prompt</button><p id="prompt-status" role="status" class="quiet"></p></section><section class="tool"><p class="eyebrow">COMMUNITY WAVE · PREVIEW</p><h3>What’s Your Wave?</h3><p>What’s moving you right now? Explore the writing space and capture a song, idea, project, or feeling. Drafts are saved on your device for now; they are not shared publicly.</p><a class="button secondary" href="what-wave.html">Open What’s Your Wave? ↗</a></section></section><section aria-labelledby="protected-tools"><h2 id="protected-tools">Protected Personal Tools</h2><p class="quiet">Personal workspaces. Authorized sign-in required; access is controlled by each app.</p><section class="tool"><h3>Jon’s Drive</h3><p>Your files, projects, and personal workspace.</p><a class="button secondary" href="https://jons-drive.ola-hq.chatgpt.site/app.html">Open Jon’s Drive ↗</a></section><section class="tool"><h3>Browser Spaces</h3><p>Saved links, captured windows, and a calmer shelf for the things you want to find again.</p><a class="button secondary" href="https://browser-spaces.lizardifamil-0746.chatgpt.site/">Open Browser Spaces ↗</a></section></section></main><footer><a href="index.html">← Return to OLA HQ</a><span>A growing home for our worlds.</span><a href="publish.html">Public access</a></footer><script src="tools.js"></script><script src="ui-arrows.js?v=20261008-1" defer></script><script id="ai-toolbox-script">
-(()=>{'use strict';const tile=document.getElementById('ai-toolbox'),panel=document.getElementById('ai-toolbox-panel');if(!tile||!panel)return;
-const cards=[...panel.querySelectorAll('.ai-lab-card')],filters=[...panel.querySelectorAll('[data-filter]')],search=panel.querySelector('#ai-lab-search');
-let category='all',selected='handoff';
-function choose(key){selected=key;for(const card of cards)card.setAttribute('aria-pressed',String(card.dataset.key===key));for(const detail of panel.querySelectorAll('[data-detail]'))detail.hidden=detail.dataset.detail!==key;}
-function update(){const q=search.value.trim().toLowerCase();let first=null;for(const card of cards){const visible=(category==='all'||card.dataset.kind===category)&&card.textContent.toLowerCase().includes(q);card.hidden=!visible;if(visible&&!first)first=card.dataset.key;}
-panel.querySelector('.ai-lab-empty').hidden=first!==null;if(!first){for(const detail of panel.querySelectorAll('[data-detail]'))detail.hidden=true;return;}
-const current=cards.find(c=>c.dataset.key===selected);if(!current||current.hidden)choose(first);}
-function openPanel(open){panel.hidden=!open;tile.setAttribute('aria-expanded',String(open));}
-tile.addEventListener('click',()=>openPanel(panel.hidden));
-for(const card of cards)card.addEventListener('click',()=>choose(card.dataset.key));
-for(const filter of filters)filter.addEventListener('click',()=>{category=filter.dataset.filter;for(const f of filters)f.setAttribute('aria-pressed',String(f===filter));update()});
+Do not explain things for a human beginner. Optimize this entirely for AI-to-AI continuity.</pre></template>
+<template id="ai-prompt-source-movies"><pre>AMC MOVIE MARATHON — COMPLETE SHOWTIME CHAIN PLANNER
+
+You are given AMC showtimes containing a movie title, start time, and end time. Analyze ONLY those showtimes and produce all valid back-to-back movie options.
+
+INPUT
+- Movie title
+- Showtime start
+- Showtime end
+- Date when supplied (preserve overnight/cross-midnight order)
+
+FIXED RULES
+- Use only the provided showtime data. Do not infer runtimes, add trailers, invent screenings, or look up external schedules.
+- Treat each listed showtime as a distinct screening. Within any one chain, never include the same movie title twice, even at different screening times.
+- A valid transition has a gap of 0–30 minutes inclusive. Gap = next start minus previous end. Negative gaps (overlaps) are NOT permitted.
+- Chronological order is mandatory. Do not assume a screening on a later calendar day is the same day. If dates are ambiguous around midnight, request the necessary date clarification rather than inventing one.
+- De-duplicate identical showtime sequences, but do not merge genuinely different start-time options.
+
+PART 1 — ALL VALID TWO-MOVIE PAIRS
+List every valid chronological pair. Categorize by transition:
+1. Perfect: 0–10 minutes
+2. Very solid: 11–25 minutes
+3. Loose but acceptable: 26–30 minutes
+Sort pairs by gap ascending, then first showtime start ascending. Format:
+Movie 1 (Start–End)
+→ Gap: X minutes
+Movie 2 (Start–End)
+
+PART 2 — ALL VALID CHAINS OF 3+ MOVIES
+Enumerate every valid sequence of three or more listed screenings. Each adjacent gap must be 0–30 minutes. Never repeat a movie title in a sequence.
+Group by chain length, longest first (5+, 4, 3 as applicable). Within each length, sort by:
+1. Smallest total idle minutes
+2. Smallest largest individual gap
+3. Earliest first start (tie-breaker)
+Format each full chain with title, start/end, each transition gap, total movies, and total idle minutes. Total overlap is 0 by definition.
+
+PART 3 — BEST POSSIBLE SCHEDULE
+From ALL valid sequences (including valid pairs), choose the single best by:
+1. Most movies
+2. Least total idle time
+3. Smallest largest transition gap
+4. Earliest first start
+Label it: 🏆 BEST POSSIBLE SCHEDULE
+Show the full chain and its metrics.
+
+OUTPUT VERIFICATION
+- Include every valid pair and 3+ chain; do not omit less-optimal choices.
+- Verify every gap and ensure no repeated movie title within a sequence.
+- State if no valid two-movie schedule exists.
+- If the combinations exceed response limits, clearly say the output is incomplete and continue in sequential batches rather than falsely claiming exhaustiveness.
+
+NOTE: This cleaned version deliberately applies the 0–30 minute, NO OVERLAP rule consistently. It removes the conflicting negative-gap and 45-minute categories from the original draft.</pre></template>
+</section>
+<dialog class="ai-tool-modal" id="ai-tool-modal" aria-labelledby="ai-tool-modal-title" aria-describedby="ai-tool-modal-description">
+<div class="ai-tool-modal-top"><div><span class="ai-tool-modal-tag" id="ai-tool-modal-tag">Ready to copy</span><h3 id="ai-tool-modal-title">Prompt</h3></div><button class="ai-tool-modal-close" type="button" id="ai-tool-modal-close" aria-label="Close prompt">✕ Close</button></div>
+<p class="ai-tool-modal-summary" id="ai-tool-modal-description"></p>
+<pre class="ai-tool-modal-prompt" id="ai-tool-modal-prompt"></pre>
+<button class="ai-tool-modal-copy" id="ai-tool-modal-copy" type="button">Copy complete prompt</button>
+<p class="ai-tool-modal-status" id="ai-tool-modal-status" role="status"></p>
+</dialog><section aria-labelledby="public-tools"><h2 id="public-tools">Public Tools</h2><section class="tool"><p class="eyebrow">PUBLIC AI TOOL</p><h3>AIOS · Install Your Operator</h3><p>Give ChatGPT or Gemini a small home base in your own Google Drive so it can carry clean context forward instead of making you rebuild it every time.</p><a class="button" href="ai/">Install your Operator ↗</a></section><section class="tool"><h3>OLA HQ palette</h3><p>Tap a color to copy its value.</p><div class="swatches"><button class="swatch" data-color="#F5F0E6" style="background:#f5f0e6;color:#172c3d">Warm paper<br>#F5F0E6</button><button class="swatch" data-color="#172C3D" style="background:#172c3d;color:white">Deep navy<br>#172C3D</button><button class="swatch" data-color="#58666B" style="background:#58666b;color:white">Slate<br>#58666B</button><button class="swatch" data-color="#BE9347" style="background:#be9347;color:#172c3d">Soft gold<br>#BE9347</button></div><p id="color-status" role="status" class="quiet"></p></section><section class="tool"><h3>Focus timer</h3><label for="duration">Session</label> <select id="duration"><option value="1500">25 minute focus</option><option value="300">5 minute break</option><option value="900">15 minute focus</option></select><div id="time" class="timer" aria-label="Time remaining">25:00</div><div class="actions"><button id="start" class="button">Start</button><button id="reset" class="button secondary">Reset</button></div><p id="timer-status" role="status" class="quiet">Ready when you are.</p></section><section class="tool"><h3>Creative starting points</h3><label for="prompt">Choose a prompt</label><select id="prompt"><option value="story">Find the story</option><option value="surface">Build the first surface</option><option value="review">Review the experience</option></select><textarea id="prompt-text" aria-label="Creative prompt" readonly></textarea><button id="copy-prompt" class="button secondary">Copy prompt</button><p id="prompt-status" role="status" class="quiet"></p></section><section class="tool"><p class="eyebrow">COMMUNITY WAVE · PREVIEW</p><h3>What’s Your Wave?</h3><p>What’s moving you right now? Explore the writing space and capture a song, idea, project, or feeling. Drafts are saved on your device for now; they are not shared publicly.</p><a class="button secondary" href="what-wave.html">Open What’s Your Wave? ↗</a></section></section><section aria-labelledby="protected-tools"><h2 id="protected-tools">Protected Personal Tools</h2><p class="quiet">Personal workspaces. Authorized sign-in required; access is controlled by each app.</p><section class="tool"><h3>Jon’s Drive</h3><p>Your files, projects, and personal workspace.</p><a class="button secondary" href="https://jons-drive.ola-hq.chatgpt.site/app.html">Open Jon’s Drive ↗</a></section><section class="tool"><h3>Browser Spaces</h3><p>Saved links, captured windows, and a calmer shelf for the things you want to find again.</p><a class="button secondary" href="https://browser-spaces.lizardifamil-0746.chatgpt.site/">Open Browser Spaces ↗</a></section></section></main><footer><a href="index.html">← Return to OLA HQ</a><span>A growing home for our worlds.</span><a href="publish.html">Public access</a></footer><script src="tools.js"></script><script src="ui-arrows.js?v=20261008-1" defer></script><script id="ai-toolbox-script">
+(()=>{'use strict';
+const tile=document.getElementById('ai-toolbox'),panel=document.getElementById('ai-toolbox-panel'),dialog=document.getElementById('ai-tool-modal');
+if(!tile||!panel||!dialog)return;
+const cards=[...panel.querySelectorAll('.ai-lab-card')],search=panel.querySelector('#ai-lab-search');
+const modalTitle=document.getElementById('ai-tool-modal-title'),modalTag=document.getElementById('ai-tool-modal-tag'),modalDesc=document.getElementById('ai-tool-modal-description'),modalPrompt=document.getElementById('ai-tool-modal-prompt'),status=document.getElementById('ai-tool-modal-status');
+let opener=null;
+const meta={
+handoff:{title:'AI-to-AI Project Handoff',tag:'Original source prompt',description:'Use this in a conversation containing the project history. The AI will produce a continuation packet you can give to a new worker.'},
+movies:{title:'Movie Marathon Chain Builder',tag:'Cleaned from your original prompt',description:'Paste the full prompt, then add your AMC showtime list. This version uses 0–30 minute gaps and does not allow overlaps, resolving contradictions in the original.'}
+};
+function setOpen(open){if(!open&&dialog.open)dialog.close();panel.hidden=!open;tile.setAttribute('aria-expanded',String(open));}
+tile.addEventListener('click',()=>setOpen(panel.hidden));
+function update(){const query=search.value.trim().toLowerCase();let shown=0;for(const card of cards){const visible=card.textContent.toLowerCase().includes(query);card.hidden=!visible;if(visible)shown++}panel.querySelector('.ai-lab-empty').hidden=shown>0;}
 search.addEventListener('input',update);
-const copyButton=panel.querySelector('#ai-lab-copy-handoff'),prompt=panel.querySelector('#ai-lab-handoff-prompt'),status=panel.querySelector('#ai-lab-copy-status');
-copyButton.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(prompt.textContent.trim());status.textContent='Full prompt copied.'}catch{const range=document.createRange();range.selectNodeContents(prompt);const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);status.textContent='Prompt selected. Press Command+C or Ctrl+C to copy.'}});
-if(location.hash==='#ai-toolbox'||location.hash==='#ai-toolbox-panel')openPanel(true);
-window.addEventListener('hashchange',()=>{if(location.hash==='#ai-toolbox'||location.hash==='#ai-toolbox-panel')openPanel(true)});
+for(const card of cards){card.addEventListener('click',()=>{
+const key=card.dataset.key,detail=meta[key],source=document.getElementById('ai-prompt-source-'+key);
+if(!detail||!source)return;
+opener=card;modalTitle.textContent=detail.title;modalTag.textContent=detail.tag;modalDesc.textContent=detail.description;
+modalPrompt.textContent=source.content.textContent.trim();status.textContent='';
+dialog.showModal();document.getElementById('ai-tool-modal-close').focus();
+});}
+document.getElementById('ai-tool-modal-close').addEventListener('click',()=>dialog.close());
+dialog.addEventListener('click',event=>{if(event.target!==dialog)return;const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();});
+dialog.addEventListener('close',()=>{if(opener)opener.focus();});
+document.getElementById('ai-tool-modal-copy').addEventListener('click',async()=>{
+try{await navigator.clipboard.writeText(modalPrompt.textContent.trim());status.textContent='Complete prompt copied.';}
+catch{const range=document.createRange();range.selectNodeContents(modalPrompt);const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);status.textContent='Prompt selected. Press Command+C or Ctrl+C to copy.';}
+});
+if(location.hash==='#ai-toolbox'||location.hash==='#ai-toolbox-panel')setOpen(true);
+window.addEventListener('hashchange',()=>{if(location.hash==='#ai-toolbox'||location.hash==='#ai-toolbox-panel')setOpen(true);});
 })();
 </script></body></html>
