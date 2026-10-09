@@ -1,7 +1,7 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-09T04:43:25.256Z",
+    "fetched_at": "2026-10-09T04:45:49.705Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
@@ -30,7 +30,33 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Saka (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Ødegaard (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Havertz (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Gabriel (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Yirenkyi (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -52,7 +78,33 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Ajayi (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Mendy (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Millar (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Crooks (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Dorgu (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -74,7 +126,23 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Dewsbury-Hall (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Barry (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Kamada (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -96,7 +164,38 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Clarke (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Emersonn (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · N.Angulo (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Ballard (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · O'Nien (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · N.Angulo (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -118,7 +217,28 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Stach (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Aina (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Jair Cunha (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Calvert-Lewin (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -140,7 +260,38 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Lewis-Potter (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Kayode (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Janelt (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Missed penalty",
+          "description": "Missed penalty · Thiago (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Janelt (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Gallagher (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -162,7 +313,48 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Hinshelwood ×2 (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · De Cuyper (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Own goal",
+          "description": "Own goal · Lindelöf (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Groß (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Ayari (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Cash (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · McGinn (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Red card",
+          "description": "Red card · Gomes (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -184,7 +376,38 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Guéhi (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Gvardiol (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Tavernier (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Foden (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Evanilson (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Silva (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -206,7 +429,68 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Elanga (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Willock (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Gakpo (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Szoboszlai (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · J.Ramsey (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · J.Murphy (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · L.Miley (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Wissa (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Horníček (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Virgil (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Frimpong (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Kerkez (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -228,7 +512,58 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · King (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Gonzalo (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Rogers (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Palmer (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · João Pedro (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Bassey (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Castagne (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · James (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Colwill (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Lavia (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -250,7 +585,38 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Cherki ×2 (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Haaland ×2 (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Own goal",
+          "description": "Own goal · Donnarumma (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Khalaili (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Cherki (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Anderson (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -272,7 +638,58 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Munoz (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Isak (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Gibbs-White (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Ndoye (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · A.Becker (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Wirtz (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Munoz (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Araujo (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Aina (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Igor Jesus (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -294,7 +711,43 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Scott (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Tarkowski (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Smith (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Tavernier (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Scott (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Garner (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Alcaraz (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -316,7 +769,38 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Millar (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Amenda (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Coyle (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Slater (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · McBurnie (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Stroud (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -338,7 +822,33 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Elanga (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Wissa (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Van de Ven (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · N.Gonzalez (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Botman (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -360,7 +870,63 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Palmer (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Neto (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Lavia (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · João Pedro (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Groß (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Yalcouyé (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Own goal",
+          "description": "Own goal · João Pedro (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Fofana (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Boscagli (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Dunk (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Costinha (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -382,7 +948,38 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Calvert-Lewin (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Schade (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Collins (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Ajer (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Janelt (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Anthony (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -404,7 +1001,23 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Isidor (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Andersen (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Palacios (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -426,7 +1039,53 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · B.Fernandes ×3 (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Mbeumo (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Davis (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Akpom (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Own goal",
+          "description": "Own goal · Greaves (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Mbeumo (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Lukić (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Greaves (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Fatawu (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -448,7 +1107,33 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Saka (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Maatsen (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · McGinn (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Alysson (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Tzolis (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -470,7 +1155,33 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Isak ×2 (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Enciso (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Kerkez (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Jacquet (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Mac Allister (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -492,7 +1203,53 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Barnes (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · J.Ramsey (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Tavernier (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Own goal",
+          "description": "Own goal · Thiaw (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Elanga (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Wissa (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Truffert (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Smith (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Kluivert (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -514,7 +1271,43 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Janelt (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · E.Le Fée (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Janelt (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Yarmoliuk (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · M.Sangaré (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Xhaka (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Sadiki (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -536,7 +1329,48 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Vuskovic (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Bogle (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · De Cuyper (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Groß (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · David (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Wilson (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Bogle (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Calvert-Lewin (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -558,7 +1392,28 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · King (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Palacios (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Mitchell ×2 (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Chilwell (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -580,7 +1435,28 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Haaland (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Khusanov (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Pinnock (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · van Ewijk (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -602,7 +1478,28 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Milenković (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · McAtee (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Udogie (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Fernandes (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -624,7 +1521,18 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Ajayi (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Gourna-Douath (Home)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -646,7 +1554,58 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · George (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Maitland-Niles (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Mbeumo (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Šeško (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Johnson (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Armstrong (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Röhl (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Dalot (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Maguire (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Shaw (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -668,7 +1627,53 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Ødegaard (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Havertz (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Rogers (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Merino (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Tzolis (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Rogers (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Palmer (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · João Pedro (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Lacroix (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -690,7 +1695,58 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Alysson (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Delap (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Igor Jesus (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Mings (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · N.Jackson (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Delap (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Murillo (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Ndoye (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · McAtee (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Schlager (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -712,7 +1768,53 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Tavernier (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Kluivert (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Schade ×2 (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Hill (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Smith (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Tavernier (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Cook (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Brooks (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Thiago (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -734,7 +1836,53 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Rogers (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · João Pedro (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Belloumi ×2 (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Barco (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Iroegbunam (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Egan (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Crooks (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · McBurnie (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Norton-Cuffy (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -756,7 +1904,58 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Strand Larsen (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Khalaili (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Davis (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Emersonn (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Flemming (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Richards (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Lukić (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Clarke (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Fatawu (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Red card",
+          "description": "Red card · Disasi (Home)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -778,7 +1977,13 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Tete (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -800,7 +2005,18 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Dewsbury-Hall (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Garner (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -822,7 +2038,63 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Saka (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Bruno G. (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Penalty saved",
+          "description": "Penalty saved · Raya (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Missed penalty",
+          "description": "Missed penalty · E.Le Fée (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Ballard (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Mukiele (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Xhaka (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Brobbey (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Gabriel (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Havertz (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Red card",
+          "description": "Red card · Reinildo (Home)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -844,7 +2116,38 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Dunk (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Groß (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Ayari (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Kostoulas (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Yalcouyé (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Red card",
+          "description": "Red card · Awoniyi (Home)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -866,7 +2169,33 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Haaland (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Maguire (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Enzo (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Gvardiol (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Red card",
+          "description": "Red card · Foden (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -934,7 +2263,48 @@
           "away": "7"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Bogle (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Okafor (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Calvert-Lewin (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Touré (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Own goal",
+          "description": "Own goal · L.Miley (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Calvert-Lewin (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Livramento (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · J.Murphy (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -957,67 +2327,78 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879275/chelsea-brentford",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "10",
           "away": "7"
         },
         {
-          "label": "Yellow Cards",
-          "home": "2",
-          "away": "0"
-        },
-        {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Offsides",
-          "home": "2",
-          "away": "2"
-        },
-        {
-          "label": "Corner Kicks",
+          "label": "wonCorners",
           "home": "4",
           "away": "12"
         },
         {
-          "label": "Saves",
-          "home": "2",
-          "away": "3"
+          "label": "goalAssists",
+          "home": "1",
+          "away": "0"
         },
         {
-          "label": "Possession",
+          "label": "possessionPct",
           "home": "40.6",
           "away": "59.4"
         },
         {
-          "label": "SHOTS",
-          "home": "13",
-          "away": "12"
+          "label": "shotAssists",
+          "home": "7",
+          "away": "8"
         },
         {
-          "label": "ON GOAL",
+          "label": "shotsOnTarget",
           "home": "6",
           "away": "2"
         },
         {
-          "label": "On Target %",
-          "home": "0.5",
-          "away": "0.2"
-        },
-        {
-          "label": "Penalty Goals",
-          "home": "0",
+          "label": "totalGoals",
+          "home": "3",
           "away": "0"
         },
         {
-          "label": "Penalty Kicks Taken",
-          "home": "0",
-          "away": "0"
+          "label": "totalShots",
+          "home": "13",
+          "away": "12"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Carvalho (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Anthony (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Thiago (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Thiago (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · M.Sangaré (Home)"
+        }
+      ],
       "lineups": {
         "home": [
           "Caoimhín Kelleher",
@@ -1066,7 +2447,48 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Van Hecke (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Gallagher (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Buendía (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Manzambi (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · N.Jackson (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Van Hecke (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Cash (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · N.Jackson (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -1088,7 +2510,48 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Groß (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Kostoulas (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Andrés (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · F.Kadıoğlu (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · De Cuyper (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Kostoulas (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Struijk (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Rice (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -1111,67 +2574,78 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878778/ipswich-town-everton",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "6",
           "away": "12"
         },
         {
-          "label": "Yellow Cards",
-          "home": "2",
-          "away": "1"
+          "label": "wonCorners",
+          "home": "4",
+          "away": "4"
         },
         {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "1"
-        },
-        {
-          "label": "Offsides",
+          "label": "goalAssists",
           "home": "1",
           "away": "0"
         },
         {
-          "label": "Corner Kicks",
-          "home": "4",
-          "away": "4"
-        },
-        {
-          "label": "Saves",
-          "home": "4",
-          "away": "1"
-        },
-        {
-          "label": "Possession",
+          "label": "possessionPct",
           "home": "51.7",
           "away": "48.3"
         },
         {
-          "label": "SHOTS",
-          "home": "21",
-          "away": "13"
+          "label": "shotAssists",
+          "home": "16",
+          "away": "9"
         },
         {
-          "label": "ON GOAL",
+          "label": "shotsOnTarget",
           "home": "2",
           "away": "4"
         },
         {
-          "label": "On Target %",
-          "home": "0.1",
-          "away": "0.3"
-        },
-        {
-          "label": "Penalty Goals",
-          "home": "0",
+          "label": "totalGoals",
+          "home": "1",
           "away": "0"
         },
         {
-          "label": "Penalty Kicks Taken",
-          "home": "0",
-          "away": "0"
+          "label": "totalShots",
+          "home": "21",
+          "away": "13"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Barry (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Mykolenko (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Armstrong (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Flemming (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Red card",
+          "description": "Red card · Fatawu (Away)"
+        }
+      ],
       "lineups": {
         "home": [
           "Jordan Pickford",
@@ -1221,67 +2695,108 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879271/hull-city-newcastle-united",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "4",
           "away": "10"
         },
         {
-          "label": "Yellow Cards",
-          "home": "1",
-          "away": "4"
-        },
-        {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Offsides",
-          "home": "2",
-          "away": "1"
-        },
-        {
-          "label": "Corner Kicks",
+          "label": "wonCorners",
           "home": "4",
           "away": "7"
         },
         {
-          "label": "Saves",
-          "home": "3",
-          "away": "3"
+          "label": "goalAssists",
+          "home": "2",
+          "away": "1"
         },
         {
-          "label": "Possession",
+          "label": "possessionPct",
           "home": "56.2",
           "away": "43.8"
         },
         {
-          "label": "SHOTS",
-          "home": "12",
-          "away": "21"
+          "label": "shotAssists",
+          "home": "10",
+          "away": "15"
         },
         {
-          "label": "ON GOAL",
+          "label": "shotsOnTarget",
           "home": "5",
           "away": "4"
         },
         {
-          "label": "On Target %",
-          "home": "0.4",
-          "away": "0.2"
+          "label": "totalGoals",
+          "home": "2",
+          "away": "1"
         },
         {
-          "label": "Penalty Goals",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Penalty Kicks Taken",
-          "home": "1",
-          "away": "0"
+          "label": "totalShots",
+          "home": "12",
+          "away": "21"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Hall (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Willock (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Cho (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Penalty saved",
+          "description": "Penalty saved · Tzolakis (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Missed penalty",
+          "description": "Missed penalty · Wissa (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · J.Murphy (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Giles (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Belloumi (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Crooks (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · McBurnie (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Tzolakis (Away)"
+        }
+      ],
       "lineups": {
         "home": [
           "Lukás Hornícek",
@@ -1330,7 +2845,23 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Dasilva (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Delap (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Jair Cunha (Home)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -1352,7 +2883,28 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Isak (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Silva (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Szoboszlai (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Isak (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -1375,67 +2927,78 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879273/crystal-palace-leeds-united",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "10",
           "away": "12"
         },
         {
-          "label": "Yellow Cards",
-          "home": "2",
-          "away": "3"
-        },
-        {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Offsides",
-          "home": "2",
-          "away": "2"
-        },
-        {
-          "label": "Corner Kicks",
+          "label": "wonCorners",
           "home": "4",
           "away": "3"
         },
         {
-          "label": "Saves",
-          "home": "5",
-          "away": "2"
+          "label": "goalAssists",
+          "home": "0",
+          "away": "0"
         },
         {
-          "label": "Possession",
+          "label": "possessionPct",
           "home": "50.6",
           "away": "49.4"
         },
         {
-          "label": "SHOTS",
-          "home": "13",
-          "away": "12"
+          "label": "shotAssists",
+          "home": "5",
+          "away": "7"
         },
         {
-          "label": "ON GOAL",
+          "label": "shotsOnTarget",
           "home": "2",
           "away": "4"
         },
         {
-          "label": "On Target %",
-          "home": "0.2",
-          "away": "0.3"
-        },
-        {
-          "label": "Penalty Goals",
+          "label": "totalGoals",
           "home": "0",
           "away": "0"
         },
         {
-          "label": "Penalty Kicks Taken",
-          "home": "0",
-          "away": "0"
+          "label": "totalShots",
+          "home": "13",
+          "away": "12"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Bogle (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Tanaka (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Wharton (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Yeremy (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Lerma (Away)"
+        }
+      ],
       "lineups": {
         "home": [
           "James Trafford",
@@ -1484,7 +3047,38 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Semenyo ×2 (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Enzo (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Cherki (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Haaland (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Brobbey ×3 (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Methalie (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -1506,7 +3100,33 @@
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Cunha (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Own goal",
+          "description": "Own goal · Martinez (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Castagne (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · King (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Muniz (Home)"
+        }
+      ],
       "lineups": null
     },
     {
