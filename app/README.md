@@ -85,3 +85,6 @@ Corrected the website ↔ app gateway after user clarification. The small globe 
 
 ## 2026-10-08 — Hero globe jump behavior
 The large OLA HQ globe inside the installed app home is now an interaction target: tapping it performs the same quick smooth in-page move as the down cue, landing the first wave (La Ola de Amor) directly under the sticky app bar so the user can continue scrolling through the rest of the worlds. The persistent small OLA HQ header globe retains its existing app-home behavior and is not repurposed. CSS bumped to v8. No world routes, iframe behavior, Festival Guide files, manifests or service workers changed.
+
+## 2026-10-08 — Installed-only hero globe clarification
+Jon clarified the jump is an installed-app interaction only. The large globe inside /app/ now enables its quick-scroll-to-first-wave behavior only when the page is running in standalone PWA mode (display-mode: standalone or iOS navigator.standalone). In Safari or another ordinary browser tab the same globe is non-interactive. This does not affect the website homepage contract: the website's giant globe still enters /app/, while the website's small header globe still returns to website home. App CSS/JS bumped to v9/v4.
