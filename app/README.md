@@ -109,3 +109,8 @@ A desktop Safari capture showed the globe centered vertically but left-aligned (
 
 ## 2026-10-08 — iPhone installed app centered launch safeguard
 After Safari desktop showed the small globe centered, Jon reported the installed/mobile view still left-aligned. Added a mobile-only (max-width:767px) centering safeguard to the app's critical head CSS and external CSS v14. This isolates the first launch scene to a full-width flex centering context, countering WebKit/cached styling without modifying the globe image or size, scene height, introduction, Waves, tap destination, website gateway, world routes, manifest, worker, or Festival Guide. Actual iPhone visual sign-off still required.
+
+## 2026-10-08 — FPL source identity and What’s Your Wave placement
+The FPL Wave entrance is labeled **FPL Wave** in OLA HQ App and the website homepage; its existing route remains `fpl-wave.html`, which continues to render the full **La Ola FC** club world without renaming the world itself. The app's secondary card copy remains **Enter the clubhouse**. The app toolbar and Arsenal's app parent relationship now display FPL Wave as the source/parent label, while the La Ola FC interior title stays intact. Cache revision advanced from `app.js?v=8` to `v=9`.
+
+What's Your Wave? remains the 13th OLA HQ App card at the bottom. On the traditional website, its entrance is placed under Tools → Public Tools as a compact text link, not as another large homepage or Deeper Waves card. Its existing `what-wave.html` draft page remains device-local, not a live shared board; no backend or cross-user posting is claimed. No hero, PWA identity, Festival Guide/QR, Blockbuster or underlying FC-site files were edited.

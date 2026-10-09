@@ -10,7 +10,7 @@ const worlds = {
   wave26: { name: 'Wave 26', path: 'wave-26.html', parent: null },
   polaroid: { name: 'Polaroid Wave', path: 'our-polaroid-project/', parent: null },
   blockbuster: { name: 'Blockbuster Wave', path: 'blockbuster-wave/blockbuster-wave-complete-gallery.html', parent: null },
-  fpl: { name: 'La Ola FC', path: 'fpl-wave.html', parent: null },
+  fpl: { name: 'FPL Wave', path: 'fpl-wave.html', parent: null },
   simulation: { name: 'Simulation Wave', path: 'simulation-wave/', parent: null },
   gdb: { name: 'GDB Wave', path: 'gdb-university/', parent: null },
   arsenal: { name: 'Arsenal Wave', path: 'arsenal-wave.html', parent: 'fpl' },
