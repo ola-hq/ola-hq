@@ -134,10 +134,29 @@ frame.addEventListener('load', () => {
 });
 document.querySelectorAll('[data-world]').forEach(button => button.addEventListener('click', () => openWorld(button.dataset.world)));
 home.addEventListener('click', () => showHome());
-if (heroWorldJump) heroWorldJump.addEventListener('click', () => {
+function quickScrollToFirstWave() {
   if (!isAppWindow()) return;
-  document.querySelector('#world-la-ola')?.scrollIntoView({behavior:'smooth',block:'start'});
-});
+  const target = document.querySelector('#world-la-ola');
+  if (!target) return;
+  const appbar = document.querySelector('.appbar');
+  const offset = (appbar?.getBoundingClientRect().height || 67) + 10;
+  const start = window.scrollY;
+  const end = Math.max(0, target.getBoundingClientRect().top + start - offset);
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.scrollTo(0, end);
+    return;
+  }
+  const duration = 240;
+  const started = performance.now();
+  const easeOut = t => 1 - Math.pow(1 - t, 3);
+  const step = now => {
+    const p = Math.min(1, (now - started) / duration);
+    window.scrollTo(0, start + (end - start) * easeOut(p));
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+if (heroWorldJump) heroWorldJump.addEventListener('click', quickScrollToFirstWave);
 up.addEventListener('click', () => {
   const target = upTarget();
   if (target) openWorld(target);
