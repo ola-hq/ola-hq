@@ -59,8 +59,8 @@ requireThat(toolsJS.includes('const worldCatalog=')&&toolsJS.includes('const wor
 for(const id of ['love','cinema','polaroid','music','fpl','simulation','gdb','arsenal','offbrand','willpwr','wuwei','capybara'])requireThat(toolsJS.includes(id+":{name:"), 'World finder dropped a canonical world: '+id);
 requireThat(toolsJS.includes('function csvEntries(')&&toolsJS.includes('function parseCSV(')&&toolsJS.includes('function renderTopFilms('), 'CSV-driven Letterboxd ranking logic missing');
 requireThat(toolsJS.includes('movieSource=')&&toolsJS.includes('letterboxdEntries')&&toolsJS.includes('blockbusterTop5'), 'Independent film sources not implemented');
-requireThat(toolsJS.includes('!letterboxdRecords().length')&&toolsJS.includes('No verified ratings have synced yet'), 'Unsourced Letterboxd ratings must remain transparently empty');
-requireThat(toolsJS.includes('Exact viewing dates are not documented'), 'Blockbuster last-30-days caveat missing');
+requireThat(toolsJS.includes('const records=letterboxdRecords()')&&toolsJS.includes('No verified ratings have synced yet'), 'Unsourced Letterboxd ratings must remain transparently empty');
+requireThat(toolsJS.includes('No movies with verified viewing dates in the last 30 days in the Blockbuster Wave archive'), 'Blockbuster last-30-days caveat missing');
 requireThat(toolsJS.includes('const starts=')&&toolsJS.includes('renderCreative()')&&toolsJS.includes("querySelectorAll('[data-timer-use]')"), 'Creative or timer tools missing');
 requireThat(app.includes('href="../tools.html"')&&app.includes('Visit OLA HQ'), 'App return link to Tools missing');
 if(inline){
@@ -85,6 +85,34 @@ const pagesWorkflow=readFileSync('.github/workflows/pages.yml','utf8');
 requireThat(pagesWorkflow.includes("python3 scripts/sync-letterboxd.py --self-test") && pagesWorkflow.includes("python3 scripts/sync-letterboxd.py") && pagesWorkflow.includes('schedule:'), 'Recurring Letterboxd RSS sync missing from Pages build');
 const rssScript=readFileSync('scripts/sync-letterboxd.py','utf8');
 requireThat(rssScript.includes('ACCOUNT="ourpolaroidproj"') && rssScript.includes('recent_public_diary_entries_not_complete_library') && rssScript.includes('status="ok"'), 'Letterboxd public RSS sync script is missing or no longer honest about scope');
+
+
+// Strict Last 30 Days contract: use any rated film with a verified recent watch date;
+// never populate with an older movie, even when no recent film exists.
+requireThat(tools.includes('Overall: 4★+ · Last 30 days: any rating.'), 'The movie shelf must distinguish overall threshold and all-rated recent view');
+requireThat(toolsJS.includes('const recent=movieRanking(records.filter(f=>within30(f.watchedDate)),0.5);'), 'Recent Letterboxd filter must include sub-4-star films');
+requireThat(toolsJS.includes("const ranking=(moviePeriod==='recent'?recent:overall).slice(0,5);"), 'Recent view cannot use overall ratings as fallback');
+requireThat(toolsJS.includes('letterboxdEntries=movieRanking(letterboxdEntries.concat(imported),0.5)'), 'CSV import must preserve sub-4-star recent ratings');
+requireThat(toolsJS.includes("if(moviePeriod==='recent'){") && toolsJS.includes('Blockbuster Wave archive. Its records do not contain exact viewing dates.'), 'Undated Blockbuster view must remain empty for Last 30 Days');
+requireThat(!toolsJS.includes('Showing its overall Top 5 instead.')&&!toolsJS.includes('Showing this account’s best available rated entries instead.'), 'Old 30-day fallback copy is still present');
+{
+ const a=toolsJS.indexOf('function movieRanking('),b=toolsJS.indexOf('function renderTopFilms(',a);
+ if(a<0||b<=a)failures.push('Cannot test independent film date ranking functions');
+ else try{
+  const {movieRanking,within30}=new Function(toolsJS.slice(a,b)+'return {movieRanking,within30};')();
+  const now=new Date();
+  const formatDate=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  const old=new Date(now.getFullYear(),now.getMonth(),now.getDate()-40);
+  const sample=[{title:'Recent Low',score:2.5,watchedDate:formatDate(now)},
+   {title:'Old High',score:5,watchedDate:formatDate(old)},
+   {title:'Undated High',score:4.5,watchedDate:null}];
+  const latest=movieRanking(sample.filter(x=>within30(x.watchedDate)),0.5);
+  const overall=movieRanking(sample,4);
+  requireThat(latest.length===1&&latest[0].title==='Recent Low','Last 30 Days must show low ratings and exclude all older and undated titles');
+  requireThat(overall.length===2,'All-time Top 5 threshold of 4+ should remain intact');
+  requireThat(movieRanking(sample.filter(x=>within30('2001-01-01')&&within30(x.watchedDate)),0.5).length===0,'Zero-date view must not backfill old records');
+ }catch(e){failures.push('Recent film ranking test failed: '+e.message)}
+}
 
 if (failures.length) {
   console.error('OLA HQ PUBLIC RELEASE CHECK FAILED:\n' + failures.map(x => ' - ' + x).join('\n'));
