@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-10T15:24:50.517Z",
+    "fetched_at": "2026-10-10T15:51:34.894Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-10T15:24:50.517Z"
+    "details_checked_at": "2026-10-10T15:51:34.894Z"
   },
   "matches": [
     {
@@ -3336,23 +3336,23 @@
         "name": "Brentford",
         "short": "BRE"
       },
-      "home_score": 1,
-      "away_score": 1,
+      "home_score": 2,
+      "away_score": 2,
       "status": "in",
-      "minute": 63,
+      "minute": 90,
       "venue": "Villa Park",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878776",
       "stats": [
         {
           "label": "Fouls",
-          "home": "4",
-          "away": "17"
+          "home": "7",
+          "away": "22"
         },
         {
           "label": "Yellow Cards",
-          "home": "1",
-          "away": "1"
+          "home": "2",
+          "away": "4"
         },
         {
           "label": "Red Cards",
@@ -3366,28 +3366,28 @@
         },
         {
           "label": "Corner Kicks",
-          "home": "0",
-          "away": "1"
+          "home": "1",
+          "away": "2"
         },
         {
           "label": "Saves",
-          "home": "2",
-          "away": "3"
+          "home": "3",
+          "away": "4"
         },
         {
           "label": "Possession",
-          "home": "52.9",
-          "away": "47.1"
+          "home": "51.7",
+          "away": "48.3"
         },
         {
           "label": "SHOTS",
-          "home": "13",
-          "away": "9"
+          "home": "19",
+          "away": "13"
         },
         {
           "label": "ON GOAL",
-          "home": "4",
-          "away": "3"
+          "home": "6",
+          "away": "4"
         },
         {
           "label": "On Target %",
@@ -3409,7 +3409,17 @@
         {
           "minute": null,
           "type": "Goal",
+          "description": "Goal · McGinn (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
           "description": "Goal · N.Jackson (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Ajer (Away)"
         },
         {
           "minute": null,
@@ -3419,7 +3429,27 @@
         {
           "minute": null,
           "type": "Yellow card",
+          "description": "Yellow card · Cash (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
           "description": "Yellow card · Buendía (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Ajer (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Kayode (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Janelt (Away)"
         },
         {
           "minute": null,
@@ -3467,10 +3497,10 @@
         "name": "Bournemouth",
         "short": "BOU"
       },
-      "home_score": 3,
+      "home_score": 5,
       "away_score": 1,
       "status": "in",
-      "minute": 63,
+      "minute": 88,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -3479,17 +3509,17 @@
         {
           "minute": null,
           "type": "Goal",
+          "description": "Goal · Henderson ×2 (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · João Pedro ×2 (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
           "description": "Goal · Rogers (Home)"
-        },
-        {
-          "minute": null,
-          "type": "Goal",
-          "description": "Goal · Henderson (Home)"
-        },
-        {
-          "minute": null,
-          "type": "Goal",
-          "description": "Goal · João Pedro (Home)"
         },
         {
           "minute": null,
@@ -3510,6 +3540,11 @@
           "minute": null,
           "type": "Yellow card",
           "description": "Yellow card · Adams (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Christie (Away)"
         }
       ],
       "lineups": null
@@ -3525,23 +3560,23 @@
         "name": "Fulham",
         "short": "FUL"
       },
-      "home_score": 0,
+      "home_score": 2,
       "away_score": 1,
       "status": "in",
-      "minute": 67,
+      "minute": 904,
       "venue": "Portman Road",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879265",
       "stats": [
         {
           "label": "Fouls",
-          "home": "6",
-          "away": "5"
+          "home": "7",
+          "away": "8"
         },
         {
           "label": "Yellow Cards",
           "home": "1",
-          "away": "2"
+          "away": "3"
         },
         {
           "label": "Red Cards",
@@ -3561,26 +3596,26 @@
         {
           "label": "Saves",
           "home": "2",
-          "away": "2"
+          "away": "3"
         },
         {
           "label": "Possession",
-          "home": "40.7",
-          "away": "59.3"
+          "home": "48.2",
+          "away": "51.8"
         },
         {
           "label": "SHOTS",
-          "home": "6",
+          "home": "11",
           "away": "11"
         },
         {
           "label": "ON GOAL",
-          "home": "2",
+          "home": "5",
           "away": "4"
         },
         {
           "label": "On Target %",
-          "home": "0.3",
+          "home": "0.5",
           "away": "0.4"
         },
         {
@@ -3595,6 +3630,11 @@
         }
       ],
       "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Ouattara (Home)"
+        },
         {
           "minute": null,
           "type": "Goal",
@@ -3614,6 +3654,11 @@
           "minute": null,
           "type": "Yellow card",
           "description": "Yellow card · King (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Ángel (Away)"
         }
       ],
       "lineups": {
@@ -3659,7 +3704,7 @@
       "home_score": 0,
       "away_score": 1,
       "status": "in",
-      "minute": 63,
+      "minute": 89,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
