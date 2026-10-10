@@ -634,7 +634,10 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 /* First-party PDF cards open in the native reader; downloads are separate. */
 .pdf-download{display:inline-block;font-size:11px;line-height:1.6;color:inherit;text-underline-offset:3px;margin-top:14px;padding:10px 0}
 .paris-pdf-actions{padding:0 8vw 38px;background:#fbf7ef;color:#18243a;margin-top:-55px}
-.paris-main-photo img{object-position:75% 52%}
+.paris-main-photo img{object-position:75% 30%}
+@media(min-width:981px){
+  .paris-week-grid{align-self:start}
+}
 
 /* Keep Vegas timeline anchors clear of the desktop sticky masthead. */
 @media(min-width:651px){.vegas .beat{scroll-margin-top:120px}}
