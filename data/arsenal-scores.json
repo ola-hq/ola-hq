@@ -1,7 +1,7 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-10T18:26:36.292Z",
+    "fetched_at": "2026-10-10T18:53:54.542Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
@@ -2927,64 +2927,49 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879273/crystal-palace-leeds-united",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "10",
           "away": "12"
         },
         {
-          "label": "Yellow Cards",
-          "home": "2",
-          "away": "3"
-        },
-        {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Offsides",
-          "home": "2",
-          "away": "2"
-        },
-        {
-          "label": "Corner Kicks",
+          "label": "wonCorners",
           "home": "4",
           "away": "3"
         },
         {
-          "label": "Saves",
-          "home": "5",
-          "away": "2"
+          "label": "goalAssists",
+          "home": "0",
+          "away": "0"
         },
         {
-          "label": "Possession",
+          "label": "possessionPct",
           "home": "50.6",
           "away": "49.4"
         },
         {
-          "label": "SHOTS",
-          "home": "13",
-          "away": "12"
+          "label": "shotAssists",
+          "home": "5",
+          "away": "7"
         },
         {
-          "label": "ON GOAL",
+          "label": "shotsOnTarget",
           "home": "2",
           "away": "4"
         },
         {
-          "label": "On Target %",
-          "home": "0.2",
-          "away": "0.3"
-        },
-        {
-          "label": "Penalty Goals",
+          "label": "totalGoals",
           "home": "0",
           "away": "0"
         },
         {
-          "label": "Penalty Kicks Taken",
-          "home": "0",
-          "away": "0"
+          "label": "totalShots",
+          "home": "13",
+          "away": "12"
         }
       ],
       "events": [
@@ -3164,64 +3149,49 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879268/leeds-united-arsenal",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "12",
           "away": "20"
         },
         {
-          "label": "Yellow Cards",
-          "home": "1",
-          "away": "4"
-        },
-        {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Offsides",
-          "home": "7",
-          "away": "4"
-        },
-        {
-          "label": "Corner Kicks",
+          "label": "wonCorners",
           "home": "3",
           "away": "4"
         },
         {
-          "label": "Saves",
-          "home": "4",
-          "away": "4"
+          "label": "goalAssists",
+          "home": "2",
+          "away": "1"
         },
         {
-          "label": "Possession",
+          "label": "possessionPct",
           "home": "58.2",
           "away": "41.8"
         },
         {
-          "label": "SHOTS",
-          "home": "13",
-          "away": "11"
+          "label": "shotAssists",
+          "home": "11",
+          "away": "7"
         },
         {
-          "label": "ON GOAL",
+          "label": "shotsOnTarget",
           "home": "6",
           "away": "5"
         },
         {
-          "label": "On Target %",
-          "home": "0.5",
-          "away": "0.5"
+          "label": "totalGoals",
+          "home": "2",
+          "away": "1"
         },
         {
-          "label": "Penalty Goals",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Penalty Kicks Taken",
-          "home": "0",
-          "away": "0"
+          "label": "totalShots",
+          "home": "13",
+          "away": "11"
         }
       ],
       "events": [
@@ -3315,64 +3285,49 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878776/brentford-aston-villa",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "7",
           "away": "24"
         },
         {
-          "label": "Yellow Cards",
-          "home": "2",
-          "away": "5"
-        },
-        {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Offsides",
-          "home": "1",
-          "away": "1"
-        },
-        {
-          "label": "Corner Kicks",
+          "label": "wonCorners",
           "home": "2",
           "away": "2"
         },
         {
-          "label": "Saves",
-          "home": "3",
-          "away": "5"
+          "label": "goalAssists",
+          "home": "1",
+          "away": "1"
         },
         {
-          "label": "Possession",
+          "label": "possessionPct",
           "home": "52.1",
           "away": "47.9"
         },
         {
-          "label": "SHOTS",
-          "home": "20",
-          "away": "14"
+          "label": "shotAssists",
+          "home": "14",
+          "away": "9"
         },
         {
-          "label": "ON GOAL",
+          "label": "shotsOnTarget",
           "home": "7",
           "away": "4"
         },
         {
-          "label": "On Target %",
-          "home": "0.4",
-          "away": "0.3"
+          "label": "totalGoals",
+          "home": "2",
+          "away": "2"
         },
         {
-          "label": "Penalty Goals",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Penalty Kicks Taken",
-          "home": "0",
-          "away": "0"
+          "label": "totalShots",
+          "home": "20",
+          "away": "14"
         }
       ],
       "events": [
@@ -3544,64 +3499,49 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879265/fulham-ipswich-town",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "8",
           "away": "10"
         },
         {
-          "label": "Yellow Cards",
-          "home": "2",
-          "away": "4"
-        },
-        {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Offsides",
-          "home": "0",
-          "away": "1"
-        },
-        {
-          "label": "Corner Kicks",
+          "label": "wonCorners",
           "home": "2",
           "away": "5"
         },
         {
-          "label": "Saves",
-          "home": "3",
-          "away": "3"
+          "label": "goalAssists",
+          "home": "1",
+          "away": "0"
         },
         {
-          "label": "Possession",
+          "label": "possessionPct",
           "home": "47.6",
           "away": "52.4"
         },
         {
-          "label": "SHOTS",
-          "home": "11",
-          "away": "13"
+          "label": "shotAssists",
+          "home": "7",
+          "away": "9"
         },
         {
-          "label": "ON GOAL",
+          "label": "shotsOnTarget",
           "home": "5",
           "away": "5"
         },
         {
-          "label": "On Target %",
-          "home": "0.5",
-          "away": "0.4"
+          "label": "totalGoals",
+          "home": "2",
+          "away": "1"
         },
         {
-          "label": "Penalty Goals",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Penalty Kicks Taken",
-          "home": "0",
-          "away": "0"
+          "label": "totalShots",
+          "home": "11",
+          "away": "13"
         }
       ],
       "events": [
@@ -3736,8 +3676,8 @@
       },
       "home_score": 1,
       "away_score": 1,
-      "status": "in",
-      "minute": 90,
+      "status": "post",
+      "minute": null,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -3752,6 +3692,11 @@
           "minute": null,
           "type": "Goal",
           "description": "Goal · Solanke (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Dalot (Home)"
         },
         {
           "minute": null,
@@ -3777,6 +3722,11 @@
           "minute": null,
           "type": "Yellow card",
           "description": "Yellow card · Gallagher (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Gray (Away)"
         },
         {
           "minute": null,
