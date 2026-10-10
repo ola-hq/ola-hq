@@ -1,7 +1,7 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-10T08:26:38.235Z",
+    "fetched_at": "2026-10-10T10:51:17.457Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
@@ -3147,7 +3147,53 @@
       "venue": "Emirates Stadium",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879268/leeds-united-arsenal",
-      "stats": [],
+      "stats": [
+        {
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "wonCorners",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "goalAssists",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "possessionPct",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "shotAssists",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "shotsOnTarget",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "totalGoals",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "totalShots",
+          "home": "0",
+          "away": "0"
+        }
+      ],
       "events": [],
       "lineups": null
     },
