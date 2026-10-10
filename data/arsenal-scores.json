@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-10T18:03:08.199Z",
+    "fetched_at": "2026-10-10T18:26:36.292Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-10T18:03:08.199Z"
+    "details_checked_at": "2026-10-10T18:26:36.292Z"
   },
   "matches": [
     {
@@ -3734,10 +3734,10 @@
         "name": "Spurs",
         "short": "TOT"
       },
-      "home_score": 0,
-      "away_score": 0,
+      "home_score": 1,
+      "away_score": 1,
       "status": "in",
-      "minute": 70,
+      "minute": 90,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -3745,8 +3745,43 @@
       "events": [
         {
           "minute": null,
+          "type": "Goal",
+          "description": "Goal · Mbeumo (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Solanke (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Martinez (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Shaw (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · B.Fernandes (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Van Hecke (Away)"
+        },
+        {
+          "minute": null,
           "type": "Yellow card",
           "description": "Yellow card · Gallagher (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Red card",
+          "description": "Red card · Bentancur (Away)"
         }
       ],
       "lineups": null
