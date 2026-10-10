@@ -135,7 +135,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .paris-photo-stack figure{margin:0;position:absolute;overflow:hidden;background:#fff;border:9px solid #fff;box-shadow:0 20px 55px rgba(16,27,46,.2)}
 .paris-photo-stack figure img{width:100%;height:100%;object-fit:cover;display:block}
 .paris-photo-stack figcaption{position:absolute;left:12px;bottom:10px;background:#fff;color:#1a273b;padding:5px 7px;font-size:7px;letter-spacing:.14em;font-weight:800}
-.paris-main-photo{inset:7% 9% 7% 10%;transform:rotate(.5deg)}
+.paris-main-photo{inset:14% 9% 7% 10%;transform:rotate(.5deg)}
 .paris-inset-one{width:34%;height:38%;left:2%;bottom:2%;transform:rotate(-4deg);z-index:3}
 .paris-inset-two{width:30%;height:33%;right:2%;top:4%;transform:rotate(4deg);z-index:3}
 .paris-source-world{padding:92px 8vw;display:grid;grid-template-columns:.82fr 1.18fr;gap:8vw;background:#fbf7ef;border-top:1px solid var(--line)}
@@ -312,7 +312,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
   .paris-editorial-copy{padding:60px 7vw}
   .paris-editorial-copy h1{font-size:60px}
   .paris-photo-stack{min-height:560px}
-  .paris-main-photo{inset:8% 5% 8% 5%}
+  .paris-main-photo{inset:16% 5% 8% 5%}
   .paris-inset-one{width:42%;height:34%}.paris-inset-two{width:38%;height:30%}
   .paris-source-world{padding:65px 7vw}
   .paris-week-grid,.paris-artifacts{grid-template-columns:1fr}
@@ -634,7 +634,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 /* First-party PDF cards open in the native reader; downloads are separate. */
 .pdf-download{display:inline-block;font-size:11px;line-height:1.6;color:inherit;text-underline-offset:3px;margin-top:14px;padding:10px 0}
 .paris-pdf-actions{padding:0 8vw 38px;background:#fbf7ef;color:#18243a;margin-top:-55px}
-.paris-main-photo img{object-position:75% 30%}
+.paris-main-photo img{object-position:75% 0%}
 @media(min-width:981px){
   .paris-week-grid{align-self:start}
 }
