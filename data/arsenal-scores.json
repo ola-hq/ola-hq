@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-10T14:51:18.425Z",
+    "fetched_at": "2026-10-10T15:05:54.806Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-10T14:51:18.425Z"
+    "details_checked_at": "2026-10-10T15:05:54.806Z"
   },
   "matches": [
     {
@@ -3376,8 +3376,8 @@
         },
         {
           "label": "Possession",
-          "home": "50.3",
-          "away": "49.7"
+          "home": "50",
+          "away": "50"
         },
         {
           "label": "SHOTS",
@@ -3415,6 +3415,11 @@
           "minute": null,
           "type": "Goal",
           "description": "Goal · Yarmoliuk (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Buendía (Home)"
         },
         {
           "minute": null,
@@ -3508,7 +3513,7 @@
       "home_score": 0,
       "away_score": 0,
       "status": "in",
-      "minute": 451,
+      "minute": 48,
       "venue": "Portman Road",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879265",
@@ -3545,8 +3550,8 @@
         },
         {
           "label": "Possession",
-          "home": "36.9",
-          "away": "63.1"
+          "home": "36.4",
+          "away": "63.6"
         },
         {
           "label": "SHOTS",
