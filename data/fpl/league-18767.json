@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-10T19:27:41.766Z",
+    "fetched_at": "2026-10-10T20:28:30.054Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -607,9 +607,9 @@
         "event": 6,
         "finished": false,
         "league_entry_1": 95298,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 19,
         "league_entry_2": 95301,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 9,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -618,9 +618,9 @@
         "event": 6,
         "finished": false,
         "league_entry_1": 95302,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 13,
         "league_entry_2": 95300,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 45,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -629,9 +629,9 @@
         "event": 6,
         "finished": false,
         "league_entry_1": 95303,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 23,
         "league_entry_2": 95299,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 6,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -640,9 +640,9 @@
         "event": 6,
         "finished": false,
         "league_entry_1": 95304,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 39,
         "league_entry_2": 95309,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 20,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -651,9 +651,9 @@
         "event": 6,
         "finished": false,
         "league_entry_1": 95305,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 16,
         "league_entry_2": 95308,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 32,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -662,9 +662,9 @@
         "event": 6,
         "finished": false,
         "league_entry_1": 95306,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 29,
         "league_entry_2": 95307,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 10,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -7281,8 +7281,8 @@
       "web_name": "McGinn",
       "element_type": 3,
       "team": 2,
-      "total_points": 26,
-      "event_points": 9,
+      "total_points": 27,
+      "event_points": 10,
       "status": "a"
     },
     {
