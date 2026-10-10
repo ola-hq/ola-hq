@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-10T14:05:38.862Z",
+    "fetched_at": "2026-10-10T14:24:43.830Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-10T14:05:38.862Z"
+    "details_checked_at": "2026-10-10T14:24:43.830Z"
   },
   "matches": [
     {
@@ -3336,18 +3336,18 @@
         "name": "Brentford",
         "short": "BRE"
       },
-      "home_score": 0,
-      "away_score": 0,
+      "home_score": 1,
+      "away_score": 1,
       "status": "in",
-      "minute": 6,
+      "minute": 24,
       "venue": "Villa Park",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878776",
       "stats": [
         {
           "label": "Fouls",
-          "home": "0",
-          "away": "1"
+          "home": "2",
+          "away": "6"
         },
         {
           "label": "Yellow Cards",
@@ -3361,38 +3361,38 @@
         },
         {
           "label": "Offsides",
-          "home": "0",
+          "home": "1",
           "away": "0"
         },
         {
           "label": "Corner Kicks",
           "home": "0",
-          "away": "0"
+          "away": "1"
         },
         {
           "label": "Saves",
-          "home": "0",
+          "home": "1",
           "away": "0"
         },
         {
           "label": "Possession",
-          "home": "62.7",
-          "away": "37.3"
+          "home": "48.6",
+          "away": "51.4"
         },
         {
           "label": "SHOTS",
-          "home": "0",
-          "away": "1"
+          "home": "4",
+          "away": "3"
         },
         {
           "label": "ON GOAL",
-          "home": "0",
-          "away": "0"
+          "home": "1",
+          "away": "2"
         },
         {
           "label": "On Target %",
-          "home": "0.0",
-          "away": "0.0"
+          "home": "0.3",
+          "away": "0.7"
         },
         {
           "label": "Penalty Goals",
@@ -3405,7 +3405,18 @@
           "away": "0"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · N.Jackson (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Yarmoliuk (Away)"
+        }
+      ],
       "lineups": {
         "home": [
           "Zion Suzuki",
@@ -3446,10 +3457,10 @@
         "name": "Bournemouth",
         "short": "BOU"
       },
-      "home_score": 1,
+      "home_score": 2,
       "away_score": 0,
       "status": "in",
-      "minute": 2,
+      "minute": 22,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -3458,7 +3469,17 @@
         {
           "minute": null,
           "type": "Goal",
+          "description": "Goal · Rogers (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
           "description": "Goal · Henderson (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Tavernier (Away)"
         }
       ],
       "lineups": null
@@ -3477,19 +3498,19 @@
       "home_score": 0,
       "away_score": 0,
       "status": "in",
-      "minute": 6,
+      "minute": 25,
       "venue": "Portman Road",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879265",
       "stats": [
         {
           "label": "Fouls",
-          "home": "0",
-          "away": "0"
+          "home": "4",
+          "away": "1"
         },
         {
           "label": "Yellow Cards",
-          "home": "0",
+          "home": "1",
           "away": "0"
         },
         {
@@ -3500,36 +3521,36 @@
         {
           "label": "Offsides",
           "home": "0",
-          "away": "0"
+          "away": "1"
         },
         {
           "label": "Corner Kicks",
-          "home": "0",
-          "away": "0"
+          "home": "2",
+          "away": "1"
         },
         {
           "label": "Saves",
           "home": "0",
-          "away": "0"
+          "away": "1"
         },
         {
           "label": "Possession",
-          "home": "0",
-          "away": "0"
+          "home": "38.2",
+          "away": "61.8"
         },
         {
           "label": "SHOTS",
-          "home": "0",
-          "away": "0"
+          "home": "2",
+          "away": "2"
         },
         {
           "label": "ON GOAL",
-          "home": "0",
+          "home": "1",
           "away": "0"
         },
         {
           "label": "On Target %",
-          "home": "0.0",
+          "home": "0.5",
           "away": "0.0"
         },
         {
@@ -3543,7 +3564,13 @@
           "away": "0"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Davis (Home)"
+        }
+      ],
       "lineups": {
         "home": [
           "Christian Walton",
@@ -3584,10 +3611,10 @@
         "name": "Brighton",
         "short": "BHA"
       },
-      "home_score": null,
-      "away_score": null,
+      "home_score": 0,
+      "away_score": 0,
       "status": "in",
-      "minute": 0,
+      "minute": 22,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
