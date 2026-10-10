@@ -1,54 +1,70 @@
-name: Deploy OLA HQ to GitHub Pages
+name: Sync Our Polaroid PROJ Letterboxd Diary
 
 on:
   push:
     branches: [main]
+    paths:
+      - 'tools.html'
+      - 'tools.js'
+      - 'scripts/sync-letterboxd.py'
+      - 'scripts/verify-hq-release.mjs'
+      - '.github/workflows/pages.yml'
   workflow_dispatch:
   schedule:
-    - cron: '17 7,19 * * *' # Twice daily, UTC. Refresh public Letterboxd diary without writing to main.
+    - cron: '17 7,19 * * *' # Twice daily UTC; single publisher runs on completion.
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: polaroid-letterboxd-sync-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  refresh:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-      - name: Verify OLA HQ release integrity
+      - name: Checkout public website source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+          ref: main
+      - name: Verify approved OLA HQ Tools baseline
         run: node scripts/verify-hq-release.mjs
-      - name: Verify public Letterboxd RSS parser
+      - name: Verify real Letterboxd feed parser
         run: python3 scripts/sync-letterboxd.py --self-test
-      - name: Generate recent Letterboxd diary snapshot
-        run: python3 scripts/sync-letterboxd.py
-      - name: Confirm Letterboxd snapshot status
+      - name: Fetch public Letterboxd diary snapshot
+        run: python3 scripts/sync-letterboxd.py --output /tmp/ola-letterboxd-recent.json
+      - name: Preserve last verified RSS data on transient feed failures
         run: |
           python3 - <<'PY'
           import json
           from pathlib import Path
-          data = json.loads(Path('data/letterboxd-recent.json').read_text(encoding='utf-8'))
-          assert data.get('account') == 'ourpolaroidproj'
-          if data.get('status') == 'ok':
-              print(f"Pulled {len(data.get('entries', []))} recent public Letterboxd ratings.")
+          latest_path=Path('/tmp/ola-letterboxd-recent.json')
+          published_path=Path('data/letterboxd-recent.json')
+          latest=json.loads(latest_path.read_text(encoding='utf-8'))
+          assert latest.get('account')=='ourpolaroidproj'
+          assert latest.get('status') in ('ok','unavailable')
+          assert isinstance(latest.get('entries'),list)
+          if latest['status']=='ok':
+              # Real records from the public feed, even if no recent ratings were posted.
+              published_path.parent.mkdir(parents=True,exist_ok=True)
+              published_path.write_text(json.dumps(latest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+              print("Real Letterboxd RSS: "+str(len(latest['entries']))+" rated entries.")
+          elif published_path.exists():
+              previous=json.loads(published_path.read_text(encoding='utf-8'))
+              if previous.get('status')=='ok':
+                  print("::warning::Feed unreachable; preserving the previous VERIFIED Letterboxd snapshot.")
+              else:
+                  print("::warning::Feed unreachable; keeping the existing unavailable status.")
           else:
-              print("::warning::Our Polaroid PROJ public RSS was unreachable. Site will show a source-specific empty state, not invented ratings.")
+              # Publish an explicit empty state rather than a missing file or invented films.
+              published_path.parent.mkdir(parents=True,exist_ok=True)
+              published_path.write_text(json.dumps(latest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+              print("::warning::Feed unreachable and no previous verified snapshot exists.")
           PY
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-      - name: Upload static site
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: .
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Commit verified diary snapshot; publisher handles completion
+        run: |
+          bash scripts/commit-data.sh data/letterboxd-recent.json 'data: refresh Our Polaroid PROJ public Letterboxd snapshot'

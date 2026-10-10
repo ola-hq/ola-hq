@@ -32,6 +32,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -47,12 +49,4 @@ jobs:
       - name: Publish score snapshot when changes are meaningful
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         run: |
-          if git diff --quiet -- data/arsenal-scores.json; then
-            echo "No meaningful score changes; no site deployment needed."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/arsenal-scores.json
-          git commit -m "data: sync Arsenal Wave league scores"
-          git push origin HEAD:main
+          bash scripts/commit-data.sh data/arsenal-scores.json 'data: sync Arsenal Wave league scores'

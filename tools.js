@@ -173,26 +173,42 @@ let letterboxdEntries=[];
 try{const saved=JSON.parse(localStorage.getItem(localMovieKey)||'[]');if(Array.isArray(saved))letterboxdEntries=saved.filter(x=>x&&typeof x.title==='string'&&Number.isFinite(x.score));}catch{}
 
 const letterboxdSyncURL='data/letterboxd-recent.json';
+const letterboxdFeedCacheKey='ola-hq-letterboxd-ourpolaroidproj-rss-cache-v1';
 let syncedLetterboxdEntries=[],letterboxdSyncInfo=null;
+// Retain only real, previously fetched diary ratings across site updates.
+try{
+ const prior=JSON.parse(localStorage.getItem(letterboxdFeedCacheKey)||'null');
+ if(prior?.account==='ourpolaroidproj'&&Array.isArray(prior.entries)){
+  syncedLetterboxdEntries=prior.entries.filter(x=>x&&typeof x.title==='string'&&Number.isFinite(x.score)&&x.score>=0.5&&x.score<=5);
+  letterboxdSyncInfo={checkedAt:prior.checkedAt,cached:true};
+ }
+}catch{}
 function letterboxdRecords(){
  // A user's optional full export supplements the publicly syndicated recent diary.
  return syncedLetterboxdEntries.concat(letterboxdEntries);
 }
 async function loadLetterboxdDiarySync(){
  const state=$('letterboxd-sync-state');
- if(typeof fetch!=='function'){state.textContent='Automatic RSS data is unavailable in this browser. Your own CSV still works.';return;}
+ if(typeof fetch!=='function'){state.textContent=syncedLetterboxdEntries.length?'Showing previously verified Letterboxd activity saved on this device. Live sync is unavailable.':'Automatic RSS data is unavailable in this browser. Your own CSV still works.';return;}
  try{
   const response=await fetch(letterboxdSyncURL+'?v='+Date.now(),{cache:'no-store',credentials:'omit'});
   if(!response.ok)throw Error('Not available yet');
   const result=await response.json();
   if(result?.status!=='ok'||result.account!=='ourpolaroidproj'||!Array.isArray(result.entries))throw Error('Feed unavailable');
   syncedLetterboxdEntries=result.entries.filter(x=>x&&typeof x.title==='string'&&Number.isFinite(x.score)&&x.score>=0.5&&x.score<=5)
-   .map(x=>({title:x.title,score:x.score,year:String(x.year||''),watchedDate:x.watchedDate||null,url:x.url||null}));
+   .map(x=>({title:x.title,score:x.score,year:String(x.year||''),watchedDate:x.watchedDate||null,activityDate:x.activityDate||null,url:x.url||null}));
   letterboxdSyncInfo={checkedAt:result.checkedAt,items:result.totalEntries||result.entries.length};
+  // Never replace a known-good stored feed with a network failure.
+  if(syncedLetterboxdEntries.length)try{
+   localStorage.setItem(letterboxdFeedCacheKey,JSON.stringify({account:'ourpolaroidproj',checkedAt:result.checkedAt,entries:syncedLetterboxdEntries}));
+  }catch{}
   const timestamp=result.checkedAt?new Date(result.checkedAt).toLocaleString():'recently';
   state.textContent='Recent diary synced: '+syncedLetterboxdEntries.length+' rated entries · Checked '+timestamp+'. Letterboxd RSS covers recent entries, not the complete all-time library.';
  }catch{
-  state.textContent='Automatic diary sync is not currently available. Letterboxd’s recent RSS may be unreachable; a complete export remains an option.';
+  const since=letterboxdSyncInfo?.checkedAt?new Date(letterboxdSyncInfo.checkedAt).toLocaleString():'an earlier sync';
+  state.textContent=syncedLetterboxdEntries.length
+   ?'Showing '+syncedLetterboxdEntries.length+' verified diary ratings from '+since+' saved on this device; live Letterboxd sync is unavailable.'
+   :'Automatic diary sync is not currently available. Letterboxd’s recent RSS may be unreachable; a complete export remains an option.';
  }
  renderTopFilms();
 }
@@ -209,10 +225,16 @@ function topFilmCard(movie,index,fromLetterboxd){
  card.append(detail);return card;
 }
 function movieRanking(entries,minimumRating=4){
- const filtered=entries.filter(x=>Number.isFinite(x.score)&&x.score>=minimumRating);
+ // Letterboxd RSS links identify DIARY ENTRIES, not unique films. Deduplicate by title+year,
+ // use the newest recorded rating, and only THEN apply the overall 4-star threshold.
  const unique=new Map();
- filtered.forEach(f=>{const key=(f.url||f.title+'|'+(f.year||'')).toLowerCase();const prev=unique.get(key);if(!prev||f.score>prev.score||(f.score===prev.score&&(f.watchedDate||'')>(prev.watchedDate||'')))unique.set(key,f);});
- return [...unique.values()].sort((a,b)=>b.score-a.score||(b.watchedDate||'').localeCompare(a.watchedDate||'')||(a.order??Infinity)-(b.order??Infinity)||a.title.localeCompare(b.title));
+ entries.filter(x=>typeof x.title==='string'&&Number.isFinite(x.score)&&x.score>=0.5&&x.score<=5).forEach(f=>{
+  const key=(f.title.trim()+'|'+(f.year||'')).toLocaleLowerCase(),prev=unique.get(key);
+  const date=f.activityDate||f.watchedDate||'',older=prev?.activityDate||prev?.watchedDate||'';
+  if(!prev||date>older||(date===older&&f.score>prev.score))unique.set(key,f);
+ });
+ return [...unique.values()].filter(x=>x.score>=minimumRating)
+  .sort((a,b)=>b.score-a.score||(b.activityDate||b.watchedDate||'').localeCompare(a.activityDate||a.watchedDate||'')||(a.order??Infinity)-(b.order??Infinity)||a.title.localeCompare(b.title));
 }
 function within30(dateText){
  if(!/^\d{4}-\d{2}-\d{2}$/.test(dateText||''))return false;
@@ -227,20 +249,21 @@ function renderTopFilms(){
  $('letterboxd-import').hidden=!isLB;
  const sourceLink=$('movie-source-link'),footnote=$('movie-source-footnote');
  sourceLink.href=isLB?diaryURL:'blockbuster-wave/blockbuster-wave-complete-gallery.html#insights';
- sourceLink.textContent=isLB?'Open Our Polaroid PROJ on Letterboxd ↗':'Explore Blockbuster Wave ↗';
+ sourceLink.textContent=isLB?'Open our movie diary ↗':'Explore Blockbuster Wave ↗';
  sourceLink.target=isLB?'_blank':'_self';
  if(isLB){
-  footnote.textContent='Source: Our Polaroid PROJ public Letterboxd diary RSS (when available) + optional browser-local export. RSS is a recent activity feed, not an all-time ratings API.';
+  footnote.textContent='Source: Our Polaroid Wave movie diary (via Letterboxd RSS when available) + optional browser-local export. RSS covers recent activity, not all-time ratings.';
   const records=letterboxdRecords();
   // Recent mode is strictly date-scoped and includes every valid rating, even below 4 stars.
   // Filter by verified diary watch date BEFORE ranking/deduplication. Never fall back to older records.
   const overall=movieRanking(records,4);
-  const recent=movieRanking(records.filter(f=>within30(f.watchedDate)),0.5);
+  // Rating/logging activity date takes precedence over movie watch date.
+  const recent=movieRanking(records.filter(f=>within30(f.activityDate||f.watchedDate)),0.5);
   const ranking=(moviePeriod==='recent'?recent:overall).slice(0,5);
   if(moviePeriod==='recent'){
    movieNote.textContent=recent.length
-    ?'Up to five highest-rated movies with verified watch dates in the last 30 days, at any star rating.'
-    :'No rated movies with verified viewing dates in the last 30 days in the available Letterboxd data.';
+    ?'Up to five highest-rated movies with verified ratings or diary activity in the last 30 days, at any star rating.'
+    :'No verified movie ratings or diary activity in the last 30 days in the available Letterboxd data.';
   }else{
    movieNote.textContent=!records.length
     ?'No verified ratings have synced yet. Open the real diary or import its export to calculate the Top 5.'
@@ -287,14 +310,15 @@ function csvEntries(csv,name){
  const header=rows.shift().map(s=>s.trim().toLowerCase());const index=label=>header.indexOf(label.toLowerCase());
  const titleAt=index('Name'),ratingAt=index('Rating');
  if(titleAt<0||ratingAt<0)throw Error('Missing Name or Rating columns. Export diary.csv or ratings.csv from Letterboxd.');
- const yearAt=index('Year'),urlAt=index('Letterboxd URI'),watchAt=index('Watched Date');
+ const yearAt=index('Year'),urlAt=index('Letterboxd URI'),watchAt=index('Watched Date'),activityAt=index('Date');
  const isDiary=watchAt>=0||/diary/i.test(name||'');
  return rows.map(row=>{
   const title=(row[titleAt]||'').trim(),score=Number((row[ratingAt]||'').trim()),year=yearAt>=0?(row[yearAt]||'').trim():'';
   const url=urlAt>=0?(row[urlAt]||'').trim():'';
   const watchedDate=isDiary&&watchAt>=0?isoDate(row[watchAt]):null;
+  const activityDate=activityAt>=0?isoDate(row[activityAt]):null;
   if(!title||!Number.isFinite(score)||score<0.5||score>5)return null;
-  return {title,score,year,url:/^https:\/\/letterboxd\.com\//.test(url)?url:null,watchedDate};
+  return {title,score,year,url:/^https:\/\/letterboxd\.com\//.test(url)?url:null,watchedDate,activityDate};
  }).filter(Boolean);
 }
 $('letterboxd-files').addEventListener('change',async event=>{

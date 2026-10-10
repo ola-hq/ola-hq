@@ -1,40 +1,43 @@
 name: Refresh FPL Draft Hub data
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/fpl-sync.mjs'
+      - 'scripts/validate-fpl.mjs'
+      - '.github/workflows/fpl-data-sync.yml'
   schedule:
     - cron: '17 * * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
   group: fpl-data-sync
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   refresh:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    timeout-minutes: 10
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-      - name: Setup Node
-        uses: actions/setup-node@v5
+      - name: Checkout current canonical public source
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Fetch and sanitize FPL Draft data
+      - name: Validate release and FPL failure handling
+        run: |
+          node scripts/verify-hq-release.mjs
+          node --test scripts/fpl-sync.test.mjs
+      - name: Fetch validated FPL snapshot atomically
         run: node scripts/fpl-sync.mjs
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-      - name: Upload current site
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: .
-      - name: Deploy refreshed site
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Commit data only; publisher handles workflow completion
+        run: |
+          bash scripts/commit-data.sh data/fpl/league-18767.json 'data: refresh FPL Draft Hub snapshot'

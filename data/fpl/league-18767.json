@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-07T03:53:22.389Z",
+    "fetched_at": "2026-10-10T02:30:17.324Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -10,35 +10,22 @@
   },
   "details": {
     "league": {
-      "admin_entry": 95043,
+      "id": 18767,
+      "name": "Fantasy Premier League 26/27",
       "closed": true,
       "draft_dt": "2026-08-18T01:30:00Z",
       "draft_pick_time_limit": 60,
       "draft_status": "pre",
       "draft_tz_show": "America/Los_Angeles",
-      "id": 18767,
       "ko_rounds": 0,
-      "make_code_public": false,
       "max_entries": 12,
       "min_entries": 12,
-      "name": "Fantasy Premier League 26/27",
       "scoring": "h",
       "start_event": 1,
       "stop_event": 38,
       "trades": "a",
-      "transaction_mode": "waivers",
+      "transaction_mode": "free-agency",
       "variety": "x",
-      "drafts": [
-        {
-          "id": 19993,
-          "draft_started": true,
-          "draft_completed": "2026-08-18T02:38:47.911437Z",
-          "draft_dt": "2026-08-18T01:30:00Z",
-          "event": 1,
-          "league": 18767,
-          "order_method": "random"
-        }
-      ],
       "is_renewed": true
     },
     "league_entries": [
@@ -3345,12 +3332,6 @@
         "status": "a"
       },
       {
-        "element": 114,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "a"
-      },
-      {
         "element": 567,
         "in_accepted_trade": false,
         "owner": null,
@@ -3531,12 +3512,6 @@
         "status": "a"
       },
       {
-        "element": 332,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "a"
-      },
-      {
         "element": 468,
         "in_accepted_trade": false,
         "owner": null,
@@ -3621,12 +3596,6 @@
         "status": "a"
       },
       {
-        "element": 194,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "a"
-      },
-      {
         "element": 91,
         "in_accepted_trade": false,
         "owner": null,
@@ -3646,12 +3615,6 @@
       },
       {
         "element": 433,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "a"
-      },
-      {
-        "element": 14,
         "in_accepted_trade": false,
         "owner": null,
         "status": "a"
@@ -3682,12 +3645,6 @@
       },
       {
         "element": 505,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "a"
-      },
-      {
-        "element": 257,
         "in_accepted_trade": false,
         "owner": null,
         "status": "a"
@@ -3952,12 +3909,6 @@
       },
       {
         "element": 59,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "a"
-      },
-      {
-        "element": 105,
         "in_accepted_trade": false,
         "owner": null,
         "status": "a"
@@ -4551,12 +4502,6 @@
         "status": "a"
       },
       {
-        "element": 129,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "a"
-      },
-      {
         "element": 514,
         "in_accepted_trade": false,
         "owner": null,
@@ -4564,12 +4509,6 @@
       },
       {
         "element": 232,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "a"
-      },
-      {
-        "element": 93,
         "in_accepted_trade": false,
         "owner": null,
         "status": "a"
@@ -4630,12 +4569,6 @@
       },
       {
         "element": 315,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "a"
-      },
-      {
-        "element": 123,
         "in_accepted_trade": false,
         "owner": null,
         "status": "a"
@@ -5049,12 +4982,6 @@
         "status": "a"
       },
       {
-        "element": 88,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "a"
-      },
-      {
         "element": 137,
         "in_accepted_trade": false,
         "owner": null,
@@ -5079,12 +5006,6 @@
         "status": "a"
       },
       {
-        "element": 53,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "a"
-      },
-      {
         "element": 76,
         "in_accepted_trade": false,
         "owner": null,
@@ -5104,12 +5025,6 @@
       },
       {
         "element": 396,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "a"
-      },
-      {
-        "element": 152,
         "in_accepted_trade": false,
         "owner": null,
         "status": "a"
@@ -5547,12 +5462,6 @@
         "status": "a"
       },
       {
-        "element": 637,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "a"
-      },
-      {
         "element": 638,
         "in_accepted_trade": false,
         "owner": null,
@@ -5721,6 +5630,84 @@
         "status": "a"
       },
       {
+        "element": 108,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "l"
+      },
+      {
+        "element": 423,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "l"
+      },
+      {
+        "element": 86,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "l"
+      },
+      {
+        "element": 36,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "l"
+      },
+      {
+        "element": 387,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "l"
+      },
+      {
+        "element": 144,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "l"
+      },
+      {
+        "element": 556,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "l"
+      },
+      {
+        "element": 242,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "l"
+      },
+      {
+        "element": 581,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "l"
+      },
+      {
+        "element": 595,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "l"
+      },
+      {
+        "element": 608,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "l"
+      },
+      {
+        "element": 634,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "l"
+      },
+      {
+        "element": 650,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "l"
+      },
+      {
         "element": 229,
         "in_accepted_trade": false,
         "owner": 95052,
@@ -5742,12 +5729,6 @@
         "element": 124,
         "in_accepted_trade": false,
         "owner": 95053,
-        "status": "o"
-      },
-      {
-        "element": 108,
-        "in_accepted_trade": false,
-        "owner": 95046,
         "status": "o"
       },
       {
@@ -5790,12 +5771,6 @@
         "element": 28,
         "in_accepted_trade": false,
         "owner": 95050,
-        "status": "o"
-      },
-      {
-        "element": 423,
-        "in_accepted_trade": false,
-        "owner": 95046,
         "status": "o"
       },
       {
@@ -5961,6 +5936,12 @@
         "status": "o"
       },
       {
+        "element": 114,
+        "in_accepted_trade": false,
+        "owner": 95043,
+        "status": "o"
+      },
+      {
         "element": 13,
         "in_accepted_trade": false,
         "owner": 95049,
@@ -6069,6 +6050,12 @@
         "status": "o"
       },
       {
+        "element": 332,
+        "in_accepted_trade": false,
+        "owner": 95046,
+        "status": "o"
+      },
+      {
         "element": 419,
         "in_accepted_trade": false,
         "owner": 95048,
@@ -6141,6 +6128,12 @@
         "status": "o"
       },
       {
+        "element": 194,
+        "in_accepted_trade": false,
+        "owner": 95046,
+        "status": "o"
+      },
+      {
         "element": 223,
         "in_accepted_trade": false,
         "owner": 95054,
@@ -6156,6 +6149,18 @@
         "element": 282,
         "in_accepted_trade": false,
         "owner": 95052,
+        "status": "o"
+      },
+      {
+        "element": 14,
+        "in_accepted_trade": false,
+        "owner": 95054,
+        "status": "o"
+      },
+      {
+        "element": 257,
+        "in_accepted_trade": false,
+        "owner": 95050,
         "status": "o"
       },
       {
@@ -6222,12 +6227,6 @@
         "element": 400,
         "in_accepted_trade": false,
         "owner": 95044,
-        "status": "o"
-      },
-      {
-        "element": 86,
-        "in_accepted_trade": false,
-        "owner": 95049,
         "status": "o"
       },
       {
@@ -6309,15 +6308,15 @@
         "status": "o"
       },
       {
-        "element": 36,
-        "in_accepted_trade": false,
-        "owner": 95045,
-        "status": "o"
-      },
-      {
         "element": 79,
         "in_accepted_trade": false,
         "owner": 95053,
+        "status": "o"
+      },
+      {
+        "element": 105,
+        "in_accepted_trade": false,
+        "owner": 95049,
         "status": "o"
       },
       {
@@ -6459,12 +6458,6 @@
         "status": "o"
       },
       {
-        "element": 387,
-        "in_accepted_trade": false,
-        "owner": 95050,
-        "status": "o"
-      },
-      {
         "element": 571,
         "in_accepted_trade": false,
         "owner": 95047,
@@ -6486,12 +6479,6 @@
         "element": 230,
         "in_accepted_trade": false,
         "owner": 95043,
-        "status": "o"
-      },
-      {
-        "element": 144,
-        "in_accepted_trade": false,
-        "owner": 95054,
         "status": "o"
       },
       {
@@ -6579,6 +6566,12 @@
         "status": "o"
       },
       {
+        "element": 129,
+        "in_accepted_trade": false,
+        "owner": 95054,
+        "status": "o"
+      },
+      {
         "element": 403,
         "in_accepted_trade": false,
         "owner": 95050,
@@ -6591,15 +6584,15 @@
         "status": "o"
       },
       {
-        "element": 94,
+        "element": 93,
         "in_accepted_trade": false,
-        "owner": 95043,
+        "owner": 95049,
         "status": "o"
       },
       {
-        "element": 556,
+        "element": 94,
         "in_accepted_trade": false,
-        "owner": 95054,
+        "owner": 95043,
         "status": "o"
       },
       {
@@ -6627,6 +6620,12 @@
         "status": "o"
       },
       {
+        "element": 123,
+        "in_accepted_trade": false,
+        "owner": 95043,
+        "status": "o"
+      },
+      {
         "element": 465,
         "in_accepted_trade": false,
         "owner": 95044,
@@ -6648,12 +6647,6 @@
         "element": 358,
         "in_accepted_trade": false,
         "owner": 95047,
-        "status": "o"
-      },
-      {
-        "element": 242,
-        "in_accepted_trade": false,
-        "owner": 95045,
         "status": "o"
       },
       {
@@ -6717,7 +6710,25 @@
         "status": "o"
       },
       {
+        "element": 88,
+        "in_accepted_trade": false,
+        "owner": 95045,
+        "status": "o"
+      },
+      {
         "element": 504,
+        "in_accepted_trade": false,
+        "owner": 95045,
+        "status": "o"
+      },
+      {
+        "element": 53,
+        "in_accepted_trade": false,
+        "owner": 95045,
+        "status": "o"
+      },
+      {
+        "element": 152,
         "in_accepted_trade": false,
         "owner": 95045,
         "status": "o"
@@ -6732,12 +6743,6 @@
         "element": 580,
         "in_accepted_trade": false,
         "owner": 95050,
-        "status": "o"
-      },
-      {
-        "element": 581,
-        "in_accepted_trade": false,
-        "owner": 95043,
         "status": "o"
       },
       {
@@ -6759,21 +6764,9 @@
         "status": "o"
       },
       {
-        "element": 595,
-        "in_accepted_trade": false,
-        "owner": 95045,
-        "status": "o"
-      },
-      {
         "element": 597,
         "in_accepted_trade": false,
         "owner": 95048,
-        "status": "o"
-      },
-      {
-        "element": 608,
-        "in_accepted_trade": false,
-        "owner": 95054,
         "status": "o"
       },
       {
@@ -6783,19 +6776,13 @@
         "status": "o"
       },
       {
-        "element": 634,
+        "element": 637,
         "in_accepted_trade": false,
-        "owner": 95049,
+        "owner": 95054,
         "status": "o"
       },
       {
         "element": 649,
-        "in_accepted_trade": false,
-        "owner": 95043,
-        "status": "o"
-      },
-      {
-        "element": 650,
         "in_accepted_trade": false,
         "owner": 95043,
         "status": "o"
@@ -6911,7 +6898,7 @@
       "team": 1,
       "total_points": 21,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 11,
@@ -7021,7 +7008,7 @@
       "team": 1,
       "total_points": 1,
       "event_points": 1,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 21,
@@ -7032,7 +7019,7 @@
       "team": 9,
       "total_points": 0,
       "event_points": 0,
-      "status": "i"
+      "status": "d"
     },
     {
       "id": 22,
@@ -7120,7 +7107,7 @@
       "team": 2,
       "total_points": 1,
       "event_points": 0,
-      "status": "i"
+      "status": "d"
     },
     {
       "id": 30,
@@ -7175,7 +7162,7 @@
       "team": 2,
       "total_points": 3,
       "event_points": 0,
-      "status": "i"
+      "status": "d"
     },
     {
       "id": 35,
@@ -7560,7 +7547,7 @@
       "team": 3,
       "total_points": 30,
       "event_points": 2,
-      "status": "d"
+      "status": "i"
     },
     {
       "id": 70,
@@ -8033,7 +8020,7 @@
       "team": 19,
       "total_points": 24,
       "event_points": 6,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 113,
@@ -8077,7 +8064,7 @@
       "team": 5,
       "total_points": 22,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 117,
@@ -8154,7 +8141,7 @@
       "team": 5,
       "total_points": 16,
       "event_points": 0,
-      "status": "i"
+      "status": "d"
     },
     {
       "id": 124,
@@ -8363,7 +8350,7 @@
       "team": 6,
       "total_points": 3,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 143,
@@ -8473,7 +8460,7 @@
       "team": 6,
       "total_points": 0,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 153,
@@ -8495,7 +8482,7 @@
       "team": 6,
       "total_points": 28,
       "event_points": 2,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 155,
@@ -8539,7 +8526,7 @@
       "team": 6,
       "total_points": 0,
       "event_points": 0,
-      "status": "d"
+      "status": "i"
     },
     {
       "id": 159,
@@ -8550,7 +8537,7 @@
       "team": 6,
       "total_points": 1,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 160,
@@ -8616,7 +8603,7 @@
       "team": 6,
       "total_points": 33,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 166,
@@ -8748,7 +8735,7 @@
       "team": 7,
       "total_points": 0,
       "event_points": 0,
-      "status": "i"
+      "status": "d"
     },
     {
       "id": 178,
@@ -9507,7 +9494,7 @@
       "team": 9,
       "total_points": 6,
       "event_points": 0,
-      "status": "i"
+      "status": "d"
     },
     {
       "id": 247,
@@ -9595,7 +9582,7 @@
       "team": 10,
       "total_points": 12,
       "event_points": 2,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 255,
@@ -9661,7 +9648,7 @@
       "team": 13,
       "total_points": 5,
       "event_points": 0,
-      "status": "i"
+      "status": "d"
     },
     {
       "id": 261,
@@ -10233,7 +10220,7 @@
       "team": 12,
       "total_points": 0,
       "event_points": 0,
-      "status": "i"
+      "status": "a"
     },
     {
       "id": 313,
@@ -10574,7 +10561,7 @@
       "team": 13,
       "total_points": 3,
       "event_points": 1,
-      "status": "a"
+      "status": "i"
     },
     {
       "id": 344,
@@ -10783,7 +10770,7 @@
       "team": 14,
       "total_points": 24,
       "event_points": 6,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 363,
@@ -10838,7 +10825,7 @@
       "team": 14,
       "total_points": 32,
       "event_points": 3,
-      "status": "d"
+      "status": "i"
     },
     {
       "id": 368,
@@ -10871,7 +10858,7 @@
       "team": 14,
       "total_points": 0,
       "event_points": 0,
-      "status": "i"
+      "status": "d"
     },
     {
       "id": 371,
@@ -10970,7 +10957,7 @@
       "team": 14,
       "total_points": 33,
       "event_points": 8,
-      "status": "d"
+      "status": "i"
     },
     {
       "id": 380,
@@ -11366,7 +11353,7 @@
       "team": 16,
       "total_points": 10,
       "event_points": 4,
-      "status": "d"
+      "status": "i"
     },
     {
       "id": 416,
@@ -11630,7 +11617,7 @@
       "team": 16,
       "total_points": 8,
       "event_points": 0,
-      "status": "d"
+      "status": "i"
     },
     {
       "id": 440,
@@ -11839,7 +11826,7 @@
       "team": 17,
       "total_points": 0,
       "event_points": 0,
-      "status": "i"
+      "status": "d"
     },
     {
       "id": 459,
@@ -11916,7 +11903,7 @@
       "team": 17,
       "total_points": 4,
       "event_points": 0,
-      "status": "i"
+      "status": "d"
     },
     {
       "id": 466,
@@ -11960,7 +11947,7 @@
       "team": 18,
       "total_points": 19,
       "event_points": 2,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 470,
@@ -12202,7 +12189,7 @@
       "team": 18,
       "total_points": 12,
       "event_points": 1,
-      "status": "a"
+      "status": "i"
     },
     {
       "id": 492,
@@ -12290,7 +12277,7 @@
       "team": 19,
       "total_points": 9,
       "event_points": 1,
-      "status": "d"
+      "status": "i"
     },
     {
       "id": 500,
@@ -12653,7 +12640,7 @@
       "team": 20,
       "total_points": 14,
       "event_points": 2,
-      "status": "d"
+      "status": "i"
     },
     {
       "id": 533,
@@ -12873,7 +12860,7 @@
       "team": 20,
       "total_points": 24,
       "event_points": 17,
-      "status": "d"
+      "status": "i"
     },
     {
       "id": 553,
@@ -12895,7 +12882,7 @@
       "team": 1,
       "total_points": 16,
       "event_points": 2,
-      "status": "d"
+      "status": "i"
     },
     {
       "id": 555,
@@ -12961,7 +12948,7 @@
       "team": 11,
       "total_points": 1,
       "event_points": 0,
-      "status": "d"
+      "status": "i"
     },
     {
       "id": 561,
@@ -12972,7 +12959,7 @@
       "team": 11,
       "total_points": 1,
       "event_points": 0,
-      "status": "i"
+      "status": "a"
     },
     {
       "id": 562,
@@ -13126,7 +13113,7 @@
       "team": 8,
       "total_points": 3,
       "event_points": 1,
-      "status": "d"
+      "status": "i"
     },
     {
       "id": 576,
@@ -13203,7 +13190,7 @@
       "team": 2,
       "total_points": 0,
       "event_points": 0,
-      "status": "i"
+      "status": "d"
     },
     {
       "id": 583,
@@ -13269,7 +13256,7 @@
       "team": 8,
       "total_points": 19,
       "event_points": 6,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 589,
@@ -13346,7 +13333,7 @@
       "team": 17,
       "total_points": 13,
       "event_points": 0,
-      "status": "i"
+      "status": "d"
     },
     {
       "id": 596,
@@ -13874,7 +13861,7 @@
       "team": 11,
       "total_points": 1,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 644,
@@ -13929,7 +13916,7 @@
       "team": 13,
       "total_points": 1,
       "event_points": 1,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 649,
@@ -14143,141 +14130,141 @@
   ],
   "teams": [
     {
-      "code": 3,
       "id": 1,
+      "code": 3,
       "name": "Arsenal",
       "pulse_id": 1,
       "short_name": "ARS"
     },
     {
-      "code": 7,
       "id": 2,
+      "code": 7,
       "name": "Aston Villa",
       "pulse_id": 2,
       "short_name": "AVL"
     },
     {
-      "code": 91,
       "id": 3,
+      "code": 91,
       "name": "Bournemouth",
       "pulse_id": 127,
       "short_name": "BOU"
     },
     {
-      "code": 94,
       "id": 4,
+      "code": 94,
       "name": "Brentford",
       "pulse_id": 130,
       "short_name": "BRE"
     },
     {
-      "code": 36,
       "id": 5,
+      "code": 36,
       "name": "Brighton",
       "pulse_id": 131,
       "short_name": "BHA"
     },
     {
-      "code": 8,
       "id": 6,
+      "code": 8,
       "name": "Chelsea",
       "pulse_id": 4,
       "short_name": "CHE"
     },
     {
-      "code": 9,
       "id": 7,
+      "code": 9,
       "name": "Coventry City",
       "pulse_id": 5,
       "short_name": "COV"
     },
     {
-      "code": 31,
       "id": 8,
+      "code": 31,
       "name": "Crystal Palace",
       "pulse_id": 6,
       "short_name": "CRY"
     },
     {
-      "code": 11,
       "id": 9,
+      "code": 11,
       "name": "Everton",
       "pulse_id": 7,
       "short_name": "EVE"
     },
     {
-      "code": 54,
       "id": 10,
+      "code": 54,
       "name": "Fulham",
       "pulse_id": 34,
       "short_name": "FUL"
     },
     {
-      "code": 88,
       "id": 11,
+      "code": 88,
       "name": "Hull City",
       "pulse_id": 41,
       "short_name": "HUL"
     },
     {
-      "code": 40,
       "id": 12,
+      "code": 40,
       "name": "Ipswich Town",
       "pulse_id": 8,
       "short_name": "IPS"
     },
     {
-      "code": 2,
       "id": 13,
+      "code": 2,
       "name": "Leeds",
       "pulse_id": 9,
       "short_name": "LEE"
     },
     {
-      "code": 14,
       "id": 14,
+      "code": 14,
       "name": "Liverpool",
       "pulse_id": 10,
       "short_name": "LIV"
     },
     {
-      "code": 43,
       "id": 15,
+      "code": 43,
       "name": "Man City",
       "pulse_id": 11,
       "short_name": "MCI"
     },
     {
-      "code": 1,
       "id": 16,
+      "code": 1,
       "name": "Man Utd",
       "pulse_id": 12,
       "short_name": "MUN"
     },
     {
-      "code": 4,
       "id": 17,
+      "code": 4,
       "name": "Newcastle",
       "pulse_id": 23,
       "short_name": "NEW"
     },
     {
-      "code": 17,
       "id": 18,
+      "code": 17,
       "name": "Nott'm Forest",
       "pulse_id": 15,
       "short_name": "NFO"
     },
     {
-      "code": 6,
       "id": 19,
+      "code": 6,
       "name": "Spurs",
       "pulse_id": 21,
       "short_name": "TOT"
     },
     {
-      "code": 56,
       "id": 20,
+      "code": 56,
       "name": "Sunderland",
       "pulse_id": 29,
       "short_name": "SUN"
@@ -14286,7 +14273,6 @@
   "element_types": [
     {
       "id": 1,
-      "element_count": 73,
       "singular_name": "Goalkeeper",
       "singular_name_short": "GKP",
       "plural_name": "Goalkeepers",
@@ -14294,7 +14280,6 @@
     },
     {
       "id": 2,
-      "element_count": 217,
       "singular_name": "Defender",
       "singular_name_short": "DEF",
       "plural_name": "Defenders",
@@ -14302,7 +14287,6 @@
     },
     {
       "id": 3,
-      "element_count": 298,
       "singular_name": "Midfielder",
       "singular_name_short": "MID",
       "plural_name": "Midfielders",
@@ -14310,7 +14294,6 @@
     },
     {
       "id": 4,
-      "element_count": 79,
       "singular_name": "Forward",
       "singular_name_short": "FWD",
       "plural_name": "Forwards",
