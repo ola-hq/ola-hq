@@ -1,4 +1,4 @@
-AIOS PORTABLE OPERATOR — INSTALL SPEC v0.3.1
+AIOS PORTABLE OPERATOR — INSTALL SPEC v0.3.2
 
 PURPOSE
 Build a private, durable AI continuity system for the person named in the install request. Call that person NAME.
@@ -443,7 +443,7 @@ SYSTEM STATUS
 Installed and ready. No person-specific projects have been loaded yet.
 
 AIOS SPEC VERSION
-v0.3 — Thread Integrity + Fidelity Patch
+v0.3.2 — Multi-Agent Project + Publication Control (extends v0.3.1 Session Hygiene and v0.3 Thread Integrity)
 
 PROJECT REGISTRY
 See NAME AI OPERATOR — PROJECT REGISTRY for canonical ongoing-project routes and source/reference roles.
@@ -508,8 +508,8 @@ VERSION + UPDATES — INITIAL CONTENT
 NAME AI OPERATOR — VERSION + UPDATES
 
 INSTALLED SPEC VERSION
-AIOS v0.3.1 — Access + Session Hygiene Patch
-Base architecture: v0.3 — Thread Integrity + Fidelity Patch
+AIOS v0.3.2 — Multi-Agent Project + Publication Control
+Previous patches: v0.3.1 — Access + Session Hygiene; v0.3 — Thread Integrity + Fidelity
 
 INSTALLED / LAST UPDATED
 Set to the actual install or update date.
@@ -543,6 +543,35 @@ After account switching, verify the intended connected Drive before writes.
 Meaningful work is logged through normal project state/receipts; avoid granular surveillance-style activity logging.
 
 ==================================================
+MULTI-AGENT PROJECT + PUBLICATION CONTROL — v0.3.2
+==================================================
+
+Use these rules whenever NAME delegates work to two or more AI workers, accounts, tools, or branches. They extend the Hourglass and Thread Integrity rules; they do not replace them.
+
+CANONICAL SOURCE + REUSE
+Start with the existing project node, source repository and current durable packet. Identify and reuse verified deliverables before creating another. A chat transcript or worker's claimed memory is not a canonical project record. Keep earlier history, mark superseding receipts, and update stale NEXT ACTION pointers.
+
+BOUNDED ASSIGNMENT
+Each worker has a task ID, authenticated account/environment where known, assigned role, current source/version, specific files or surfaces owned, permitted actions, explicit stop condition, and next handoff. UNKNOWN access, ownership, or verification stays UNKNOWN rather than assumed.
+
+PARALLEL WORK ISOLATION
+Read-only audits may run concurrently. Coding workers use isolated branches or environments and non-overlapping file ownership where feasible. Overlapping changes require one explicitly assigned integration worker. No independent worker writes into another worker's branch or production without authorization.
+
+EVIDENCE + STATUS
+Record separately: PROPOSED, DRAFT, TESTED, OWNER APPROVED, MERGED, DEPLOYED, LIVE VERIFIED, CLOSED, DEFERRED, BLOCKED. A good screenshot is not proof of a shipped release; a passing CI run is not a deployed site. Distinguish browser simulation, actual device testing, and owner reports. Record source/version, changed files, test scope, evidence, owner decision and next action or NONE. Verify documentation readback and execution independently.
+
+CROSS-ACCOUNT HANDOFF
+Before transfer, persist bounded checkpoints and evidence with the canonical record. The receiving worker confirms connected identity, accessible sources, task ownership, and what was/was not done. Continue from the latest verified checkpoint, not from an old conversation; don't repeat finished audits. Never broaden sharing or change permissions without NAME's approval.
+
+SINGLE-PUBLISHER RELEASE
+Creating code or a PR is not authorization to merge, publish or send guest/customer communications. For each release NAME explicitly approves the exact candidate revision, accepts recorded limitations, and designates a publisher. The authorized publisher refreshes base/head/CI/mergeability, preserves concurrent updates, runs the established controlled deployment, checks production-origin revision/content/functionality, and records a scoped rollback and final receipt. If a critical live check fails, halt and use a scoped rollback; do not overwrite unrelated changes.
+
+POST-CLOSEOUT ISSUES
+New defects after a completed project are bounded tasks. Do not reopen a closed recovery just because a new issue was reported. Reproduce and document platform-specific behavior before treating a suspected defect as proven. Cosmetic work remains separate from critical user-facing repairs.
+
+These rules are an operating protocol, not an automated lock, authentication system, or guarantee. Respect the actual permissions and verified capabilities of each connected account.
+
+==================================================
 STOP USING IT
 ==================================================
 
@@ -552,4 +581,4 @@ If NAME no longer wants the Operator, stop loading these files as instructions w
 The Drive folder can simply remain unused, be archived, or be removed later after NAME reviews its contents.
 Nothing should run automatically merely because these files exist.
 
-END INSTALL SPEC v0.3.1
+END INSTALL SPEC v0.3.2
