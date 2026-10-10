@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-10T08:26:38.235Z",
+    "fetched_at": "2026-10-10T16:05:35.579Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-10T05:03:20.241Z"
+    "details_checked_at": "2026-10-10T15:51:34.894Z"
   },
   "matches": [
     {
@@ -3140,16 +3140,130 @@
         "name": "Leeds",
         "short": "LEE"
       },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
+      "home_score": 2,
+      "away_score": 1,
+      "status": "post",
       "minute": null,
       "venue": "Emirates Stadium",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879268/leeds-united-arsenal",
-      "stats": [],
-      "events": [],
-      "lineups": null
+      "stats": [
+        {
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
+          "home": "12",
+          "away": "20"
+        },
+        {
+          "label": "wonCorners",
+          "home": "3",
+          "away": "4"
+        },
+        {
+          "label": "goalAssists",
+          "home": "2",
+          "away": "1"
+        },
+        {
+          "label": "possessionPct",
+          "home": "58.2",
+          "away": "41.8"
+        },
+        {
+          "label": "shotAssists",
+          "home": "11",
+          "away": "7"
+        },
+        {
+          "label": "shotsOnTarget",
+          "home": "6",
+          "away": "5"
+        },
+        {
+          "label": "totalGoals",
+          "home": "2",
+          "away": "1"
+        },
+        {
+          "label": "totalShots",
+          "home": "13",
+          "away": "11"
+        }
+      ],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Calafiori (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Bruno G. (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Justin (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Ødegaard (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Justin (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Muharemović (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Ampadu (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Tanaka (Away)"
+        }
+      ],
+      "lineups": {
+        "home": [
+          "David Raya",
+          "Gabriel Magalhães",
+          "Ezri Konsa",
+          "Riccardo Calafiori",
+          "Ben White",
+          "Martin Ødegaard",
+          "Myles Lewis-Skelly",
+          "Declan Rice",
+          "Kai Havertz",
+          "Noni Madueke",
+          "Bukayo Saka"
+        ],
+        "away": [
+          "James Trafford",
+          "Nico Elvedi",
+          "Tarik Muharemovic",
+          "James Justin",
+          "Ao Tanaka",
+          "Ethan Ampadu",
+          "Gabriel Gudmundsson",
+          "Jayden Bogle",
+          "Dominic Calvert-Lewin",
+          "Noah Okafor",
+          "Anton Stach"
+        ]
+      }
     },
     {
       "id": "pl-52",
@@ -3162,16 +3276,145 @@
         "name": "Brentford",
         "short": "BRE"
       },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
+      "home_score": 2,
+      "away_score": 2,
+      "status": "post",
       "minute": null,
       "venue": "Villa Park",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878776/brentford-aston-villa",
-      "stats": [],
-      "events": [],
-      "lineups": null
+      "stats": [
+        {
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
+          "home": "7",
+          "away": "24"
+        },
+        {
+          "label": "wonCorners",
+          "home": "2",
+          "away": "2"
+        },
+        {
+          "label": "goalAssists",
+          "home": "1",
+          "away": "1"
+        },
+        {
+          "label": "possessionPct",
+          "home": "52.1",
+          "away": "47.9"
+        },
+        {
+          "label": "shotAssists",
+          "home": "14",
+          "away": "9"
+        },
+        {
+          "label": "shotsOnTarget",
+          "home": "7",
+          "away": "4"
+        },
+        {
+          "label": "totalGoals",
+          "home": "2",
+          "away": "2"
+        },
+        {
+          "label": "totalShots",
+          "home": "20",
+          "away": "14"
+        }
+      ],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · McGinn (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · N.Jackson (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Ajer (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Yarmoliuk (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Cash (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Buendía (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Ajer (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Kayode (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Janelt (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Thiago (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Wilson (Away)"
+        }
+      ],
+      "lineups": {
+        "home": [
+          "Zion Suzuki",
+          "Tyrone Mings",
+          "Victor Lindelöf",
+          "Matteo Ruggeri",
+          "Matty Cash",
+          "Emiliano Buendía",
+          "João Gomes",
+          "Boubacar Kamara",
+          "Nicolas Jackson",
+          "Johan Manzambi",
+          "John McGinn"
+        ],
+        "away": [
+          "Caoimhín Kelleher",
+          "Kristoffer Ajer",
+          "Jannik Schuster",
+          "El Hadji Malick Diouf",
+          "Michael Kayode",
+          "Keane Lewis-Potter",
+          "Vitaly Janelt",
+          "Yehor Yarmoliuk",
+          "Igor Thiago",
+          "Kevin Schade",
+          "Jaidon Anthony"
+        ]
+      }
     },
     {
       "id": "pl-53",
@@ -3184,15 +3427,56 @@
         "name": "Bournemouth",
         "short": "BOU"
       },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
+      "home_score": 5,
+      "away_score": 1,
+      "status": "post",
       "minute": null,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Henderson ×2 (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · João Pedro ×2 (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Rogers (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Evanilson (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Truffert (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Tavernier (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Adams (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Christie (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -3206,16 +3490,135 @@
         "name": "Fulham",
         "short": "FUL"
       },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
+      "home_score": 2,
+      "away_score": 1,
+      "status": "post",
       "minute": null,
       "venue": "Portman Road",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879265/fulham-ipswich-town",
-      "stats": [],
-      "events": [],
-      "lineups": null
+      "stats": [
+        {
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
+          "home": "8",
+          "away": "10"
+        },
+        {
+          "label": "wonCorners",
+          "home": "2",
+          "away": "5"
+        },
+        {
+          "label": "goalAssists",
+          "home": "1",
+          "away": "0"
+        },
+        {
+          "label": "possessionPct",
+          "home": "47.6",
+          "away": "52.4"
+        },
+        {
+          "label": "shotAssists",
+          "home": "7",
+          "away": "9"
+        },
+        {
+          "label": "shotsOnTarget",
+          "home": "5",
+          "away": "5"
+        },
+        {
+          "label": "totalGoals",
+          "home": "2",
+          "away": "1"
+        },
+        {
+          "label": "totalShots",
+          "home": "11",
+          "away": "13"
+        }
+      ],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · O'Shea (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Ouattara (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Sessegnon (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Walton (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Davis (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Bassey (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Smith Rowe (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · King (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Ángel (Away)"
+        }
+      ],
+      "lineups": {
+        "home": [
+          "Christian Walton",
+          "Dara O'Shea",
+          "Issa Diop",
+          "Leif Davis",
+          "Abdoul Ouattara",
+          "Julio Enciso",
+          "Florentino",
+          "Sasa Lukic",
+          "Emersonn",
+          "Jaden Philogene",
+          "Daizen Maeda"
+        ],
+        "away": [
+          "Bernd Leno",
+          "Calvin Bassey",
+          "David Affengruber",
+          "Ryan Sessegnon",
+          "Kenny Tete",
+          "Josh King",
+          "Shea Charles",
+          "Sander Berge",
+          "Gonzalo García",
+          "Alex Iwobi",
+          "Oscar Bobb"
+        ]
+      }
     },
     {
       "id": "pl-60",
@@ -3228,15 +3631,36 @@
         "name": "Brighton",
         "short": "BHA"
       },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
+      "home_score": 0,
+      "away_score": 2,
+      "status": "post",
       "minute": null,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · De Cuyper (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Hadjam (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Boscagli (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Red card",
+          "description": "Red card · Struijk (Away)"
+        }
+      ],
       "lineups": null
     },
     {

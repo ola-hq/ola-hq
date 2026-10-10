@@ -148,7 +148,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .paris-week-grid span{font-size:9px;letter-spacing:.13em;font-weight:800}
 .paris-week-grid h3{font-size:30px;line-height:1;margin:.35em 0}
 .paris-week-grid p{font:13px/1.55 Arial,sans-serif}
-.paris-artifacts{padding:0 8vw 90px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;background:#fbf7ef}
+.paris-artifacts{padding:0 8vw 90px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;background:#fbf7ef}
 .paris-artifacts a{min-height:220px;padding:22px;background:#17233a;color:#f4eee3;text-decoration:none;display:flex;flex-direction:column;justify-content:space-between}
 .paris-artifacts a:nth-child(even){background:#d9cbb8;color:#18243a}
 .paris-artifacts span,.paris-artifacts small{font-size:8px;letter-spacing:.13em;font-weight:800}

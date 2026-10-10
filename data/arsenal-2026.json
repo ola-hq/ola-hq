@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-arsenal-v1",
     "mode": "Auto-refreshed ESPN schedule",
-    "updated_at": "2026-10-10T07:50:15.540Z",
+    "updated_at": "2026-10-10T15:50:13.530Z",
     "updated_display": "Oct 6, 2026",
     "architecture": [
       "live source",
@@ -155,6 +155,38 @@
         "url": "https://fantasy.premierleague.com/api/fixtures/"
       },
       {
+        "label": "Premier League official fixture feed",
+        "url": "https://fantasy.premierleague.com/api/fixtures/"
+      },
+      {
+        "label": "Premier League official fixture feed",
+        "url": "https://fantasy.premierleague.com/api/fixtures/"
+      },
+      {
+        "label": "Premier League official fixture feed",
+        "url": "https://fantasy.premierleague.com/api/fixtures/"
+      },
+      {
+        "label": "Premier League official fixture feed",
+        "url": "https://fantasy.premierleague.com/api/fixtures/"
+      },
+      {
+        "label": "Premier League official fixture feed",
+        "url": "https://fantasy.premierleague.com/api/fixtures/"
+      },
+      {
+        "label": "Premier League official fixture feed",
+        "url": "https://fantasy.premierleague.com/api/fixtures/"
+      },
+      {
+        "label": "Premier League official fixture feed",
+        "url": "https://fantasy.premierleague.com/api/fixtures/"
+      },
+      {
+        "label": "Premier League official fixture feed",
+        "url": "https://fantasy.premierleague.com/api/fixtures/"
+      },
+      {
         "label": "ESPN Arsenal schedule (automated, unofficial)",
         "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/359/schedule"
       },
@@ -166,9 +198,9 @@
     "refresh_strategy": "scheduled",
     "schedule_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/359/schedule?season=2026",
     "league_source": "https://site.api.espn.com/apis/v2/sports/soccer/eng.1/standings",
-    "league_updated_at": "2026-10-10T07:50:15.540Z",
+    "league_updated_at": "2026-10-10T15:50:13.530Z",
     "fixture_source": "automated",
-    "fixture_updated_at": "2026-10-10T07:50:15.540Z",
+    "fixture_updated_at": "2026-10-10T15:50:13.530Z",
     "official_fixture_feed": "https://fantasy.premierleague.com/api/fixtures/",
     "match_link_source": "Verified Premier League match centre"
   },
@@ -181,33 +213,33 @@
       "kickoff_utc": "2026-10-10T11:30:00.000Z",
       "competition": "Premier League",
       "venue_name": "Emirates Stadium",
-      "status": "pre",
+      "status": "in",
       "match_center_url": "https://www.premierleague.com/en/match/2645245/essenal-vs-leeds-united/info"
     },
     "latest_result": {
-      "opponent": "Brighton & Hove Albion",
-      "venue": "Away",
-      "score": "0–3",
-      "result": "L"
+      "opponent": "Leeds United",
+      "venue": "Home",
+      "score": "2–1",
+      "result": "W"
     },
     "league": {
       "competition": "Premier League",
       "position": 2,
-      "points": 12,
-      "played": 5,
-      "wins": 4,
+      "points": 15,
+      "played": 6,
+      "wins": 5,
       "draws": 0,
       "losses": 1,
-      "gf": 8,
-      "ga": 4,
-      "gd": 4
+      "gf": 10,
+      "ga": 5,
+      "gd": 5
     },
     "recent_form": [
       "W",
       "W",
-      "W",
       "L",
-      "L"
+      "L",
+      "W"
     ],
     "context": "Defending 2025/26 Premier League champions."
   }
