@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-10T11:51:46.919Z",
+    "fetched_at": "2026-10-10T12:08:11.599Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-10T11:51:46.919Z"
+    "details_checked_at": "2026-10-10T12:08:11.599Z"
   },
   "matches": [
     {
@@ -3203,20 +3203,20 @@
       "home_score": 0,
       "away_score": 0,
       "status": "in",
-      "minute": 21,
+      "minute": 38,
       "venue": "Emirates Stadium",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879268",
       "stats": [
         {
           "label": "Fouls",
-          "home": "3",
-          "away": "4"
+          "home": "7",
+          "away": "8"
         },
         {
           "label": "Yellow Cards",
           "home": "0",
-          "away": "0"
+          "away": "1"
         },
         {
           "label": "Red Cards",
@@ -3225,38 +3225,38 @@
         },
         {
           "label": "Offsides",
-          "home": "4",
+          "home": "5",
           "away": "1"
         },
         {
           "label": "Corner Kicks",
           "home": "0",
-          "away": "1"
-        },
-        {
-          "label": "Saves",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Possession",
-          "home": "63.1",
-          "away": "36.9"
-        },
-        {
-          "label": "SHOTS",
-          "home": "0",
           "away": "2"
         },
         {
+          "label": "Saves",
+          "home": "2",
+          "away": "1"
+        },
+        {
+          "label": "Possession",
+          "home": "59.4",
+          "away": "40.6"
+        },
+        {
+          "label": "SHOTS",
+          "home": "3",
+          "away": "5"
+        },
+        {
           "label": "ON GOAL",
-          "home": "0",
-          "away": "0"
+          "home": "1",
+          "away": "2"
         },
         {
           "label": "On Target %",
-          "home": "0.0",
-          "away": "0.0"
+          "home": "0.3",
+          "away": "0.4"
         },
         {
           "label": "Penalty Goals",
