@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-09T20:25:57.721Z",
+    "fetched_at": "2026-10-10T05:24:14.859Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-09T16:55:16.677Z"
+    "details_checked_at": "2026-10-10T05:03:20.241Z"
   },
   "matches": [
     {

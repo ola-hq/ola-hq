@@ -11,17 +11,17 @@ const FESTIVAL_UPDATES = [
     route:'updates'
   },
   {
-    id:'day-two', revision:'2026-10-08-polish03', publishedAt:'2026-10-08', priority:'confirmed',
+    id:'day-two', revision:'2026-10-09-qualified-r5', publishedAt:'2026-10-08', priority:'confirmed',
     audience:{en:'Festival guests',es:'Invitados del Festival'},
     title:{en:'Tornaboda · Saturday, together',es:'Tornaboda · Un sábado juntos'},
-    body:{en:'Saturday, October 17 · 12:00 PM–5:00 PM · La Tijera, the same property as the wedding. A relaxed pool-day gathering and La Taquiza. After 5 PM, we’ll see where the night takes us.',es:'Sábado 17 de octubre · 12:00 PM–5:00 PM · La Tijera, la misma propiedad de la boda. Un encuentro relajado con ambiente de alberca y La Taquiza. Después de las 5 PM, veremos a dónde nos lleva la noche.'},
+    body:{"en": "Saturday, October 17 · 12:00 PM–5:00 PM · La Tijera, the same property as the wedding. One more relaxed afternoon together. Food plans and swimming access are still being confirmed. After 5 PM, we’ll see where the night takes us.", "es": "Sábado 17 de octubre · 12:00 PM–5:00 PM · La Tijera, la misma propiedad de la boda. Una tarde más para convivir. Los planes de comida y el acceso para nadar siguen por confirmar. Después de las 5 PM, veremos a dónde nos lleva la noche."},
     route:'tornaboda'
   },
   {
-    id:'tacos', revision:'2026-10-08-2', publishedAt:'2026-10-08', priority:'pending',
+    id:'tacos', revision:'2026-10-09-qualified-r5', publishedAt:'2026-10-08', priority:'pending',
     audience:{en:'Day 2 information',es:'Información del Día 2'},
     title:{en:'Tacos · Serving details to follow',es:'Tacos · Detalles del servicio próximamente'},
-    body:{en:'Tacos are expected on Saturday afternoon. The vendor and exact two-hour serving window are still being confirmed. Check here for the confirmed details before planning around a food-service window.',es:'Se esperan tacos el sábado por la tarde. El proveedor y el horario exacto de dos horas de servicio siguen por confirmar. Consulta aquí los detalles confirmados antes de organizarte en torno a un horario de comida.'},
+    body:{"en": "Tacos are planned for Saturday afternoon. The vendor and serving time are still being confirmed. Check here for confirmed details before planning around a food-service window.", "es": "Se planean tacos para el sábado por la tarde. El proveedor y el horario de servicio siguen por confirmar. Consulta aquí los detalles confirmados antes de organizarte en torno a un horario de comida."},
     route:'tornaboda'
   },
   {

@@ -26,8 +26,16 @@
 @media(max-width:650px){.platica{margin:36px 18px 42px;padding:0}.platica-head{padding:35px 13px 26px}.platica-guestbook{padding:29px 12px 22px}.platica-form{padding:18px 12px}.platica-message{padding:16px 13px}.platica-message-head{flex-wrap:wrap}.platica-form-foot{align-items:stretch;flex-direction:column}.platica-form-foot button{width:100%}.masthead .updates-shortcut{font-size:14px}.bottomnav a{padding-left:1px;padding-right:1px}}
 /* Carry the already-approved blue-and-white Talavera language through all Saturday sections. */
 #tornaboda .weekend-note,#tornaboda .saturday-activities,#tornaboda .after-five,#tornaboda .section-intro{position:relative;background:#fffaf0;border:2px solid #26569b;color:#143967;box-shadow:0 0 0 3px #faf5eb,0 0 0 5px #9db8d6;overflow:hidden}
-#tornaboda .weekend-note:before,#tornaboda .saturday-activities:before,#tornaboda .after-five:before,#tornaboda .section-intro:before{content:'';display:block;height:36px;margin:-2px -2px 16px;background:#f6f2e8 url('../../assets/tile.svg') repeat-x center/36px 36px}
-#tornaboda .weekend-note{padding:2px 20px 22px}#tornaboda .saturday-activities{padding:2px 22px 26px;margin-top:28px}#tornaboda .after-five{padding:2px 22px 26px}#tornaboda .section-intro{margin:25px 24px 45px;padding:2px 20px 24px}#tornaboda .activity-chips li{background:#edf4fb;border-color:#a2b8d5}
+/* Match the original top/bottom tile bands to the solid side frame.
+   Position against the card edges, independent of its content padding. */
+#tornaboda .weekend-note:before,#tornaboda .weekend-note:after,
+#tornaboda .saturday-activities:before,#tornaboda .saturday-activities:after,
+#tornaboda .after-five:before,#tornaboda .after-five:after,
+#tornaboda .section-intro:before,#tornaboda .section-intro:after{content:'';position:absolute;left:0;right:0;margin:0;box-sizing:border-box;pointer-events:none;background-color:#f6f2e8;background-image:url('../../assets/tile.svg');background-repeat:repeat-x;background-position:center;border-block:1px solid #26569b}
+#tornaboda .section-intro:before{top:0}
+#tornaboda .section-intro:after{bottom:0}
+#tornaboda .section-intro:before,#tornaboda .section-intro:after{height:36px;background-size:36px 36px}
+#tornaboda .weekend-note{padding:2px 20px 22px}#tornaboda .saturday-activities{padding:2px 22px 26px;margin-top:28px}#tornaboda .after-five{padding:2px 22px 26px}#tornaboda .section-intro{margin:25px 24px 45px;padding:54px 20px}#tornaboda .activity-chips li{background:#edf4fb;border-color:#a2b8d5}
 @media(max-width:650px){#tornaboda .weekend-note{padding:2px 16px 19px}#tornaboda .saturday-activities{margin:28px 16px}#tornaboda .after-five{margin:28px 16px}#tornaboda .section-intro{margin:25px 16px 40px}}
 
 

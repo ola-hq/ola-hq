@@ -310,3 +310,78 @@ dialog .legacy-detail .legacy-visual-title{font-size:clamp(24px,6vw,36px);top:10
  #tornaboda .after-five::after{height:42px;background-size:42px 42px}
  #tornaboda .saturday-activities h3{font-size:clamp(25px,7vw,34px)}
 }
+
+
+/* PREVIEW: Tornaboda lower text-clearance + authentic guide masthead wordmark, 2026-10-09 */
+/* Correct only the two lower Saturday blocks. Keep the accepted tile and colors.
+   The aside selector preserves safe padding against later la-platica.css overrides. */
+#tornaboda aside.saturday-activities,
+#tornaboda aside.after-five{
+  --tornaboda-band-height:48px;
+  padding-top:calc(var(--tornaboda-band-height) + 35px);
+  padding-bottom:calc(var(--tornaboda-band-height) + 39px);
+}
+#tornaboda .saturday-activities::before,
+#tornaboda .saturday-activities::after,
+#tornaboda .after-five::before,
+#tornaboda .after-five::after{
+  z-index:0;
+}
+#tornaboda .saturday-activities > *,
+#tornaboda .after-five > *{
+  position:relative;
+  z-index:1;
+}
+#tornaboda .saturday-activities > :last-child,
+#tornaboda .after-five > :last-child{margin-bottom:0}
+/* Genuine pre-existing La Ola de Amor typographic wordmark in top back link.
+   The translated text is retained as a screen-reader-only accessible name. */
+.masthead>.masthead-brand-back{
+  display:inline-flex;
+  justify-self:start;
+  align-items:center;
+  gap:7px;
+  min-width:0;
+  white-space:nowrap;
+  text-decoration:none;
+  letter-spacing:normal;
+}
+.masthead-brand-arrow{
+  font:700 22px/1 var(--serif);
+  color:#f6efe2;
+  flex:none;
+}
+.masthead-brand-wordmark{
+  display:block;
+  width:clamp(110px,13vw,160px);
+  max-height:34px;
+  height:auto;
+  object-fit:contain;
+  flex:none;
+}
+.masthead>.masthead-brand-back:hover .masthead-brand-wordmark,
+.masthead>.masthead-brand-back:focus-visible .masthead-brand-wordmark{
+  filter:drop-shadow(0 0 5px #f6d48b77);
+}
+.masthead-brand-sr{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+@media(max-width:650px){
+  #tornaboda aside.saturday-activities,
+  #tornaboda aside.after-five{
+    --tornaboda-band-height:42px;
+    padding-top:calc(var(--tornaboda-band-height) + 35px);
+    padding-bottom:calc(var(--tornaboda-band-height) + 41px);
+  }
+  .masthead>.masthead-brand-back{gap:4px}
+  .masthead-brand-arrow{font-size:17px}
+  .masthead-brand-wordmark{width:clamp(79px,25vw,103px);max-height:25px}
+}
