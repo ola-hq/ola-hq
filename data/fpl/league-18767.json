@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-10T18:32:19.166Z",
+    "fetched_at": "2026-10-10T19:27:41.766Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -10460,8 +10460,8 @@
       "web_name": "Muharemović",
       "element_type": 2,
       "team": 13,
-      "total_points": 27,
-      "event_points": 0,
+      "total_points": 29,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -12464,7 +12464,7 @@
       "team": 19,
       "total_points": 13,
       "event_points": -2,
-      "status": "a"
+      "status": "s"
     },
     {
       "id": 517,
