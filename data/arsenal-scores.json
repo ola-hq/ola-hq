@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-10T15:05:54.806Z",
+    "fetched_at": "2026-10-10T15:24:50.517Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-10T15:05:54.806Z"
+    "details_checked_at": "2026-10-10T15:24:50.517Z"
   },
   "matches": [
     {
@@ -3339,7 +3339,7 @@
       "home_score": 1,
       "away_score": 1,
       "status": "in",
-      "minute": 456,
+      "minute": 63,
       "venue": "Villa Park",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878776",
@@ -3347,7 +3347,7 @@
         {
           "label": "Fouls",
           "home": "4",
-          "away": "12"
+          "away": "17"
         },
         {
           "label": "Yellow Cards",
@@ -3371,28 +3371,28 @@
         },
         {
           "label": "Saves",
-          "home": "1",
+          "home": "2",
           "away": "3"
         },
         {
           "label": "Possession",
-          "home": "50",
-          "away": "50"
+          "home": "52.9",
+          "away": "47.1"
         },
         {
           "label": "SHOTS",
-          "home": "10",
-          "away": "5"
+          "home": "13",
+          "away": "9"
         },
         {
           "label": "ON GOAL",
           "home": "4",
-          "away": "2"
+          "away": "3"
         },
         {
           "label": "On Target %",
-          "home": "0.4",
-          "away": "0.4"
+          "home": "0.3",
+          "away": "0.3"
         },
         {
           "label": "Penalty Goals",
@@ -3467,10 +3467,10 @@
         "name": "Bournemouth",
         "short": "BOU"
       },
-      "home_score": 2,
-      "away_score": 0,
+      "home_score": 3,
+      "away_score": 1,
       "status": "in",
-      "minute": 45,
+      "minute": 63,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -3488,6 +3488,16 @@
         },
         {
           "minute": null,
+          "type": "Goal",
+          "description": "Goal · João Pedro (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Evanilson (Away)"
+        },
+        {
+          "minute": null,
           "type": "Yellow card",
           "description": "Yellow card · Truffert (Away)"
         },
@@ -3495,6 +3505,11 @@
           "minute": null,
           "type": "Yellow card",
           "description": "Yellow card · Tavernier (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Adams (Away)"
         }
       ],
       "lineups": null
@@ -3511,22 +3526,22 @@
         "short": "FUL"
       },
       "home_score": 0,
-      "away_score": 0,
+      "away_score": 1,
       "status": "in",
-      "minute": 48,
+      "minute": 67,
       "venue": "Portman Road",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879265",
       "stats": [
         {
           "label": "Fouls",
-          "home": "5",
-          "away": "2"
+          "home": "6",
+          "away": "5"
         },
         {
           "label": "Yellow Cards",
           "home": "1",
-          "away": "1"
+          "away": "2"
         },
         {
           "label": "Red Cards",
@@ -3541,32 +3556,32 @@
         {
           "label": "Corner Kicks",
           "home": "2",
-          "away": "2"
+          "away": "5"
         },
         {
           "label": "Saves",
-          "home": "1",
-          "away": "1"
+          "home": "2",
+          "away": "2"
         },
         {
           "label": "Possession",
-          "home": "36.4",
-          "away": "63.6"
+          "home": "40.7",
+          "away": "59.3"
         },
         {
           "label": "SHOTS",
-          "home": "2",
-          "away": "7"
+          "home": "6",
+          "away": "11"
         },
         {
           "label": "ON GOAL",
-          "home": "1",
-          "away": "1"
+          "home": "2",
+          "away": "4"
         },
         {
           "label": "On Target %",
-          "home": "0.5",
-          "away": "0.1"
+          "home": "0.3",
+          "away": "0.4"
         },
         {
           "label": "Penalty Goals",
@@ -3582,8 +3597,18 @@
       "events": [
         {
           "minute": null,
+          "type": "Goal",
+          "description": "Goal · Sessegnon (Away)"
+        },
+        {
+          "minute": null,
           "type": "Yellow card",
           "description": "Yellow card · Davis (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Bassey (Away)"
         },
         {
           "minute": null,
@@ -3632,9 +3657,9 @@
         "short": "BHA"
       },
       "home_score": 0,
-      "away_score": 0,
+      "away_score": 1,
       "status": "in",
-      "minute": 45,
+      "minute": 63,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -3642,8 +3667,18 @@
       "events": [
         {
           "minute": null,
+          "type": "Goal",
+          "description": "Goal · De Cuyper (Away)"
+        },
+        {
+          "minute": null,
           "type": "Yellow card",
           "description": "Yellow card · Boscagli (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Red card",
+          "description": "Red card · Struijk (Away)"
         }
       ],
       "lineups": null
