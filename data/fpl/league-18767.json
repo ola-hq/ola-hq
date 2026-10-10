@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-10T16:28:54.399Z",
+    "fetched_at": "2026-10-10T17:27:28.997Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -7259,8 +7259,8 @@
       "web_name": "Tielemans",
       "element_type": 3,
       "team": 16,
-      "total_points": 14,
-      "event_points": 0,
+      "total_points": 20,
+      "event_points": 6,
       "status": "a"
     },
     {
@@ -7360,7 +7360,7 @@
       "team": 2,
       "total_points": 9,
       "event_points": 1,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 53,
@@ -7822,7 +7822,7 @@
       "team": 4,
       "total_points": 40,
       "event_points": 1,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 95,
@@ -8018,8 +8018,8 @@
       "web_name": "Van Hecke",
       "element_type": 2,
       "team": 19,
-      "total_points": 24,
-      "event_points": 0,
+      "total_points": 25,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -10253,7 +10253,7 @@
       "team": 12,
       "total_points": 8,
       "event_points": 0,
-      "status": "s"
+      "status": "a"
     },
     {
       "id": 316,
@@ -10363,7 +10363,7 @@
       "team": 16,
       "total_points": 0,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 326,
@@ -11219,8 +11219,8 @@
       "web_name": "Sávio",
       "element_type": 3,
       "team": 19,
-      "total_points": 8,
-      "event_points": 0,
+      "total_points": 9,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -11318,8 +11318,8 @@
       "web_name": "Lammens",
       "element_type": 1,
       "team": 16,
-      "total_points": 11,
-      "event_points": 0,
+      "total_points": 15,
+      "event_points": 4,
       "status": "a"
     },
     {
@@ -11384,8 +11384,8 @@
       "web_name": "Maguire",
       "element_type": 2,
       "team": 16,
-      "total_points": 10,
-      "event_points": 0,
+      "total_points": 11,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -11395,8 +11395,8 @@
       "web_name": "Martinez",
       "element_type": 2,
       "team": 16,
-      "total_points": 6,
-      "event_points": 0,
+      "total_points": 7,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -11406,8 +11406,8 @@
       "web_name": "Yoro",
       "element_type": 2,
       "team": 16,
-      "total_points": 2,
-      "event_points": 0,
+      "total_points": 3,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -11439,8 +11439,8 @@
       "web_name": "Shaw",
       "element_type": 2,
       "team": 16,
-      "total_points": 9,
-      "event_points": 0,
+      "total_points": 10,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -11472,8 +11472,8 @@
       "web_name": "B.Fernandes",
       "element_type": 3,
       "team": 16,
-      "total_points": 31,
-      "event_points": 0,
+      "total_points": 32,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -11483,8 +11483,8 @@
       "web_name": "Mbeumo",
       "element_type": 3,
       "team": 16,
-      "total_points": 25,
-      "event_points": 0,
+      "total_points": 26,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -11494,8 +11494,8 @@
       "web_name": "Cunha",
       "element_type": 3,
       "team": 16,
-      "total_points": 26,
-      "event_points": 0,
+      "total_points": 27,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -11507,7 +11507,7 @@
       "team": 16,
       "total_points": 10,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 430,
@@ -11527,9 +11527,9 @@
       "web_name": "Amad",
       "element_type": 3,
       "team": 16,
-      "total_points": 0,
-      "event_points": 0,
-      "status": "i"
+      "total_points": 1,
+      "event_points": 1,
+      "status": "a"
     },
     {
       "id": 432,
@@ -11538,9 +11538,9 @@
       "web_name": "Mainoo",
       "element_type": 3,
       "team": 16,
-      "total_points": 22,
-      "event_points": 0,
-      "status": "d"
+      "total_points": 23,
+      "event_points": 1,
+      "status": "a"
     },
     {
       "id": 433,
@@ -11791,8 +11791,8 @@
       "web_name": "Tonali",
       "element_type": 3,
       "team": 19,
-      "total_points": 14,
-      "event_points": 0,
+      "total_points": 15,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -12242,8 +12242,8 @@
       "web_name": "Kinsky",
       "element_type": 1,
       "team": 19,
-      "total_points": 18,
-      "event_points": 0,
+      "total_points": 19,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -12264,8 +12264,8 @@
       "web_name": "Senesi",
       "element_type": 2,
       "team": 19,
-      "total_points": 3,
-      "event_points": 0,
+      "total_points": 7,
+      "event_points": 4,
       "status": "a"
     },
     {
@@ -12352,8 +12352,8 @@
       "web_name": "Udogie",
       "element_type": 2,
       "team": 19,
-      "total_points": 7,
-      "event_points": 0,
+      "total_points": 8,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -12418,8 +12418,8 @@
       "web_name": "Kudus",
       "element_type": 3,
       "team": 19,
-      "total_points": 7,
-      "event_points": 0,
+      "total_points": 8,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -12506,8 +12506,8 @@
       "web_name": "Bergvall",
       "element_type": 3,
       "team": 19,
-      "total_points": 3,
-      "event_points": 0,
+      "total_points": 4,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -12528,8 +12528,8 @@
       "web_name": "Gray",
       "element_type": 3,
       "team": 19,
-      "total_points": 9,
-      "event_points": 0,
+      "total_points": 10,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -12572,8 +12572,8 @@
       "web_name": "Solanke",
       "element_type": 4,
       "team": 19,
-      "total_points": 7,
-      "event_points": 0,
+      "total_points": 8,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -12739,7 +12739,7 @@
       "team": 20,
       "total_points": 15,
       "event_points": 1,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 542,
@@ -12781,8 +12781,8 @@
       "web_name": "Sadiki",
       "element_type": 3,
       "team": 20,
-      "total_points": 12,
-      "event_points": 2,
+      "total_points": 13,
+      "event_points": 3,
       "status": "a"
     },
     {
