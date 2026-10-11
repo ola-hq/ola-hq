@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-11T14:29:38.964Z",
+    "fetched_at": "2026-10-11T14:52:29.791Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-11T14:29:38.964Z"
+    "details_checked_at": "2026-10-11T14:52:29.791Z"
   },
   "matches": [
     {
@@ -3810,7 +3810,7 @@
       "home_score": 3,
       "away_score": 1,
       "status": "in",
-      "minute": 62,
+      "minute": 84,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -3845,6 +3845,11 @@
           "minute": null,
           "type": "Yellow card",
           "description": "Yellow card · Lerma (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Aina (Away)"
         }
       ],
       "lineups": null
@@ -3860,18 +3865,18 @@
         "name": "Everton",
         "short": "EVE"
       },
-      "home_score": 1,
-      "away_score": 1,
+      "home_score": 2,
+      "away_score": 2,
       "status": "in",
-      "minute": 67,
+      "minute": 90,
       "venue": "The MKM Stadium",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878774",
       "stats": [
         {
           "label": "Fouls",
-          "home": "12",
-          "away": "1"
+          "home": "13",
+          "away": "3"
         },
         {
           "label": "Yellow Cards",
@@ -3890,7 +3895,7 @@
         },
         {
           "label": "Corner Kicks",
-          "home": "6",
+          "home": "7",
           "away": "6"
         },
         {
@@ -3900,22 +3905,22 @@
         },
         {
           "label": "Possession",
-          "home": "37.4",
-          "away": "62.6"
+          "home": "36",
+          "away": "64"
         },
         {
           "label": "SHOTS",
-          "home": "6",
-          "away": "13"
+          "home": "9",
+          "away": "15"
         },
         {
           "label": "ON GOAL",
-          "home": "4",
-          "away": "6"
+          "home": "5",
+          "away": "7"
         },
         {
           "label": "On Target %",
-          "home": "0.7",
+          "home": "0.6",
           "away": "0.5"
         },
         {
@@ -3933,12 +3938,22 @@
         {
           "minute": null,
           "type": "Goal",
+          "description": "Goal · Belloumi (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
           "description": "Goal · Gelhardt (Home)"
         },
         {
           "minute": null,
           "type": "Goal",
           "description": "Goal · Dewsbury-Hall (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Barry (Away)"
         },
         {
           "minute": null,
