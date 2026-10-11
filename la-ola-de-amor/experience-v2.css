@@ -717,3 +717,23 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
   .brand-wordmark{max-width:calc(100% - 41px)}
   .brand>span{margin-left:0}
 }
+
+/* October 11: user-selected authentic photo swaps, isolated preview only. */
+.festival-door{background:#102544} .festival-door img{object-fit:contain!important;object-position:center center!important;background:#102544;padding:8px}
+.chapter-gdl .door-image{background:#102544}
+.travel-photo-rail{padding:clamp(40px,7vw,90px) 8vw;background:#f7f2e8;color:#172a45}
+.travel-photo-rail h2{font:clamp(36px,5vw,64px)/1.05 Georgia,serif;margin:.35em 0 .7em}
+.travel-photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.travel-photo-grid figure{margin:0;min-width:0;background:#fff;box-shadow:0 6px 24px #25375014}
+.travel-photo-grid img{display:block;width:100%;height:clamp(210px,32vw,420px);object-fit:cover}
+.travel-photo-grid figcaption{padding:13px 16px 17px;font:13px/1.5 Georgia,serif}
+.travel-gallery-trigger,.loda-riverboat-open{display:inline-block;background:transparent;border:0;border-bottom:1px solid currentColor;color:inherit;padding:12px 0 7px;font:800 12px/1.4 Arial,sans-serif;letter-spacing:.09em;text-transform:uppercase;cursor:pointer}
+.travel-gallery-trigger{margin-top:30px}
+.loda-riverboat{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:8vw;padding:70px 8vw;background:#ede7dd;color:#1e2b43}
+.loda-riverboat img{display:block;width:100%;height:400px;object-fit:cover;object-position:center 40%}
+.loda-riverboat h2{font:clamp(36px,5vw,66px)/1.02 Georgia,serif;margin:.25em 0}
+.loda-riverboat p{font:17px/1.55 Georgia,serif}
+@media(max-width:650px){.travel-photo-rail{padding:54px 6vw}.travel-photo-grid{grid-template-columns:1fr;gap:18px}.travel-photo-grid img{height:auto;max-height:460px}.loda-riverboat{grid-template-columns:1fr;padding:44px 7vw}.loda-riverboat img{height:auto;max-height:460px}.festival-door img{padding:6px}}
+
+/* Keep wide photographs inside the gallery alongside its navigation controls. */
+.loda-gallery .loda-gallery-stage img{min-width:0}
