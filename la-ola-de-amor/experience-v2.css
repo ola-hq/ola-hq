@@ -641,3 +641,30 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 
 /* Keep Vegas timeline anchors clear of the desktop sticky masthead. */
 @media(min-width:651px){.vegas .beat{scroll-margin-top:120px}}
+
+
+/* Owner LODA visual pass — isolated preview, no production release. */
+.yearbook{background:var(--paper);color:var(--navy)}
+.year-open{background:var(--navy);color:var(--paper)}
+.year-stop{border-bottom-color:var(--line)}
+.stop-page{background:var(--paper);color:var(--navy)}
+.stop-opening{background:var(--navy2);color:var(--paper)}
+.stop-lede{color:var(--gold)}
+.stop-page .letter-art{background:repeating-linear-gradient(135deg,var(--porcelain) 0 32px,var(--cream) 32px 64px)}
+.vegas-night{inset:0 0 0 29%}
+.vegas-night:after{background:linear-gradient(90deg,#090d12 0%,rgba(9,13,18,.57) 26%,rgba(9,13,18,.04) 74%)}
+.vegas-night img{object-position:center 42%}
+.vegas-copy{width:53%}
+.paris-hero-editorial{grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr)}
+.paris-photo-stack{grid-column:1;grid-row:1}
+.paris-editorial-copy{grid-column:2;grid-row:1}
+.paris-artifacts{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:980px){
+ .paris-hero-editorial{display:flex;flex-direction:column}
+ .paris-photo-stack{order:0;width:100%;min-height:72svh}
+ .paris-editorial-copy{order:1;max-width:100%}
+ .vegas-night{inset:0}
+ .vegas-night:after{background:linear-gradient(0deg,rgba(9,13,18,.88) 0%,rgba(9,13,18,.16) 60%,rgba(9,13,18,.04) 100%)}
+ .vegas-copy{width:100%;padding:43svh 7vw 9vh}
+ .paris-artifacts{grid-template-columns:1fr}
+}
