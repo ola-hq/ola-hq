@@ -6,6 +6,7 @@
  */
 const ROOT = new URL('../', location.href);
 const worlds = {
+  hq: { name: 'OLA HQ', path: '', parent: null },
   'la-ola': { name: 'La Ola de Amor', path: 'la-ola-de-amor/', parent: null },
   wave26: { name: 'Wave 26', path: 'wave-26.html', parent: null },
   polaroid: { name: 'Polaroid Wave', path: 'our-polaroid-project/', parent: null },
@@ -33,6 +34,7 @@ const heroWorldJump = document.querySelector('#hero-world-jump');
 let current = null;
 let deferredInstall = null;
 let frameTimer = null;
+let frameNavigating = false;
 
 const urlFor = key => new URL(worlds[key].path, ROOT);
 function isAllowed(href) {
@@ -45,6 +47,7 @@ function matchWorld(url) {
   if (!url || !isAllowed(url)) return null;
   const u = new URL(url, ROOT);
   const path = u.pathname.substring(rootPath.length);
+  if (path === '' || path === 'index.html') return 'hq';
   if (/^la-ola-de-amor\/scan\//.test(path)) return 'la-ola';
   if (/^la-ola-de-amor\//.test(path)) return 'la-ola';
   if (/^blockbuster-wave\//.test(path)) return 'blockbuster';
@@ -61,6 +64,7 @@ function matchWorld(url) {
 function isWorldHome(url, world) {
   if (!world || !url) return false;
   const u = new URL(url, ROOT), canonical = urlFor(world);
+  if (world === 'hq') return (u.pathname === rootPath || u.pathname === rootPath + 'index.html') && !u.search && !u.hash;
   return u.pathname.replace(/\/$/, '') === canonical.pathname.replace(/\/$/, '') && !u.search && !u.hash;
 }
 function upTarget() {
@@ -75,14 +79,16 @@ function renderNav() {
   upLabel.textContent = target ? worlds[target].name : 'OLA HQ';
   up.setAttribute('aria-label', target ? 'Return to ' + worlds[target].name + ' home' : 'Return to OLA HQ app home');
   label.textContent = worlds[world].name;
+  document.title = worlds[world].name + ' · OLA HQ';
   frame.title = worlds[world].name + ' inside OLA HQ';
   openAlone.href = current.url;
 }
 function syncAddress(push = false) {
   const u = new URL(location.href);
-  if (current) u.searchParams.set('path', new URL(current.url).href.replace(ROOT.href, ''));
+  if (current) u.searchParams.set('path', new URL(current.url).href.replace(ROOT.href, '') || 'index.html');
   else u.searchParams.delete('path');
   u.hash = current ? '' : u.hash;
+  if (!push && u.href === location.href) return;
   if (push) history.pushState({}, '', u);
   else history.replaceState({}, '', u);
 }
@@ -90,7 +96,8 @@ function showHome(push = true) {
   current = null;
   experience.hidden = true;
   universe.hidden = false;
-  frame.removeAttribute('src');
+  // Keep the hidden frame stable so App home adds only the shell history entry.
+  // readFrame ignores it while current is null.
   if (push) syncAddress(true);
   document.title = 'OLA HQ · Our Waves, One Home';
   scrollTo({top:0,behavior:'instant'});
@@ -102,34 +109,59 @@ function openWorld(world, href = urlFor(world).href, push = true) {
   universe.hidden = true;
   experience.hidden = false;
   renderNav();
-  frame.src = absolute;
-  if (push) syncAddress(true);
-  else syncAddress(false);
+  let alreadyLoaded = false;
+  try { alreadyLoaded = frame.contentWindow.location.href === absolute; } catch {}
+  frameNavigating = !alreadyLoaded;
+  // Shell-owned navigation adds one parent entry, replacing the child rather
+  // than creating a second entry in the browser's joint session history.
+  syncAddress(push);
+  if (!alreadyLoaded) frame.contentWindow.location.replace(absolute);
   document.title = worlds[world].name + ' · OLA HQ';
   scrollTo({top:0,behavior:'instant'});
 }
 function readFrame() {
-  if (!current) return;
+  if (!current || frameNavigating) return;
   try {
     const href = frame.contentWindow.location.href;
     if (!isAllowed(href)) return;
     const world = matchWorld(href) || current.world;
-    if (href === current.url && world === current.world) return;
+    if (href === current.url && world === current.world) {
+      syncAddress(false);
+      return;
+    }
     current = {world, url:href};
     renderNav();
+    // The iframe navigation already created the joint history entry. Mirroring
+    // its URL must not push another shell entry or discard the Forward branch.
     syncAddress(false);
   } catch {
     // An external domain may open in-frame. The Open link remains available.
   }
 }
+function frameHistoryChanged() {
+  frameNavigating = false;
+  readFrame();
+}
+function followFrameLink(event) {
+  if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  const anchor = event.target.closest?.('a[href]');
+  if (!anchor || anchor.hasAttribute('download') || (anchor.target && anchor.target !== '_self')) return;
+  if (!isAllowed(anchor.href)) return;
+  const world = matchWorld(anchor.href);
+  if (!world) return;
+  event.preventDefault();
+  openWorld(world, anchor.href);
+}
 frame.addEventListener('load', () => {
+  frameNavigating = false;
   if (frameTimer) clearInterval(frameTimer);
   readFrame();
   // Hash-only navigation in some existing worlds does not fire iframe load.
   frameTimer = setInterval(readFrame, 500);
   try {
-    frame.contentWindow.addEventListener('hashchange', readFrame);
-    frame.contentWindow.addEventListener('popstate', readFrame);
+    frame.contentWindow.addEventListener('hashchange', frameHistoryChanged);
+    frame.contentWindow.addEventListener('popstate', frameHistoryChanged);
+    frame.contentDocument.addEventListener('click', followFrameLink);
   } catch {}
 });
 document.querySelectorAll('[data-world]').forEach(button => button.addEventListener('click', () => openWorld(button.dataset.world)));

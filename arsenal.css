@@ -1455,3 +1455,17 @@
   .section-head:after{bottom:-14px}
   .arsenal-closing{min-height:360px}
 }
+
+/* AQ-20261010-01: final phone cascade keeps editorial text in readable rows. */
+/* AQ-20261010-01 ARS-HERO-R1: separate uncommitted tablet review revision. */
+@media(min-width:761px) and (max-width:1200px){
+  .season-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .section-head{grid-template-columns:minmax(0,1fr)}
+  .section-head>*,.arsenal-editorial>*{min-width:0}
+  .arsenal-editorial{grid-template-columns:minmax(0,1fr)}
+  .season-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .season-strip div{min-width:0;padding-right:8px}
+  .season-strip span{overflow-wrap:anywhere}
+}

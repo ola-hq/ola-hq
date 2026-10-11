@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f2e8">
+<title>Paris documents · La Ola de Amor</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;height:100%;background:#f6f2e8;color:#142823;font:16px/1.4 Arial,sans-serif}
+body{display:flex;flex-direction:column;height:100dvh}header{flex:none;padding:12px max(16px,env(safe-area-inset-right)) 12px max(16px,env(safe-area-inset-left));border-bottom:1px solid #14282333}
+nav{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px}a{color:inherit;text-underline-offset:4px}a:focus-visible{outline:3px solid #986d27;outline-offset:4px}h1{font:700 clamp(18px,3vw,26px)/1.2 Georgia,serif;margin:14px 0 8px}p{margin:0;font-size:13px}
+main{flex:1;min-height:0;overflow:auto}object{display:block;width:100%;height:100%;border:0;background:#ddd}object p{padding:24px}footer{flex:none;padding:8px 16px max(8px,env(safe-area-inset-bottom));font-size:12px}
+</style>
+<header>
+<nav aria-label="Document navigation"><a href="./#/chapter/paris" id="return">← Return to Paris</a><a href="../app/" target="_top">OLA HQ app home</a><a id="raw" target="_blank" rel="noopener">Open original PDF ↗</a><a id="download">Download PDF</a></nav>
+<h1 id="title">Paris documents</h1>
+<p>Return to Paris stays above the document. Opening the original PDF uses your browser’s viewer.</p>
+</header>
+<main id="document"><p>Select a Paris document from <a href="./#/chapter/paris">the Paris chapter</a>.</p></main>
+<footer>Original Paris wedding documents · La Ola de Amor</footer>
+<script>
+'use strict';
+const documents={
+  newspaper:{title:'Wedding Newspaper · Paris',file:'assets/paris-wedding-newspaper.pdf',download:'Paris-Wedding-Newspaper.pdf'},
+  menu:{title:'Chef Yohan · Welcome Dinner Menu',file:'assets/chef-yohan-welcome-menu.pdf',download:'Chef-Yohan-Welcome-Menu.pdf'}
+};
+const key=new URLSearchParams(location.search).get('document');
+const item=Object.prototype.hasOwnProperty.call(documents,key)?documents[key]:null;
+if(item){
+  document.title=item.title+' · La Ola de Amor';
+  document.getElementById('title').textContent=item.title;
+  document.getElementById('raw').href=item.file;
+  const download=document.getElementById('download');download.href=item.file;download.download=item.download;
+  const viewer=document.createElement('object');viewer.type='application/pdf';viewer.data=item.file;viewer.setAttribute('aria-label',item.title);
+  const fallback=document.createElement('p');fallback.append('PDF preview is unavailable in this browser. ');
+  const original=document.createElement('a');original.href=item.file;original.target='_blank';original.rel='noopener';original.textContent='Open the original PDF';fallback.append(original);viewer.append(fallback);
+  document.getElementById('document').replaceChildren(viewer);
+}else{document.getElementById('raw').hidden=true;document.getElementById('download').hidden=true;}
+document.addEventListener('keydown',event=>{if(event.key==='Escape')document.getElementById('return').click();});
+</script>
+</html>
