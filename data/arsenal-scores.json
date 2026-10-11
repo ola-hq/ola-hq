@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-11T14:08:19.276Z",
+    "fetched_at": "2026-10-11T14:29:38.964Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-11T14:08:19.276Z"
+    "details_checked_at": "2026-10-11T14:29:38.964Z"
   },
   "matches": [
     {
@@ -3807,15 +3807,20 @@
         "name": "Nott'm Forest",
         "short": "NFO"
       },
-      "home_score": 2,
+      "home_score": 3,
       "away_score": 1,
       "status": "in",
-      "minute": 45,
+      "minute": 62,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
       "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Yeremy (Home)"
+        },
         {
           "minute": null,
           "type": "Goal",
@@ -3830,6 +3835,11 @@
           "minute": null,
           "type": "Goal",
           "description": "Goal · Ndoye (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Yeremy (Home)"
         },
         {
           "minute": null,
@@ -3850,17 +3860,17 @@
         "name": "Everton",
         "short": "EVE"
       },
-      "home_score": 0,
-      "away_score": 0,
+      "home_score": 1,
+      "away_score": 1,
       "status": "in",
-      "minute": 46,
+      "minute": 67,
       "venue": "The MKM Stadium",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878774",
       "stats": [
         {
           "label": "Fouls",
-          "home": "9",
+          "home": "12",
           "away": "1"
         },
         {
@@ -3875,38 +3885,38 @@
         },
         {
           "label": "Offsides",
-          "home": "0",
-          "away": "2"
+          "home": "1",
+          "away": "4"
         },
         {
           "label": "Corner Kicks",
-          "home": "5",
-          "away": "5"
+          "home": "6",
+          "away": "6"
         },
         {
           "label": "Saves",
-          "home": "2",
+          "home": "4",
           "away": "2"
         },
         {
           "label": "Possession",
-          "home": "42.6",
-          "away": "57.4"
+          "home": "37.4",
+          "away": "62.6"
         },
         {
           "label": "SHOTS",
-          "home": "5",
-          "away": "10"
+          "home": "6",
+          "away": "13"
         },
         {
           "label": "ON GOAL",
-          "home": "3",
-          "away": "3"
+          "home": "4",
+          "away": "6"
         },
         {
           "label": "On Target %",
-          "home": "0.6",
-          "away": "0.3"
+          "home": "0.7",
+          "away": "0.5"
         },
         {
           "label": "Penalty Goals",
@@ -3920,6 +3930,16 @@
         }
       ],
       "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Gelhardt (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Dewsbury-Hall (Away)"
+        },
         {
           "minute": null,
           "type": "Yellow card",
