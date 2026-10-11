@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-11T13:06:08.641Z",
+    "fetched_at": "2026-10-11T13:27:49.068Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-11T13:06:08.641Z"
+    "details_checked_at": "2026-10-11T13:27:49.068Z"
   },
   "matches": [
     {
@@ -3810,7 +3810,7 @@
       "home_score": 0,
       "away_score": 1,
       "status": "in",
-      "minute": 4,
+      "minute": 23,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -3820,6 +3820,11 @@
           "minute": null,
           "type": "Goal",
           "description": "Goal · Ndoye (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Lerma (Home)"
         }
       ],
       "lineups": null
@@ -3838,19 +3843,19 @@
       "home_score": 0,
       "away_score": 0,
       "status": "in",
-      "minute": 6,
+      "minute": 27,
       "venue": "The MKM Stadium",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878774",
       "stats": [
         {
           "label": "Fouls",
-          "home": "1",
+          "home": "6",
           "away": "0"
         },
         {
           "label": "Yellow Cards",
-          "home": "0",
+          "home": "2",
           "away": "0"
         },
         {
@@ -3861,37 +3866,37 @@
         {
           "label": "Offsides",
           "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Corner Kicks",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Saves",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Possession",
-          "home": "21.6",
-          "away": "78.4"
-        },
-        {
-          "label": "SHOTS",
-          "home": "0",
           "away": "1"
         },
         {
+          "label": "Corner Kicks",
+          "home": "2",
+          "away": "2"
+        },
+        {
+          "label": "Saves",
+          "home": "1",
+          "away": "1"
+        },
+        {
+          "label": "Possession",
+          "home": "41.6",
+          "away": "58.4"
+        },
+        {
+          "label": "SHOTS",
+          "home": "1",
+          "away": "2"
+        },
+        {
           "label": "ON GOAL",
-          "home": "0",
-          "away": "0"
+          "home": "1",
+          "away": "1"
         },
         {
           "label": "On Target %",
-          "home": "0.0",
-          "away": "0.0"
+          "home": "1.0",
+          "away": "0.5"
         },
         {
           "label": "Penalty Goals",
@@ -3904,7 +3909,18 @@
           "away": "0"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Crooks (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · McBurnie (Home)"
+        }
+      ],
       "lineups": {
         "home": [
           "Konstantinos Tzolakis",
