@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-11T18:32:45.656Z",
+    "fetched_at": "2026-10-11T19:28:26.897Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -9096,8 +9096,8 @@
       "web_name": "Wharton",
       "element_type": 3,
       "team": 8,
-      "total_points": 20,
-      "event_points": 8,
+      "total_points": 19,
+      "event_points": 7,
       "status": "a"
     },
     {
