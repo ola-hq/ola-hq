@@ -7,13 +7,25 @@ const galleries={
   ['assets/paris-dinner-116.jpg','Family and friends gathered around the dinner table']
  ]},
  wedding:{title:'Paris Wedding Day',images:[
+  ['assets/tuileries-cover.jpg','Walking together at the Tuileries on our wedding day'],
+  ['assets/tuileries-group.jpg','Our larger group together at the Tuileries'],
   ['assets/paris-wedding-159.jpg','Wedding guests together overlooking Paris'],
   ['assets/paris-newspaper-176.jpg','Brianna and Jonathan holding their wedding newspaper'],
-  ['assets/paris-editorial-112.jpg','The couple holding hands beside a Paris sculpture'],
   ['assets/paris-wedding-229.jpg','A candid moment with family during the day'],
-  ['assets/paris-night-307.jpg','Brianna and Jonathan together after dark'],
+
   ['assets/paris-wedding-404.jpg','A candid celebration photograph']
- ]}
+ ]},
+ 'disneyland-paris':{title:'Disneyland Paris · March 27',images:[['assets/disneyland-paris-group.jpg','Our group photo at Disneyland Paris']]},
+ 'riverboat':{title:'Our river wedding · The Seine',images:[
+  ['assets/riverboat-a.jpg','A moment aboard the wedding celebration boat'],
+  ['assets/riverboat-b.jpg','Together on the riverboat after dark']
+ ]},
+ 'travel-orlando':{title:"Our World Trip · Orlando",images:[["assets/orlando-toystory.jpg","At Disney World · a photo from our Orlando days"],["assets/orlando-epcot.jpg","Together at EPCOT after dark"]]},
+ 'travel-atlantic':{title:"Our World Trip · Atlantic",images:[["assets/world-trip-atlantic-deck.jpg","An Atlantic ship-deck sunset"],["assets/cruise-depart-couple.jpg","Together aboard our cruise"],["assets/cruise-formal.jpg","Dressed up on the crossing"],["assets/cruise-sea-sunset.jpg","Sunlight over the open water"],["assets/azores-lake.jpg","Together by a lake in the Azores"],["assets/azores-hills.jpg","Our hillside view in the Azores"],["assets/casablanca-couple.jpg","Together on the ship near Casablanca"],["assets/casablanca-harbor.jpg","A harbor view from our Casablanca stop"],["assets/coruna-square.jpg","Together in the square at La Coruña"],["assets/coruna-stairs.jpg","A walk around La Coruña"]]},
+ 'travel-southampton':{title:"Our World Trip · Southampton",images:[["assets/southampton-pub.jpg","A Southampton evening together"],["assets/southampton-dinner.jpg","Another memory from our Southampton stop"]]},
+ 'travel-paris':{title:"Our World Trip · Paris",images:[["assets/paris-arrival.jpg","Arriving in Paris, before the wedding celebrations"]]},
+ 'travel-budapest':{title:"Our World Trip · Budapest",images:[["assets/budapest-c.jpg","Together beside the Danube in Budapest"],["assets/budapest-b.jpg","A Budapest evening in warm water"],["assets/budapest-a.jpg","One of our Budapest honeymoon adventures"]]},
+ 'travel-home':{title:"Our World Trip · Home",images:[["assets/flight-cabin.jpg","Together aboard our journey home"],["assets/flight-home.jpg","A quiet moment on the flight back"]]}
 };
 const dialog=document.createElement('dialog');dialog.id='loda-gallery';dialog.className='loda-gallery';
 dialog.setAttribute('aria-labelledby','loda-gallery-title');
