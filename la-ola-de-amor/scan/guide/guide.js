@@ -102,9 +102,11 @@ Object.assign(UI,{
  afterglowWelcome:{"en": "A relaxed afternoon together at the same property as the wedding. Come as you are, slow down, and spend a little more time with the people you love. Food plans and swimming access are still being confirmed.", "es": "Una tarde tranquila juntos en la misma propiedad de la boda. Ven como eres, baja el ritmo y disfruta un poco más con la gente que quieres. Los planes de comida y el acceso para nadar siguen por confirmar."},
  updatesEdition:{en:'Saved announcements · Offline, you see your saved edition. Reconnect and update the guide for newer announcements.',es:'Avisos guardados · Sin conexión, ves la edición guardada. Conéctate y actualiza la guía para consultar avisos más recientes.'}
 });
+Object.assign(UI,{updatesEmpty:{en:'No current announcements.',es:'No hay avisos actuales.'},latestFood:{en:'Check Festival Updates ↗',es:'Consulta las Actualizaciones ↗'}});
 function updateIsNew(item){return updatesSeen[item.id]!==item.revision;}
 function updateDate(item){const timed=item.publishedAt.includes('T');return new Intl.DateTimeFormat(lang==='en'?'en-US':'es-MX',{year:'numeric',month:'short',day:'numeric',...(timed?{hour:'numeric',minute:'2-digit',timeZoneName:'short'}:{}),timeZone:timed?'America/Mexico_City':'UTC'}).format(new Date(timed?item.publishedAt:item.publishedAt+'T12:00:00Z'));}
 function renderUpdates(){
+ document.querySelector('#updates-empty').hidden=FESTIVAL_UPDATES.length>0;
  const badge=document.querySelector('#updates-new');const unread=FESTIVAL_UPDATES.filter(updateIsNew).length;
  badge.hidden=!unread;badge.textContent=lang==='en'?`${unread} new`:`${unread} nuevos`;
  document.querySelector('#updates-feed').innerHTML=FESTIVAL_UPDATES.map(item=>`<li><button class="update-card" data-route="updates/${item.id}"><span class="update-meta"><time datetime="${esc(item.publishedAt)}">${esc(updateDate(item))}</time><span class="plan-status ${item.priority==='confirmed'?'confirmed':''}">${esc(ui(item.priority==='confirmed'?'updateConfirmed':'updatePending'))}</span>${updateIsNew(item)?`<span class="new-update">${esc(ui('newUpdate'))}</span>`:''}</span><strong>${esc(item.title[lang])}</strong><span class="update-card-arrow" aria-hidden="true">↗</span></button></li>`).join('');

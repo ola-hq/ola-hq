@@ -58,7 +58,7 @@ jobs:
         run: |
           node scripts/verify-hq-release.mjs
           node scripts/validate-fpl.mjs
-          node --test scripts/fpl-sync.test.mjs scripts/publishing.test.mjs scripts/arsenal-sync.test.mjs scripts/arsenal-scores-sync.test.mjs
+          node --test scripts/fpl-sync.test.mjs scripts/publishing.test.mjs scripts/arsenal-sync.test.mjs scripts/arsenal-scores-sync.test.mjs scripts/festival-updates.test.mjs
           python3 scripts/sync-letterboxd.py --self-test
           python3 scripts/verify-workflows.py
       - name: Record exact source

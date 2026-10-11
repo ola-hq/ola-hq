@@ -3,8 +3,10 @@ import { mkdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
+import { syncAnnouncements } from './festival-updates.mjs';
 
 if (execFileSync('git', ['status','--porcelain','--untracked-files=no'], {encoding:'utf8'}).trim()) throw new Error('Refusing a projection from uncommitted tracked changes');
+syncAnnouncements('.', {check:true});
 const source = execFileSync('git', ['rev-parse','HEAD'], {encoding:'utf8'}).trim();
 const output = '.site';
 rmSync(output, {recursive:true, force:true});
