@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-11T16:53:00.658Z",
+    "fetched_at": "2026-10-11T17:09:03.042Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-11T16:53:00.658Z"
+    "details_checked_at": "2026-10-11T17:09:03.042Z"
   },
   "matches": [
     {
@@ -3997,9 +3997,9 @@
         "short": "MCI"
       },
       "home_score": 0,
-      "away_score": 0,
+      "away_score": 2,
       "status": "in",
-      "minute": 61,
+      "minute": 77,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -4007,8 +4007,13 @@
       "events": [
         {
           "minute": null,
-          "type": "Yellow card",
-          "description": "Yellow card · Gravenberch (Home)"
+          "type": "Goal",
+          "description": "Goal · Doku (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Haaland (Away)"
         },
         {
           "minute": null,
@@ -4019,6 +4024,11 @@
           "minute": null,
           "type": "Yellow card",
           "description": "Yellow card · O'Reilly (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Red card",
+          "description": "Red card · Gravenberch (Home)"
         }
       ],
       "lineups": null
