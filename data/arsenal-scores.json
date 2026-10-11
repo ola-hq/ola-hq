@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-11T13:52:21.798Z",
+    "fetched_at": "2026-10-11T14:08:19.276Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-11T13:52:21.798Z"
+    "details_checked_at": "2026-10-11T14:08:19.276Z"
   },
   "matches": [
     {
@@ -3807,7 +3807,7 @@
         "name": "Nott'm Forest",
         "short": "NFO"
       },
-      "home_score": 1,
+      "home_score": 2,
       "away_score": 1,
       "status": "in",
       "minute": 45,
@@ -3816,6 +3816,11 @@
       "match_url": null,
       "stats": [],
       "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Lerma (Home)"
+        },
         {
           "minute": null,
           "type": "Goal",
@@ -3848,7 +3853,7 @@
       "home_score": 0,
       "away_score": 0,
       "status": "in",
-      "minute": 455,
+      "minute": 46,
       "venue": "The MKM Stadium",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878774",
