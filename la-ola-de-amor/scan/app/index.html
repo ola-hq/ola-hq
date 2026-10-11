@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0c203b">
+<meta name="description" content="La Ola de Amor Festival Guide App · schedule, food, music, maps and offline access.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="La Ola">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../../assets/heart-transparent.png" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/heart-transparent.png">
+<title>Festival Guide App · La Ola de Amor</title>
+<style>
+:root{color-scheme:dark;--night:#08182c;--navy:#0c203b;--cream:#f5ecdb;--gold:#e2bd6e}
+*{box-sizing:border-box}
+body{margin:0;min-height:100svh;background:radial-gradient(ellipse at 80% 10%,#26416a 0,transparent 43%),linear-gradient(150deg,#0c203b,#071322);color:var(--cream);font-family:Arial,Helvetica,sans-serif}
+a{color:inherit}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:5px}
+.skip{position:absolute;left:12px;top:-90px;padding:12px;background:var(--cream);color:var(--navy)}
+.skip:focus{top:12px}
+.shell{max-width:1170px;min-height:100svh;margin:auto;padding:24px clamp(20px,5vw,64px) 35px;display:flex;flex-direction:column}
+header,footer{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+header a,footer a{font-size:12px;font-weight:700;letter-spacing:.06em;text-decoration:none;border-bottom:1px solid #e2bd6e70;padding-bottom:5px}
+header img{width:150px;height:auto;max-height:50px;object-fit:contain}
+main{flex:1;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(240px,.8fr);align-items:center;gap:clamp(20px,6vw,84px);padding:50px 0}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:.22em;color:var(--gold);text-transform:uppercase}
+h1{font:normal clamp(50px,7.2vw,105px)/.98 Georgia,serif;letter-spacing:-.045em;margin:22px 0}
+h1 em{color:var(--gold);font-weight:400}
+.intro{font:clamp(17px,1.9vw,21px)/1.5 Georgia,serif;max-width:620px;color:#efe3d1}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin:32px 0 22px}
+.primary,.secondary{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 20px;border-radius:4px;border:1px solid var(--gold);font:800 13px/1.25 Arial,sans-serif;letter-spacing:.02em;text-decoration:none;cursor:pointer}
+.primary{background:var(--gold);color:#11203a}
+.secondary{background:transparent;color:var(--cream)}
+button{font-family:inherit}
+.small{font-size:13px;line-height:1.6;color:#e8dbc9;max-width:620px}
+.art{display:grid;place-items:center;position:relative;min-height:390px;border:1px solid #e2bd6e50;border-radius:50%;aspect-ratio:1;background:radial-gradient(circle,#e2bd6e12,transparent 67%);overflow:hidden}
+.art:before,.art:after{content:"";position:absolute;inset:9%;border:1px solid #e2bd6e50;border-radius:50%}
+.art:after{inset:18%;border-color:#e2bd6e40}
+.art img{position:relative;z-index:1;width:87%;height:87%;object-fit:contain;filter:drop-shadow(0 12px 32px #0007)}
+details{margin-top:16px;max-width:680px;padding:15px 18px;border:1px solid #e2bd6e55;border-radius:6px}
+summary{cursor:pointer;font-weight:800;font-size:14px}
+details p{margin-bottom:6px;line-height:1.55;font-size:14px}
+footer{border-top:1px solid #e2bd6e38;padding-top:20px}
+footer p{margin:0;color:#c9bfae;font-size:12px}
+@media(max-width:760px){main{grid-template-columns:1fr;padding:50px 0 30px}.art{grid-row:1;min-height:210px;max-width:300px;margin:0 auto}.intro{font-size:18px}h1{font-size:clamp(47px,12vw,72px)}.actions{flex-direction:column;align-items:stretch}.actions>*{width:100%}header img{width:125px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+.appbar-action{background:transparent;color:var(--gold);border:1px solid #e2bd9a80;border-radius:4px;min-height:44px;padding:10px 16px;font:800 12px Arial,sans-serif;cursor:pointer}
+dialog{max-width:min(550px,calc(100vw - 28px));border:1px solid #e2bd6e88;border-radius:10px;padding:0;background:#0c203b;color:var(--cream);box-shadow:0 22px 65px #0008}
+dialog::backdrop{background:#04111dde;backdrop-filter:blur(3px)}
+.install-panel{padding:30px clamp(22px,5vw,40px)}
+.install-panel h2{font:normal 34px/1.05 Georgia,serif;margin:14px 0 22px;color:var(--gold)}
+.install-panel p{font-size:15px;line-height:1.65;margin:12px 0}
+.close-install{float:right;border:1px solid #e2bd6e88;background:transparent;color:var(--cream);font-size:25px;width:42px;height:42px;border-radius:5px;cursor:pointer}
+#native-install{background:var(--gold);color:#10233b;border:0;padding:13px 20px;border-radius:4px;font-weight:800;cursor:pointer;min-height:48px}
+#native-install[hidden],.appbar-action[hidden],#install-main[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="shell">
+<header>
+  <a href="../../" aria-label="Return to the La Ola de Amor wedding website"><img src="../../assets/loda-wordmark-cream.svg" alt="La Ola de Amor"></a>
+  <button type="button" class="appbar-action" id="install">Get the app / Instalar ↗</button>
+</header>
+<main id="main">
+  <section>
+    <p class="eyebrow">Bri + Jon · 2026 · One wave</p>
+    <h1>Our festival.<br><em>In your pocket.</em></h1>
+    <p class="intro">Your festival plans in one place: schedule, music, food, the Plaza, maps and La Plática. Everything you need to ride La Ola.</p>
+    <div class="actions">
+      <a class="primary" href="../guide/">Enter La Ola / Entrar ↗</a>
+      <button class="secondary" type="button" id="install-main">Add to Home Screen / Instalar +</button>
+    </div>
+    <p class="small">Install the existing Festival Guide on your home screen. The full wedding photo website stays separate and unchanged. After the guide saves its offline content, the prepared festival pages can be used without a connection.</p>
+
+  </section>
+  <div class="art"><img src="../../assets/sunmoon-transparent.png" alt="La Ola de Amor sun and moon artwork"></div>
+</main>
+<footer><p>One festival. One guide. One home-screen icon.</p><a href="../../">Wedding website ↗</a><a href="../guide/">Open Guide ↗</a></footer>
+</div>
+
+<dialog id="install-info" aria-labelledby="install-title">
+  <div class="install-panel">
+    <button class="close-install" type="button" aria-label="Close installation instructions">×</button>
+    <h2 id="install-title">Take the festival home.</h2>
+    <p><strong>iPhone:</strong> Open this page in Safari, tap Share, then <strong>Add to Home Screen</strong>. Enable <strong>Open as Web App</strong> if offered and tap Add. The icon will launch the Festival Guide.</p>
+    <p><strong>Android:</strong> Use Install Festival Guide below if offered, or choose Install app / Add to Home Screen from the browser menu.</p>
+    <p><strong>Español:</strong> En Safari, Compartir → Agregar a pantalla de inicio. En Chrome, menú → Instalar aplicación.</p>
+    <button id="native-install" type="button" hidden>Install Festival Guide / Instalar</button>
+    <p>The Festival Guide prepares offline pages after loading. External links and live contributions still require internet.</p>
+  </div>
+</dialog>
+<script>
+(()=>{
+  const top=document.getElementById('install');
+  const hero=document.getElementById('install-main');
+  const dialog=document.getElementById('install-info');
+  const native=document.getElementById('native-install');
+  let deferred=null;
+  const standalone=matchMedia('(display-mode: standalone)');
+  const installed=()=>standalone.matches||navigator.standalone===true;
+  const sync=()=>{top.hidden=installed();hero.hidden=installed();};
+  sync();
+  standalone.addEventListener?.('change',sync);
+  addEventListener('appinstalled',sync);
+  const open=()=>dialog.showModal();
+  top.addEventListener('click',open);
+  hero.addEventListener('click',open);
+  document.querySelector('.close-install').addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
+  addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;native.hidden=false;});
+  native.addEventListener('click',async()=>{if(!deferred)return;const prompt=deferred;deferred=null;native.hidden=true;try{await prompt.prompt();await prompt.userChoice;}catch{}dialog.close();});
+  if('serviceWorker'in navigator){navigator.serviceWorker.register('../sw.js',{scope:'../',updateViaCache:'none'}).catch(()=>{});}
+})();
+</script></body>
+</html>
