@@ -1,0 +1,31 @@
+/* Private owner review — event galleries and travel presentation, never published */
+.paris-week-grid .loda-event{padding:0;min-height:0;overflow:hidden}
+.loda-event-trigger{display:block;width:100%;height:100%;border:0;background:transparent;text-align:left;color:inherit;cursor:pointer;padding:0 0 20px}
+.loda-event-trigger>img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 35%;margin:0 0 20px}
+.loda-event-trigger>span,.loda-event-trigger>h3,.loda-event-trigger>p,.loda-event-cta{margin-left:22px;margin-right:22px}
+.loda-event-trigger>span{display:block;font:800 10px/1.3 Arial,sans-serif;letter-spacing:.15em}
+.loda-event-trigger h3{margin-top:8px}
+.loda-event-trigger p{max-width:52ch}
+.loda-event-cta{display:inline-flex;gap:7px;margin-top:16px;padding-bottom:5px;border-bottom:1px solid currentColor;font:700 11px/1.4 Arial,sans-serif;text-transform:uppercase;letter-spacing:.08em}
+.loda-event-trigger:hover,.loda-event-trigger:focus-visible{background:#e8dbc5}
+.loda-event-trigger:focus-visible{outline:3px solid #9e3428;outline-offset:-3px}
+.loda-event-static small{display:block;line-height:1.45;margin-top:20px;color:#665a4c}
+.loda-archives-bottom{padding:clamp(60px,8vw,112px) 8vw;background:#16243c;color:#f5eee2}
+.loda-archives-bottom h2{max-width:920px;font:clamp(50px,7vw,102px)/.95 Georgia,serif;margin:.2em 0 .35em}
+.loda-archives-bottom h2 em{color:#e2bd6e;font-weight:400}
+.loda-archives-bottom p{font:clamp(17px,2vw,23px)/1.5 Georgia,serif;max-width:680px;margin-bottom:27px}
+.loda-archives-bottom a{color:#f5eee2}
+.stop-photo-secondary{margin-top:24px}
+.stop-photo-secondary img{max-height:540px;object-fit:cover;object-position:center 45%}
+.loda-gallery{border:0;padding:0;width:min(94vw,1170px);max-width:none;max-height:92dvh;overflow:auto;background:#f8f2e8;color:#192c46;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.loda-gallery::backdrop{background:rgba(7,19,35,.88)}
+.loda-gallery-head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 26px;border-bottom:1px solid #c8bda8}
+.loda-gallery-head h2{font:clamp(23px,3vw,36px)/1.1 Georgia,serif;margin:0}
+.loda-gallery-button{font:800 12px/1 Arial,sans-serif;letter-spacing:.08em;padding:13px 16px;border:1px solid #254469;background:#fff;color:#132b4b;cursor:pointer}
+.loda-gallery-button:focus-visible{outline:3px solid #d99c3f;outline-offset:3px}
+.loda-gallery-stage{display:flex;align-items:center;justify-content:center;gap:14px;padding:20px 16px}
+.loda-gallery-stage img{display:block;max-width:100%;max-height:min(66dvh,750px);height:auto;width:auto;object-fit:contain;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.loda-gallery-stage .loda-gallery-button{flex:0 0 auto}
+.loda-gallery-caption{font:14px/1.5 Georgia,serif;text-align:center;padding:0 22px 22px}
+.loda-gallery-counter{font:800 11px/1 Arial,sans-serif;letter-spacing:.12em;color:#67583d}
+@media(max-width:650px){.loda-gallery{width:100vw;max-height:100dvh;height:100dvh}.loda-gallery-head{padding:14px 16px}.loda-gallery-stage{gap:6px;padding:10px 6px}.loda-gallery-stage img{max-width:calc(100% - 100px);max-height:70dvh}.loda-gallery-button{padding:12px 10px}.loda-gallery-stage .loda-gallery-button{min-width:44px}.loda-event-trigger>img{aspect-ratio:3/2}}

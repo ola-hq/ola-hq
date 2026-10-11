@@ -37,6 +37,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .endnav{padding:38px 8vw 70px;display:flex;justify-content:space-between;gap:30px;background:var(--paper)}
 .backlink{display:block;padding:18px 8vw;text-decoration:none;font-size:12px}
 
+
 /* HOME */
 .home-gateway{min-height:calc(92svh - 88px);position:relative;overflow:hidden;background:#071625;color:#fff}
 .home-collage{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1.06fr 1fr}
@@ -77,6 +78,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .chapter-paris{background:#f8f2e8}
 .chapter-gdl{background:var(--navy);color:#f6efe3;border-color:var(--navy)}
 .chapter-gdl .chapter-copy .eyebrow{color:var(--gold)}
+
 
 /* VEGAS */
 .vegas{background:#0d1218;color:#f4eee3}
@@ -121,6 +123,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .memory-grid p{font-size:13px}
 .vegas .endnav{background:#10161d;color:#f4eee3}
 
+
 /* PARIS */
 .paris{background:#f7f2e9;color:#17233a}
 .paris-hero-editorial{min-height:calc(88svh - 88px);display:grid;grid-template-columns:.82fr 1.18fr;background:#f3ede3;overflow:hidden}
@@ -161,6 +164,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .journal article h3{font-size:38px;line-height:1;margin:.22em 0}
 .day{font-size:9px;letter-spacing:.13em;font-weight:800}
 .paris .endnav{background:#111d32;color:#f4eee3}
+
 
 /* GUADALAJARA */
 .gdl{background:var(--navy);color:#f4eee3}
@@ -210,6 +214,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .guide-cover-link span{display:block;font-size:10px;letter-spacing:.12em;margin-top:14px}
 .gdl .endnav{background:#0a1a30;color:#f4eee3}
 
+
 /* YEAR */
 .yearbook{background:#f4efe5;color:#203630}
 .year-open{padding:90px 9vw 60px;background:#142823;color:#f4efe5}
@@ -230,6 +235,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .year-trip-bridge h2{font-size:clamp(36px,4.8vw,60px);line-height:.95;margin:.15em 0}
 .year-trip-bridge p{max-width:680px}
 
+
 /* JOURNEY STOPS */
 .stop-page{background:#f4efe5;color:#203630}
 .stop-opening{padding:80px 12vw 58px;background:#142823;color:#f4efe5}
@@ -246,6 +252,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .stop-log ol{max-width:760px;padding-left:20px}.stop-log li{padding:10px 0;border-bottom:1px solid rgba(32,54,48,.16)}
 .stop-more{padding:80px 12vw;background:#142823;color:#f4efe5}
 
+
 /* GUIDEBOOK */
 .guidebook-page{padding:50px 6vw 90px;background:#f5f0e6;color:#182e50}
 .guidebook-page h1{font-size:clamp(58px,8vw,104px);line-height:.9;margin:.2em 0}
@@ -254,6 +261,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .guidebook-frame iframe{width:100%;height:100%;border:0}
 .guidebook-actions{display:flex;gap:22px;flex-wrap:wrap}
 .archive{padding:100px 8vw;min-height:70vh}.archive h1{font-size:72px}
+
 
 /* RESPONSIVE */
 @media(max-width:980px){
@@ -337,6 +345,8 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 
 
+
+
 /* 2026-10-06 — Guadalajara reground: place > people > food/music > guide */
 .gdl-hero-regrounded{min-height:88svh;position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,34vw);overflow:hidden;background:#0c203b;color:#f6efe3;border-top:12px solid transparent;border-bottom:12px solid transparent;border-image:url("assets/tile.svg") 12 round}
 .gdl-hero-field{position:absolute;inset:0;z-index:0;background:radial-gradient(circle at 73% 48%,#316ba0 0%,#173b67 27%,#0c203b 68%)}
@@ -353,10 +363,12 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .gdl-hero-guide img{display:block;width:100%;height:auto;box-shadow:0 26px 70px rgba(0,0,0,.5)}
 .gdl-hero-guide span{display:block;margin-top:12px;color:#fff;font:800 8px/1 Arial,sans-serif;letter-spacing:.16em}
 
+
 .gdl-why{padding:88px 8vw;display:grid;grid-template-columns:.78fr 1.22fr;gap:8vw;background:#f1e7d5;color:#183252}
 .gdl-why h2{font-size:clamp(48px,6.4vw,84px);line-height:.93;margin:.15em 0}
 .gdl-why>div:last-child p:first-child{font:26px/1.45 Georgia,serif;color:#9e3428}
 .gdl-why>div:last-child p:last-child{font:19px/1.6 Georgia,serif;max-width:760px}
+
 
 .gdl-plaza{padding:84px 7vw;background:#10294a;color:#f5eee2;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(330px,.88fr);gap:6vw;align-items:center}
 .gdl-map-wrap{background:#f4ead9;padding:16px;box-shadow:0 24px 70px rgba(0,0,0,.28);transform:rotate(-.5deg)}
@@ -368,6 +380,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .gdl-place-list span{font-size:9px;color:#e2bd6e;font-weight:800}
 .gdl-place-list strong{font:23px/1.1 Georgia,serif}
 .gdl-place-list small{font-size:9px;letter-spacing:.08em;text-transform:uppercase;opacity:.68;text-align:right}
+
 
 .gdl-stories{padding:92px 7vw 100px;background:#eee2cf;color:#203630;border-top:14px solid transparent;border-image:url("assets/tile.svg") 14 round}
 .gdl-stories-intro{display:grid;grid-template-columns:.72fr 1.28fr;gap:7vw;align-items:end;margin-bottom:45px}
@@ -382,6 +395,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .gdl-story-cards span{bottom:48px;font:800 8px/1 Arial,sans-serif;letter-spacing:.15em;color:#e2bd6e}
 .gdl-story-cards strong{bottom:17px;font:23px/1.05 Georgia,serif}
 
+
 .gdl-waves{padding:70px 7vw 88px;background:#f5efe4;display:grid;grid-template-columns:1fr 1fr;gap:20px;color:#183252}
 .gdl-wave-card{display:grid;grid-template-columns:.95fr 1.05fr;background:#fff;border:1px solid rgba(24,50,82,.15);min-height:360px}
 .gdl-wave-card img{width:100%;height:100%;object-fit:cover;display:block}
@@ -390,11 +404,13 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .gdl-wave-card p{font-size:14px}
 .gdl-wave-card a{margin-top:12px;text-decoration:none;font-size:11px;font-weight:800;letter-spacing:.05em}
 
+
 .gdl-guide-door{padding:94px 8vw;background:#0c203b;color:#f5eee2;display:grid;grid-template-columns:1fr minmax(260px,410px);gap:9vw;align-items:center}
 .gdl-guide-door h2{font-size:clamp(52px,6.5vw,86px);line-height:.93;margin:.15em 0}
 .gdl-guide-door p{font:20px/1.55 Georgia,serif;max-width:700px}
 .gdl-guide-door>a{text-decoration:none}
 .gdl-guide-door>a img{width:100%;max-height:650px;object-fit:contain;display:block;box-shadow:0 24px 65px rgba(0,0,0,.45);transform:rotate(1deg)}
+
 
 @media(max-width:980px){
   .gdl-hero-regrounded{grid-template-columns:1fr}
@@ -418,6 +434,8 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
   .gdl-wave-card{grid-template-columns:1fr}
   .gdl-wave-card img{height:280px}
 }
+
+
 
 
 /* 2026-10-06 — Guadalajara Hourglass V3: one-night neighborhood */
@@ -447,6 +465,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .gdl-enter-guide img{display:block;width:100%;box-shadow:0 24px 65px rgba(0,0,0,.48)}
 .gdl-enter-guide span{display:inline-block;margin-top:9px;padding:5px 8px;background:#f3e8d6;color:#0c203b;font:800 8px/1 Arial,sans-serif;letter-spacing:.13em}
 
+
 .gdl-plaza-scene{padding:90px 6vw 85px;background:#efe3d0;color:#183252;position:relative;overflow:hidden}
 .gdl-plaza-scene:before,.gdl-plaza-scene:after{content:"";position:absolute;top:0;bottom:0;width:18px;background-image:url("assets/tile.svg");background-size:44px 44px;opacity:.75}
 .gdl-plaza-scene:before{left:0}.gdl-plaza-scene:after{right:0}
@@ -467,6 +486,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .gdl-signposts .sign-mirror{right:8%;top:45%;background:#d8c8de;transform:rotate(3deg)}
 .gdl-plaza-bottom{max-width:760px;margin:20px auto 0;text-align:center}
 .gdl-plaza-bottom p{font:21px/1.5 Georgia,serif}
+
 
 .gdl-people-scene{padding:88px 6vw 104px;background:#153053;color:#f4ecdf;border-top:12px solid transparent;border-image:url("assets/tile.svg") 12 round}
 .gdl-people-title{max-width:950px;margin:0 auto 45px;text-align:center}
@@ -490,6 +510,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .shop-legacy{background:#0e1f35!important;color:#f4ead9!important}
 .shop-legacy .shop-awning{background:repeating-linear-gradient(90deg,#e2bd6e 0 22px,#0e1f35 22px 44px)}
 
+
 .gdl-night-scene{padding:96px 6vw 105px;background:#0a172a;color:#f5eee2;position:relative;overflow:hidden}
 .gdl-night-scene:before{content:"";position:absolute;inset:0;background:
  radial-gradient(circle at 15% 20%,rgba(226,189,110,.11),transparent 17%),
@@ -512,6 +533,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .gdl-night-links{position:relative;z-index:2;display:flex;justify-content:center;gap:30px;margin-top:30px}
 .gdl-night-links a{color:#f5eee2;text-decoration:none;border-bottom:1px solid #e2bd6e;padding-bottom:7px;font-size:10px;letter-spacing:.15em}
 
+
 .gdl-guide-scene{padding:100px 8vw;background:#efe3d0;color:#183252;display:grid;grid-template-columns:1fr minmax(260px,420px);gap:10vw;align-items:center;border-top:14px solid transparent;border-image:url("assets/tile.svg") 14 round}
 .gdl-guide-copy h2{font-size:clamp(54px,6.5vw,88px);line-height:.92;margin:.16em 0}
 .gdl-guide-copy p{font:20px/1.55 Georgia,serif;max-width:700px}
@@ -519,6 +541,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .gdl-guide-object{text-decoration:none;text-align:center;transform:rotate(1deg)}
 .gdl-guide-object img{display:block;width:100%;max-height:650px;object-fit:contain;box-shadow:0 26px 70px rgba(15,36,60,.28)}
 .gdl-guide-object span{display:block;margin-top:13px;font:800 8px/1 Arial,sans-serif;letter-spacing:.14em}
+
 
 @media(max-width:980px){
  .gdl-enter-guide{display:none}
@@ -554,6 +577,8 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 }
 
 
+
+
 /* 2026-10-06 — Guadalajara V4: OG restraint + Hourglass */
 .gdl-final{background:#0c203b;color:#f5eee2}
 .gdl-final-hero{position:relative;min-height:86svh;overflow:hidden;background:#0c203b;border-top:12px solid transparent;border-bottom:12px solid transparent;border-image:url("assets/tile.svg") 12 round}
@@ -570,6 +595,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .gdl-final-copy p{font:clamp(20px,2vw,27px)/1.5 Georgia,serif;max-width:700px;color:#f0e7d9}
 .gdl-final-values{margin:18px 0 8px;font:800 9px/1.2 Arial,sans-serif;letter-spacing:.19em;color:#e2bd6e}
 
+
 .gdl-final-plaza{padding:96px 8vw;background:#f0e6d7;color:#183252;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);gap:8vw;align-items:center}
 .gdl-final-map{background:#f8f2e8;padding:14px;box-shadow:0 22px 58px rgba(24,50,82,.14)}
 .gdl-final-map img{display:block;width:100%;height:auto;max-height:820px;object-fit:contain}
@@ -577,6 +603,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .gdl-final-plaza-copy>p{font:22px/1.5 Georgia,serif;max-width:610px}
 .gdl-final-places{display:flex;flex-wrap:wrap;gap:9px 10px;margin:28px 0 18px}
 .gdl-final-places span{padding:9px 11px;border:1px solid rgba(24,50,82,.28);font:800 8px/1 Arial,sans-serif;letter-spacing:.1em;background:#f8f2e8}
+
 
 .gdl-final-world{padding:100px 8vw 112px;background:#10294a;color:#f5eee2;border-top:14px solid transparent;border-image:url("assets/tile.svg") 14 round}
 .gdl-final-world-title{display:grid;grid-template-columns:.78fr 1.22fr;gap:8vw;align-items:end;margin-bottom:55px}
@@ -589,6 +616,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .gdl-final-world-grid p{font-size:14px;color:#e7dccb}
 .gdl-final-world-grid a{display:inline-block;margin-top:9px;color:#f5eee2;text-decoration:none;border-bottom:1px solid #e2bd6e;padding-bottom:5px;font-size:11px}
 
+
 .gdl-final-guide{padding:96px 8vw;background:#f5efe4;color:#183252;display:grid;grid-template-columns:1fr minmax(260px,410px);gap:10vw;align-items:center}
 .gdl-final-guide-copy h2{font-size:clamp(52px,6.4vw,86px);line-height:.93;margin:.16em 0}
 .gdl-final-guide-copy p{font:20px/1.55 Georgia,serif;max-width:680px}
@@ -597,6 +625,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .gdl-final-guide-object img{display:block;width:100%;max-height:630px;object-fit:contain;box-shadow:0 22px 55px rgba(24,50,82,.18)}
 .gdl-final-guide-object span{display:block;margin-top:12px;font:800 8px/1 Arial,sans-serif;letter-spacing:.14em;color:#183252}
 .gdl-final .endnav{background:#0a1b31;color:#f5eee2}
+
 
 @media(max-width:960px){
  .gdl-final-sunmoon{right:-8vw;width:52vw;opacity:.78}
@@ -617,6 +646,7 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
  .gdl-final-places{gap:7px}
 }
 
+
 /* 2026-10-06 — pre-Bri asset QA */
 .brand-heart{width:38px;height:38px;object-fit:contain;display:block;flex:0 0 auto}
 .gdl-final-heart{width:92px;height:92px;object-fit:contain;margin-bottom:20px}
@@ -624,12 +654,15 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 .vegas-night img{object-position:center 58%}
 @media(max-width:650px){.brand-heart{width:32px;height:32px}.vegas-night{inset:0}.vegas-night img{object-position:center 58%}}
 
+
 /* pre-Bri header alignment */
 @media(max-width:650px){.brand{justify-content:flex-start}.brand>span{margin-left:auto}}
+
 
 /* Mobile review #003: an unquoted, unattributed narrative. */
 .quote .vegas-narrative{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Baskerville,Georgia,serif;font-size:clamp(32px,5.5vw,76px);line-height:1.22;margin:0 auto;max-width:980px;color:#f3e8dc}
 @media(max-width:650px){.quote{padding:72px 7vw}}
+
 
 /* First-party PDF cards open in the native reader; downloads are separate. */
 .pdf-download{display:inline-block;font-size:11px;line-height:1.6;color:inherit;text-underline-offset:3px;margin-top:14px;padding:10px 0}
@@ -639,5 +672,48 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
   .paris-week-grid{align-self:start}
 }
 
+
 /* Keep Vegas timeline anchors clear of the desktop sticky masthead. */
 @media(min-width:651px){.vegas .beat{scroll-margin-top:120px}}
+
+
+
+
+/* Owner LODA visual pass — isolated preview, no production release. */
+.yearbook{background:var(--paper);color:var(--navy)}
+.year-open{background:var(--navy);color:var(--paper)}
+.year-stop{border-bottom-color:var(--line)}
+.stop-page{background:var(--paper);color:var(--navy)}
+.stop-opening{background:var(--navy2);color:var(--paper)}
+.stop-lede{color:var(--gold)}
+.stop-page .letter-art{background:repeating-linear-gradient(135deg,var(--porcelain) 0 32px,var(--cream) 32px 64px)}
+.vegas-night{inset:0 0 0 29%}
+.vegas-night:after{background:linear-gradient(90deg,#090d12 0%,rgba(9,13,18,.57) 26%,rgba(9,13,18,.04) 74%)}
+.vegas-night img{object-position:center 42%}
+.vegas-copy{width:53%}
+.paris-hero-editorial{grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr)}
+.paris-photo-stack{grid-column:1;grid-row:1}
+.paris-editorial-copy{grid-column:2;grid-row:1}
+.paris-artifacts{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:980px){
+ .paris-hero-editorial{display:flex;flex-direction:column}
+ .paris-photo-stack{order:0;width:100%;min-height:72svh}
+ .paris-editorial-copy{order:1;max-width:100%}
+ .vegas-night{inset:0}
+ .vegas-night:after{background:linear-gradient(0deg,rgba(9,13,18,.88) 0%,rgba(9,13,18,.16) 60%,rgba(9,13,18,.04) 100%)}
+ .vegas-copy{width:100%;padding:43svh 7vw 9vh}
+ .paris-artifacts{grid-template-columns:1fr}
+}
+
+
+
+/* AQ-20261010-01: retain journal type while fitting long place names. */
+@media(max-width:650px){
+  .stop-opening h1{font-size:clamp(40px,10vw,68px);overflow-wrap:anywhere}
+  .stop-page .letter-art span{font-size:clamp(40px,10vw,68px);max-width:84vw;overflow-wrap:anywhere;text-align:center}
+}
+@media(max-width:360px){
+  .brand{gap:9px;flex-wrap:wrap}
+  .brand-wordmark{max-width:calc(100% - 41px)}
+  .brand>span{margin-left:0}
+}
