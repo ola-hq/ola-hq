@@ -7,7 +7,7 @@
   const pushWorker = new URL('onesignal/OneSignalSDKWorker.js', scanBase);
   const pushScope = new URL('onesignal/', scanBase);
   window.LA_OLA_PUSH_CONFIG = Object.freeze({
-    appId: '',
+    appId: '7a08d6ee-1181-4925-bd3f-1a7a7439aaee',
     serviceWorkerPath: pushWorker.pathname,
     serviceWorkerScope: pushScope.pathname
   });
