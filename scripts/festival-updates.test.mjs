@@ -49,7 +49,7 @@ test('invalid IDs, duplicate IDs, status and impossible dates fail closed', () =
   assert.throws(() => reconcileAnnouncements([entry('a', '2026-02-30')]), /date/);
   assert.throws(() => reconcileAnnouncements([entry('bad/id', '2026-10-08')]), /ID/);
   assert.throws(() => reconcileAnnouncements([entry('a', '2026-10-08'), entry('a', '2026-10-09')]), /ID/);
-  assert.throws(() => reconcileAnnouncements([entry('a', '2026-10-08', 'scheduled')]), /status/);
+  assert.throws(() => reconcileAnnouncements([entry('a', '2026-10-08', 'unknown')]), /status/);
 });
 test('scheduled midnight and afters posts are hidden until their Guadalajara release times', () => {
   const announcements = source.announcements;
