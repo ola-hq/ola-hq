@@ -104,17 +104,25 @@ Object.assign(UI,{
 });
 Object.assign(UI,{updatesEmpty:{en:'No current announcements.',es:'No hay avisos actuales.'},latestFood:{en:'Check Festival Updates ↗',es:'Consulta las Actualizaciones ↗'}});
 function updateIsNew(item){return updatesSeen[item.id]!==item.revision;}
-function updateDate(item){const timed=item.publishedAt.includes('T');return new Intl.DateTimeFormat(lang==='en'?'en-US':'es-MX',{year:'numeric',month:'short',day:'numeric',...(timed?{hour:'numeric',minute:'2-digit',timeZoneName:'short'}:{}),timeZone:timed?'America/Mexico_City':'UTC'}).format(new Date(timed?item.publishedAt:item.publishedAt+'T12:00:00Z'));}
+function updateDate(item){
+ const stamp=item.releaseAt||item.publishedAt;
+ const timed=stamp.includes('T');
+ return new Intl.DateTimeFormat(lang==='en'?'en-US':'es-MX',{year:'numeric',month:'short',day:'numeric',...(timed?{hour:'numeric',minute:'2-digit',timeZoneName:'short'}:{}),timeZone:timed?'America/Mexico_City':'UTC'}).format(new Date(timed?stamp:stamp+'T12:00:00Z'));
+}
 function renderUpdates(){
- document.querySelector('#updates-empty').hidden=FESTIVAL_UPDATES.length>0;
- const badge=document.querySelector('#updates-new');const unread=FESTIVAL_UPDATES.filter(updateIsNew).length;
+ // A scheduled announcement appears in the guide only when its local release time arrives.
+ const live=activeFestivalUpdates();
+ document.querySelector('#updates-empty').hidden=live.length>0;
+ const badge=document.querySelector('#updates-new');const unread=live.filter(updateIsNew).length;
  badge.hidden=!unread;badge.textContent=lang==='en'?`${unread} new`:`${unread} nuevos`;
- document.querySelector('#updates-feed').innerHTML=FESTIVAL_UPDATES.map(item=>`<li><button class="update-card" data-route="updates/${item.id}"><span class="update-meta"><time datetime="${esc(item.publishedAt)}">${esc(updateDate(item))}</time><span class="plan-status ${item.priority==='confirmed'?'confirmed':''}">${esc(ui(item.priority==='confirmed'?'updateConfirmed':'updatePending'))}</span>${updateIsNew(item)?`<span class="new-update">${esc(ui('newUpdate'))}</span>`:''}</span><strong>${esc(item.title[lang])}</strong><span class="update-card-arrow" aria-hidden="true">↗</span></button></li>`).join('');
- FESTIVAL_UPDATES.forEach(item=>details[`updates/${item.id}`]={title:item.title[lang],kicker:ui('updatesTitle'),text:[`${updateDate(item)} · ${item.audience[lang]} · ${ui(item.priority==='confirmed'?'updateConfirmed':'updatePending')}`,item.body[lang]],links:[[item.route,ui(item.route==='today'?'dayOne':'viewDayTwo').replace(' →','')]],source:ui('updatesTitle')});
+ document.querySelector('#updates-feed').innerHTML=live.map(item=>`<li><button class="update-card" data-route="updates/${item.id}"><span class="update-meta"><time datetime="${esc(item.releaseAt||item.publishedAt)}">${esc(updateDate(item))}</time><span class="plan-status ${item.priority==='confirmed'?'confirmed':''}">${esc(ui(item.priority==='confirmed'?'updateConfirmed':'updatePending'))}</span>${updateIsNew(item)?`<span class="new-update">${esc(ui('newUpdate'))}</span>`:''}</span><strong>${esc(item.title[lang])}</strong><span class="update-card-arrow" aria-hidden="true">↗</span></button></li>`).join('');
+ FESTIVAL_UPDATES.forEach(item=>delete details[`updates/${item.id}`]);
+ live.forEach(item=>details[`updates/${item.id}`]={title:item.title[lang],kicker:ui('updatesTitle'),text:[`${updateDate(item)} · ${item.audience[lang]} · ${ui(item.priority==='confirmed'?'updateConfirmed':'updatePending')}`,item.body[lang]],links:[[item.route,item.route==='today'?ui('dayOne'):item.route==='updates'?ui('updatesTitle'):ui('viewDayTwo').replace(' →','')]],source:ui('updatesTitle')});
  details['tornaboda/map']={title:ui('saturdayMapTitle'),kicker:ui('dayTwo'),art:'tornaboda-map-corrected-draft.png',full:true,text:[ui('saturdayMapNote'),ui('mapArtworkLanguage')],source:ui('saturdayMapSource'),links:[['tornaboda',ui('viewDayTwo').replace(' →','')]]};
 }
 function markUpdatesSeen(route){
- const items=route==='updates'?FESTIVAL_UPDATES:FESTIVAL_UPDATES.filter(item=>route===`updates/${item.id}`);
+ const live=activeFestivalUpdates();
+ const items=route==='updates'?live:live.filter(item=>route===`updates/${item.id}`);
  const changed=items.some(updateIsNew);items.forEach(item=>updatesSeen[item.id]=item.revision);
  if(changed){try{localStorage.setItem(updatesSeenKey,JSON.stringify(updatesSeen));}catch{}renderUpdates();}
 }
@@ -248,8 +256,14 @@ dialog.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const els=[...dial
 function closeDetail(){if(openedFromApp){history.back();}else{location.replace('#'+lastPanel);} }
 document.querySelector('#close-detail').addEventListener('click',closeDetail);dialog.addEventListener('cancel',e=>{e.preventDefault();closeDetail();});dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeDetail();}});
 addEventListener('hashchange',renderRoute);applyLanguage(lang,{render:false,syncUrl:false});renderDynamic();renderRoute();
-function updateClock(){const date=new Date(),mx=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Mexico_City',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(date),v=Object.fromEntries(mx.map(p=>[p.type,p.value])),day=`${v.year}-${v.month}-${v.day}`;let minutes=Number(v.hour)*60+Number(v.minute);if(day==='2026-10-17')minutes+=1440;const activeDay=day==='2026-10-16'||(day==='2026-10-17'&&minutes<26*60);const dateText=activeDay?'Hoy vivimos La Ola · Guadalajara':day<'2026-10-16'?'Nos vemos el 16 de octubre · Guadalajara':day==='2026-10-17'?'The Afters · Cierre abierto en la guía.':'Nos vemos en la próxima ola.';document.querySelector('#date-status').textContent=tr(dateText);let active=-1;if(activeDay)timeline.forEach((t,i)=>{if(minutes>=t[3])active=i;});document.querySelectorAll('.timeline li').forEach((li,i)=>{li.classList.toggle('now',i===active);li.querySelector('.now-label')?.remove();if(i===active){const label=document.createElement('span');label.className='now-label';label.textContent=tr('ESTA OLA · HORARIO APROXIMADO');li.querySelector('time').append(label);}});}
-updateClock();setInterval(updateClock,60000);
+function updateClock(){const date=new Date(),mx=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Mexico_City',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(date),v=Object.fromEntries(mx.map(p=>[p.type,p.value])),day=`${v.year}-${v.month}-${v.day}`;let minutes=Number(v.hour)*60+Number(v.minute);if(day==='2026-10-17')minutes+=1440;const activeDay=day==='2026-10-16'||(day==='2026-10-17'&&minutes<26*60);const dateText=activeDay?'Hoy vivimos La Ola · Guadalajara':day<'2026-10-16'?'Nos vemos el 16 de octubre · Guadalajara':day==='2026-10-17'?'The Afters · Cierre abierto en la guía.':'Nos vemos en la próxima ola.';document.querySelector('#date-status').textContent=tr(dateText);let active=-1;if(activeDay)timeline.forEach((t,i)=>{if(minutes>=t[3])active=i;});document.querySelectorAll('.timeline li').forEach((li,i)=>{li.classList.toggle('now',i===active);li.querySelector('.now-label')?.remove();if(i===active){const label=document.createElement('span');label.className='now-label';label.textContent=tr('ESTA OLA · HORARIO APROXIMADO');li.querySelector('time').append(label);}});renderUpdates();}
+updateClock();
+function scheduleNextMinute(){
+ setTimeout(()=>{updateClock();scheduleNextMinute();},60000-Date.now()%60000+25);
+}
+scheduleNextMinute();
+// Background browser timers may pause; refresh immediately when the guide returns to the foreground.
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateClock();});
 let waitingWorker=null;const status=document.querySelector('#connection');let offlineState='preparing',registration=null;
 const offlineCopy={
  preparing:{en:'Preparing the guide for offline use…',es:'Preparando la guía para usar sin conexión…'},
