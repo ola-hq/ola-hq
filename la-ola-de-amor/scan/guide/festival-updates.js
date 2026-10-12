@@ -19,5 +19,53 @@ const FESTIVAL_UPDATES = [
       "es": "Bri + Jon · Our People · Our Festival. ¡Falta una semana para el viernes 16 de octubre! La Plática ya está abierta: deja un poquito de amor, manda un saludo y consulta las actualizaciones para ver los planes confirmados. Los mensajes aparecen para todos al enviarlos."
     },
     "route": "updates"
+  },
+  {
+    "id": "midnight-last-call",
+    "revision": "2026-10-12-midnight-r1",
+    "publishedAt": "2026-10-17",
+    "releaseAt": "2026-10-17T00:00:00-06:00",
+    "expiresAt": "2026-10-17T01:00:00-06:00",
+    "priority": "confirmed",
+    "audience": {
+      "en": "La Ola · Friday night",
+      "es": "La Ola · Viernes por la noche"
+    },
+    "title": {
+      "en": "LAST CALL · 1:00 AM 🍹",
+      "es": "ÚLTIMA RONDA · 1:00 AM 🍹"
+    },
+    "body": {
+      "en": "La Ola, your one-hour warning: our staffed bar closes at 1:00 AM. Grab your last bartender-made drink, raise a glass, and keep the music going. 🌊",
+      "es": "¡Atención, La Ola! Queda una hora de servicio en la barra: el equipo termina a la 1:00 AM. Pide tu última bebida preparada, brinda y sigue bailando. 🌊"
+    },
+    "route": "updates"
+  },
+  {
+    "id": "afters-self-serve",
+    "revision": "2026-10-12-afters-r1",
+    "publishedAt": "2026-10-17",
+    "releaseAt": "2026-10-17T01:00:00-06:00",
+    "expiresAt": "2026-10-17T02:00:00-06:00",
+    "priority": "confirmed",
+    "audience": {
+      "en": "La Ola · The Afters",
+      "es": "La Ola · Los Afters"
+    },
+    "title": {
+      "en": "YOU REALLY THOUGHT THAT WAS LAST CALL? 😂",
+      "es": "¿DE VERDAD CREÍSTE QUE ERA LA ÚLTIMA? 😂"
+    },
+    "body": {
+      "en": "You really thought that was last call? Our bartenders are off the clock, but the afters just started. Want another drink? Head to the bar and serve yourself. In fact… serve us all one. 🌊",
+      "es": "¿De verdad creíste que era la última ronda? El equipo de barra ya terminó, ¡pero los afters apenas comienzan! ¿Quieres otro trago? Pásate a la barra y sírvete. Es más… ¡sírvenos uno a todos! 🌊"
+    },
+    "route": "updates"
   }
 ];
+function activeFestivalUpdates(now = Date.now()) {
+  return FESTIVAL_UPDATES
+    .filter(item => (!item.releaseAt || Date.parse(item.releaseAt) <= now) && (!item.expiresAt || now < Date.parse(item.expiresAt)))
+    .sort((a, b) => Date.parse(b.releaseAt || b.publishedAt + 'T12:00:00Z') - Date.parse(a.releaseAt || a.publishedAt + 'T12:00:00Z') || a.id.localeCompare(b.id))
+    .slice(0, 2);
+}
