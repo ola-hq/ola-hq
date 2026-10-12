@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-12T19:06:51.958Z",
+    "fetched_at": "2026-10-12T19:28:49.633Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-12T19:06:51.958Z"
+    "details_checked_at": "2026-10-12T19:28:49.633Z"
   },
   "matches": [
     {
@@ -4062,15 +4062,15 @@
       "home_score": 1,
       "away_score": 0,
       "status": "in",
-      "minute": 7,
+      "minute": 28,
       "venue": "Coventry Building Society Arena",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879267",
       "stats": [
         {
           "label": "Fouls",
-          "home": "0",
-          "away": "3"
+          "home": "2",
+          "away": "4"
         },
         {
           "label": "Yellow Cards",
@@ -4084,8 +4084,8 @@
         },
         {
           "label": "Offsides",
-          "home": "0",
-          "away": "0"
+          "home": "2",
+          "away": "3"
         },
         {
           "label": "Corner Kicks",
@@ -4094,28 +4094,28 @@
         },
         {
           "label": "Saves",
-          "home": "0",
+          "home": "1",
           "away": "0"
         },
         {
           "label": "Possession",
-          "home": "55.3",
-          "away": "44.7"
+          "home": "25",
+          "away": "75"
         },
         {
           "label": "SHOTS",
           "home": "1",
-          "away": "0"
+          "away": "4"
         },
         {
           "label": "ON GOAL",
           "home": "1",
-          "away": "0"
+          "away": "1"
         },
         {
           "label": "On Target %",
           "home": "1.0",
-          "away": "0.0"
+          "away": "0.3"
         },
         {
           "label": "Penalty Goals",
@@ -4128,12 +4128,18 @@
           "away": "0"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Rudoni (Home)"
+        }
+      ],
       "lineups": {
         "home": [
           "Carl Rushworth",
-          "Bobby Thomas",
           "Ethan Pinnock",
+          "Bobby Thomas",
           "Jay Da Silva",
           "Milan van Ewijk",
           "Jack Rudoni",
