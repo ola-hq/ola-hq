@@ -58,7 +58,7 @@ test('scheduled midnight and afters posts are hidden until their Guadalajara rel
   const script = publicScript(announcements);
   assert(!script.includes('day-two') && !script.includes('pool-play'));
   assert(!script.includes('"status": "scheduled"'));
-  const at = iso => Array.from(vm.runInNewContext(script + '\\nactiveFestivalUpdates(Date.parse(' + JSON.stringify(iso) + ')).map(item => item.id)'));
+  const at = iso => Array.from(vm.runInNewContext(script + '\nactiveFestivalUpdates(Date.parse(' + JSON.stringify(iso) + ')).map(item => item.id)'));
   assert.deepEqual(at('2026-10-16T23:59:59-06:00'), ['one-week']);
   assert.deepEqual(at('2026-10-17T00:00:00-06:00'), ['midnight-last-call', 'one-week']);
   assert.deepEqual(at('2026-10-17T00:59:59-06:00'), ['midnight-last-call', 'one-week']);
