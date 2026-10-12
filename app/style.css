@@ -270,7 +270,5 @@ html.is-installed #install{display:none!important}
 .what-wave-art strong{font:900 clamp(28px,6vw,48px)/.97 'Outfit',sans-serif;letter-spacing:-.05em}
 .what-wave-ripples{font-size:38px;letter-spacing:.22em;color:#8bd2d0}
 
-/* Header brand: independent app-home globe and external website-name actions. */
+/* Header globe stays an app-home action; no external website link in the header. */
 .appbar .brand-globe{display:inline-flex;align-items:center;justify-content:center;flex:none;min-width:44px;min-height:44px;padding:2px;border:0;border-radius:50%;background:transparent;color:inherit;cursor:pointer}
-.appbar .brand-website{display:flex;flex-direction:column;justify-content:center;min-height:44px;color:inherit;text-decoration:none}
-.appbar .brand-website:hover strong{text-decoration:underline;text-underline-offset:3px}
