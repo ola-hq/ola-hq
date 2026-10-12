@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-12T19:28:49.633Z",
+    "fetched_at": "2026-10-12T19:54:04.885Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-12T19:28:49.633Z"
+    "details_checked_at": "2026-10-12T19:54:04.885Z"
   },
   "matches": [
     {
@@ -4062,15 +4062,15 @@
       "home_score": 1,
       "away_score": 0,
       "status": "in",
-      "minute": 28,
+      "minute": 453,
       "venue": "Coventry Building Society Arena",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879267",
       "stats": [
         {
           "label": "Fouls",
-          "home": "2",
-          "away": "4"
+          "home": "3",
+          "away": "7"
         },
         {
           "label": "Yellow Cards",
@@ -4085,37 +4085,37 @@
         {
           "label": "Offsides",
           "home": "2",
-          "away": "3"
+          "away": "4"
         },
         {
           "label": "Corner Kicks",
           "home": "0",
-          "away": "0"
+          "away": "3"
         },
         {
           "label": "Saves",
           "home": "1",
-          "away": "0"
+          "away": "1"
         },
         {
           "label": "Possession",
-          "home": "25",
-          "away": "75"
+          "home": "34.8",
+          "away": "65.2"
         },
         {
           "label": "SHOTS",
-          "home": "1",
-          "away": "4"
+          "home": "2",
+          "away": "9"
         },
         {
           "label": "ON GOAL",
-          "home": "1",
-          "away": "1"
+          "home": "2",
+          "away": "2"
         },
         {
           "label": "On Target %",
           "home": "1.0",
-          "away": "0.3"
+          "away": "0.2"
         },
         {
           "label": "Penalty Goals",
