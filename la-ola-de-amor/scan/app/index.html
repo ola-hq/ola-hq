@@ -62,7 +62,6 @@ dialog::backdrop{background:#04111dde;backdrop-filter:blur(3px)}
 <div class="shell">
 <header>
   <a href="../../" aria-label="Return to the La Ola de Amor wedding website"><img src="../../assets/loda-wordmark-cream.svg" alt="La Ola de Amor"></a>
-  <button type="button" class="appbar-action" id="install">Get the app / Instalar ↗</button>
 </header>
 <main id="main">
   <section>
@@ -71,48 +70,13 @@ dialog::backdrop{background:#04111dde;backdrop-filter:blur(3px)}
     <p class="intro">Your festival plans in one place: schedule, music, food, the Plaza, maps and La Plática. Everything you need to ride La Ola.</p>
     <div class="actions">
       <a class="primary" href="../guide/">Enter La Ola / Entrar ↗</a>
-      <button class="secondary" type="button" id="install-main">Add to Home Screen / Instalar +</button>
     </div>
-    <p class="small">Install the existing Festival Guide on your home screen. The full wedding photo website stays separate and unchanged. After the guide saves its offline content, the prepared festival pages can be used without a connection.</p>
+    <p class="small">Enter La Ola to open the Festival Guide. Once inside, tap Get the app to add it to your home screen. The full wedding photo website stays separate and unchanged.</p>
 
   </section>
   <div class="art"><img src="../../assets/sunmoon-transparent.png" alt="La Ola de Amor sun and moon artwork"></div>
 </main>
 <footer><p>One festival. One guide. One home-screen icon.</p><a href="../../">Wedding website ↗</a><a href="../guide/">Open Guide ↗</a></footer>
 </div>
-
-<dialog id="install-info" aria-labelledby="install-title">
-  <div class="install-panel">
-    <button class="close-install" type="button" aria-label="Close installation instructions">×</button>
-    <h2 id="install-title">Take the festival home.</h2>
-    <p><strong>iPhone:</strong> Open this page in Safari, tap Share, then <strong>Add to Home Screen</strong>. Enable <strong>Open as Web App</strong> if offered and tap Add. The icon will launch the Festival Guide.</p>
-    <p><strong>Android:</strong> Use Install Festival Guide below if offered, or choose Install app / Add to Home Screen from the browser menu.</p>
-    <p><strong>Español:</strong> En Safari, Compartir → Agregar a pantalla de inicio. En Chrome, menú → Instalar aplicación.</p>
-    <button id="native-install" type="button" hidden>Install Festival Guide / Instalar</button>
-    <p>The Festival Guide prepares offline pages after loading. External links and live contributions still require internet.</p>
-  </div>
-</dialog>
-<script>
-(()=>{
-  const top=document.getElementById('install');
-  const hero=document.getElementById('install-main');
-  const dialog=document.getElementById('install-info');
-  const native=document.getElementById('native-install');
-  let deferred=null;
-  const standalone=matchMedia('(display-mode: standalone)');
-  const installed=()=>standalone.matches||navigator.standalone===true;
-  const sync=()=>{top.hidden=installed();hero.hidden=installed();};
-  sync();
-  standalone.addEventListener?.('change',sync);
-  addEventListener('appinstalled',sync);
-  const open=()=>dialog.showModal();
-  top.addEventListener('click',open);
-  hero.addEventListener('click',open);
-  document.querySelector('.close-install').addEventListener('click',()=>dialog.close());
-  dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
-  addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;native.hidden=false;});
-  native.addEventListener('click',async()=>{if(!deferred)return;const prompt=deferred;deferred=null;native.hidden=true;try{await prompt.prompt();await prompt.userChoice;}catch{}dialog.close();});
-  if('serviceWorker'in navigator){navigator.serviceWorker.register('../sw.js',{scope:'../',updateViaCache:'none'}).catch(()=>{});}
-})();
-</script></body>
+</body>
 </html>

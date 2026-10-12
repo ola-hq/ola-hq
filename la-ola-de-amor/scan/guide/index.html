@@ -6,6 +6,23 @@
 <meta name="description" content="Festival Guide · Bri + Jon · La Ola de Amor · Guadalajara">
 <link rel="manifest" href="../manifest.webmanifest"><link rel="icon" href="../../assets/heart-transparent.png"><link rel="apple-touch-icon" href="../../assets/heart-transparent.png">
 <link rel="stylesheet" href="guide.css"><link rel="stylesheet" href="la-platica.css"><script src="festival-updates.js" defer></script><script src="guide.js" defer></script><script src="la-platica.js" defer></script><script src="la-platica-host.js" defer></script>
+
+<style id="festival-guide-install-style">
+/* Scoped install control; preserve the existing guide layout and its detail dialog. */
+.masthead .guide-utilities{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.masthead .guide-utilities .updates-shortcut{flex:1 1 180px}
+.guide-install-button{flex:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 14px;background:#e2bd6e;color:#071d38;border:1px solid #f1d395;border-radius:5px;font:800 12px/1.25 Arial,Helvetica,sans-serif;letter-spacing:.02em;cursor:pointer}
+.guide-install-button:hover{background:#f2d48f}
+#guide-install-dialog{width:min(510px,calc(100vw - 30px));max-height:calc(100dvh - 30px);overflow:auto;border:2px solid #b5842f;border-radius:10px;background:#fff7e3;color:#071d38;padding:0;box-shadow:0 24px 60px #0008}
+#guide-install-dialog::backdrop{background:rgba(3,15,33,.75)}
+#guide-install-dialog .install-panel{padding:22px clamp(18px,5vw,32px) 28px}
+#guide-install-dialog .install-close{float:right;min-width:44px;min-height:44px;background:transparent;color:#071d38;border:1px solid #b5842f;border-radius:5px;font-size:26px;cursor:pointer}
+#guide-install-dialog h2{clear:both;padding-top:6px;font:normal clamp(26px,6vw,36px)/1.1 Georgia,serif}
+#guide-install-dialog p{font-size:15px;line-height:1.65}
+#guide-install-dialog .native-install{min-height:48px;padding:11px 17px;margin-top:8px;border:0;border-radius:4px;background:#071d38;color:#fff7e3;font-weight:800}
+#guide-install-dialog [hidden],.guide-install-button[hidden]{display:none!important}
+@media(max-width:650px){.masthead .guide-utilities{gap:8px}.masthead .guide-utilities .updates-shortcut{flex:1 1 130px}.guide-install-button{font-size:11px;padding:10px 12px}}
+</style>
 <title>Festival Guide · La Ola de Amor</title>
 </head>
 <body>
@@ -20,7 +37,7 @@
     </div>
   </div>
   <a href="../../../">OLA HQ ↑</a>
-  <nav class="guide-utilities" aria-label="Guide updates"><a class="updates-shortcut" href="#updates"><span data-i18n="updatesTitle">Festival Updates</span><span class="unread-badge" id="updates-new" hidden></span><span aria-hidden="true">↗</span></a></nav>
+  <nav class="guide-utilities" aria-label="Guide updates and installation"><a class="updates-shortcut" href="#updates"><span data-i18n="updatesTitle">Festival Updates</span><span class="unread-badge" id="updates-new" hidden></span><span aria-hidden="true">↗</span></a><button type="button" id="guide-get-app" class="guide-install-button" aria-haspopup="dialog">Get the app ↗</button></nav>
 </header>
 <div class="connection" id="connection" role="status" aria-live="polite">Preparing the guide for offline use…</div>
 <div class="update" id="update" hidden><span data-i18n="updateAvailable">Nueva edición disponible.</span> <button id="apply-update" data-i18n="updateButton">Actualizar guía</button></div>
@@ -113,5 +130,62 @@
 </main>
 <nav class="bottomnav" aria-label="Guide sections"><a href="#today" aria-current="page"><span aria-hidden="true">◷</span><b data-i18n="navToday">Today</b></a><a href="#music"><span aria-hidden="true">♫</span><b data-i18n="navMusic">Music</b></a><a href="#plaza"><span aria-hidden="true">⌂</span><b>Plaza</b></a><a href="#food"><span aria-hidden="true">✦</span><b data-i18n="navFood">Food</b></a><a class="updates-nav-tab" href="#updates"><span aria-hidden="true">✉</span><b data-i18n="updatesTitle">Updates</b><i class="updates-nav-dot" aria-hidden="true"></i></a></nav>
 <dialog id="detail" aria-labelledby="detail-title"><div class="dialog-top"><p id="detail-kicker" class="eyebrow"></p><button id="close-detail" aria-label="Close detail">×</button></div><h2 id="detail-title"></h2><div id="detail-body"></div></dialog>
+
+<dialog id="guide-install-dialog" aria-labelledby="guide-install-title">
+  <div class="install-panel">
+    <button type="button" id="guide-install-close" class="install-close" aria-label="Close installation instructions">×</button>
+    <h2 id="guide-install-title"><span data-install-en>Take the festival home.</span><span data-install-es hidden>Llévate el festival contigo.</span></h2>
+    <div data-install-en>
+      <p><strong>iPhone:</strong> Open the Festival Guide in Safari, tap Share, then <strong>Add to Home Screen</strong>. If offered, select <strong>Open as Web App</strong> and tap Add.</p>
+      <p><strong>Android:</strong> Tap Install Festival Guide below if available, or use your browser menu → Install app / Add to Home Screen.</p>
+      <p>Open your home-screen La Ola icon to return directly to the guide. Save the guide online first for prepared offline pages. External links still need internet.</p>
+    </div>
+    <div data-install-es hidden lang="es">
+      <p><strong>iPhone:</strong> Abre la Guía del Festival en Safari, toca Compartir y luego <strong>Agregar a pantalla de inicio</strong>. Si aparece, activa <strong>Abrir como app web</strong> y toca Agregar.</p>
+      <p><strong>Android:</strong> Toca Instalar guía abajo si está disponible o usa el menú del navegador → Instalar aplicación / Agregar a pantalla de inicio.</p>
+      <p>El ícono de La Ola abre directamente la guía. Conéctate una vez para guardar las páginas sin conexión. Los enlaces externos necesitan internet.</p>
+    </div>
+    <button id="guide-native-install" type="button" class="native-install" hidden>Install Festival Guide / Instalar la guía</button>
+  </div>
+</dialog>
+<script id="guide-install-script">
+(()=>{
+  'use strict';
+  const openButton=document.getElementById('guide-get-app');
+  const dialog=document.getElementById('guide-install-dialog');
+  const closeButton=document.getElementById('guide-install-close');
+  const nativeButton=document.getElementById('guide-native-install');
+  const installedMode=matchMedia('(display-mode: standalone)');
+  let deferredInstall=null;
+  const isInstalled=()=>installedMode.matches||navigator.standalone===true;
+  const syncInstalled=()=>{openButton.hidden=isInstalled();};
+  const syncLanguage=()=>{
+    const spanish=document.documentElement.lang.toLowerCase().startsWith('es');
+    dialog.querySelectorAll('[data-install-en]').forEach(el=>el.hidden=spanish);
+    dialog.querySelectorAll('[data-install-es]').forEach(el=>el.hidden=!spanish);
+    openButton.textContent=spanish?'Instalar la app ↗':'Get the app ↗';
+    closeButton.setAttribute('aria-label',spanish?'Cerrar instrucciones':'Close installation instructions');
+  };
+  syncInstalled();
+  syncLanguage();
+  new MutationObserver(syncLanguage).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+  installedMode.addEventListener?.('change',syncInstalled);
+  addEventListener('appinstalled',()=>{openButton.hidden=true;});
+  openButton.addEventListener('click',()=>dialog.showModal());
+  closeButton.addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
+  addEventListener('beforeinstallprompt',e=>{
+    e.preventDefault();
+    deferredInstall=e;
+    nativeButton.hidden=false;
+  });
+  nativeButton.addEventListener('click',async()=>{
+    if(!deferredInstall)return;
+    const prompt=deferredInstall;deferredInstall=null;nativeButton.hidden=true;
+    try{await prompt.prompt();await prompt.userChoice;}catch{}
+    dialog.close();
+  });
+})();
+</script>
 <noscript><p>Para las fichas y el mapa interactivo, activa JavaScript. / For interactive cards and the map, enable JavaScript. <a href="art/page-04.webp">Horario · Timeline</a> · <a href="art/page-05.webp">Mapa · Map</a> · <a href="art/page-07.webp">Artistas · Artists</a> · <a href="art/page-12.webp">Comida · Food</a></p></noscript>
 </body></html>
