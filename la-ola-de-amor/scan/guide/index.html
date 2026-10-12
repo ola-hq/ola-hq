@@ -107,8 +107,8 @@
       <details id="platica-hosts" class="platica-hosts">
         <summary data-host-copy="hostLabel">Hosts only · Moderation</summary>
         <form id="platica-host-login">
-          <label for="platica-host-key" data-host-copy="keyLabel">Private host access code</label>
-          <input id="platica-host-key" type="password" autocomplete="off" required minlength="64" maxlength="64" aria-describedby="platica-host-notice">
+          <label for="platica-host-key" data-host-copy="keyLabel">Private host password</label>
+          <input id="platica-host-key" type="password" autocomplete="current-password" required minlength="12" maxlength="128" aria-describedby="platica-host-notice">
           <button type="submit" data-host-copy="unlock">Unlock host tools</button>
         </form>
         <p id="platica-host-notice" role="status" aria-live="polite"></p>
