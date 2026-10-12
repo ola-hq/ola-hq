@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-arsenal-v1",
     "mode": "Auto-refreshed ESPN schedule",
-    "updated_at": "2026-10-12T17:53:00.122Z",
+    "updated_at": "2026-10-12T18:58:14.687Z",
     "updated_display": "Oct 6, 2026",
     "architecture": [
       "live source",
@@ -387,6 +387,10 @@
         "url": "https://fantasy.premierleague.com/api/fixtures/"
       },
       {
+        "label": "Premier League official fixture feed",
+        "url": "https://fantasy.premierleague.com/api/fixtures/"
+      },
+      {
         "label": "ESPN Arsenal schedule (automated, unofficial)",
         "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/359/schedule"
       },
@@ -398,9 +402,9 @@
     "refresh_strategy": "scheduled",
     "schedule_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/359/schedule?season=2026",
     "league_source": "https://site.api.espn.com/apis/v2/sports/soccer/eng.1/standings",
-    "league_updated_at": "2026-10-12T17:53:00.122Z",
+    "league_updated_at": "2026-10-12T18:58:14.687Z",
     "fixture_source": "automated",
-    "fixture_updated_at": "2026-10-12T17:53:00.122Z",
+    "fixture_updated_at": "2026-10-12T18:58:14.687Z",
     "official_fixture_feed": "https://fantasy.premierleague.com/api/fixtures/",
     "match_link_source": "Verified Premier League match centre"
   },
