@@ -1,0 +1,19 @@
+{
+  "id": "./",
+  "name": "La Ola de Amor · Bri + Jon",
+  "short_name": "La Ola de Amor",
+  "description": "Bri + Jon · Three cities, one love story, and the festival world we made together.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0c203b",
+  "theme_color": "#0c203b",
+  "icons": [
+    {
+      "src": "assets/heart-transparent.png",
+      "sizes": "1500x1500",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
