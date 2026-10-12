@@ -1,6 +1,6 @@
 # La Ola de Amor · real push alerts (operator handoff)
 
-**Status:** Integration code prepared on an isolated review branch. The production app is NOT subscribed, enabled, scheduled, merged or deployed until this checklist is completed and a real device succeeds.
+**Status:** Public OneSignal App ID configured in the integration branch (7a08d6ee-1181-4925-bd3f-1a7a7439aaee). Push delivery is NOT verified, no users are subscribed via this new feature, and no notifications have been scheduled. Finish release and real-device testing before relying on it.
 
 ## How the setup works
 
@@ -19,12 +19,12 @@
    - Worker path: the live guide's `/la-ola-de-amor/scan/onesignal/OneSignalSDKWorker.js` (including any repository/project prefix).
    - Scope: same folder, ending `/la-ola-de-amor/scan/onesignal/`. This must NOT take over the offline `/scan/` scope.
    - The client `push-config.js` derives both paths from its own served URL, handling GitHub Pages prefix automatically.
-4. Locate **App ID** in OneSignal > Settings > Keys & IDs. This public UUID can be committed to `la-ola-de-amor/scan/guide/push-config.js` as `appId`. The default empty string intentionally keeps the feature hidden until configured.
+4. **Completed:** The public App ID from OneSignal > Settings > Keys & IDs has been added to `la-ola-de-amor/scan/guide/push-config.js`. No secret keys are in the repository.
 5. **NEVER** commit or put OneSignal REST API keys, tokens, app credentials, or a send endpoint in public client-side files, HTML, JavaScript, screenshots or PR comments. Keep REST key in a local environment for scheduling only. Don't share it in chat.
 
 ## 2. Merge/release and test before messaging
 
-- This PR is stacked on top of **PR #58** (timed in-app notices), so merge/coordinate PR #58 first. PR #37 also touches Festival Guide; do not overwrite its unreviewed edits.
+- This release branch starts from **PR #58 already merged to main** (timed in-app notices). PR #37 also touches Festival Guide; do not overwrite its unreviewed edits.
 - Merge only after the provider App ID is configured and the branch passes release verification; publishing remains an organizer/release decision.
 - Check the public worker URL returns JavaScript, not HTML or a 404, and check the site uses HTTPS.
 - iPhone test: in Safari use Share > Add to Home Screen, launch the installed `La Ola de Amor` icon, open Festival Updates, tap "Enable festival alerts 🔔", accept notification permission.
@@ -64,7 +64,7 @@ The script refuses past dates, validates the exact two planned announcements, an
 
 ## Troubleshooting / boundaries
 
-- **No visible card:** public App ID is empty or invalid; feature intentionally disabled.
+- **No visible card:** public App ID is missing/invalid, page is an old offline edition, or this branch is not deployed.
 - **No native prompt on iPhone:** open the installed Home Screen web app rather than Safari. Also ensure iOS 16.4+ and notifications aren't blocked in Settings.
 - **Offline worker replaced:** wrong custom OneSignal worker scope; isolate under `scan/onesignal/`.
 - **Push did not arrive:** verify subscriber exists, provider delivery, device connection and OS notification settings.
