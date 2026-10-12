@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-12T21:29:50.274Z",
+    "fetched_at": "2026-10-12T22:30:25.826Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -607,7 +607,7 @@
         "event": 6,
         "finished": false,
         "league_entry_1": 95298,
-        "league_entry_1_points": 28,
+        "league_entry_1_points": 30,
         "league_entry_2": 95301,
         "league_entry_2_points": 26,
         "started": true,
@@ -620,7 +620,7 @@
         "league_entry_1": 95302,
         "league_entry_1_points": 17,
         "league_entry_2": 95300,
-        "league_entry_2_points": 53,
+        "league_entry_2_points": 55,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -651,7 +651,7 @@
         "event": 6,
         "finished": false,
         "league_entry_1": 95305,
-        "league_entry_1_points": 29,
+        "league_entry_1_points": 37,
         "league_entry_2": 95308,
         "league_entry_2_points": 34,
         "started": true,
@@ -664,7 +664,7 @@
         "league_entry_1": 95306,
         "league_entry_1_points": 35,
         "league_entry_2": 95307,
-        "league_entry_2_points": 44,
+        "league_entry_2_points": 49,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -11441,7 +11441,7 @@
       "team": 16,
       "total_points": 12,
       "event_points": 3,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 424,
@@ -11540,7 +11540,7 @@
       "team": 16,
       "total_points": 26,
       "event_points": 4,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 433,
@@ -11859,7 +11859,7 @@
       "team": 17,
       "total_points": 9,
       "event_points": 1,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 462,
@@ -12200,7 +12200,7 @@
       "team": 7,
       "total_points": 3,
       "event_points": 0,
-      "status": "s"
+      "status": "a"
     },
     {
       "id": 493,
