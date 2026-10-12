@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-12T19:54:04.885Z",
+    "fetched_at": "2026-10-12T20:13:44.218Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-12T19:54:04.885Z"
+    "details_checked_at": "2026-10-12T20:13:44.218Z"
   },
   "matches": [
     {
@@ -4059,10 +4059,10 @@
         "name": "Newcastle",
         "short": "NEW"
       },
-      "home_score": 1,
+      "home_score": 2,
       "away_score": 0,
       "status": "in",
-      "minute": 453,
+      "minute": 56,
       "venue": "Coventry Building Society Arena",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879267",
@@ -4094,28 +4094,28 @@
         },
         {
           "label": "Saves",
-          "home": "1",
+          "home": "2",
           "away": "1"
         },
         {
           "label": "Possession",
-          "home": "34.8",
-          "away": "65.2"
+          "home": "37.2",
+          "away": "62.8"
         },
         {
           "label": "SHOTS",
-          "home": "2",
-          "away": "9"
+          "home": "3",
+          "away": "11"
         },
         {
           "label": "ON GOAL",
-          "home": "2",
-          "away": "2"
+          "home": "3",
+          "away": "3"
         },
         {
           "label": "On Target %",
           "home": "1.0",
-          "away": "0.2"
+          "away": "0.3"
         },
         {
           "label": "Penalty Goals",
@@ -4133,6 +4133,11 @@
           "minute": null,
           "type": "Goal",
           "description": "Goal · Rudoni (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Cherif (Home)"
         }
       ],
       "lineups": {
