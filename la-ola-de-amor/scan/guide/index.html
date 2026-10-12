@@ -6,7 +6,7 @@
 <meta name="description" content="Festival Guide · Bri + Jon · La Ola de Amor · Guadalajara">
 <meta name="apple-mobile-web-app-title" content="La Ola de Amor">
 <link rel="manifest" href="../manifest.webmanifest"><link rel="icon" href="../../assets/sunmoon-transparent.png"><link rel="apple-touch-icon" href="../../assets/sunmoon-transparent.png">
-<link rel="stylesheet" href="guide.css"><link rel="stylesheet" href="la-platica.css"><script src="festival-updates.js" defer></script><script src="guide.js" defer></script><script src="la-platica.js" defer></script><script src="la-platica-host.js" defer></script>
+<link rel="stylesheet" href="guide.css"><link rel="stylesheet" href="la-platica.css"><script src="festival-updates.js" defer></script><script src="guide.js" defer></script><script src="push-config.js" defer></script><script src="push.js" defer></script><script src="la-platica.js" defer></script><script src="la-platica-host.js" defer></script>
 
 <style id="festival-guide-install-style">
 /* Scoped install control; preserve the existing guide layout and its detail dialog. */
@@ -79,6 +79,13 @@
 </section>
 <section id="updates" class="panel" hidden aria-labelledby="updates-title">
   <div class="section-intro updates-intro"><p class="eyebrow" data-i18n="updatesEyebrow">THE LATEST FROM LA OLA</p><h2 id="updates-title" data-i18n="updatesTitle">Festival Updates</h2><p data-i18n="updatesIntro">A place to check the latest plans before you join the wave.</p><p class="edition-note" data-i18n="updatesEdition">October 8 edition · Offline, you see your saved edition. Reconnect and update the guide for newer announcements.</p></div>
+  <section class="festival-push" id="guide-push" aria-labelledby="guide-push-title" hidden>
+    <p class="eyebrow">LA OLA DE AMOR · 🔔</p>
+    <h3 id="guide-push-title"><span data-push-en>Festival alerts</span><span data-push-es hidden>Alertas del festival</span></h3>
+    <p id="guide-push-status" role="status" aria-live="polite">Preparing notifications…</p>
+    <button type="button" id="guide-push-toggle" class="festival-push-button" disabled>Enable festival alerts 🔔</button>
+    <p class="festival-push-help" id="guide-push-instructions">Optional. You can pause alerts any time.</p>
+  </section>
   <ol class="updates-feed" id="updates-feed"></ol>
   <p class="section-intro" id="updates-empty" data-i18n="updatesEmpty" hidden>No current announcements.</p>
   <section class="platica" aria-labelledby="platica-title">
