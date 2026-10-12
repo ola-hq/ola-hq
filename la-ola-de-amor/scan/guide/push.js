@@ -47,6 +47,8 @@
 
   const language = () => document.documentElement.lang.toLowerCase().startsWith('es') ? 'es' : 'en';
   const t = key => copy[language()][key];
+  const titleEn = panel.querySelector('[data-push-en]');
+  const titleEs = panel.querySelector('[data-push-es]');
   const standalone = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
   const ios = () => /iPad|iPhone|iPod/.test(navigator.userAgent) ||
     (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
@@ -55,6 +57,8 @@
   const subscribed = () => Boolean(signal && signal.Notifications.permission && signal.User.PushSubscription.optedIn);
 
   function render() {
+    if (titleEn) titleEn.hidden = language() !== 'en';
+    if (titleEs) titleEs.hidden = language() !== 'es';
     const needsInstall = ios() && !standalone();
     const denied = permission() === 'denied';
     const unavailable = !supported();
