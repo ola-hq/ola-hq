@@ -49,7 +49,32 @@ test('invalid IDs, duplicate IDs, status and impossible dates fail closed', () =
   assert.throws(() => reconcileAnnouncements([entry('a', '2026-02-30')]), /date/);
   assert.throws(() => reconcileAnnouncements([entry('bad/id', '2026-10-08')]), /ID/);
   assert.throws(() => reconcileAnnouncements([entry('a', '2026-10-08'), entry('a', '2026-10-09')]), /ID/);
-  assert.throws(() => reconcileAnnouncements([entry('a', '2026-10-08', 'scheduled')]), /status/);
+  assert.throws(() => reconcileAnnouncements([entry('a', '2026-10-08', 'unknown')]), /status/);
+});
+test('scheduled midnight and afters posts are hidden until their Guadalajara release times', () => {
+  const announcements = source.announcements;
+  assert.deepEqual(announcements.filter(item => item.status === 'scheduled').map(item => item.id), ['midnight-last-call', 'afters-self-serve']);
+  assert.deepEqual(currentAnnouncements(announcements).map(item => item.id), ['one-week']);
+  const script = publicScript(announcements);
+  assert(!script.includes('day-two') && !script.includes('pool-play'));
+  assert(!script.includes('"status": "scheduled"'));
+  const at = iso => Array.from(vm.runInNewContext(script + '\nactiveFestivalUpdates(Date.parse(' + JSON.stringify(iso) + ')).map(item => item.id)'));
+  assert.deepEqual(at('2026-10-16T23:59:59-06:00'), ['one-week']);
+  assert.deepEqual(at('2026-10-17T00:00:00-06:00'), ['midnight-last-call', 'one-week']);
+  assert.deepEqual(at('2026-10-17T00:59:59-06:00'), ['midnight-last-call', 'one-week']);
+  assert.deepEqual(at('2026-10-17T01:00:00-06:00'), ['afters-self-serve', 'one-week']);
+  assert.deepEqual(at('2026-10-17T01:59:59-06:00'), ['afters-self-serve', 'one-week']);
+  assert.deepEqual(at('2026-10-17T02:00:00-06:00'), ['one-week']);
+  for (const iso of ['2026-10-17T00:00:00-06:00', '2026-10-17T01:00:00-06:00']) {
+    assert(at(iso).length <= 2);
+  }
+});
+test('scheduled notices require valid Mexico City times, dates and non-overlapping expiration', () => {
+  const scheduled = source.announcements.find(item => item.id === 'midnight-last-call');
+  assert.throws(() => reconcileAnnouncements([{...scheduled, releaseAt: undefined}]), /release time/);
+  assert.throws(() => reconcileAnnouncements([{...scheduled, releaseAt: '2026-10-16T00:00:00-06:00'}]), /Release date/);
+  assert.throws(() => reconcileAnnouncements([{...scheduled, releaseAt: '2026-10-17T00:00:00Z'}]), /Mexico City/);
+  assert.throws(() => reconcileAnnouncements([{...scheduled, expiresAt: scheduled.releaseAt}]), /expiration/);
 });
 test('source sync durably archives overflow, remains idempotent and build validation rejects stale source/feed', () => {
   const root = mkdtempSync(join(tmpdir(), 'ola-announcements-'));
