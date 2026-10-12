@@ -11,7 +11,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="../assets/entrances/ola-hq-globe-only-favicon-20261007.png">
   <link rel="icon" href="../assets/entrances/ola-hq-globe-only-favicon-20261007.png">
-  <link rel="stylesheet" href="style.css?v=16">
+  <link rel="stylesheet" href="style.css?v=17">
   <style id="app-launch-centered-globe">
     /* The globe is positioned against the launch screen itself, not a nested
        flex/grid wrapper. This avoids iPhone Safari's displaced-bottom layout. */
@@ -34,10 +34,14 @@
   <a class="skip" href="#main">Skip to main content</a>
   <div class="app">
     <header class="appbar">
-      <button type="button" id="hq-home" class="brand" aria-label="Go to OLA HQ app home">
-        <img src="../assets/entrances/ola-hq-globe-only-header-20261007.webp" width="40" height="40" alt="">
-        <span><strong>OLA HQ</strong><small>OUR WAVES · ONE HOME</small></span>
-      </button>
+      <div class="brand">
+        <button type="button" id="hq-home" class="brand-globe" aria-label="Return to the OLA HQ app home">
+          <img src="../assets/entrances/ola-hq-globe-only-header-20261007.webp" width="40" height="40" alt="">
+        </button>
+        <a class="brand-website" href="../" target="_blank" rel="noopener noreferrer" aria-label="Open OLA HQ website home in a browser">
+          <strong>OLA HQ</strong><small>OUR WAVES · ONE HOME</small>
+        </a>
+      </div>
       <button type="button" id="install" class="appbar-action">Get the app <span aria-hidden="true"><svg class="ui-arrow ui-arrow-out" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></span></button>
     </header>
 
