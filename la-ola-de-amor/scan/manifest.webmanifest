@@ -1,7 +1,7 @@
 {
   "id": "./guide/",
-  "name": "La Ola de Amor · Guía del Festival / Festival Guide",
-  "short_name": "La Ola",
+  "name": "La Ola de Amor",
+  "short_name": "La Ola de Amor",
   "description": "Bri + Jon · Guía del Festival / Festival Guide",
   "lang": "en",
   "start_url": "./guide/",
@@ -11,8 +11,8 @@
   "theme_color": "#071d38",
   "icons": [
     {
-      "src": "../assets/heart-transparent.png",
-      "sizes": "1500x1500",
+      "src": "../assets/sunmoon-transparent.png",
+      "sizes": "any",
       "type": "image/png",
       "purpose": "any"
     }
