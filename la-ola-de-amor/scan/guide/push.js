@@ -89,6 +89,8 @@
         serviceWorkerPath: config.serviceWorkerPath,
         serviceWorkerParam: { scope: config.serviceWorkerScope },
         notifyButton: { enable: false },
+        // Do not let dashboard default prompts interrupt guests: explicit button only.
+        promptOptions: { autoPrompt: false, slidedown: { prompts: [{ type: 'push', autoPrompt: false }] } },
         welcomeNotification: { disable: true }
       });
       signal = OneSignal;
