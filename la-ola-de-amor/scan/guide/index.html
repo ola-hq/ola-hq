@@ -107,6 +107,8 @@
       <details id="platica-hosts" class="platica-hosts">
         <summary data-host-copy="hostLabel">Hosts only · Moderation</summary>
         <form id="platica-host-login">
+          <label for="platica-host-name" data-host-copy="hostNameLabel">Host</label>
+          <select id="platica-host-name" autocomplete="username"><option value="Jon">Jon</option><option value="Bri">Bri</option></select>
           <label for="platica-host-key" data-host-copy="keyLabel">Private host password</label>
           <input id="platica-host-key" type="password" autocomplete="current-password" required minlength="12" maxlength="128" aria-describedby="platica-host-notice">
           <button type="submit" data-host-copy="unlock">Unlock host tools</button>
