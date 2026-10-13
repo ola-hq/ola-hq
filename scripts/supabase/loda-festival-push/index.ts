@@ -21,6 +21,42 @@ async function validHost(req:Request) {
 }
 const scheduled=[
   {
+    "id": "thursday-setup-party",
+    "at": "2026-10-15T18:00:00.000Z",
+    "heading": {
+      "en": "TODAY: SETUP PRE-PARTY! 🛠️🌊",
+      "es": "¡HOY: PRE-FIESTA DE MONTAJE! 🛠️🌊"
+    },
+    "body": {
+      "en": "3 PM at La Tijera: our festival setup pre-party! Casa Sol, Casa Luna, locals, and the whole village—if you're coming to La Ola, you're welcome to stop by, lend a hand, and hang out. Want to keep the surprise for Friday? Then don't peek. 😂❤️",
+      "es": "¡A las 3 PM en La Tijera hacemos pre-fiesta de montaje! Casa Sol, Casa Luna, vecinos y toda nuestra gente: si vienes a La Ola, puedes pasar, echarnos la mano y convivir. ¿Prefieres guardar la sorpresa para el viernes? ¡Entonces no vengas a espiar! 😂❤️"
+    }
+  },
+  {
+    "id": "wedding-day",
+    "at": "2026-10-16T17:00:00.000Z",
+    "heading": {
+      "en": "TODAY IS THE DAY! 🌞",
+      "es": "¡HOY ES EL GRAN DÍA! 🌞"
+    },
+    "body": {
+      "en": "Today's the day! Dress up, bring your best energy, and remember we're celebrating outdoors. Comfortable shoes are your friend. See you at La Tijera! 🌊",
+      "es": "¡Hoy es el gran día! Vénganse guapos, con toda la actitud. Estaremos al aire libre, así que unos zapatos cómodos ayudan. ¡Nos vemos en La Tijera! 🌊"
+    }
+  },
+  {
+    "id": "on-the-way",
+    "at": "2026-10-16T20:30:00.000Z",
+    "heading": {
+      "en": "THE WAVE IS WAITING 🚗🌊",
+      "es": "¡LA OLA LOS ESPERA! 🚗🌊"
+    },
+    "body": {
+      "en": "Heading our way? We're getting ready for you! Ceremony seating begins at 4 PM. Give yourself time to arrive and get comfortable.",
+      "es": "¿Ya vienen en camino? ¡Los esperamos! Empezamos a tomar asiento a las 4 PM. Lleguen con tiempo para acomodarse."
+    }
+  },
+  {
     "id": "welcome",
     "at": "2026-10-16T21:00:00.000Z",
     "heading": {
@@ -28,8 +64,8 @@ const scheduled=[
       "es": "¡BIENVENIDOS A LA OLA! 🌊"
     },
     "body": {
-      "en": "Fruit, aguas and cold beer are waiting. Explore Plaza San Roberto and make yourself at home.",
-      "es": "Ya hay fruta, aguas y cervezas frías. Explora la Plaza San Roberto y siéntete en casa."
+      "en": "Fruit, aguas frescas, and cold beer are waiting! Explore Plaza San Roberto and make yourself at home. Welcome to our world!",
+      "es": "¡Ya los esperan fruta, aguas frescas y cervezas bien frías! Exploren Plaza San Roberto y siéntanse como en casa. ¡Bienvenidos a nuestro mundo!"
     }
   },
   {
@@ -41,7 +77,7 @@ const scheduled=[
     },
     "body": {
       "en": "Please begin making your way to the ceremony seats. Bri and Jon can't wait to see you!",
-      "es": "Por favor, comiencen a tomar asiento para la ceremonia. ¡Bri y Jon ya quieren verlos!"
+      "es": "Vayan tomando sus lugares para la ceremonia. ¡Bri y Jon ya quieren verlos!"
     }
   },
   {
@@ -53,19 +89,43 @@ const scheduled=[
     },
     "body": {
       "en": "Please be seated. The ceremony is almost here!",
-      "es": "Por favor, tomen asiento. ¡La ceremonia está por comenzar!"
+      "es": "¡Todos a sus lugares, por favor! La ceremonia está por comenzar."
     }
   },
   {
     "id": "gates",
     "at": "2026-10-16T23:00:00.000Z",
     "heading": {
-      "en": "THE FESTIVAL IS OPEN! 🎺",
-      "es": "¡EL FESTIVAL ESTÁ ABIERTO! 🎺"
+      "en": "LET THE CELEBRATION BEGIN! 🎺",
+      "es": "¡QUE EMPIECE LA FIESTA! 🎺"
     },
     "body": {
-      "en": "Mariachi de Don Roberto is playing. Drinks and snacks are waiting. Welcome to our world!",
-      "es": "Suena el Mariachi de Don Roberto. Hay bebidas y antojitos. ¡Bienvenidos a nuestro mundo!"
+      "en": "Mariachi de Don Roberto is getting the party started! Grab a drink and explore the plaza. Look out for Beto's Botana and Frutería Rivera. Welcome to our world! 🌊",
+      "es": "¡Mariachi de Don Roberto arranca la fiesta! Pidan algo de tomar y recorran la plaza. Busquen Beto's Botana y Frutería Rivera. ¡Bienvenidos a nuestro mundo! 🌊"
+    }
+  },
+  {
+    "id": "love-bri",
+    "at": "2026-10-16T23:30:00.000Z",
+    "heading": {
+      "en": "BRI, LOOK WHAT LOVE BUILT 💛",
+      "es": "BRI, MIRA LO QUE CREÓ EL AMOR 💛"
+    },
+    "body": {
+      "en": "Bri, take one second and look around. All these people, all these little details, all this joy. You're the heart of this wave—and we love you. ❤️",
+      "es": "Bri, detente un segundito y mira a tu alrededor. Toda esta gente, los detalles, la alegría. Eres el corazón de esta ola… y te queremos muchísimo. ❤️"
+    }
+  },
+  {
+    "id": "explore-plaza",
+    "at": "2026-10-16T23:45:00.000Z",
+    "heading": {
+      "en": "EXPLORE YOUR PLAZA 🏘️",
+      "es": "¡RECORRAN SU PLAZA! 🏘️"
+    },
+    "body": {
+      "en": "This isn't your usual wedding. Take a walk around Plaza San Roberto, discover our little businesses, and see what we've built for you. 🌊",
+      "es": "Esto no es una boda cualquiera. Dense una vuelta por Plaza San Roberto, conozcan nuestros negocitos y descubran todo lo que preparamos para ustedes. 🌊"
     }
   },
   {
@@ -76,20 +136,56 @@ const scheduled=[
       "es": "¿YA VISTE EL ESPEJO MÁGICO? 📸"
     },
     "body": {
-      "en": "Find the Magic Mirror near Súper Farmacia Domingo and grab a photo with your people.",
-      "es": "Busca el Espejo Mágico junto a Súper Farmacia Domingo y tómate una foto con tu gente."
+      "en": "Find the Magic Mirror near Súper Farmacia Domingo! It's here until 7 PM, then returns from 9–11 PM. Grab your people!",
+      "es": "¡Busca el Espejo Mágico junto a Súper Farmacia Domingo! Está hasta las 7 PM y regresa de 9–11 PM. ¡Junta a tu gente!"
+    }
+  },
+  {
+    "id": "love-jon",
+    "at": "2026-10-17T00:30:00.000Z",
+    "heading": {
+      "en": "JON, DON'T MISS THIS MOMENT 🌊",
+      "es": "JON, NO TE PIERDAS ESTE MOMENTO 🌊"
+    },
+    "body": {
+      "en": "Jon, you dreamed up a whole little world for the people you love. Look around: they're here, and it's real. Put the phone down for a second. This one's yours too. ❤️",
+      "es": "Jon, soñaste todo un mundito para la gente que quieres. Mira alrededor: aquí están, y todo es real. Suelta el celular un ratito. Este momento también es tuyo. ❤️"
+    }
+  },
+  {
+    "id": "memory-walls",
+    "at": "2026-10-17T00:45:00.000Z",
+    "heading": {
+      "en": "THESE ARE OUR PEOPLE ❤️",
+      "es": "ESTA ES NUESTRA GENTE ❤️"
+    },
+    "body": {
+      "en": "Take a little walk through our memories. The photos, the places, the people. So much of our story is here tonight—and now you're part of it.",
+      "es": "Dense una vueltecita por nuestros recuerdos. Las fotos, los lugares, nuestra gente. Tanta historia está aquí esta noche… y ahora ustedes son parte de ella."
     }
   },
   {
     "id": "sunset",
     "at": "2026-10-17T01:00:00.000Z",
     "heading": {
-      "en": "THE SUNSET SELECTORS ☀️",
-      "es": "THE SUNSET SELECTORS ☀️"
+      "en": "SUNSET SELECTORS ☀️",
+      "es": "SUNSET SELECTORS ☀️"
     },
     "body": {
-      "en": "Golden-hour groove is starting. Follow the music!",
-      "es": "¡Comienza el groove de la hora dorada! Sigue la música."
+      "en": "From mariachi to sunset grooves. Sunset Selectors are taking over! Follow the music and enjoy the ride.",
+      "es": "Del mariachi al ritmo del atardecer. ¡Llegaron los Sunset Selectors! Sigue la música y déjate llevar."
+    }
+  },
+  {
+    "id": "formal-soon",
+    "at": "2026-10-17T01:40:00.000Z",
+    "heading": {
+      "en": "SOMETHING SPECIAL IS COMING 🤍",
+      "es": "SE VIENE ALGO ESPECIAL 🤍"
+    },
+    "body": {
+      "en": "In about 20 minutes, we're gathering near the stage for a few moments close to our hearts. Find your people and make your way over.",
+      "es": "En unos 20 minutos nos reunimos junto al escenario para compartir unos momentos muy especiales. Busquen a su gente y váyanse acercando."
     }
   },
   {
@@ -100,44 +196,44 @@ const scheduled=[
       "es": "UN MOMENTO PARA BRI + JON 🤍"
     },
     "body": {
-      "en": "Everyone, please head toward the stage for our grand entrance, first dances, and a few words from family.",
-      "es": "¡Todos al escenario, por favor! Se vienen nuestra entrada, los primeros bailes y unas palabras de familia."
-    }
-  },
-  {
-    "id": "group-photo-perreo",
-    "at": "2026-10-17T02:53:00.000Z",
-    "heading": {
-      "en": "EVERYBODY TO THE DANCE FLOOR! 📸",
-      "es": "¡TODOS A LA PISTA! 📸"
-    },
-    "body": {
-      "en": "Everybody to the dance floor for our big group photo! Perreo Paraíso follows. Come find your spot!",
-      "es": "¡Todos a la pista para nuestra gran foto grupal! Después sigue Perreo Paraíso. ¡Vengan ya!"
+      "en": "Gather near the stage! It's time for our grand entrance, first dances, and a few words from the people we love.",
+      "es": "¡Nos vemos junto al escenario! Llegó el momento de nuestra gran entrada, primeros bailes y unas palabras de nuestra gente."
     }
   },
   {
     "id": "desserts",
     "at": "2026-10-17T03:35:00.000Z",
     "heading": {
-      "en": "A LITTLE SOMETHING SWEET 🍰",
-      "es": "ALGO DULCECITO 🍰"
+      "en": "SOMETHING SWEET! 🍰",
+      "es": "¡ALGO DULCECITO! 🍰"
     },
     "body": {
-      "en": "Have you tried Aurora y Carmen's Postrecitos? Go find your favorite!",
-      "es": "¿Ya probaste los Postrecitos de Aurora y Carmen? ¡Busca tu favorito!"
+      "en": "Time for a little sweetness! Find Aurora y Carmen's Postrecitos and treat yourself. You earned it. 😂",
+      "es": "¡Hora de algo dulce! Busquen los Postrecitos de Aurora y Carmen y dense un gustito. ¡Se lo merecen! 😂"
+    }
+  },
+  {
+    "id": "mirror-again",
+    "at": "2026-10-17T03:55:00.000Z",
+    "heading": {
+      "en": "ROUND TWO AT THE MIRROR! 📸",
+      "es": "¡SEGUNDA VUELTA AL ESPEJO! 📸"
+    },
+    "body": {
+      "en": "The Magic Mirror is back near Súper Farmacia Domingo until 11 PM. Your group photo isn't going to take itself! 😂",
+      "es": "¡Regresó el Espejo Mágico! Está junto a Súper Farmacia Domingo hasta las 11 PM. ¡Esa foto con tu bolita no se va a tomar sola! 😂"
     }
   },
   {
     "id": "couple-photo",
     "at": "2026-10-17T04:15:00.000Z",
     "heading": {
-      "en": "LET'S MAKE A MEMORY 📷",
+      "en": "MAKE A MEMORY 📷",
       "es": "VAMOS A HACER UN RECUERDO 📷"
     },
     "body": {
-      "en": "If Bri and Jon are free between dances, ask for a quick photo. And explore the memory walls!",
-      "es": "Si Bri y Jon están libres entre bailes, pídeles una foto. ¡Y explora las paredes de recuerdos!"
+      "en": "Look around. These are your people. Grab a photo together, explore our memory walls, and make tonight one to remember. ❤️",
+      "es": "Mira a tu alrededor. Esta es tu gente. Tómense una foto, recorran nuestros muros de recuerdos y guarden este momento para siempre. ❤️"
     }
   },
   {
@@ -148,8 +244,32 @@ const scheduled=[
       "es": "LA MÁQUINA DEL TIEMPO ⏳"
     },
     "body": {
-      "en": "The classics are taking over. Come sing your heart out!",
-      "es": "¡Llegaron los clásicos! Ven a cantar con todo el corazón."
+      "en": "We're taking it BACK! Old favorites, forgotten classics, and songs you still know every word to. See you on the dance floor!",
+      "es": "¡NOS VAMOS AL PASADO! Viejos favoritos, clásicos inolvidables y canciones que todavía te sabes completitas. ¡Nos vemos en la pista!"
+    }
+  },
+  {
+    "id": "love-our-people",
+    "at": "2026-10-17T05:15:00.000Z",
+    "heading": {
+      "en": "HEY YOU. YES, YOU. 🫵❤️",
+      "es": "OYE, TÚ. SÍ, TÚ. 🫵❤️"
+    },
+    "body": {
+      "en": "Not the person next to you. YOU. Thank you for showing up, bringing your whole self, and making this night what it is. We love you. Now go dance. 🌊",
+      "es": "No la persona de al lado. ¡TÚ! Gracias por estar aquí, por ser tú y por hacer esta noche tan especial. Te queremos. Ahora sí… ¡a bailar! 🌊"
+    }
+  },
+  {
+    "id": "keep-dancing",
+    "at": "2026-10-17T05:30:00.000Z",
+    "heading": {
+      "en": "YOU KNOW THIS ONE! 🎶",
+      "es": "¡ESTA TE LA SABES! 🎶"
+    },
+    "body": {
+      "en": "Don't you dare leave the dance floor yet. There's still so much music—and so many memories—to make. 😂",
+      "es": "¡Ni se les ocurra salirse de la pista! Todavía nos queda muchísima música y un montón de recuerdos por hacer. 😂"
     }
   },
   {
@@ -160,8 +280,20 @@ const scheduled=[
       "es": "ÚLTIMA RONDA · 1 AM 🍹"
     },
     "body": {
-      "en": "Night Frequency begins. Staffed bar service ends at 1 AM. Grab that last bartender-made drink!",
-      "es": "Arranca Night Frequency. El servicio de barra termina a la 1 AM. ¡Pide tu último trago preparado!"
+      "en": "Night Frequency is taking over! One more hour of bartender service. Grab your final bartender-made drink and get back to dancing!",
+      "es": "¡Llegó Night Frequency! Queda una hora de servicio en la barra. ¡Pide tu último trago preparado y regresa a bailar!"
+    }
+  },
+  {
+    "id": "water-and-bar",
+    "at": "2026-10-17T06:30:00.000Z",
+    "heading": {
+      "en": "30 MINUTES LEFT! ⏰",
+      "es": "¡QUEDAN 30 MINUTOS! ⏰"
+    },
+    "body": {
+      "en": "Half an hour until staffed bar service ends! Grab water, check on your people, and get ready for the final chapter of the night. 🌊",
+      "es": "¡Queda media hora de servicio en la barra! Agarren agua, chequen cómo anda su gente y prepárense para el último capítulo de la noche. 🌊"
     }
   },
   {
@@ -172,8 +304,32 @@ const scheduled=[
       "es": "¿DE VERDAD CREÍSTE QUE ERA LA ÚLTIMA? 😂"
     },
     "body": {
-      "en": "Neon Mirage is on. Bartenders are off. The afters are ON. Serve yourself a drink—then serve us all one. 🌊",
-      "es": "Llegó Neon Mirage. Los meseros se fueron. ¡Los afters comienzan! Sírvete un trago y, de paso, ¡sírvete uno para todos! 🌊"
+      "en": "YOU REALLY THOUGHT?! 😂 The bartenders are done, but Neon Mirage is just beginning. The afters are ON. Want another drink? Serve yourself—and pour us one too! 🌊",
+      "es": "¿DE VERDAD CREÍSTE QUE YA SE ACABÓ? 😂 Los bartenders terminaron, ¡pero Neon Mirage apenas comienza! ¿Otro trago? Sírvete… ¡y sírvenos uno también! 🌊"
+    }
+  },
+  {
+    "id": "neon-last-wave",
+    "at": "2026-10-17T07:30:00.000Z",
+    "heading": {
+      "en": "ONE LAST WAVE 🌙",
+      "es": "UNA ÚLTIMA OLA 🌙"
+    },
+    "body": {
+      "en": "We've got one more half hour of Neon Mirage. Find your people, get on that dance floor, and give us one last memory. ❤️",
+      "es": "Nos queda media hora de Neon Mirage. Busquen a su gente, regresen a la pista y regálennos un último recuerdo. ❤️"
+    }
+  },
+  {
+    "id": "wake-up",
+    "at": "2026-10-17T16:30:00.000Z",
+    "heading": {
+      "en": "Y'ALL STILL ALIVE? 😂",
+      "es": "¿SIGUEN VIVOS? 😂"
+    },
+    "body": {
+      "en": "GOOD MORNING, LA OLA! 😂 Drink some water, find your sunglasses, and get ready. We've got one more afternoon together!",
+      "es": "¡BUENOS DÍAS, LA OLA! 😂 Tomen agüita, busquen sus lentes de sol y prepárense. ¡Todavía nos queda otra tarde juntos!"
     }
   },
   {
@@ -184,8 +340,56 @@ const scheduled=[
       "es": "¡HOY NOS QUEDA OTRA OLA! 🌮"
     },
     "body": {
-      "en": "Tornaboda starts at noon right here at La Tijera. Come relaxed and come hungry!",
-      "es": "La Tornaboda comienza al mediodía aquí en La Tijera. ¡Vengan relajados y con hambre!"
+      "en": "We're doing it again! Tornaboda starts at noon at La Tijera. Same place, one more afternoon together. Come as you are! 🌊",
+      "es": "¡NOS QUEDA OTRA OLA! La Tornaboda empieza al mediodía en La Tijera. Mismo lugar, otra tarde juntos. ¡Vengan como quieran! 🌊"
+    }
+  },
+  {
+    "id": "afterglow",
+    "at": "2026-10-17T18:30:00.000Z",
+    "heading": {
+      "en": "THE AFTERGLOW ☀️",
+      "es": "LA OLA CONTINÚA ☀️"
+    },
+    "body": {
+      "en": "No speeches. No formal dances. Just our people, one more afternoon, and a chance to slow things down. Welcome back. ❤️",
+      "es": "Sin discursos. Sin bailes formales. Nomás nuestra gente, otra tarde juntos y un ratito para relajarnos. Bienvenidos de regreso. ❤️"
+    }
+  },
+  {
+    "id": "love-together",
+    "at": "2026-10-17T20:15:00.000Z",
+    "heading": {
+      "en": "BRI + JON, LOOK AROUND AGAIN ❤️",
+      "es": "BRI + JON, VUELVAN A MIRAR ❤️"
+    },
+    "body": {
+      "en": "This wave was never just about one night. It's about the people who keep showing up for each other. Look around—the party is the people. That's the whole point. 🌊",
+      "es": "Esta ola nunca fue solo una noche. Es por la gente que siempre está presente. Miren a su alrededor: la fiesta es nuestra gente. De eso se trata todo. 🌊"
+    }
+  },
+  {
+    "id": "tornaboda-photo",
+    "at": "2026-10-17T21:30:00.000Z",
+    "heading": {
+      "en": "ONE MORE PICTURE? 📸",
+      "es": "¿OTRA FOTITO? 📸"
+    },
+    "body": {
+      "en": "Yesterday was incredible, but we're still making memories. Get a photo with someone you love before the weekend slips away.",
+      "es": "Ayer estuvo increíble, pero seguimos haciendo recuerdos. Tómate una foto con alguien que quieras antes de que se nos vaya el fin de semana."
+    }
+  },
+  {
+    "id": "thank-you",
+    "at": "2026-10-17T22:45:00.000Z",
+    "heading": {
+      "en": "THANK YOU FOR BEING OUR WAVE ❤️",
+      "es": "GRACIAS POR SER PARTE DE NUESTRA OLA ❤️"
+    },
+    "body": {
+      "en": "From the bottom of our hearts, thank you for being part of La Ola de Amor. This whole world was made for the people we love. And that means you. 🌊",
+      "es": "De todo corazón, gracias por ser parte de La Ola de Amor. Todo este mundo lo creamos para la gente que queremos. Y eso los incluye a ustedes. 🌊"
     }
   }
 ] as const;
