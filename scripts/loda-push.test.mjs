@@ -39,7 +39,7 @@ test('automatic guestbook push is targeted, generic, throttled and optional', ()
   assert.match(wall, /cooldown_seconds:300/);
   assert.match(wall, /loda_platica/);
   assert.match(wall, /Someone left a little love/);
-  assert.doesNotMatch(wall, /guest_name:\s*name/); // Notification payload does not embed guest name.
+  assert.doesNotMatch(wall.slice(wall.indexOf('async function notifyNewGuestNote'),wall.indexOf('Deno.serve(async(req)=>{')), /guest_name|guest_name:\s*name|body\.message/); // No guest-identifying content in push payload.
   assert.match(wall, /if\(!key\)return/);
   assert.match(admin, /key:"loda_festival"/);
   assert.match(schedule, /key: 'loda_festival'/);
