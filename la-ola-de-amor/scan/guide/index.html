@@ -84,6 +84,12 @@
     <h3 id="guide-push-title"><span data-push-en>Festival alerts</span><span data-push-es hidden>Alertas del festival</span></h3>
     <p id="guide-push-status" role="status" aria-live="polite">Preparing notifications…</p>
     <button type="button" id="guide-push-toggle" class="festival-push-button" disabled>Enable festival alerts 🔔</button>
+    <fieldset class="festival-push-preferences" id="guide-push-preferences" disabled>
+      <legend data-push-legend>Choose your alerts</legend>
+      <label><input id="guide-push-festival" type="checkbox" checked><span data-push-festival>🌊 Festival announcements</span></label>
+      <label><input id="guide-push-platica" type="checkbox"><span data-push-platica>💌 New La Plática messages</span></label>
+      <p class="festival-push-help" data-push-platica-note>Guestbook alerts are optional. Festival notices stay separate.</p>
+    </fieldset>
     <p class="festival-push-help" id="guide-push-instructions">Optional. You can pause alerts any time.</p>
   </section>
   <ol class="updates-feed" id="updates-feed"></ol>
@@ -123,6 +129,13 @@
         <p id="platica-host-notice" role="status" aria-live="polite"></p>
         <div id="platica-host-panel" hidden>
           <p data-host-copy="hostDescription">Host tools are available on the published comments below.</p>
+          <section class="platica-host-push" aria-labelledby="platica-host-push-title">
+            <h4 id="platica-host-push-title" data-host-copy="pushTitle">🔔 Festival push controls</h4>
+            <p data-host-copy="pushExplain">Test on this device, then schedule the two Oct 17 bar surprises. Only host accounts can send.</p>
+            <button id="platica-host-push-test" type="button" data-host-copy="sendTest">Send a test to this device 🔔</button>
+            <button id="platica-host-push-schedule" type="button" data-host-copy="schedulePush">Schedule midnight &amp; 1 AM 🍹</button>
+            <p id="platica-host-push-result" role="status" aria-live="polite"></p>
+          </section>
           <button id="platica-host-logout" type="button" data-host-copy="lock">Lock host tools</button>
         </div>
       </details>
