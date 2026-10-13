@@ -91,3 +91,14 @@ test('beta broadcast is host-only, one per date, tag-filtered and independent of
   assert.match(admin, /if\(existing\)return reply\(\{ok:true,alreadySent:true/);
   assert.doesNotMatch(host+page, /Authorization:.?Key |ONESIGNAL_REST_API_KEY/);
 });
+
+test('beta failures expose safe diagnostics without leaking OneSignal credentials', () => {
+  assert.match(admin, /providerCode=res\.ok && !payload\?\.id \? "NO_MATCHING_SUBSCRIPTIONS"/);
+  assert.match(admin, /res\.status===401 \|\| res\.status===403 \? "KEY_REJECTED"/);
+  assert.match(admin, /providerStatus:res\.status/);
+  assert.match(host, /error\.providerCode=data\.providerCode/);
+  assert.match(host, /function pushError\(error\)/);
+  assert.match(client, /await signal\.User\.addTags/);
+  assert.match(client, /PushSubscription\.addEventListener\('change'/);
+  assert.doesNotMatch(host + page + client, /ONESIGNAL_REST_API_KEY/);
+});

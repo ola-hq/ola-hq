@@ -41,11 +41,46 @@ async function send(action,fields={}){const r=await fetch(API,{method:'POST',hea
 async function sendPush(action,fields={}){
  const r=await fetch(PUSH_API,{method:'POST',headers:headers(),body:JSON.stringify({action,...fields})});
  let data={};try{data=await r.json()}catch{}
- if(!r.ok)throw Error(data.error||'PUSH_FAILED');
+ if(!r.ok){const error=new Error(data.error||'PUSH_FAILED');error.providerCode=data.providerCode;error.providerStatus=data.providerStatus;throw error}
  return data;
 }
 function displayPushResult(text){const node=by('platica-host-push-result');if(node)node.textContent=text}
-function pushError(error){displayPushResult(t(error.message==='PUSH_NOT_CONFIGURED'?'noKey':'pushFailed'))}
+function pushError(error){
+ if(error.message==='PUSH_NOT_CONFIGURED'){displayPushResult(t('noKey'));return}
+ const reasons={
+  KEY_REJECTED:{
+   en:'OneSignal rejected the API key. Verify the App API Key belongs to La Ola De Amor in OneSignal Settings → Keys & IDs.',
+   es:'OneSignal rechazó la clave. Revisa que la App API Key pertenezca a La Ola De Amor en OneSignal → Keys & IDs.'
+  },
+  NO_MATCHING_SUBSCRIPTIONS:{
+   en:'OneSignal found no matching subscribed devices. Have everyone open the installed app and check Festival Alerts ON, then retry.',
+   es:'OneSignal no encontró dispositivos suscritos. Abre la app instalada, revisa Alertas del Festival ACTIVADAS e intenta otra vez.'
+  },
+  APP_ID_INVALID:{
+   en:'OneSignal says the application ID does not match. Check the API key was created for this OneSignal app.',
+   es:'OneSignal indica un problema con el ID de la app. Revisa que la clave corresponda a esta app.'
+  },
+  AUDIENCE_INVALID:{
+   en:'OneSignal rejected the audience filter; ask ChatGPT to inspect the send parameters.',
+   es:'OneSignal rechazó el filtro de destinatarios; pide a ChatGPT revisar los parámetros.'
+  },
+  ACCOUNT_LIMIT:{
+   en:'OneSignal reported an account or sending limit. Check your OneSignal dashboard.',
+   es:'OneSignal reportó un límite de cuenta o envíos. Revisa el panel de OneSignal.'
+  },
+  REQUEST_INVALID:{
+   en:'OneSignal rejected the request format. Tell ChatGPT this diagnostic code.',
+   es:'OneSignal rechazó el formato del envío. Comunica a ChatGPT este diagnóstico.'
+  },
+  PROVIDER_ERROR:{
+   en:'OneSignal returned a service error. Ask ChatGPT to check the server logs.',
+   es:'OneSignal devolvió un error de servicio. Pide a ChatGPT revisar los registros.'
+  }
+ };
+ const explanation=reasons[error.providerCode]?.[lang()]||t('pushFailed');
+ const suffix=error.providerCode?' · '+error.providerCode+(Number.isInteger(error.providerStatus)?' (HTTP '+error.providerStatus+')':''):'';
+ displayPushResult(explanation+suffix);
+}
 async function runPushTest(){
  const btn=by('platica-host-push-test');
  const sub=window.LA_OLA_PUSH;
@@ -83,7 +118,7 @@ by('platica-host-push-beta')?.addEventListener('click',async()=>{
   const data=await sendPush('beta');
   const count=typeof data.recipients==='number' ? ' ('+data.recipients+' devices accepted by provider)' : '';
   displayPushResult(t(data.alreadySent?'betaAlready':'betaSent')+count);
- }catch(error){displayPushResult(t(error.message==='PUSH_NOT_CONFIGURED'?'noKey':'betaFail'))}
+ }catch(error){pushError(error)}
  finally{btn.disabled=false}
 });
 by('platica-host-push-schedule')?.addEventListener('click',schedulePush);

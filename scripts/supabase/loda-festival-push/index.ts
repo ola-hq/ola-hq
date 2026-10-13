@@ -198,7 +198,7 @@ async function eventKey(id:string) {
 }
 async function deliver(body:Record<string,unknown>) {
   const key=Deno.env.get("ONESIGNAL_REST_API_KEY");
-  if (!key) return {error:"PUSH_NOT_CONFIGURED",status:503};
+  if (!key) return {error:"PUSH_NOT_CONFIGURED",status:503,providerStatus:null,providerCode:"PUSH_NOT_CONFIGURED"};
   try {
     const res=await fetch("https://api.onesignal.com/notifications",{
       method:"POST",headers:{"content-type":"application/json","Authorization":"Key "+key},
@@ -206,10 +206,23 @@ async function deliver(body:Record<string,unknown>) {
       signal:AbortSignal.timeout(9000)
     });
     const payload=await res.json().catch(()=>({}));
-    if (!res.ok || !payload?.id) return {error:"PROVIDER_REJECTED",status:502};
+    if (!res.ok || !payload?.id) {
+      // Report a safe diagnosis to the authenticated host without exposing
+      // provider credentials or returning arbitrary third-party response text.
+      const raw=JSON.stringify(payload?.errors??payload?.error??"").toLowerCase();
+      const providerCode=res.ok && !payload?.id ? "NO_MATCHING_SUBSCRIPTIONS"
+        : res.status===401 || res.status===403 ? "KEY_REJECTED"
+        : /app.?id|app.?key|application not found/.test(raw) ? "APP_ID_INVALID"
+        : /filter|segment|target|audience/.test(raw) ? "AUDIENCE_INVALID"
+        : /limit|quota|billing/.test(raw) ? "ACCOUNT_LIMIT"
+        : res.status===400 || res.status===422 ? "REQUEST_INVALID"
+        : "PROVIDER_ERROR";
+      console.warn("[La Ola push] Provider rejected message", {providerStatus:res.status,providerCode});
+      return {error:"PROVIDER_REJECTED",providerStatus:res.status,providerCode,status:502};
+    }
     return {id:payload.id,status:200,recipients:typeof payload.recipients==="number"?payload.recipients:null};
   } catch {
-    return {error:"PROVIDER_UNAVAILABLE",status:503};
+    return {error:"PROVIDER_UNAVAILABLE",status:503,providerStatus:null,providerCode:"PROVIDER_UNAVAILABLE"};
   }
 }
 Deno.serve(async req=>{
@@ -244,7 +257,7 @@ Deno.serve(async req=>{
       contents:{en:"If this reached your lock screen, WE DID IT! 🔔 Welcome to our world.",es:"¡Si esto llegó a tu pantalla, LO LOGRAMOS! 🔔 Bienvenidos a nuestro mundo."},
       idempotency_key:crypto.randomUUID(),ttl:300
     });
-    return "error" in result?reply({error:result.error},result.status,origin):reply({ok:true,notificationId:result.id},200,origin);
+    return "error" in result?reply({error:result.error,providerCode:result.providerCode,providerStatus:result.providerStatus},result.status,origin):reply({ok:true,notificationId:result.id},200,origin);
   }
   // One manually confirmed beta push, immediately, per Guadalajara calendar day.
   // This action requires the same private host credentials as scheduling.
@@ -271,7 +284,7 @@ Deno.serve(async req=>{
       idempotency_key:await eventKey("beta-"+day),
       ttl:600
     });
-    if("error" in result)return reply({error:result.error},result.status,origin);
+    if("error" in result)return reply({error:result.error,providerCode:result.providerCode,providerStatus:result.providerStatus},result.status,origin);
     const {error:saveError}=await db.from("loda_push_beta_runs").insert({
       local_date:day,provider_notification_id:result.id,provider_recipients:result.recipients
     });
@@ -292,7 +305,7 @@ Deno.serve(async req=>{
         filters:[{field:"tag",key:"loda_festival",relation:"=",value:"true"}],
         idempotency_key:await eventKey(event.id)
       });
-      if("error" in result) return reply({error:result.error,completed:outcomes},result.status,origin);
+      if("error" in result) return reply({error:result.error,providerCode:result.providerCode,providerStatus:result.providerStatus,completed:outcomes},result.status,origin);
       const {error:storeError}=await db.from("loda_push_schedule").insert({event_id:event.id,provider_notification_id:result.id,scheduled_for:event.at});
       if(storeError) return reply({error:"SCHEDULED_BUT_RECEIPT_FAILED",event:event.id,completed:outcomes},503,origin);
       outcomes.push({event:event.id,status:"scheduled",notificationId:result.id});

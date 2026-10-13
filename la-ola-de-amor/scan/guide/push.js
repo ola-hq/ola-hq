@@ -70,7 +70,7 @@
   });
   async function syncTags() {
     if (!signal || !subscribed()) return;
-    signal.User.addTags({
+    await signal.User.addTags({
       loda_festival: String(choices.festival),
       loda_platica: String(choices.platica)
     });
@@ -148,7 +148,12 @@
         if (subscribed()) await syncTags();
       } catch (error) { console.warn('[Festival Guide] Preference sync unavailable:', error); }
       OneSignal.Notifications.addEventListener('permissionChange', render);
-      OneSignal.User.PushSubscription.addEventListener('change', render);
+      OneSignal.User.PushSubscription.addEventListener('change', () => {
+        render();
+        // A newly-created subscription may appear after the permission event.
+        // Ensure the initial ON-by-default category tags reach OneSignal.
+        if (subscribed()) syncTags().catch(error => console.warn('[Festival Guide] Could not sync subscribed topics:', error));
+      });
       render();
     } catch (error) {
       initFailed = true;
