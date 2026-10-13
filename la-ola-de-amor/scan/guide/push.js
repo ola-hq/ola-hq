@@ -83,6 +83,18 @@
 
   const language = () => document.documentElement.lang.toLowerCase().startsWith('es') ? 'es' : 'en';
   const t = key => copy[language()][key];
+  // OneSignal initially detects the browser/device language. Override it with
+  // the actual EN/ES selection in this guide, including after guests switch.
+  // Existing bilingual push payloads then use OneSignal's user.language value.
+  function syncNotificationLanguage() {
+    if (!signal || typeof signal.User?.setLanguage !== 'function') return;
+    try {
+      Promise.resolve(signal.User.setLanguage(language())).catch(error =>
+        console.warn('[Festival Guide] Push language preference could not sync:', error));
+    } catch (error) {
+      console.warn('[Festival Guide] Push language preference could not sync:', error);
+    }
+  }
   const titleEn = panel.querySelector('[data-push-en]');
   const titleEs = panel.querySelector('[data-push-es]');
   const standalone = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
@@ -140,6 +152,7 @@
       });
       signal = OneSignal;
       initFailed = false;
+      syncNotificationLanguage();
       // Keep user-selected choices in localStorage. Earlier versions auto-tagged
       // Plática OFF without an explicit choice; adopt the new ON default ONLY
       // when the guest never saved their own preferences. On a later visit,
@@ -150,6 +163,7 @@
       OneSignal.Notifications.addEventListener('permissionChange', render);
       OneSignal.User.PushSubscription.addEventListener('change', () => {
         render();
+        syncNotificationLanguage();
         // A newly-created subscription may appear after the permission event.
         // Ensure the initial ON-by-default category tags reach OneSignal.
         if (subscribed()) syncTags().catch(error => console.warn('[Festival Guide] Could not sync subscribed topics:', error));
@@ -179,6 +193,7 @@
         if (!signal.Notifications.permission) await signal.Notifications.requestPermission();
         if (signal.Notifications.permission) {
           await signal.User.PushSubscription.optIn();
+          syncNotificationLanguage();
           await syncTags();
         }
       }
@@ -193,7 +208,9 @@
   });
   festival?.addEventListener('change', () => { choices.festival = festival.checked; savePreferences(); });
   platica?.addEventListener('change', () => { choices.platica = platica.checked; savePreferences(); });
-  // Guide.js changes html[lang] when the guest switches ES/EN.
-  new MutationObserver(render).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  // Guide.js changes html[lang] on the EN/ES switch: update both the local
+  // control labels and the OneSignal user language for future notifications.
+  new MutationObserver(() => { render(); syncNotificationLanguage(); })
+    .observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
   document.addEventListener('visibilitychange', () => { if (!document.hidden) render(); });
 })();
