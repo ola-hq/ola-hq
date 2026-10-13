@@ -76,3 +76,18 @@ test('14-event showflow matches protected server exactly and drafts are never sc
   assert.match(admin, /loda_festival/);
   assert.doesNotMatch(page + client + host, /Authorization.+Key /);
 });
+
+
+test('beta broadcast is host-only, one per date, tag-filtered and independent of wedding scheduling', () => {
+  assert.match(page, /id="platica-host-push-beta"/);
+  assert.match(host, /sendPush\('beta'\)/);
+  assert.match(host, /confirm\(t\('betaConfirm'\)\)/);
+  assert.match(admin, /await validHost\(req\)/);
+  assert.match(admin, /body.action==="beta"/);
+  assert.match(admin, /loda_push_beta_runs/);
+  assert.match(admin, /idempotency_key:await eventKey\("beta-"/);
+  assert.match(admin, /key:"loda_festival"/);
+  assert.match(admin, /ONE.*SIGNAL_REST_API_KEY/);
+  assert.match(admin, /if\(existing\)return reply\(\{ok:true,alreadySent:true/);
+  assert.doesNotMatch(host+page, /Authorization:.?Key |ONESIGNAL_REST_API_KEY/);
+});
