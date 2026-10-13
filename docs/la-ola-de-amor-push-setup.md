@@ -180,3 +180,16 @@ Español:
 > Tres días. Una ola. ¡Ya casi llega! 🌊
 
 **Operator checklist:** (1) Check subscribers and OneSignal credentials; (2) send beta only with explicit host confirmation through La Plática → Hosts only → Send beta test to subscribed friends; (3) verify real lock-screen arrivals and GIF replies; (4) post the follow-up to the group chat manually after replies appear; (5) do not confuse this beta test with scheduling the 14 wedding pushes. Long push text may be truncated by phone lock-screen display; the open notification should be checked on a real device.
+
+## Oct 13 — Unified festival push history, top-two front page
+
+**Official festival broadcast pushes and the Festival Updates screen now share a durable publication record** in `public.loda_festival_notification_history` (source migration: `scripts/supabase/migrations/loda_festival_notification_history_feed.sql`). This table is public **read-only** with a time-gated RLS SELECT policy. Only the host-protected Edge Function with service-role authorization can save a broadcast. No guest can publish or alter it through the app.
+
+- Every **accepted group beta** broadcast is saved once, including its bilingual title/body and provider message ID. Today's accepted Oct 13 beta is backfilled exactly once from the authentic `loda_push_beta_runs` receipt.
+- Every host-scheduled **festival showflow** push is saved with its send time. The public history remains hidden before that time, so surprises are not exposed.
+- Each official push deep-links to its announcement under `#updates/{id}`; a guest opening Festival Updates sees the latest **two** notices and a **third “View all updates”** button when history contains more than two. “View all” reveals the complete released broadcast list. Older notices are retained, not destroyed. The legacy private archive of never-pushed, outdated drafts remains private and preserved; existing in-app midnight notices are kept.
+- The guide refreshes the public history online and caches its last successful fetch for offline reading. The existing `Festival Updates` static source remains an offline fallback.
+- This is an official **festival broadcast** inbox, not a capture of every operating-system notification: private one-device tests and automatic La Plática new-note alerts do **not** appear as public festival notices or clutter the latest two.
+- Host workflow does not change: **Send beta test** is manual and one per Mexico-local day; **Schedule 14 festival alerts** remains separate and requires explicit host approval. Changes to this inbox **do not** schedule or send any pushes. Do not manually send equivalent OneSignal notices outside the protected function or they will not be recorded automatically.
+
+**Operational verification:** The public history table, release-only RLS SELECT, and backfilled 2026-10-13 beta were checked. The guide's new release depends on the website's GitHub Pages deployment and offline service-worker update. A provider acceptance receipt is still not proof that recipients saw a lock-screen banner.
