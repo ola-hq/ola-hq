@@ -4,6 +4,16 @@
   const button = document.getElementById('guide-push-toggle');
   const status = document.getElementById('guide-push-status');
   const instructions = document.getElementById('guide-push-instructions');
+  const preferences = document.getElementById('guide-push-preferences');
+  const festival = document.getElementById('guide-push-festival');
+  const platica = document.getElementById('guide-push-platica');
+  const preferenceKey = 'laOlaPushPreferenceV1';
+  // A notification grant alone is not consent to guestbook posts. Festival defaults ON, Plática OFF.
+  let choices = { festival: true, platica: false };
+  try {
+    const stored = JSON.parse(localStorage.getItem(preferenceKey) || 'null');
+    if (stored && typeof stored.festival === 'boolean' && typeof stored.platica === 'boolean') choices = stored;
+  } catch {}
   if (!panel || !button || !status || !instructions) return;
 
   const config = window.LA_OLA_PUSH_CONFIG || {};
@@ -25,7 +35,11 @@
       unsupported: 'Push notifications are not supported on this device or browser. Festival Updates still works.',
       ios: 'iPhone: open this guide in Safari, Share → Add to Home Screen, then launch the saved app and return to this section to enable alerts.',
       help: 'Optional alerts for important festival moments. You can pause them at any time. The guide and its updates work without notifications.',
-      installing: 'Install the guide first to receive iPhone notifications.'
+      installing: 'Install the guide first to receive iPhone notifications.',
+      legend: 'Choose what you receive',
+      festival: '🌊 Festival announcements',
+      platica: '💌 New La Plática messages',
+      platicaNote: 'Guestbook alerts are optional and separate. Each note may generate a notification.'
     },
     es: {
       button: 'Activar alertas del festival 🔔',
@@ -40,10 +54,31 @@
       unsupported: 'Este dispositivo o navegador no admite notificaciones. Las actualizaciones siguen disponibles.',
       ios: 'iPhone: abre la guía en Safari, Compartir → Añadir a pantalla de inicio. Después abre la app instalada y regresa aquí para activar avisos.',
       help: 'Avisos opcionales para momentos importantes. Puedes pausarlos cuando quieras. La guía funciona sin notificaciones.',
-      installing: 'Primero instala la guía para recibir avisos en iPhone.'
+      installing: 'Primero instala la guía para recibir avisos en iPhone.',
+      legend: 'Elige qué quieres recibir',
+      festival: '🌊 Anuncios del festival',
+      platica: '💌 Mensajes nuevos de La Plática',
+      platicaNote: 'Las alertas del libro de visitas son opcionales y separadas. Cada mensaje podría generar un aviso.'
     }
   };
   let signal = null, busy = false, initFailed = false;
+  // Host-only controls validate a moderator password server-side; this exposes only an ID, not credentials.
+  window.LA_OLA_PUSH = Object.freeze({
+    subscriptionId: () => signal?.User?.PushSubscription?.id || null,
+    subscribed: () => Boolean(signal?.Notifications?.permission && signal?.User?.PushSubscription?.optedIn)
+  });
+  async function syncTags() {
+    if (!signal || !subscribed()) return;
+    signal.User.addTags({
+      loda_festival: String(choices.festival),
+      loda_platica: String(choices.platica)
+    });
+  }
+  function savePreferences() {
+    try { localStorage.setItem(preferenceKey, JSON.stringify(choices)); } catch {}
+    syncTags().catch(error => console.warn('[Festival Guide] Could not sync alert categories:', error));
+    render();
+  }
 
   const language = () => document.documentElement.lang.toLowerCase().startsWith('es') ? 'es' : 'en';
   const t = key => copy[language()][key];
@@ -64,6 +99,15 @@
     const unavailable = !supported();
     const on = subscribed();
     instructions.textContent = needsInstall ? t('ios') : t('help');
+    if (preferences && festival && platica) {
+      preferences.disabled = !signal || busy || !subscribed();
+      festival.checked = choices.festival;
+      platica.checked = choices.platica;
+      preferences.querySelector('[data-push-legend]').textContent = t('legend');
+      preferences.querySelector('[data-push-festival]').textContent = t('festival');
+      preferences.querySelector('[data-push-platica]').textContent = t('platica');
+      preferences.querySelector('[data-push-platica-note]').textContent = t('platicaNote');
+    }
     button.hidden = needsInstall || unavailable || denied;
     button.disabled = busy || !signal;
     button.textContent = on ? t('disable') : t('button');
@@ -95,6 +139,15 @@
       });
       signal = OneSignal;
       initFailed = false;
+      // Honor existing tag settings on an existing device. New installs default to festival-only.
+      try {
+        const tags = await Promise.resolve(OneSignal.User.getTags());
+        const saved = JSON.parse(localStorage.getItem(preferenceKey) || 'null');
+        if (!saved && tags && (tags.loda_festival || tags.loda_platica)) {
+          choices = { festival: tags.loda_festival !== 'false', platica: tags.loda_platica === 'true' };
+        }
+        if (subscribed()) await syncTags();
+      } catch (error) { console.warn('[Festival Guide] Preference sync unavailable:', error); }
       OneSignal.Notifications.addEventListener('permissionChange', render);
       OneSignal.User.PushSubscription.addEventListener('change', render);
       render();
@@ -120,7 +173,10 @@
       } else {
         // Permission request is ONLY made in response to an explicit guest tap.
         if (!signal.Notifications.permission) await signal.Notifications.requestPermission();
-        if (signal.Notifications.permission) await signal.User.PushSubscription.optIn();
+        if (signal.Notifications.permission) {
+          await signal.User.PushSubscription.optIn();
+          await syncTags();
+        }
       }
       initFailed = false;
     } catch (error) {
@@ -131,6 +187,8 @@
       render();
     }
   });
+  festival?.addEventListener('change', () => { choices.festival = festival.checked; savePreferences(); });
+  platica?.addEventListener('change', () => { choices.platica = platica.checked; savePreferences(); });
   // Guide.js changes html[lang] when the guest switches ES/EN.
   new MutationObserver(render).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
   document.addEventListener('visibilitychange', () => { if (!document.hidden) render(); });
