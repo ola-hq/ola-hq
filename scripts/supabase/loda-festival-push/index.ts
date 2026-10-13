@@ -257,7 +257,7 @@ Deno.serve(async req=>{
       contents:{en:"If this reached your lock screen, WE DID IT! 🔔 Welcome to our world.",es:"¡Si esto llegó a tu pantalla, LO LOGRAMOS! 🔔 Bienvenidos a nuestro mundo."},
       idempotency_key:crypto.randomUUID(),ttl:300
     });
-    return "error" in result?reply({error:result.error},result.status,origin):reply({ok:true,notificationId:result.id},200,origin);
+    return "error" in result?reply({error:result.error,providerCode:result.providerCode,providerStatus:result.providerStatus},result.status,origin):reply({ok:true,notificationId:result.id},200,origin);
   }
   // One manually confirmed beta push, immediately, per Guadalajara calendar day.
   // This action requires the same private host credentials as scheduling.
@@ -284,7 +284,7 @@ Deno.serve(async req=>{
       idempotency_key:await eventKey("beta-"+day),
       ttl:600
     });
-    if("error" in result)return reply({error:result.error},result.status,origin);
+    if("error" in result)return reply({error:result.error,providerCode:result.providerCode,providerStatus:result.providerStatus},result.status,origin);
     const {error:saveError}=await db.from("loda_push_beta_runs").insert({
       local_date:day,provider_notification_id:result.id,provider_recipients:result.recipients
     });
@@ -305,7 +305,7 @@ Deno.serve(async req=>{
         filters:[{field:"tag",key:"loda_festival",relation:"=",value:"true"}],
         idempotency_key:await eventKey(event.id)
       });
-      if("error" in result) return reply({error:result.error,completed:outcomes},result.status,origin);
+      if("error" in result) return reply({error:result.error,providerCode:result.providerCode,providerStatus:result.providerStatus,completed:outcomes},result.status,origin);
       const {error:storeError}=await db.from("loda_push_schedule").insert({event_id:event.id,provider_notification_id:result.id,scheduled_for:event.at});
       if(storeError) return reply({error:"SCHEDULED_BUT_RECEIPT_FAILED",event:event.id,completed:outcomes},503,origin);
       outcomes.push({event:event.id,status:"scheduled",notificationId:result.id});
