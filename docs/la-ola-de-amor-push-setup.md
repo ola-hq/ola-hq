@@ -94,3 +94,20 @@ References: [OneSignal Web SDK v16](https://github.com/OneSignal/OneSignal-Websi
 ### Oct 12 change: short-event topic defaults
 
 Both notification categories are ON after a guest explicitly enables iOS/browser push notifications, because the festival runs for only one or two days. Users can uncheck either category or pause all. The iPhone/browser permission prompt remains required and never runs automatically. We deliberately preserve explicit choices in localStorage; legacy tags automatically set to `loda_platica=false` are overwritten on return **only when no saved personal choice exists**. A subscribed guest must load the updated guide before refreshed topic tags are synced to OneSignal.
+
+
+## October 12 full-day notification showflow
+
+The host-only scheduler has been expanded from the original two bar surprises to **14 bilingual, Guadalajara-local, dated festival moments**. The canonical source is `scripts/content/loda-push-program.json`. It covers arrival (3 PM), ceremony seating (4 PM and 4:15 PM), opening mariachi (5 PM), Magic Mirror (6:15 PM), Sunset Selectors (7 PM), entrances (8 PM), group photo and Perreo Paraíso (9 PM), desserts (9:35 PM), photos with the couple if available (10:15 PM), La Máquina del Tiempo (10:45 PM), midnight Night Frequency + last staffed-bar call, 1 AM Neon Mirage + surprise self-service afters, and Saturday Tornaboda reminder (11:45 AM).
+
+In the installed Festival Guide, use **La Plática → Hosts only → Unlock**, then:
+- **Review the 14 alerts** to preview bilingual copy and whether each event is already scheduled. Preview is authenticated and works even if OneSignal's private REST secret is not configured.
+- **Send test to this phone** to test one subscribed iPhone (needs the private Supabase secret).
+- **Schedule 14 festival alerts** to queue timed pushes on OneSignal (needs the private Supabase secret). This is a bulk action with a confirmation and idempotent per-event schedule receipts. Scheduling doesn't deliver messages early.
+- Device closed is supported by remote push only if guests added the Festival Guide to their iPhone Home Screen, granted notifications and have connectivity. Merely visiting in Safari does not subscribe the guest.
+
+**Surprise dancers/roaming activations stay DRAFT ONLY** until the DJ supplies actual activation start times; these are intentionally not included among the 14. At that point, schedule the follow-up about 15 minutes into a confirmed activation; don't claim performers are in a particular spot without confirmation.
+
+**Ops risk:** 14 pushes in approximately 21 hours may feel like a lot, especially with separate La Plática alerts. Keep categories user-controlled, avoid repeat reminders, and don't send drafts until activation timings are known. Consider reducing the schedule after host preview if the experience feels too busy.
+
+**Beta tester request:** Before relying on the program, ask two or three guests to install the guide, enable notifications, lock their phones, and confirm a directed test push. Do not report closed-app delivery as tested just because the opt-in toggle says ON. The private `ONESIGNAL_REST_API_KEY` stays only in Supabase Edge Functions → Secrets and must never appear in GitHub or chat.

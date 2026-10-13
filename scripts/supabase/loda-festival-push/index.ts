@@ -21,19 +21,171 @@ async function validHost(req:Request) {
 }
 const scheduled=[
   {
-    id:"midnight-last-call", at:"2026-10-17T06:00:00.000Z",
-    heading:{en:"LAST CALL · 1:00 AM 🍹",es:"ÚLTIMA RONDA · 1:00 AM 🍹"},
-    body:{
-      en:"La Ola, your one-hour warning: our staffed bar closes at 1:00 AM. Grab your last bartender-made drink, raise a glass, and keep the music going. 🌊",
-      es:"¡Atención, La Ola! Queda una hora de servicio en la barra: el equipo termina a la 1:00 AM. Pide tu última bebida preparada, brinda y sigue bailando. 🌊"
+    "id": "welcome",
+    "at": "2026-10-16T21:00:00.000Z",
+    "heading": {
+      "en": "WELCOME TO LA OLA! 🌊",
+      "es": "¡BIENVENIDOS A LA OLA! 🌊"
+    },
+    "body": {
+      "en": "Fruit, aguas and cold beer are waiting. Explore Plaza San Roberto and make yourself at home.",
+      "es": "Ya hay fruta, aguas y cervezas frías. Explora la Plaza San Roberto y siéntete en casa."
     }
   },
   {
-    id:"afters-self-serve", at:"2026-10-17T07:00:00.000Z",
-    heading:{en:"YOU REALLY THOUGHT THAT WAS LAST CALL? 😂",es:"¿DE VERDAD CREÍSTE QUE ERA LA ÚLTIMA? 😂"},
-    body:{
-      en:"You really thought that was last call? Our bartenders are off the clock, but the afters just started. Want another drink? Head to the bar and serve yourself. In fact… serve us all one. 🌊",
-      es:"¿De verdad creíste que era la última ronda? El equipo de barra ya terminó, ¡pero los afters apenas comienzan! ¿Quieres otro trago? Pásate a la barra y sírvete. Es más… ¡sírvenos uno a todos! 🌊"
+    "id": "seating",
+    "at": "2026-10-16T22:00:00.000Z",
+    "heading": {
+      "en": "CEREMONY SEATING 💍",
+      "es": "ASIENTOS PARA LA CEREMONIA 💍"
+    },
+    "body": {
+      "en": "Please begin making your way to the ceremony seats. Bri and Jon can't wait to see you!",
+      "es": "Por favor, comiencen a tomar asiento para la ceremonia. ¡Bri y Jon ya quieren verlos!"
+    }
+  },
+  {
+    "id": "seating-final",
+    "at": "2026-10-16T22:15:00.000Z",
+    "heading": {
+      "en": "ONE LAST NUDGE 🤍",
+      "es": "ÚLTIMO AVISO 🤍"
+    },
+    "body": {
+      "en": "Please be seated. The ceremony is almost here!",
+      "es": "Por favor, tomen asiento. ¡La ceremonia está por comenzar!"
+    }
+  },
+  {
+    "id": "gates",
+    "at": "2026-10-16T23:00:00.000Z",
+    "heading": {
+      "en": "THE FESTIVAL IS OPEN! 🎺",
+      "es": "¡EL FESTIVAL ESTÁ ABIERTO! 🎺"
+    },
+    "body": {
+      "en": "Mariachi de Don Roberto is playing. Drinks and snacks are waiting. Welcome to our world!",
+      "es": "Suena el Mariachi de Don Roberto. Hay bebidas y antojitos. ¡Bienvenidos a nuestro mundo!"
+    }
+  },
+  {
+    "id": "mirror",
+    "at": "2026-10-17T00:15:00.000Z",
+    "heading": {
+      "en": "FOUND THE MAGIC MIRROR? 📸",
+      "es": "¿YA VISTE EL ESPEJO MÁGICO? 📸"
+    },
+    "body": {
+      "en": "Find the Magic Mirror near Súper Farmacia Domingo and grab a photo with your people.",
+      "es": "Busca el Espejo Mágico junto a Súper Farmacia Domingo y tómate una foto con tu gente."
+    }
+  },
+  {
+    "id": "sunset",
+    "at": "2026-10-17T01:00:00.000Z",
+    "heading": {
+      "en": "THE SUNSET SELECTORS ☀️",
+      "es": "THE SUNSET SELECTORS ☀️"
+    },
+    "body": {
+      "en": "Golden-hour groove is starting. Follow the music!",
+      "es": "¡Comienza el groove de la hora dorada! Sigue la música."
+    }
+  },
+  {
+    "id": "entrance",
+    "at": "2026-10-17T02:00:00.000Z",
+    "heading": {
+      "en": "A MOMENT FOR BRI + JON 🤍",
+      "es": "UN MOMENTO PARA BRI + JON 🤍"
+    },
+    "body": {
+      "en": "Join us for the grand entrance, dances and a few words from family.",
+      "es": "Acompáñanos para la gran entrada, bailes y unas palabras de familia."
+    }
+  },
+  {
+    "id": "group-photo-perreo",
+    "at": "2026-10-17T03:00:00.000Z",
+    "heading": {
+      "en": "EVERYBODY TO THE DANCE FLOOR! 📸",
+      "es": "¡TODOS A LA PISTA! 📸"
+    },
+    "body": {
+      "en": "Come take one big group photo with our people. Then Perreo Paraíso takes over!",
+      "es": "¡Vengan a la foto grupal! Y después… ¡se arma Perreo Paraíso!"
+    }
+  },
+  {
+    "id": "desserts",
+    "at": "2026-10-17T03:35:00.000Z",
+    "heading": {
+      "en": "A LITTLE SOMETHING SWEET 🍰",
+      "es": "ALGO DULCECITO 🍰"
+    },
+    "body": {
+      "en": "Have you tried Aurora y Carmen's Postrecitos? Go find your favorite!",
+      "es": "¿Ya probaste los Postrecitos de Aurora y Carmen? ¡Busca tu favorito!"
+    }
+  },
+  {
+    "id": "couple-photo",
+    "at": "2026-10-17T04:15:00.000Z",
+    "heading": {
+      "en": "LET'S MAKE A MEMORY 📷",
+      "es": "VAMOS A HACER UN RECUERDO 📷"
+    },
+    "body": {
+      "en": "If Bri and Jon are free between dances, ask for a quick photo. And explore the memory walls!",
+      "es": "Si Bri y Jon están libres entre bailes, pídeles una foto. ¡Y explora las paredes de recuerdos!"
+    }
+  },
+  {
+    "id": "time-machine",
+    "at": "2026-10-17T04:45:00.000Z",
+    "heading": {
+      "en": "LA MÁQUINA DEL TIEMPO ⏳",
+      "es": "LA MÁQUINA DEL TIEMPO ⏳"
+    },
+    "body": {
+      "en": "The classics are taking over. Come sing your heart out!",
+      "es": "¡Llegaron los clásicos! Ven a cantar con todo el corazón."
+    }
+  },
+  {
+    "id": "midnight-last-call",
+    "at": "2026-10-17T06:00:00.000Z",
+    "heading": {
+      "en": "LAST CALL · 1 AM 🍹",
+      "es": "ÚLTIMA RONDA · 1 AM 🍹"
+    },
+    "body": {
+      "en": "Night Frequency begins. Staffed bar service ends at 1 AM. Grab that last bartender-made drink!",
+      "es": "Arranca Night Frequency. El servicio de barra termina a la 1 AM. ¡Pide tu último trago preparado!"
+    }
+  },
+  {
+    "id": "afters-self-serve",
+    "at": "2026-10-17T07:00:00.000Z",
+    "heading": {
+      "en": "YOU REALLY THOUGHT THAT WAS LAST CALL? 😂",
+      "es": "¿DE VERDAD CREÍSTE QUE ERA LA ÚLTIMA? 😂"
+    },
+    "body": {
+      "en": "Neon Mirage is on. Bartenders are off. The afters are ON. Serve yourself a drink—then serve us all one. 🌊",
+      "es": "Llegó Neon Mirage. Los meseros se fueron. ¡Los afters comienzan! Sírvete un trago y, de paso, ¡sírvete uno para todos! 🌊"
+    }
+  },
+  {
+    "id": "tornaboda",
+    "at": "2026-10-17T17:45:00.000Z",
+    "heading": {
+      "en": "ONE MORE WAVE TODAY 🌮",
+      "es": "¡HOY NOS QUEDA OTRA OLA! 🌮"
+    },
+    "body": {
+      "en": "Tornaboda starts at noon right here at La Tijera. Come relaxed and come hungry!",
+      "es": "La Tornaboda comienza al mediodía aquí en La Tijera. ¡Vengan relajados y con hambre!"
     }
   }
 ] as const;
@@ -74,6 +226,14 @@ Deno.serve(async req=>{
   if(body.action==="status") {
     const {data,error}=await db.from("loda_push_schedule").select("event_id,provider_notification_id,scheduled_for,created_at").order("scheduled_for");
     return error?reply({error:"STATUS_UNAVAILABLE"},503,origin):reply({scheduled:data||[],configured:Boolean(Deno.env.get("ONESIGNAL_REST_API_KEY"))},200,origin);
+  }
+  if(body.action==="preview") {
+    const {data,error}=await db.from("loda_push_schedule").select("event_id,scheduled_for");
+    if(error)return reply({error:"PREVIEW_UNAVAILABLE"},503,origin);
+    const booked=new Set((data||[]).map(row=>row.event_id));
+    return reply({ok:true,total:scheduled.length,program:scheduled.map(e=>({
+      id:e.id,at:e.at,title:e.heading,body:e.body,status:booked.has(e.id)?"scheduled":"not_scheduled"
+    }))},200,origin);
   }
   if(body.action==="test") {
     const subscriptionId=body.subscriptionId;

@@ -53,3 +53,26 @@ test('separate push service worker and offline worker are preserved', () => {
   assert.match(page, /src="push-config\.js"/);
   assert.match(read('la-ola-de-amor/scan/onesignal/OneSignalSDKWorker.js'), /OneSignalSDK\.sw\.js/);
 });
+
+
+test('14-event showflow matches protected server exactly and drafts are never scheduled', () => {
+  const program = JSON.parse(read('scripts/content/loda-push-program.json'));
+  assert.equal(program.timeZone, 'America/Mexico_City');
+  assert.equal(program.events.length, 14);
+  assert(program.drafts.every(item => !('at' in item)));
+  const begin = admin.indexOf('const scheduled=');
+  const end = admin.indexOf(' as const;', begin);
+  assert(begin >= 0 && end > begin);
+  const embedded = JSON.parse(admin.slice(begin + 'const scheduled='.length, end));
+  assert.deepEqual(embedded.map(x => x.id), program.events.map(x => x.id));
+  assert.deepEqual(embedded.map(x => x.at), program.events.map(x => new Date(x.at).toISOString()));
+  assert.deepEqual(embedded.map(x => x.heading), program.events.map(x => x.title));
+  assert.deepEqual(embedded.map(x => x.body), program.events.map(x => x.body));
+  assert.deepEqual(embedded.filter(e => e.id === 'midnight-last-call' || e.id === 'afters-self-serve')
+    .map(x => x.at), ['2026-10-17T06:00:00.000Z', '2026-10-17T07:00:00.000Z']);
+  assert.match(page, /id="platica-host-push-preview"/);
+  assert.match(host, /sendPush\('preview'\)/);
+  assert.match(admin, /body.action==="preview"/);
+  assert.match(admin, /loda_festival/);
+  assert.doesNotMatch(page + client + host, /Authorization.+Key /);
+});

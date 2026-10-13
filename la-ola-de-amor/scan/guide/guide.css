@@ -408,3 +408,5 @@ dialog .legacy-detail .legacy-visual-title{font-size:clamp(24px,6vw,36px);top:10
 .platica-host-push h4{margin:0 0 8px;font:normal 24px/1.2 var(--serif)}
 .platica-host-push button{display:inline-block;margin:6px;min-height:44px}
 .platica-host-push p{font-size:14px;line-height:1.5}
+
+#platica-host-push-result{white-space:pre-line;overflow-wrap:anywhere;max-height:350px;overflow:auto;line-height:1.65}
