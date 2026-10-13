@@ -116,7 +116,7 @@ In the installed Festival Guide, use **La Plática → Hosts only → Unlock**, 
 
 There is a dedicated **Send beta test to subscribed friends** button in the protected Jon/Bri La Plática host panel, separate from the single-device test and from the **Schedule 14 festival alerts** action. It sends immediately only to current OneSignal push devices tagged `loda_festival=true`, and only after confirmation from the authenticated host. It never sends future ceremony or wedding announcements early.
 
-OneSignal's provider acceptance is **not** proof of successful lock-screen delivery: ask recipients to respond 🔔 in WhatsApp. A service-role-only `loda_push_beta_runs` table and stable daily idempotency key prevent accidentally repeating the test within the same Mexico-local day. The source is tracked in `scripts/supabase/loda-festival-push/index.ts` and the new DB migration.
+OneSignal's provider acceptance is **not** proof of successful lock-screen delivery: ask recipients to post their secret GIF in the group chat. No GIF is not definitive proof of failed delivery; confirm device subscriptions separately. A service-role-only `loda_push_beta_runs` table and stable daily idempotency key prevent accidentally repeating the test within the same Mexico-local day. The source is tracked in `scripts/supabase/loda-festival-push/index.ts` and the new DB migration.
 
 To run: open the installed guide while online → Festival Updates → La Plática → Hosts only → Unlock host tools → **Send beta test to subscribed friends 🧪** → Confirm. Verify with Bri and two friends, then separately choose when to schedule the 14 wedding pushes. No automatic remote push is sent just by deploying this feature.
 
@@ -129,3 +129,54 @@ The function now safely differentiates the OneSignal HTTP result: `NO_MATCHING_S
 The guide now waits for OneSignal to finish setting both category tags and re-syncs them when a device subscription is created, to prevent the group tag filter from incorrectly missing newly subscribed guests.
 
 Next: update installed Guide; unlock host tools; repeat **Send beta test to subscribed friends**. If it fails, capture the error code now shown. Check OneSignal Users & subscriptions to confirm at least one **Subscribed** device, and inspect the `loda_festival=true` tag. Do **not** schedule the 14 wedding alerts until provider acceptance and actual lock-screen delivery are verified.
+
+
+## Oct 13 — Final group beta copy and GIF-confirmation follow-up (approved)
+
+**Scope:** Replace only the bilingual `action=beta` copy in `scripts/supabase/loda-festival-push/index.ts`. Preserve the per-phone `action=test`, audience `loda_festival=true` tag, host credentials, one-per-local-day receipt guard, 14 wedding scheduling cues, and existing midnight in-app announcements. No test send or scheduled delivery is implied by this copy change. The beta action remains a **host-triggered immediate send**, with no booked time slot.
+
+**Group beta title, EN/ES:** LA OLA DE AMOR 🌊🔔
+
+**EN notification:**
+
+> If you're reading this, IT WORKED! 😂 Just making sure a little festival magic is reaching you. So far, so good! 🤫 Don't mention this alert in the chat just yet. Instead, drop a GIF showing what you expect to look like by the end of La Ola de Amor. That's how we'll know you got it. The celebration is almost here! 🌊
+
+**ES notification:**
+
+> ¡Si estás leyendo esto, FUNCIONÓ! 😂 Solo queremos asegurarnos de que te esté llegando un poquito de magia del festival. ¡Hasta ahora, todo bien! 🤫 Todavía no menciones esta alerta en el chat. Mejor manda un GIF de cómo crees que vas a estar al final de La Ola de Amor. Así sabremos que te llegó. ¡La celebración ya casi está aquí! 🌊
+
+**Follow-up — prepared for a manual message in the group chat AFTER GIFs start arriving; not an automatic push and not queued for a clock time.**
+
+English:
+
+> AHAHAHA okay, looks like it worked! 😂🔔
+>
+> And judging by these GIFs, we've got some absolute MENACES getting ready for this weekend. 💀🌊 Some of y'all are planning to go HARD.
+>
+> Alright, now that we know the festival alerts are working for some of us, you guys have one mission: help us get everybody connected. 🫡
+>
+> Help your people get La Ola de Amor installed on their phones and their Festival Alerts turned on.
+>
+> If anyone in the group is having trouble downloading the app, setting it up, or getting notifications, just let us know. We'll help them get everything working.
+>
+> Consider yourselves our official festival test crew. 😂🫶
+>
+> Three days. One wave. We're almost there! 🌊
+
+Español:
+
+> JAJAJA, ¡parece que sí funcionó! 😂🔔
+>
+> Y viendo estos GIFs, ya vimos que hay unos verdaderos DESCONTROLADOS listos para este fin de semana. 💀🌊 ¡Algunos vienen con todo!
+>
+> Ahora que sabemos que a varios sí les están llegando las alertas, tienen una misión: ayudarnos a conectar a todos. 🫡
+>
+> Ayuden a su gente a instalar La Ola de Amor en el teléfono y activar las Alertas del Festival.
+>
+> Si alguien del grupo tiene problemas para instalar la app, configurarla o recibir notificaciones, avísenos. ¡Le ayudamos a dejar todo listo!
+>
+> Ya son oficialmente nuestro equipo de pruebas del festival. 😂🫶
+>
+> Tres días. Una ola. ¡Ya casi llega! 🌊
+
+**Operator checklist:** (1) Check subscribers and OneSignal credentials; (2) send beta only with explicit host confirmation through La Plática → Hosts only → Send beta test to subscribed friends; (3) verify real lock-screen arrivals and GIF replies; (4) post the follow-up to the group chat manually after replies appear; (5) do not confuse this beta test with scheduling the 14 wedding pushes. Long push text may be truncated by phone lock-screen display; the open notification should be checked on a real device.

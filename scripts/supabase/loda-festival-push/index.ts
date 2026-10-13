@@ -276,10 +276,10 @@ Deno.serve(async req=>{
       recipients:existing.provider_recipients,acceptedAt:existing.accepted_at},200,origin);
     const result=await deliver({
       filters:[{field:"tag",key:"loda_festival",relation:"=",value:"true"}],
-      headings:{en:"LA OLA DE AMOR — TEST 🌊",es:"LA OLA DE AMOR — PRUEBA 🌊"},
+      headings:{en:"LA OLA DE AMOR 🌊🔔",es:"LA OLA DE AMOR 🌊🔔"},
       contents:{
-        en:"If this reached your lock screen, WE DID IT! 🔔 Just testing a little festival magic before Friday. So far, so good! 😂 Welcome to our world! 🌞🌙",
-        es:"¡Si esto llegó a tu pantalla, LO LOGRAMOS! 🔔 Probando un poquito de magia del festival antes del viernes. ¡Hasta ahora, todo va genial! 😂 ¡Bienvenidos a nuestro mundo! 🌞🌙"
+        en:"If you're reading this, IT WORKED! 😂 Just making sure a little festival magic is reaching you. So far, so good! 🤫 Don't mention this alert in the chat just yet. Instead, drop a GIF showing what you expect to look like by the end of La Ola de Amor. That's how we'll know you got it. The celebration is almost here! 🌊",
+        es:"¡Si estás leyendo esto, FUNCIONÓ! 😂 Solo queremos asegurarnos de que te esté llegando un poquito de magia del festival. ¡Hasta ahora, todo bien! 🤫 Todavía no menciones esta alerta en el chat. Mejor manda un GIF de cómo crees que vas a estar al final de La Ola de Amor. Así sabremos que te llegó. ¡La celebración ya casi está aquí! 🌊"
       },
       idempotency_key:await eventKey("beta-"+day),
       ttl:600
