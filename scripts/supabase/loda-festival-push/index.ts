@@ -198,7 +198,7 @@ async function eventKey(id:string) {
 }
 async function deliver(body:Record<string,unknown>) {
   const key=Deno.env.get("ONESIGNAL_REST_API_KEY");
-  if (!key) return {error:"PUSH_NOT_CONFIGURED",status:503};
+  if (!key) return {error:"PUSH_NOT_CONFIGURED",status:503,providerStatus:null,providerCode:"PUSH_NOT_CONFIGURED"};
   try {
     const res=await fetch("https://api.onesignal.com/notifications",{
       method:"POST",headers:{"content-type":"application/json","Authorization":"Key "+key},
@@ -222,7 +222,7 @@ async function deliver(body:Record<string,unknown>) {
     }
     return {id:payload.id,status:200,recipients:typeof payload.recipients==="number"?payload.recipients:null};
   } catch {
-    return {error:"PROVIDER_UNAVAILABLE",status:503};
+    return {error:"PROVIDER_UNAVAILABLE",status:503,providerStatus:null,providerCode:"PROVIDER_UNAVAILABLE"};
   }
 }
 Deno.serve(async req=>{
