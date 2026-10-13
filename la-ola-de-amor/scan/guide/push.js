@@ -8,8 +8,9 @@
   const festival = document.getElementById('guide-push-festival');
   const platica = document.getElementById('guide-push-platica');
   const preferenceKey = 'laOlaPushPreferenceV1';
-  // A notification grant alone is not consent to guestbook posts. Festival defaults ON, Plática OFF.
-  let choices = { festival: true, platica: false };
+  // Both alert topics start ON after the guest explicitly enables OS push permission.
+// Persist any guest's later OFF choices; never override deliberate opt-outs.
+  let choices = { festival: true, platica: true };
   try {
     const stored = JSON.parse(localStorage.getItem(preferenceKey) || 'null');
     if (stored && typeof stored.festival === 'boolean' && typeof stored.platica === 'boolean') choices = stored;
@@ -34,12 +35,12 @@
       denied: 'Notifications are blocked. Enable them in your device or browser settings.',
       unsupported: 'Push notifications are not supported on this device or browser. Festival Updates still works.',
       ios: 'iPhone: open this guide in Safari, Share → Add to Home Screen, then launch the saved app and return to this section to enable alerts.',
-      help: 'Optional alerts for important festival moments. You can pause them at any time. The guide and its updates work without notifications.',
+      help: 'Once you enable notifications, both Festival and La Plática alerts start ON. Uncheck either one or pause all alerts at any time.',
       installing: 'Install the guide first to receive iPhone notifications.',
       legend: 'Choose what you receive',
       festival: '🌊 Festival announcements',
       platica: '💌 New La Plática messages',
-      platicaNote: 'Guestbook alerts are optional and separate. Each note may generate a notification.'
+      platicaNote: 'Both alert types start ON when you subscribe. Turn either one OFF whenever you like. Guestbook notifications are grouped to avoid spam.'
     },
     es: {
       button: 'Activar alertas del festival 🔔',
@@ -53,12 +54,12 @@
       denied: 'Las notificaciones están bloqueadas. Actívalas en los ajustes del dispositivo o navegador.',
       unsupported: 'Este dispositivo o navegador no admite notificaciones. Las actualizaciones siguen disponibles.',
       ios: 'iPhone: abre la guía en Safari, Compartir → Añadir a pantalla de inicio. Después abre la app instalada y regresa aquí para activar avisos.',
-      help: 'Avisos opcionales para momentos importantes. Puedes pausarlos cuando quieras. La guía funciona sin notificaciones.',
+      help: 'Al activar notificaciones, tanto las alertas del festival como las de La Plática estarán ACTIVADAS. Desmarca cualquiera o pausa todos los avisos cuando quieras.',
       installing: 'Primero instala la guía para recibir avisos en iPhone.',
       legend: 'Elige qué quieres recibir',
       festival: '🌊 Anuncios del festival',
       platica: '💌 Mensajes nuevos de La Plática',
-      platicaNote: 'Las alertas del libro de visitas son opcionales y separadas. Cada mensaje podría generar un aviso.'
+      platicaNote: 'Ambos tipos de avisos se activan al suscribirte. Puedes desactivar cualquiera cuando quieras. Agrupamos avisos de La Plática para evitar spam.'
     }
   };
   let signal = null, busy = false, initFailed = false;
@@ -139,13 +140,11 @@
       });
       signal = OneSignal;
       initFailed = false;
-      // Honor existing tag settings on an existing device. New installs default to festival-only.
+      // Keep user-selected choices in localStorage. Earlier versions auto-tagged
+      // Plática OFF without an explicit choice; adopt the new ON default ONLY
+      // when the guest never saved their own preferences. On a later visit,
+      // sync both topics to OneSignal without overriding deliberate opt-outs.
       try {
-        const tags = await Promise.resolve(OneSignal.User.getTags());
-        const saved = JSON.parse(localStorage.getItem(preferenceKey) || 'null');
-        if (!saved && tags && (tags.loda_festival || tags.loda_platica)) {
-          choices = { festival: tags.loda_festival !== 'false', platica: tags.loda_platica === 'true' };
-        }
         if (subscribed()) await syncTags();
       } catch (error) { console.warn('[Festival Guide] Preference sync unavailable:', error); }
       OneSignal.Notifications.addEventListener('permissionChange', render);
