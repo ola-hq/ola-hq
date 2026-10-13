@@ -203,3 +203,60 @@ The guide's language choice is persisted in `laOlaGuideLang` and reused when a n
 **Scope:** This automatically localizes official Festival push templates and **generic** La Plática new-message alert copy. It does **not** translate free-form notes written by guests. OneSignal sends do not retroactively change a notification that was already delivered. Guests must open the updated installed guide at least once online after the release so that OneSignal can receive the app-language override before their next push.
 
 **Testing:** On an opted-in test device set the phone/browser language to English but set the guide to Spanish, then verify the OneSignal profile language changes to `es`; repeat in reverse, send a future authorized test, and confirm lock-screen text plus deep-linked announcement. Avoid triggering another group beta or scheduling the 14 wedding alerts simply to test language.
+
+## Oct 13 — V3 approved: 31 timed festival push notices + 12 contingent activation drafts
+
+**Supersedes earlier 14-alert preview/scheduling count and the earlier Thursday 7 PM reminder.** The couple authorized an expanded high-frequency bilingual festival experience and publication, with a report of confirmed provider scheduling. Source of truth: `scripts/content/loda-push-program.json` (schema 2). This release embeds the identical 31 IDs, UTC instants and EN/ES title/body text in `scripts/supabase/loda-festival-push/index.ts`. The host-only preview/scheduling panel refers to **31** and the date window Thursday Oct 15–Saturday Oct 17, Guadalajara `America/Mexico_City` (-06:00). Host authentication, device test, one-per-day group beta, opt-in tags, language overrides, explicit schedule confirmation, idempotency/receipt records and the two-entry Festival Updates feed are unchanged.
+
+**Thursday:** The sole scheduled Thursday candidate is **12:00 PM**, announcing the **3:00 PM festival setup pre-party at La Tijera**. All attendees, locals and Casa Sol/Casa Luna guests are welcome to stop by, help or hang out. Guests who prefer to preserve the surprise should come Friday. The earlier Thursday 7 PM teaser is removed.
+
+**Additional intimate moments:** Fri 5:30 PM public love note for Bri; Fri 6:30 PM public love note for Jon; Fri 11:15 PM “Hey you” love note to every guest; Sat 2:15 PM shared note for Bri + Jon and the community. All are general broadcast notices (not private individually addressed push sends).
+
+**31 operator-reviewed dated broadcast candidates (full bilingual messages in canonical JSON):**
+
+| Guadalajara time | Event ID | English heading | Spanish heading |
+|---|---|---|---|
+| Thu 12:00 PM | `thursday-setup-party` | TODAY: SETUP PRE-PARTY! 🛠️🌊 | ¡HOY: PRE-FIESTA DE MONTAJE! 🛠️🌊 |
+| Fri 11:00 AM | `wedding-day` | TODAY IS THE DAY! 🌞 | ¡HOY ES EL GRAN DÍA! 🌞 |
+| Fri 2:30 PM | `on-the-way` | THE WAVE IS WAITING 🚗🌊 | ¡LA OLA LOS ESPERA! 🚗🌊 |
+| Fri 3:00 PM | `welcome` | WELCOME TO LA OLA! 🌊 | ¡BIENVENIDOS A LA OLA! 🌊 |
+| Fri 4:00 PM | `seating` | CEREMONY SEATING 💍 | ASIENTOS PARA LA CEREMONIA 💍 |
+| Fri 4:15 PM | `seating-final` | ONE LAST NUDGE 🤍 | ÚLTIMO AVISO 🤍 |
+| Fri 5:00 PM | `gates` | LET THE CELEBRATION BEGIN! 🎺 | ¡QUE EMPIECE LA FIESTA! 🎺 |
+| Fri 5:30 PM | `love-bri` | BRI, LOOK WHAT LOVE BUILT 💛 | BRI, MIRA LO QUE CREÓ EL AMOR 💛 |
+| Fri 5:45 PM | `explore-plaza` | EXPLORE YOUR PLAZA 🏘️ | ¡RECORRAN SU PLAZA! 🏘️ |
+| Fri 6:15 PM | `mirror` | FOUND THE MAGIC MIRROR? 📸 | ¿YA VISTE EL ESPEJO MÁGICO? 📸 |
+| Fri 6:30 PM | `love-jon` | JON, DON'T MISS THIS MOMENT 🌊 | JON, NO TE PIERDAS ESTE MOMENTO 🌊 |
+| Fri 6:45 PM | `memory-walls` | THESE ARE OUR PEOPLE ❤️ | ESTA ES NUESTRA GENTE ❤️ |
+| Fri 7:00 PM | `sunset` | SUNSET SELECTORS ☀️ | SUNSET SELECTORS ☀️ |
+| Fri 7:40 PM | `formal-soon` | SOMETHING SPECIAL IS COMING 🤍 | SE VIENE ALGO ESPECIAL 🤍 |
+| Fri 8:00 PM | `entrance` | A MOMENT FOR BRI + JON 🤍 | UN MOMENTO PARA BRI + JON 🤍 |
+| Fri 9:35 PM | `desserts` | SOMETHING SWEET! 🍰 | ¡ALGO DULCECITO! 🍰 |
+| Fri 9:55 PM | `mirror-again` | ROUND TWO AT THE MIRROR! 📸 | ¡SEGUNDA VUELTA AL ESPEJO! 📸 |
+| Fri 10:15 PM | `couple-photo` | MAKE A MEMORY 📷 | VAMOS A HACER UN RECUERDO 📷 |
+| Fri 10:45 PM | `time-machine` | LA MÁQUINA DEL TIEMPO ⏳ | LA MÁQUINA DEL TIEMPO ⏳ |
+| Fri 11:15 PM | `love-our-people` | HEY YOU. YES, YOU. 🫵❤️ | OYE, TÚ. SÍ, TÚ. 🫵❤️ |
+| Fri 11:30 PM | `keep-dancing` | YOU KNOW THIS ONE! 🎶 | ¡ESTA TE LA SABES! 🎶 |
+| Sat 12:00 AM | `midnight-last-call` | LAST CALL · 1 AM 🍹 | ÚLTIMA RONDA · 1 AM 🍹 |
+| Sat 12:30 AM | `water-and-bar` | 30 MINUTES LEFT! ⏰ | ¡QUEDAN 30 MINUTOS! ⏰ |
+| Sat 1:00 AM | `afters-self-serve` | YOU REALLY THOUGHT THAT WAS LAST CALL? 😂 | ¿DE VERDAD CREÍSTE QUE ERA LA ÚLTIMA? 😂 |
+| Sat 1:30 AM | `neon-last-wave` | ONE LAST WAVE 🌙 | UNA ÚLTIMA OLA 🌙 |
+| Sat 10:30 AM | `wake-up` | Y'ALL STILL ALIVE? 😂 | ¿SIGUEN VIVOS? 😂 |
+| Sat 11:45 AM | `tornaboda` | ONE MORE WAVE TODAY 🌮 | ¡HOY NOS QUEDA OTRA OLA! 🌮 |
+| Sat 12:30 PM | `afterglow` | THE AFTERGLOW ☀️ | LA OLA CONTINÚA ☀️ |
+| Sat 2:15 PM | `love-together` | BRI + JON, LOOK AROUND AGAIN ❤️ | BRI + JON, VUELVAN A MIRAR ❤️ |
+| Sat 3:30 PM | `tornaboda-photo` | ONE MORE PICTURE? 📸 | ¿OTRA FOTITO? 📸 |
+| Sat 4:45 PM | `thank-you` | THANK YOU FOR BEING OUR WAVE ❤️ | GRACIAS POR SER PARTE DE NUESTRA OLA ❤️ |
+
+**12 manual-cue-only drafts:** `elotes`, `group-photo-perreo`, `perreo`, `dancers`, `cabezones`, `zanqueros`, `robots`, `late-night-carts`, `crepes`, `cocina-oculta`, `taquiza`, `inflagol`. These have natural full EN/ES title and body in the canonical JSON and **no send time**. They are NOT part of the 31 and are not scheduled. The existing host panel has no general “Send specific surprise draft now” action; implement explicit guarded operator dispatch separately before claiming they can be broadcast from the app. Trigger only when the vendor/performer is actually operating. The big group photo and Perreo Paraíso are production-cued, never clock-cued; let DJ/photographer authorize each.
+
+**Operational risks / final timing signoffs:** The 4 PM and 4:15 PM ceremony-seat reminders match the current family briefing, but production sources disagree about the actual ceremony start; confirm with ceremony coordinators. The 8 PM formal segment has flexible duration; no timed broadcast for speeches or photo. Magic Mirror has documented 5–7 PM and 9–11 PM windows. The midnight bar notice assumes staffed service ends at 1 AM; the 1 AM self-serve reveal assumes safe bar provisions are prepared. DJ/VJ ends at 2 AM; no invitation to unapproved post-2 AM amplified music. Early-afternoon Saturday food and activities must not be promised as confirmed until vendor readiness. Do not add fixed clock alerts for elotes/crepes/Maruchan/robots/Cocina Oculta while operational facts conflict.
+
+**Release states must be separated:**
+- A merged GitHub PR and a passing Pages deploy mean the **app interface and proposed copy are live**.
+- A successful Supabase Edge Function deploy means the **protected API is ready to accept scheduling requests**.
+- Only **actual OneSignal API acceptance + a `public.loda_push_schedule` receipt per event** means a push is **scheduled**. The count can be read with `SELECT count(*) FROM public.loda_push_schedule`; expected 31.
+- The `schedule` action still requires Jon/Bri’s private host credentials via La Plática → Hosts only → Unlock → Review 31 alerts → Schedule 31 festival alerts + confirmation. Never fake host authentication, access secrets in chat, or bypass its authentication for publication. Run the action at least a few minutes before Thursday noon. If the provider rejects a message partway through, log accepted IDs and retry the protected schedule action; idempotent receipts skip already-accepted messages.
+- Proof of device receipt remains separate from a scheduling receipt. Spanish/English language choice will synchronize when guests open the updated installed guide online.
+
+**Do not use the older 2-event `scripts/festival-push-schedule.mjs` manual script** in addition to the 31-event host schedule—it risks duplicate or incomplete sends. Two midnight in-app release notices remain a previously published fallback; official remote push announcements, once scheduled, will appear in the saved unified Festival Updates history at their release time. 
