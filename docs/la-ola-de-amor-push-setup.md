@@ -77,8 +77,8 @@ References: [OneSignal Web SDK v16](https://github.com/OneSignal/OneSignal-Websi
 ## New: 2 distinct notification topics and in-app host delivery tools (Oct 12)
 
 - Subscribed guests see two independent topic choices in **Festival Updates**:
-  - **Festival announcements**: enabled by default on previously opted-in devices; targets the OneSignal user tag `loda_festival=true`.
-  - **La Plática**: **OFF by default** and requires explicit opt-in; targets `loda_platica=true`.
+  - **Festival announcements**: **ON by default** after explicit OS push opt-in; targets `loda_festival=true`.
+  - **La Plática**: **ON by default** when the guest first opts in to OS push permission; targets `loda_platica=true`. Guests can uncheck either topic or pause all notifications; previously saved manual OFF choices remain OFF.
 - These categories only operate while the overall push subscription is enabled. Turning off push at OS/app level stops all notifications. User tags are synced upon init and when preferences change.
 - The **closed-app experience** uses OneSignal's remote Web Push. It works on supported iPhone Home Screen installations (iOS 16.4+) and supported desktop/Android browsers only if the recipient is opted in, has internet, and OS delivery is allowed. The page doesn't need to remain open. Delivery may be delayed by Focus mode, networking, OS limitations, or the push provider.
 - **La Plática** writes remain public in the guestbook but push content is generic: it never includes the guest's name or submitted text. The protected server sends one optional alert at most every five minutes, only after a successful legitimate post, using a service-role-only throttle. Host moderation and posting rate limits are unchanged.
@@ -90,3 +90,7 @@ References: [OneSignal Web SDK v16](https://github.com/OneSignal/OneSignal-Websi
 - Two events: Guadalajara Saturday Oct 17 **00:00** (UTC 06:00), **01:00** (UTC 07:00). Neither message is sent immediately; OneSignal schedules remote delivery at the event time.
 - For live device debugging, host panel errors identify missing secret vs unavailable provider. Guestbook automatic notices remain best-effort and cannot block note posting.
 - **No all-audience blast:** the scheduled festival messages use `loda_festival=true` only, and guestbook uses `loda_platica=true` only. This protects guests' separate preferences.
+
+### Oct 12 change: short-event topic defaults
+
+Both notification categories are ON after a guest explicitly enables iOS/browser push notifications, because the festival runs for only one or two days. Users can uncheck either category or pause all. The iPhone/browser permission prompt remains required and never runs automatically. We deliberately preserve explicit choices in localStorage; legacy tags automatically set to `loda_platica=false` are overwritten on return **only when no saved personal choice exists**. A subscribed guest must load the updated guide before refreshed topic tags are synced to OneSignal.

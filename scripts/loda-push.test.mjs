@@ -11,11 +11,13 @@ const wall = read('scripts/supabase/loda-guest-wall/index.ts');
 const schedule = read('scripts/festival-push-schedule.mjs');
 const sw = read('la-ola-de-amor/scan/sw.js');
 
-test('festival and guestbook category controls are distinct, guestbook starts OFF', () => {
+test('both notification topics start ON after explicit OS push opt-in; later choices persist', () => {
   assert.match(page, /id="guide-push-festival" type="checkbox" checked/);
   assert.match(page, /id="guide-push-platica" type="checkbox"/);
-  assert.doesNotMatch(page, /id="guide-push-platica" type="checkbox" checked/);
-  assert.match(client, /choices = \{ festival: true, platica: false \}/);
+  assert.match(client, /choices = \{ festival: true, platica: true \}/);
+  assert.match(client, /localStorage\.getItem\(preferenceKey\)/);
+  assert.match(client, /localStorage\.setItem\(preferenceKey/);
+  assert.doesNotMatch(client, /choices = \{ festival: tags\.loda_festival/);
   assert.match(client, /loda_festival/);
   assert.match(client, /loda_platica/);
   assert.match(client, /signal\.User\.addTags/);
