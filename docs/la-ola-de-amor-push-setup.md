@@ -193,3 +193,13 @@ Español:
 - Host workflow does not change: **Send beta test** is manual and one per Mexico-local day; **Schedule 14 festival alerts** remains separate and requires explicit host approval. Changes to this inbox **do not** schedule or send any pushes. Do not manually send equivalent OneSignal notices outside the protected function or they will not be recorded automatically.
 
 **Operational verification:** The public history table, release-only RLS SELECT, and backfilled 2026-10-13 beta were checked. The guide's new release depends on the website's GitHub Pages deployment and offline service-worker update. A provider acceptance receipt is still not proof that recipients saw a lock-screen banner.
+
+## Oct 13 — Match push language to the guest's EN/ES guide setting
+
+Both official festival pushes and automatic La Plática guestbook alert templates already include English (`en`) and Spanish (`es`) titles and bodies. Previously, OneSignal defaulted its profile language from the phone/browser, which can differ from the guide's explicit language switch. The Festival Guide now invokes OneSignal Web SDK v16 `OneSignal.User.setLanguage('en'|'es')` after initialization, again when a guest changes the guide language, and when a new subscription is created/opted in. This does not override OS notification permission or re-enable opted-out alert categories.
+
+The guide's language choice is persisted in `laOlaGuideLang` and reused when a notification deep-link opens the app. Festival Updates continues displaying the bilingual announcement title/body under the selected language; a guest can always use the existing EN/ES language selector to switch after opening. OneSignal defaults to English if its user language does not match the available translations, per OneSignal's documented fallback.
+
+**Scope:** This automatically localizes official Festival push templates and **generic** La Plática new-message alert copy. It does **not** translate free-form notes written by guests. OneSignal sends do not retroactively change a notification that was already delivered. Guests must open the updated installed guide at least once online after the release so that OneSignal can receive the app-language override before their next push.
+
+**Testing:** On an opted-in test device set the phone/browser language to English but set the guide to Spanish, then verify the OneSignal profile language changes to `es`; repeat in reverse, send a future authorized test, and confirm lock-screen text plus deep-linked announcement. Avoid triggering another group beta or scheduling the 14 wedding alerts simply to test language.
