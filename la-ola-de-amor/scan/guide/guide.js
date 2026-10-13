@@ -109,23 +109,68 @@ function updateDate(item){
  const timed=stamp.includes('T');
  return new Intl.DateTimeFormat(lang==='en'?'en-US':'es-MX',{year:'numeric',month:'short',day:'numeric',...(timed?{hour:'numeric',minute:'2-digit',timeZoneName:'short'}:{}),timeZone:timed?'America/Mexico_City':'UTC'}).format(new Date(timed?stamp:stamp+'T12:00:00Z'));
 }
+// Official festival pushes are persisted in a public, read-only Supabase history.
+// This local copy lets the last fetched announcements remain accessible offline.
+// Private per-device test pushes and high-frequency La Plática alerts are not broadcasts.
+const pushHistoryStorageKey='laOlaFestivalPushHistoryV1';
+const pushHistoryURL='https://fgtowzonkmirmugnzlsf.supabase.co/rest/v1/loda_festival_notification_history?select=id,title_en,title_es,body_en,body_es,published_at,kind&order=published_at.desc&limit=150';
+let pushHistory=[];
+try{const cached=JSON.parse(localStorage.getItem(pushHistoryStorageKey)||'[]');if(Array.isArray(cached))pushHistory=cached;}catch{}
+function allFestivalUpdates(){
+ const merged=new Map(activeFestivalUpdates().map(item=>[item.id,item]));
+ for(const row of pushHistory){
+  if(!row || !/^[a-z0-9-]{1,90}$/.test(row.id||'') || !Number.isFinite(Date.parse(row.published_at)) || Date.parse(row.published_at)>Date.now())continue;
+  if(!['title_en','title_es','body_en','body_es'].every(k=>typeof row[k]==='string'))continue;
+  merged.set(row.id,{
+   id:row.id,revision:'push-'+row.published_at,publishedAt:row.published_at.slice(0,10),
+   releaseAt:row.published_at,priority:'confirmed',route:'updates',
+   audience:{en:'Festival announcement',es:'Aviso del festival'},
+   title:{en:row.title_en,es:row.title_es},body:{en:row.body_en,es:row.body_es}
+  });
+ }
+ return [...merged.values()].sort((a,b)=>Date.parse(b.releaseAt||b.publishedAt+'T12:00:00Z')-Date.parse(a.releaseAt||a.publishedAt+'T12:00:00Z')||a.id.localeCompare(b.id));
+}
+let feedLoading=false;
+async function refreshPushHistory(){
+ if(feedLoading || !navigator.onLine || !window.__platicaAnonKey)return;
+ feedLoading=true;
+ try{
+  const key=window.__platicaAnonKey;
+  const response=await fetch(pushHistoryURL,{headers:{apikey:key,authorization:'Bearer '+key},cache:'no-store'});
+  if(!response.ok)throw Error('Festival history unavailable');
+  const rows=await response.json();if(!Array.isArray(rows))throw Error('Invalid festival history');
+  pushHistory=rows;try{localStorage.setItem(pushHistoryStorageKey,JSON.stringify(rows));}catch{}
+  renderUpdates();
+  if(location.hash.startsWith('#updates/')&&location.hash!=='#updates/all')renderRoute();
+ }catch(error){console.warn('[Festival Guide] Saved announcement history unavailable:',error);}
+ finally{feedLoading=false;}
+}
 function renderUpdates(){
- // A scheduled announcement appears in the guide only when its local release time arrives.
- const live=activeFestivalUpdates();
+ const live=allFestivalUpdates();
+ const showAll=location.hash==='#updates/all';
+ const shown=showAll?live:live.slice(0,2);
  document.querySelector('#updates-empty').hidden=live.length>0;
- const badge=document.querySelector('#updates-new');const unread=live.filter(updateIsNew).length;
+ const badge=document.querySelector('#updates-new');const unread=live.slice(0,2).filter(updateIsNew).length;
  badge.hidden=!unread;badge.textContent=lang==='en'?`${unread} new`:`${unread} nuevos`;
- document.querySelector('#updates-feed').innerHTML=live.map(item=>`<li><button class="update-card" data-route="updates/${item.id}"><span class="update-meta"><time datetime="${esc(item.releaseAt||item.publishedAt)}">${esc(updateDate(item))}</time><span class="plan-status ${item.priority==='confirmed'?'confirmed':''}">${esc(ui(item.priority==='confirmed'?'updateConfirmed':'updatePending'))}</span>${updateIsNew(item)?`<span class="new-update">${esc(ui('newUpdate'))}</span>`:''}</span><strong>${esc(item.title[lang])}</strong><span class="update-card-arrow" aria-hidden="true">↗</span></button></li>`).join('');
- FESTIVAL_UPDATES.forEach(item=>delete details[`updates/${item.id}`]);
- live.forEach(item=>details[`updates/${item.id}`]={title:item.title[lang],kicker:ui('updatesTitle'),text:[`${updateDate(item)} · ${item.audience[lang]} · ${ui(item.priority==='confirmed'?'updateConfirmed':'updatePending')}`,item.body[lang]],links:[[item.route,item.route==='today'?ui('dayOne'):item.route==='updates'?ui('updatesTitle'):ui('viewDayTwo').replace(' →','')]],source:ui('updatesTitle')});
+ const card=item=>`<li><button class="update-card" data-route="updates/${esc(item.id)}"><span class="update-meta"><time datetime="${esc(item.releaseAt||item.publishedAt)}">${esc(updateDate(item))}</time><span class="plan-status confirmed">${esc(ui('updateConfirmed'))}</span>${updateIsNew(item)?`<span class="new-update">${esc(ui('newUpdate'))}</span>`:''}</span><strong>${esc(item.title[lang])}</strong><span class="update-card-arrow" aria-hidden="true">↗</span></button></li>`;
+ const toggle=live.length>2?`<li><button class="update-card update-all-card" data-route="${showAll?'updates':'updates/all'}"><strong>${showAll?(lang==='en'?'← Back to latest two':'← Ver los dos más recientes'):(lang==='en'?`View all updates (${live.length})`:`Ver todas las actualizaciones (${live.length})`)}</strong><span class="update-card-arrow" aria-hidden="true">↗</span></button></li>`:'';
+ document.querySelector('#updates-feed').innerHTML=shown.map(card).join('')+toggle;
+ // Clear stale update detail routes without altering non-announcement details.
+ for(const key of Object.keys(details))if(key.startsWith('updates/'))delete details[key];
+ live.forEach(item=>details[`updates/${item.id}`]={title:item.title[lang],kicker:ui('updatesTitle'),text:[`${updateDate(item)} · ${item.audience[lang]} · ${ui('updateConfirmed')}`,item.body[lang]],links:[['updates',ui('updatesTitle')]],source:ui('updatesTitle')});
  details['tornaboda/map']={title:ui('saturdayMapTitle'),kicker:ui('dayTwo'),art:'tornaboda-map-corrected-draft.png',full:true,text:[ui('saturdayMapNote'),ui('mapArtworkLanguage')],source:ui('saturdayMapSource'),links:[['tornaboda',ui('viewDayTwo').replace(' →','')]]};
 }
 function markUpdatesSeen(route){
- const live=activeFestivalUpdates();
- const items=route==='updates'?live:live.filter(item=>route===`updates/${item.id}`);
+ const live=allFestivalUpdates();
+ const items=route==='updates'?live.slice(0,2):route==='updates/all'?live:live.filter(item=>route===`updates/${item.id}`);
  const changed=items.some(updateIsNew);items.forEach(item=>updatesSeen[item.id]=item.revision);
  if(changed){try{localStorage.setItem(updatesSeenKey,JSON.stringify(updatesSeen));}catch{}renderUpdates();}
 }
+addEventListener('DOMContentLoaded',refreshPushHistory);
+addEventListener('online',refreshPushHistory);
+addEventListener('focus',()=>{if(location.hash.startsWith('#updates'))refreshPushHistory();});
+addEventListener('hashchange',()=>{if(location.hash.startsWith('#updates'))refreshPushHistory();});
+setInterval(()=>{if(location.hash.startsWith('#updates')&&!document.hidden)refreshPushHistory();},60000);
 function renderDynamic(){
  renderUpdates();
  document.querySelector('#artists').innerHTML=artists.map((a,i)=>card(`music/artist/${a[0]}`,a[1],a[2],`artist-${pad(i+1)}.webp`)).join('');
@@ -146,7 +191,7 @@ document.addEventListener('click',e=>{const target=e.target.closest('[data-route
 function refreshImageFallback(img){const fallback=img.nextElementSibling;if(fallback?.classList.contains('image-fallback'))fallback.textContent=(lang==='en'?'Artwork unavailable':'Ilustración no disponible')+(img.alt?` · ${img.alt}`:'');}
 function imageFallbacks(){document.querySelectorAll('img').forEach(img=>{refreshImageFallback(img);if(img.dataset.fallback)return;img.dataset.fallback='true';const fail=()=>{img.classList.add('missing-art');if(!img.nextElementSibling?.classList.contains('image-fallback')){const fallback=document.createElement('p');fallback.className='image-fallback';img.after(fallback);}refreshImageFallback(img);};img.addEventListener('error',fail);img.addEventListener('load',()=>{img.classList.remove('missing-art');if(img.nextElementSibling?.classList.contains('image-fallback'))img.nextElementSibling.remove();});if(img.complete&&img.naturalWidth===0)fail();});}
 function renderRoute(){
- let route=location.hash.slice(1);try{route=decodeURI(route);}catch{}markUpdatesSeen(route);const d=details[route];let panel=route.split('/')[0];if(!['today','music','plaza','food','tornaboda','updates'].includes(panel))panel='today';
+ let route=location.hash.slice(1);try{route=decodeURI(route);}catch{}renderUpdates();markUpdatesSeen(route);const d=details[route];let panel=route.split('/')[0];if(!['today','music','plaza','food','tornaboda','updates'].includes(panel))panel='today';
  if(lastPanel)scrollPositions[lastPanel]=window.scrollY;
  document.querySelector('#entrance').hidden=!!route;document.querySelector('#weekend-nav').hidden=!['today','tornaboda','updates'].includes(panel);document.querySelectorAll('.day-selector a').forEach(a=>{if(a.hash===`#${panel}`)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
  document.querySelectorAll('.panel').forEach(p=>p.hidden=p.id!==panel);
