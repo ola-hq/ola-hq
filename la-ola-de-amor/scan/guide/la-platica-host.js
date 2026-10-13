@@ -7,8 +7,8 @@ const PUSH_API='https://fgtowzonkmirmugnzlsf.supabase.co/functions/v1/loda-festi
 const ANON=window.__platicaAnonKey;
 const strings={
  en:{hostLabel:'Hosts only · Moderation',hostNameLabel:'Host',keyLabel:'Private host password',unlock:'Unlock host tools',hostDescription:'Choose Hide on a public guest note to remove it from view.',lock:'Lock host tools',bad:'That password was not accepted.',ready:'Host tools unlocked.',hidden:'Message hidden.',hide:'Hide note',
- pushTitle:'🔔 Festival push controls',pushExplain:'Review the full wedding showflow, test your phone, then schedule Friday and Saturday alerts.',
- sendTest:'Send test to this phone 🔔',sendBeta:'Send beta test to subscribed friends 🧪',previewPush:'Review 14 alerts ↗',schedulePush:'Schedule 14 festival alerts 🪩',
+ pushTitle:'🔔 Festival push controls',pushExplain:'Review the full festival showflow, test your phone, then schedule Thursday through Saturday alerts.',
+ sendTest:'Send test to this phone 🔔',sendBeta:'Send beta test to subscribed friends 🧪',previewPush:'Review 31 alerts ↗',schedulePush:'Schedule 31 festival alerts 🪩',
  noSubscription:'Enable Festival Alerts on this device first, then try again.',
  noKey:'Push delivery needs the private OneSignal key in Supabase Edge Function Secrets before sending.',
  testSent:'Test push requested. Lock your phone and watch for the banner! 🔔',
@@ -16,13 +16,13 @@ const strings={
  betaAlready:'A beta test has already been requested today. Ask your friends whether they received it.',
  betaConfirm:'Send ONE immediate test alert to all currently subscribed Festival Alerts devices, including friends and Bri? No wedding schedule will be triggered.',
  betaFail:'Beta could not be sent. Check your OneSignal subscriptions and private key.',
- scheduleDone:'The festival showflow is scheduled for Friday and Saturday (Guadalajara time). 🌊',
+ scheduleDone:'The festival showflow is scheduled for Thursday through Saturday (Guadalajara time). 🌊',
  scheduleAlready:'Those alerts were already scheduled.',
  pushFailed:'Push delivery could not be completed. Check Supabase configuration and OneSignal.',
- confirmSchedule:'Schedule 14 wedding announcements for October 16–17, only to guests subscribed to Festival Alerts? This schedules future delivery; nothing is sent now.'},
+ confirmSchedule:'Schedule 31 festival announcements for October 15–17 (including Thursday's noon setup-party invite), only to guests subscribed to Festival Alerts? This schedules future delivery; nothing is sent now.'},
  es:{hostLabel:'Solo anfitriones · Moderación',hostNameLabel:'Anfitrión',keyLabel:'Contraseña privada de anfitrión',unlock:'Abrir controles',hostDescription:'Pulsa Ocultar junto a un mensaje para retirarlo de la vista pública.',lock:'Cerrar controles',bad:'No se aceptó esa contraseña.',ready:'Controles activados.',hidden:'Mensaje oculto.',hide:'Ocultar mensaje',
- pushTitle:'🔔 Controles de avisos',pushExplain:'Revisa el programa, prueba tu teléfono y luego programa avisos del viernes y sábado.',
- sendTest:'Enviar prueba a este teléfono 🔔',sendBeta:'Enviar prueba al grupo suscrito 🧪',previewPush:'Revisar 14 avisos ↗',schedulePush:'Programar 14 avisos 🪩',
+ pushTitle:'🔔 Controles de avisos',pushExplain:'Revisa todo el programa, prueba tu teléfono y luego programa avisos del jueves al sábado.',
+ sendTest:'Enviar prueba a este teléfono 🔔',sendBeta:'Enviar prueba al grupo suscrito 🧪',previewPush:'Revisar 31 avisos ↗',schedulePush:'Programar 31 avisos 🪩',
  noSubscription:'Primero activa las alertas del festival en este teléfono.',
  noKey:'Falta configurar la clave privada de OneSignal en Supabase Edge Function Secrets.',
  testSent:'Prueba solicitada. ¡Bloquea el teléfono y espera el aviso! 🔔',
@@ -30,10 +30,10 @@ const strings={
  betaAlready:'Ya se solicitó una prueba hoy. Pregunta si les llegó.',
  betaConfirm:'¿Enviar AHORA una prueba a todos los dispositivos suscritos a Alertas del Festival? No se activará el programa de la boda.',
  betaFail:'No se pudo enviar la prueba. Revisa los suscriptores de OneSignal y la clave privada.',
- scheduleDone:'Los avisos del festival quedaron programados para viernes y sábado (hora de Guadalajara). 🌊',
+ scheduleDone:'Los avisos del festival quedaron programados de jueves a sábado (hora de Guadalajara). 🌊',
  scheduleAlready:'Los avisos ya estaban programados.',
  pushFailed:'No se pudo completar. Revisa la configuración de Supabase y OneSignal.',
- confirmSchedule:'¿Programamos 14 avisos del 16 y 17 de octubre, solo para quienes activaron alertas del festival? No se enviarán ahora.'}
+ confirmSchedule:'¿Programamos 31 avisos del 15 al 17 de octubre (incluida la invitación del jueves al mediodía), solo para quienes activaron Alertas del Festival? No se enviarán ahora.'}
 };const by=id=>document.getElementById(id),lang=()=>document.documentElement.lang.startsWith('es')?'es':'en',t=k=>strings[lang()][k];let key='';
 async function hostToken(password,host){const material=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveBits']);const bits=await crypto.subtle.deriveBits({name:'PBKDF2',hash:'SHA-256',salt:new TextEncoder().encode('loda-host-password-v2:'+host),iterations:600000},material,256);return [...new Uint8Array(bits)].map(x=>x.toString(16).padStart(2,'0')).join('')}
 function headers(){return {'apikey':ANON,'authorization':'Bearer '+ANON,'content-type':'application/json','x-loda-moderator-token':key}}
@@ -96,7 +96,7 @@ async function schedulePush(){
  btn.disabled=true;
  try{
   const data=await sendPush('schedule');
-  const already=data.results?.length===14&&data.results.every(item=>item.status==='already_scheduled');
+  const already=data.results?.length===31&&data.results.every(item=>item.status==='already_scheduled');
   displayPushResult(t(already?'scheduleAlready':'scheduleDone'));
  }catch(err){pushError(err)}
  finally{btn.disabled=false}

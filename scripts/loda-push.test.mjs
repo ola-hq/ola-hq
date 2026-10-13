@@ -55,11 +55,22 @@ test('separate push service worker and offline worker are preserved', () => {
 });
 
 
-test('14-event showflow matches protected server exactly and drafts are never scheduled', () => {
+test('31-event showflow matches protected server exactly and drafts are never scheduled', () => {
   const program = JSON.parse(read('scripts/content/loda-push-program.json'));
   assert.equal(program.timeZone, 'America/Mexico_City');
-  assert.equal(program.events.length, 14);
+  assert.equal(program.events.length, 31);
   assert(program.drafts.every(item => !('at' in item)));
+  assert.equal(program.drafts.length, 12);
+  assert.equal(program.events[0].id, 'thursday-setup-party');
+  assert.equal(program.events[0].at, '2026-10-15T12:00:00-06:00');
+  assert.deepEqual(program.events.filter(item=>item.id.startsWith('love-')).map(item=>item.id),
+    ['love-bri','love-jon','love-our-people','love-together']);
+  assert(program.events.every(item=>item.title.en && item.title.es && item.body.en && item.body.es));
+  assert(program.drafts.every(item=>item.status==='manual_cue_only' && item.title.en && item.title.es && item.body.en && item.body.es));
+  assert.match(host, /Schedule 31 festival alerts/);
+  assert.match(host, /Programar 31 avisos/);
+  assert.match(host, /data.results\?\.length===31/);
+
   const begin = admin.indexOf('const scheduled=');
   const end = admin.indexOf(' as const;', begin);
   assert(begin >= 0 && end > begin);
@@ -121,7 +132,7 @@ test('official festival pushes are saved in the read-only two-plus-history feed'
   assert.match(guide, /data-route="\$\{showAll\?'updates':'updates\/all'\}"/);
   assert.match(guide, /localStorage\.setItem\(pushHistoryStorageKey/);
   assert.match(guide, /\?select=id,title_en,title_es,body_en,body_es,published_at,kind/);
-  assert.match(sw, /v17-20261013-app-language-push/);
+  assert.match(sw, /v18-20261013-31-festival-notices/);
 });
 
 test('OneSignal uses the guest-selected guide language rather than the phone default', () => {
@@ -137,5 +148,5 @@ test('OneSignal uses the guest-selected guide language rather than the phone def
   assert.match(admin, /contents:\{en:/);
   assert.match(wall, /headings:\{en:.*es:/);
   assert.match(wall, /contents:\{en:.*es:/);
-  assert.match(sw, /v17-20261013-app-language-push/);
+  assert.match(sw, /v18-20261013-31-festival-notices/);
 });
