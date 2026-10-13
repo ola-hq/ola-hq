@@ -206,7 +206,20 @@ async function deliver(body:Record<string,unknown>) {
       signal:AbortSignal.timeout(9000)
     });
     const payload=await res.json().catch(()=>({}));
-    if (!res.ok || !payload?.id) return {error:"PROVIDER_REJECTED",status:502};
+    if (!res.ok || !payload?.id) {
+      // Report a safe diagnosis to the authenticated host without exposing
+      // provider credentials or returning arbitrary third-party response text.
+      const raw=JSON.stringify(payload?.errors??payload?.error??"").toLowerCase();
+      const providerCode=res.ok && !payload?.id ? "NO_MATCHING_SUBSCRIPTIONS"
+        : res.status===401 || res.status===403 ? "KEY_REJECTED"
+        : /app.?id|app.?key|application not found/.test(raw) ? "APP_ID_INVALID"
+        : /filter|segment|target|audience/.test(raw) ? "AUDIENCE_INVALID"
+        : /limit|quota|billing/.test(raw) ? "ACCOUNT_LIMIT"
+        : res.status===400 || res.status===422 ? "REQUEST_INVALID"
+        : "PROVIDER_ERROR";
+      console.warn("[La Ola push] Provider rejected message", {providerStatus:res.status,providerCode});
+      return {error:"PROVIDER_REJECTED",providerStatus:res.status,providerCode,status:502};
+    }
     return {id:payload.id,status:200,recipients:typeof payload.recipients==="number"?payload.recipients:null};
   } catch {
     return {error:"PROVIDER_UNAVAILABLE",status:503};
