@@ -30,7 +30,7 @@ export function buildPushJobs(source, appId, guideUrl) {
       name: 'La Ola de Amor · ' + event + ' · ' + entry.releaseAt,
       app_id: appId,
       target_channel: 'push',
-      included_segments: ['Subscribed Users'],
+      filters: [{ field: 'tag', key: 'loda_festival', relation: '=', value: 'true' }],
       headings: { en: heading.en, es: heading.es },
       contents: { en: body.en, es: body.es },
       send_after: new Date(entry.releaseAt).toISOString(),
