@@ -396,3 +396,15 @@ dialog .legacy-detail .legacy-visual-title{font-size:clamp(24px,6vw,36px);top:10
   .masthead-brand-arrow{font-size:17px}
   .masthead-brand-wordmark{width:clamp(79px,25vw,103px);max-height:25px}
 }
+
+
+.festival-push-preferences{display:grid;gap:12px;max-width:590px;margin:15px auto;border:1px solid #c9aa66;padding:13px 18px;text-align:left}
+.festival-push-preferences legend{font-size:13px;font-weight:800;padding:0 6px}
+.festival-push-preferences label{display:flex;gap:12px;align-items:center;min-height:40px;font-weight:700;font-size:14px;cursor:pointer}
+.festival-push-preferences input{width:22px;height:22px;flex:none;accent-color:#071d38}
+.festival-push-preferences:disabled,.festival-push-preferences[disabled]{opacity:.6}
+.festival-push-preferences .festival-push-help{margin:0;text-align:left}
+.platica-host-push{margin:18px 0;padding:16px;border:1px solid #c9aa66;background:#fff8e9}
+.platica-host-push h4{margin:0 0 8px;font:normal 24px/1.2 var(--serif)}
+.platica-host-push button{display:inline-block;margin:6px;min-height:44px}
+.platica-host-push p{font-size:14px;line-height:1.5}
