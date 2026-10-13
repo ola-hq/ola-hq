@@ -121,7 +121,7 @@ test('official festival pushes are saved in the read-only two-plus-history feed'
   assert.match(guide, /data-route="\$\{showAll\?'updates':'updates\/all'\}"/);
   assert.match(guide, /localStorage\.setItem\(pushHistoryStorageKey/);
   assert.match(guide, /\?select=id,title_en,title_es,body_en,body_es,published_at,kind/);
-  assert.match(sw, /v16-20261013-unified-notification-history/);
+  assert.match(sw, /v17-20261013-app-language-push/);
 });
 
 test('OneSignal uses the guest-selected guide language rather than the phone default', () => {
