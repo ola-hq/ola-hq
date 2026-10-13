@@ -276,10 +276,10 @@ Deno.serve(async req=>{
       recipients:existing.provider_recipients,acceptedAt:existing.accepted_at},200,origin);
     const result=await deliver({
       filters:[{field:"tag",key:"loda_festival",relation:"=",value:"true"}],
-      headings:{en:"BETA TEST — LA OLA DE AMOR 🌊🔔",es:"PRUEBA — LA OLA DE AMOR 🌊🔔"},
+      headings:{en:"LA OLA DE AMOR — TEST 🌊",es:"LA OLA DE AMOR — PRUEBA 🌊"},
       contents:{
-        en:"Your festival app is speaking! 😂 If you see this on your lock screen, reply 🔔 in Casa Luna. This is only a test!",
-        es:"¡La app del festival está hablando! 😂 Si ves esto en tu pantalla, responde 🔔 en Casa Luna. ¡Es solo una prueba!"
+        en:"If this reached your lock screen, WE DID IT! 🔔 Just testing a little festival magic before Friday. So far, so good! 😂 Welcome to our world! 🌞🌙",
+        es:"¡Si esto llegó a tu pantalla, LO LOGRAMOS! 🔔 Probando un poquito de magia del festival antes del viernes. ¡Hasta ahora, todo va genial! 😂 ¡Bienvenidos a nuestro mundo! 🌞🌙"
       },
       idempotency_key:await eventKey("beta-"+day),
       ttl:600
