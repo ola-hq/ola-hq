@@ -86,6 +86,104 @@
         "en": "Join us for the grand entrance, dances and a few words from family.",
         "es": "Acompáñanos para la gran entrada, bailes y unas palabras de familia."
       }
+    },
+    {
+      "id": "group-photo-perreo",
+      "at": "2026-10-16T21:00:00-06:00",
+      "title": {
+        "en": "EVERYBODY TO THE DANCE FLOOR! 📸",
+        "es": "¡TODOS A LA PISTA! 📸"
+      },
+      "body": {
+        "en": "Come take one big group photo with our people. Then Perreo Paraíso takes over!",
+        "es": "¡Vengan a la foto grupal! Y después… ¡se arma Perreo Paraíso!"
+      }
+    },
+    {
+      "id": "desserts",
+      "at": "2026-10-16T21:35:00-06:00",
+      "title": {
+        "en": "A LITTLE SOMETHING SWEET 🍰",
+        "es": "ALGO DULCECITO 🍰"
+      },
+      "body": {
+        "en": "Have you tried Aurora y Carmen's Postrecitos? Go find your favorite!",
+        "es": "¿Ya probaste los Postrecitos de Aurora y Carmen? ¡Busca tu favorito!"
+      }
+    },
+    {
+      "id": "couple-photo",
+      "at": "2026-10-16T22:15:00-06:00",
+      "title": {
+        "en": "LET'S MAKE A MEMORY 📷",
+        "es": "VAMOS A HACER UN RECUERDO 📷"
+      },
+      "body": {
+        "en": "If Bri and Jon are free between dances, ask for a quick photo. And explore the memory walls!",
+        "es": "Si Bri y Jon están libres entre bailes, pídeles una foto. ¡Y explora las paredes de recuerdos!"
+      }
+    },
+    {
+      "id": "time-machine",
+      "at": "2026-10-16T22:45:00-06:00",
+      "title": {
+        "en": "LA MÁQUINA DEL TIEMPO ⏳",
+        "es": "LA MÁQUINA DEL TIEMPO ⏳"
+      },
+      "body": {
+        "en": "The classics are taking over. Come sing your heart out!",
+        "es": "¡Llegaron los clásicos! Ven a cantar con todo el corazón."
+      }
+    },
+    {
+      "id": "midnight-last-call",
+      "at": "2026-10-17T00:00:00-06:00",
+      "title": {
+        "en": "LAST CALL · 1 AM 🍹",
+        "es": "ÚLTIMA RONDA · 1 AM 🍹"
+      },
+      "body": {
+        "en": "Night Frequency begins. Staffed bar service ends at 1 AM. Grab that last bartender-made drink!",
+        "es": "Arranca Night Frequency. El servicio de barra termina a la 1 AM. ¡Pide tu último trago preparado!"
+      }
+    },
+    {
+      "id": "afters-self-serve",
+      "at": "2026-10-17T01:00:00-06:00",
+      "title": {
+        "en": "YOU REALLY THOUGHT THAT WAS LAST CALL? 😂",
+        "es": "¿DE VERDAD CREÍSTE QUE ERA LA ÚLTIMA? 😂"
+      },
+      "body": {
+        "en": "Neon Mirage is on. Bartenders are off. The afters are ON. Serve yourself a drink—then serve us all one. 🌊",
+        "es": "Llegó Neon Mirage. Los meseros se fueron. ¡Los afters comienzan! Sírvete un trago y, de paso, ¡sírvete uno para todos! 🌊"
+      }
+    },
+    {
+      "id": "tornaboda",
+      "at": "2026-10-17T11:45:00-06:00",
+      "title": {
+        "en": "ONE MORE WAVE TODAY 🌮",
+        "es": "¡HOY NOS QUEDA OTRA OLA! 🌮"
+      },
+      "body": {
+        "en": "Tornaboda starts at noon right here at La Tijera. Come relaxed and come hungry!",
+        "es": "La Tornaboda comienza al mediodía aquí en La Tijera. ¡Vengan relajados y con hambre!"
+      }
+    }
+  ],
+  "drafts": [
+    {
+      "id": "dancers",
+      "when": "15 minutes after the DJ-confirmed dancer appearance; unset until confirmed",
+      "en": "HAVE YOU SEEN OUR DANCERS? 👀",
+      "es": "¿YA VISTE A NUESTROS BAILARINES? 👀"
+    },
+    {
+      "id": "activation",
+      "when": "15 minutes after a confirmed activation; unset until confirmed",
+      "en": "FIND THE SURPRISE ✨",
+      "es": "¡ENCUENTRA LA SORPRESA! ✨"
     }
   ]
 }
