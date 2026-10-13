@@ -11,7 +11,10 @@ test('builds exactly two bilingual push notices at Guadalajara midnight and 1 AM
   const jobs = buildPushJobs(source, appId, url);
   assert.equal(jobs.length, 2);
   assert.deepEqual(jobs.map(j => j.send_after), ['2026-10-17T06:00:00.000Z','2026-10-17T07:00:00.000Z']);
-  assert.deepEqual(jobs.map(j => j.included_segments), [['Subscribed Users'],['Subscribed Users']]);
+  assert.deepEqual(jobs.map(j => j.filters), [
+    [{ field: 'tag', key: 'loda_festival', relation: '=', value: 'true' }],
+    [{ field: 'tag', key: 'loda_festival', relation: '=', value: 'true' }]
+  ]);
   assert.deepEqual(jobs.map(j => j.target_channel), ['push','push']);
   assert(jobs.every(j => j.web_url === url + '#updates'));
   assert(jobs.every(j => j.headings.en && j.headings.es && j.contents.en && j.contents.es));

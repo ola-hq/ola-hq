@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 // Keep push schedule checks in the existing CI test command without modifying workflows.
 import './festival-push-schedule.test.mjs';
+import './loda-push.test.mjs';
 import assert from 'node:assert/strict';
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';

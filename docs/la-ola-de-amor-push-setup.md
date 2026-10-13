@@ -72,3 +72,21 @@ The script refuses past dates, validates the exact two planned announcements, an
 - **No server secrets in the web app.** The provider API key may be used on the organizer machine only.
 
 References: [OneSignal Web SDK v16](https://github.com/OneSignal/OneSignal-Website-SDK/blob/main/MIGRATION_GUIDE.md), [OneSignal free-plan pricing](https://onesignal.com/pricing), [iOS Web Push](https://webkit.org/blog/13878/web-push-for-web-apps-on-ios-and-ipados/).
+
+
+## New: 2 distinct notification topics and in-app host delivery tools (Oct 12)
+
+- Subscribed guests see two independent topic choices in **Festival Updates**:
+  - **Festival announcements**: enabled by default on previously opted-in devices; targets the OneSignal user tag `loda_festival=true`.
+  - **La Plática**: **OFF by default** and requires explicit opt-in; targets `loda_platica=true`.
+- These categories only operate while the overall push subscription is enabled. Turning off push at OS/app level stops all notifications. User tags are synced upon init and when preferences change.
+- The **closed-app experience** uses OneSignal's remote Web Push. It works on supported iPhone Home Screen installations (iOS 16.4+) and supported desktop/Android browsers only if the recipient is opted in, has internet, and OS delivery is allowed. The page doesn't need to remain open. Delivery may be delayed by Focus mode, networking, OS limitations, or the push provider.
+- **La Plática** writes remain public in the guestbook but push content is generic: it never includes the guest's name or submitted text. The protected server sends one optional alert at most every five minutes, only after a successful legitimate post, using a service-role-only throttle. Host moderation and posting rate limits are unchanged.
+- **Host-only controls** appear after unlocking the existing La Plática host area with a valid private host password. They offer **Test this device** (targets ONLY the present subscribed device) and **Schedule midnight & 1 AM** (schedules the two festival-only messages once). Use Test before Schedule. Duplicate scheduling is guarded by server receipts and OneSignal idempotency keys.
+- Server support: active protected Supabase Edge Functions `loda-festival-push` (host-only admin) and `loda-guest-wall` (existing guestbook plus optional push), in project `fgtowzonkmirmugnzlsf`. Both use the existing Supabase JWT middleware; the admin also verifies the existing private host token. Edge source and database migration are tracked under `scripts/supabase/`, intentionally excluded from the publicly deployed website.
+- **Required private configuration:** In **Supabase Dashboard > Project Ola HQ > Edge Functions > Secrets**, create **ONESIGNAL_REST_API_KEY** with the private **OneSignal REST API Key**, obtained from **OneSignal > Settings > Keys & IDs**. This key must be typed directly into Supabase's private Secrets UI. **Never paste it in ChatGPT, GitHub, the browser console, any code file, or an issue/PR.** The OneSignal App ID is public and already configured.
+- Until Supabase has that secret, all push sends return `PUSH_NOT_CONFIGURED` and **no remote push can be sent, scheduled, or delivered**. Guestbook entries remain functional and the pre-existing locally timed in-app notices remain functional.
+- With secret configured, open the installed guide, enable push, use **Hosts only > Unlock** with Jon/Bri host credentials, then **Send test to this phone**. Lock phone and confirm banner/deep link. After success, use **Schedule midnight & 1 AM** once and verify successful scheduling in the host panel / OneSignal dashboard. No other audience receives the test.
+- Two events: Guadalajara Saturday Oct 17 **00:00** (UTC 06:00), **01:00** (UTC 07:00). Neither message is sent immediately; OneSignal schedules remote delivery at the event time.
+- For live device debugging, host panel errors identify missing secret vs unavailable provider. Guestbook automatic notices remain best-effort and cannot block note posting.
+- **No all-audience blast:** the scheduled festival messages use `loda_festival=true` only, and guestbook uses `loda_platica=true` only. This protects guests' separate preferences.
