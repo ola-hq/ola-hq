@@ -207,7 +207,7 @@ async function deliver(body:Record<string,unknown>) {
     });
     const payload=await res.json().catch(()=>({}));
     if (!res.ok || !payload?.id) return {error:"PROVIDER_REJECTED",status:502};
-    return {id:payload.id,status:200};
+    return {id:payload.id,status:200,recipients:typeof payload.recipients==="number"?payload.recipients:null};
   } catch {
     return {error:"PROVIDER_UNAVAILABLE",status:503};
   }
@@ -245,6 +245,39 @@ Deno.serve(async req=>{
       idempotency_key:crypto.randomUUID(),ttl:300
     });
     return "error" in result?reply({error:result.error},result.status,origin):reply({ok:true,notificationId:result.id},200,origin);
+  }
+  // One manually confirmed beta push, immediately, per Guadalajara calendar day.
+  // This action requires the same private host credentials as scheduling.
+  // Deliver ONLY to guests who opted into the festival category.
+  if(body.action==="beta") {
+    if(!Deno.env.get("ONESIGNAL_REST_API_KEY")) return reply({error:"PUSH_NOT_CONFIGURED"},503,origin);
+    const parts=Object.fromEntries(
+      new Intl.DateTimeFormat("en-US",{timeZone:"America/Mexico_City",year:"numeric",month:"2-digit",day:"2-digit"})
+        .formatToParts(new Date()).map(x=>[x.type,x.value]));
+    const day=parts.year+"-"+parts.month+"-"+parts.day;
+    const {data:existing,error:lookupError}=await db.from("loda_push_beta_runs")
+      .select("provider_notification_id,provider_recipients,accepted_at")
+      .eq("local_date",day).maybeSingle();
+    if(lookupError)return reply({error:"BETA_STATUS_UNAVAILABLE"},503,origin);
+    if(existing)return reply({ok:true,alreadySent:true,notificationId:existing.provider_notification_id,
+      recipients:existing.provider_recipients,acceptedAt:existing.accepted_at},200,origin);
+    const result=await deliver({
+      filters:[{field:"tag",key:"loda_festival",relation:"=",value:"true"}],
+      headings:{en:"BETA TEST — LA OLA DE AMOR 🌊🔔",es:"PRUEBA — LA OLA DE AMOR 🌊🔔"},
+      contents:{
+        en:"Your festival app is speaking! 😂 If you see this on your lock screen, reply 🔔 in Casa Luna. This is only a test!",
+        es:"¡La app del festival está hablando! 😂 Si ves esto en tu pantalla, responde 🔔 en Casa Luna. ¡Es solo una prueba!"
+      },
+      idempotency_key:await eventKey("beta-"+day),
+      ttl:600
+    });
+    if("error" in result)return reply({error:result.error},result.status,origin);
+    const {error:saveError}=await db.from("loda_push_beta_runs").insert({
+      local_date:day,provider_notification_id:result.id,provider_recipients:result.recipients
+    });
+    if(saveError)return reply({error:"BETA_ACCEPTED_RECEIPT_FAILED",
+      notificationId:result.id,recipients:result.recipients},503,origin);
+    return reply({ok:true,alreadySent:false,notificationId:result.id,recipients:result.recipients},200,origin);
   }
   if(body.action==="schedule") {
     if(!Deno.env.get("ONESIGNAL_REST_API_KEY")) return reply({error:"PUSH_NOT_CONFIGURED"},503,origin);
