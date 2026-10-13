@@ -225,6 +225,16 @@ async function deliver(body:Record<string,unknown>) {
     return {error:"PROVIDER_UNAVAILABLE",status:503,providerStatus:null,providerCode:"PROVIDER_UNAVAILABLE"};
   }
 }
+// The notification history is public/read-only; only this host-protected service-role
+// endpoint can record accepted festival broadcasts. Future cues stay hidden by RLS.
+async function rememberFestivalPush(id:string, heading:Record<string,string>, body:Record<string,string>, publishedAt:string, providerId:string, kind:"festival"|"beta"="festival") {
+  const {error}=await db.from("loda_festival_notification_history").upsert({
+    id,title_en:heading.en,title_es:heading.es,body_en:body.en,body_es:body.es,
+    published_at:publishedAt,kind,provider_notification_id:providerId
+  },{onConflict:"id"});
+  if(error) console.warn("[La Ola push] Feed history write failed",{event:id,code:error.code});
+  return !error;
+}
 Deno.serve(async req=>{
   const origin=req.headers.get("origin");
   if(origin && origin!==SITE) return reply({error:"ORIGIN_NOT_ALLOWED"},403,origin);
@@ -274,13 +284,16 @@ Deno.serve(async req=>{
     if(lookupError)return reply({error:"BETA_STATUS_UNAVAILABLE"},503,origin);
     if(existing)return reply({ok:true,alreadySent:true,notificationId:existing.provider_notification_id,
       recipients:existing.provider_recipients,acceptedAt:existing.accepted_at},200,origin);
+    const feedId="beta-"+day;
+    const heading={en:"LA OLA DE AMOR 🌊🔔",es:"LA OLA DE AMOR 🌊🔔"};
+    const message={
+      en:"If you're reading this, IT WORKED! 😂 Just making sure a little festival magic is reaching you. So far, so good! 🤫 Don't mention this alert in the chat just yet. Instead, drop a GIF showing what you expect to look like by the end of La Ola de Amor. That's how we'll know you got it. The celebration is almost here! 🌊",
+      es:"¡Si estás leyendo esto, FUNCIONÓ! 😂 Solo queremos asegurarnos de que te esté llegando un poquito de magia del festival. ¡Hasta ahora, todo bien! 🤫 Todavía no menciones esta alerta en el chat. Mejor manda un GIF de cómo crees que vas a estar al final de La Ola de Amor. Así sabremos que te llegó. ¡La celebración ya casi está aquí! 🌊"
+    };
     const result=await deliver({
       filters:[{field:"tag",key:"loda_festival",relation:"=",value:"true"}],
-      headings:{en:"LA OLA DE AMOR 🌊🔔",es:"LA OLA DE AMOR 🌊🔔"},
-      contents:{
-        en:"If you're reading this, IT WORKED! 😂 Just making sure a little festival magic is reaching you. So far, so good! 🤫 Don't mention this alert in the chat just yet. Instead, drop a GIF showing what you expect to look like by the end of La Ola de Amor. That's how we'll know you got it. The celebration is almost here! 🌊",
-        es:"¡Si estás leyendo esto, FUNCIONÓ! 😂 Solo queremos asegurarnos de que te esté llegando un poquito de magia del festival. ¡Hasta ahora, todo bien! 🤫 Todavía no menciones esta alerta en el chat. Mejor manda un GIF de cómo crees que vas a estar al final de La Ola de Amor. Así sabremos que te llegó. ¡La celebración ya casi está aquí! 🌊"
-      },
+      headings:heading,contents:message,
+      web_url:GUIDE.replace("#updates","#updates/"+feedId),
       idempotency_key:await eventKey("beta-"+day),
       ttl:600
     });
@@ -290,7 +303,8 @@ Deno.serve(async req=>{
     });
     if(saveError)return reply({error:"BETA_ACCEPTED_RECEIPT_FAILED",
       notificationId:result.id,recipients:result.recipients},503,origin);
-    return reply({ok:true,alreadySent:false,notificationId:result.id,recipients:result.recipients},200,origin);
+    const feedSaved=await rememberFestivalPush(feedId,heading,message,new Date().toISOString(),result.id,"beta");
+    return reply({ok:true,alreadySent:false,notificationId:result.id,recipients:result.recipients,feedSaved},200,origin);
   }
   if(body.action==="schedule") {
     if(!Deno.env.get("ONESIGNAL_REST_API_KEY")) return reply({error:"PUSH_NOT_CONFIGURED"},503,origin);
@@ -299,16 +313,21 @@ Deno.serve(async req=>{
       if(Date.parse(event.at)<=Date.now()+60000) return reply({error:"EVENT_TOO_CLOSE_OR_PASSED",event:event.id},409,origin);
       const {data:existing,error:lookupError}=await db.from("loda_push_schedule").select("provider_notification_id").eq("event_id",event.id).maybeSingle();
       if(lookupError) return reply({error:"SCHEDULE_UNAVAILABLE"},503,origin);
-      if(existing){ outcomes.push({event:event.id,status:"already_scheduled"});continue;}
+      if(existing){
+        const feedSaved=await rememberFestivalPush(event.id,event.heading,event.body,event.at,existing.provider_notification_id);
+        outcomes.push({event:event.id,status:"already_scheduled",feedSaved});continue;
+      }
       const result=await deliver({
         headings:event.heading,contents:event.body,send_after:event.at,ttl:3600,
+        web_url:GUIDE.replace("#updates","#updates/"+event.id),
         filters:[{field:"tag",key:"loda_festival",relation:"=",value:"true"}],
         idempotency_key:await eventKey(event.id)
       });
       if("error" in result) return reply({error:result.error,providerCode:result.providerCode,providerStatus:result.providerStatus,completed:outcomes},result.status,origin);
       const {error:storeError}=await db.from("loda_push_schedule").insert({event_id:event.id,provider_notification_id:result.id,scheduled_for:event.at});
       if(storeError) return reply({error:"SCHEDULED_BUT_RECEIPT_FAILED",event:event.id,completed:outcomes},503,origin);
-      outcomes.push({event:event.id,status:"scheduled",notificationId:result.id});
+      const feedSaved=await rememberFestivalPush(event.id,event.heading,event.body,event.at,result.id);
+      outcomes.push({event:event.id,status:"scheduled",notificationId:result.id,feedSaved});
     }
     return reply({ok:true,results:outcomes},200,origin);
   }
