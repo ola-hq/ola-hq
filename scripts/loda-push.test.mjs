@@ -123,3 +123,19 @@ test('official festival pushes are saved in the read-only two-plus-history feed'
   assert.match(guide, /\?select=id,title_en,title_es,body_en,body_es,published_at,kind/);
   assert.match(sw, /v16-20261013-unified-notification-history/);
 });
+
+test('OneSignal uses the guest-selected guide language rather than the phone default', () => {
+  const guide = read('la-ola-de-amor/scan/guide/guide.js');
+  assert.match(client, /signal\.User\.setLanguage\(language\(\)\)/);
+  assert.match(client, /syncNotificationLanguage\(\)/);
+  assert.match(client, /MutationObserver\(\(\) => \{ render\(\); syncNotificationLanguage\(\); \}\)/);
+  assert.match(client, /await OneSignal\.init\(/);
+  assert.match(guide, /localStorage\.getItem\('laOlaGuideLang'\)/);
+  assert.match(guide, /localStorage\.setItem\('laOlaGuideLang',lang\)/);
+  assert.match(guide, /document\.documentElement\.lang=lang==='en'\?'en':'es-MX'/);
+  assert.match(admin, /headings:\{en:/);
+  assert.match(admin, /contents:\{en:/);
+  assert.match(wall, /headings:\{en:.*es:/);
+  assert.match(wall, /contents:\{en:.*es:/);
+  assert.match(sw, /v17-20261013-app-language-push/);
+});
