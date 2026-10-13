@@ -8,20 +8,28 @@ const ANON=window.__platicaAnonKey;
 const strings={
  en:{hostLabel:'Hosts only · Moderation',hostNameLabel:'Host',keyLabel:'Private host password',unlock:'Unlock host tools',hostDescription:'Choose Hide on a public guest note to remove it from view.',lock:'Lock host tools',bad:'That password was not accepted.',ready:'Host tools unlocked.',hidden:'Message hidden.',hide:'Hide note',
  pushTitle:'🔔 Festival push controls',pushExplain:'Review the full wedding showflow, test your phone, then schedule Friday and Saturday alerts.',
- sendTest:'Send test to this phone 🔔',previewPush:'Review 14 alerts ↗',schedulePush:'Schedule 14 festival alerts 🪩',
+ sendTest:'Send test to this phone 🔔',sendBeta:'Send beta test to subscribed friends 🧪',previewPush:'Review 14 alerts ↗',schedulePush:'Schedule 14 festival alerts 🪩',
  noSubscription:'Enable Festival Alerts on this device first, then try again.',
  noKey:'Push delivery needs the private OneSignal key in Supabase Edge Function Secrets before sending.',
  testSent:'Test push requested. Lock your phone and watch for the banner! 🔔',
+ betaSent:'OneSignal accepted the group beta. Ask your friends to reply 🔔 if it arrived. This does not confirm delivery.',
+ betaAlready:'A beta test has already been requested today. Ask your friends whether they received it.',
+ betaConfirm:'Send ONE immediate test alert to all currently subscribed Festival Alerts devices, including friends and Bri? No wedding schedule will be triggered.',
+ betaFail:'Beta could not be sent. Check your OneSignal subscriptions and private key.',
  scheduleDone:'The festival showflow is scheduled for Friday and Saturday (Guadalajara time). 🌊',
  scheduleAlready:'Those alerts were already scheduled.',
  pushFailed:'Push delivery could not be completed. Check Supabase configuration and OneSignal.',
  confirmSchedule:'Schedule 14 wedding announcements for October 16–17, only to guests subscribed to Festival Alerts? This schedules future delivery; nothing is sent now.'},
  es:{hostLabel:'Solo anfitriones · Moderación',hostNameLabel:'Anfitrión',keyLabel:'Contraseña privada de anfitrión',unlock:'Abrir controles',hostDescription:'Pulsa Ocultar junto a un mensaje para retirarlo de la vista pública.',lock:'Cerrar controles',bad:'No se aceptó esa contraseña.',ready:'Controles activados.',hidden:'Mensaje oculto.',hide:'Ocultar mensaje',
  pushTitle:'🔔 Controles de avisos',pushExplain:'Revisa el programa, prueba tu teléfono y luego programa avisos del viernes y sábado.',
- sendTest:'Enviar prueba a este teléfono 🔔',previewPush:'Revisar 14 avisos ↗',schedulePush:'Programar 14 avisos 🪩',
+ sendTest:'Enviar prueba a este teléfono 🔔',sendBeta:'Enviar prueba al grupo suscrito 🧪',previewPush:'Revisar 14 avisos ↗',schedulePush:'Programar 14 avisos 🪩',
  noSubscription:'Primero activa las alertas del festival en este teléfono.',
  noKey:'Falta configurar la clave privada de OneSignal en Supabase Edge Function Secrets.',
  testSent:'Prueba solicitada. ¡Bloquea el teléfono y espera el aviso! 🔔',
+ betaSent:'OneSignal aceptó la prueba de grupo. Pídeles que respondan 🔔 si llegó. Aún no confirma la entrega.',
+ betaAlready:'Ya se solicitó una prueba hoy. Pregunta si les llegó.',
+ betaConfirm:'¿Enviar AHORA una prueba a todos los dispositivos suscritos a Alertas del Festival? No se activará el programa de la boda.',
+ betaFail:'No se pudo enviar la prueba. Revisa los suscriptores de OneSignal y la clave privada.',
  scheduleDone:'Los avisos del festival quedaron programados para viernes y sábado (hora de Guadalajara). 🌊',
  scheduleAlready:'Los avisos ya estaban programados.',
  pushFailed:'No se pudo completar. Revisa la configuración de Supabase y OneSignal.',
@@ -68,6 +76,16 @@ by('platica-host-push-preview')?.addEventListener('click',async()=>{
  finally{button.disabled=false}
 });
 by('platica-host-push-test')?.addEventListener('click',runPushTest);
+by('platica-host-push-beta')?.addEventListener('click',async()=>{
+ if(!confirm(t('betaConfirm')))return;
+ const btn=by('platica-host-push-beta');btn.disabled=true;
+ try{
+  const data=await sendPush('beta');
+  const count=typeof data.recipients==='number' ? ' ('+data.recipients+' devices accepted by provider)' : '';
+  displayPushResult(t(data.alreadySent?'betaAlready':'betaSent')+count);
+ }catch(error){displayPushResult(t(error.message==='PUSH_NOT_CONFIGURED'?'noKey':'betaFail'))}
+ finally{btn.disabled=false}
+});
 by('platica-host-push-schedule')?.addEventListener('click',schedulePush);
 function decorate(){document.querySelectorAll('.platica-message').forEach(li=>{if(li.querySelector('[data-platica-hide]'))return;const id=li.dataset.messageId;if(!id||!key)return;const btn=document.createElement('button');btn.type='button';btn.dataset.platicaHide=id;btn.className='platica-hide';btn.textContent=t('hide');btn.addEventListener('click',async()=>{btn.disabled=true;try{await send('moderate',{id,status:'hidden'});li.remove();by('platica-host-notice').textContent=t('hidden')}catch{btn.disabled=false;by('platica-host-notice').textContent=t('bad')}});li.append(btn)})}
 new MutationObserver(decorate).observe(by('platica-messages'),{childList:true});
