@@ -102,3 +102,24 @@ test('beta failures expose safe diagnostics without leaking OneSignal credential
   assert.match(client, /PushSubscription\.addEventListener\('change'/);
   assert.doesNotMatch(host + page + client, /ONESIGNAL_REST_API_KEY/);
 });
+
+test('official festival pushes are saved in the read-only two-plus-history feed', () => {
+  const guide = read('la-ola-de-amor/scan/guide/guide.js');
+  const migration = read('scripts/supabase/migrations/loda_festival_notification_history_feed.sql');
+  const backfill = read('scripts/supabase/migrations/loda_backfill_oct13_beta_feed.sql');
+  assert.match(migration, /enable row level security/i);
+  assert.match(migration, /published_at <= now\(\)/);
+  assert.match(migration, /grant select on public\.loda_festival_notification_history to anon, authenticated/i);
+  assert.doesNotMatch(migration, /grant (insert|update|delete) .*to anon/i);
+  assert.match(admin, /function rememberFestivalPush\(/);
+  assert.match(admin, /rememberFestivalPush\(feedId,heading,message/);
+  assert.match(admin, /rememberFestivalPush\(event\.id,event\.heading,event\.body/);
+  assert.match(admin, /GUIDE\.replace\("#updates","#updates\/"/);
+  assert.match(backfill, /from public\.loda_push_beta_runs/);
+  assert.match(guide, /allFestivalUpdates\(\)/);
+  assert.match(guide, /live\.slice\(0,2\)/);
+  assert.match(guide, /data-route="\$\{showAll\?'updates':'updates\/all'\}"/);
+  assert.match(guide, /localStorage\.setItem\(pushHistoryStorageKey/);
+  assert.match(guide, /\?select=id,title_en,title_es,body_en,body_es,published_at,kind/);
+  assert.match(sw, /v16-20261013-unified-notification-history/);
+});
