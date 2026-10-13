@@ -100,20 +100,20 @@ const scheduled=[
       "es": "UN MOMENTO PARA BRI + JON 🤍"
     },
     "body": {
-      "en": "Join us for the grand entrance, dances and a few words from family.",
-      "es": "Acompáñanos para la gran entrada, bailes y unas palabras de familia."
+      "en": "Everyone, please head toward the stage for our grand entrance, first dances, and a few words from family.",
+      "es": "¡Todos al escenario, por favor! Se vienen nuestra entrada, los primeros bailes y unas palabras de familia."
     }
   },
   {
     "id": "group-photo-perreo",
-    "at": "2026-10-17T03:00:00.000Z",
+    "at": "2026-10-17T02:53:00.000Z",
     "heading": {
       "en": "EVERYBODY TO THE DANCE FLOOR! 📸",
       "es": "¡TODOS A LA PISTA! 📸"
     },
     "body": {
-      "en": "Come take one big group photo with our people. Then Perreo Paraíso takes over!",
-      "es": "¡Vengan a la foto grupal! Y después… ¡se arma Perreo Paraíso!"
+      "en": "Everybody to the dance floor for our big group photo! Perreo Paraíso follows. Come find your spot!",
+      "es": "¡Todos a la pista para nuestra gran foto grupal! Después sigue Perreo Paraíso. ¡Vengan ya!"
     }
   },
   {
