@@ -119,3 +119,13 @@ There is a dedicated **Send beta test to subscribed friends** button in the prot
 OneSignal's provider acceptance is **not** proof of successful lock-screen delivery: ask recipients to respond 🔔 in WhatsApp. A service-role-only `loda_push_beta_runs` table and stable daily idempotency key prevent accidentally repeating the test within the same Mexico-local day. The source is tracked in `scripts/supabase/loda-festival-push/index.ts` and the new DB migration.
 
 To run: open the installed guide while online → Festival Updates → La Plática → Hosts only → Unlock host tools → **Send beta test to subscribed friends 🧪** → Confirm. Verify with Bri and two friends, then separately choose when to schedule the 14 wedding pushes. No automatic remote push is sent just by deploying this feature.
+
+## Oct 12, 11:21 PM — beta provider rejection triage
+
+At 23:21 Guadalajara local time the protected `loda-festival-push` beta endpoint returned HTTP 502 (provider request not accepted / no message ID). The host app displayed a generic warning. The function was reached using a valid host session; it did **not** fail due to absent UI controls. As of the triage, no `loda_push_beta_runs` receipts and no `loda_push_schedule` receipts existed.
+
+The function now safely differentiates the OneSignal HTTP result: `NO_MATCHING_SUBSCRIPTIONS` (provider accepted request but returned no ID, commonly zero eligible subscribers), `KEY_REJECTED` (401/403), `APP_ID_INVALID`, `AUDIENCE_INVALID`, `ACCOUNT_LIMIT`, `REQUEST_INVALID`, and `PROVIDER_ERROR`. Only code and HTTP status are shown to the authenticated host. Provider response bodies, credentials, and secrets are not exposed.
+
+The guide now waits for OneSignal to finish setting both category tags and re-syncs them when a device subscription is created, to prevent the group tag filter from incorrectly missing newly subscribed guests.
+
+Next: update installed Guide; unlock host tools; repeat **Send beta test to subscribed friends**. If it fails, capture the error code now shown. Check OneSignal Users & subscriptions to confirm at least one **Subscribed** device, and inspect the `loda_festival=true` tag. Do **not** schedule the 14 wedding alerts until provider acceptance and actual lock-screen delivery are verified.
