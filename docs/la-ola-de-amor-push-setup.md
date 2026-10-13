@@ -111,3 +111,11 @@ In the installed Festival Guide, use **La Plática → Hosts only → Unlock**, 
 **Ops risk:** 14 pushes in approximately 21 hours may feel like a lot, especially with separate La Plática alerts. Keep categories user-controlled, avoid repeat reminders, and don't send drafts until activation timings are known. Consider reducing the schedule after host preview if the experience feels too busy.
 
 **Beta tester request:** Before relying on the program, ask two or three guests to install the guide, enable notifications, lock their phones, and confirm a directed test push. Do not report closed-app delivery as tested just because the opt-in toggle says ON. The private `ONESIGNAL_REST_API_KEY` stays only in Supabase Edge Functions → Secrets and must never appear in GitHub or chat.
+
+## Oct 12 — Beta broadcast button
+
+There is a dedicated **Send beta test to subscribed friends** button in the protected Jon/Bri La Plática host panel, separate from the single-device test and from the **Schedule 14 festival alerts** action. It sends immediately only to current OneSignal push devices tagged `loda_festival=true`, and only after confirmation from the authenticated host. It never sends future ceremony or wedding announcements early.
+
+OneSignal's provider acceptance is **not** proof of successful lock-screen delivery: ask recipients to respond 🔔 in WhatsApp. A service-role-only `loda_push_beta_runs` table and stable daily idempotency key prevent accidentally repeating the test within the same Mexico-local day. The source is tracked in `scripts/supabase/loda-festival-push/index.ts` and the new DB migration.
+
+To run: open the installed guide while online → Festival Updates → La Plática → Hosts only → Unlock host tools → **Send beta test to subscribed friends 🧪** → Confirm. Verify with Bri and two friends, then separately choose when to schedule the 14 wedding pushes. No automatic remote push is sent just by deploying this feature.
