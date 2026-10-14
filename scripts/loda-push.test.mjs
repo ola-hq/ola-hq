@@ -135,7 +135,7 @@ test('official festival pushes are saved in the read-only two-plus-history feed'
   assert.match(guide, /data-route="\$\{showAll\?'updates':'updates\/all'\}"/);
   assert.match(guide, /localStorage\.setItem\(pushHistoryStorageKey/);
   assert.match(guide, /\?select=id,title_en,title_es,body_en,body_es,published_at,kind/);
-  assert.match(sw, /v21-20261013-verified-31-host-schedule/);
+  assert.match(sw, /v22-20261013-31-batch-receipts/);
 });
 
 test('OneSignal uses the guest-selected guide language rather than the phone default', () => {
@@ -151,7 +151,7 @@ test('OneSignal uses the guest-selected guide language rather than the phone def
   assert.match(admin, /contents:\{en:/);
   assert.match(wall, /headings:\{en:.*es:/);
   assert.match(wall, /contents:\{en:.*es:/);
-  assert.match(sw, /v21-20261013-verified-31-host-schedule/);
+  assert.match(sw, /v22-20261013-31-batch-receipts/);
 });
 
 test('Stress Report beta is separate, bilingual, host-protected, one time, and never schedules the wedding', () => {
@@ -176,7 +176,7 @@ test('Stress Report beta is separate, bilingual, host-protected, one time, and n
   assert.match(migration, /enable row level security/);
   assert.match(migration, /revoke all .* from anon, authenticated/);
   assert.doesNotMatch(migration, /grant .* to anon, authenticated/);
-  assert.match(guide, /retiredPushHistoryIds=new Set\(\['beta-2026-10-13'\]\)/);
+  assert.match(guide, /retiredPushHistoryIds=new Set\(\['beta-2026-10-13','beta-stress-report-2026-10-13'\]\)/);
   assert.match(guide, /pushHistory=rows\.filter\(row=>!retiredPushHistoryIds\.has\(row\?\.id\)\)/);
   assert(!JSON.parse(read('scripts/content/loda-push-program.json')).events.some(x=>x.id===report.id));
 });
@@ -221,4 +221,25 @@ test('host shows the correct 31 alerts immediately and verifies provider receipt
   assert.match(host, /schedulePartial/);
   assert.match(host, /await sendPush\('schedule'\)/);
   assert.doesNotThrow(() => new Script(host));
+});
+
+test('all 31 event IDs are allowed in the applied production DB constraint',()=>{
+ const ids=JSON.parse(read('scripts/content/loda-push-program.json')).events.map(x=>x.id);
+ const migration=read('scripts/supabase/migrations/loda_expand_scheduled_push_ids_to_31.sql');
+ assert.equal(ids.length,31);
+ for(const id of ids)assert(migration.includes("'"+id+"'"),"DB constraint missing "+id);
+ assert.match(migration,/drop constraint loda_push_schedule_event_id_check/);
+ assert.match(migration,/add constraint loda_push_schedule_event_id_check/);
+});
+test('protected scheduling sends in small batches and verifies all 31 receipts',()=>{
+ assert.match(admin,/const MAX_NEW_PER_REQUEST=5/);
+ assert.match(admin,/acceptedThisPass>=MAX_NEW_PER_REQUEST/);
+ assert.match(admin,/status:"pending"/);
+ assert.match(admin,/idempotency_key:await eventKey\(event.id\)/);
+ assert.match(admin,/SCHEDULED_BUT_RECEIPT_FAILED/);
+ assert.match(host,/attempt<8/);
+ assert.match(host,/const next=await confirmedScheduleCount\(\)/);
+ assert.match(host,/if\(next<=count\)throw Error\('SCHEDULE_NO_PROGRESS'\)/);
+ assert.match(host,/sendPush\('status'\)/);
+ assert.doesNotThrow(() => new Script(host));
 });
