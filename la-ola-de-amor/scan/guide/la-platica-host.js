@@ -16,8 +16,9 @@ const strings={
  stressAlready:'The Stress Report was already sent once. It will not be sent again.',
  stressConfirm:'Send “Beta Test — The Stress Report” NOW to all devices opted into Festival Alerts? This is a ONE-TIME independent test. It will not schedule or send any of the 31 wedding alerts.',
  betaFail:'Beta could not be sent. Check your OneSignal subscriptions and private key.',
- scheduleDone:'The festival showflow is scheduled for Thursday through Saturday (Guadalajara time). 🌊',
- scheduleAlready:'Those alerts were already scheduled.',
+ scheduleDone:'All 31 festival notifications have accepted OneSignal scheduling receipts for October 15–17 (Guadalajara time). 🌊',
+ schedulePartial:'Only %COUNT% of 31 alerts have confirmed scheduling receipts. Please tap Schedule 31 again to complete the remaining alerts.',
+ scheduleAlready:'All 31 alerts were already scheduled. No duplicate sends were created.',
  pushFailed:'Push delivery could not be completed. Check Supabase configuration and OneSignal.',
  confirmSchedule:'Schedule 31 festival announcements for October 15–17 (including Thursday\'s noon setup-party invite), only to guests subscribed to Festival Alerts? This schedules future delivery; nothing is sent now.'},
  es:{hostLabel:'Solo anfitriones · Moderación',hostNameLabel:'Anfitrión',keyLabel:'Contraseña privada de anfitrión',unlock:'Abrir controles',hostDescription:'Pulsa Ocultar junto a un mensaje para retirarlo de la vista pública.',lock:'Cerrar controles',bad:'No se aceptó esa contraseña.',ready:'Controles activados.',hidden:'Mensaje oculto.',hide:'Ocultar mensaje',
@@ -30,11 +31,14 @@ const strings={
  stressAlready:'El Reporte del Estrés ya se envió una vez. No se enviará de nuevo.',
  stressConfirm:'¿Enviar AHORA “Prueba Beta — El Reporte del Estrés” a todos los dispositivos que activaron Alertas del Festival? Es una prueba independiente DE UNA SOLA VEZ; no programa ni envía los 31 avisos de la boda.',
  betaFail:'No se pudo enviar la prueba. Revisa los suscriptores de OneSignal y la clave privada.',
- scheduleDone:'Los avisos del festival quedaron programados de jueves a sábado (hora de Guadalajara). 🌊',
- scheduleAlready:'Los avisos ya estaban programados.',
+ scheduleDone:'Los 31 avisos tienen comprobantes de programación aceptados por OneSignal del 15 al 17 de octubre (hora de Guadalajara). 🌊',
+ schedulePartial:'Solo %COUNT% de 31 avisos tienen comprobante de programación. Vuelve a pulsar Programar 31 para terminar los pendientes.',
+ scheduleAlready:'Los 31 avisos ya estaban programados. No se duplicaron los envíos.',
  pushFailed:'No se pudo completar. Revisa la configuración de Supabase y OneSignal.',
  confirmSchedule:'¿Programamos 31 avisos del 15 al 17 de octubre (incluida la invitación del jueves al mediodía), solo para quienes activaron Alertas del Festival? No se enviarán ahora.'}
 };const by=id=>document.getElementById(id),lang=()=>document.documentElement.lang.startsWith('es')?'es':'en',t=k=>strings[lang()][k];let key='';
+function updateHostCopy(){document.querySelectorAll('[data-host-copy]').forEach(node=>{const value=t(node.dataset.hostCopy);if(typeof value==='string')node.textContent=value})}
+updateHostCopy();
 async function hostToken(password,host){const material=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveBits']);const bits=await crypto.subtle.deriveBits({name:'PBKDF2',hash:'SHA-256',salt:new TextEncoder().encode('loda-host-password-v2:'+host),iterations:600000},material,256);return [...new Uint8Array(bits)].map(x=>x.toString(16).padStart(2,'0')).join('')}
 function headers(){return {'apikey':ANON,'authorization':'Bearer '+ANON,'content-type':'application/json','x-loda-moderator-token':key}}
 async function send(action,fields={}){const r=await fetch(API,{method:'POST',headers:headers(),body:JSON.stringify({action,...fields})});if(!r.ok)throw Error('NOT_AUTHORIZED');return r.json()}
@@ -90,16 +94,37 @@ async function runPushTest(){
  catch(err){pushError(err)}
  finally{btn.disabled=false}
 }
+// A response to "schedule" is not enough: verify accepted provider IDs are
+// actually persisted for all 31 planned events before reporting success.
+async function confirmedScheduleCount(){
+ const result=await sendPush('status');
+ return new Set((result.scheduled||[]).filter(item=>item.provider_notification_id).map(item=>item.event_id)).size;
+}
+function displayScheduleCount(count){
+ displayPushResult(t('schedulePartial').replace('%COUNT%',String(count)));
+}
 async function schedulePush(){
  if(!confirm(t('confirmSchedule')))return;
  const btn=by('platica-host-push-schedule');
  btn.disabled=true;
+ displayPushResult(lang()==='en'?'Asking OneSignal to schedule 31 alerts…':'Solicitando programar 31 avisos en OneSignal…');
  try{
   const data=await sendPush('schedule');
+  const count=await confirmedScheduleCount();
   const already=data.results?.length===31&&data.results.every(item=>item.status==='already_scheduled');
-  displayPushResult(t(already?'scheduleAlready':'scheduleDone'));
- }catch(err){pushError(err)}
- finally{btn.disabled=false}
+  if(count===31)displayPushResult(t(already?'scheduleAlready':'scheduleDone'));
+  else displayScheduleCount(count);
+ }catch(err){
+  pushError(err);
+  const diagnostic=by('platica-host-push-result')?.textContent||'';
+  try {
+   const count=await confirmedScheduleCount();
+   if(count===31)displayPushResult(t('scheduleDone'));
+   else displayPushResult(diagnostic+' '+t('schedulePartial').replace('%COUNT%',String(count)));
+  }catch{
+   // Keep the real provider error; never imply success without a receipt.
+  }
+ }finally{btn.disabled=false}
 }
 by('platica-host-push-preview')?.addEventListener('click',async()=>{
  const button=by('platica-host-push-preview');button.disabled=true;
@@ -128,5 +153,5 @@ new MutationObserver(decorate).observe(by('platica-messages'),{childList:true});
 by('platica-host-login').addEventListener('submit',async e=>{e.preventDefault();const input=by('platica-host-key'),candidate=input.value;input.value='';if(candidate.length<12||candidate.length>128){by('platica-host-notice').textContent=t('bad');return}
 try{key=await hostToken(candidate,by('platica-host-name').value);await send('auth');by('platica-host-login').hidden=true;by('platica-host-panel').hidden=false;by('platica-host-notice').textContent=t('ready');decorate()}catch{key='';by('platica-host-notice').textContent=t('bad')}});
 by('platica-host-logout').addEventListener('click',()=>{key='';by('platica-host-panel').hidden=true;by('platica-host-login').hidden=false;document.querySelectorAll('[data-platica-hide]').forEach(b=>b.remove());by('platica-host-notice').textContent=''});
-document.querySelectorAll('[data-lang]').forEach(btn=>btn.addEventListener('click',()=>queueMicrotask(()=>{document.querySelectorAll('[data-host-copy]').forEach(node=>node.textContent=t(node.dataset.hostCopy));document.querySelectorAll('[data-platica-hide]').forEach(b=>b.textContent=t('hide'))})));
+document.querySelectorAll('[data-lang]').forEach(btn=>btn.addEventListener('click',()=>queueMicrotask(()=>{updateHostCopy();document.querySelectorAll('[data-platica-hide]').forEach(b=>b.textContent=t('hide'))})));
 })();
