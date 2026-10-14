@@ -8,13 +8,13 @@ const ANON=window.__platicaAnonKey;
 const strings={
  en:{hostLabel:'Hosts only · Moderation',hostNameLabel:'Host',keyLabel:'Private host password',unlock:'Unlock host tools',hostDescription:'Choose Hide on a public guest note to remove it from view.',lock:'Lock host tools',bad:'That password was not accepted.',ready:'Host tools unlocked.',hidden:'Message hidden.',hide:'Hide note',
  pushTitle:'🔔 Festival push controls',pushExplain:'Review the full festival showflow, test your phone, then schedule Thursday through Saturday alerts.',
- sendTest:'Send test to this phone 🔔',sendBeta:'Send beta test to subscribed friends 🧪',previewPush:'Review 31 alerts ↗',schedulePush:'Schedule 31 festival alerts 🪩',
+ sendTest:'Send test to this phone 🔔',sendStressBeta:'Beta Test — The Stress Report 🌊🔔',previewPush:'Review 31 alerts ↗',schedulePush:'Schedule 31 festival alerts 🪩',
  noSubscription:'Enable Festival Alerts on this device first, then try again.',
  noKey:'Push delivery needs the private OneSignal key in Supabase Edge Function Secrets before sending.',
  testSent:'Test push requested. Lock your phone and watch for the banner! 🔔',
- betaSent:'OneSignal accepted the group beta. Ask your friends to reply 🔔 if it arrived. This does not confirm delivery.',
- betaAlready:'A beta test has already been requested today. Ask your friends whether they received it.',
- betaConfirm:'Send ONE immediate test alert to all currently subscribed Festival Alerts devices, including friends and Bri? No wedding schedule will be triggered.',
+ stressSent:'The Stress Report was accepted by OneSignal. Ask friends to send a 🌊 in the chat if it arrived. Delivery is not guaranteed.',
+ stressAlready:'The Stress Report was already sent once. It will not be sent again.',
+ stressConfirm:'Send “Beta Test — The Stress Report” NOW to all devices opted into Festival Alerts? This is a ONE-TIME independent test. It will not schedule or send any of the 31 wedding alerts.',
  betaFail:'Beta could not be sent. Check your OneSignal subscriptions and private key.',
  scheduleDone:'The festival showflow is scheduled for Thursday through Saturday (Guadalajara time). 🌊',
  scheduleAlready:'Those alerts were already scheduled.',
@@ -22,13 +22,13 @@ const strings={
  confirmSchedule:'Schedule 31 festival announcements for October 15–17 (including Thursday's noon setup-party invite), only to guests subscribed to Festival Alerts? This schedules future delivery; nothing is sent now.'},
  es:{hostLabel:'Solo anfitriones · Moderación',hostNameLabel:'Anfitrión',keyLabel:'Contraseña privada de anfitrión',unlock:'Abrir controles',hostDescription:'Pulsa Ocultar junto a un mensaje para retirarlo de la vista pública.',lock:'Cerrar controles',bad:'No se aceptó esa contraseña.',ready:'Controles activados.',hidden:'Mensaje oculto.',hide:'Ocultar mensaje',
  pushTitle:'🔔 Controles de avisos',pushExplain:'Revisa todo el programa, prueba tu teléfono y luego programa avisos del jueves al sábado.',
- sendTest:'Enviar prueba a este teléfono 🔔',sendBeta:'Enviar prueba al grupo suscrito 🧪',previewPush:'Revisar 31 avisos ↗',schedulePush:'Programar 31 avisos 🪩',
+ sendTest:'Enviar prueba a este teléfono 🔔',sendStressBeta:'Prueba Beta — El Reporte del Estrés 🌊🔔',previewPush:'Revisar 31 avisos ↗',schedulePush:'Programar 31 avisos 🪩',
  noSubscription:'Primero activa las alertas del festival en este teléfono.',
  noKey:'Falta configurar la clave privada de OneSignal en Supabase Edge Function Secrets.',
  testSent:'Prueba solicitada. ¡Bloquea el teléfono y espera el aviso! 🔔',
- betaSent:'OneSignal aceptó la prueba de grupo. Pídeles que respondan 🔔 si llegó. Aún no confirma la entrega.',
- betaAlready:'Ya se solicitó una prueba hoy. Pregunta si les llegó.',
- betaConfirm:'¿Enviar AHORA una prueba a todos los dispositivos suscritos a Alertas del Festival? No se activará el programa de la boda.',
+ stressSent:'OneSignal aceptó El Reporte del Estrés. Pide que manden una 🌊 al chat si les llegó. Aún no confirma la entrega.',
+ stressAlready:'El Reporte del Estrés ya se envió una vez. No se enviará de nuevo.',
+ stressConfirm:'¿Enviar AHORA “Prueba Beta — El Reporte del Estrés” a todos los dispositivos que activaron Alertas del Festival? Es una prueba independiente DE UNA SOLA VEZ; no programa ni envía los 31 avisos de la boda.',
  betaFail:'No se pudo enviar la prueba. Revisa los suscriptores de OneSignal y la clave privada.',
  scheduleDone:'Los avisos del festival quedaron programados de jueves a sábado (hora de Guadalajara). 🌊',
  scheduleAlready:'Los avisos ya estaban programados.',
@@ -111,13 +111,14 @@ by('platica-host-push-preview')?.addEventListener('click',async()=>{
  finally{button.disabled=false}
 });
 by('platica-host-push-test')?.addEventListener('click',runPushTest);
-by('platica-host-push-beta')?.addEventListener('click',async()=>{
- if(!confirm(t('betaConfirm')))return;
- const btn=by('platica-host-push-beta');btn.disabled=true;
+by('platica-host-push-stress')?.addEventListener('click',async()=>{
+ if(!confirm(t('stressConfirm')))return;
+ const btn=by('platica-host-push-stress');btn.disabled=true;
  try{
-  const data=await sendPush('beta');
-  const count=typeof data.recipients==='number' ? ' ('+data.recipients+' devices accepted by provider)' : '';
-  displayPushResult(t(data.alreadySent?'betaAlready':'betaSent')+count);
+  const data=await sendPush('stress_report');
+  const count=Number.isInteger(data.recipients)?' · '+data.recipients+' '+(lang()==='en'?'recipients reported':'destinatarios reportados'):'';
+  displayPushResult(t(data.alreadySent?'stressAlready':'stressSent')+count);
+  if(data.feedSaved===false)displayPushResult(t('pushFailed'));
  }catch(error){pushError(error)}
  finally{btn.disabled=false}
 });

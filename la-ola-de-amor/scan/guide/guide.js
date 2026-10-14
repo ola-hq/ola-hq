@@ -112,13 +112,17 @@ function updateDate(item){
 // Official festival pushes are persisted in a public, read-only Supabase history.
 // This local copy lets the last fetched announcements remain accessible offline.
 // Private per-device test pushes and high-frequency La Plática alerts are not broadcasts.
+// Owner withdrew the Oct 13 4:36 PM GIF beta from the public feed. In addition
+// to deleting it server-side, ignore older offline caches on returning devices.
+const retiredPushHistoryIds=new Set(['beta-2026-10-13']);
 const pushHistoryStorageKey='laOlaFestivalPushHistoryV1';
 const pushHistoryURL='https://fgtowzonkmirmugnzlsf.supabase.co/rest/v1/loda_festival_notification_history?select=id,title_en,title_es,body_en,body_es,published_at,kind&order=published_at.desc&limit=150';
 let pushHistory=[];
-try{const cached=JSON.parse(localStorage.getItem(pushHistoryStorageKey)||'[]');if(Array.isArray(cached))pushHistory=cached;}catch{}
+try{const cached=JSON.parse(localStorage.getItem(pushHistoryStorageKey)||'[]');if(Array.isArray(cached))pushHistory=cached.filter(row=>!retiredPushHistoryIds.has(row?.id));}catch{}
 function allFestivalUpdates(){
  const merged=new Map(activeFestivalUpdates().map(item=>[item.id,item]));
  for(const row of pushHistory){
+  if(retiredPushHistoryIds.has(row?.id))continue;
   if(!row || !/^[a-z0-9-]{1,90}$/.test(row.id||'') || !Number.isFinite(Date.parse(row.published_at)) || Date.parse(row.published_at)>Date.now())continue;
   if(!['title_en','title_es','body_en','body_es'].every(k=>typeof row[k]==='string'))continue;
   merged.set(row.id,{
@@ -139,7 +143,7 @@ async function refreshPushHistory(){
   const response=await fetch(pushHistoryURL,{headers:{apikey:key,authorization:'Bearer '+key},cache:'no-store'});
   if(!response.ok)throw Error('Festival history unavailable');
   const rows=await response.json();if(!Array.isArray(rows))throw Error('Invalid festival history');
-  pushHistory=rows;try{localStorage.setItem(pushHistoryStorageKey,JSON.stringify(rows));}catch{}
+  pushHistory=rows.filter(row=>!retiredPushHistoryIds.has(row?.id));try{localStorage.setItem(pushHistoryStorageKey,JSON.stringify(pushHistory));}catch{}
   renderUpdates();
   if(location.hash.startsWith('#updates/')&&location.hash!=='#updates/all')renderRoute();
  }catch(error){console.warn('[Festival Guide] Saved announcement history unavailable:',error);}
