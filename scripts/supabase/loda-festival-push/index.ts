@@ -106,14 +106,14 @@ const scheduled=[
   },
   {
     "id": "love-bri",
-    "at": "2026-10-16T23:30:00.000Z",
+    "at": "2026-10-16T23:26:00.000Z",
     "heading": {
-      "en": "BRI, LOOK WHAT LOVE BUILT 💛",
-      "es": "BRI, MIRA LO QUE CREÓ EL AMOR 💛"
+      "en": "SHUG, LOOK WHAT LOVE BUILT 🤍",
+      "es": "SHUG, MIRA LO QUE CREÓ EL AMOR 🤍"
     },
     "body": {
-      "en": "Bri, take one second and look around. All these people, all these little details, all this joy. You're the heart of this wave—and we love you. ❤️",
-      "es": "Bri, detente un segundito y mira a tu alrededor. Toda esta gente, los detalles, la alegría. Eres el corazón de esta ola… y te queremos muchísimo. ❤️"
+      "en": "Shug, take one second and look around. All these people, all these little details, all this joy. You're the heart of this wave—and we love you. 🤍",
+      "es": "Shug, detente un segundito y mira a tu alrededor. Toda esta gente, los detalles, la alegría. Eres el corazón de esta ola… y te queremos muchísimo. 🤍"
     }
   },
   {
@@ -142,14 +142,14 @@ const scheduled=[
   },
   {
     "id": "love-jon",
-    "at": "2026-10-17T00:30:00.000Z",
+    "at": "2026-10-17T00:32:00.000Z",
     "heading": {
-      "en": "JON, DON'T MISS THIS MOMENT 🌊",
-      "es": "JON, NO TE PIERDAS ESTE MOMENTO 🌊"
+      "en": "SHUG, DON'T MISS THIS MOMENT 🤍",
+      "es": "SHUG, NO TE PIERDAS ESTE MOMENTO 🤍"
     },
     "body": {
-      "en": "Jon, you dreamed up a whole little world for the people you love. Look around: they're here, and it's real. Put the phone down for a second. This one's yours too. ❤️",
-      "es": "Jon, soñaste todo un mundito para la gente que quieres. Mira alrededor: aquí están, y todo es real. Suelta el celular un ratito. Este momento también es tuyo. ❤️"
+      "en": "Shug, you dreamed up a whole little world for the people you love. Look around: they're here, and it's real. Put the phone down for a second. This one's yours too. 🤍",
+      "es": "Shug, soñaste todo un mundito para la gente que quieres. Mira alrededor: aquí están, y todo es real. Suelta el celular un ratito. Este momento también es tuyo. 🤍"
     }
   },
   {
@@ -172,8 +172,8 @@ const scheduled=[
       "es": "SUNSET SELECTORS ☀️"
     },
     "body": {
-      "en": "From mariachi to sunset grooves. Sunset Selectors are taking over! Follow the music and enjoy the ride.",
-      "es": "Del mariachi al ritmo del atardecer. ¡Llegaron los Sunset Selectors! Sigue la música y déjate llevar."
+      "en": "From mariachi to sunset grooves. Sunset Selectors are taking over! Follow the music and enjoy the ride. Make your way to the Sol y Luna Main Stage!",
+      "es": "Del mariachi al ritmo del atardecer. ¡Llegaron los Sunset Selectors! Sigue la música y déjate llevar. ¡Acérquense al escenario principal Sol y Luna!"
     }
   },
   {
@@ -244,13 +244,13 @@ const scheduled=[
       "es": "LA MÁQUINA DEL TIEMPO ⏳"
     },
     "body": {
-      "en": "We're taking it BACK! Old favorites, forgotten classics, and songs you still know every word to. See you on the dance floor!",
-      "es": "¡NOS VAMOS AL PASADO! Viejos favoritos, clásicos inolvidables y canciones que todavía te sabes completitas. ¡Nos vemos en la pista!"
+      "en": "We're taking it BACK! Old favorites, forgotten classics, and songs you still know every word to. See you on the dance floor! Make your way to the Sol y Luna Main Stage!",
+      "es": "¡NOS VAMOS AL PASADO! Viejos favoritos, clásicos inolvidables y canciones que todavía te sabes completitas. ¡Nos vemos en la pista! ¡Acérquense al escenario principal Sol y Luna!"
     }
   },
   {
     "id": "love-our-people",
-    "at": "2026-10-17T05:15:00.000Z",
+    "at": "2026-10-17T05:08:00.000Z",
     "heading": {
       "en": "HEY YOU. YES, YOU. 🫵❤️",
       "es": "OYE, TÚ. SÍ, TÚ. 🫵❤️"
@@ -280,8 +280,8 @@ const scheduled=[
       "es": "ÚLTIMA RONDA · 1 AM 🍹"
     },
     "body": {
-      "en": "Night Frequency is taking over! One more hour of bartender service. Grab your final bartender-made drink and get back to dancing!",
-      "es": "¡Llegó Night Frequency! Queda una hora de servicio en la barra. ¡Pide tu último trago preparado y regresa a bailar!"
+      "en": "Night Frequency is taking over! One more hour of bartender service. Grab your final bartender-made drink and get back to dancing! Make your way to the Sol y Luna Main Stage!",
+      "es": "¡Llegó Night Frequency! Queda una hora de servicio en la barra. ¡Pide tu último trago preparado y regresa a bailar! ¡Acérquense al escenario principal Sol y Luna!"
     }
   },
   {
@@ -304,8 +304,8 @@ const scheduled=[
       "es": "¿DE VERDAD CREÍSTE QUE ERA LA ÚLTIMA? 😂"
     },
     "body": {
-      "en": "YOU REALLY THOUGHT?! 😂 The bartenders are done, but Neon Mirage is just beginning. The afters are ON. Want another drink? Serve yourself—and pour us one too! 🌊",
-      "es": "¿DE VERDAD CREÍSTE QUE YA SE ACABÓ? 😂 Los bartenders terminaron, ¡pero Neon Mirage apenas comienza! ¿Otro trago? Sírvete… ¡y sírvenos uno también! 🌊"
+      "en": "YOU REALLY THOUGHT?! 😂 The bartenders are done, but Neon Mirage is just beginning. The afters are ON. Want another drink? Serve yourself—and pour us one too! 🌊 Make your way to the Sol y Luna Main Stage!",
+      "es": "¿DE VERDAD CREÍSTE QUE YA SE ACABÓ? 😂 Los bartenders terminaron, ¡pero Neon Mirage apenas comienza! ¿Otro trago? Sírvete… ¡y sírvenos uno también! 🌊 ¡Acérquense al escenario principal Sol y Luna!"
     }
   },
   {
@@ -358,10 +358,10 @@ const scheduled=[
   },
   {
     "id": "love-together",
-    "at": "2026-10-17T20:15:00.000Z",
+    "at": "2026-10-17T20:32:00.000Z",
     "heading": {
-      "en": "BRI + JON, LOOK AROUND AGAIN ❤️",
-      "es": "BRI + JON, VUELVAN A MIRAR ❤️"
+      "en": "BRI + JON, LOOK AROUND AGAIN 🤍",
+      "es": "BRI + JON, VUELVAN A MIRAR 🤍"
     },
     "body": {
       "en": "This wave was never just about one night. It's about the people who keep showing up for each other. Look around—the party is the people. That's the whole point. 🌊",

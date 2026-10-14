@@ -223,10 +223,10 @@ The guide's language choice is persisted in `laOlaGuideLang` and reused when a n
 | Fri 4:00 PM | `seating` | CEREMONY SEATING 💍 | ASIENTOS PARA LA CEREMONIA 💍 |
 | Fri 4:15 PM | `seating-final` | ONE LAST NUDGE 🤍 | ÚLTIMO AVISO 🤍 |
 | Fri 5:00 PM | `gates` | LET THE CELEBRATION BEGIN! 🎺 | ¡QUE EMPIECE LA FIESTA! 🎺 |
-| Fri 5:30 PM | `love-bri` | BRI, LOOK WHAT LOVE BUILT 💛 | BRI, MIRA LO QUE CREÓ EL AMOR 💛 |
+| Fri 5:26 PM | `love-bri` | SHUG, LOOK WHAT LOVE BUILT 🤍 | SHUG, MIRA LO QUE CREÓ EL AMOR 🤍 |
 | Fri 5:45 PM | `explore-plaza` | EXPLORE YOUR PLAZA 🏘️ | ¡RECORRAN SU PLAZA! 🏘️ |
 | Fri 6:15 PM | `mirror` | FOUND THE MAGIC MIRROR? 📸 | ¿YA VISTE EL ESPEJO MÁGICO? 📸 |
-| Fri 6:30 PM | `love-jon` | JON, DON'T MISS THIS MOMENT 🌊 | JON, NO TE PIERDAS ESTE MOMENTO 🌊 |
+| Fri 6:32 PM | `love-jon` | SHUG, DON'T MISS THIS MOMENT 🤍 | SHUG, NO TE PIERDAS ESTE MOMENTO 🤍 |
 | Fri 6:45 PM | `memory-walls` | THESE ARE OUR PEOPLE ❤️ | ESTA ES NUESTRA GENTE ❤️ |
 | Fri 7:00 PM | `sunset` | SUNSET SELECTORS ☀️ | SUNSET SELECTORS ☀️ |
 | Fri 7:40 PM | `formal-soon` | SOMETHING SPECIAL IS COMING 🤍 | SE VIENE ALGO ESPECIAL 🤍 |
@@ -235,7 +235,7 @@ The guide's language choice is persisted in `laOlaGuideLang` and reused when a n
 | Fri 9:55 PM | `mirror-again` | ROUND TWO AT THE MIRROR! 📸 | ¡SEGUNDA VUELTA AL ESPEJO! 📸 |
 | Fri 10:15 PM | `couple-photo` | MAKE A MEMORY 📷 | VAMOS A HACER UN RECUERDO 📷 |
 | Fri 10:45 PM | `time-machine` | LA MÁQUINA DEL TIEMPO ⏳ | LA MÁQUINA DEL TIEMPO ⏳ |
-| Fri 11:15 PM | `love-our-people` | HEY YOU. YES, YOU. 🫵❤️ | OYE, TÚ. SÍ, TÚ. 🫵❤️ |
+| Fri 11:08 PM | `love-our-people` | HEY YOU. YES, YOU. 🫵❤️ | OYE, TÚ. SÍ, TÚ. 🫵❤️ |
 | Fri 11:30 PM | `keep-dancing` | YOU KNOW THIS ONE! 🎶 | ¡ESTA TE LA SABES! 🎶 |
 | Sat 12:00 AM | `midnight-last-call` | LAST CALL · 1 AM 🍹 | ÚLTIMA RONDA · 1 AM 🍹 |
 | Sat 12:30 AM | `water-and-bar` | 30 MINUTES LEFT! ⏰ | ¡QUEDAN 30 MINUTOS! ⏰ |
@@ -244,7 +244,7 @@ The guide's language choice is persisted in `laOlaGuideLang` and reused when a n
 | Sat 10:30 AM | `wake-up` | Y'ALL STILL ALIVE? 😂 | ¿SIGUEN VIVOS? 😂 |
 | Sat 11:45 AM | `tornaboda` | ONE MORE WAVE TODAY 🌮 | ¡HOY NOS QUEDA OTRA OLA! 🌮 |
 | Sat 12:30 PM | `afterglow` | THE AFTERGLOW ☀️ | LA OLA CONTINÚA ☀️ |
-| Sat 2:15 PM | `love-together` | BRI + JON, LOOK AROUND AGAIN ❤️ | BRI + JON, VUELVAN A MIRAR ❤️ |
+| Sat 2:32 PM | `love-together` | BRI + JON, LOOK AROUND AGAIN 🤍 | BRI + JON, VUELVAN A MIRAR 🤍 |
 | Sat 3:30 PM | `tornaboda-photo` | ONE MORE PICTURE? 📸 | ¿OTRA FOTITO? 📸 |
 | Sat 4:45 PM | `thank-you` | THANK YOU FOR BEING OUR WAVE ❤️ | GRACIAS POR SER PARTE DE NUESTRA OLA ❤️ |
 
@@ -260,3 +260,10 @@ The guide's language choice is persisted in `laOlaGuideLang` and reused when a n
 - Proof of device receipt remains separate from a scheduling receipt. Spanish/English language choice will synchronize when guests open the updated installed guide online.
 
 **Do not use the older 2-event `scripts/festival-push-schedule.mjs` manual script** in addition to the 31-event host schedule—it risks duplicate or incomplete sends. Two midnight in-app release notices remain a previously published fallback; official remote push announcements, once scheduled, will appear in the saved unified Festival Updates history at their release time. 
+
+
+## Oct 13 — Shug notes, surprise minutes and host-login repair
+
+Both personal note headings and opening salutations now use **Shug**, with white hearts. The four `love-*` notes use randomly selected irregular minutes, frozen in the canonical program for consistent review and provider idempotency. These times stay in their original cocktail, late-dance and Tornaboda windows; timed operational cues and all 12 manual-only drafts retain their timing model. Existing Sunset Selectors, La Máquina del Tiempo, Night Frequency and Neon Mirage alerts, plus the manual Perreo draft, point guests to **Sol y Luna Main Stage / escenario principal Sol y Luna**. Total remains 31.
+
+The host confirmation contained an unescaped apostrophe in “Thursday's”, causing a JavaScript parse error before any login listener could run. Escaped it, added a syntax regression check, and rotated the offline cache. Host preview now shows the complete title and body in the selected language. Backend auth, audience filtering, schedule confirmation and receipts remain enforced. At revision time, `loda_push_schedule` had zero rows; publication does not send or queue these messages.
