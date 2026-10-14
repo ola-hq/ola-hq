@@ -135,7 +135,7 @@ test('official festival pushes are saved in the read-only two-plus-history feed'
   assert.match(guide, /data-route="\$\{showAll\?'updates':'updates\/all'\}"/);
   assert.match(guide, /localStorage\.setItem\(pushHistoryStorageKey/);
   assert.match(guide, /\?select=id,title_en,title_es,body_en,body_es,published_at,kind/);
-  assert.match(sw, /v20-20261013-shug-host-fix/);
+  assert.match(sw, /v21-20261013-verified-31-host-schedule/);
 });
 
 test('OneSignal uses the guest-selected guide language rather than the phone default', () => {
@@ -151,7 +151,7 @@ test('OneSignal uses the guest-selected guide language rather than the phone def
   assert.match(admin, /contents:\{en:/);
   assert.match(wall, /headings:\{en:.*es:/);
   assert.match(wall, /contents:\{en:.*es:/);
-  assert.match(sw, /v20-20261013-shug-host-fix/);
+  assert.match(sw, /v21-20261013-verified-31-host-schedule/);
 });
 
 test('Stress Report beta is separate, bilingual, host-protected, one time, and never schedules the wedding', () => {
@@ -203,4 +203,22 @@ test('special notes use irregular frozen times and stage directions stay in exis
     assert(e.body.en.includes('Sol y Luna Main Stage'));
     assert(e.body.es.includes('escenario principal Sol y Luna'));
   }
+});
+
+test('host shows the correct 31 alerts immediately and verifies provider receipts after scheduling', () => {
+  assert.match(page, /Review all 31 bilingual festival alerts/);
+  assert.match(page, /Review 31 alerts ↗/);
+  assert.match(page, /Schedule 31 festival alerts 🪩/);
+  assert.doesNotMatch(page, /schedule 14 moments|Review the 14 alerts|Schedule 14 festival alerts/);
+  assert.match(page, /id="guide-push-festival" type="checkbox" checked/);
+  assert.match(page, /id="guide-push-platica" type="checkbox" checked/);
+  assert.match(host, /function updateHostCopy\(\)/);
+  assert.match(host, /updateHostCopy\(\);/);
+  assert.match(host, /const count=await confirmedScheduleCount\(\)/);
+  assert.match(host, /sendPush\('status'\)/);
+  assert.match(host, /item\.provider_notification_id/);
+  assert.match(host, /if\(count===31\)/);
+  assert.match(host, /schedulePartial/);
+  assert.match(host, /await sendPush\('schedule'\)/);
+  assert.doesNotThrow(() => new Script(host));
 });
