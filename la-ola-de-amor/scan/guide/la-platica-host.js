@@ -51,6 +51,14 @@ async function sendPush(action,fields={}){
 function displayPushResult(text){const node=by('platica-host-push-result');if(node)node.textContent=text}
 function pushError(error){
  if(error.message==='PUSH_NOT_CONFIGURED'){displayPushResult(t('noKey'));return}
+ if(error.message==='SCHEDULED_BUT_RECEIPT_FAILED'){
+  displayPushResult(lang()==='en'
+   ? 'OneSignal may have accepted an alert but its receipt failed in Supabase. Do not manually duplicate it. Error: SCHEDULED_BUT_RECEIPT_FAILED.'
+   : 'OneSignal pudo aceptar un aviso, pero falló el comprobante de Supabase. No lo dupliques manualmente. Error: SCHEDULED_BUT_RECEIPT_FAILED.');return;
+ }
+ if(error.message==='SCHEDULE_NO_PROGRESS'){
+  displayPushResult(lang()==='en'?'No scheduling progress was saved; please report this to ChatGPT.':'No se guardó progreso de programación; avisa a ChatGPT.');return;
+ }
  const reasons={
   KEY_REJECTED:{
    en:'OneSignal rejected the API key. Verify the App API Key belongs to La Ola De Amor in OneSignal Settings → Keys & IDs.',
@@ -107,22 +115,35 @@ async function schedulePush(){
  if(!confirm(t('confirmSchedule')))return;
  const btn=by('platica-host-push-schedule');
  btn.disabled=true;
- displayPushResult(lang()==='en'?'Asking OneSignal to schedule 31 alerts…':'Solicitando programar 31 avisos en OneSignal…');
+ let count=0;
  try{
-  const data=await sendPush('schedule');
-  const count=await confirmedScheduleCount();
-  const already=data.results?.length===31&&data.results.every(item=>item.status==='already_scheduled');
-  if(count===31)displayPushResult(t(already?'scheduleAlready':'scheduleDone'));
-  else displayScheduleCount(count);
+  // Small batches keep the iPhone request alive and allow safe retries.
+  // A notification already queued at OneSignal retains its deterministic
+  // idempotency key, so a missing Supabase receipt can be recovered.
+  count=await confirmedScheduleCount();
+  if(count===31){displayPushResult(t('scheduleAlready'));return}
+  for(let attempt=0;attempt<8 && count<31;attempt++){
+   displayScheduleCount(count);
+   const data=await sendPush('schedule');
+   const next=await confirmedScheduleCount();
+   if(next===31){
+    const already=attempt===0&&data.results?.every(item=>item.status==='already_scheduled');
+    displayPushResult(t(already?'scheduleAlready':'scheduleDone'));
+    return;
+   }
+   if(next<=count)throw Error('SCHEDULE_NO_PROGRESS');
+   count=next;
+  }
+  displayScheduleCount(count);
  }catch(err){
   pushError(err);
   const diagnostic=by('platica-host-push-result')?.textContent||'';
   try {
-   const count=await confirmedScheduleCount();
+   count=await confirmedScheduleCount();
    if(count===31)displayPushResult(t('scheduleDone'));
    else displayPushResult(diagnostic+' '+t('schedulePartial').replace('%COUNT%',String(count)));
   }catch{
-   // Keep the real provider error; never imply success without a receipt.
+   // Preserve the real diagnostic when protected status cannot be read.
   }
  }finally{btn.disabled=false}
 }
