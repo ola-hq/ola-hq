@@ -114,7 +114,7 @@ function updateDate(item){
 // Private per-device test pushes and high-frequency La Plática alerts are not broadcasts.
 // Owner withdrew the Oct 13 4:36 PM GIF beta from the public feed. In addition
 // to deleting it server-side, ignore older offline caches on returning devices.
-const retiredPushHistoryIds=new Set(['beta-2026-10-13']);
+const retiredPushHistoryIds=new Set(['beta-2026-10-13','beta-stress-report-2026-10-13']);
 const pushHistoryStorageKey='laOlaFestivalPushHistoryV1';
 const pushHistoryURL='https://fgtowzonkmirmugnzlsf.supabase.co/rest/v1/loda_festival_notification_history?select=id,title_en,title_es,body_en,body_es,published_at,kind&order=published_at.desc&limit=150';
 let pushHistory=[];
