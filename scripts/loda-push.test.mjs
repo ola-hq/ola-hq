@@ -70,7 +70,7 @@ test('31-event showflow matches protected server exactly and drafts are never sc
   assert(program.drafts.every(item=>item.status==='manual_cue_only' && item.title.en && item.title.es && item.body.en && item.body.es));
   assert.match(host, /Schedule 31 festival alerts/);
   assert.match(host, /Programar 31 avisos/);
-  assert.match(host, /data.results\?\.length===31/);
+  assert.match(host, /for\(let attempt=0;attempt<8 && count<31;attempt\+\+\)/);
 
   const begin = admin.indexOf('const scheduled=');
   const end = admin.indexOf(' as const;', begin);
@@ -214,7 +214,7 @@ test('host shows the correct 31 alerts immediately and verifies provider receipt
   assert.match(page, /id="guide-push-platica" type="checkbox" checked/);
   assert.match(host, /function updateHostCopy\(\)/);
   assert.match(host, /updateHostCopy\(\);/);
-  assert.match(host, /const count=await confirmedScheduleCount\(\)/);
+  assert.match(host, /count=await confirmedScheduleCount\(\)/);
   assert.match(host, /sendPush\('status'\)/);
   assert.match(host, /item\.provider_notification_id/);
   assert.match(host, /if\(count===31\)/);
