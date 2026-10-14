@@ -510,6 +510,40 @@ Deno.serve(async req=>{
     const feedSaved=await rememberFestivalPush(feedId,heading,message,new Date().toISOString(),result.id,"beta");
     return reply({ok:true,alreadySent:false,notificationId:result.id,recipients:result.recipients,feedSaved},200,origin);
   }
+  // A distinct, one-time, owner-approved group beta. This is intentionally
+  // independent of the daily group GIF beta and all 31 wedding event timers.
+  // The primary key and OneSignal idempotency key prevent duplicate sending.
+  if(body.action==="stress_report") {
+    if(!Deno.env.get("ONESIGNAL_REST_API_KEY")) return reply({error:"PUSH_NOT_CONFIGURED"},503,origin);
+    const feedId="beta-stress-report-2026-10-13";
+    const heading={"en":"Beta Test — The Stress Report 🌊🔔","es":"Prueba Beta — El Reporte del Estrés 🌊🔔"};
+    const message={"en":"ALRIGHT BITCHES, THIS SHIT'S LIVE! 🌊🔔\n\nIt's been a stressful fucking day. I've already managed to piss off my wife, but I know she still loves me. 😂❤️\n\nOnce y'all start arriving, Bri will finally have enough backup to outnumber me. We can put this chaos behind us and start having some FUCKING FUN!\n\nWe're almost there, people. I love you guys. 🌊\n\nIf you got this, drop a 🌊 in the chat.\n\n— Jon","es":"¡A VER, CABRONES, ESTA MADRE YA ESTÁ EN VIVO! 🌊🔔\n\nHa sido un pinche día estresante. Ya hasta hice enojar a mi esposa, ¡pero sé que todavía me quiere! 😂❤️\n\nEn cuanto empiecen a llegar, Bri va a tener refuerzos para hacerme montón. Vamos a dejar todo este desmadre atrás y ¡POR FIN EMPEZAR A PASÁRNOSLA DE POCA MADRE!\n\nYa casi, mi gente. Los quiero mucho. 🌊\n\nSi les llegó, manden una 🌊 al chat.\n\n— Jon"};
+    const {data:existing,error:lookupError}=await db.from("loda_push_special_beta_runs")
+      .select("provider_notification_id,provider_recipients,accepted_at")
+      .eq("beta_id",feedId).maybeSingle();
+    if(lookupError) return reply({error:"SPECIAL_BETA_STATUS_UNAVAILABLE"},503,origin);
+    if(existing) {
+      const feedSaved=await rememberFestivalPush(feedId,heading,message,existing.accepted_at,existing.provider_notification_id,"beta");
+      return reply({ok:true,alreadySent:true,notificationId:existing.provider_notification_id,
+        recipients:existing.provider_recipients,acceptedAt:existing.accepted_at,feedSaved},200,origin);
+    }
+    const result=await deliver({
+      filters:[{field:"tag",key:"loda_festival",relation:"=",value:"true"}],
+      headings:heading,contents:message,
+      web_url:GUIDE.replace("#updates","#updates/"+feedId),
+      idempotency_key:await eventKey(feedId),
+      ttl:600
+    });
+    if("error" in result) return reply({error:result.error,providerCode:result.providerCode,
+      providerStatus:result.providerStatus},result.status,origin);
+    const {error:saveError}=await db.from("loda_push_special_beta_runs").insert({
+      beta_id:feedId,provider_notification_id:result.id,provider_recipients:result.recipients
+    });
+    if(saveError) return reply({error:"SPECIAL_BETA_ACCEPTED_RECEIPT_FAILED",
+      notificationId:result.id,recipients:result.recipients},503,origin);
+    const feedSaved=await rememberFestivalPush(feedId,heading,message,new Date().toISOString(),result.id,"beta");
+    return reply({ok:true,alreadySent:false,notificationId:result.id,recipients:result.recipients,feedSaved},200,origin);
+  }
   if(body.action==="schedule") {
     if(!Deno.env.get("ONESIGNAL_REST_API_KEY")) return reply({error:"PUSH_NOT_CONFIGURED"},503,origin);
     const outcomes=[];

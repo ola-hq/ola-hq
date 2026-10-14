@@ -91,9 +91,11 @@ test('31-event showflow matches protected server exactly and drafts are never sc
 
 
 test('beta broadcast is host-only, one per date, tag-filtered and independent of wedding scheduling', () => {
-  assert.match(page, /id="platica-host-push-beta"/);
-  assert.match(host, /sendPush\('beta'\)/);
-  assert.match(host, /confirm\(t\('betaConfirm'\)\)/);
+  assert.doesNotMatch(page, /id="platica-host-push-beta"/);
+  assert.match(page, /id="platica-host-push-stress"/);
+  assert.doesNotMatch(host, /sendPush\('beta'\)/);
+  assert.match(host, /sendPush\('stress_report'\)/);
+  assert.match(host, /confirm\(t\('stressConfirm'\)\)/);
   assert.match(admin, /await validHost\(req\)/);
   assert.match(admin, /body.action==="beta"/);
   assert.match(admin, /loda_push_beta_runs/);
@@ -133,7 +135,7 @@ test('official festival pushes are saved in the read-only two-plus-history feed'
   assert.match(guide, /data-route="\$\{showAll\?'updates':'updates\/all'\}"/);
   assert.match(guide, /localStorage\.setItem\(pushHistoryStorageKey/);
   assert.match(guide, /\?select=id,title_en,title_es,body_en,body_es,published_at,kind/);
-  assert.match(sw, /v19-20261013-shug-host-fix/);
+  assert.match(sw, /v20-20261013-shug-host-fix/);
 });
 
 test('OneSignal uses the guest-selected guide language rather than the phone default', () => {
@@ -149,9 +151,35 @@ test('OneSignal uses the guest-selected guide language rather than the phone def
   assert.match(admin, /contents:\{en:/);
   assert.match(wall, /headings:\{en:.*es:/);
   assert.match(wall, /contents:\{en:.*es:/);
-  assert.match(sw, /v19-20261013-shug-host-fix/);
+  assert.match(sw, /v20-20261013-shug-host-fix/);
 });
 
+test('Stress Report beta is separate, bilingual, host-protected, one time, and never schedules the wedding', () => {
+  const report = JSON.parse(read('scripts/content/loda-stress-report-beta.json'));
+  const migration = read('scripts/supabase/migrations/loda_independent_stress_report_beta_runs.sql');
+  const guide = read('la-ola-de-amor/scan/guide/guide.js');
+  assert.equal(report.id, 'beta-stress-report-2026-10-13');
+  assert.match(report.heading.en, /Beta Test — The Stress Report/);
+  assert.match(report.heading.es, /Prueba Beta/);
+  assert(report.body.en.includes('ALRIGHT BITCHES'));
+  assert(report.body.es.includes('A VER, CABRONES'));
+  assert.match(admin, /body.action==="stress_report"/);
+  assert(admin.includes('const feedId='+JSON.stringify(report.id)));
+  assert(admin.includes('const heading='+JSON.stringify(report.heading)));
+  assert(admin.includes('const message='+JSON.stringify(report.body)));
+  assert.match(admin, /loda_push_special_beta_runs/);
+  assert.match(admin, /idempotency_key:await eventKey\(feedId\)/);
+  assert.match(admin, /rememberFestivalPush\(feedId,heading,message,new Date\(\)\.toISOString\(\),result.id,"beta"\)/);
+  assert.match(admin, /key:"loda_festival"/);
+  assert.match(host, /confirm\(t\('stressConfirm'\)\)/);
+  assert.match(host, /sendPush\('stress_report'\)/);
+  assert.match(migration, /enable row level security/);
+  assert.match(migration, /revoke all .* from anon, authenticated/);
+  assert.doesNotMatch(migration, /grant .* to anon, authenticated/);
+  assert.match(guide, /retiredPushHistoryIds=new Set\(\['beta-2026-10-13'\]\)/);
+  assert.match(guide, /pushHistory=rows\.filter\(row=>!retiredPushHistoryIds\.has\(row\?\.id\)\)/);
+  assert(!JSON.parse(read('scripts/content/loda-push-program.json')).events.some(x=>x.id===report.id));
+});
 
 test('host controls parse before registering login and preview includes complete message', () => {
   assert.doesNotThrow(() => new Script(host));
