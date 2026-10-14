@@ -547,13 +547,19 @@ Deno.serve(async req=>{
   if(body.action==="schedule") {
     if(!Deno.env.get("ONESIGNAL_REST_API_KEY")) return reply({error:"PUSH_NOT_CONFIGURED"},503,origin);
     const outcomes=[];
+    let acceptedThisPass=0;
+    const MAX_NEW_PER_REQUEST=5; // Avoid 31 provider calls in a single short-lived iOS request.
     for(const event of scheduled) {
-      if(Date.parse(event.at)<=Date.now()+60000) return reply({error:"EVENT_TOO_CLOSE_OR_PASSED",event:event.id},409,origin);
+      if(Date.parse(event.at)<=Date.now()+60000) return reply({error:"EVENT_TOO_CLOSE_OR_PASSED",event:event.id,completed:outcomes},409,origin);
       const {data:existing,error:lookupError}=await db.from("loda_push_schedule").select("provider_notification_id").eq("event_id",event.id).maybeSingle();
       if(lookupError) return reply({error:"SCHEDULE_UNAVAILABLE"},503,origin);
       if(existing){
         const feedSaved=await rememberFestivalPush(event.id,event.heading,event.body,event.at,existing.provider_notification_id);
         outcomes.push({event:event.id,status:"already_scheduled",feedSaved});continue;
+      }
+      if(acceptedThisPass>=MAX_NEW_PER_REQUEST){
+        outcomes.push({event:event.id,status:"pending"});
+        continue;
       }
       const result=await deliver({
         headings:event.heading,contents:event.body,send_after:event.at,ttl:3600,
@@ -563,11 +569,18 @@ Deno.serve(async req=>{
       });
       if("error" in result) return reply({error:result.error,providerCode:result.providerCode,providerStatus:result.providerStatus,completed:outcomes},result.status,origin);
       const {error:storeError}=await db.from("loda_push_schedule").insert({event_id:event.id,provider_notification_id:result.id,scheduled_for:event.at});
-      if(storeError) return reply({error:"SCHEDULED_BUT_RECEIPT_FAILED",event:event.id,completed:outcomes},503,origin);
+      if(storeError) {
+        // The provider may already have queued the notification. The next
+        // authenticated retry uses exactly the SAME OneSignal idempotency key.
+        console.warn("[La Ola push] Scheduling receipt rejected",{event:event.id,code:storeError.code});
+        return reply({error:"SCHEDULED_BUT_RECEIPT_FAILED",event:event.id,completed:outcomes},503,origin);
+      }
+      acceptedThisPass++;
       const feedSaved=await rememberFestivalPush(event.id,event.heading,event.body,event.at,result.id);
       outcomes.push({event:event.id,status:"scheduled",notificationId:result.id,feedSaved});
     }
-    return reply({ok:true,results:outcomes},200,origin);
+    return reply({ok:true,results:outcomes,acceptedThisPass,total:scheduled.length,
+      remaining:outcomes.filter(item=>item.status==="pending").length},200,origin);
   }
   return reply({error:"UNKNOWN_ACTION"},400,origin);
 });
