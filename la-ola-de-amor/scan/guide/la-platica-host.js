@@ -19,7 +19,7 @@ const strings={
  scheduleDone:'The festival showflow is scheduled for Thursday through Saturday (Guadalajara time). 🌊',
  scheduleAlready:'Those alerts were already scheduled.',
  pushFailed:'Push delivery could not be completed. Check Supabase configuration and OneSignal.',
- confirmSchedule:'Schedule 31 festival announcements for October 15–17 (including Thursday's noon setup-party invite), only to guests subscribed to Festival Alerts? This schedules future delivery; nothing is sent now.'},
+ confirmSchedule:'Schedule 31 festival announcements for October 15–17 (including Thursday\'s noon setup-party invite), only to guests subscribed to Festival Alerts? This schedules future delivery; nothing is sent now.'},
  es:{hostLabel:'Solo anfitriones · Moderación',hostNameLabel:'Anfitrión',keyLabel:'Contraseña privada de anfitrión',unlock:'Abrir controles',hostDescription:'Pulsa Ocultar junto a un mensaje para retirarlo de la vista pública.',lock:'Cerrar controles',bad:'No se aceptó esa contraseña.',ready:'Controles activados.',hidden:'Mensaje oculto.',hide:'Ocultar mensaje',
  pushTitle:'🔔 Controles de avisos',pushExplain:'Revisa todo el programa, prueba tu teléfono y luego programa avisos del jueves al sábado.',
  sendTest:'Enviar prueba a este teléfono 🔔',sendStressBeta:'Prueba Beta — El Reporte del Estrés 🌊🔔',previewPush:'Revisar 31 avisos ↗',schedulePush:'Programar 31 avisos 🪩',
@@ -106,7 +106,7 @@ by('platica-host-push-preview')?.addEventListener('click',async()=>{
  try{
   const data=await sendPush('preview');
   const date=new Intl.DateTimeFormat(lang()==='en'?'en-US':'es-MX',{timeZone:'America/Mexico_City',weekday:'short',hour:'numeric',minute:'2-digit'});
-  displayPushResult((data.program||[]).map(item=>date.format(new Date(item.at))+' · '+item.title[lang()]+' ['+item.status+']').join('\n'));
+  displayPushResult((data.program||[]).map(item=>date.format(new Date(item.at))+' · '+item.title[lang()]+' ['+item.status+']\n'+item.body[lang()]).join('\n\n'));
  }catch(error){pushError(error)}
  finally{button.disabled=false}
 });

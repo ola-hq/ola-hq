@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { Script } from 'node:vm';
 
 const read = path => readFileSync(path, 'utf8');
 const page = read('la-ola-de-amor/scan/guide/index.html');
@@ -134,7 +135,7 @@ test('official festival pushes are saved in the read-only two-plus-history feed'
   assert.match(guide, /data-route="\$\{showAll\?'updates':'updates\/all'\}"/);
   assert.match(guide, /localStorage\.setItem\(pushHistoryStorageKey/);
   assert.match(guide, /\?select=id,title_en,title_es,body_en,body_es,published_at,kind/);
-  assert.match(sw, /v19-20261013-stress-report-beta/);
+  assert.match(sw, /v20-20261013-shug-host-fix/);
 });
 
 test('OneSignal uses the guest-selected guide language rather than the phone default', () => {
@@ -150,7 +151,7 @@ test('OneSignal uses the guest-selected guide language rather than the phone def
   assert.match(admin, /contents:\{en:/);
   assert.match(wall, /headings:\{en:.*es:/);
   assert.match(wall, /contents:\{en:.*es:/);
-  assert.match(sw, /v19-20261013-stress-report-beta/);
+  assert.match(sw, /v20-20261013-shug-host-fix/);
 });
 
 test('Stress Report beta is separate, bilingual, host-protected, one time, and never schedules the wedding', () => {
@@ -178,4 +179,28 @@ test('Stress Report beta is separate, bilingual, host-protected, one time, and n
   assert.match(guide, /retiredPushHistoryIds=new Set\(\['beta-2026-10-13'\]\)/);
   assert.match(guide, /pushHistory=rows\.filter\(row=>!retiredPushHistoryIds\.has\(row\?\.id\)\)/);
   assert(!JSON.parse(read('scripts/content/loda-push-program.json')).events.some(x=>x.id===report.id));
+});
+
+test('host controls parse before registering login and preview includes complete message', () => {
+  assert.doesNotThrow(() => new Script(host));
+  assert.match(host, /item\.body\[lang\(\)\]/);
+});
+test('special notes use irregular frozen times and stage directions stay in existing set cues', () => {
+  const program = JSON.parse(read('scripts/content/loda-push-program.json'));
+  const special = program.events.filter(e => e.id.startsWith('love-'));
+  assert.equal(special.length, 4);
+  assert(special.every(e => new Date(e.at).getUTCMinutes() % 5 !== 0));
+  assert.equal(new Set(program.events.map(e => e.at)).size, program.events.length);
+  for (const id of ['love-bri', 'love-jon']) {
+    const e = special.find(e => e.id === id);
+    assert(e.title.en.startsWith('SHUG,'));
+    assert(e.title.es.startsWith('SHUG,'));
+    assert(e.title.en.includes('🤍') && e.title.es.includes('🤍'));
+    assert(e.body.en.startsWith('Shug,') && e.body.es.startsWith('Shug,'));
+  }
+  for (const id of ['sunset','time-machine','midnight-last-call','afters-self-serve']) {
+    const e = program.events.find(e => e.id === id);
+    assert(e.body.en.includes('Sol y Luna Main Stage'));
+    assert(e.body.es.includes('escenario principal Sol y Luna'));
+  }
 });
