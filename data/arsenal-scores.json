@@ -1,7 +1,7 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-14T10:12:53.398Z",
+    "fetched_at": "2026-10-14T11:38:53.760Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
@@ -4400,7 +4400,7 @@
       "minute": null,
       "venue": "Emirates Stadium",
       "competition": "Premier League",
-      "match_url": null,
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/401878768/everton-arsenal",
       "stats": [],
       "events": [],
       "lineups": null
@@ -4420,9 +4420,9 @@
       "away_score": null,
       "status": "pre",
       "minute": null,
-      "venue": null,
+      "venue": "Coventry Building Society Arena",
       "competition": "Premier League",
-      "match_url": null,
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/401879255/fulham-coventry-city",
       "stats": [],
       "events": [],
       "lineups": null
