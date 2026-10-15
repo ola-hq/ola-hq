@@ -40,8 +40,8 @@ const scheduled=[
     "es": "SUNSET SELECTORS EN CINCO ☀️"
   },
   "body": {
-    "en": "Five minutes until Sunset Selectors! Follow the sunset grooves to the Sol y Luna Main Stage. Your next chapter starts at 7 PM. 🌊",
-    "es": "¡Faltan cinco minutos para Sunset Selectors! Sigan el ritmo del atardecer hasta el escenario principal Sol y Luna. El siguiente capítulo empieza a las 7 PM. 🌊"
+    "en": "Five minutes until Sunset Selectors! Follow the sunset grooves to the Sol y Luna Main Stage. Your next wave starts at 7 PM. 🌊",
+    "es": "¡Faltan cinco minutos para Sunset Selectors! Sigan el ritmo del atardecer hasta el escenario principal Sol y Luna. La siguiente ola empieza a las 7 PM. 🌊"
   }
 },
 {
@@ -370,8 +370,8 @@ const scheduled=[
       "es": "¡QUEDAN 30 MINUTOS! ⏰"
     },
     "body": {
-      "en": "Half an hour until staffed bar service ends! Grab water, check on your people, and get ready for the final chapter of the night. 🌊",
-      "es": "¡Queda media hora de servicio en la barra! Agarren agua, chequen cómo anda su gente y prepárense para el último capítulo de la noche. 🌊"
+      "en": "Half an hour until staffed bar service ends! Grab water, check on your people, and get ready for the final wave of the night. 🌊",
+      "es": "¡Queda media hora de servicio en la barra! Agarren agua, chequen cómo anda su gente y prepárense para la última ola de la noche. 🌊"
     }
   },
   {
@@ -517,8 +517,13 @@ async function rememberFestivalPush(id:string, heading:Record<string,string>, bo
   if(error) console.warn("[La Ola push] Feed history write failed",{event:id,code:error.code});
   return !error;
 }
-// Replace only the verified original setup receipt. Stable revision key makes retries safe.
-async function replaceOriginalThursday(event:typeof scheduled[number], oldId:string) {
+// Replace only explicitly identified obsolete receipts; each revision is retry-safe.
+function replacementRevision(eventId:string,providerId:string):string|null {
+  if(eventId==="thursday-setup-party" && providerId==="01fb2e9c-4ffe-4d20-8cdb-bcdda5d6d455") return "4pm-v1";
+  if(eventId==="water-and-bar" && providerId==="3cd403fd-f20c-4523-af59-5a40e58f0fa8") return "wave-brand-v1";
+  return null;
+}
+async function replaceQueuedEvent(event:typeof scheduled[number], oldId:string, revision:string) {
   const key=Deno.env.get("ONESIGNAL_REST_API_KEY");
   if(!key) return {error:"PUSH_NOT_CONFIGURED",status:503};
   const url="https://api.onesignal.com/notifications/"+oldId+"?app_id="+APP_ID;
@@ -537,7 +542,7 @@ async function replaceOriginalThursday(event:typeof scheduled[number], oldId:str
       headings:event.heading,contents:event.body,send_after:event.at,ttl:3600,
       web_url:GUIDE.replace("#updates","#updates/"+event.id),
       filters:[{field:"tag",key:"loda_festival",relation:"=",value:"true"}],
-      idempotency_key:await eventKey(event.id+":4pm-v1")
+      idempotency_key:await eventKey(event.id+":"+revision)
     });
     if("error" in result) return result;
     const {error}=await db.from("loda_push_schedule").update({
@@ -569,7 +574,7 @@ Deno.serve(async req=>{
     // Keep the extra surprise separate so the original-program count stays 31.
     const additionalScheduled=(data||[]).filter(row=>row.event_id==="claudias-brianna-mexicana");
     const originalSchedule=(data||[]).filter(row=>row.event_id!=="claudias-brianna-mexicana").map(row=>
-      row.event_id==="thursday-setup-party" && row.provider_notification_id==="01fb2e9c-4ffe-4d20-8cdb-bcdda5d6d455"
+      replacementRevision(row.event_id,row.provider_notification_id)
         ? {...row,provider_notification_id:null,previous_provider_notification_id:row.provider_notification_id,needs_update:true}
         : row);
     return reply({scheduled:originalSchedule,additionalScheduled,total:scheduled.length,
@@ -675,8 +680,9 @@ Deno.serve(async req=>{
       const {data:existing,error:lookupError}=await db.from("loda_push_schedule").select("provider_notification_id").eq("event_id",event.id).maybeSingle();
       if(lookupError) return reply({error:"SCHEDULE_UNAVAILABLE"},503,origin);
       if(existing){
-        if(event.id==="thursday-setup-party" && existing.provider_notification_id==="01fb2e9c-4ffe-4d20-8cdb-bcdda5d6d455") {
-          const replacement=await replaceOriginalThursday(event,existing.provider_notification_id);
+        const revision=replacementRevision(event.id,existing.provider_notification_id);
+        if(revision) {
+          const replacement=await replaceQueuedEvent(event,existing.provider_notification_id,revision);
           if("error" in replacement) return reply({error:replacement.error,event:event.id,completed:outcomes},replacement.status,origin);
           outcomes.push({event:event.id,status:"replaced",notificationId:replacement.id,feedSaved:replacement.feedSaved});
           continue;
@@ -711,5 +717,4 @@ Deno.serve(async req=>{
   }
   return reply({error:"UNKNOWN_ACTION"},400,origin);
 });
-
 
