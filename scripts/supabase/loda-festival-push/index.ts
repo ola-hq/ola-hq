@@ -21,6 +21,18 @@ async function validHost(req:Request) {
 }
 const scheduled=[
   {
+    "id": "thursday-travel-day",
+    "at": "2026-10-15T14:00:00.000Z",
+    "heading": {
+      "en": "IT’S TRAVEL DAY! ✈️🌊",
+      "es": "¡HOY ES DÍA DE VIAJE! ✈️🌊"
+    },
+    "body": {
+      "en": "Safe travels to everyone making their way to La Ola de Amor today. Take care of yourselves, keep your people posted, and bring all that good energy. We can’t wait for the hugs, the laughs, and having everyone together. Our wave is almost here. 🤍",
+      "es": "Buen viaje a quienes vienen rumbo a La Ola de Amor hoy. Cuídense mucho, avísenle a su gente cómo van y traigan toda esa buena vibra. Ya queremos los abrazos, las risas y tenerlos a todos juntos. Nuestra ola está por llegar. 🤍"
+    }
+  },
+  {
     "id": "poster-take-home",
     "at": "2026-10-17T06:17:00.000Z",
     "heading": {
