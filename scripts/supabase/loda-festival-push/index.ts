@@ -20,83 +20,113 @@ async function validHost(req:Request) {
   return !error && Boolean(data);
 }
 const scheduled=[
-{
-  "id": "thursday-setup-begins",
-  "at": "2026-10-15T22:00:00.000Z",
-  "heading": {
-    "en": "OUR LITTLE WORLD COMES TO LIFE 🤍🌊",
-    "es": "NUESTRO MUNDITO COBRA VIDA 🤍🌊"
-  },
-  "body": {
-    "en": "Our setup pre-party has begun at La Tijera. Come help us bring our little world to life—with music, laughter, and a little love in every detail. Prefer to experience the whole surprise at once? Save your first glimpse for Friday. We can’t wait to share it with you. 🤍🌊",
-    "es": "Ya comenzó nuestra pre-fiesta de montaje en La Tijera. Vengan a darle vida a nuestro mundito, entre música, risas y un poquito de amor en cada detalle. ¿Prefieren descubrir toda la sorpresa de una sola vez? Guarden su primera visita para el viernes. Ya queremos compartirlo con ustedes. 🤍🌊"
-  }
-},
-{
-  "id": "sunset-five-minutes",
-  "at": "2026-10-17T00:55:00.000Z",
-  "heading": {
-    "en": "SUNSET SELECTORS IN FIVE ☀️",
-    "es": "SUNSET SELECTORS EN CINCO ☀️"
-  },
-  "body": {
-    "en": "Five minutes until Sunset Selectors! Follow the sunset grooves to the Sol y Luna Main Stage. Your next wave starts at 7 PM. 🌊",
-    "es": "¡Faltan cinco minutos para Sunset Selectors! Sigan el ritmo del atardecer hasta el escenario principal Sol y Luna. La siguiente ola empieza a las 7 PM. 🌊"
-  }
-},
-{
-  "id": "perreo-five-minutes",
-  "at": "2026-10-17T02:55:00.000Z",
-  "heading": {
-    "en": "PERREO PARAÍSO IS COMING 🔥",
-    "es": "YA VIENE PERREO PARAÍSO 🔥"
-  },
-  "body": {
-    "en": "Perreo Paraíso is planned for 9 PM—five minutes away! Stay near the Sol y Luna Main Stage. We’ll start once the formal moments and group photo wrap up. Get ready to dance. 🔥🌊",
-    "es": "¡Perreo Paraíso está previsto para las 9 PM, en cinco minutos! Quédense cerca del escenario principal Sol y Luna. Arrancamos cuando terminen los momentos especiales y la foto de grupo. Prepárense para bailar. 🔥🌊"
-  }
-},
-{
-  "id": "time-machine-five-minutes",
-  "at": "2026-10-17T04:40:00.000Z",
-  "heading": {
-    "en": "LA MÁQUINA DEL TIEMPO IN FIVE ⏳",
-    "es": "LA MÁQUINA DEL TIEMPO EN CINCO ⏳"
-  },
-  "body": {
-    "en": "Five minutes until La Máquina del Tiempo! Find your people and meet us at the Sol y Luna Main Stage. At 10:45 PM, we’re going back to the songs we know by heart. ❤️",
-    "es": "¡Faltan cinco minutos para La Máquina del Tiempo! Busquen a su gente y nos vemos en el escenario principal Sol y Luna. A las 10:45 PM regresamos a esas canciones que llevamos en el corazón. ❤️"
-  }
-},
-{
-  "id": "night-frequency-five-minutes",
-  "at": "2026-10-17T05:55:00.000Z",
-  "heading": {
-    "en": "NIGHT FREQUENCY IN FIVE 🌙",
-    "es": "NIGHT FREQUENCY EN CINCO 🌙"
-  },
-  "body": {
-    "en": "Five minutes until Night Frequency. Meet us at the Sol y Luna Main Stage—at midnight, we follow the house grooves into the next wave. 🌙🌊",
-    "es": "Faltan cinco minutos para Night Frequency. Nos vemos en el escenario principal Sol y Luna: a medianoche seguimos el house hacia la siguiente ola. 🌙🌊"
-  }
-},
-{
-  "id": "neon-five-minutes",
-  "at": "2026-10-17T06:55:00.000Z",
-  "heading": {
-    "en": "NEON MIRAGE IN FIVE ⚡",
-    "es": "NEON MIRAGE EN CINCO ⚡"
-  },
-  "body": {
-    "en": "Five minutes until Neon Mirage! Stay with us at the Sol y Luna Main Stage. At 1 AM, the music opens up and the final wave begins. ⚡🌊",
-    "es": "¡Faltan cinco minutos para Neon Mirage! Quédense con nosotros en el escenario principal Sol y Luna. A la 1 AM la música se abre y empieza la última ola. ⚡🌊"
-  }
-},
   {
-    "id":"claudias-brianna-mexicana",
-    "at":"2026-10-17T05:48:00.000Z",
-    "heading":{"en":"📣 ¡ATENCIÓN, CLAUDIAS! 🇲🇽","es":"📣 ¡ATENCIÓN, CLAUDIAS! 🇲🇽"},
-    "body":{"en":"¡Ya es hora de ser Brianna Mexicana! 💃🇲🇽\n\n👏 ¡BRIANNA, HERMANA, YA ERES MEXICANA! 👏🇲🇽😂","es":"¡Ya es hora de ser Brianna Mexicana! 💃🇲🇽\n\n👏 ¡BRIANNA, HERMANA, YA ERES MEXICANA! 👏🇲🇽😂"}
+    "id": "poster-take-home",
+    "at": "2026-10-17T06:17:00.000Z",
+    "heading": {
+      "en": "TAKE A LITTLE LA OLA HOME 🖼️🌊",
+      "es": "LLÉVATE UN PEDACITO DE LA OLA 🖼️🌊"
+    },
+    "body": {
+      "en": "See a poster you love? Take a little La Ola de Amor home with you. At the end of the night, pick your favorite and take it with you—a little piece of this wave to keep. 🤍🌊",
+      "es": "¿Viste un póster que te encantó? Llévate un pedacito de La Ola de Amor a casa. Al final de la noche, elige tu favorito y llévatelo de recuerdo: un poquito de esta ola para guardar. 🤍🌊"
+    }
+  },
+  {
+    "id": "poster-last-reminder",
+    "at": "2026-10-17T07:23:00.000Z",
+    "heading": {
+      "en": "A LITTLE LA OLA FOR YOUR WALL 🤍",
+      "es": "UN PEDACITO DE LA OLA EN TU PARED 🤍"
+    },
+    "body": {
+      "en": "One last little love note: if a poster has caught your eye, take it home with you at the end of the night. Let a little La Ola de Amor live on your wall—and bring you back to this wave whenever you see it. 🖼️🌊",
+      "es": "Un último mensajito con amor: si algún póster te robó una sonrisa, llévatelo a casa al final de la noche. Que un pedacito de La Ola de Amor viva en tu pared y te regrese a esta ola cada vez que lo veas. 🖼️🌊"
+    }
+  },
+  {
+    "id": "thursday-setup-begins",
+    "at": "2026-10-15T22:00:00.000Z",
+    "heading": {
+      "en": "OUR LITTLE WORLD COMES TO LIFE 🤍🌊",
+      "es": "NUESTRO MUNDITO COBRA VIDA 🤍🌊"
+    },
+    "body": {
+      "en": "Our setup pre-party has begun at La Tijera. Come help us bring our little world to life—with music, laughter, and a little love in every detail. Prefer to experience the whole surprise at once? Save your first glimpse for Friday. We can’t wait to share it with you. 🤍🌊",
+      "es": "Ya comenzó nuestra pre-fiesta de montaje en La Tijera. Vengan a darle vida a nuestro mundito, entre música, risas y un poquito de amor en cada detalle. ¿Prefieren descubrir toda la sorpresa de una sola vez? Guarden su primera visita para el viernes. Ya queremos compartirlo con ustedes. 🤍🌊"
+    }
+  },
+  {
+    "id": "sunset-five-minutes",
+    "at": "2026-10-17T00:55:00.000Z",
+    "heading": {
+      "en": "SUNSET SELECTORS IN FIVE ☀️",
+      "es": "SUNSET SELECTORS EN CINCO ☀️"
+    },
+    "body": {
+      "en": "Five minutes until Sunset Selectors! Follow the sunset grooves to the Sol y Luna Main Stage. Your next wave starts at 7 PM. 🌊",
+      "es": "¡Faltan cinco minutos para Sunset Selectors! Sigan el ritmo del atardecer hasta el escenario principal Sol y Luna. La siguiente ola empieza a las 7 PM. 🌊"
+    }
+  },
+  {
+    "id": "perreo-five-minutes",
+    "at": "2026-10-17T02:55:00.000Z",
+    "heading": {
+      "en": "PERREO PARAÍSO IS COMING 🔥",
+      "es": "YA VIENE PERREO PARAÍSO 🔥"
+    },
+    "body": {
+      "en": "Perreo Paraíso is planned for 9 PM—five minutes away! Stay near the Sol y Luna Main Stage. We’ll start once the formal moments and group photo wrap up. Get ready to dance. 🔥🌊",
+      "es": "¡Perreo Paraíso está previsto para las 9 PM, en cinco minutos! Quédense cerca del escenario principal Sol y Luna. Arrancamos cuando terminen los momentos especiales y la foto de grupo. Prepárense para bailar. 🔥🌊"
+    }
+  },
+  {
+    "id": "time-machine-five-minutes",
+    "at": "2026-10-17T04:40:00.000Z",
+    "heading": {
+      "en": "LA MÁQUINA DEL TIEMPO IN FIVE ⏳",
+      "es": "LA MÁQUINA DEL TIEMPO EN CINCO ⏳"
+    },
+    "body": {
+      "en": "Five minutes until La Máquina del Tiempo! Find your people and meet us at the Sol y Luna Main Stage. At 10:45 PM, we’re going back to the songs we know by heart. ❤️",
+      "es": "¡Faltan cinco minutos para La Máquina del Tiempo! Busquen a su gente y nos vemos en el escenario principal Sol y Luna. A las 10:45 PM regresamos a esas canciones que llevamos en el corazón. ❤️"
+    }
+  },
+  {
+    "id": "night-frequency-five-minutes",
+    "at": "2026-10-17T05:55:00.000Z",
+    "heading": {
+      "en": "NIGHT FREQUENCY IN FIVE 🌙",
+      "es": "NIGHT FREQUENCY EN CINCO 🌙"
+    },
+    "body": {
+      "en": "Five minutes until Night Frequency. Meet us at the Sol y Luna Main Stage—at midnight, we follow the house grooves into the next wave. 🌙🌊",
+      "es": "Faltan cinco minutos para Night Frequency. Nos vemos en el escenario principal Sol y Luna: a medianoche seguimos el house hacia la siguiente ola. 🌙🌊"
+    }
+  },
+  {
+    "id": "neon-five-minutes",
+    "at": "2026-10-17T06:55:00.000Z",
+    "heading": {
+      "en": "NEON MIRAGE IN FIVE ⚡",
+      "es": "NEON MIRAGE EN CINCO ⚡"
+    },
+    "body": {
+      "en": "Five minutes until Neon Mirage! Stay with us at the Sol y Luna Main Stage. At 1 AM, the music opens up and the final wave begins. ⚡🌊",
+      "es": "¡Faltan cinco minutos para Neon Mirage! Quédense con nosotros en el escenario principal Sol y Luna. A la 1 AM la música se abre y empieza la última ola. ⚡🌊"
+    }
+  },
+  {
+    "id": "claudias-brianna-mexicana",
+    "at": "2026-10-17T05:48:00.000Z",
+    "heading": {
+      "en": "📣 ¡ATENCIÓN, CLAUDIAS! 🇲🇽",
+      "es": "📣 ¡ATENCIÓN, CLAUDIAS! 🇲🇽"
+    },
+    "body": {
+      "en": "¡Ya es hora de ser Brianna Mexicana! 💃🇲🇽\n\n👏 ¡BRIANNA, HERMANA, YA ERES MEXICANA! 👏🇲🇽😂",
+      "es": "¡Ya es hora de ser Brianna Mexicana! 💃🇲🇽\n\n👏 ¡BRIANNA, HERMANA, YA ERES MEXICANA! 👏🇲🇽😂"
+    }
   },
   {
     "id": "thursday-setup-party",

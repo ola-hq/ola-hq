@@ -2,8 +2,32 @@
   "schema": 2,
   "timeZone": "America/Mexico_City",
   "status": "approved_copy_ready_to_schedule",
-  "operatorNotes": "October 15 user update: keep all existing start-time announcements; add five-minute heads-ups for all five DJ sets, preserving the Perreo photo cue, plus a romantic Thursday 4 PM setup invitation. Prior Thursday noon invitation says 4 PM. The Friday 11:48 PM Claudias surprise remains. All existing32 scheduling receipts are retained. New total38; authenticated host scheduling and provider receipts are required. Twelve contingent activations remain manual-cue-only drafts.",
+  "operatorNotes": "October 15 update: add two bilingual poster take-home reminders for Saturday October 17 at 12:17 AM and 1:23 AM Guadalajara time, during Friday night's celebration. All 38 existing event definitions and accepted receipts remain intact. Current total 40; use authenticated host Schedule and verify the two new provider receipts. Existing set start alerts, five-minute heads-ups, Thursday 4 PM invitation and Friday 11:48 PM Claudias surprise remain. Twelve contingent activations remain manual-cue-only drafts.",
   "events": [
+    {
+      "id": "poster-take-home",
+      "at": "2026-10-17T00:17:00-06:00",
+      "title": {
+        "en": "TAKE A LITTLE LA OLA HOME 🖼️🌊",
+        "es": "LLÉVATE UN PEDACITO DE LA OLA 🖼️🌊"
+      },
+      "body": {
+        "en": "See a poster you love? Take a little La Ola de Amor home with you. At the end of the night, pick your favorite and take it with you—a little piece of this wave to keep. 🤍🌊",
+        "es": "¿Viste un póster que te encantó? Llévate un pedacito de La Ola de Amor a casa. Al final de la noche, elige tu favorito y llévatelo de recuerdo: un poquito de esta ola para guardar. 🤍🌊"
+      }
+    },
+    {
+      "id": "poster-last-reminder",
+      "at": "2026-10-17T01:23:00-06:00",
+      "title": {
+        "en": "A LITTLE LA OLA FOR YOUR WALL 🤍",
+        "es": "UN PEDACITO DE LA OLA EN TU PARED 🤍"
+      },
+      "body": {
+        "en": "One last little love note: if a poster has caught your eye, take it home with you at the end of the night. Let a little La Ola de Amor live on your wall—and bring you back to this wave whenever you see it. 🖼️🌊",
+        "es": "Un último mensajito con amor: si algún póster te robó una sonrisa, llévatelo a casa al final de la noche. Que un pedacito de La Ola de Amor viva en tu pared y te regrese a esta ola cada vez que lo veas. 🖼️🌊"
+      }
+    },
     {
       "id": "thursday-setup-begins",
       "at": "2026-10-15T16:00:00-06:00",
