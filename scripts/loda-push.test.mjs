@@ -56,21 +56,20 @@ test('separate push service worker and offline worker are preserved', () => {
 });
 
 
-test('31-event showflow matches protected server exactly and drafts are never scheduled', () => {
+test('current showflow matches protected server exactly and drafts are never scheduled', () => {
   const program = JSON.parse(read('scripts/content/loda-push-program.json'));
   assert.equal(program.timeZone, 'America/Mexico_City');
-  assert.equal(program.events.length, 31);
+  assert.equal(program.events.length, 38);
   assert(program.drafts.every(item => !('at' in item)));
   assert.equal(program.drafts.length, 12);
-  assert.equal(program.events[0].id, 'thursday-setup-party');
-  assert.equal(program.events[0].at, '2026-10-15T12:00:00-06:00');
+  assert.equal(program.events.find(e=>e.id==='thursday-setup-party').at, '2026-10-15T12:00:00-06:00');
   assert.deepEqual(program.events.filter(item=>item.id.startsWith('love-')).map(item=>item.id),
     ['love-bri','love-jon','love-our-people','love-together']);
   assert(program.events.every(item=>item.title.en && item.title.es && item.body.en && item.body.es));
   assert(program.drafts.every(item=>item.status==='manual_cue_only' && item.title.en && item.title.es && item.body.en && item.body.es));
-  assert.match(host, /Schedule 31 festival alerts/);
-  assert.match(host, /Programar 31 avisos/);
-  assert.match(host, /for\(let attempt=0;attempt<8 && count<31;attempt\+\+\)/);
+  assert.match(host, /Schedule festival alerts/);
+  assert.match(host, /Programar avisos del festival/);
+  assert.match(host, /for\(let attempt=0;attempt<8;attempt\+\+\)/);
 
   const begin = admin.indexOf('const scheduled=');
   const end = admin.indexOf(' as const;', begin);
@@ -135,7 +134,7 @@ test('official festival pushes are saved in the read-only two-plus-history feed'
   assert.match(guide, /data-route="\$\{showAll\?'updates':'updates\/all'\}"/);
   assert.match(guide, /localStorage\.setItem\(pushHistoryStorageKey/);
   assert.match(guide, /\?select=id,title_en,title_es,body_en,body_es,published_at,kind/);
-  assert.match(sw, /v22-20261013-31-batch-receipts/);
+  assert.match(sw, /v23-20261015-set-heads-up/);
 });
 
 test('OneSignal uses the guest-selected guide language rather than the phone default', () => {
@@ -151,7 +150,7 @@ test('OneSignal uses the guest-selected guide language rather than the phone def
   assert.match(admin, /contents:\{en:/);
   assert.match(wall, /headings:\{en:.*es:/);
   assert.match(wall, /contents:\{en:.*es:/);
-  assert.match(sw, /v22-20261013-31-batch-receipts/);
+  assert.match(sw, /v23-20261015-set-heads-up/);
 });
 
 test('Stress Report beta is separate, bilingual, host-protected, one time, and never schedules the wedding', () => {
@@ -205,41 +204,74 @@ test('special notes use irregular frozen times and stage directions stay in exis
   }
 });
 
-test('host shows the correct 31 alerts immediately and verifies provider receipts after scheduling', () => {
-  assert.match(page, /Review all 31 bilingual festival alerts/);
-  assert.match(page, /Review 31 alerts ↗/);
-  assert.match(page, /Schedule 31 festival alerts 🪩/);
+test('host shows current program controls and verifies provider receipts after scheduling', () => {
+  assert.match(page, /Review the current bilingual festival alerts/);
+  assert.match(page, /Review festival alerts ↗/);
+  assert.match(page, /Schedule festival alerts 🪩/);
   assert.doesNotMatch(page, /schedule 14 moments|Review the 14 alerts|Schedule 14 festival alerts/);
   assert.match(page, /id="guide-push-festival" type="checkbox" checked/);
   assert.match(page, /id="guide-push-platica" type="checkbox" checked/);
   assert.match(host, /function updateHostCopy\(\)/);
   assert.match(host, /updateHostCopy\(\);/);
-  assert.match(host, /count=await confirmedScheduleCount\(\)/);
+  assert.match(host, /state=await confirmedScheduleState\(\)/);
   assert.match(host, /sendPush\('status'\)/);
   assert.match(host, /item\.provider_notification_id/);
-  assert.match(host, /if\(count===31\)/);
+  assert.match(host, /state\.count>=state\.total/);
   assert.match(host, /schedulePartial/);
   assert.match(host, /await sendPush\('schedule'\)/);
   assert.doesNotThrow(() => new Script(host));
 });
 
-test('all 31 event IDs are allowed in the applied production DB constraint',()=>{
+test('all current event IDs are allowed in the production DB constraint',()=>{
  const ids=JSON.parse(read('scripts/content/loda-push-program.json')).events.map(x=>x.id);
- const migration=read('scripts/supabase/migrations/loda_expand_scheduled_push_ids_to_31.sql');
- assert.equal(ids.length,31);
+ const migration=read('scripts/supabase/migrations/loda_add_set_heads_up_and_setup_start.sql');
+ assert.equal(ids.length,38);
  for(const id of ids)assert(migration.includes("'"+id+"'"),"DB constraint missing "+id);
  assert.match(migration,/drop constraint loda_push_schedule_event_id_check/);
  assert.match(migration,/add constraint loda_push_schedule_event_id_check/);
 });
-test('protected scheduling sends in small batches and verifies all 31 receipts',()=>{
+test('protected scheduling sends in small batches and verifies the current program',()=>{
  assert.match(admin,/const MAX_NEW_PER_REQUEST=5/);
  assert.match(admin,/acceptedThisPass>=MAX_NEW_PER_REQUEST/);
  assert.match(admin,/status:"pending"/);
  assert.match(admin,/idempotency_key:await eventKey\(event.id\)/);
  assert.match(admin,/SCHEDULED_BUT_RECEIPT_FAILED/);
  assert.match(host,/attempt<8/);
- assert.match(host,/const next=await confirmedScheduleCount\(\)/);
- assert.match(host,/if\(next<=count\)throw Error\('SCHEDULE_NO_PROGRESS'\)/);
+ assert.match(host,/const next=await confirmedScheduleState\(\)/);
+ assert.match(host,/next\.count<=state\.count/);
  assert.match(host,/sendPush\('status'\)/);
  assert.doesNotThrow(() => new Script(host));
+});
+
+
+test('set heads-ups are five minutes before planned starts across midnight',()=>{
+ const events=JSON.parse(read('scripts/content/loda-push-program.json')).events;
+ for(const [id,start] of [
+ ['sunset-five-minutes','2026-10-16T19:00:00-06:00'],
+ ['perreo-five-minutes','2026-10-16T21:00:00-06:00'],
+ ['time-machine-five-minutes','2026-10-16T22:45:00-06:00'],
+ ['night-frequency-five-minutes','2026-10-17T00:00:00-06:00'],
+ ['neon-five-minutes','2026-10-17T01:00:00-06:00']]){
+  assert.equal(Date.parse(start)-Date.parse(events.find(e=>e.id===id).at),300000);
+ }
+ assert.match(events.find(e=>e.id==='perreo-five-minutes').body.en,/group photo/);
+ assert.equal(new Date(events.find(e=>e.id==='thursday-setup-begins').at).toISOString(),'2026-10-15T22:00:00.000Z');
+});
+test('host schedules additions in batches beyond the original31 and confirms all receipts',async()=>{
+ const section=host.slice(host.indexOf('async function confirmedScheduleState'),host.indexOf("by('platica-host-push-preview')"));
+ async function scenario(counts,fail=false){
+  let i=0,calls=0,notice='';const button={disabled:false};
+  const context={sendPush:async action=>{
+   if(action==='schedule'){calls++;if(fail)throw Error('FAIL');return {results:[{status:'scheduled'}]};}
+   const count=counts[Math.min(i++,counts.length-1)];
+   return {scheduled:Array.from({length:count-1},(_,n)=>({event_id:'e'+n,provider_notification_id:'p'+n})),additionalScheduled:[{event_id:'extra',provider_notification_id:'extra-id'}],total:38};
+  },confirm:()=>true,by:id=>id==='platica-host-push-result'?{textContent:notice}:button,
+  t:k=>({schedulePartial:'%COUNT% of %TOTAL%',scheduleDone:'DONE',scheduleAlready:'ALREADY'})[k]||k,
+  displayPushResult:s=>{notice=s},pushError:()=>{notice='ERROR'}};
+  new Script(section+';globalThis.run=schedulePush;').runInNewContext(context);
+  await context.run();return {calls,notice,button};
+ }
+ let result=await scenario([32,37,38]);assert.equal(result.calls,2);assert.equal(result.notice,'DONE');assert.equal(result.button.disabled,false);
+ result=await scenario([38]);assert.equal(result.calls,0);assert.equal(result.notice,'ALREADY');
+ result=await scenario([32,32],true);assert.match(result.notice,/ERROR 32 of 38/);
 });

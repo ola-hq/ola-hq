@@ -20,6 +20,84 @@ async function validHost(req:Request) {
   return !error && Boolean(data);
 }
 const scheduled=[
+{
+  "id": "thursday-setup-begins",
+  "at": "2026-10-15T22:00:00.000Z",
+  "heading": {
+    "en": "OUR LITTLE WORLD COMES TO LIFE 🤍🌊",
+    "es": "NUESTRO MUNDITO COBRA VIDA 🤍🌊"
+  },
+  "body": {
+    "en": "Our setup pre-party has begun at La Tijera. Come help us bring our little world to life—with music, laughter, and a little love in every detail. Prefer to experience the whole surprise at once? Save your first glimpse for Friday. We can’t wait to share it with you. 🤍🌊",
+    "es": "Ya comenzó nuestra pre-fiesta de montaje en La Tijera. Vengan a darle vida a nuestro mundito, entre música, risas y un poquito de amor en cada detalle. ¿Prefieren descubrir toda la sorpresa de una sola vez? Guarden su primera visita para el viernes. Ya queremos compartirlo con ustedes. 🤍🌊"
+  }
+},
+{
+  "id": "sunset-five-minutes",
+  "at": "2026-10-17T00:55:00.000Z",
+  "heading": {
+    "en": "SUNSET SELECTORS IN FIVE ☀️",
+    "es": "SUNSET SELECTORS EN CINCO ☀️"
+  },
+  "body": {
+    "en": "Five minutes until Sunset Selectors! Follow the sunset grooves to the Sol y Luna Main Stage. Your next chapter starts at 7 PM. 🌊",
+    "es": "¡Faltan cinco minutos para Sunset Selectors! Sigan el ritmo del atardecer hasta el escenario principal Sol y Luna. El siguiente capítulo empieza a las 7 PM. 🌊"
+  }
+},
+{
+  "id": "perreo-five-minutes",
+  "at": "2026-10-17T02:55:00.000Z",
+  "heading": {
+    "en": "PERREO PARAÍSO IS COMING 🔥",
+    "es": "YA VIENE PERREO PARAÍSO 🔥"
+  },
+  "body": {
+    "en": "Perreo Paraíso is planned for 9 PM—five minutes away! Stay near the Sol y Luna Main Stage. We’ll start once the formal moments and group photo wrap up. Get ready to dance. 🔥🌊",
+    "es": "¡Perreo Paraíso está previsto para las 9 PM, en cinco minutos! Quédense cerca del escenario principal Sol y Luna. Arrancamos cuando terminen los momentos especiales y la foto de grupo. Prepárense para bailar. 🔥🌊"
+  }
+},
+{
+  "id": "time-machine-five-minutes",
+  "at": "2026-10-17T04:40:00.000Z",
+  "heading": {
+    "en": "LA MÁQUINA DEL TIEMPO IN FIVE ⏳",
+    "es": "LA MÁQUINA DEL TIEMPO EN CINCO ⏳"
+  },
+  "body": {
+    "en": "Five minutes until La Máquina del Tiempo! Find your people and meet us at the Sol y Luna Main Stage. At 10:45 PM, we’re going back to the songs we know by heart. ❤️",
+    "es": "¡Faltan cinco minutos para La Máquina del Tiempo! Busquen a su gente y nos vemos en el escenario principal Sol y Luna. A las 10:45 PM regresamos a esas canciones que llevamos en el corazón. ❤️"
+  }
+},
+{
+  "id": "night-frequency-five-minutes",
+  "at": "2026-10-17T05:55:00.000Z",
+  "heading": {
+    "en": "NIGHT FREQUENCY IN FIVE 🌙",
+    "es": "NIGHT FREQUENCY EN CINCO 🌙"
+  },
+  "body": {
+    "en": "Five minutes until Night Frequency. Meet us at the Sol y Luna Main Stage—at midnight, we follow the house grooves into the next wave. 🌙🌊",
+    "es": "Faltan cinco minutos para Night Frequency. Nos vemos en el escenario principal Sol y Luna: a medianoche seguimos el house hacia la siguiente ola. 🌙🌊"
+  }
+},
+{
+  "id": "neon-five-minutes",
+  "at": "2026-10-17T06:55:00.000Z",
+  "heading": {
+    "en": "NEON MIRAGE IN FIVE ⚡",
+    "es": "NEON MIRAGE EN CINCO ⚡"
+  },
+  "body": {
+    "en": "Five minutes until Neon Mirage! Stay with us at the Sol y Luna Main Stage. At 1 AM, the music opens up and the final wave begins. ⚡🌊",
+    "es": "¡Faltan cinco minutos para Neon Mirage! Quédense con nosotros en el escenario principal Sol y Luna. A la 1 AM la música se abre y empieza la última ola. ⚡🌊"
+  }
+},
+  {
+    "id":"claudias-brianna-mexicana",
+    "at":"2026-10-17T05:48:00.000Z",
+    "heading":{"en":"📣 ¡ATENCIÓN, CLAUDIAS! 🇲🇽","es":"📣 ¡ATENCIÓN, CLAUDIAS! 🇲🇽"},
+    "body":{"en":"¡Ya es hora de ser Brianna Mexicana! 💃🇲🇽\n\n👏 ¡BRIANNA, HERMANA, YA ERES MEXICANA! 👏🇲🇽😂","es":"¡Ya es hora de ser Brianna Mexicana! 💃🇲🇽\n\n👏 ¡BRIANNA, HERMANA, YA ERES MEXICANA! 👏🇲🇽😂"}
+  },
   {
     "id": "thursday-setup-party",
     "at": "2026-10-15T18:00:00.000Z",
@@ -28,8 +106,8 @@ const scheduled=[
       "es": "¡HOY: PRE-FIESTA DE MONTAJE! 🛠️🌊"
     },
     "body": {
-      "en": "3 PM at La Tijera: our festival setup pre-party! Casa Sol, Casa Luna, locals, and the whole village—if you're coming to La Ola, you're welcome to stop by, lend a hand, and hang out. Want to keep the surprise for Friday? Then don't peek. 😂❤️",
-      "es": "¡A las 3 PM en La Tijera hacemos pre-fiesta de montaje! Casa Sol, Casa Luna, vecinos y toda nuestra gente: si vienes a La Ola, puedes pasar, echarnos la mano y convivir. ¿Prefieres guardar la sorpresa para el viernes? ¡Entonces no vengas a espiar! 😂❤️"
+      "en": "4 PM at La Tijera: our festival setup pre-party! Casa Sol, Casa Luna, locals, and the whole village—if you're coming to La Ola, you're welcome to stop by, lend a hand, and hang out. Want to keep the surprise for Friday? Then don't peek. 😂❤️",
+      "es": "¡A las 4 PM en La Tijera hacemos pre-fiesta de montaje! Casa Sol, Casa Luna, vecinos y toda nuestra gente: si vienes a La Ola, puedes pasar, echarnos la mano y convivir. ¿Prefieres guardar la sorpresa para el viernes? ¡Entonces no vengas a espiar! 😂❤️"
     }
   },
   {
@@ -439,6 +517,39 @@ async function rememberFestivalPush(id:string, heading:Record<string,string>, bo
   if(error) console.warn("[La Ola push] Feed history write failed",{event:id,code:error.code});
   return !error;
 }
+// Replace only the verified original setup receipt. Stable revision key makes retries safe.
+async function replaceOriginalThursday(event:typeof scheduled[number], oldId:string) {
+  const key=Deno.env.get("ONESIGNAL_REST_API_KEY");
+  if(!key) return {error:"PUSH_NOT_CONFIGURED",status:503};
+  const url="https://api.onesignal.com/notifications/"+oldId+"?app_id="+APP_ID;
+  const headers={Authorization:"Key "+key};
+  try {
+    const current=await fetch(url,{headers,signal:AbortSignal.timeout(9000)});
+    const prior=await current.json().catch(()=>({}));
+    if(!current.ok || prior.id!==oldId) return {error:"SETUP_PROVIDER_STATUS_UNAVAILABLE",status:503};
+    if(prior.successful>0 || prior.completed_at) return {error:"SETUP_ALREADY_DELIVERED",status:409};
+    if(prior.canceled!==true) {
+      const canceled=await fetch(url,{method:"DELETE",headers,signal:AbortSignal.timeout(9000)});
+      const result=await canceled.json().catch(()=>({}));
+      if(!canceled.ok || result.success!==true) return {error:"SETUP_CANCEL_FAILED",status:503};
+    }
+    const result=await deliver({
+      headings:event.heading,contents:event.body,send_after:event.at,ttl:3600,
+      web_url:GUIDE.replace("#updates","#updates/"+event.id),
+      filters:[{field:"tag",key:"loda_festival",relation:"=",value:"true"}],
+      idempotency_key:await eventKey(event.id+":4pm-v1")
+    });
+    if("error" in result) return result;
+    const {error}=await db.from("loda_push_schedule").update({
+      provider_notification_id:result.id,scheduled_for:event.at
+    }).eq("event_id",event.id).eq("provider_notification_id",oldId);
+    if(error) return {error:"SETUP_REPLACEMENT_RECEIPT_FAILED",status:503};
+    const feedSaved=await rememberFestivalPush(event.id,event.heading,event.body,event.at,result.id);
+    return {id:result.id,status:200,feedSaved};
+  } catch {
+    return {error:"SETUP_REPLACEMENT_UNAVAILABLE",status:503};
+  }
+}
 Deno.serve(async req=>{
   const origin=req.headers.get("origin");
   if(origin && origin!==SITE) return reply({error:"ORIGIN_NOT_ALLOWED"},403,origin);
@@ -452,7 +563,17 @@ Deno.serve(async req=>{
   if(!body || typeof body!=="object" || Array.isArray(body)) return reply({error:"INVALID_INPUT"},400,origin);
   if(body.action==="status") {
     const {data,error}=await db.from("loda_push_schedule").select("event_id,provider_notification_id,scheduled_for,created_at").order("scheduled_for");
-    return error?reply({error:"STATUS_UNAVAILABLE"},503,origin):reply({scheduled:data||[],configured:Boolean(Deno.env.get("ONESIGNAL_REST_API_KEY"))},200,origin);
+    if(error) return reply({error:"STATUS_UNAVAILABLE"},503,origin);
+    // The existing app counts the 31 original alerts and skips scheduling when
+    // all have receipts. An obsolete setup receipt is not a receipt for 4 PM.
+    // Keep the extra surprise separate so the original-program count stays 31.
+    const additionalScheduled=(data||[]).filter(row=>row.event_id==="claudias-brianna-mexicana");
+    const originalSchedule=(data||[]).filter(row=>row.event_id!=="claudias-brianna-mexicana").map(row=>
+      row.event_id==="thursday-setup-party" && row.provider_notification_id==="01fb2e9c-4ffe-4d20-8cdb-bcdda5d6d455"
+        ? {...row,provider_notification_id:null,previous_provider_notification_id:row.provider_notification_id,needs_update:true}
+        : row);
+    return reply({scheduled:originalSchedule,additionalScheduled,total:scheduled.length,
+      configured:Boolean(Deno.env.get("ONESIGNAL_REST_API_KEY"))},200,origin);
   }
   if(body.action==="preview") {
     const {data,error}=await db.from("loda_push_schedule").select("event_id,scheduled_for");
@@ -554,6 +675,12 @@ Deno.serve(async req=>{
       const {data:existing,error:lookupError}=await db.from("loda_push_schedule").select("provider_notification_id").eq("event_id",event.id).maybeSingle();
       if(lookupError) return reply({error:"SCHEDULE_UNAVAILABLE"},503,origin);
       if(existing){
+        if(event.id==="thursday-setup-party" && existing.provider_notification_id==="01fb2e9c-4ffe-4d20-8cdb-bcdda5d6d455") {
+          const replacement=await replaceOriginalThursday(event,existing.provider_notification_id);
+          if("error" in replacement) return reply({error:replacement.error,event:event.id,completed:outcomes},replacement.status,origin);
+          outcomes.push({event:event.id,status:"replaced",notificationId:replacement.id,feedSaved:replacement.feedSaved});
+          continue;
+        }
         const feedSaved=await rememberFestivalPush(event.id,event.heading,event.body,event.at,existing.provider_notification_id);
         outcomes.push({event:event.id,status:"already_scheduled",feedSaved});continue;
       }
@@ -584,3 +711,5 @@ Deno.serve(async req=>{
   }
   return reply({error:"UNKNOWN_ACTION"},400,origin);
 });
+
+

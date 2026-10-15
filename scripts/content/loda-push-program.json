@@ -2,8 +2,92 @@
   "schema": 2,
   "timeZone": "America/Mexico_City",
   "status": "approved_copy_ready_to_schedule",
-  "operatorNotes": "2026-10-13 Jon approved expanded fixed-time showflow. Thursday 12:00 setup pre-party (3 PM meetup) supersedes the earlier 7 PM teaser. Four love notes added. Twelve contingent activations stay DRAFT ONLY; no automated times, and the current host panel does not offer ad-hoc per-draft sends. OneSignal schedule requires authenticated host confirmation, receipts and provider acceptance; publishing is not sending. Oct 13 revision: Shug + white hearts for both personal notes; all four love notes receive one randomly selected irregular minute within their original event windows, frozen here for stable review and scheduling. Stage nudges added to existing set alerts; all other events and manual-only timing retained.",
+  "operatorNotes": "October 15 user update: keep all existing start-time announcements; add five-minute heads-ups for all five DJ sets, preserving the Perreo photo cue, plus a romantic Thursday 4 PM setup invitation. Prior Thursday noon invitation says 4 PM. The Friday 11:48 PM Claudias surprise remains. All existing32 scheduling receipts are retained. New total38; authenticated host scheduling and provider receipts are required. Twelve contingent activations remain manual-cue-only drafts.",
   "events": [
+    {
+      "id": "thursday-setup-begins",
+      "at": "2026-10-15T16:00:00-06:00",
+      "title": {
+        "en": "OUR LITTLE WORLD COMES TO LIFE 🤍🌊",
+        "es": "NUESTRO MUNDITO COBRA VIDA 🤍🌊"
+      },
+      "body": {
+        "en": "Our setup pre-party has begun at La Tijera. Come help us bring our little world to life—with music, laughter, and a little love in every detail. Prefer to experience the whole surprise at once? Save your first glimpse for Friday. We can’t wait to share it with you. 🤍🌊",
+        "es": "Ya comenzó nuestra pre-fiesta de montaje en La Tijera. Vengan a darle vida a nuestro mundito, entre música, risas y un poquito de amor en cada detalle. ¿Prefieren descubrir toda la sorpresa de una sola vez? Guarden su primera visita para el viernes. Ya queremos compartirlo con ustedes. 🤍🌊"
+      }
+    },
+    {
+      "id": "sunset-five-minutes",
+      "at": "2026-10-16T18:55:00-06:00",
+      "title": {
+        "en": "SUNSET SELECTORS IN FIVE ☀️",
+        "es": "SUNSET SELECTORS EN CINCO ☀️"
+      },
+      "body": {
+        "en": "Five minutes until Sunset Selectors! Follow the sunset grooves to the Sol y Luna Main Stage. Your next chapter starts at 7 PM. 🌊",
+        "es": "¡Faltan cinco minutos para Sunset Selectors! Sigan el ritmo del atardecer hasta el escenario principal Sol y Luna. El siguiente capítulo empieza a las 7 PM. 🌊"
+      }
+    },
+    {
+      "id": "perreo-five-minutes",
+      "at": "2026-10-16T20:55:00-06:00",
+      "title": {
+        "en": "PERREO PARAÍSO IS COMING 🔥",
+        "es": "YA VIENE PERREO PARAÍSO 🔥"
+      },
+      "body": {
+        "en": "Perreo Paraíso is planned for 9 PM—five minutes away! Stay near the Sol y Luna Main Stage. We’ll start once the formal moments and group photo wrap up. Get ready to dance. 🔥🌊",
+        "es": "¡Perreo Paraíso está previsto para las 9 PM, en cinco minutos! Quédense cerca del escenario principal Sol y Luna. Arrancamos cuando terminen los momentos especiales y la foto de grupo. Prepárense para bailar. 🔥🌊"
+      }
+    },
+    {
+      "id": "time-machine-five-minutes",
+      "at": "2026-10-16T22:40:00-06:00",
+      "title": {
+        "en": "LA MÁQUINA DEL TIEMPO IN FIVE ⏳",
+        "es": "LA MÁQUINA DEL TIEMPO EN CINCO ⏳"
+      },
+      "body": {
+        "en": "Five minutes until La Máquina del Tiempo! Find your people and meet us at the Sol y Luna Main Stage. At 10:45 PM, we’re going back to the songs we know by heart. ❤️",
+        "es": "¡Faltan cinco minutos para La Máquina del Tiempo! Busquen a su gente y nos vemos en el escenario principal Sol y Luna. A las 10:45 PM regresamos a esas canciones que llevamos en el corazón. ❤️"
+      }
+    },
+    {
+      "id": "night-frequency-five-minutes",
+      "at": "2026-10-16T23:55:00-06:00",
+      "title": {
+        "en": "NIGHT FREQUENCY IN FIVE 🌙",
+        "es": "NIGHT FREQUENCY EN CINCO 🌙"
+      },
+      "body": {
+        "en": "Five minutes until Night Frequency. Meet us at the Sol y Luna Main Stage—at midnight, we follow the house grooves into the next wave. 🌙🌊",
+        "es": "Faltan cinco minutos para Night Frequency. Nos vemos en el escenario principal Sol y Luna: a medianoche seguimos el house hacia la siguiente ola. 🌙🌊"
+      }
+    },
+    {
+      "id": "neon-five-minutes",
+      "at": "2026-10-17T00:55:00-06:00",
+      "title": {
+        "en": "NEON MIRAGE IN FIVE ⚡",
+        "es": "NEON MIRAGE EN CINCO ⚡"
+      },
+      "body": {
+        "en": "Five minutes until Neon Mirage! Stay with us at the Sol y Luna Main Stage. At 1 AM, the music opens up and the final wave begins. ⚡🌊",
+        "es": "¡Faltan cinco minutos para Neon Mirage! Quédense con nosotros en el escenario principal Sol y Luna. A la 1 AM la música se abre y empieza la última ola. ⚡🌊"
+      }
+    },
+    {
+      "id": "claudias-brianna-mexicana",
+      "at": "2026-10-16T23:48:00-06:00",
+      "title": {
+        "en": "📣 ¡ATENCIÓN, CLAUDIAS! 🇲🇽",
+        "es": "📣 ¡ATENCIÓN, CLAUDIAS! 🇲🇽"
+      },
+      "body": {
+        "en": "¡Ya es hora de ser Brianna Mexicana! 💃🇲🇽\n\n👏 ¡BRIANNA, HERMANA, YA ERES MEXICANA! 👏🇲🇽😂",
+        "es": "¡Ya es hora de ser Brianna Mexicana! 💃🇲🇽\n\n👏 ¡BRIANNA, HERMANA, YA ERES MEXICANA! 👏🇲🇽😂"
+      }
+    },
     {
       "id": "thursday-setup-party",
       "at": "2026-10-15T12:00:00-06:00",
@@ -12,8 +96,8 @@
         "es": "¡HOY: PRE-FIESTA DE MONTAJE! 🛠️🌊"
       },
       "body": {
-        "en": "3 PM at La Tijera: our festival setup pre-party! Casa Sol, Casa Luna, locals, and the whole village—if you're coming to La Ola, you're welcome to stop by, lend a hand, and hang out. Want to keep the surprise for Friday? Then don't peek. 😂❤️",
-        "es": "¡A las 3 PM en La Tijera hacemos pre-fiesta de montaje! Casa Sol, Casa Luna, vecinos y toda nuestra gente: si vienes a La Ola, puedes pasar, echarnos la mano y convivir. ¿Prefieres guardar la sorpresa para el viernes? ¡Entonces no vengas a espiar! 😂❤️"
+        "en": "4 PM at La Tijera: our festival setup pre-party! Casa Sol, Casa Luna, locals, and the whole village—if you're coming to La Ola, you're welcome to stop by, lend a hand, and hang out. Want to keep the surprise for Friday? Then don't peek. 😂❤️",
+        "es": "¡A las 4 PM en La Tijera hacemos pre-fiesta de montaje! Casa Sol, Casa Luna, vecinos y toda nuestra gente: si vienes a La Ola, puedes pasar, echarnos la mano y convivir. ¿Prefieres guardar la sorpresa para el viernes? ¡Entonces no vengas a espiar! 😂❤️"
       }
     },
     {
