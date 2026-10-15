@@ -59,7 +59,7 @@ test('separate push service worker and offline worker are preserved', () => {
 test('current showflow matches protected server exactly and drafts are never scheduled', () => {
   const program = JSON.parse(read('scripts/content/loda-push-program.json'));
   assert.equal(program.timeZone, 'America/Mexico_City');
-  assert.equal(program.events.length, 38);
+  assert.equal(program.events.length, 40);
   assert(program.drafts.every(item => !('at' in item)));
   assert.equal(program.drafts.length, 12);
   assert.equal(program.events.find(e=>e.id==='thursday-setup-party').at, '2026-10-15T12:00:00-06:00');
@@ -224,8 +224,8 @@ test('host shows current program controls and verifies provider receipts after s
 
 test('all current event IDs are allowed in the production DB constraint',()=>{
  const ids=JSON.parse(read('scripts/content/loda-push-program.json')).events.map(x=>x.id);
- const migration=read('scripts/supabase/migrations/loda_add_set_heads_up_and_setup_start.sql');
- assert.equal(ids.length,38);
+ const migration=read('scripts/supabase/loda-poster-alerts-constraint.sql');
+ assert.equal(ids.length,40);
  for(const id of ids)assert(migration.includes("'"+id+"'"),"DB constraint missing "+id);
  assert.match(migration,/drop constraint loda_push_schedule_event_id_check/);
  assert.match(migration,/add constraint loda_push_schedule_event_id_check/);
@@ -264,21 +264,21 @@ test('host schedules additions in batches beyond the original31 and confirms all
   const context={sendPush:async action=>{
    if(action==='schedule'){calls++;if(fail)throw Error('FAIL');return {results:[{status:'scheduled'}]};}
    const count=counts[Math.min(i++,counts.length-1)];
-   return {scheduled:Array.from({length:count-1},(_,n)=>({event_id:'e'+n,provider_notification_id:'p'+n})),additionalScheduled:[{event_id:'extra',provider_notification_id:'extra-id'}],total:38};
+   return {scheduled:Array.from({length:count-1},(_,n)=>({event_id:'e'+n,provider_notification_id:'p'+n})),additionalScheduled:[{event_id:'extra',provider_notification_id:'extra-id'}],total:40};
   },confirm:()=>true,by:id=>id==='platica-host-push-result'?{textContent:notice}:button,
   t:k=>({schedulePartial:'%COUNT% of %TOTAL%',scheduleDone:'DONE',scheduleAlready:'ALREADY'})[k]||k,
   displayPushResult:s=>{notice=s},pushError:()=>{notice='ERROR'}};
   new Script(section+';globalThis.run=schedulePush;').runInNewContext(context);
   await context.run();return {calls,notice,button};
  }
- let result=await scenario([32,37,38]);assert.equal(result.calls,2);assert.equal(result.notice,'DONE');assert.equal(result.button.disabled,false);
- result=await scenario([38]);assert.equal(result.calls,0);assert.equal(result.notice,'ALREADY');
- result=await scenario([32,32],true);assert.match(result.notice,/ERROR 32 of 38/);
+ let result=await scenario([32,37,40]);assert.equal(result.calls,2);assert.equal(result.notice,'DONE');assert.equal(result.button.disabled,false);
+ result=await scenario([40]);assert.equal(result.calls,0);assert.equal(result.notice,'ALREADY');
+ result=await scenario([32,32],true);assert.match(result.notice,/ERROR 32 of 40/);
 });
 
 test('festival copy uses wave and ola consistently in both languages', () => {
   const events = JSON.parse(admin.slice(admin.indexOf('const scheduled=')+16,admin.indexOf('] as const;')+1));
-  assert.equal(events.length,38);
+  assert.equal(events.length,40);
   for (const e of events) assert.doesNotMatch(JSON.stringify([e.heading,e.body]), /chapter|capítulo/i);
   const sunset=events.find(e=>e.id==='sunset-five-minutes');
   assert.match(sunset.body.en,/next wave starts at 7 PM/);
@@ -315,4 +315,19 @@ test('brand replacement targets only verified obsolete receipts and preserves re
   assert.equal(r.updates[0].idempotency_key,'key:water-and-bar:wave-brand-v1');
   r=await scenario({delivered:true});assert.equal(r.result.status,409);assert.deepEqual(r.calls,['GET']);
   r=await scenario({cancelFails:true});assert.equal(r.result.status,503);assert.deepEqual(r.calls,['GET','DELETE']);
+});
+
+test('poster keepsakes use free irregular late-night slots and wait until the end of the night',()=>{
+ const events=JSON.parse(read('scripts/content/loda-push-program.json')).events;
+ const first=events.find(e=>e.id==='poster-take-home');
+ const second=events.find(e=>e.id==='poster-last-reminder');
+ assert.equal(first.at,'2026-10-17T00:17:00-06:00');
+ assert.equal(second.at,'2026-10-17T01:23:00-06:00');
+ assert.equal(new Set(events.map(e=>Date.parse(e.at))).size,events.length);
+ for(const e of [first,second]){
+   assert.match(e.body.en,/at the end of the night/i);
+   assert.match(e.body.es,/al final de la noche/i);
+   assert.match(e.body.en,/La Ola de Amor/);
+   assert.match(e.body.es,/La Ola de Amor/);
+ }
 });
