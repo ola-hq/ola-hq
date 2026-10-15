@@ -275,3 +275,44 @@ test('host schedules additions in batches beyond the original31 and confirms all
  result=await scenario([38]);assert.equal(result.calls,0);assert.equal(result.notice,'ALREADY');
  result=await scenario([32,32],true);assert.match(result.notice,/ERROR 32 of 38/);
 });
+
+test('festival copy uses wave and ola consistently in both languages', () => {
+  const events = JSON.parse(admin.slice(admin.indexOf('const scheduled=')+16,admin.indexOf('] as const;')+1));
+  assert.equal(events.length,38);
+  for (const e of events) assert.doesNotMatch(JSON.stringify([e.heading,e.body]), /chapter|capítulo/i);
+  const sunset=events.find(e=>e.id==='sunset-five-minutes');
+  assert.match(sunset.body.en,/next wave starts at 7 PM/);
+  assert.match(sunset.body.es,/siguiente ola empieza a las 7 PM/);
+});
+test('brand replacement targets only verified obsolete receipts and preserves retry keys', async () => {
+  const helper=admin.slice(admin.indexOf('function replacementRevision'),admin.indexOf('Deno.serve'));
+  const js=helper.replace('eventId:string,providerId:string):string|null','eventId,providerId)').replace('event:typeof scheduled[number], oldId:string, revision:string','event,oldId,revision');
+  async function scenario({canceled=false,delivered=false,cancelFails=false}={}) {
+    const calls=[], updates=[], eqs=[];
+    const chain={error:null,eq:(key,value)=>{eqs.push([key,value]);return chain;}};
+    const scope={
+      Deno:{env:{get:()=> 'test-key'}},APP_ID:'test-app',GUIDE:'https://example.test/#updates',AbortSignal,
+      fetch:async (_url,opts)=>{calls.push(opts.method||'GET');return {ok:!cancelFails||opts.method!=='DELETE',json:async()=>opts.method==='DELETE'?{success:!cancelFails}:{id:'old',successful:delivered?1:0,canceled}};},
+      deliver:async payload=>{calls.push('deliver');updates.push(payload);return {id:'new'};},
+      db:{from:()=>({update:value=>{calls.push('save');updates.push(value);return chain;}})},
+      rememberFestivalPush:async()=>{calls.push('feed');return true;},eventKey:async id=>'key:'+id
+    };
+    new Script(js+';globalThis.branding={replacementRevision,replaceQueuedEvent};').runInNewContext(scope);
+    const api=scope.branding;
+    assert.equal(api.replacementRevision('water-and-bar','3cd403fd-f20c-4523-af59-5a40e58f0fa8'),'wave-brand-v1');
+    assert.equal(api.replacementRevision('water-and-bar','new'),null);
+    assert.equal(api.replacementRevision('sunset-five-minutes','anything'),null);
+    const result=await api.replaceQueuedEvent({id:'water-and-bar',at:'2026-10-17T06:30:00.000Z',heading:{en:'title'},body:{en:'wave'}},'old','wave-brand-v1');
+    return {result,calls,updates,eqs};
+  }
+  let r=await scenario();
+  assert.deepEqual(r.calls,['GET','DELETE','deliver','save','feed']);
+  assert.equal(r.updates[0].idempotency_key,'key:water-and-bar:wave-brand-v1');
+  assert.equal(r.updates[0].send_after,'2026-10-17T06:30:00.000Z');
+  assert.deepEqual(r.eqs,[['event_id','water-and-bar'],['provider_notification_id','old']]);
+  r=await scenario({canceled:true});
+  assert.deepEqual(r.calls,['GET','deliver','save','feed']);
+  assert.equal(r.updates[0].idempotency_key,'key:water-and-bar:wave-brand-v1');
+  r=await scenario({delivered:true});assert.equal(r.result.status,409);assert.deepEqual(r.calls,['GET']);
+  r=await scenario({cancelFails:true});assert.equal(r.result.status,503);assert.deepEqual(r.calls,['GET','DELETE']);
+});
