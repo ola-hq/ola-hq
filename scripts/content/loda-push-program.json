@@ -2,8 +2,20 @@
   "schema": 2,
   "timeZone": "America/Mexico_City",
   "status": "approved_copy_ready_to_schedule",
-  "operatorNotes": "October 15 update: add two bilingual poster take-home reminders for Saturday October 17 at 12:17 AM and 1:23 AM Guadalajara time, during Friday night's celebration. All 38 existing event definitions and accepted receipts remain intact. Current total 40; use authenticated host Schedule and verify the two new provider receipts. Existing set start alerts, five-minute heads-ups, Thursday 4 PM invitation and Friday 11:48 PM Claudias surprise remain. Twelve contingent activations remain manual-cue-only drafts.",
+  "operatorNotes": "October 15 update: add a bilingual Thursday travel-day welcome at 8 AM Guadalajara time (America/Mexico_City), using the last time requested by Jonathan. Existing 40 event definitions and accepted receipts remain intact, including two poster reminders. Current total 41; authenticated host scheduling and a new provider receipt are required. Twelve contingent activations remain manual-cue-only drafts.",
   "events": [
+    {
+      "id": "thursday-travel-day",
+      "at": "2026-10-15T08:00:00-06:00",
+      "title": {
+        "en": "IT’S TRAVEL DAY! ✈️🌊",
+        "es": "¡HOY ES DÍA DE VIAJE! ✈️🌊"
+      },
+      "body": {
+        "en": "Safe travels to everyone making their way to La Ola de Amor today. Take care of yourselves, keep your people posted, and bring all that good energy. We can’t wait for the hugs, the laughs, and having everyone together. Our wave is almost here. 🤍",
+        "es": "Buen viaje a quienes vienen rumbo a La Ola de Amor hoy. Cuídense mucho, avísenle a su gente cómo van y traigan toda esa buena vibra. Ya queremos los abrazos, las risas y tenerlos a todos juntos. Nuestra ola está por llegar. 🤍"
+      }
+    },
     {
       "id": "poster-take-home",
       "at": "2026-10-17T00:17:00-06:00",
