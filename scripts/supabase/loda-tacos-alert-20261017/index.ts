@@ -1,7 +1,7 @@
 
 const APP_ID="7a08d6ee-1181-4925-bd3f-1a7a7439aaee";
 const GUIDE="https://ola-hq.github.io/ola-hq/la-ola-de-amor/scan/guide/#updates/";
-const EVENTS=[{"id":"tacos-ready-2026-10-17","at":"2026-10-17T20:00:00.000Z","heading":{"en":"TACOS READY AT 2 PM! 🌮","es":"¡TACOS LISTOS A LAS 2 PM! 🌮"},"body":{"en":"Tacos are ready at 2 PM! 🌮🌊","es":"¡Los tacos están listos a las 2 PM! 🌮🌊"}}];
+const EVENTS=[{"id":"tacos-ready-2026-10-17","at":"2026-10-17T20:00:00.000Z","heading":{"en":"ATTENTION, LA OLA! 🌮🌊","es":"¡ATENCIÓN, LA OLA! 🌮🌊"},"body":{"en":"Hope you’re all recovering from last night and still feeling a little of that La Ola magic. 😂🤍\n\nWe’re moving just as slowly as you are over here, so take your time—there’s no rush!\n\nTacos will be ready at 2 PM! Come hungry, come comfy, and let’s keep the wave going. See you all soon for the tornaboda! 🌮🌊","es":"¡Esperamos que se estén recuperando de anoche y que todavía sientan un poquito de la magia de La Ola! 😂🤍\n\nPor acá vamos igual de lentos que ustedes, así que tómense su tiempo, ¡no hay prisa!\n\n¡Los tacos estarán listos a las 2 PM! Vengan con hambre, bien cómodos y listos para seguir la ola. ¡Nos vemos al ratito en la tornaboda! 🌮🌊"}}];
 const TASK_HASH="b8f53afd09da8f2920b3b23ae8157a002c5ff22d59b2fd486fc547251f6c9d35";
 const EXPIRES=Date.parse("2026-10-17T20:10:00Z");
 const json=(data:unknown,status=200)=>new Response(JSON.stringify(data),{status,headers:{"content-type":"application/json","cache-control":"no-store"}});
@@ -28,10 +28,23 @@ Deno.serve(async req=>{
  for(const event of EVENTS){
   const rows=await rest("loda_festival_notification_history?id=eq."+event.id+"&select=id,provider_notification_id,published_at");
   let id=rows[0]?.provider_notification_id;
+
+  if(id==="7b599679-0086-4cc1-989c-b2bf60793ff5" && input.action==="schedule"){
+    const prior=await provider("/"+id+"?app_id="+APP_ID);
+    if(prior.completed_at || prior.successful>0) throw Error("PREVIOUS_ALREADY_DELIVERED");
+    if(prior.canceled!==true){
+      const canceled=await fetch("https://api.onesignal.com/notifications/"+id+"?app_id="+APP_ID,{method:"DELETE",headers:{Authorization:"Key "+Deno.env.get("ONESIGNAL_REST_API_KEY")},signal:AbortSignal.timeout(9000)});
+      const result=await canceled.json();
+      if(!canceled.ok||result.success!==true) throw Error("PREVIOUS_CANCEL_FAILED");
+    }
+    const checked=await provider("/"+id+"?app_id="+APP_ID);
+    if(checked.canceled!==true) throw Error("PREVIOUS_CANCEL_NOT_CONFIRMED");
+    id=undefined;
+  }
   if(!id){
    if(input.action==="verify")return json({error:"NOT_SCHEDULED",event:event.id},409);
    if(Date.parse(event.at)<=Date.now()+60000)return json({error:"EVENT_TOO_CLOSE"},409);
-   const accepted=await provider("","POST",{app_id:APP_ID,target_channel:"push",headings:event.heading,contents:event.body,send_after:event.at,ttl:3600,web_url:GUIDE+event.id,filters:[{field:"tag",key:"loda_festival",relation:"=",value:"true"}],idempotency_key:await eventKey(event.id)});
+   const accepted=await provider("","POST",{app_id:APP_ID,target_channel:"push",headings:event.heading,contents:event.body,send_after:event.at,ttl:3600,web_url:GUIDE+event.id,filters:[{field:"tag",key:"loda_festival",relation:"=",value:"true"}],idempotency_key:await eventKey(event.id+":announcement-v2")});
    id=accepted.id;
    await rest("loda_festival_notification_history?on_conflict=id","POST",{id:event.id,title_en:event.heading.en,title_es:event.heading.es,body_en:event.body.en,body_es:event.body.es,published_at:event.at,kind:"festival",provider_notification_id:id});
   }
