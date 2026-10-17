@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-17T11:33:00.678Z",
+    "fetched_at": "2026-10-17T11:59:26.764Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-17T11:33:00.678Z"
+    "details_checked_at": "2026-10-17T11:59:26.764Z"
   },
   "matches": [
     {
@@ -4208,59 +4208,105 @@
       "home_score": 0,
       "away_score": 0,
       "status": "in",
-      "minute": 1,
+      "minute": 27,
       "venue": "Hill Dickinson Stadium",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878771",
       "stats": [
         {
-          "label": "Goal Difference",
+          "label": "Fouls",
           "home": "3",
+          "away": "5"
+        },
+        {
+          "label": "Yellow Cards",
+          "home": "1",
+          "away": "0"
+        },
+        {
+          "label": "Red Cards",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "Offsides",
+          "home": "2",
+          "away": "0"
+        },
+        {
+          "label": "Corner Kicks",
+          "home": "1",
+          "away": "0"
+        },
+        {
+          "label": "Saves",
+          "home": "1",
+          "away": "1"
+        },
+        {
+          "label": "Possession",
+          "home": "29.8",
+          "away": "70.2"
+        },
+        {
+          "label": "SHOTS",
+          "home": "1",
           "away": "2"
         },
         {
-          "label": "Total Goals",
-          "home": "8",
-          "away": "15"
+          "label": "ON GOAL",
+          "home": "1",
+          "away": "1"
         },
         {
-          "label": "Assists",
-          "home": "6",
-          "away": "13"
+          "label": "On Target %",
+          "home": "1.0",
+          "away": "0.5"
         },
         {
-          "label": "Goals Against",
-          "home": "5",
-          "away": "13"
+          "label": "Penalty Goals",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "Penalty Kicks Taken",
+          "home": "0",
+          "away": "0"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Armstrong (Home)"
+        }
+      ],
       "lineups": {
         "home": [
           "Jordan Pickford",
-          "James Tarkowski",
-          "Ainsley Maitland-Niles",
           "Jarrad Branthwaite",
+          "James Tarkowski",
           "Vitaliy Mykolenko",
-          "Harrison Armstrong",
-          "James Garner",
+          "Ainsley Maitland-Niles",
           "Kiernan Dewsbury-Hall",
-          "Merlin Röhl",
+          "James Garner",
+          "Harrison Armstrong",
+          "Thierno Barry",
           "Jack Grealish",
-          "Thierno Barry"
+          "Merlin Röhl"
         ],
         "away": [
           "Emiliano Martínez",
           "Levi Colwill",
           "Maxence Lacroix",
-          "Josh Acheampong",
-          "Pedro Neto",
-          "Cole Palmer",
-          "Moisés Caicedo",
-          "Morgan Rogers",
-          "Jordan Henderson",
           "Jorrel Hato",
-          "João Pedro"
+          "Josh Acheampong",
+          "Cole Palmer",
+          "Jordan Henderson",
+          "Moisés Caicedo",
+          "João Pedro",
+          "Morgan Rogers",
+          "Pedro Neto"
         ]
       }
     },
