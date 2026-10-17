@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-17T16:40:42.772Z",
+    "fetched_at": "2026-10-17T17:38:06.884Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -7281,8 +7281,8 @@
       "web_name": "McGinn",
       "element_type": 3,
       "team": 2,
-      "total_points": 27,
-      "event_points": 0,
+      "total_points": 28,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -7358,8 +7358,8 @@
       "web_name": "Alysson",
       "element_type": 3,
       "team": 2,
-      "total_points": 10,
-      "event_points": 1,
+      "total_points": 9,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7369,8 +7369,8 @@
       "web_name": "Manzambi",
       "element_type": 3,
       "team": 2,
-      "total_points": 20,
-      "event_points": 1,
+      "total_points": 28,
+      "event_points": 9,
       "status": "a"
     },
     {
@@ -7380,8 +7380,8 @@
       "web_name": "Gomes",
       "element_type": 3,
       "team": 2,
-      "total_points": 5,
-      "event_points": 1,
+      "total_points": 9,
+      "event_points": 5,
       "status": "a"
     },
     {
@@ -10715,7 +10715,7 @@
       "team": 14,
       "total_points": 4,
       "event_points": 1,
-      "status": "d"
+      "status": "i"
     },
     {
       "id": 358,
@@ -10836,7 +10836,7 @@
       "team": 14,
       "total_points": 21,
       "event_points": 1,
-      "status": "d"
+      "status": "i"
     },
     {
       "id": 369,
@@ -10869,7 +10869,7 @@
       "team": 14,
       "total_points": 8,
       "event_points": 0,
-      "status": "s"
+      "status": "a"
     },
     {
       "id": 372,
@@ -11155,7 +11155,7 @@
       "team": 15,
       "total_points": 37,
       "event_points": 1,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 398,
@@ -11703,8 +11703,8 @@
       "web_name": "Botman",
       "element_type": 2,
       "team": 17,
-      "total_points": 24,
-      "event_points": 1,
+      "total_points": 23,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11725,8 +11725,8 @@
       "web_name": "Hall",
       "element_type": 2,
       "team": 17,
-      "total_points": 32,
-      "event_points": 1,
+      "total_points": 33,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -11824,8 +11824,8 @@
       "web_name": "Joelinton",
       "element_type": 3,
       "team": 17,
-      "total_points": 1,
-      "event_points": 1,
+      "total_points": 0,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13850,7 +13850,7 @@
       "team": 11,
       "total_points": 4,
       "event_points": 1,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 643,
