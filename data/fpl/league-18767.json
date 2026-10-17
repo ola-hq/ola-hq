@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-17T18:41:09.215Z",
+    "fetched_at": "2026-10-17T19:35:19.518Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -673,9 +673,9 @@
         "event": 7,
         "finished": false,
         "league_entry_1": 95308,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 6,
         "league_entry_2": 95298,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 4,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -684,9 +684,9 @@
         "event": 7,
         "finished": false,
         "league_entry_1": 95309,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 6,
         "league_entry_2": 95307,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 19,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -695,9 +695,9 @@
         "event": 7,
         "finished": false,
         "league_entry_1": 95299,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 27,
         "league_entry_2": 95306,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 12,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -706,9 +706,9 @@
         "event": 7,
         "finished": false,
         "league_entry_1": 95300,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 18,
         "league_entry_2": 95305,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 37,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -717,9 +717,9 @@
         "event": 7,
         "finished": false,
         "league_entry_1": 95301,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 10,
         "league_entry_2": 95304,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 7,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -728,9 +728,9 @@
         "event": 7,
         "finished": false,
         "league_entry_1": 95302,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 6,
         "league_entry_2": 95303,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 23,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -7371,7 +7371,7 @@
       "team": 2,
       "total_points": 30,
       "event_points": 11,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 54,
@@ -13509,7 +13509,7 @@
       "team": 2,
       "total_points": 13,
       "event_points": 6,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 612,
