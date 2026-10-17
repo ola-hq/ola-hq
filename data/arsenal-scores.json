@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-17T16:49:52.608Z",
+    "fetched_at": "2026-10-17T17:11:45.398Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-17T16:49:52.608Z"
+    "details_checked_at": "2026-10-17T17:11:45.398Z"
   },
   "matches": [
     {
@@ -4687,22 +4687,22 @@
         "short": "AVL"
       },
       "home_score": 0,
-      "away_score": 0,
+      "away_score": 1,
       "status": "in",
-      "minute": 19,
+      "minute": 41,
       "venue": "St. James' Park",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879258",
       "stats": [
         {
           "label": "Fouls",
-          "home": "5",
-          "away": "4"
+          "home": "6",
+          "away": "9"
         },
         {
           "label": "Yellow Cards",
           "home": "2",
-          "away": "0"
+          "away": "2"
         },
         {
           "label": "Red Cards",
@@ -4711,13 +4711,13 @@
         },
         {
           "label": "Offsides",
-          "home": "1",
+          "home": "2",
           "away": "0"
         },
         {
           "label": "Corner Kicks",
-          "home": "1",
-          "away": "0"
+          "home": "2",
+          "away": "2"
         },
         {
           "label": "Saves",
@@ -4726,18 +4726,18 @@
         },
         {
           "label": "Possession",
-          "home": "45.3",
-          "away": "54.7"
+          "home": "44.5",
+          "away": "55.5"
         },
         {
           "label": "SHOTS",
-          "home": "2",
-          "away": "3"
+          "home": "6",
+          "away": "6"
         },
         {
           "label": "ON GOAL",
           "home": "0",
-          "away": "1"
+          "away": "2"
         },
         {
           "label": "On Target %",
@@ -4755,7 +4755,33 @@
           "away": "0"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Manzambi (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Botman (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Joelinton (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Alysson (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Gomes (Away)"
+        }
+      ],
       "lineups": {
         "home": [
           "Lukás Hornícek",
@@ -4764,8 +4790,8 @@
           "Lewis Hall",
           "Lewis Miley",
           "Joe Willock",
-          "Joelinton",
           "Nico González",
+          "Joelinton",
           "Yoane Wissa",
           "Harvey Barnes",
           "Matias Fernandez-Pardo"
