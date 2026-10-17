@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-17T17:11:45.398Z",
+    "fetched_at": "2026-10-17T17:46:01.395Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-17T17:11:45.398Z"
+    "details_checked_at": "2026-10-17T17:46:01.395Z"
   },
   "matches": [
     {
@@ -4689,19 +4689,19 @@
       "home_score": 0,
       "away_score": 1,
       "status": "in",
-      "minute": 41,
+      "minute": 58,
       "venue": "St. James' Park",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879258",
       "stats": [
         {
           "label": "Fouls",
-          "home": "6",
-          "away": "9"
+          "home": "8",
+          "away": "10"
         },
         {
           "label": "Yellow Cards",
-          "home": "2",
+          "home": "4",
           "away": "2"
         },
         {
@@ -4716,32 +4716,32 @@
         },
         {
           "label": "Corner Kicks",
-          "home": "2",
-          "away": "2"
+          "home": "4",
+          "away": "3"
         },
         {
           "label": "Saves",
           "home": "1",
-          "away": "0"
+          "away": "1"
         },
         {
           "label": "Possession",
-          "home": "44.5",
-          "away": "55.5"
+          "home": "43.7",
+          "away": "56.7"
         },
         {
           "label": "SHOTS",
-          "home": "6",
-          "away": "6"
+          "home": "7",
+          "away": "7"
         },
         {
           "label": "ON GOAL",
-          "home": "0",
+          "home": "1",
           "away": "2"
         },
         {
           "label": "On Target %",
-          "home": "0.0",
+          "home": "0.1",
           "away": "0.3"
         },
         {
