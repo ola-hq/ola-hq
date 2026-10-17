@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-17T11:38:40.064Z",
+    "fetched_at": "2026-10-17T12:46:52.100Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -7094,8 +7094,8 @@
       "web_name": "Martinez",
       "element_type": 1,
       "team": 6,
-      "total_points": 12,
-      "event_points": 0,
+      "total_points": 16,
+      "event_points": 4,
       "status": "a"
     },
     {
@@ -7897,8 +7897,8 @@
       "web_name": "Henderson",
       "element_type": 3,
       "team": 6,
-      "total_points": 20,
-      "event_points": 0,
+      "total_points": 21,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -8414,8 +8414,8 @@
       "web_name": "Hato",
       "element_type": 2,
       "team": 6,
-      "total_points": 8,
-      "event_points": 0,
+      "total_points": 13,
+      "event_points": 5,
       "status": "a"
     },
     {
@@ -8425,8 +8425,8 @@
       "web_name": "Colwill",
       "element_type": 2,
       "team": 6,
-      "total_points": 5,
-      "event_points": 0,
+      "total_points": 6,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -8480,8 +8480,8 @@
       "web_name": "Palmer",
       "element_type": 3,
       "team": 6,
-      "total_points": 36,
-      "event_points": 0,
+      "total_points": 37,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -8502,8 +8502,8 @@
       "web_name": "Neto",
       "element_type": 3,
       "team": 6,
-      "total_points": 19,
-      "event_points": 0,
+      "total_points": 27,
+      "event_points": 8,
       "status": "a"
     },
     {
@@ -8535,8 +8535,8 @@
       "web_name": "Caicedo",
       "element_type": 3,
       "team": 6,
-      "total_points": 3,
-      "event_points": 0,
+      "total_points": 4,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -8601,8 +8601,8 @@
       "web_name": "João Pedro",
       "element_type": 4,
       "team": 6,
-      "total_points": 45,
-      "event_points": 0,
+      "total_points": 46,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -8986,8 +8986,8 @@
       "web_name": "Lacroix",
       "element_type": 2,
       "team": 6,
-      "total_points": 15,
-      "event_points": 0,
+      "total_points": 16,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -9272,8 +9272,8 @@
       "web_name": "Pickford",
       "element_type": 1,
       "team": 9,
-      "total_points": 26,
-      "event_points": 0,
+      "total_points": 27,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -9316,8 +9316,8 @@
       "web_name": "Branthwaite",
       "element_type": 2,
       "team": 9,
-      "total_points": 30,
-      "event_points": 0,
+      "total_points": 31,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -9349,8 +9349,8 @@
       "web_name": "Mykolenko",
       "element_type": 2,
       "team": 9,
-      "total_points": 27,
-      "event_points": 0,
+      "total_points": 28,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -9382,8 +9382,8 @@
       "web_name": "Dewsbury-Hall",
       "element_type": 3,
       "team": 9,
-      "total_points": 33,
-      "event_points": 0,
+      "total_points": 34,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -9404,8 +9404,8 @@
       "web_name": "Grealish",
       "element_type": 3,
       "team": 9,
-      "total_points": 8,
-      "event_points": 0,
+      "total_points": 9,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -9415,8 +9415,8 @@
       "web_name": "Garner",
       "element_type": 3,
       "team": 9,
-      "total_points": 15,
-      "event_points": 0,
+      "total_points": 16,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -9492,8 +9492,8 @@
       "web_name": "Röhl",
       "element_type": 3,
       "team": 9,
-      "total_points": 6,
-      "event_points": 0,
+      "total_points": 7,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -9525,8 +9525,8 @@
       "web_name": "Barry",
       "element_type": 4,
       "team": 9,
-      "total_points": 26,
-      "event_points": 0,
+      "total_points": 27,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -13201,7 +13201,7 @@
       "team": 6,
       "total_points": 10,
       "event_points": 0,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 584,
@@ -13793,8 +13793,8 @@
       "web_name": "Maitland-Niles",
       "element_type": 2,
       "team": 9,
-      "total_points": 25,
-      "event_points": 0,
+      "total_points": 26,
+      "event_points": 1,
       "status": "a"
     },
     {
