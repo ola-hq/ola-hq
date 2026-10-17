@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-17T15:10:02.484Z",
+    "fetched_at": "2026-10-17T15:48:07.572Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-17T15:10:02.484Z"
+    "details_checked_at": "2026-10-17T15:48:07.572Z"
   },
   "matches": [
     {
@@ -4342,22 +4342,22 @@
         "short": "LIV"
       },
       "home_score": 1,
-      "away_score": 0,
+      "away_score": 2,
       "status": "in",
-      "minute": 4511,
+      "minute": 80,
       "venue": "Gtech Community Stadium",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879262",
       "stats": [
         {
           "label": "Fouls",
-          "home": "3",
-          "away": "9"
+          "home": "6",
+          "away": "12"
         },
         {
           "label": "Yellow Cards",
-          "home": "0",
-          "away": "1"
+          "home": "3",
+          "away": "3"
         },
         {
           "label": "Red Cards",
@@ -4372,32 +4372,32 @@
         {
           "label": "Corner Kicks",
           "home": "3",
-          "away": "3"
+          "away": "9"
         },
         {
           "label": "Saves",
-          "home": "0",
-          "away": "0"
+          "home": "2",
+          "away": "1"
         },
         {
           "label": "Possession",
-          "home": "40.6",
-          "away": "59.4"
+          "home": "34.6",
+          "away": "65.4"
         },
         {
           "label": "SHOTS",
-          "home": "6",
-          "away": "7"
+          "home": "10",
+          "away": "18"
         },
         {
           "label": "ON GOAL",
-          "home": "1",
-          "away": "0"
+          "home": "2",
+          "away": "4"
         },
         {
           "label": "On Target %",
           "home": "0.2",
-          "away": "0.0"
+          "away": "0.2"
         },
         {
           "label": "Penalty Goals",
@@ -4415,6 +4415,41 @@
           "minute": null,
           "type": "Goal",
           "description": "Goal · Lewis-Potter (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Munoz (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Isak (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Schade (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Janelt (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Thiago (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Jacquet (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Mac Allister (Away)"
         },
         {
           "minute": null,
@@ -4470,19 +4505,19 @@
       "home_score": 1,
       "away_score": 0,
       "status": "in",
-      "minute": 53,
+      "minute": 901,
       "venue": "Craven Cottage",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878770",
       "stats": [
         {
           "label": "Fouls",
-          "home": "8",
-          "away": "8"
+          "home": "12",
+          "away": "10"
         },
         {
           "label": "Yellow Cards",
-          "home": "1",
+          "home": "2",
           "away": "2"
         },
         {
@@ -4497,27 +4532,27 @@
         },
         {
           "label": "Corner Kicks",
-          "home": "7",
+          "home": "11",
           "away": "2"
         },
         {
           "label": "Saves",
           "home": "0",
-          "away": "2"
+          "away": "4"
         },
         {
           "label": "Possession",
-          "home": "75.8",
-          "away": "24.2"
+          "home": "76.5",
+          "away": "23.5"
         },
         {
           "label": "SHOTS",
-          "home": "10",
-          "away": "2"
+          "home": "17",
+          "away": "4"
         },
         {
           "label": "ON GOAL",
-          "home": "3",
+          "home": "5",
           "away": "0"
         },
         {
@@ -4541,6 +4576,11 @@
           "minute": null,
           "type": "Goal",
           "description": "Goal · Iwobi (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Berge (Home)"
         },
         {
           "minute": null,
@@ -4598,10 +4638,10 @@
         "name": "Ipswich Town",
         "short": "IPS"
       },
-      "home_score": 2,
+      "home_score": 4,
       "away_score": 1,
       "status": "in",
-      "minute": 45,
+      "minute": 85,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -4610,17 +4650,22 @@
         {
           "minute": null,
           "type": "Goal",
+          "description": "Goal · Haaland ×3 (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
           "description": "Goal · Foden (Home)"
         },
         {
           "minute": null,
           "type": "Goal",
-          "description": "Goal · Haaland (Home)"
+          "description": "Goal · Maeda (Away)"
         },
         {
           "minute": null,
-          "type": "Goal",
-          "description": "Goal · Maeda (Away)"
+          "type": "Yellow card",
+          "description": "Yellow card · Ouattara (Away)"
         }
       ],
       "lineups": null
@@ -4643,7 +4688,53 @@
       "venue": "St. James' Park",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879258/aston-villa-newcastle-united",
-      "stats": [],
+      "stats": [
+        {
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "wonCorners",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "goalAssists",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "possessionPct",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "shotAssists",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "shotsOnTarget",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "totalGoals",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "totalShots",
+          "home": "0",
+          "away": "0"
+        }
+      ],
       "events": [],
       "lineups": null
     },
