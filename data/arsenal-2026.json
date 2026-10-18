@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-arsenal-v1",
     "mode": "Auto-refreshed ESPN schedule",
-    "updated_at": "2026-10-18T17:01:09.824Z",
+    "updated_at": "2026-10-18T17:56:43.062Z",
     "updated_display": "Oct 6, 2026",
     "architecture": [
       "live source",
@@ -959,6 +959,10 @@
         "url": "https://fantasy.premierleague.com/api/fixtures/"
       },
       {
+        "label": "Premier League official fixture feed",
+        "url": "https://fantasy.premierleague.com/api/fixtures/"
+      },
+      {
         "label": "ESPN Arsenal schedule (automated, unofficial)",
         "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/359/schedule"
       },
@@ -970,9 +974,9 @@
     "refresh_strategy": "scheduled",
     "schedule_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/359/schedule?season=2026",
     "league_source": "https://site.api.espn.com/apis/v2/sports/soccer/eng.1/standings",
-    "league_updated_at": "2026-10-18T17:01:09.824Z",
+    "league_updated_at": "2026-10-18T17:56:43.062Z",
     "fixture_source": "automated",
-    "fixture_updated_at": "2026-10-18T17:01:09.824Z",
+    "fixture_updated_at": "2026-10-18T17:56:43.062Z",
     "official_fixture_feed": "https://fantasy.premierleague.com/api/fixtures/",
     "match_link_source": "Verified Premier League match centre"
   },
@@ -989,27 +993,27 @@
       "match_center_url": null
     },
     "latest_result": {
-      "opponent": "Leeds United",
-      "venue": "Home",
-      "score": "2–1",
+      "opponent": "Nottingham Forest",
+      "venue": "Away",
+      "score": "1–0",
       "result": "W"
     },
     "league": {
       "competition": "Premier League",
-      "position": 3,
-      "points": 15,
-      "played": 6,
-      "wins": 5,
+      "position": 2,
+      "points": 18,
+      "played": 7,
+      "wins": 6,
       "draws": 0,
       "losses": 1,
-      "gf": 10,
+      "gf": 11,
       "ga": 5,
-      "gd": 5
+      "gd": 6
     },
     "recent_form": [
+      "L",
+      "L",
       "W",
-      "L",
-      "L",
       "W",
       "W"
     ],
