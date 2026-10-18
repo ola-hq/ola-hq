@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-18T17:38:10.721Z",
+    "fetched_at": "2026-10-18T19:35:33.915Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -673,9 +673,9 @@
         "event": 7,
         "finished": false,
         "league_entry_1": 95308,
-        "league_entry_1_points": 6,
+        "league_entry_1_points": 45,
         "league_entry_2": 95298,
-        "league_entry_2_points": 4,
+        "league_entry_2_points": 32,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -684,7 +684,7 @@
         "event": 7,
         "finished": false,
         "league_entry_1": 95309,
-        "league_entry_1_points": 6,
+        "league_entry_1_points": 23,
         "league_entry_2": 95307,
         "league_entry_2_points": 19,
         "started": true,
@@ -695,9 +695,9 @@
         "event": 7,
         "finished": false,
         "league_entry_1": 95299,
-        "league_entry_1_points": 27,
+        "league_entry_1_points": 34,
         "league_entry_2": 95306,
-        "league_entry_2_points": 12,
+        "league_entry_2_points": 33,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -706,9 +706,9 @@
         "event": 7,
         "finished": false,
         "league_entry_1": 95300,
-        "league_entry_1_points": 18,
+        "league_entry_1_points": 40,
         "league_entry_2": 95305,
-        "league_entry_2_points": 37,
+        "league_entry_2_points": 38,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -717,9 +717,9 @@
         "event": 7,
         "finished": false,
         "league_entry_1": 95301,
-        "league_entry_1_points": 10,
+        "league_entry_1_points": 34,
         "league_entry_2": 95304,
-        "league_entry_2_points": 7,
+        "league_entry_2_points": 51,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -728,9 +728,9 @@
         "event": 7,
         "finished": false,
         "league_entry_1": 95302,
-        "league_entry_1_points": 6,
+        "league_entry_1_points": 23,
         "league_entry_2": 95303,
-        "league_entry_2_points": 23,
+        "league_entry_2_points": 36,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -5703,6 +5703,12 @@
       },
       {
         "element": 667,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "a"
+      },
+      {
+        "element": 668,
         "in_accepted_trade": false,
         "owner": null,
         "status": "a"
@@ -12748,8 +12754,8 @@
       "web_name": "E.Le Fée",
       "element_type": 3,
       "team": 20,
-      "total_points": 22,
-      "event_points": 2,
+      "total_points": 24,
+      "event_points": 4,
       "status": "a"
     },
     {
@@ -14125,6 +14131,17 @@
       "team": 17,
       "total_points": 0,
       "event_points": 0,
+      "status": "a"
+    },
+    {
+      "id": 668,
+      "first_name": "Tymur",
+      "second_name": "Tutierov",
+      "web_name": "Tutierov",
+      "element_type": 3,
+      "team": 20,
+      "total_points": 1,
+      "event_points": 1,
       "status": "a"
     }
   ],
