@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-18T13:18:57.530Z",
+    "fetched_at": "2026-10-18T13:49:09.022Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-18T13:18:57.530Z"
+    "details_checked_at": "2026-10-18T13:49:09.022Z"
   },
   "matches": [
     {
@@ -4830,7 +4830,7 @@
       "home_score": 1,
       "away_score": 0,
       "status": "in",
-      "minute": 13,
+      "minute": 44,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -4840,6 +4840,21 @@
           "minute": null,
           "type": "Goal",
           "description": "Goal · Tavernier (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Silva (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Alderete (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Red card",
+          "description": "Red card · Danso (Away)"
         }
       ],
       "lineups": null
@@ -4858,7 +4873,7 @@
       "home_score": 3,
       "away_score": 0,
       "status": "in",
-      "minute": 13,
+      "minute": 41,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -4878,6 +4893,11 @@
           "minute": null,
           "type": "Own goal",
           "description": "Own goal · Canvot (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Groß (Home)"
         }
       ],
       "lineups": null
@@ -4894,14 +4914,30 @@
         "short": "MUN"
       },
       "home_score": 0,
-      "away_score": 0,
+      "away_score": 1,
       "status": "in",
-      "minute": 12,
+      "minute": 44,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Mbeumo (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Gudmundsson (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · B.Fernandes (Away)"
+        }
+      ],
       "lineups": null
     },
     {
