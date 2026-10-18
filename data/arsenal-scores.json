@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-18T14:10:10.503Z",
+    "fetched_at": "2026-10-18T14:48:51.079Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-18T14:10:10.503Z"
+    "details_checked_at": "2026-10-18T14:48:51.079Z"
   },
   "matches": [
     {
@@ -4827,10 +4827,10 @@
         "name": "Sunderland",
         "short": "SUN"
       },
-      "home_score": 1,
+      "home_score": 2,
       "away_score": 0,
       "status": "in",
-      "minute": 45,
+      "minute": 81,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -4843,8 +4843,18 @@
         },
         {
           "minute": null,
+          "type": "Goal",
+          "description": "Goal · Evanilson (Home)"
+        },
+        {
+          "minute": null,
           "type": "Yellow card",
           "description": "Yellow card · Cook (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Christie (Home)"
         },
         {
           "minute": null,
@@ -4855,6 +4865,11 @@
           "minute": null,
           "type": "Yellow card",
           "description": "Yellow card · Alderete (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Rigg (Away)"
         },
         {
           "minute": null,
@@ -4875,15 +4890,20 @@
         "name": "Crystal Palace",
         "short": "CRY"
       },
-      "home_score": 3,
+      "home_score": 5,
       "away_score": 0,
       "status": "in",
-      "minute": 45,
+      "minute": 84,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
       "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Hinshelwood (Home)"
+        },
         {
           "minute": null,
           "type": "Goal",
@@ -4896,6 +4916,11 @@
         },
         {
           "minute": null,
+          "type": "Goal",
+          "description": "Goal · Kostoulas (Home)"
+        },
+        {
+          "minute": null,
           "type": "Own goal",
           "description": "Own goal · Canvot (Away)"
         },
@@ -4903,6 +4928,16 @@
           "minute": null,
           "type": "Yellow card",
           "description": "Yellow card · Groß (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Andrés (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Kamada (Away)"
         }
       ],
       "lineups": null
@@ -4918,15 +4953,20 @@
         "name": "Man Utd",
         "short": "MUN"
       },
-      "home_score": 0,
+      "home_score": 1,
       "away_score": 1,
       "status": "in",
-      "minute": 45,
+      "minute": 84,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
       "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Calvert-Lewin (Home)"
+        },
         {
           "minute": null,
           "type": "Goal",
