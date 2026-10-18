@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-18T19:35:33.915Z",
+    "fetched_at": "2026-10-18T20:38:39.302Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -8046,8 +8046,8 @@
       "web_name": "Boscagli",
       "element_type": 2,
       "team": 5,
-      "total_points": 35,
-      "event_points": 11,
+      "total_points": 34,
+      "event_points": 10,
       "status": "a"
     },
     {
