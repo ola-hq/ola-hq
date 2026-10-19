@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-19T21:42:56.940Z",
+    "fetched_at": "2026-10-19T22:41:30.136Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -675,7 +675,7 @@
         "league_entry_1": 95308,
         "league_entry_1_points": 45,
         "league_entry_2": 95298,
-        "league_entry_2_points": 32,
+        "league_entry_2_points": 34,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -684,9 +684,9 @@
         "event": 7,
         "finished": false,
         "league_entry_1": 95309,
-        "league_entry_1_points": 23,
+        "league_entry_1_points": 32,
         "league_entry_2": 95307,
-        "league_entry_2_points": 19,
+        "league_entry_2_points": 22,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -695,9 +695,9 @@
         "event": 7,
         "finished": false,
         "league_entry_1": 95299,
-        "league_entry_1_points": 34,
+        "league_entry_1_points": 36,
         "league_entry_2": 95306,
-        "league_entry_2_points": 33,
+        "league_entry_2_points": 37,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -717,9 +717,9 @@
         "event": 7,
         "finished": false,
         "league_entry_1": 95301,
-        "league_entry_1_points": 34,
+        "league_entry_1_points": 38,
         "league_entry_2": 95304,
-        "league_entry_2_points": 51,
+        "league_entry_2_points": 57,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -8411,7 +8411,7 @@
       "team": 19,
       "total_points": 3,
       "event_points": 2,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 148,
@@ -11205,7 +11205,7 @@
       "team": 19,
       "total_points": 18,
       "event_points": 9,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 402,
@@ -12316,7 +12316,7 @@
       "team": 19,
       "total_points": 22,
       "event_points": 5,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 503,
@@ -12360,7 +12360,7 @@
       "team": 19,
       "total_points": 9,
       "event_points": 0,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 507,
