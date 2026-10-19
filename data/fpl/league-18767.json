@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-19T20:43:36.551Z",
+    "fetched_at": "2026-10-19T21:42:56.940Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -8024,8 +8024,8 @@
       "web_name": "Van Hecke",
       "element_type": 2,
       "team": 19,
-      "total_points": 29,
-      "event_points": 2,
+      "total_points": 31,
+      "event_points": 4,
       "status": "a"
     },
     {
@@ -8695,8 +8695,8 @@
       "web_name": "Thomas",
       "element_type": 2,
       "team": 7,
-      "total_points": 29,
-      "event_points": 1,
+      "total_points": 31,
+      "event_points": 3,
       "status": "a"
     },
     {
@@ -8739,8 +8739,8 @@
       "web_name": "Kesler-Hayden",
       "element_type": 2,
       "team": 7,
-      "total_points": 0,
-      "event_points": 0,
+      "total_points": 1,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -8926,8 +8926,8 @@
       "web_name": "Thomas-Asante",
       "element_type": 4,
       "team": 7,
-      "total_points": 20,
-      "event_points": 6,
+      "total_points": 19,
+      "event_points": 5,
       "status": "a"
     },
     {
@@ -11797,8 +11797,8 @@
       "web_name": "Tonali",
       "element_type": 3,
       "team": 19,
-      "total_points": 23,
-      "event_points": 2,
+      "total_points": 25,
+      "event_points": 4,
       "status": "a"
     },
     {
@@ -12380,8 +12380,8 @@
       "web_name": "Davies",
       "element_type": 2,
       "team": 19,
-      "total_points": 1,
-      "event_points": 1,
+      "total_points": 7,
+      "event_points": 7,
       "status": "a"
     },
     {
@@ -12424,8 +12424,8 @@
       "web_name": "Kudus",
       "element_type": 3,
       "team": 19,
-      "total_points": 15,
-      "event_points": 5,
+      "total_points": 16,
+      "event_points": 6,
       "status": "a"
     },
     {
@@ -12446,8 +12446,8 @@
       "web_name": "Tel",
       "element_type": 3,
       "team": 19,
-      "total_points": 8,
-      "event_points": 0,
+      "total_points": 9,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -12523,8 +12523,8 @@
       "web_name": "Kulusevski",
       "element_type": 3,
       "team": 19,
-      "total_points": 0,
-      "event_points": 0,
+      "total_points": 1,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -12578,8 +12578,8 @@
       "web_name": "Solanke",
       "element_type": 4,
       "team": 19,
-      "total_points": 15,
-      "event_points": 1,
+      "total_points": 18,
+      "event_points": 4,
       "status": "a"
     },
     {
