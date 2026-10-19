@@ -1,7 +1,7 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-19T15:23:20.495Z",
+    "fetched_at": "2026-10-19T15:59:37.299Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
@@ -6066,96 +6066,8 @@
       "lineups": null
     },
     {
-      "id": "pl-121",
-      "kickoff": "2026-12-02T20:00:00.000Z",
-      "home": {
-        "name": "Aston Villa",
-        "short": "AVL"
-      },
-      "away": {
-        "name": "Everton",
-        "short": "EVE"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-122",
-      "kickoff": "2026-12-02T20:00:00.000Z",
-      "home": {
-        "name": "Bournemouth",
-        "short": "BOU"
-      },
-      "away": {
-        "name": "Brighton",
-        "short": "BHA"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-123",
-      "kickoff": "2026-12-02T20:00:00.000Z",
-      "home": {
-        "name": "Brentford",
-        "short": "BRE"
-      },
-      "away": {
-        "name": "Arsenal",
-        "short": "ARS"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-124",
-      "kickoff": "2026-12-02T20:00:00.000Z",
-      "home": {
-        "name": "Chelsea",
-        "short": "CHE"
-      },
-      "away": {
-        "name": "Crystal Palace",
-        "short": "CRY"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
       "id": "pl-125",
-      "kickoff": "2026-12-02T20:00:00.000Z",
+      "kickoff": "2026-12-01T20:00:00.000Z",
       "home": {
         "name": "Coventry City",
         "short": "COV"
@@ -6176,8 +6088,30 @@
       "lineups": null
     },
     {
+      "id": "pl-124",
+      "kickoff": "2026-12-02T19:30:00.000Z",
+      "home": {
+        "name": "Chelsea",
+        "short": "CHE"
+      },
+      "away": {
+        "name": "Crystal Palace",
+        "short": "CRY"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
       "id": "pl-126",
-      "kickoff": "2026-12-02T20:00:00.000Z",
+      "kickoff": "2026-12-02T19:30:00.000Z",
       "home": {
         "name": "Hull City",
         "short": "HUL"
@@ -6199,7 +6133,7 @@
     },
     {
       "id": "pl-127",
-      "kickoff": "2026-12-02T20:00:00.000Z",
+      "kickoff": "2026-12-02T19:30:00.000Z",
       "home": {
         "name": "Liverpool",
         "short": "LIV"
@@ -6221,7 +6155,7 @@
     },
     {
       "id": "pl-128",
-      "kickoff": "2026-12-02T20:00:00.000Z",
+      "kickoff": "2026-12-02T19:30:00.000Z",
       "home": {
         "name": "Man City",
         "short": "MCI"
@@ -6242,8 +6176,74 @@
       "lineups": null
     },
     {
+      "id": "pl-121",
+      "kickoff": "2026-12-02T20:15:00.000Z",
+      "home": {
+        "name": "Aston Villa",
+        "short": "AVL"
+      },
+      "away": {
+        "name": "Everton",
+        "short": "EVE"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-122",
+      "kickoff": "2026-12-02T20:15:00.000Z",
+      "home": {
+        "name": "Bournemouth",
+        "short": "BOU"
+      },
+      "away": {
+        "name": "Brighton",
+        "short": "BHA"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-123",
+      "kickoff": "2026-12-02T20:15:00.000Z",
+      "home": {
+        "name": "Brentford",
+        "short": "BRE"
+      },
+      "away": {
+        "name": "Arsenal",
+        "short": "ARS"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
       "id": "pl-129",
-      "kickoff": "2026-12-02T20:00:00.000Z",
+      "kickoff": "2026-12-02T20:15:00.000Z",
       "home": {
         "name": "Newcastle",
         "short": "NEW"
@@ -6265,7 +6265,7 @@
     },
     {
       "id": "pl-130",
-      "kickoff": "2026-12-02T20:00:00.000Z",
+      "kickoff": "2026-12-03T20:00:00.000Z",
       "home": {
         "name": "Spurs",
         "short": "TOT"
@@ -6273,6 +6273,28 @@
       "away": {
         "name": "Fulham",
         "short": "FUL"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-134",
+      "kickoff": "2026-12-05T12:30:00.000Z",
+      "home": {
+        "name": "Chelsea",
+        "short": "CHE"
+      },
+      "away": {
+        "name": "Liverpool",
+        "short": "LIV"
       },
       "home_score": null,
       "away_score": null,
@@ -6330,72 +6352,6 @@
       "lineups": null
     },
     {
-      "id": "pl-133",
-      "kickoff": "2026-12-05T15:00:00.000Z",
-      "home": {
-        "name": "Brentford",
-        "short": "BRE"
-      },
-      "away": {
-        "name": "Man City",
-        "short": "MCI"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-134",
-      "kickoff": "2026-12-05T15:00:00.000Z",
-      "home": {
-        "name": "Chelsea",
-        "short": "CHE"
-      },
-      "away": {
-        "name": "Liverpool",
-        "short": "LIV"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-135",
-      "kickoff": "2026-12-05T15:00:00.000Z",
-      "home": {
-        "name": "Everton",
-        "short": "EVE"
-      },
-      "away": {
-        "name": "Fulham",
-        "short": "FUL"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
       "id": "pl-136",
       "kickoff": "2026-12-05T15:00:00.000Z",
       "home": {
@@ -6440,30 +6396,8 @@
       "lineups": null
     },
     {
-      "id": "pl-138",
-      "kickoff": "2026-12-05T15:00:00.000Z",
-      "home": {
-        "name": "Newcastle",
-        "short": "NEW"
-      },
-      "away": {
-        "name": "Sunderland",
-        "short": "SUN"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
       "id": "pl-139",
-      "kickoff": "2026-12-05T15:00:00.000Z",
+      "kickoff": "2026-12-05T17:30:00.000Z",
       "home": {
         "name": "Nott'm Forest",
         "short": "NFO"
@@ -6484,8 +6418,74 @@
       "lineups": null
     },
     {
+      "id": "pl-133",
+      "kickoff": "2026-12-05T20:00:00.000Z",
+      "home": {
+        "name": "Brentford",
+        "short": "BRE"
+      },
+      "away": {
+        "name": "Man City",
+        "short": "MCI"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-135",
+      "kickoff": "2026-12-06T14:00:00.000Z",
+      "home": {
+        "name": "Everton",
+        "short": "EVE"
+      },
+      "away": {
+        "name": "Fulham",
+        "short": "FUL"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-138",
+      "kickoff": "2026-12-06T14:00:00.000Z",
+      "home": {
+        "name": "Newcastle",
+        "short": "NEW"
+      },
+      "away": {
+        "name": "Sunderland",
+        "short": "SUN"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
       "id": "pl-140",
-      "kickoff": "2026-12-05T15:00:00.000Z",
+      "kickoff": "2026-12-06T16:30:00.000Z",
       "home": {
         "name": "Spurs",
         "short": "TOT"
@@ -6493,94 +6493,6 @@
       "away": {
         "name": "Arsenal",
         "short": "ARS"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-141",
-      "kickoff": "2026-12-12T15:00:00.000Z",
-      "home": {
-        "name": "Arsenal",
-        "short": "ARS"
-      },
-      "away": {
-        "name": "Bournemouth",
-        "short": "BOU"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": "Emirates Stadium",
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-142",
-      "kickoff": "2026-12-12T15:00:00.000Z",
-      "home": {
-        "name": "Brighton",
-        "short": "BHA"
-      },
-      "away": {
-        "name": "Everton",
-        "short": "EVE"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-143",
-      "kickoff": "2026-12-12T15:00:00.000Z",
-      "home": {
-        "name": "Coventry City",
-        "short": "COV"
-      },
-      "away": {
-        "name": "Aston Villa",
-        "short": "AVL"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-144",
-      "kickoff": "2026-12-12T15:00:00.000Z",
-      "home": {
-        "name": "Crystal Palace",
-        "short": "CRY"
-      },
-      "away": {
-        "name": "Man Utd",
-        "short": "MUN"
       },
       "home_score": null,
       "away_score": null,
@@ -6603,28 +6515,6 @@
       "away": {
         "name": "Brentford",
         "short": "BRE"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-146",
-      "kickoff": "2026-12-12T15:00:00.000Z",
-      "home": {
-        "name": "Hull City",
-        "short": "HUL"
-      },
-      "away": {
-        "name": "Spurs",
-        "short": "TOT"
       },
       "home_score": null,
       "away_score": null,
@@ -6683,7 +6573,7 @@
     },
     {
       "id": "pl-149",
-      "kickoff": "2026-12-12T15:00:00.000Z",
+      "kickoff": "2026-12-12T17:30:00.000Z",
       "home": {
         "name": "Man City",
         "short": "MCI"
@@ -6704,8 +6594,52 @@
       "lineups": null
     },
     {
+      "id": "pl-141",
+      "kickoff": "2026-12-13T14:00:00.000Z",
+      "home": {
+        "name": "Arsenal",
+        "short": "ARS"
+      },
+      "away": {
+        "name": "Bournemouth",
+        "short": "BOU"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": "Emirates Stadium",
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-142",
+      "kickoff": "2026-12-13T14:00:00.000Z",
+      "home": {
+        "name": "Brighton",
+        "short": "BHA"
+      },
+      "away": {
+        "name": "Everton",
+        "short": "EVE"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
       "id": "pl-150",
-      "kickoff": "2026-12-12T15:00:00.000Z",
+      "kickoff": "2026-12-13T14:00:00.000Z",
       "home": {
         "name": "Sunderland",
         "short": "SUN"
@@ -6726,11 +6660,33 @@
       "lineups": null
     },
     {
-      "id": "pl-151",
-      "kickoff": "2026-12-19T15:00:00.000Z",
+      "id": "pl-143",
+      "kickoff": "2026-12-13T16:30:00.000Z",
       "home": {
-        "name": "Arsenal",
-        "short": "ARS"
+        "name": "Coventry City",
+        "short": "COV"
+      },
+      "away": {
+        "name": "Aston Villa",
+        "short": "AVL"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-144",
+      "kickoff": "2026-12-13T19:00:00.000Z",
+      "home": {
+        "name": "Crystal Palace",
+        "short": "CRY"
       },
       "away": {
         "name": "Man Utd",
@@ -6740,7 +6696,51 @@
       "away_score": null,
       "status": "pre",
       "minute": null,
-      "venue": "Emirates Stadium",
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-146",
+      "kickoff": "2026-12-14T20:00:00.000Z",
+      "home": {
+        "name": "Hull City",
+        "short": "HUL"
+      },
+      "away": {
+        "name": "Spurs",
+        "short": "TOT"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-153",
+      "kickoff": "2026-12-19T12:30:00.000Z",
+      "home": {
+        "name": "Brentford",
+        "short": "BRE"
+      },
+      "away": {
+        "name": "Newcastle",
+        "short": "NEW"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
@@ -6770,72 +6770,6 @@
       "lineups": null
     },
     {
-      "id": "pl-153",
-      "kickoff": "2026-12-19T15:00:00.000Z",
-      "home": {
-        "name": "Brentford",
-        "short": "BRE"
-      },
-      "away": {
-        "name": "Newcastle",
-        "short": "NEW"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-154",
-      "kickoff": "2026-12-19T15:00:00.000Z",
-      "home": {
-        "name": "Brighton",
-        "short": "BHA"
-      },
-      "away": {
-        "name": "Ipswich Town",
-        "short": "IPS"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-155",
-      "kickoff": "2026-12-19T15:00:00.000Z",
-      "home": {
-        "name": "Chelsea",
-        "short": "CHE"
-      },
-      "away": {
-        "name": "Aston Villa",
-        "short": "AVL"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
       "id": "pl-156",
       "kickoff": "2026-12-19T15:00:00.000Z",
       "home": {
@@ -6845,28 +6779,6 @@
       "away": {
         "name": "Fulham",
         "short": "FUL"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-157",
-      "kickoff": "2026-12-19T15:00:00.000Z",
-      "home": {
-        "name": "Liverpool",
-        "short": "LIV"
-      },
-      "away": {
-        "name": "Spurs",
-        "short": "TOT"
       },
       "home_score": null,
       "away_score": null,
@@ -6924,8 +6836,52 @@
       "lineups": null
     },
     {
+      "id": "pl-157",
+      "kickoff": "2026-12-19T17:30:00.000Z",
+      "home": {
+        "name": "Liverpool",
+        "short": "LIV"
+      },
+      "away": {
+        "name": "Spurs",
+        "short": "TOT"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-154",
+      "kickoff": "2026-12-20T14:00:00.000Z",
+      "home": {
+        "name": "Brighton",
+        "short": "BHA"
+      },
+      "away": {
+        "name": "Ipswich Town",
+        "short": "IPS"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
       "id": "pl-160",
-      "kickoff": "2026-12-19T15:00:00.000Z",
+      "kickoff": "2026-12-20T14:00:00.000Z",
       "home": {
         "name": "Sunderland",
         "short": "SUN"
@@ -6933,6 +6889,50 @@
       "away": {
         "name": "Crystal Palace",
         "short": "CRY"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-151",
+      "kickoff": "2026-12-20T16:30:00.000Z",
+      "home": {
+        "name": "Arsenal",
+        "short": "ARS"
+      },
+      "away": {
+        "name": "Man Utd",
+        "short": "MUN"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": "Emirates Stadium",
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-155",
+      "kickoff": "2026-12-21T20:00:00.000Z",
+      "home": {
+        "name": "Chelsea",
+        "short": "CHE"
+      },
+      "away": {
+        "name": "Aston Villa",
+        "short": "AVL"
       },
       "home_score": null,
       "away_score": null,
