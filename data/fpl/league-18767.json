@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-19T18:52:46.302Z",
+    "fetched_at": "2026-10-19T19:45:09.544Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -7793,8 +7793,8 @@
       "web_name": "Pinnock",
       "element_type": 2,
       "team": 7,
-      "total_points": 16,
-      "event_points": 0,
+      "total_points": 17,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -8002,8 +8002,8 @@
       "web_name": "Rushworth",
       "element_type": 1,
       "team": 7,
-      "total_points": 19,
-      "event_points": 0,
+      "total_points": 20,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -8024,8 +8024,8 @@
       "web_name": "Van Hecke",
       "element_type": 2,
       "team": 19,
-      "total_points": 27,
-      "event_points": 0,
+      "total_points": 29,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -8409,8 +8409,8 @@
       "web_name": "Tosin",
       "element_type": 2,
       "team": 19,
-      "total_points": 1,
-      "event_points": 0,
+      "total_points": 2,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -8695,8 +8695,8 @@
       "web_name": "Thomas",
       "element_type": 2,
       "team": 7,
-      "total_points": 28,
-      "event_points": 0,
+      "total_points": 29,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -8717,8 +8717,8 @@
       "web_name": "van Ewijk",
       "element_type": 2,
       "team": 7,
-      "total_points": 12,
-      "event_points": 0,
+      "total_points": 13,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -8728,8 +8728,8 @@
       "web_name": "Dasilva",
       "element_type": 2,
       "team": 7,
-      "total_points": 25,
-      "event_points": 0,
+      "total_points": 26,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -8805,8 +8805,8 @@
       "web_name": "Rudoni",
       "element_type": 3,
       "team": 7,
-      "total_points": 20,
-      "event_points": 0,
+      "total_points": 21,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -8816,8 +8816,8 @@
       "web_name": "Grimes",
       "element_type": 3,
       "team": 7,
-      "total_points": 13,
-      "event_points": 0,
+      "total_points": 14,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -8827,8 +8827,8 @@
       "web_name": "Sakamoto",
       "element_type": 3,
       "team": 7,
-      "total_points": 2,
-      "event_points": 0,
+      "total_points": 3,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -8926,8 +8926,8 @@
       "web_name": "Thomas-Asante",
       "element_type": 4,
       "team": 7,
-      "total_points": 14,
-      "event_points": 0,
+      "total_points": 15,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -11203,8 +11203,8 @@
       "web_name": "Marmoush",
       "element_type": 4,
       "team": 19,
-      "total_points": 9,
-      "event_points": 0,
+      "total_points": 10,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -11797,8 +11797,8 @@
       "web_name": "Tonali",
       "element_type": 3,
       "team": 19,
-      "total_points": 21,
-      "event_points": 0,
+      "total_points": 22,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -12248,8 +12248,8 @@
       "web_name": "Kinsky",
       "element_type": 1,
       "team": 19,
-      "total_points": 21,
-      "event_points": 0,
+      "total_points": 22,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -12314,8 +12314,8 @@
       "web_name": "Robertson",
       "element_type": 2,
       "team": 19,
-      "total_points": 17,
-      "event_points": 0,
+      "total_points": 18,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -12325,8 +12325,8 @@
       "web_name": "Van de Ven",
       "element_type": 2,
       "team": 19,
-      "total_points": 17,
-      "event_points": 0,
+      "total_points": 18,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -12424,8 +12424,8 @@
       "web_name": "Kudus",
       "element_type": 3,
       "team": 19,
-      "total_points": 10,
-      "event_points": 0,
+      "total_points": 16,
+      "event_points": 6,
       "status": "a"
     },
     {
@@ -12457,8 +12457,8 @@
       "web_name": "Maddison",
       "element_type": 3,
       "team": 19,
-      "total_points": 4,
-      "event_points": 0,
+      "total_points": 13,
+      "event_points": 9,
       "status": "a"
     },
     {
@@ -12534,8 +12534,8 @@
       "web_name": "Gray",
       "element_type": 3,
       "team": 19,
-      "total_points": 12,
-      "event_points": 0,
+      "total_points": 13,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -13370,8 +13370,8 @@
       "web_name": "Cherif",
       "element_type": 4,
       "team": 7,
-      "total_points": 13,
-      "event_points": 0,
+      "total_points": 14,
+      "event_points": 1,
       "status": "a"
     },
     {
