@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-18T23:35:23.248Z",
+    "fetched_at": "2026-10-19T00:55:13.697Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -6935,8 +6935,8 @@
       "web_name": "Rice",
       "element_type": 3,
       "team": 1,
-      "total_points": 34,
-      "event_points": 7,
+      "total_points": 36,
+      "event_points": 9,
       "status": "a"
     },
     {
