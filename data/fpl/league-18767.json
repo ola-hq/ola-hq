@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-20T07:50:16.587Z",
+    "fetched_at": "2026-10-20T08:46:18.834Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -34,35 +34,35 @@
         "entry_id": 95043,
         "entry_name": "Atzenal",
         "short_name": "MS",
-        "waiver_pick": 11
+        "waiver_pick": 10
       },
       {
         "id": 95299,
         "entry_id": 95044,
         "entry_name": "Red Devils of SD",
         "short_name": "JT",
-        "waiver_pick": 7
+        "waiver_pick": 8
       },
       {
         "id": 95300,
         "entry_id": 95045,
         "entry_name": "LaLoca de Futbol*",
         "short_name": "LR",
-        "waiver_pick": 9
+        "waiver_pick": 6
       },
       {
         "id": 95301,
         "entry_id": 95046,
         "entry_name": "Le Fée Fi Fo Fum **",
         "short_name": "JJ",
-        "waiver_pick": 6
+        "waiver_pick": 5
       },
       {
         "id": 95302,
         "entry_id": 95047,
         "entry_name": "Earth Wind & Maguire",
         "short_name": "RP",
-        "waiver_pick": 3
+        "waiver_pick": 2
       },
       {
         "id": 95303,
@@ -76,21 +76,21 @@
         "entry_id": 95049,
         "entry_name": "La Ola FC",
         "short_name": "JL",
-        "waiver_pick": 10
+        "waiver_pick": 11
       },
       {
         "id": 95305,
         "entry_id": 95050,
         "entry_name": "Crack FC",
         "short_name": "EF",
-        "waiver_pick": 5
+        "waiver_pick": 7
       },
       {
         "id": 95306,
         "entry_id": 95051,
         "entry_name": "Saka mis chichis",
         "short_name": "FM",
-        "waiver_pick": 4
+        "waiver_pick": 3
       },
       {
         "id": 95307,
@@ -104,14 +104,14 @@
         "entry_id": 95053,
         "entry_name": "Futbol Not Saka**",
         "short_name": "CS",
-        "waiver_pick": 8
+        "waiver_pick": 9
       },
       {
         "id": 95309,
         "entry_id": 95054,
         "entry_name": "Bruno Bonito FC",
         "short_name": "JJ1",
-        "waiver_pick": 2
+        "waiver_pick": 4
       }
     ],
     "standings": [
@@ -119,26 +119,13 @@
         "last_rank": 1,
         "league_entry": 95307,
         "matches_drawn": 0,
-        "matches_lost": 1,
+        "matches_lost": 2,
         "matches_played": 38,
         "matches_won": 5,
-        "points_against": 201,
-        "points_for": 296,
+        "points_against": 234,
+        "points_for": 319,
         "rank": 1,
         "rank_sort": 1,
-        "total": 15
-      },
-      {
-        "last_rank": 2,
-        "league_entry": 95298,
-        "matches_drawn": 0,
-        "matches_lost": 1,
-        "matches_played": 38,
-        "matches_won": 5,
-        "points_against": 211,
-        "points_for": 247,
-        "rank": 2,
-        "rank_sort": 2,
         "total": 15
       },
       {
@@ -147,25 +134,25 @@
         "matches_drawn": 0,
         "matches_lost": 2,
         "matches_played": 38,
-        "matches_won": 4,
-        "points_against": 224,
-        "points_for": 257,
-        "rank": 3,
-        "rank_sort": 3,
-        "total": 12
+        "matches_won": 5,
+        "points_against": 264,
+        "points_for": 314,
+        "rank": 2,
+        "rank_sort": 2,
+        "total": 15
       },
       {
-        "last_rank": 4,
-        "league_entry": 95300,
+        "last_rank": 2,
+        "league_entry": 95298,
         "matches_drawn": 0,
-        "matches_lost": 3,
+        "matches_lost": 2,
         "matches_played": 38,
-        "matches_won": 3,
-        "points_against": 229,
-        "points_for": 269,
-        "rank": 4,
-        "rank_sort": 4,
-        "total": 9
+        "matches_won": 5,
+        "points_against": 257,
+        "points_for": 281,
+        "rank": 3,
+        "rank_sort": 3,
+        "total": 15
       },
       {
         "last_rank": 5,
@@ -173,12 +160,12 @@
         "matches_drawn": 0,
         "matches_lost": 3,
         "matches_played": 38,
-        "matches_won": 3,
-        "points_against": 256,
-        "points_for": 259,
-        "rank": 5,
-        "rank_sort": 5,
-        "total": 9
+        "matches_won": 4,
+        "points_against": 290,
+        "points_for": 305,
+        "rank": 4,
+        "rank_sort": 4,
+        "total": 12
       },
       {
         "last_rank": 6,
@@ -186,25 +173,12 @@
         "matches_drawn": 0,
         "matches_lost": 3,
         "matches_played": 38,
-        "matches_won": 3,
-        "points_against": 250,
-        "points_for": 251,
-        "rank": 6,
-        "rank_sort": 6,
-        "total": 9
-      },
-      {
-        "last_rank": 7,
-        "league_entry": 95301,
-        "matches_drawn": 0,
-        "matches_lost": 3,
-        "matches_played": 38,
-        "matches_won": 3,
-        "points_against": 237,
-        "points_for": 231,
-        "rank": 7,
-        "rank_sort": 7,
-        "total": 9
+        "matches_won": 4,
+        "points_against": 287,
+        "points_for": 291,
+        "rank": 5,
+        "rank_sort": 5,
+        "total": 12
       },
       {
         "last_rank": 8,
@@ -212,38 +186,38 @@
         "matches_drawn": 0,
         "matches_lost": 3,
         "matches_played": 38,
+        "matches_won": 4,
+        "points_against": 292,
+        "points_for": 241,
+        "rank": 6,
+        "rank_sort": 6,
+        "total": 12
+      },
+      {
+        "last_rank": 4,
+        "league_entry": 95300,
+        "matches_drawn": 0,
+        "matches_lost": 4,
+        "matches_played": 38,
         "matches_won": 3,
-        "points_against": 252,
-        "points_for": 194,
-        "rank": 8,
-        "rank_sort": 8,
+        "points_against": 276,
+        "points_for": 309,
+        "rank": 7,
+        "rank_sort": 7,
         "total": 9
       },
       {
-        "last_rank": 9,
-        "league_entry": 95306,
+        "last_rank": 7,
+        "league_entry": 95301,
         "matches_drawn": 0,
         "matches_lost": 4,
         "matches_played": 38,
-        "matches_won": 2,
-        "points_against": 240,
-        "points_for": 257,
-        "rank": 9,
-        "rank_sort": 9,
-        "total": 6
-      },
-      {
-        "last_rank": 10,
-        "league_entry": 95302,
-        "matches_drawn": 0,
-        "matches_lost": 4,
-        "matches_played": 38,
-        "matches_won": 2,
-        "points_against": 280,
-        "points_for": 222,
-        "rank": 10,
-        "rank_sort": 10,
-        "total": 6
+        "matches_won": 3,
+        "points_against": 294,
+        "points_for": 271,
+        "rank": 8,
+        "rank_sort": 8,
+        "total": 9
       },
       {
         "last_rank": 11,
@@ -251,9 +225,35 @@
         "matches_drawn": 0,
         "matches_lost": 4,
         "matches_played": 38,
+        "matches_won": 3,
+        "points_against": 230,
+        "points_for": 234,
+        "rank": 9,
+        "rank_sort": 9,
+        "total": 9
+      },
+      {
+        "last_rank": 9,
+        "league_entry": 95306,
+        "matches_drawn": 0,
+        "matches_lost": 5,
+        "matches_played": 38,
         "matches_won": 2,
-        "points_against": 207,
-        "points_for": 201,
+        "points_against": 280,
+        "points_for": 294,
+        "rank": 10,
+        "rank_sort": 10,
+        "total": 6
+      },
+      {
+        "last_rank": 10,
+        "league_entry": 95302,
+        "matches_drawn": 0,
+        "matches_lost": 5,
+        "matches_played": 38,
+        "matches_won": 2,
+        "points_against": 319,
+        "points_for": 248,
         "rank": 11,
         "rank_sort": 11,
         "total": 6
@@ -264,12 +264,12 @@
         "matches_drawn": 0,
         "matches_lost": 5,
         "matches_played": 38,
-        "matches_won": 1,
-        "points_against": 265,
-        "points_for": 168,
+        "matches_won": 2,
+        "points_against": 291,
+        "points_for": 207,
         "rank": 12,
         "rank_sort": 12,
-        "total": 3
+        "total": 6
       }
     ],
     "matches": [
@@ -671,9 +671,9 @@
       },
       {
         "event": 7,
-        "finished": false,
+        "finished": true,
         "league_entry_1": 95308,
-        "league_entry_1_points": 45,
+        "league_entry_1_points": 46,
         "league_entry_2": 95298,
         "league_entry_2_points": 34,
         "started": true,
@@ -682,20 +682,20 @@
       },
       {
         "event": 7,
-        "finished": false,
+        "finished": true,
         "league_entry_1": 95309,
-        "league_entry_1_points": 32,
+        "league_entry_1_points": 33,
         "league_entry_2": 95307,
-        "league_entry_2_points": 22,
+        "league_entry_2_points": 23,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
       },
       {
         "event": 7,
-        "finished": false,
+        "finished": true,
         "league_entry_1": 95299,
-        "league_entry_1_points": 36,
+        "league_entry_1_points": 40,
         "league_entry_2": 95306,
         "league_entry_2_points": 37,
         "started": true,
@@ -704,20 +704,20 @@
       },
       {
         "event": 7,
-        "finished": false,
+        "finished": true,
         "league_entry_1": 95300,
         "league_entry_1_points": 40,
         "league_entry_2": 95305,
-        "league_entry_2_points": 38,
+        "league_entry_2_points": 47,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
       },
       {
         "event": 7,
-        "finished": false,
+        "finished": true,
         "league_entry_1": 95301,
-        "league_entry_1_points": 38,
+        "league_entry_1_points": 40,
         "league_entry_2": 95304,
         "league_entry_2_points": 57,
         "started": true,
@@ -726,11 +726,11 @@
       },
       {
         "event": 7,
-        "finished": false,
+        "finished": true,
         "league_entry_1": 95302,
-        "league_entry_1_points": 23,
+        "league_entry_1_points": 26,
         "league_entry_2": 95303,
-        "league_entry_2_points": 36,
+        "league_entry_2_points": 39,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
