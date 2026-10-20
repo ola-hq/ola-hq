@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-arsenal-v1",
     "mode": "Auto-refreshed ESPN schedule",
-    "updated_at": "2026-10-20T07:20:15.912Z",
+    "updated_at": "2026-10-20T08:12:54.138Z",
     "updated_display": "Oct 6, 2026",
     "architecture": [
       "live source",
@@ -1111,6 +1111,10 @@
         "url": "https://fantasy.premierleague.com/api/fixtures/"
       },
       {
+        "label": "Premier League official fixture feed",
+        "url": "https://fantasy.premierleague.com/api/fixtures/"
+      },
+      {
         "label": "ESPN Arsenal schedule (automated, unofficial)",
         "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/359/schedule"
       },
@@ -1122,22 +1126,22 @@
     "refresh_strategy": "scheduled",
     "schedule_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/359/schedule?season=2026",
     "league_source": "https://site.api.espn.com/apis/v2/sports/soccer/eng.1/standings",
-    "league_updated_at": "2026-10-20T07:20:15.912Z",
+    "league_updated_at": "2026-10-20T08:12:54.138Z",
     "fixture_source": "automated",
-    "fixture_updated_at": "2026-10-20T07:20:15.912Z",
+    "fixture_updated_at": "2026-10-20T08:12:54.138Z",
     "official_fixture_feed": "https://fantasy.premierleague.com/api/fixtures/",
     "match_link_source": "Verified Premier League match centre"
   },
   "snapshot": {
     "next_match": {
-      "event_id": "pl-69",
-      "opponent": "Nott'm Forest",
-      "venue": "Away",
-      "when": "Sun, Oct 18",
-      "kickoff_utc": "2026-10-18T15:30:00.000Z",
+      "event_id": "pl-71",
+      "opponent": "Everton",
+      "venue": "Home",
+      "when": "Sat, Oct 24",
+      "kickoff_utc": "2026-10-24T14:00:00.000Z",
       "competition": "Premier League",
-      "venue_name": "Away venue · check official match centre",
-      "status": "in",
+      "venue_name": "Emirates Stadium",
+      "status": "pre",
       "match_center_url": null
     },
     "latest_result": {
@@ -1160,7 +1164,7 @@
     },
     "recent_form": [
       "L",
-      "L",
+      "W",
       "W",
       "W",
       "W"
