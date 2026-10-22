@@ -1,7 +1,7 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-22T14:40:33.015Z",
+    "fetched_at": "2026-10-22T16:39:46.815Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
@@ -5417,9 +5417,9 @@
       "away_score": null,
       "status": "pre",
       "minute": null,
-      "venue": null,
+      "venue": "Anfield",
       "competition": "Premier League",
-      "match_url": null,
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/401879246/arsenal-liverpool",
       "stats": [],
       "events": [],
       "lineups": null
