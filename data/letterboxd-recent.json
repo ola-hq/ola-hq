@@ -2,9 +2,73 @@
   "account": "ourpolaroidproj",
   "source": "https://letterboxd.com/ourpolaroidproj/rss/",
   "scope": "recent_public_diary_entries_not_complete_library",
-  "checkedAt": "2026-10-22T07:59:04.547081Z",
+  "checkedAt": "2026-10-22T19:49:57.131187Z",
   "status": "ok",
   "entries": [
+    {
+      "title": "Whalefall",
+      "year": "2026",
+      "score": 3.5,
+      "watchedDate": "2026-10-21",
+      "activityDate": "2026-10-22",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/whalefall/"
+    },
+    {
+      "title": "Resident Evil",
+      "year": "2026",
+      "score": 3.5,
+      "watchedDate": "2026-10-10",
+      "activityDate": "2026-10-22",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/resident-evil-2026/"
+    },
+    {
+      "title": "Primetime",
+      "year": "2026",
+      "score": 4.0,
+      "watchedDate": "2026-10-07",
+      "activityDate": "2026-10-22",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/primetime-2026/"
+    },
+    {
+      "title": "The Odyssey",
+      "year": "2026",
+      "score": 5.0,
+      "watchedDate": "2026-08-28",
+      "activityDate": "2026-10-22",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/the-odyssey-2026/"
+    },
+    {
+      "title": "Practical Magic 2",
+      "year": "2026",
+      "score": 1.0,
+      "watchedDate": "2026-09-11",
+      "activityDate": "2026-10-22",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/practical-magic-2/"
+    },
+    {
+      "title": "Verity",
+      "year": "2026",
+      "score": 3.0,
+      "watchedDate": "2026-10-07",
+      "activityDate": "2026-10-22",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/verity-2026/"
+    },
+    {
+      "title": "Hope",
+      "year": "2026",
+      "score": 3.0,
+      "watchedDate": "2026-09-12",
+      "activityDate": "2026-10-22",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/hope-2026/"
+    },
+    {
+      "title": "Twilight",
+      "year": "2008",
+      "score": 4.0,
+      "watchedDate": "2026-10-20",
+      "activityDate": "2026-10-22",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/twilight-2008/"
+    },
     {
       "title": "Practical Magic",
       "year": "1998",
@@ -236,87 +300,7 @@
       "watchedDate": "2026-04-23",
       "activityDate": "2026-04-24",
       "url": "https://letterboxd.com/ourpolaroidproj/film/mother-mary-2026/"
-    },
-    {
-      "title": "Busboys",
-      "year": "2026",
-      "score": 2.0,
-      "watchedDate": "2026-04-23",
-      "activityDate": "2026-04-24",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/busboys/"
-    },
-    {
-      "title": "Michael",
-      "year": "2026",
-      "score": 5.0,
-      "watchedDate": "2026-04-22",
-      "activityDate": "2026-04-23",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/michael-2026/"
-    },
-    {
-      "title": "Over Your Dead Body",
-      "year": "2026",
-      "score": 4.0,
-      "watchedDate": "2026-04-15",
-      "activityDate": "2026-04-16",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/over-your-dead-body-2026/"
-    },
-    {
-      "title": "Faces of Death",
-      "year": "2026",
-      "score": 3.5,
-      "watchedDate": "2026-04-15",
-      "activityDate": "2026-04-16",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/faces-of-death-2026/"
-    },
-    {
-      "title": "Hunting Matthew Nichols",
-      "year": "2024",
-      "score": 2.0,
-      "watchedDate": "2026-04-13",
-      "activityDate": "2026-04-14",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/hunting-matthew-nichols/"
-    },
-    {
-      "title": "You, Me & Tuscany",
-      "year": "2026",
-      "score": 3.0,
-      "watchedDate": "2026-04-13",
-      "activityDate": "2026-04-14",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/you-me-tuscany/"
-    },
-    {
-      "title": "They Will Kill You",
-      "year": "2026",
-      "score": 3.0,
-      "watchedDate": "2026-04-09",
-      "activityDate": "2026-04-10",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/they-will-kill-you/"
-    },
-    {
-      "title": "Forbidden Fruits",
-      "year": "2026",
-      "score": 3.0,
-      "watchedDate": "2026-04-08",
-      "activityDate": "2026-04-09",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/forbidden-fruits-2026/"
-    },
-    {
-      "title": "Ready or Not 2: Here I Come",
-      "year": "2026",
-      "score": 3.5,
-      "watchedDate": "2026-04-08",
-      "activityDate": "2026-04-09",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/ready-or-not-2-here-i-come/"
-    },
-    {
-      "title": "The Super Mario Galaxy Movie",
-      "year": "2026",
-      "score": 2.0,
-      "watchedDate": "2026-04-05",
-      "activityDate": "2026-04-06",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/the-super-mario-galaxy-movie/"
     }
   ],
-  "totalEntries": 39
+  "totalEntries": 37
 }
