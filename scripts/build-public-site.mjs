@@ -1,7 +1,7 @@
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync, rmSync, readdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { join } from 'node:path';
+import { join, relative, dirname } from 'node:path';
 import { tmpdir } from 'node:os';
 import { syncAnnouncements } from './festival-updates.mjs';
 
@@ -17,7 +17,24 @@ try {
   execFileSync('git', ['archive','--format=tar','-o',archive,source]);
   execFileSync('tar', ['--no-same-owner','-xf',archive,'-C',output,'--exclude=.github','--exclude=scripts']);
 } finally { rmSync(archive, {force:true}); }
-const protectedPaths = ['index.html','world-entrances.css','tools.html','tools.js','app/index.html','la-ola-de-amor/index.html','la-ola-de-amor/app.js','la-ola-de-amor/data/visitor-data.js','la-ola-de-amor/scan/guide/index.html','la-ola-de-amor/scan/guide/guide.css','la-ola-de-amor/scan/guide/guide.js','la-ola-de-amor/scan/guide/festival-updates.js','data/fpl/league-18767.json','data/letterboxd-recent.json','data/arsenal-2026.json','data/arsenal-scores.json'];
+// Add one shared collector to every published HTML entrypoint, including archival galleries.
+// Source content stays unchanged; release hashes below cover the final published bytes.
+function addAnalytics(folder) {
+  for (const entry of readdirSync(folder, {withFileTypes:true})) {
+    const file=join(folder,entry.name);
+    if(entry.isDirectory()){addAnalytics(file);continue;}
+    if(!entry.name.endsWith('.html'))continue;
+    const path=relative(output,file);
+    if(path.startsWith('analytics/')||path==='analytics-privacy.html')continue;
+    const html=readFileSync(file,'utf8');
+    if(/http-equiv=["']refresh["']/i.test(html)||!html.includes('</head>'))continue;
+    const script=relative(dirname(file),join(output,'analytics.js')).split('\\').join('/');
+    writeFileSync(file,html.replace('</head>',`<script defer src="${script}?v=1"></script></head>`));
+  }
+}
+addAnalytics(output);
+
+const protectedPaths = ['analytics.js','analytics/index.html','analytics/report.js','la-ola-de-amor/scan/sw.js','index.html','world-entrances.css','tools.html','tools.js','app/index.html','la-ola-de-amor/index.html','la-ola-de-amor/app.js','la-ola-de-amor/data/visitor-data.js','la-ola-de-amor/scan/guide/index.html','la-ola-de-amor/scan/guide/guide.css','la-ola-de-amor/scan/guide/guide.js','la-ola-de-amor/scan/guide/festival-updates.js','data/fpl/league-18767.json','data/letterboxd-recent.json','data/arsenal-2026.json','data/arsenal-scores.json'];
 const hashes = Object.fromEntries(protectedPaths.map(path => [path, createHash('sha256').update(readFileSync(join(output,path))).digest('hex')]));
 const fpl = JSON.parse(readFileSync(join(output,'data/fpl/league-18767.json'),'utf8'));
 const release = {schema:'ola-hq-release-v1', source_sha:source, workflow_run_id:process.env.GITHUB_RUN_ID || null, built_at:new Date().toISOString(), fpl_fetched_at:fpl.meta.fetched_at, protected_sha256:hashes};

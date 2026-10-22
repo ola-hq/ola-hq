@@ -134,7 +134,7 @@ test('official festival pushes are saved in the read-only two-plus-history feed'
   assert.match(guide, /data-route="\$\{showAll\?'updates':'updates\/all'\}"/);
   assert.match(guide, /localStorage\.setItem\(pushHistoryStorageKey/);
   assert.match(guide, /\?select=id,title_en,title_es,body_en,body_es,published_at,kind/);
-  assert.match(sw, /v23-20261015-set-heads-up/);
+  assert.match(sw, /v24-20261021-analytics/);
 });
 
 test('OneSignal uses the guest-selected guide language rather than the phone default', () => {
@@ -150,7 +150,7 @@ test('OneSignal uses the guest-selected guide language rather than the phone def
   assert.match(admin, /contents:\{en:/);
   assert.match(wall, /headings:\{en:.*es:/);
   assert.match(wall, /contents:\{en:.*es:/);
-  assert.match(sw, /v23-20261015-set-heads-up/);
+  assert.match(sw, /v24-20261021-analytics/);
 });
 
 test('Stress Report beta is separate, bilingual, host-protected, one time, and never schedules the wedding', () => {
