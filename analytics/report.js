@@ -22,6 +22,9 @@
   table('surfaces',['Experience','Visitors','Views'],data.surfaces.map(r=>[names[r.surface]||r.surface,r.visitors,r.views]));
   table('days-table',['Date · Mexico City','Visitors','Views','Clicks'],data.days.map(r=>[r.day,r.visitors,r.views,r.clicks]));
   table('sources',['Referring website','Visitors'],data.sources.map(r=>[r.referrer_host,r.visitors]));
+  const more=data.extended||{};
+  for(const [id,key,label] of [['devices','devices','Device'],['oses','operating_systems','OS'],['browsers','browsers','Browser'],['locations','locations','Country'],['campaigns','campaigns','Campaign source'],['files','files','Attachment'],['activity','activity','Event type']])table(id,[label,'Count'],more[key]||[]);
+  by('active-time').textContent='Recorded active time: '+Math.round((more.active_seconds||0)/60)+' minutes (from new engagement events only).'+(more.sampled?' Recent rows capped at 10,000.':'');
  }
  async function load(){
   if(loading)return;loading=true;by('refresh').disabled=true;by('unlock').disabled=true;status('Loading your report…');const requestToken=token;
@@ -41,7 +44,7 @@
   }catch{status('Unable to unlock the report.');by('unlock').disabled=false}
  });
  by('refresh').addEventListener('click',load);by('days').addEventListener('change',load);by('scope').addEventListener('change',load);
- by('lock').addEventListener('click',()=>{token='';by('report').hidden=true;by('login').hidden=false;by('cards').replaceChildren();for(const id of ['pages','clicks','surfaces','days-table','sources'])by(id).replaceChildren();status('Report locked.');});
+ by('lock').addEventListener('click',()=>{token='';by('report').hidden=true;by('login').hidden=false;by('cards').replaceChildren();for(const id of ['pages','clicks','surfaces','days-table','sources','devices','oses','browsers','locations','campaigns','files','activity'])by(id).replaceChildren();status('Report locked.');});
  try{by('exclude').checked=JSON.parse(localStorage.getItem('olaAnalyticsDisabled')||'false')===true}catch{}
  by('exclude').addEventListener('change',()=>{try{localStorage.setItem('olaAnalyticsDisabled',JSON.stringify(by('exclude').checked));if(by('exclude').checked)localStorage.removeItem('olaAnalyticsQueue')}catch{}status(by('exclude').checked?'This browser is excluded.':'Tracking is enabled for this browser.');});
 })();
