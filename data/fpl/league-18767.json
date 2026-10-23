@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-23T20:44:49.041Z",
+    "fetched_at": "2026-10-23T21:42:19.877Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -10202,8 +10202,8 @@
       "web_name": "Matusiwa",
       "element_type": 3,
       "team": 12,
-      "total_points": 1,
-      "event_points": 0,
+      "total_points": 2,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -10312,8 +10312,8 @@
       "web_name": "Akpom",
       "element_type": 4,
       "team": 12,
-      "total_points": 9,
-      "event_points": 0,
+      "total_points": 10,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -11951,8 +11951,8 @@
       "web_name": "N.Williams",
       "element_type": 2,
       "team": 18,
-      "total_points": 32,
-      "event_points": 9,
+      "total_points": 31,
+      "event_points": 8,
       "status": "a"
     },
     {
@@ -12050,8 +12050,8 @@
       "web_name": "Netz",
       "element_type": 2,
       "team": 18,
-      "total_points": 3,
-      "event_points": 0,
+      "total_points": 4,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -12138,8 +12138,8 @@
       "web_name": "McAtee",
       "element_type": 3,
       "team": 18,
-      "total_points": 22,
-      "event_points": 4,
+      "total_points": 23,
+      "event_points": 5,
       "status": "a"
     },
     {
@@ -12182,8 +12182,8 @@
       "web_name": "Wood",
       "element_type": 4,
       "team": 18,
-      "total_points": 6,
-      "event_points": 0,
+      "total_points": 7,
+      "event_points": 1,
       "status": "a"
     },
     {
