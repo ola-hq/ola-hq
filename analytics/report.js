@@ -11,10 +11,27 @@
   for(const title of headings){const th=document.createElement('th');th.textContent=title;tr.append(th)}thead.append(tr);table.append(thead,tbody);
   for(const row of rows){const tr=document.createElement('tr');for(const value of row){const td=document.createElement('td');td.textContent=String(value??'');tr.append(td)}tbody.append(tr)}node.append(table);
  }
+ function coach(data){
+  const s=data.summary||{},e=data.extended||{},visits=Number(s.visits||0),visitors=Number(s.visitors||0),views=Number(s.page_views||0);
+  by('coach-title').textContent=visits?'Here’s what your visitors are doing':'Your first insights are coming';
+  by('coach-summary').textContent=visits?`${visits} browsing sessions from ${visitors} anonymous visitor IDs generated ${views} page views in this selected period. That doesn't mean ${visitors} distinct people.`:'No sessions in this filter yet. Check a longer period or confirm that the tracker has started collecting on the live site.';
+  const tips=[];
+  if(!visits)tips.push(['Start with a test','Open an instrumented page, click a navigation link, then refresh this report. Check live deployment if no events appear.']);
+  else{
+   tips.push(['Understand repeat browsing',visits>visitors?`There are ${visits-visitors} more sessions than visitor IDs. Some browsers returned, but this is not a precise count of returning people.`:'Sessions and visitor IDs are close. Observe a longer period before drawing conclusions.']);
+   const top=(data.pages||[])[0];if(top)tips.push(['Start with your top page',`${top.path} has ${top.views} recorded views. Check whether it leads visitors to the next action you want.`]);
+   if((data.sources||[]).length===0||data.sources.every(x=>!x.referrer_host))tips.push(['Make sharing measurable','Add UTM source, medium and campaign labels to links you share. Direct visits and in-app browsers often hide referral data.']);
+   if(!e.devices?.some(x=>x[0]!=='unknown'))tips.push(['Give device tracking time','Older events have no device label. New visits should begin filling the mobile/desktop report after the updated site is live.']);
+   if(!(e.active_seconds>0))tips.push(['Engagement is still warming up','Active-time measurements only begin with the upgraded tracker; zero does not necessarily mean nobody read your content.']);
+  }
+  const node=by('coach-tips');node.replaceChildren();
+  for(const [title,description] of tips.slice(0,4)){const card=document.createElement('article'),heading=document.createElement('b'),p=document.createElement('p');card.className='tip';heading.textContent=title;p.textContent=description;card.append(heading,p);node.append(card)}
+ }
  function render(data){
+  coach(data);
   by('cards').replaceChildren();
   for(const [key,label] of [['visitors','Visitors'],['visits','Visits'],['page_views','Page views'],['clicks','Clicks'],['app_visitors','App visitors'],['installed_app_visits','Installed app visits'],['observed_installs','Observed installations']]){
-   const card=document.createElement('div'),number=document.createElement('strong'),caption=document.createElement('span');card.className='card';number.textContent=Number(data.summary[key]||0).toLocaleString();caption.textContent=label;card.append(number,caption);by('cards').append(card);
+   const card=document.createElement('div'),number=document.createElement('strong'),caption=document.createElement('span'),help=document.createElement('small');card.className='card';number.textContent=Number(data.summary[key]||0).toLocaleString();caption.textContent=label;const guides={visitors:'Anonymous browser IDs, not named individuals.',visits:'Sessions reset after 30 minutes inactive.',page_views:'Pages or tracked in-page routes opened.',clicks:'Tracked buttons and navigation links.',app_visitors:'Visitors to app-designated routes.',installed_app_visits:'Sessions recorded in standalone mode.',observed_installs:'Only installations reported by supported browsers.'};help.textContent=guides[key]||'';card.append(number,caption,help);by('cards').append(card);
   }
   by('started').textContent=data.tracking_started?'First recorded visit: '+new Date(data.tracking_started).toLocaleString('en-US',{timeZone:'America/Mexico_City'})+' · Mexico City time.':'Tracking is ready. Numbers will appear after the first visitor arrives.';
   table('pages',['Page','Views','Visitors'],data.pages.map(r=>[r.path,r.views,r.visitors]));
