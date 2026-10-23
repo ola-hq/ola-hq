@@ -1,6 +1,6 @@
 // Guests submit through this fixed survey endpoint; response rows are never public.
 const ORIGIN='https://ola-hq.github.io';
-const TEXT_FIELDS={moment:3000,connection:3000,difficulties:3000,keep_change:3000,missed_details:3000,worth_trip:3000,guest_name:120,contact:320};
+const TEXT_FIELDS={moment:3000,connection:3000,difficulties:3000,keep_change:3000,missed_details:3000,worth_trip:3000,notes:3000,guest_name:120,contact:320};
 const CORS={'Access-Control-Allow-Origin':ORIGIN,'Access-Control-Allow-Headers':'authorization, apikey, content-type, x-client-info','Access-Control-Allow-Methods':'POST, OPTIONS','Vary':'Origin','Cache-Control':'no-store'};
 function reply(value,status=200){return new Response(JSON.stringify(value),{status,headers:{...CORS,'Content-Type':'application/json'}});}
 async function bucket(ip){
@@ -19,11 +19,12 @@ Deno.serve(async request=>{
  if(typeof input.website!=='string'||input.website)return reply({error:'INVALID_INPUT'},400);
  if(typeof input.elapsed!=='number'||!Number.isFinite(input.elapsed)||input.elapsed<2000)return reply({error:'PLEASE_TAKE_A_MOMENT'},400);
  if(typeof input.id!=='string'||!/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(input.id)||!['en','es'].includes(input.language))return reply({error:'INVALID_INPUT'},400);
+ if(input.notes===undefined)input.notes='';
  const record={id:input.id,language:input.language};
  for(const [field,max] of Object.entries(TEXT_FIELDS)){if(typeof input[field]!=='string'||input[field].length>max)return reply({error:'INVALID_INPUT'},400);record[field]=input[field].trim();}
  if(!['','interested','maybe','from_home'].includes(input.future_interest)||typeof input.follow_memories!=='boolean'||typeof input.follow_gatherings!=='boolean')return reply({error:'INVALID_INPUT'},400);
  Object.assign(record,{future_interest:input.future_interest,follow_memories:input.follow_memories,follow_gatherings:input.follow_gatherings});
- if(!['moment','connection','difficulties','keep_change','missed_details','worth_trip'].some(k=>record[k])&&!record.future_interest)return reply({error:'ADD_ONE_ANSWER'},400);
+ if(!['moment','connection','difficulties','keep_change','missed_details','worth_trip','notes'].some(k=>record[k])&&!record.future_interest)return reply({error:'ADD_ONE_ANSWER'},400);
  if(record.contact&&!record.follow_memories&&!record.follow_gatherings)return reply({error:'CONTACT_PERMISSION_REQUIRED'},400);
  try{
   const secret=Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');if(!secret)throw Error('not configured');
