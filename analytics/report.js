@@ -89,7 +89,31 @@
   }catch{status('Unable to unlock the report.');by('unlock').disabled=false}
  });
  by('refresh').addEventListener('click',load);by('days').addEventListener('change',load);by('scope').addEventListener('change',load);
- by('lock').addEventListener('click',()=>{token='';by('report').hidden=true;by('login').hidden=false;by('cards').replaceChildren();for(const id of ['pages','clicks','surfaces','days-table','sources','devices','oses','browsers','locations','campaigns','files','activity'])by(id).replaceChildren();status('Report locked.');});
+ by('lock').addEventListener('click',()=>{token='';by('report').hidden=true;by('login').hidden=false;by('cards').replaceChildren();aiHistory.length=0;aiThread.replaceChildren();aiStatus.textContent='Conversation cleared on lock.';for(const id of ['pages','clicks','surfaces','days-table','sources','devices','oses','browsers','locations','campaigns','files','activity'])by(id).replaceChildren();status('Report locked.');});
+
+ const aiHistory=[],aiThread=by('ola-ai-thread'),aiInput=by('ola-ai-input'),aiStatus=by('ola-ai-status');
+ let aiBusy=false;
+ function aiBubble(role,message){const node=document.createElement('div');node.className='ola-ai-bubble '+role;node.textContent=message;aiThread.append(node);aiThread.scrollTop=aiThread.scrollHeight;return node}
+ async function askOLA(message){
+  if(aiBusy||!token||!message.trim())return;aiBusy=true;by('ola-ai-send').disabled=true;
+  const clean=message.trim().slice(0,1500);aiInput.value='';aiBubble('user',clean);
+  const pending=aiBubble('assistant','Thinking about your OLA universe…');
+  aiStatus.textContent='Asking OLA AI…';
+  try{
+   const messages=[...aiHistory,{role:'user',content:clean}].slice(-12);
+   const r=await fetch('https://fgtowzonkmirmugnzlsf.supabase.co/functions/v1/ola-ai-chat',{method:'POST',headers:{'content-type':'application/json',apikey:ANON,authorization:'Bearer '+ANON,'x-loda-moderator-token':token},body:JSON.stringify({action:'chat',days:Number(by('days').value),scope:by('scope').value,messages})});
+   const result=await r.json();
+   if(!r.ok){pending.textContent=result.error==='AI_NOT_CONFIGURED'?'OLA AI is installed but needs an OpenAI API key configured in Supabase before it can answer.':result.error==='RATE_LIMIT'?'The hourly chat limit has been reached. Please try again later.':result.error==='NOT_AUTHORIZED'?'Host session expired. Lock and unlock your report again.':'OLA AI could not respond right now. ('+(result.error||'Service unavailable')+')';aiStatus.textContent='No answer generated.';return}
+   pending.textContent=result.reply;
+   aiHistory.push({role:'user',content:clean},{role:'assistant',content:result.reply});
+   if(aiHistory.length>12)aiHistory.splice(0,aiHistory.length-12);
+   aiStatus.textContent='Answered using OLA aggregate analytics. Your conversation stays in this tab only.';
+  }catch{pending.textContent='Could not contact OLA AI. Check your connection and try again.';aiStatus.textContent='Connection error.'}
+  finally{aiBusy=false;by('ola-ai-send').disabled=false;aiThread.scrollTop=aiThread.scrollHeight}
+ }
+ by('ola-ai-form').addEventListener('submit',e=>{e.preventDefault();void askOLA(aiInput.value)});
+ document.querySelectorAll('[data-ola-prompt]').forEach(b=>b.addEventListener('click',()=>void askOLA(b.dataset.olaPrompt||'')));
+
  try{by('exclude').checked=JSON.parse(localStorage.getItem('olaAnalyticsDisabled')||'false')===true}catch{}
  by('exclude').addEventListener('change',()=>{try{localStorage.setItem('olaAnalyticsDisabled',JSON.stringify(by('exclude').checked));if(by('exclude').checked)localStorage.removeItem('olaAnalyticsQueue')}catch{}status(by('exclude').checked?'This browser is excluded.':'Tracking is enabled for this browser.');});
 })();
