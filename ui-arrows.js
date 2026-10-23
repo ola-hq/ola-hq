@@ -95,3 +95,6 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once: true });
   else start();
 })();
+
+/* Shared OLA site analytics loader: covers all pages that use the common navigation helper. */
+(function(){if(!location.pathname.startsWith('/ola-hq/')||location.pathname.startsWith('/ola-hq/analytics/'))return;if(document.querySelector('script[data-ola-analytics-bootstrap]'))return;const s=document.createElement('script');s.src='/ola-hq/analytics.js?v=20261023-worlds';s.defer=true;s.dataset.olaAnalyticsBootstrap='1';document.head.append(s)})();
