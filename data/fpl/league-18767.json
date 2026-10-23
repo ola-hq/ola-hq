@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-23T21:42:19.877Z",
+    "fetched_at": "2026-10-23T22:41:33.713Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -739,9 +739,9 @@
         "event": 8,
         "finished": false,
         "league_entry_1": 95298,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 4,
         "league_entry_2": 95302,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 2,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -750,9 +750,9 @@
         "event": 8,
         "finished": false,
         "league_entry_1": 95303,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 8,
         "league_entry_2": 95301,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 2,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -774,7 +774,7 @@
         "league_entry_1": 95305,
         "league_entry_1_points": 0,
         "league_entry_2": 95299,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 2,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -796,7 +796,7 @@
         "league_entry_1": 95307,
         "league_entry_1_points": 0,
         "league_entry_2": 95308,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 18,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
