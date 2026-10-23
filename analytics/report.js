@@ -27,6 +27,7 @@
   const node=by('coach-tips');node.replaceChildren();
   for(const [title,description] of tips.slice(0,4)){const card=document.createElement('article'),heading=document.createElement('b'),p=document.createElement('p');card.className='tip';heading.textContent=title;p.textContent=description;card.append(heading,p);node.append(card)}
  }
+ const worlds=[['wedding','La Ola de Amor'],['blockbuster','Blockbuster Wave'],['polaroid','Polaroid Project'],['wave26','Wave 26'],['fpl','FPL Wave'],['simulation','Simulation Wave'],['gdb','GDB Wave'],['arsenal','Arsenal Wave'],['offbrand','Offbrand Wave'],['willpwr','Willpwr Wave'],['wuwei','Wu Wei Wave'],['capybara','Capybara Wave'],['aios','AIOS'],['tools','Tools'],['archive','Archive']];
  const sites=[['all','All experiences'],['hq_site','OLA HQ website'],['hq_app','OLA HQ app'],['loda_site','La Ola de Amor'],['loda_app','Festival Guide'],['loda_app_entrance','Guide entrance']];
  function siteNavigation(data){
   const tabs=by('site-tabs');tabs.replaceChildren();
@@ -42,6 +43,15 @@
    const explanation=document.createElement('p');explanation.textContent=entry?`${entry.visitors} anonymous visitor IDs · page views`:'Choose this site to see its own activity';
    const button=document.createElement('button');button.type='button';button.textContent='View this site →';button.addEventListener('click',()=>{by('scope').value=id;load()});
    card.append(heading,subtitle,count,explanation,button);area.append(card)
+  }
+  const worldsNode=by('world-breakdown');worldsNode.replaceChildren();
+  for(const [id,name] of worlds){
+   const metric=(data.worlds||[]).find(x=>x.id===id);const card=document.createElement('article');card.className='site-box';
+   const heading=document.createElement('h3');heading.textContent=name;
+   const number=document.createElement('strong');number.textContent=metric?Number(metric.views).toLocaleString():'—';
+   const explanation=document.createElement('p');explanation.className='stats';explanation.textContent=metric?`${metric.visitors} visitor IDs · ${metric.sessions} sessions · ${metric.clicks} clicks`:'Select this World to examine its activity';
+   const button=document.createElement('button');button.type='button';button.textContent='Explore world analytics →';button.addEventListener('click',()=>{by('scope').value=id;load()});
+   card.append(heading,number,explanation,button);worldsNode.append(card);
   }
  }
  function render(data){
