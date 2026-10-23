@@ -135,7 +135,7 @@ function allFestivalUpdates(){
   if(!['title_en','title_es','body_en','body_es'].every(k=>typeof row[k]==='string'))continue;
   merged.set(row.id,{
    id:row.id,revision:'push-'+row.published_at,publishedAt:row.published_at.slice(0,10),
-   releaseAt:row.published_at,priority:'confirmed',route:'updates',
+   releaseAt:row.published_at,priority:'confirmed',route:merged.get(row.id)?.route||'updates',
    audience:{en:'Festival announcement',es:'Aviso del festival'},
    title:{en:row.title_en,es:row.title_es},body:{en:row.body_en,es:row.body_es}
   });

@@ -2,6 +2,7 @@ import { test } from 'node:test';
 // Keep push schedule checks in the existing CI test command without modifying workflows.
 import './festival-push-schedule.test.mjs';
 import './loda-push.test.mjs';
+import './magic-mirror-push.test.mjs';
 import assert from 'node:assert/strict';
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -114,4 +115,17 @@ test('gallery announcement appears at release, links to keepsakes and rejects un
   assert(!at('2026-10-23T11:59:59-06:00').includes(post.id));
   assert.equal(at('2026-10-23T12:00:00-06:00')[0], post.id);
   assert.throws(() => reconcileAnnouncements([{...post, route:'javascript:alert(1)'}]), /route/);
+});
+test('a saved push receipt keeps the editorial gallery route and merges as one announcement', () => {
+  const post = source.announcements.find(item => item.id === 'magic-mirror-photos-20261023');
+  const guide = readFileSync('la-ola-de-amor/scan/guide/guide.js','utf8');
+  const start = guide.indexOf('function allFestivalUpdates(){');
+  const renderer = guide.slice(start,guide.indexOf('\nlet feedLoading=',start));
+  const result = vm.runInNewContext(renderer+'\nallFestivalUpdates()',{
+    activeFestivalUpdates:()=>[post],retiredPushHistoryIds:new Set(),Date,
+    pushHistory:[{id:post.id,published_at:new Date(Date.now()-1000).toISOString(),title_en:post.title.en,title_es:post.title.es,body_en:post.body.en,body_es:post.body.es}]
+  });
+  assert.equal(result.length,1);
+  assert.equal(result[0].id,post.id);
+  assert.equal(result[0].route,'magic-mirror');
 });
