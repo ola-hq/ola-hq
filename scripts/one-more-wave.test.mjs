@@ -15,7 +15,13 @@ test('survey endpoint accepts one optional answer and never returns answers or s
  const s=setup(),r=await s.invoke();assert.equal(r.status,200);assert.deepEqual(await r.json(),{ok:true});assert.equal(r.headers.get('cache-control'),'no-store');
  const saved=JSON.parse(s.calls[0].options.body).p_record;
  assert.equal(saved.moment,'The dance floor!');assert.equal(saved.contact,'');assert.match(saved.ip_bucket,/^[a-f0-9]{64}$/);assert.ok(!JSON.stringify(saved).includes('192.0.2.123'));assert.equal(saved.id,id);
+ assert.equal(saved.notes,'','cached forms without notes remain valid');
  assert.equal(s.calls[0].options.headers.Authorization,'Bearer fake-server-secret');
+});
+test('an open note alone is enough, and malformed or oversized notes never reach the database',async()=>{
+ const s=setup();const r=await s.invoke(payload({moment:'',notes:'A thought that did not fit the questions.'}));assert.equal(r.status,200);
+ const saved=JSON.parse(s.calls[0].options.body).p_record;assert.equal(saved.moment,'');assert.equal(saved.notes,'A thought that did not fit the questions.');
+ for(const notes of [null,42,'x'.repeat(3001)]){const invalid=setup();assert.equal((await invalid.invoke(payload({moment:'',notes}))).status,400);assert.equal(invalid.calls.length,0);}
 });
 test('survey supports Spanish, future-interest-only and permission-specific follow-up',async()=>{
  const s=setup();let r=await s.invoke(payload({language:'es',moment:'',future_interest:'maybe'}));assert.equal(r.status,200);
