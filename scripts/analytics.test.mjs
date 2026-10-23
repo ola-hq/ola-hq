@@ -7,9 +7,10 @@ import { webcrypto, createHash } from 'node:crypto';
 
 function browser({saved={},dnt='0',standalone=false,online=true}={}){
  const storage=new Map(Object.entries(saved)),events={},requests=[];
- class Element{constructor(tag='A',href='/ola-hq/la-ola-de-amor/scan/guide/?secret=nope#music'){this.tagName=tag;this.href=href;this.id='music-link';this.dataset={}}closest(selector){return selector==='a,button,[role="button"],summary'?this:this.private?this:null}getAttribute(){return this.href}}
- const context={crypto:webcrypto,URL,URLSearchParams,innerWidth:1200,innerHeight:800,scrollY:0,Element,Date,Set,JSON,Math,location:new URL('https://ola-hq.github.io/ola-hq/la-ola-de-amor/#/home?private=hello'),navigator:{doNotTrack:dnt,onLine:online,standalone},matchMedia:()=>({matches:false}),localStorage:{getItem:k=>storage.get(k)??null,setItem:(k,v)=>storage.set(k,v)},document:{referrer:'https://example.com/private?email=person',documentElement:{lang:'en'},addEventListener:(k,fn)=>events[k]=fn},setInterval:()=>{},fetch:async(url,options)=>{requests.push(JSON.parse(options.body));return {ok:true}}};
- context.window=context;context.top=context;context.addEventListener=(k,fn)=>events[k]=fn;
+ const listen=(name,fn)=>{const prev=events[name];events[name]=prev?(event=>{prev(event);fn(event)}):fn};
+ class Element{constructor(tag='A',href='/ola-hq/la-ola-de-amor/scan/guide/?secret=nope#music'){this.tagName=tag;this.href=href;this.id='music-link';this.dataset={}}closest(selector){if(selector==='a,button,[role="button"],summary')return this;if(selector==='a[download]')return null;return this.private?this:null}getAttribute(){return this.href}}
+ const context={crypto:webcrypto,URL,URLSearchParams,innerWidth:1200,innerHeight:800,scrollY:0,Element,Date,Set,JSON,Math,location:new URL('https://ola-hq.github.io/ola-hq/la-ola-de-amor/#/home?private=hello'),navigator:{doNotTrack:dnt,onLine:online,standalone},matchMedia:()=>({matches:false}),localStorage:{getItem:k=>storage.get(k)??null,setItem:(k,v)=>storage.set(k,v)},document:{referrer:'https://example.com/private?email=person',documentElement:{lang:'en'},addEventListener:listen},setInterval:()=>{},fetch:async(url,options)=>{requests.push(JSON.parse(options.body));return {ok:true}}};
+ context.window=context;context.top=context;context.addEventListener=listen;
  runInNewContext(readFileSync('analytics.js','utf8'),context);
  return {context,events,requests,storage,Element};
 }
