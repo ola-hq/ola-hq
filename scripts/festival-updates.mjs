@@ -31,7 +31,7 @@ export function reconcileAnnouncements(entries) {
     if (entry.releaseAt && entry.releaseAt.slice(0, 10) !== entry.publishedAt) throw new Error('Release date must match publication date');
     if (entry.expiresAt && (!entry.releaseAt || Date.parse(entry.expiresAt) <= Date.parse(entry.releaseAt))) throw new Error('Invalid announcement expiration');
     if (!['confirmed', 'pending'].includes(entry.priority) || typeof entry.revision !== 'string' || !entry.revision) throw new Error('Invalid announcement metadata');
-    if (!['updates', 'today', 'music', 'plaza', 'food', 'tornaboda'].includes(entry.route)) throw new Error('Invalid announcement route');
+    if (!['updates', 'today', 'music', 'plaza', 'food', 'tornaboda', 'magic-mirror'].includes(entry.route)) throw new Error('Invalid announcement route');
   }
   const newest = entries.filter(entry => entry.status === 'current').sort((a, b) => b.publishedAt.localeCompare(a.publishedAt) || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
   const retained = new Set(newest.slice(0, MAX_CURRENT).map(entry => entry.id));

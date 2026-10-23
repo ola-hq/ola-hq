@@ -169,7 +169,7 @@ function renderUpdates(){
  document.querySelector('#updates-feed').innerHTML=shown.map(card).join('')+toggle;
  // Clear stale update detail routes without altering non-announcement details.
  for(const key of Object.keys(details))if(key.startsWith('updates/'))delete details[key];
- live.forEach(item=>details[`updates/${item.id}`]={title:item.title[lang],kicker:ui('updatesTitle'),text:[`${updateDate(item)} · ${item.audience[lang]} · ${ui('updateConfirmed')}`,item.body[lang]],links:[['updates',ui('updatesTitle')]],source:ui('updatesTitle')});
+ live.forEach(item=>details[`updates/${item.id}`]={title:item.title[lang],kicker:ui('updatesTitle'),text:[`${updateDate(item)} · ${item.audience[lang]} · ${ui('updateConfirmed')}`,item.body[lang]],links:item.route==='magic-mirror'?[]:[['updates',ui('updatesTitle')]],siteLinks:item.route==='magic-mirror'?[['magic-mirror/','mirrorGallery']]:[],source:ui('updatesTitle')});
  details['tornaboda/map']={title:ui('saturdayMapTitle'),kicker:ui('dayTwo'),art:'tornaboda-map-corrected-draft.png',full:true,text:[ui('saturdayMapNote'),ui('mapArtworkLanguage')],source:ui('saturdayMapSource'),links:[['tornaboda',ui('viewDayTwo').replace(' →','')]]};
 }
 function markUpdatesSeen(route){

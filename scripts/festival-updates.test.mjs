@@ -10,6 +10,7 @@ import vm from 'node:vm';
 import { reconcileAnnouncements, currentAnnouncements, restoreAnnouncement, publicScript, syncAnnouncements, sourcePath, publicPath } from './festival-updates.mjs';
 
 const source = JSON.parse(readFileSync(sourcePath, 'utf8'));
+const historical = source.announcements.filter(item => item.publishedAt < '2026-10-23');
 const sample = source.announcements[0];
 const entry = (id, publishedAt, status = 'current') => ({...sample, id, publishedAt, status});
 test('zero, one and two current announcements produce exactly that many cards, newest first', () => {
@@ -42,7 +43,7 @@ test('archived entries stay archived even when the current feed empties; no arch
   assert(!script.includes('sourceReference') && !script.includes('status'));
 });
 test('restoring an archived entry retains original dates and fields, and refuses an invisible restoration', () => {
-  const restored = restoreAnnouncement(source.announcements, 'day-two');
+  const restored = restoreAnnouncement(historical, 'day-two');
   assert.equal(currentAnnouncements(restored).length, 2);
   assert.deepEqual(restored.find(e => e.id === 'day-two'), {...source.announcements.find(e => e.id === 'day-two'), status: 'current'});
   assert.throws(() => restoreAnnouncement([entry('a', '2026-10-09'), entry('b', '2026-10-10'), entry('old', '2026-10-08', 'archived')], 'old'), /Two newer/);
@@ -55,7 +56,7 @@ test('invalid IDs, duplicate IDs, status and impossible dates fail closed', () =
   assert.throws(() => reconcileAnnouncements([entry('a', '2026-10-08', 'unknown')]), /status/);
 });
 test('scheduled midnight and afters posts are hidden until their Guadalajara release times', () => {
-  const announcements = source.announcements;
+  const announcements = historical;
   assert.deepEqual(announcements.filter(item => item.status === 'scheduled').map(item => item.id), ['midnight-last-call', 'afters-self-serve']);
   assert.deepEqual(currentAnnouncements(announcements).map(item => item.id), ['one-week']);
   const script = publicScript(announcements);
@@ -97,9 +98,20 @@ test('source sync durably archives overflow, remains idempotent and build valida
     assert.equal(readFileSync(join(root, sourcePath), 'utf8'), first);
   } finally { rmSync(root, {recursive: true, force: true}); }
 });
-test('current inventory preserves the October 9 record and all three October 8 records', () => {
-  assert.deepEqual(currentAnnouncements(source.announcements).map(e => e.id), ['one-week']);
+test('current inventory includes the gallery announcement and preserves earlier records', () => {
+  assert.deepEqual(currentAnnouncements(source.announcements).map(e => e.id), ['magic-mirror-photos-20261023', 'one-week']);
   assert.deepEqual(source.announcements.filter(e => e.status === 'archived').map(e => e.id), ['day-two', 'tacos', 'pool-play']);
   assert(source.announcements.filter(e => e.status === 'archived').every(e => e.publishedAt === '2026-10-08'));
   syncAnnouncements('.', {check: true});
+});
+test('gallery announcement appears at release, links to keepsakes and rejects unknown routes', () => {
+  const post = source.announcements.find(item => item.id === 'magic-mirror-photos-20261023');
+  assert.equal(post.route, 'magic-mirror');
+  assert.match(post.body.en, /download.*share/);
+  assert.match(post.body.es, /descarga.*compártelos/);
+  const script = publicScript(source.announcements);
+  const at = iso => Array.from(vm.runInNewContext(script + '\nactiveFestivalUpdates(Date.parse(' + JSON.stringify(iso) + ')).map(item => item.id)'));
+  assert(!at('2026-10-23T11:59:59-06:00').includes(post.id));
+  assert.equal(at('2026-10-23T12:00:00-06:00')[0], post.id);
+  assert.throws(() => reconcileAnnouncements([{...post, route:'javascript:alert(1)'}]), /route/);
 });
