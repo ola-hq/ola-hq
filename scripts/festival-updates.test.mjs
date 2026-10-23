@@ -3,6 +3,7 @@ import { test } from 'node:test';
 import './festival-push-schedule.test.mjs';
 import './loda-push.test.mjs';
 import './magic-mirror-push.test.mjs';
+import './one-more-wave.test.mjs';
 import assert from 'node:assert/strict';
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
