@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-24T14:04:06.817Z",
+    "fetched_at": "2026-10-24T14:34:35.166Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-24T14:04:06.817Z"
+    "details_checked_at": "2026-10-24T14:34:35.166Z"
   },
   "matches": [
     {
@@ -5178,18 +5178,18 @@
         "name": "Everton",
         "short": "EVE"
       },
-      "home_score": 0,
+      "home_score": 1,
       "away_score": 0,
       "status": "in",
-      "minute": 4,
+      "minute": 34,
       "venue": "Emirates Stadium",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878768",
       "stats": [
         {
           "label": "Fouls",
-          "home": "0",
-          "away": "2"
+          "home": "3",
+          "away": "5"
         },
         {
           "label": "Yellow Cards",
@@ -5204,37 +5204,37 @@
         {
           "label": "Offsides",
           "home": "0",
-          "away": "0"
+          "away": "1"
         },
         {
           "label": "Corner Kicks",
-          "home": "0",
-          "away": "0"
+          "home": "7",
+          "away": "2"
         },
         {
           "label": "Saves",
-          "home": "0",
-          "away": "0"
+          "home": "1",
+          "away": "1"
         },
         {
           "label": "Possession",
-          "home": "62.1",
-          "away": "37.9"
+          "home": "60.4",
+          "away": "39.6"
         },
         {
           "label": "SHOTS",
-          "home": "0",
-          "away": "0"
+          "home": "10",
+          "away": "2"
         },
         {
           "label": "ON GOAL",
-          "home": "0",
-          "away": "0"
+          "home": "2",
+          "away": "1"
         },
         {
           "label": "On Target %",
-          "home": "0.0",
-          "away": "0.0"
+          "home": "0.2",
+          "away": "0.5"
         },
         {
           "label": "Penalty Goals",
@@ -5247,7 +5247,13 @@
           "away": "0"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Konsa (Home)"
+        }
+      ],
       "lineups": {
         "home": [
           "David Raya",
@@ -5291,15 +5297,15 @@
       "home_score": 0,
       "away_score": 0,
       "status": "in",
-      "minute": 4,
+      "minute": 34,
       "venue": "Coventry Building Society Arena",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879255",
       "stats": [
         {
           "label": "Fouls",
-          "home": "0",
-          "away": "0"
+          "home": "1",
+          "away": "4"
         },
         {
           "label": "Yellow Cards",
@@ -5314,7 +5320,7 @@
         {
           "label": "Offsides",
           "home": "0",
-          "away": "0"
+          "away": "1"
         },
         {
           "label": "Corner Kicks",
@@ -5323,28 +5329,28 @@
         },
         {
           "label": "Saves",
-          "home": "0",
-          "away": "0"
+          "home": "1",
+          "away": "1"
         },
         {
           "label": "Possession",
-          "home": "86.7",
-          "away": "13.3"
+          "home": "36",
+          "away": "64"
         },
         {
           "label": "SHOTS",
-          "home": "2",
-          "away": "0"
+          "home": "7",
+          "away": "6"
         },
         {
           "label": "ON GOAL",
-          "home": "0",
-          "away": "0"
+          "home": "1",
+          "away": "1"
         },
         {
           "label": "On Target %",
-          "home": "0.0",
-          "away": "0.0"
+          "home": "0.1",
+          "away": "0.2"
         },
         {
           "label": "Penalty Goals",
@@ -5366,8 +5372,8 @@
           "Jay Da Silva",
           "Milan van Ewijk",
           "Jack Rudoni",
-          "Caleb Yirenkyi",
           "Matt Grimes",
+          "Caleb Yirenkyi",
           "Sidiki Cherif",
           "Brandon Thomas-Asante",
           "Tatsuhiro Sakamoto"
