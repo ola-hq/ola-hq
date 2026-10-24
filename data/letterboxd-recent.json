@@ -2,9 +2,33 @@
   "account": "ourpolaroidproj",
   "source": "https://letterboxd.com/ourpolaroidproj/rss/",
   "scope": "recent_public_diary_entries_not_complete_library",
-  "checkedAt": "2026-10-24T07:47:59.458049Z",
+  "checkedAt": "2026-10-24T19:41:59.752923Z",
   "status": "ok",
   "entries": [
+    {
+      "title": "You Can See Everything",
+      "year": "2026",
+      "score": 5.0,
+      "watchedDate": "2026-10-23",
+      "activityDate": "2026-10-24",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/you-can-see-everything/"
+    },
+    {
+      "title": "Street Fighter",
+      "year": "2026",
+      "score": 3.0,
+      "watchedDate": "2026-10-23",
+      "activityDate": "2026-10-24",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/street-fighter-2026/"
+    },
+    {
+      "title": "Heart of the Beast",
+      "year": "2026",
+      "score": 2.0,
+      "watchedDate": "2026-10-23",
+      "activityDate": "2026-10-24",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/heart-of-the-beast-2026/"
+    },
     {
       "title": "Whalefall",
       "year": "2026",
@@ -276,30 +300,6 @@
       "watchedDate": "2026-05-03",
       "activityDate": "2026-05-04",
       "url": "https://letterboxd.com/ourpolaroidproj/film/doin-it/"
-    },
-    {
-      "title": "Outcome",
-      "year": "2026",
-      "score": 3.0,
-      "watchedDate": "2026-04-28",
-      "activityDate": "2026-05-04",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/outcome/"
-    },
-    {
-      "title": "Billie Eilish — Hit Me Hard and Soft: The Tour (Live in 3D)",
-      "year": "2026",
-      "score": 5.0,
-      "watchedDate": "2026-04-29",
-      "activityDate": "2026-04-30",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/billie-eilish-hit-me-hard-and-soft-the-tour/"
-    },
-    {
-      "title": "Mother Mary",
-      "year": "2026",
-      "score": 2.5,
-      "watchedDate": "2026-04-23",
-      "activityDate": "2026-04-24",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/mother-mary-2026/"
     }
   ],
   "totalEntries": 37
