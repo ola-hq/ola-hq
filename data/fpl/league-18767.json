@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-24T22:40:54.469Z",
+    "fetched_at": "2026-10-24T23:36:31.494Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -6842,8 +6842,8 @@
       "web_name": "Gabriel",
       "element_type": 2,
       "team": 1,
-      "total_points": 51,
-      "event_points": 16,
+      "total_points": 52,
+      "event_points": 17,
       "status": "a"
     },
     {
@@ -7139,8 +7139,8 @@
       "web_name": "Konsa",
       "element_type": 2,
       "team": 1,
-      "total_points": 40,
-      "event_points": 15,
+      "total_points": 39,
+      "event_points": 14,
       "status": "a"
     },
     {
