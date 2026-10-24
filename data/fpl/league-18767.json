@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-24T01:00:12.124Z",
+    "fetched_at": "2026-10-24T01:48:49.709Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -13084,8 +13084,8 @@
       "web_name": "Florentino",
       "element_type": 3,
       "team": 12,
-      "total_points": 8,
-      "event_points": 2,
+      "total_points": 10,
+      "event_points": 4,
       "status": "a"
     },
     {
