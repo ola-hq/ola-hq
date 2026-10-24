@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-24T11:41:21.074Z",
+    "fetched_at": "2026-10-24T12:50:01.428Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -7144,8 +7144,8 @@
       "web_name": "Cash",
       "element_type": 2,
       "team": 2,
-      "total_points": 15,
-      "event_points": 1,
+      "total_points": 14,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7287,8 +7287,8 @@
       "web_name": "McGinn",
       "element_type": 3,
       "team": 2,
-      "total_points": 29,
-      "event_points": 1,
+      "total_points": 33,
+      "event_points": 5,
       "status": "a"
     },
     {
@@ -7375,8 +7375,8 @@
       "web_name": "Manzambi",
       "element_type": 3,
       "team": 2,
-      "total_points": 31,
-      "event_points": 1,
+      "total_points": 30,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8618,8 +8618,8 @@
       "web_name": "N.Jackson",
       "element_type": 4,
       "team": 2,
-      "total_points": 22,
-      "event_points": 1,
+      "total_points": 29,
+      "event_points": 8,
       "status": "a"
     },
     {
@@ -9399,8 +9399,8 @@
       "web_name": "Ndiaye",
       "element_type": 3,
       "team": 15,
-      "total_points": 29,
-      "event_points": 1,
+      "total_points": 32,
+      "event_points": 4,
       "status": "a"
     },
     {
@@ -11060,8 +11060,8 @@
       "web_name": "Guéhi",
       "element_type": 2,
       "team": 15,
-      "total_points": 38,
-      "event_points": 1,
+      "total_points": 37,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11137,8 +11137,8 @@
       "web_name": "Lewis",
       "element_type": 2,
       "team": 15,
-      "total_points": 1,
-      "event_points": 0,
+      "total_points": 2,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -11170,8 +11170,8 @@
       "web_name": "Foden",
       "element_type": 3,
       "team": 15,
-      "total_points": 18,
-      "event_points": 0,
+      "total_points": 19,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -11181,8 +11181,8 @@
       "web_name": "Cherki",
       "element_type": 3,
       "team": 15,
-      "total_points": 45,
-      "event_points": 1,
+      "total_points": 44,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11313,8 +11313,8 @@
       "web_name": "Haaland",
       "element_type": 4,
       "team": 15,
-      "total_points": 59,
-      "event_points": 1,
+      "total_points": 65,
+      "event_points": 7,
       "status": "a"
     },
     {
@@ -13359,8 +13359,8 @@
       "web_name": "Suzuki",
       "element_type": 1,
       "team": 2,
-      "total_points": 27,
-      "event_points": 1,
+      "total_points": 28,
+      "event_points": 2,
       "status": "a"
     },
     {
