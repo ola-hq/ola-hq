@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-24T16:42:22.592Z",
+    "fetched_at": "2026-10-24T17:39:26.714Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -8697,7 +8697,7 @@
       "team": 7,
       "total_points": 32,
       "event_points": 1,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 174,
@@ -8992,8 +8992,8 @@
       "web_name": "Lacroix",
       "element_type": 2,
       "team": 6,
-      "total_points": 22,
-      "event_points": 1,
+      "total_points": 23,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -12248,8 +12248,8 @@
       "web_name": "Kinsky",
       "element_type": 1,
       "team": 19,
-      "total_points": 24,
-      "event_points": 1,
+      "total_points": 28,
+      "event_points": 5,
       "status": "a"
     },
     {
@@ -12314,8 +12314,8 @@
       "web_name": "Robertson",
       "element_type": 2,
       "team": 19,
-      "total_points": 23,
-      "event_points": 1,
+      "total_points": 25,
+      "event_points": 3,
       "status": "a"
     },
     {
@@ -12457,8 +12457,8 @@
       "web_name": "Maddison",
       "element_type": 3,
       "team": 19,
-      "total_points": 14,
-      "event_points": 1,
+      "total_points": 15,
+      "event_points": 2,
       "status": "a"
     },
     {
