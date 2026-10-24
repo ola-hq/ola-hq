@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-arsenal-v1",
     "mode": "Auto-refreshed ESPN schedule",
-    "updated_at": "2026-10-24T15:02:16.945Z",
+    "updated_at": "2026-10-24T16:02:42.706Z",
     "updated_display": "Oct 6, 2026",
     "architecture": [
       "live source",
@@ -1527,6 +1527,10 @@
         "url": "https://fantasy.premierleague.com/api/fixtures/"
       },
       {
+        "label": "Premier League official fixture feed",
+        "url": "https://fantasy.premierleague.com/api/fixtures/"
+      },
+      {
         "label": "ESPN Arsenal schedule (automated, unofficial)",
         "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/359/schedule"
       },
@@ -1538,9 +1542,9 @@
     "refresh_strategy": "scheduled",
     "schedule_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/359/schedule?season=2026",
     "league_source": "https://site.api.espn.com/apis/v2/sports/soccer/eng.1/standings",
-    "league_updated_at": "2026-10-24T15:02:16.945Z",
+    "league_updated_at": "2026-10-24T16:02:42.706Z",
     "fixture_source": "automated",
-    "fixture_updated_at": "2026-10-24T15:02:16.945Z",
+    "fixture_updated_at": "2026-10-24T16:02:42.706Z",
     "official_fixture_feed": "https://fantasy.premierleague.com/api/fixtures/",
     "match_link_source": "Verified Premier League match centre"
   },
@@ -1565,14 +1569,14 @@
     "league": {
       "competition": "Premier League",
       "position": 2,
-      "points": 18,
-      "played": 7,
-      "wins": 6,
+      "points": 21,
+      "played": 8,
+      "wins": 7,
       "draws": 0,
       "losses": 1,
-      "gf": 11,
+      "gf": 13,
       "ga": 5,
-      "gd": 6
+      "gd": 8
     },
     "recent_form": [
       "L",
