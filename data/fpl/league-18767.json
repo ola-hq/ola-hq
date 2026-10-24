@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-24T18:43:42.682Z",
+    "fetched_at": "2026-10-24T19:37:01.307Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -739,9 +739,9 @@
         "event": 8,
         "finished": false,
         "league_entry_1": 95298,
-        "league_entry_1_points": 4,
+        "league_entry_1_points": 7,
         "league_entry_2": 95302,
-        "league_entry_2_points": 2,
+        "league_entry_2_points": 17,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -750,9 +750,9 @@
         "event": 8,
         "finished": false,
         "league_entry_1": 95303,
-        "league_entry_1_points": 8,
+        "league_entry_1_points": 19,
         "league_entry_2": 95301,
-        "league_entry_2_points": 2,
+        "league_entry_2_points": 31,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -761,9 +761,9 @@
         "event": 8,
         "finished": false,
         "league_entry_1": 95304,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 11,
         "league_entry_2": 95300,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 8,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -772,9 +772,9 @@
         "event": 8,
         "finished": false,
         "league_entry_1": 95305,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 24,
         "league_entry_2": 95299,
-        "league_entry_2_points": 2,
+        "league_entry_2_points": 17,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -783,9 +783,9 @@
         "event": 8,
         "finished": false,
         "league_entry_1": 95306,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 10,
         "league_entry_2": 95309,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 29,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -794,9 +794,9 @@
         "event": 8,
         "finished": false,
         "league_entry_1": 95307,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 15,
         "league_entry_2": 95308,
-        "league_entry_2_points": 18,
+        "league_entry_2_points": 19,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -5714,6 +5714,12 @@
         "status": "a"
       },
       {
+        "element": 669,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "a"
+      },
+      {
         "element": 229,
         "in_accepted_trade": false,
         "owner": 95052,
@@ -9357,7 +9363,7 @@
       "team": 9,
       "total_points": 28,
       "event_points": 0,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 234,
@@ -12459,7 +12465,7 @@
       "team": 19,
       "total_points": 14,
       "event_points": 1,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 516,
@@ -14141,6 +14147,17 @@
       "element_type": 3,
       "team": 20,
       "total_points": 1,
+      "event_points": 0,
+      "status": "a"
+    },
+    {
+      "id": 669,
+      "first_name": "Teddy",
+      "second_name": "Sharman-Lowe",
+      "web_name": "Sharman-Lowe",
+      "element_type": 1,
+      "team": 6,
+      "total_points": 0,
       "event_points": 0,
       "status": "a"
     }
