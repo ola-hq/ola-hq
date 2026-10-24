@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-24T15:03:57.504Z",
+    "fetched_at": "2026-10-24T15:34:54.615Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-24T15:03:57.504Z"
+    "details_checked_at": "2026-10-24T15:34:54.615Z"
   },
   "matches": [
     {
@@ -5178,23 +5178,23 @@
         "name": "Everton",
         "short": "EVE"
       },
-      "home_score": 1,
+      "home_score": 2,
       "away_score": 0,
       "status": "in",
-      "minute": 46,
+      "minute": 77,
       "venue": "Emirates Stadium",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878768",
       "stats": [
         {
           "label": "Fouls",
-          "home": "3",
-          "away": "8"
+          "home": "8",
+          "away": "11"
         },
         {
           "label": "Yellow Cards",
-          "home": "0",
-          "away": "1"
+          "home": "1",
+          "away": "2"
         },
         {
           "label": "Red Cards",
@@ -5208,27 +5208,27 @@
         },
         {
           "label": "Corner Kicks",
-          "home": "10",
+          "home": "12",
           "away": "3"
         },
         {
           "label": "Saves",
           "home": "2",
-          "away": "1"
+          "away": "2"
         },
         {
           "label": "Possession",
-          "home": "58.6",
-          "away": "41.4"
+          "home": "62.2",
+          "away": "37.8"
         },
         {
           "label": "SHOTS",
-          "home": "13",
+          "home": "18",
           "away": "3"
         },
         {
           "label": "ON GOAL",
-          "home": "2",
+          "home": "4",
           "away": "2"
         },
         {
@@ -5251,12 +5251,27 @@
         {
           "minute": null,
           "type": "Goal",
+          "description": "Goal · Gabriel (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
           "description": "Goal · Konsa (Home)"
         },
         {
           "minute": null,
           "type": "Yellow card",
+          "description": "Yellow card · Lewis-Skelly (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
           "description": "Yellow card · Mykolenko (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Garner (Away)"
         }
       ],
       "lineups": {
@@ -5302,15 +5317,15 @@
       "home_score": 0,
       "away_score": 0,
       "status": "in",
-      "minute": 453,
+      "minute": 76,
       "venue": "Coventry Building Society Arena",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879255",
       "stats": [
         {
           "label": "Fouls",
-          "home": "4",
-          "away": "6"
+          "home": "5",
+          "away": "9"
         },
         {
           "label": "Yellow Cards",
@@ -5325,37 +5340,37 @@
         {
           "label": "Offsides",
           "home": "0",
-          "away": "2"
+          "away": "3"
         },
         {
           "label": "Corner Kicks",
-          "home": "1",
-          "away": "2"
+          "home": "4",
+          "away": "4"
         },
         {
           "label": "Saves",
           "home": "1",
-          "away": "1"
+          "away": "2"
         },
         {
           "label": "Possession",
-          "home": "35.1",
-          "away": "64.9"
+          "home": "35.6",
+          "away": "64.4"
         },
         {
           "label": "SHOTS",
-          "home": "7",
-          "away": "6"
+          "home": "11",
+          "away": "9"
         },
         {
           "label": "ON GOAL",
-          "home": "1",
+          "home": "2",
           "away": "1"
         },
         {
           "label": "On Target %",
-          "home": "0.1",
-          "away": "0.2"
+          "home": "0.2",
+          "away": "0.1"
         },
         {
           "label": "Penalty Goals",
