@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-24T12:50:01.428Z",
+    "fetched_at": "2026-10-24T13:40:56.336Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -6893,7 +6893,7 @@
       "team": 1,
       "total_points": 3,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 10,
@@ -7144,8 +7144,8 @@
       "web_name": "Cash",
       "element_type": 2,
       "team": 2,
-      "total_points": 14,
-      "event_points": 0,
+      "total_points": 17,
+      "event_points": 3,
       "status": "a"
     },
     {
@@ -7166,8 +7166,8 @@
       "web_name": "Pau",
       "element_type": 2,
       "team": 2,
-      "total_points": 5,
-      "event_points": 1,
+      "total_points": 6,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -7188,8 +7188,8 @@
       "web_name": "Maatsen",
       "element_type": 2,
       "team": 2,
-      "total_points": 10,
-      "event_points": 1,
+      "total_points": 11,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -7199,8 +7199,8 @@
       "web_name": "Lindelöf",
       "element_type": 2,
       "team": 2,
-      "total_points": 21,
-      "event_points": 1,
+      "total_points": 22,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -7287,8 +7287,8 @@
       "web_name": "McGinn",
       "element_type": 3,
       "team": 2,
-      "total_points": 33,
-      "event_points": 5,
+      "total_points": 34,
+      "event_points": 6,
       "status": "a"
     },
     {
@@ -7298,8 +7298,8 @@
       "web_name": "Barkley",
       "element_type": 3,
       "team": 2,
-      "total_points": 12,
-      "event_points": 0,
+      "total_points": 13,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -7309,8 +7309,8 @@
       "web_name": "Kamara",
       "element_type": 3,
       "team": 2,
-      "total_points": 25,
-      "event_points": 1,
+      "total_points": 28,
+      "event_points": 4,
       "status": "a"
     },
     {
@@ -7375,8 +7375,8 @@
       "web_name": "Manzambi",
       "element_type": 3,
       "team": 2,
-      "total_points": 30,
-      "event_points": 0,
+      "total_points": 31,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -7386,8 +7386,8 @@
       "web_name": "Gomes",
       "element_type": 3,
       "team": 2,
-      "total_points": 10,
-      "event_points": 1,
+      "total_points": 11,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -8497,8 +8497,8 @@
       "web_name": "Enzo",
       "element_type": 3,
       "team": 15,
-      "total_points": 18,
-      "event_points": 1,
+      "total_points": 19,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -8618,8 +8618,8 @@
       "web_name": "N.Jackson",
       "element_type": 4,
       "team": 2,
-      "total_points": 29,
-      "event_points": 8,
+      "total_points": 34,
+      "event_points": 13,
       "status": "a"
     },
     {
@@ -9399,8 +9399,8 @@
       "web_name": "Ndiaye",
       "element_type": 3,
       "team": 15,
-      "total_points": 32,
-      "event_points": 4,
+      "total_points": 33,
+      "event_points": 5,
       "status": "a"
     },
     {
@@ -11115,8 +11115,8 @@
       "web_name": "Khusanov",
       "element_type": 2,
       "team": 15,
-      "total_points": 11,
-      "event_points": 1,
+      "total_points": 13,
+      "event_points": 3,
       "status": "a"
     },
     {
@@ -11192,8 +11192,8 @@
       "web_name": "Doku",
       "element_type": 3,
       "team": 15,
-      "total_points": 20,
-      "event_points": 1,
+      "total_points": 21,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -11313,8 +11313,8 @@
       "web_name": "Haaland",
       "element_type": 4,
       "team": 15,
-      "total_points": 65,
-      "event_points": 7,
+      "total_points": 66,
+      "event_points": 8,
       "status": "a"
     },
     {
@@ -12151,7 +12151,7 @@
       "team": 18,
       "total_points": 4,
       "event_points": 0,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 488,
@@ -13359,8 +13359,8 @@
       "web_name": "Suzuki",
       "element_type": 1,
       "team": 2,
-      "total_points": 28,
-      "event_points": 2,
+      "total_points": 30,
+      "event_points": 4,
       "status": "a"
     },
     {
@@ -13579,8 +13579,8 @@
       "web_name": "Goretzka",
       "element_type": 3,
       "team": 2,
-      "total_points": 1,
-      "event_points": 0,
+      "total_points": 2,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -13733,8 +13733,8 @@
       "web_name": "Mbaye",
       "element_type": 3,
       "team": 2,
-      "total_points": 4,
-      "event_points": 0,
+      "total_points": 8,
+      "event_points": 4,
       "status": "a"
     },
     {
