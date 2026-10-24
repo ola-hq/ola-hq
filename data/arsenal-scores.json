@@ -1,7 +1,7 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-24T18:36:09.944Z",
+    "fetched_at": "2026-10-24T19:09:27.087Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
@@ -5745,9 +5745,9 @@
       "away_score": null,
       "status": "pre",
       "minute": null,
-      "venue": null,
+      "venue": "St. James' Park",
       "competition": "Premier League",
-      "match_url": null,
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/401878762/everton-newcastle-united",
       "stats": [],
       "events": [],
       "lineups": null
