@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-25T21:40:56.019Z",
+    "fetched_at": "2026-10-25T22:38:33.695Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -9438,8 +9438,8 @@
       "web_name": "Iroegbunam",
       "element_type": 3,
       "team": 11,
-      "total_points": 11,
-      "event_points": 7,
+      "total_points": 13,
+      "event_points": 9,
       "status": "a"
     },
     {
@@ -10780,8 +10780,8 @@
       "web_name": "Jacquet",
       "element_type": 2,
       "team": 14,
-      "total_points": 36,
-      "event_points": 6,
+      "total_points": 38,
+      "event_points": 8,
       "status": "a"
     },
     {
@@ -13024,8 +13024,8 @@
       "web_name": "Horníček",
       "element_type": 1,
       "team": 17,
-      "total_points": 25,
-      "event_points": 9,
+      "total_points": 24,
+      "event_points": 8,
       "status": "a"
     },
     {
@@ -13145,8 +13145,8 @@
       "web_name": "Stroud",
       "element_type": 3,
       "team": 11,
-      "total_points": 13,
-      "event_points": 2,
+      "total_points": 15,
+      "event_points": 4,
       "status": "a"
     },
     {
@@ -13343,8 +13343,8 @@
       "web_name": "Dedić",
       "element_type": 2,
       "team": 17,
-      "total_points": 23,
-      "event_points": 10,
+      "total_points": 24,
+      "event_points": 11,
       "status": "a"
     },
     {
