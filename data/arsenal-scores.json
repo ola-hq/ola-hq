@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-25T16:37:23.769Z",
+    "fetched_at": "2026-10-25T17:08:26.083Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-25T16:37:23.769Z"
+    "details_checked_at": "2026-10-25T17:08:26.083Z"
   },
   "matches": [
     {
@@ -5849,20 +5849,20 @@
       "home_score": 0,
       "away_score": 0,
       "status": "in",
-      "minute": 7,
+      "minute": 38,
       "venue": "Stadium of Light",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878764",
       "stats": [
         {
           "label": "Fouls",
-          "home": "1",
-          "away": "1"
+          "home": "3",
+          "away": "6"
         },
         {
           "label": "Yellow Cards",
           "home": "0",
-          "away": "0"
+          "away": "1"
         },
         {
           "label": "Red Cards",
@@ -5871,37 +5871,37 @@
         },
         {
           "label": "Offsides",
-          "home": "1",
+          "home": "2",
           "away": "0"
         },
         {
           "label": "Corner Kicks",
-          "home": "0",
-          "away": "0"
+          "home": "1",
+          "away": "1"
         },
         {
           "label": "Saves",
           "home": "0",
-          "away": "0"
+          "away": "2"
         },
         {
           "label": "Possession",
-          "home": "26.2",
-          "away": "73.8"
+          "home": "50.9",
+          "away": "49.1"
         },
         {
           "label": "SHOTS",
-          "home": "0",
+          "home": "6",
           "away": "2"
         },
         {
           "label": "ON GOAL",
-          "home": "0",
+          "home": "2",
           "away": "0"
         },
         {
           "label": "On Target %",
-          "home": "0.0",
+          "home": "0.3",
           "away": "0.0"
         },
         {
@@ -5915,7 +5915,13 @@
           "away": "0"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Ampadu (Away)"
+        }
+      ],
       "lineups": {
         "home": [
           "Robin Roefs",
