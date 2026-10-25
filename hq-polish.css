@@ -15,3 +15,20 @@
 .hq-polish .world-entrances .simulation-visual img{position:absolute;inset:0;display:block;width:100%;height:100%;max-height:none;object-fit:cover;object-position:50% 48%}
 .hq-polish .tool h3{font-size:24px;margin-top:0}
 @media(max-width:760px){.hq-polish header{flex-wrap:wrap}.hq-polish .home-topbar .globe-lockup{flex-direction:row}}
+
+/* A welcoming first stop after the six main worlds. */
+.hq-polish .deeper-waves-invitation{position:relative;isolation:isolate;overflow:hidden;display:flex;gap:32px;padding:40px;border:1px solid #7daca6;border-radius:24px;background:linear-gradient(125deg,#e1f0e9 0%,#edf4ea 54%,#f7e6bd 100%);text-decoration:none;box-shadow:0 8px 24px #172c3d08;transition:transform .2s,box-shadow .2s}
+.hq-polish .deeper-waves-copy{position:relative;z-index:1;flex:1;max-width:680px}
+.hq-polish .deeper-waves-invitation .eyebrow{color:#285e59}
+.hq-polish .deeper-waves-invitation h2{font:normal clamp(32px,4vw,48px)/1.12 Georgia,serif;letter-spacing:-.035em;margin:14px 0}
+.hq-polish .deeper-waves-invitation .quiet{color:#34545a;font-size:16px;max-width:590px;margin-bottom:24px}
+.hq-polish .deeper-waves-cta{display:inline-flex;align-items:center;gap:28px;background:#214f4b;color:#fffdf8;border-radius:999px;padding:13px 24px;font-size:15px;font-weight:700}
+.hq-polish .deeper-waves-art{flex:0 0 180px;aspect-ratio:1;border:1px solid #527e7150;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fffdf840;color:#285e59;transform:rotate(-8deg)}
+.hq-polish .deeper-waves-art span:first-child{font-size:28px;color:#846321;line-height:1}
+.hq-polish .deeper-waves-art span:nth-child(2){font:normal 80px/.9 Georgia,serif}
+.hq-polish .deeper-waves-art span:last-child{text-align:center;font-size:10px;letter-spacing:.15em;font-weight:700;line-height:1.5;margin-top:10px}
+.hq-polish .deeper-waves-invitation:hover{transform:translateY(-3px);box-shadow:0 14px 32px #172c3d18}
+.hq-polish .deeper-waves-invitation:hover .deeper-waves-cta{background:#173d3a}
+@media(max-width:760px){.hq-polish .deeper-waves-invitation{padding:28px;gap:20px}.hq-polish .deeper-waves-art{flex-basis:112px}.hq-polish .deeper-waves-art span:nth-child(2){font-size:58px}}
+@media(max-width:480px){.hq-polish .deeper-waves-invitation{display:block}.hq-polish .deeper-waves-art{display:none}}
+@media(prefers-reduced-motion:reduce){.hq-polish .deeper-waves-invitation{transition:none}.hq-polish .deeper-waves-invitation:hover{transform:none}}
