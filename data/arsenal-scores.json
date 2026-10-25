@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-25T15:03:32.407Z",
+    "fetched_at": "2026-10-25T15:34:53.726Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-25T15:03:32.407Z"
+    "details_checked_at": "2026-10-25T15:34:53.726Z"
   },
   "matches": [
     {
@@ -5464,21 +5464,21 @@
         "short": "NEW"
       },
       "home_score": 0,
-      "away_score": 0,
+      "away_score": 2,
       "status": "in",
-      "minute": 47,
+      "minute": 78,
       "venue": "Selhurst Park",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879254",
       "stats": [
         {
           "label": "Fouls",
-          "home": "7",
+          "home": "8",
           "away": "8"
         },
         {
           "label": "Yellow Cards",
-          "home": "0",
+          "home": "1",
           "away": "2"
         },
         {
@@ -5488,38 +5488,38 @@
         },
         {
           "label": "Offsides",
-          "home": "1",
-          "away": "0"
+          "home": "2",
+          "away": "1"
         },
         {
           "label": "Corner Kicks",
-          "home": "1",
-          "away": "1"
+          "home": "4",
+          "away": "4"
         },
         {
           "label": "Saves",
           "home": "0",
-          "away": "2"
-        },
-        {
-          "label": "Possession",
-          "home": "46.2",
-          "away": "53.8"
-        },
-        {
-          "label": "SHOTS",
-          "home": "8",
           "away": "4"
         },
         {
+          "label": "Possession",
+          "home": "47.9",
+          "away": "52.1"
+        },
+        {
+          "label": "SHOTS",
+          "home": "12",
+          "away": "10"
+        },
+        {
           "label": "ON GOAL",
-          "home": "2",
-          "away": "0"
+          "home": "4",
+          "away": "2"
         },
         {
           "label": "On Target %",
           "home": "0.3",
-          "away": "0.0"
+          "away": "0.2"
         },
         {
           "label": "Penalty Goals",
@@ -5533,6 +5533,16 @@
         }
       ],
       "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Barnes (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Osula (Away)"
+        },
         {
           "minute": null,
           "type": "Yellow card",
@@ -5585,17 +5595,17 @@
         "short": "BRE"
       },
       "home_score": 1,
-      "away_score": 0,
+      "away_score": 1,
       "status": "in",
-      "minute": 453,
+      "minute": 77,
       "venue": "The MKM Stadium",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878766",
       "stats": [
         {
           "label": "Fouls",
-          "home": "3",
-          "away": "6"
+          "home": "6",
+          "away": "8"
         },
         {
           "label": "Yellow Cards",
@@ -5614,33 +5624,33 @@
         },
         {
           "label": "Corner Kicks",
-          "home": "4",
-          "away": "3"
-        },
-        {
-          "label": "Saves",
-          "home": "2",
-          "away": "0"
-        },
-        {
-          "label": "Possession",
-          "home": "44.3",
-          "away": "55.7"
-        },
-        {
-          "label": "SHOTS",
-          "home": "4",
+          "home": "5",
           "away": "5"
         },
         {
+          "label": "Saves",
+          "home": "5",
+          "away": "1"
+        },
+        {
+          "label": "Possession",
+          "home": "44.5",
+          "away": "55.5"
+        },
+        {
+          "label": "SHOTS",
+          "home": "9",
+          "away": "13"
+        },
+        {
           "label": "ON GOAL",
-          "home": "1",
-          "away": "2"
+          "home": "2",
+          "away": "6"
         },
         {
           "label": "On Target %",
-          "home": "0.3",
-          "away": "0.4"
+          "home": "0.2",
+          "away": "0.5"
         },
         {
           "label": "Penalty Goals",
@@ -5658,6 +5668,11 @@
           "minute": null,
           "type": "Goal",
           "description": "Goal · McBurnie (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · O.Dango (Away)"
         },
         {
           "minute": null,
@@ -5708,7 +5723,7 @@
       "home_score": 2,
       "away_score": 0,
       "status": "in",
-      "minute": 45,
+      "minute": 69,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -5746,7 +5761,7 @@
       "home_score": 0,
       "away_score": 2,
       "status": "in",
-      "minute": 45,
+      "minute": 69,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -5761,6 +5776,11 @@
           "minute": null,
           "type": "Goal",
           "description": "Goal · Tavernier (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Evanilson (Away)"
         },
         {
           "minute": null,
@@ -5808,7 +5828,53 @@
       "venue": "Stadium of Light",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878764/leeds-united-sunderland",
-      "stats": [],
+      "stats": [
+        {
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "wonCorners",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "goalAssists",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "possessionPct",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "shotAssists",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "shotsOnTarget",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "totalGoals",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "totalShots",
+          "home": "0",
+          "away": "0"
+        }
+      ],
       "events": [],
       "lineups": null
     },
