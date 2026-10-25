@@ -270,5 +270,6 @@ html.is-installed #install{display:none!important}
 .what-wave-art strong{font:900 clamp(28px,6vw,48px)/.97 'Outfit',sans-serif;letter-spacing:-.05em}
 .what-wave-ripples{font-size:38px;letter-spacing:.22em;color:#8bd2d0}
 
-/* Header globe stays an app-home action; no external website link in the header. */
-.appbar .brand-globe{display:inline-flex;align-items:center;justify-content:center;flex:none;min-width:44px;min-height:44px;padding:2px;border:0;border-radius:50%;background:transparent;color:inherit;cursor:pointer}
+/* The small globe and wordmark return to the website from every app view. */
+.appbar .brand-globe{display:inline-flex;align-items:center;justify-content:center;gap:9px;flex:none;min-width:44px;min-height:44px;padding:2px;border:0;border-radius:8px;background:transparent;color:inherit;cursor:pointer;text-decoration:none}
+.appbar .brand-globe:hover strong{text-decoration:underline;text-underline-offset:4px}

@@ -2,7 +2,7 @@
 /*
  * OLA HQ App Prototype 01: additive, public-world-only launcher.
  * No root service worker and no writes to the Festival Guide.
- * "OLA HQ" always returns to the global launcher; contextual "Up" follows hierarchy.
+ * The header OLA HQ link returns to the website; contextual "Up" follows hierarchy.
  */
 const ROOT = new URL('../', location.href);
 const worlds = {
@@ -29,7 +29,6 @@ const up = document.querySelector('#up');
 const upLabel = document.querySelector('#up-label');
 const label = document.querySelector('#world-label');
 const openAlone = document.querySelector('#open-alone');
-const home = document.querySelector('#hq-home');
 const heroWorldJump = document.querySelector('#hero-world-jump');
 let current = null;
 let deferredInstall = null;
@@ -165,7 +164,6 @@ frame.addEventListener('load', () => {
   } catch {}
 });
 document.querySelectorAll('[data-world]').forEach(button => button.addEventListener('click', () => openWorld(button.dataset.world)));
-home.addEventListener('click', () => showHome());
 // The OLA HQ /app/ globe is a native anchor first, with an optional quick-glide enhancement.
 let globeJumpAnimation = 0;
 function quickScrollToWaves(event) {
