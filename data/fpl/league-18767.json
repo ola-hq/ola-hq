@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-25T16:42:29.313Z",
+    "fetched_at": "2026-10-25T17:39:42.256Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -8043,7 +8043,7 @@
       "team": 5,
       "total_points": 29,
       "event_points": 1,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 114,
@@ -10428,8 +10428,8 @@
       "web_name": "Bogle",
       "element_type": 2,
       "team": 13,
-      "total_points": 46,
-      "event_points": 1,
+      "total_points": 47,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -10472,8 +10472,8 @@
       "web_name": "Muharemović",
       "element_type": 2,
       "team": 13,
-      "total_points": 35,
-      "event_points": 1,
+      "total_points": 38,
+      "event_points": 4,
       "status": "a"
     },
     {
@@ -10485,7 +10485,7 @@
       "team": 13,
       "total_points": 31,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 336,
@@ -10496,7 +10496,7 @@
       "team": 13,
       "total_points": 22,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 337,
@@ -10516,8 +10516,8 @@
       "web_name": "Ampadu",
       "element_type": 3,
       "team": 13,
-      "total_points": 24,
-      "event_points": 1,
+      "total_points": 23,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10606,7 +10606,7 @@
       "team": 13,
       "total_points": 34,
       "event_points": 1,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 347,
@@ -10826,7 +10826,7 @@
       "team": 14,
       "total_points": 31,
       "event_points": 6,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 367,
@@ -11033,8 +11033,8 @@
       "web_name": "Trafford",
       "element_type": 1,
       "team": 13,
-      "total_points": 33,
-      "event_points": 1,
+      "total_points": 36,
+      "event_points": 4,
       "status": "a"
     },
     {
@@ -12694,8 +12694,8 @@
       "web_name": "Reinildo",
       "element_type": 2,
       "team": 20,
-      "total_points": 11,
-      "event_points": 1,
+      "total_points": 10,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12872,7 +12872,7 @@
       "team": 20,
       "total_points": 25,
       "event_points": 1,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 553,
@@ -13389,7 +13389,7 @@
       "team": 13,
       "total_points": 16,
       "event_points": 0,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 600,
@@ -13752,7 +13752,7 @@
       "team": 5,
       "total_points": 18,
       "event_points": 1,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 633,
