@@ -2,9 +2,17 @@
   "account": "ourpolaroidproj",
   "source": "https://letterboxd.com/ourpolaroidproj/rss/",
   "scope": "recent_public_diary_entries_not_complete_library",
-  "checkedAt": "2026-10-25T19:42:06.860911Z",
+  "checkedAt": "2026-10-26T08:05:20.609784Z",
   "status": "ok",
   "entries": [
+    {
+      "title": "The Breadwinner",
+      "year": "2026",
+      "score": 2.0,
+      "watchedDate": "2026-10-25",
+      "activityDate": "2026-10-26",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/the-breadwinner-2026/"
+    },
     {
       "title": "You Can See Everything",
       "year": "2026",
@@ -292,14 +300,6 @@
       "watchedDate": "2026-05-03",
       "activityDate": "2026-05-04",
       "url": "https://letterboxd.com/ourpolaroidproj/film/good-mourning-2022/"
-    },
-    {
-      "title": "Doin' It",
-      "year": "2024",
-      "score": 2.0,
-      "watchedDate": "2026-05-03",
-      "activityDate": "2026-05-04",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/doin-it/"
     }
   ],
   "totalEntries": 37
