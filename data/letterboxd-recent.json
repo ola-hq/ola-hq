@@ -2,9 +2,25 @@
   "account": "ourpolaroidproj",
   "source": "https://letterboxd.com/ourpolaroidproj/rss/",
   "scope": "recent_public_diary_entries_not_complete_library",
-  "checkedAt": "2026-10-27T19:54:55.797977Z",
+  "checkedAt": "2026-10-28T08:11:37.308512Z",
   "status": "ok",
   "entries": [
+    {
+      "title": "Scooby-Doo",
+      "year": "2002",
+      "score": 4.0,
+      "watchedDate": "2026-10-27",
+      "activityDate": "2026-10-28",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/scooby-doo/"
+    },
+    {
+      "title": "The Twilight Saga: New Moon",
+      "year": "2009",
+      "score": 2.5,
+      "watchedDate": "2026-10-25",
+      "activityDate": "2026-10-28",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/the-twilight-saga-new-moon/"
+    },
     {
       "title": "The Breadwinner",
       "year": "2026",
@@ -284,22 +300,6 @@
       "watchedDate": "2026-05-04",
       "activityDate": "2026-05-05",
       "url": "https://letterboxd.com/ourpolaroidproj/film/erupcja/"
-    },
-    {
-      "title": "The Devil Wears Prada 2",
-      "year": "2026",
-      "score": 3.0,
-      "watchedDate": "2026-05-04",
-      "activityDate": "2026-05-05",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/the-devil-wears-prada-2/"
-    },
-    {
-      "title": "Good Mourning",
-      "year": "2022",
-      "score": 2.5,
-      "watchedDate": "2026-05-03",
-      "activityDate": "2026-05-04",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/good-mourning-2022/"
     }
   ],
   "totalEntries": 37
