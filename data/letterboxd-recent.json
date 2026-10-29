@@ -2,7 +2,7 @@
   "account": "ourpolaroidproj",
   "source": "https://letterboxd.com/ourpolaroidproj/rss/",
   "scope": "recent_public_diary_entries_not_complete_library",
-  "checkedAt": "2026-10-28T19:59:22.420870Z",
+  "checkedAt": "2026-10-29T08:14:23.678196Z",
   "status": "ok",
   "entries": [
     {
@@ -246,6 +246,22 @@
       "url": "https://letterboxd.com/ourpolaroidproj/film/moana/"
     },
     {
+      "title": "Minions & Monsters",
+      "year": "2026",
+      "score": 3.0,
+      "watchedDate": "2026-06-30",
+      "activityDate": "2026-07-01",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/minions-monsters-2026/"
+    },
+    {
+      "title": "Couture",
+      "year": "2025",
+      "score": 3.5,
+      "watchedDate": "2026-06-30",
+      "activityDate": "2026-07-01",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/couture/"
+    },
+    {
       "title": "I Love Boosters",
       "year": "2026",
       "score": 3.0,
@@ -302,5 +318,5 @@
       "url": "https://letterboxd.com/ourpolaroidproj/film/erupcja/"
     }
   ],
-  "totalEntries": 37
+  "totalEntries": 39
 }
