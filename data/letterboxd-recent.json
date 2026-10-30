@@ -2,9 +2,25 @@
   "account": "ourpolaroidproj",
   "source": "https://letterboxd.com/ourpolaroidproj/rss/",
   "scope": "recent_public_diary_entries_not_complete_library",
-  "checkedAt": "2026-10-29T20:00:07.088361Z",
+  "checkedAt": "2026-10-30T08:14:24.938244Z",
   "status": "ok",
   "entries": [
+    {
+      "title": "The Only Living Pickpocket in New York",
+      "year": "2026",
+      "score": 3.0,
+      "watchedDate": "2026-10-29",
+      "activityDate": "2026-10-30",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/the-only-living-pickpocket-in-new-york/"
+    },
+    {
+      "title": "Forgotten Island",
+      "year": "2026",
+      "score": 3.5,
+      "watchedDate": "2026-10-29",
+      "activityDate": "2026-10-30",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/forgotten-island-2026/"
+    },
     {
       "title": "Scooby-Doo",
       "year": "2002",
@@ -300,22 +316,6 @@
       "watchedDate": "2026-05-08",
       "activityDate": "2026-05-09",
       "url": "https://letterboxd.com/ourpolaroidproj/film/billie-eilish-hit-me-hard-and-soft-the-tour/1/"
-    },
-    {
-      "title": "The Sheep Detectives",
-      "year": "2026",
-      "score": 4.0,
-      "watchedDate": "2026-05-07",
-      "activityDate": "2026-05-08",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/the-sheep-detectives/"
-    },
-    {
-      "title": "Erupcja",
-      "year": "2025",
-      "score": 3.0,
-      "watchedDate": "2026-05-04",
-      "activityDate": "2026-05-05",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/erupcja/"
     }
   ],
   "totalEntries": 39
