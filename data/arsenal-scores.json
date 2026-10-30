@@ -1,7 +1,7 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-30T06:05:09.357Z",
+    "fetched_at": "2026-10-30T09:54:47.731Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
