@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-31T16:58:04.407Z",
+    "fetched_at": "2026-10-31T17:37:43.190Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-31T16:58:04.407Z"
+    "details_checked_at": "2026-10-31T17:37:43.190Z"
   },
   "matches": [
     {
@@ -5142,64 +5142,49 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878768/everton-arsenal",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "11",
           "away": "13"
         },
         {
-          "label": "Yellow Cards",
-          "home": "1",
-          "away": "3"
-        },
-        {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Offsides",
-          "home": "0",
-          "away": "1"
-        },
-        {
-          "label": "Corner Kicks",
+          "label": "wonCorners",
           "home": "12",
           "away": "3"
         },
         {
-          "label": "Saves",
-          "home": "3",
-          "away": "2"
+          "label": "goalAssists",
+          "home": "2",
+          "away": "0"
         },
         {
-          "label": "Possession",
+          "label": "possessionPct",
           "home": "58",
           "away": "42"
         },
         {
-          "label": "SHOTS",
-          "home": "20",
-          "away": "8"
+          "label": "shotAssists",
+          "home": "17",
+          "away": "7"
         },
         {
-          "label": "ON GOAL",
+          "label": "shotsOnTarget",
           "home": "4",
           "away": "3"
         },
         {
-          "label": "On Target %",
-          "home": "0.2",
-          "away": "0.4"
-        },
-        {
-          "label": "Penalty Goals",
-          "home": "0",
+          "label": "totalGoals",
+          "home": "2",
           "away": "0"
         },
         {
-          "label": "Penalty Kicks Taken",
-          "home": "0",
-          "away": "0"
+          "label": "totalShots",
+          "home": "20",
+          "away": "8"
         }
       ],
       "events": [
@@ -5283,64 +5268,49 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879255/fulham-coventry-city",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "9",
           "away": "11"
         },
         {
-          "label": "Yellow Cards",
-          "home": "0",
-          "away": "2"
-        },
-        {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Offsides",
-          "home": "1",
-          "away": "3"
-        },
-        {
-          "label": "Corner Kicks",
+          "label": "wonCorners",
           "home": "4",
           "away": "6"
         },
         {
-          "label": "Saves",
-          "home": "2",
-          "away": "2"
+          "label": "goalAssists",
+          "home": "0",
+          "away": "1"
         },
         {
-          "label": "Possession",
+          "label": "possessionPct",
           "home": "36",
           "away": "64"
         },
         {
-          "label": "SHOTS",
-          "home": "13",
-          "away": "12"
+          "label": "shotAssists",
+          "home": "5",
+          "away": "10"
         },
         {
-          "label": "ON GOAL",
+          "label": "shotsOnTarget",
           "home": "2",
           "away": "3"
         },
         {
-          "label": "On Target %",
-          "home": "0.2",
-          "away": "0.3"
+          "label": "totalGoals",
+          "home": "0",
+          "away": "1"
         },
         {
-          "label": "Penalty Goals",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Penalty Kicks Taken",
-          "home": "0",
-          "away": "0"
+          "label": "totalShots",
+          "home": "13",
+          "away": "12"
         }
       ],
       "events": [
@@ -6035,15 +6005,20 @@
         "name": "Leeds",
         "short": "LEE"
       },
-      "home_score": 1,
+      "home_score": 2,
       "away_score": 0,
-      "status": "in",
-      "minute": 90,
+      "status": "post",
+      "minute": null,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
       "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Adli (Home)"
+        },
         {
           "minute": null,
           "type": "Goal",
@@ -6176,8 +6151,8 @@
         },
         {
           "label": "Possession",
-          "home": "43.4",
-          "away": "56.6"
+          "home": "43.5",
+          "away": "56.5"
         },
         {
           "label": "SHOTS",
@@ -6238,8 +6213,8 @@
         },
         {
           "minute": null,
-          "type": "Yellow card",
-          "description": "Yellow card · Alderete (Away)"
+          "type": "Red card",
+          "description": "Red card · Alderete (Away)"
         }
       ],
       "lineups": {
@@ -6322,8 +6297,8 @@
         },
         {
           "label": "Possession",
-          "home": "38.4",
-          "away": "61.6"
+          "home": "38.5",
+          "away": "61.5"
         },
         {
           "label": "SHOTS",
@@ -6445,8 +6420,8 @@
       },
       "home_score": 0,
       "away_score": 1,
-      "status": "in",
-      "minute": 90,
+      "status": "post",
+      "minute": null,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -6486,10 +6461,10 @@
         "name": "Crystal Palace",
         "short": "CRY"
       },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
+      "home_score": 0,
+      "away_score": 0,
+      "status": "in",
+      "minute": 2,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
