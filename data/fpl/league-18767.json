@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-31T10:45:56.437Z",
+    "fetched_at": "2026-10-31T11:44:49.808Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -24,7 +24,7 @@
       "start_event": 1,
       "stop_event": 38,
       "trades": "a",
-      "transaction_mode": "free-agency",
+      "transaction_mode": "waivers",
       "variety": "x",
       "is_renewed": true
     },
@@ -116,7 +116,7 @@
     ],
     "standings": [
       {
-        "last_rank": 2,
+        "last_rank": 1,
         "league_entry": 95304,
         "matches_drawn": 0,
         "matches_lost": 2,
@@ -129,7 +129,7 @@
         "total": 18
       },
       {
-        "last_rank": 1,
+        "last_rank": 2,
         "league_entry": 95307,
         "matches_drawn": 0,
         "matches_lost": 3,
@@ -142,7 +142,7 @@
         "total": 15
       },
       {
-        "last_rank": 4,
+        "last_rank": 3,
         "league_entry": 95308,
         "matches_drawn": 0,
         "matches_lost": 3,
@@ -155,7 +155,7 @@
         "total": 15
       },
       {
-        "last_rank": 6,
+        "last_rank": 4,
         "league_entry": 95305,
         "matches_drawn": 0,
         "matches_lost": 3,
@@ -168,7 +168,7 @@
         "total": 15
       },
       {
-        "last_rank": 3,
+        "last_rank": 5,
         "league_entry": 95298,
         "matches_drawn": 0,
         "matches_lost": 3,
@@ -181,7 +181,7 @@
         "total": 15
       },
       {
-        "last_rank": 5,
+        "last_rank": 6,
         "league_entry": 95299,
         "matches_drawn": 0,
         "matches_lost": 4,
@@ -194,7 +194,7 @@
         "total": 12
       },
       {
-        "last_rank": 8,
+        "last_rank": 7,
         "league_entry": 95301,
         "matches_drawn": 0,
         "matches_lost": 4,
@@ -207,7 +207,7 @@
         "total": 12
       },
       {
-        "last_rank": 9,
+        "last_rank": 8,
         "league_entry": 95309,
         "matches_drawn": 0,
         "matches_lost": 4,
@@ -220,7 +220,7 @@
         "total": 12
       },
       {
-        "last_rank": 7,
+        "last_rank": 9,
         "league_entry": 95300,
         "matches_drawn": 0,
         "matches_lost": 5,
@@ -233,7 +233,7 @@
         "total": 9
       },
       {
-        "last_rank": 11,
+        "last_rank": 10,
         "league_entry": 95302,
         "matches_drawn": 0,
         "matches_lost": 5,
@@ -246,7 +246,7 @@
         "total": 9
       },
       {
-        "last_rank": 10,
+        "last_rank": 11,
         "league_entry": 95306,
         "matches_drawn": 0,
         "matches_lost": 6,
@@ -808,7 +808,7 @@
         "league_entry_1_points": 0,
         "league_entry_2": 95298,
         "league_entry_2_points": 0,
-        "started": false,
+        "started": true,
         "winning_league_entry": null,
         "winning_method": null
       },
@@ -819,7 +819,7 @@
         "league_entry_1_points": 0,
         "league_entry_2": 95308,
         "league_entry_2_points": 0,
-        "started": false,
+        "started": true,
         "winning_league_entry": null,
         "winning_method": null
       },
@@ -830,7 +830,7 @@
         "league_entry_1_points": 0,
         "league_entry_2": 95307,
         "league_entry_2_points": 0,
-        "started": false,
+        "started": true,
         "winning_league_entry": null,
         "winning_method": null
       },
@@ -841,7 +841,7 @@
         "league_entry_1_points": 0,
         "league_entry_2": 95306,
         "league_entry_2_points": 0,
-        "started": false,
+        "started": true,
         "winning_league_entry": null,
         "winning_method": null
       },
@@ -852,7 +852,7 @@
         "league_entry_1_points": 0,
         "league_entry_2": 95305,
         "league_entry_2_points": 0,
-        "started": false,
+        "started": true,
         "winning_league_entry": null,
         "winning_method": null
       },
@@ -863,7 +863,7 @@
         "league_entry_1_points": 0,
         "league_entry_2": 95304,
         "league_entry_2_points": 0,
-        "started": false,
+        "started": true,
         "winning_league_entry": null,
         "winning_method": null
       },
@@ -2942,6 +2942,12 @@
         "status": "a"
       },
       {
+        "element": 2,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "a"
+      },
+      {
         "element": 172,
         "in_accepted_trade": false,
         "owner": null,
@@ -2985,6 +2991,12 @@
       },
       {
         "element": 386,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "a"
+      },
+      {
+        "element": 45,
         "in_accepted_trade": false,
         "owner": null,
         "status": "a"
@@ -3242,6 +3254,12 @@
         "status": "a"
       },
       {
+        "element": 17,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "a"
+      },
+      {
         "element": 41,
         "in_accepted_trade": false,
         "owner": null,
@@ -3417,6 +3435,12 @@
       },
       {
         "element": 572,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "a"
+      },
+      {
+        "element": 357,
         "in_accepted_trade": false,
         "owner": null,
         "status": "a"
@@ -3615,6 +3639,12 @@
       },
       {
         "element": 348,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "a"
+      },
+      {
+        "element": 564,
         "in_accepted_trade": false,
         "owner": null,
         "status": "a"
@@ -3878,6 +3908,12 @@
         "status": "a"
       },
       {
+        "element": 105,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "a"
+      },
+      {
         "element": 276,
         "in_accepted_trade": false,
         "owner": null,
@@ -3986,7 +4022,25 @@
         "status": "a"
       },
       {
+        "element": 305,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "a"
+      },
+      {
+        "element": 483,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "a"
+      },
+      {
         "element": 440,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "a"
+      },
+      {
+        "element": 173,
         "in_accepted_trade": false,
         "owner": null,
         "status": "a"
@@ -4467,6 +4521,12 @@
       },
       {
         "element": 129,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "a"
+      },
+      {
+        "element": 403,
         "in_accepted_trade": false,
         "owner": null,
         "status": "a"
@@ -5210,6 +5270,12 @@
         "status": "a"
       },
       {
+        "element": 592,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "a"
+      },
+      {
         "element": 593,
         "in_accepted_trade": false,
         "owner": null,
@@ -5462,6 +5528,12 @@
         "status": "a"
       },
       {
+        "element": 637,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "a"
+      },
+      {
         "element": 638,
         "in_accepted_trade": false,
         "owner": null,
@@ -5646,78 +5718,6 @@
         "in_accepted_trade": false,
         "owner": null,
         "status": "a"
-      },
-      {
-        "element": 2,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "l"
-      },
-      {
-        "element": 45,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "l"
-      },
-      {
-        "element": 17,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "l"
-      },
-      {
-        "element": 357,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "l"
-      },
-      {
-        "element": 564,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "l"
-      },
-      {
-        "element": 105,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "l"
-      },
-      {
-        "element": 305,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "l"
-      },
-      {
-        "element": 483,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "l"
-      },
-      {
-        "element": 173,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "l"
-      },
-      {
-        "element": 403,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "l"
-      },
-      {
-        "element": 592,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "l"
-      },
-      {
-        "element": 637,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "l"
       },
       {
         "element": 229,
@@ -6810,7 +6810,7 @@
       "element_type": 1,
       "team": 1,
       "total_points": 49,
-      "event_points": 7,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -6843,7 +6843,7 @@
       "element_type": 2,
       "team": 1,
       "total_points": 52,
-      "event_points": 17,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -6876,7 +6876,7 @@
       "element_type": 3,
       "team": 1,
       "total_points": 13,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -6887,7 +6887,7 @@
       "element_type": 2,
       "team": 1,
       "total_points": 45,
-      "event_points": 1,
+      "event_points": 0,
       "status": "d"
     },
     {
@@ -6909,7 +6909,7 @@
       "element_type": 2,
       "team": 1,
       "total_points": 42,
-      "event_points": 10,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -6942,7 +6942,7 @@
       "element_type": 3,
       "team": 1,
       "total_points": 39,
-      "event_points": 3,
+      "event_points": 0,
       "status": "d"
     },
     {
@@ -6953,7 +6953,7 @@
       "element_type": 3,
       "team": 1,
       "total_points": 8,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -6964,7 +6964,7 @@
       "element_type": 3,
       "team": 1,
       "total_points": 36,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -6975,7 +6975,7 @@
       "element_type": 3,
       "team": 1,
       "total_points": 12,
-      "event_points": 3,
+      "event_points": 0,
       "status": "d"
     },
     {
@@ -6986,7 +6986,7 @@
       "element_type": 3,
       "team": 1,
       "total_points": 9,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7008,7 +7008,7 @@
       "element_type": 3,
       "team": 1,
       "total_points": 6,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7019,7 +7019,7 @@
       "element_type": 3,
       "team": 1,
       "total_points": 2,
-      "event_points": 1,
+      "event_points": 0,
       "status": "s"
     },
     {
@@ -7074,7 +7074,7 @@
       "element_type": 4,
       "team": 1,
       "total_points": 9,
-      "event_points": 5,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7085,7 +7085,7 @@
       "element_type": 4,
       "team": 1,
       "total_points": 24,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7140,7 +7140,7 @@
       "element_type": 2,
       "team": 1,
       "total_points": 39,
-      "event_points": 14,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7151,7 +7151,7 @@
       "element_type": 2,
       "team": 2,
       "total_points": 17,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7173,7 +7173,7 @@
       "element_type": 2,
       "team": 2,
       "total_points": 6,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7195,7 +7195,7 @@
       "element_type": 2,
       "team": 2,
       "total_points": 11,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7206,7 +7206,7 @@
       "element_type": 2,
       "team": 2,
       "total_points": 22,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7239,7 +7239,7 @@
       "element_type": 3,
       "team": 6,
       "total_points": 41,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7294,7 +7294,7 @@
       "element_type": 3,
       "team": 2,
       "total_points": 34,
-      "event_points": 6,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7305,7 +7305,7 @@
       "element_type": 3,
       "team": 2,
       "total_points": 13,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7316,7 +7316,7 @@
       "element_type": 3,
       "team": 2,
       "total_points": 28,
-      "event_points": 4,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7371,7 +7371,7 @@
       "element_type": 3,
       "team": 2,
       "total_points": 10,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7382,7 +7382,7 @@
       "element_type": 3,
       "team": 2,
       "total_points": 31,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7393,7 +7393,7 @@
       "element_type": 3,
       "team": 2,
       "total_points": 11,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7426,7 +7426,7 @@
       "element_type": 1,
       "team": 3,
       "total_points": 22,
-      "event_points": 7,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7459,7 +7459,7 @@
       "element_type": 2,
       "team": 3,
       "total_points": 32,
-      "event_points": 11,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7470,7 +7470,7 @@
       "element_type": 2,
       "team": 3,
       "total_points": 25,
-      "event_points": 10,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7481,7 +7481,7 @@
       "element_type": 2,
       "team": 3,
       "total_points": 2,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7503,7 +7503,7 @@
       "element_type": 2,
       "team": 3,
       "total_points": 16,
-      "event_points": 6,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7536,7 +7536,7 @@
       "element_type": 3,
       "team": 3,
       "total_points": 25,
-      "event_points": 10,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7547,7 +7547,7 @@
       "element_type": 3,
       "team": 3,
       "total_points": 52,
-      "event_points": 10,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7569,7 +7569,7 @@
       "element_type": 3,
       "team": 3,
       "total_points": 22,
-      "event_points": 6,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7580,7 +7580,7 @@
       "element_type": 3,
       "team": 3,
       "total_points": 17,
-      "event_points": 6,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7591,7 +7591,7 @@
       "element_type": 3,
       "team": 3,
       "total_points": 7,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7602,7 +7602,7 @@
       "element_type": 3,
       "team": 3,
       "total_points": 20,
-      "event_points": 4,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7624,7 +7624,7 @@
       "element_type": 3,
       "team": 3,
       "total_points": 11,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7646,7 +7646,7 @@
       "element_type": 3,
       "team": 3,
       "total_points": 2,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7657,7 +7657,7 @@
       "element_type": 3,
       "team": 3,
       "total_points": 1,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7668,7 +7668,7 @@
       "element_type": 4,
       "team": 3,
       "total_points": 43,
-      "event_points": 6,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7701,7 +7701,7 @@
       "element_type": 1,
       "team": 4,
       "total_points": 26,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7734,7 +7734,7 @@
       "element_type": 2,
       "team": 4,
       "total_points": 3,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7745,7 +7745,7 @@
       "element_type": 3,
       "team": 4,
       "total_points": 35,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7756,7 +7756,7 @@
       "element_type": 2,
       "team": 4,
       "total_points": 32,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7767,7 +7767,7 @@
       "element_type": 2,
       "team": 4,
       "total_points": 28,
-      "event_points": 4,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7789,7 +7789,7 @@
       "element_type": 2,
       "team": 4,
       "total_points": 8,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7800,7 +7800,7 @@
       "element_type": 2,
       "team": 7,
       "total_points": 21,
-      "event_points": 4,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7833,7 +7833,7 @@
       "element_type": 3,
       "team": 4,
       "total_points": 42,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7844,7 +7844,7 @@
       "element_type": 3,
       "team": 4,
       "total_points": 19,
-      "event_points": 10,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7855,7 +7855,7 @@
       "element_type": 3,
       "team": 4,
       "total_points": 18,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7866,7 +7866,7 @@
       "element_type": 3,
       "team": 4,
       "total_points": 10,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7910,7 +7910,7 @@
       "element_type": 3,
       "team": 6,
       "total_points": 25,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7943,7 +7943,7 @@
       "element_type": 3,
       "team": 7,
       "total_points": 12,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7954,7 +7954,7 @@
       "element_type": 3,
       "team": 4,
       "total_points": 23,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7965,7 +7965,7 @@
       "element_type": 4,
       "team": 4,
       "total_points": 23,
-      "event_points": 5,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7987,7 +7987,7 @@
       "element_type": 4,
       "team": 4,
       "total_points": 4,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -7998,7 +7998,7 @@
       "element_type": 1,
       "team": 5,
       "total_points": 40,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8009,7 +8009,7 @@
       "element_type": 1,
       "team": 7,
       "total_points": 22,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8031,7 +8031,7 @@
       "element_type": 2,
       "team": 19,
       "total_points": 38,
-      "event_points": 7,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8042,7 +8042,7 @@
       "element_type": 2,
       "team": 5,
       "total_points": 29,
-      "event_points": 1,
+      "event_points": 0,
       "status": "d"
     },
     {
@@ -8053,7 +8053,7 @@
       "element_type": 2,
       "team": 5,
       "total_points": 33,
-      "event_points": -1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8064,7 +8064,7 @@
       "element_type": 2,
       "team": 5,
       "total_points": 60,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8075,7 +8075,7 @@
       "element_type": 2,
       "team": 5,
       "total_points": 30,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8152,7 +8152,7 @@
       "element_type": 3,
       "team": 5,
       "total_points": 23,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8174,7 +8174,7 @@
       "element_type": 4,
       "team": 5,
       "total_points": 12,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8196,7 +8196,7 @@
       "element_type": 3,
       "team": 5,
       "total_points": 39,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8218,7 +8218,7 @@
       "element_type": 3,
       "team": 5,
       "total_points": 33,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8240,7 +8240,7 @@
       "element_type": 3,
       "team": 16,
       "total_points": 7,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8295,7 +8295,7 @@
       "element_type": 4,
       "team": 6,
       "total_points": 7,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8317,7 +8317,7 @@
       "element_type": 4,
       "team": 5,
       "total_points": 43,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8427,7 +8427,7 @@
       "element_type": 2,
       "team": 6,
       "total_points": 25,
-      "event_points": 6,
+      "event_points": 0,
       "status": "i"
     },
     {
@@ -8438,7 +8438,7 @@
       "element_type": 2,
       "team": 6,
       "total_points": 14,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8460,7 +8460,7 @@
       "element_type": 2,
       "team": 6,
       "total_points": 15,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8482,7 +8482,7 @@
       "element_type": 2,
       "team": 8,
       "total_points": 4,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8493,7 +8493,7 @@
       "element_type": 3,
       "team": 6,
       "total_points": 37,
-      "event_points": -1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8504,7 +8504,7 @@
       "element_type": 3,
       "team": 15,
       "total_points": 19,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8515,7 +8515,7 @@
       "element_type": 3,
       "team": 6,
       "total_points": 37,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8526,7 +8526,7 @@
       "element_type": 3,
       "team": 6,
       "total_points": 6,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8548,7 +8548,7 @@
       "element_type": 3,
       "team": 6,
       "total_points": 8,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8581,7 +8581,7 @@
       "element_type": 3,
       "team": 16,
       "total_points": 8,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8603,7 +8603,7 @@
       "element_type": 3,
       "team": 6,
       "total_points": 6,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8625,7 +8625,7 @@
       "element_type": 4,
       "team": 2,
       "total_points": 34,
-      "event_points": 13,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8636,7 +8636,7 @@
       "element_type": 4,
       "team": 18,
       "total_points": 15,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8702,7 +8702,7 @@
       "element_type": 2,
       "team": 7,
       "total_points": 32,
-      "event_points": 1,
+      "event_points": 0,
       "status": "d"
     },
     {
@@ -8724,7 +8724,7 @@
       "element_type": 2,
       "team": 7,
       "total_points": 15,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8735,7 +8735,7 @@
       "element_type": 2,
       "team": 7,
       "total_points": 27,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8812,7 +8812,7 @@
       "element_type": 3,
       "team": 7,
       "total_points": 28,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8823,7 +8823,7 @@
       "element_type": 3,
       "team": 7,
       "total_points": 17,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8834,7 +8834,7 @@
       "element_type": 3,
       "team": 7,
       "total_points": 6,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8845,7 +8845,7 @@
       "element_type": 3,
       "team": 7,
       "total_points": 10,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8933,7 +8933,7 @@
       "element_type": 4,
       "team": 7,
       "total_points": 21,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8988,7 +8988,7 @@
       "element_type": 1,
       "team": 8,
       "total_points": 13,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -8999,7 +8999,7 @@
       "element_type": 2,
       "team": 6,
       "total_points": 24,
-      "event_points": 3,
+      "event_points": 0,
       "status": "i"
     },
     {
@@ -9010,7 +9010,7 @@
       "element_type": 2,
       "team": 18,
       "total_points": 15,
-      "event_points": 7,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9021,7 +9021,7 @@
       "element_type": 2,
       "team": 8,
       "total_points": 23,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9043,7 +9043,7 @@
       "element_type": 2,
       "team": 8,
       "total_points": 29,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9098,7 +9098,7 @@
       "element_type": 3,
       "team": 9,
       "total_points": 14,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9109,7 +9109,7 @@
       "element_type": 3,
       "team": 8,
       "total_points": 23,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9120,7 +9120,7 @@
       "element_type": 3,
       "team": 8,
       "total_points": 26,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9153,7 +9153,7 @@
       "element_type": 3,
       "team": 8,
       "total_points": 32,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9252,7 +9252,7 @@
       "element_type": 4,
       "team": 8,
       "total_points": 5,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9263,7 +9263,7 @@
       "element_type": 4,
       "team": 8,
       "total_points": 11,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9285,7 +9285,7 @@
       "element_type": 1,
       "team": 9,
       "total_points": 29,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9318,7 +9318,7 @@
       "element_type": 2,
       "team": 9,
       "total_points": 48,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9351,7 +9351,7 @@
       "element_type": 2,
       "team": 9,
       "total_points": 6,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9395,7 +9395,7 @@
       "element_type": 3,
       "team": 9,
       "total_points": 37,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9406,7 +9406,7 @@
       "element_type": 3,
       "team": 15,
       "total_points": 33,
-      "event_points": 5,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9428,7 +9428,7 @@
       "element_type": 3,
       "team": 9,
       "total_points": 20,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9439,7 +9439,7 @@
       "element_type": 3,
       "team": 11,
       "total_points": 13,
-      "event_points": 9,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9450,7 +9450,7 @@
       "element_type": 3,
       "team": 8,
       "total_points": 7,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9461,7 +9461,7 @@
       "element_type": 3,
       "team": 9,
       "total_points": 23,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9472,7 +9472,7 @@
       "element_type": 3,
       "team": 9,
       "total_points": 3,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9483,7 +9483,7 @@
       "element_type": 3,
       "team": 9,
       "total_points": 23,
-      "event_points": 4,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9494,7 +9494,7 @@
       "element_type": 3,
       "team": 9,
       "total_points": 3,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9505,7 +9505,7 @@
       "element_type": 3,
       "team": 9,
       "total_points": 10,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9516,7 +9516,7 @@
       "element_type": 3,
       "team": 9,
       "total_points": 12,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9538,7 +9538,7 @@
       "element_type": 4,
       "team": 9,
       "total_points": 30,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9549,7 +9549,7 @@
       "element_type": 1,
       "team": 10,
       "total_points": 34,
-      "event_points": 8,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9593,7 +9593,7 @@
       "element_type": 2,
       "team": 10,
       "total_points": 26,
-      "event_points": 7,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9615,7 +9615,7 @@
       "element_type": 2,
       "team": 10,
       "total_points": 2,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9626,7 +9626,7 @@
       "element_type": 2,
       "team": 10,
       "total_points": 33,
-      "event_points": 8,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9637,7 +9637,7 @@
       "element_type": 2,
       "team": 10,
       "total_points": 35,
-      "event_points": 7,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9648,7 +9648,7 @@
       "element_type": 2,
       "team": 12,
       "total_points": 18,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9659,7 +9659,7 @@
       "element_type": 3,
       "team": 13,
       "total_points": 9,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9670,7 +9670,7 @@
       "element_type": 3,
       "team": 10,
       "total_points": 32,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9703,7 +9703,7 @@
       "element_type": 3,
       "team": 10,
       "total_points": 30,
-      "event_points": 11,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9714,7 +9714,7 @@
       "element_type": 3,
       "team": 10,
       "total_points": 19,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9725,7 +9725,7 @@
       "element_type": 3,
       "team": 10,
       "total_points": 2,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9747,7 +9747,7 @@
       "element_type": 3,
       "team": 10,
       "total_points": 34,
-      "event_points": 6,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9780,7 +9780,7 @@
       "element_type": 4,
       "team": 10,
       "total_points": 5,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9846,7 +9846,7 @@
       "element_type": 2,
       "team": 11,
       "total_points": 35,
-      "event_points": 4,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9868,7 +9868,7 @@
       "element_type": 2,
       "team": 11,
       "total_points": 34,
-      "event_points": 4,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9879,7 +9879,7 @@
       "element_type": 2,
       "team": 11,
       "total_points": 19,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9901,7 +9901,7 @@
       "element_type": 2,
       "team": 11,
       "total_points": 29,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9945,7 +9945,7 @@
       "element_type": 3,
       "team": 11,
       "total_points": 43,
-      "event_points": 4,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9989,7 +9989,7 @@
       "element_type": 3,
       "team": 11,
       "total_points": 20,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10044,7 +10044,7 @@
       "element_type": 4,
       "team": 11,
       "total_points": 24,
-      "event_points": 8,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10099,7 +10099,7 @@
       "element_type": 1,
       "team": 12,
       "total_points": 9,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10143,7 +10143,7 @@
       "element_type": 2,
       "team": 12,
       "total_points": 26,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10154,7 +10154,7 @@
       "element_type": 2,
       "team": 12,
       "total_points": 28,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10209,7 +10209,7 @@
       "element_type": 3,
       "team": 12,
       "total_points": 2,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10242,7 +10242,7 @@
       "element_type": 3,
       "team": 12,
       "total_points": 17,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10264,7 +10264,7 @@
       "element_type": 3,
       "team": 12,
       "total_points": 14,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10275,7 +10275,7 @@
       "element_type": 4,
       "team": 12,
       "total_points": 31,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10297,7 +10297,7 @@
       "element_type": 3,
       "team": 12,
       "total_points": 6,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10319,7 +10319,7 @@
       "element_type": 4,
       "team": 12,
       "total_points": 10,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10396,7 +10396,7 @@
       "element_type": 2,
       "team": 13,
       "total_points": 21,
-      "event_points": 8,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10429,7 +10429,7 @@
       "element_type": 2,
       "team": 13,
       "total_points": 50,
-      "event_points": 5,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10440,7 +10440,7 @@
       "element_type": 2,
       "team": 13,
       "total_points": 25,
-      "event_points": 6,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10451,7 +10451,7 @@
       "element_type": 2,
       "team": 13,
       "total_points": 40,
-      "event_points": 6,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10473,7 +10473,7 @@
       "element_type": 2,
       "team": 13,
       "total_points": 43,
-      "event_points": 9,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10484,7 +10484,7 @@
       "element_type": 3,
       "team": 13,
       "total_points": 32,
-      "event_points": 1,
+      "event_points": 0,
       "status": "d"
     },
     {
@@ -10495,7 +10495,7 @@
       "element_type": 3,
       "team": 13,
       "total_points": 23,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10506,7 +10506,7 @@
       "element_type": 3,
       "team": 13,
       "total_points": 11,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10517,7 +10517,7 @@
       "element_type": 3,
       "team": 13,
       "total_points": 25,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10528,7 +10528,7 @@
       "element_type": 3,
       "team": 13,
       "total_points": 4,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10539,7 +10539,7 @@
       "element_type": 3,
       "team": 11,
       "total_points": 11,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10594,7 +10594,7 @@
       "element_type": 3,
       "team": 13,
       "total_points": 20,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10605,7 +10605,7 @@
       "element_type": 4,
       "team": 13,
       "total_points": 35,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10616,7 +10616,7 @@
       "element_type": 4,
       "team": 13,
       "total_points": 10,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10649,7 +10649,7 @@
       "element_type": 1,
       "team": 14,
       "total_points": 36,
-      "event_points": 6,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10715,7 +10715,7 @@
       "element_type": 2,
       "team": 14,
       "total_points": 38,
-      "event_points": 9,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10737,7 +10737,7 @@
       "element_type": 2,
       "team": 14,
       "total_points": 22,
-      "event_points": 6,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10781,7 +10781,7 @@
       "element_type": 2,
       "team": 14,
       "total_points": 38,
-      "event_points": 8,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10803,7 +10803,7 @@
       "element_type": 2,
       "team": 14,
       "total_points": 3,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10825,7 +10825,7 @@
       "element_type": 3,
       "team": 14,
       "total_points": 31,
-      "event_points": 6,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10836,7 +10836,7 @@
       "element_type": 3,
       "team": 14,
       "total_points": 35,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10858,7 +10858,7 @@
       "element_type": 3,
       "team": 14,
       "total_points": 7,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10880,7 +10880,7 @@
       "element_type": 3,
       "team": 14,
       "total_points": 11,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10891,7 +10891,7 @@
       "element_type": 3,
       "team": 14,
       "total_points": 17,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10924,7 +10924,7 @@
       "element_type": 3,
       "team": 14,
       "total_points": 6,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10968,7 +10968,7 @@
       "element_type": 4,
       "team": 14,
       "total_points": 51,
-      "event_points": 9,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -10990,7 +10990,7 @@
       "element_type": 3,
       "team": 14,
       "total_points": 7,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11023,7 +11023,7 @@
       "element_type": 1,
       "team": 15,
       "total_points": 30,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11034,7 +11034,7 @@
       "element_type": 1,
       "team": 13,
       "total_points": 42,
-      "event_points": 10,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11089,7 +11089,7 @@
       "element_type": 2,
       "team": 15,
       "total_points": 25,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11100,7 +11100,7 @@
       "element_type": 2,
       "team": 15,
       "total_points": 42,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11122,7 +11122,7 @@
       "element_type": 2,
       "team": 15,
       "total_points": 13,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11144,7 +11144,7 @@
       "element_type": 2,
       "team": 15,
       "total_points": 2,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11177,7 +11177,7 @@
       "element_type": 3,
       "team": 15,
       "total_points": 19,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11199,7 +11199,7 @@
       "element_type": 3,
       "team": 15,
       "total_points": 21,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11210,7 +11210,7 @@
       "element_type": 4,
       "team": 19,
       "total_points": 20,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11254,7 +11254,7 @@
       "element_type": 3,
       "team": 17,
       "total_points": 19,
-      "event_points": 4,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11320,7 +11320,7 @@
       "element_type": 4,
       "team": 15,
       "total_points": 66,
-      "event_points": 8,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11331,7 +11331,7 @@
       "element_type": 1,
       "team": 16,
       "total_points": 17,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11386,7 +11386,7 @@
       "element_type": 2,
       "team": 16,
       "total_points": 13,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11408,7 +11408,7 @@
       "element_type": 2,
       "team": 16,
       "total_points": 11,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11419,7 +11419,7 @@
       "element_type": 2,
       "team": 16,
       "total_points": 10,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11496,7 +11496,7 @@
       "element_type": 3,
       "team": 16,
       "total_points": 43,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11507,7 +11507,7 @@
       "element_type": 3,
       "team": 16,
       "total_points": 38,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11529,7 +11529,7 @@
       "element_type": 3,
       "team": 16,
       "total_points": 4,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11540,7 +11540,7 @@
       "element_type": 3,
       "team": 16,
       "total_points": 5,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11584,7 +11584,7 @@
       "element_type": 3,
       "team": 16,
       "total_points": 2,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11639,7 +11639,7 @@
       "element_type": 4,
       "team": 16,
       "total_points": 4,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11694,7 +11694,7 @@
       "element_type": 2,
       "team": 17,
       "total_points": 16,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11705,7 +11705,7 @@
       "element_type": 2,
       "team": 17,
       "total_points": 9,
-      "event_points": 7,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11727,7 +11727,7 @@
       "element_type": 2,
       "team": 17,
       "total_points": 8,
-      "event_points": 6,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11738,7 +11738,7 @@
       "element_type": 2,
       "team": 17,
       "total_points": 40,
-      "event_points": 5,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11771,7 +11771,7 @@
       "element_type": 3,
       "team": 1,
       "total_points": 22,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11782,7 +11782,7 @@
       "element_type": 3,
       "team": 17,
       "total_points": 40,
-      "event_points": 8,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11793,7 +11793,7 @@
       "element_type": 3,
       "team": 17,
       "total_points": 19,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11804,7 +11804,7 @@
       "element_type": 3,
       "team": 19,
       "total_points": 30,
-      "event_points": 5,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11815,7 +11815,7 @@
       "element_type": 3,
       "team": 17,
       "total_points": 8,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11826,7 +11826,7 @@
       "element_type": 3,
       "team": 17,
       "total_points": 10,
-      "event_points": 6,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11837,7 +11837,7 @@
       "element_type": 3,
       "team": 17,
       "total_points": 4,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11859,7 +11859,7 @@
       "element_type": 3,
       "team": 17,
       "total_points": 27,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11881,7 +11881,7 @@
       "element_type": 3,
       "team": 17,
       "total_points": 9,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11903,7 +11903,7 @@
       "element_type": 4,
       "team": 17,
       "total_points": 19,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11914,7 +11914,7 @@
       "element_type": 4,
       "team": 17,
       "total_points": 14,
-      "event_points": 9,
+      "event_points": 0,
       "status": "d"
     },
     {
@@ -11936,7 +11936,7 @@
       "element_type": 1,
       "team": 18,
       "total_points": 20,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11958,7 +11958,7 @@
       "element_type": 2,
       "team": 18,
       "total_points": 31,
-      "event_points": 8,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11980,7 +11980,7 @@
       "element_type": 2,
       "team": 18,
       "total_points": 14,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11991,7 +11991,7 @@
       "element_type": 2,
       "team": 18,
       "total_points": 28,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12013,7 +12013,7 @@
       "element_type": 2,
       "team": 18,
       "total_points": 15,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12057,7 +12057,7 @@
       "element_type": 2,
       "team": 18,
       "total_points": 4,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12079,7 +12079,7 @@
       "element_type": 3,
       "team": 18,
       "total_points": 32,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12090,7 +12090,7 @@
       "element_type": 3,
       "team": 15,
       "total_points": 23,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12101,7 +12101,7 @@
       "element_type": 3,
       "team": 18,
       "total_points": 4,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12112,7 +12112,7 @@
       "element_type": 3,
       "team": 18,
       "total_points": 27,
-      "event_points": 2,
+      "event_points": 0,
       "status": "d"
     },
     {
@@ -12145,7 +12145,7 @@
       "element_type": 3,
       "team": 18,
       "total_points": 23,
-      "event_points": 5,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12189,7 +12189,7 @@
       "element_type": 4,
       "team": 18,
       "total_points": 7,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12211,7 +12211,7 @@
       "element_type": 4,
       "team": 7,
       "total_points": 5,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12255,7 +12255,7 @@
       "element_type": 1,
       "team": 19,
       "total_points": 32,
-      "event_points": 9,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12288,7 +12288,7 @@
       "element_type": 2,
       "team": 19,
       "total_points": 10,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12321,7 +12321,7 @@
       "element_type": 2,
       "team": 19,
       "total_points": 28,
-      "event_points": 6,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12332,7 +12332,7 @@
       "element_type": 2,
       "team": 19,
       "total_points": 24,
-      "event_points": 5,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12343,7 +12343,7 @@
       "element_type": 2,
       "team": 5,
       "total_points": 52,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12387,7 +12387,7 @@
       "element_type": 2,
       "team": 19,
       "total_points": 8,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12431,7 +12431,7 @@
       "element_type": 3,
       "team": 19,
       "total_points": 19,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12453,7 +12453,7 @@
       "element_type": 3,
       "team": 19,
       "total_points": 20,
-      "event_points": 11,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12464,7 +12464,7 @@
       "element_type": 3,
       "team": 19,
       "total_points": 14,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12530,7 +12530,7 @@
       "element_type": 3,
       "team": 19,
       "total_points": 2,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12541,7 +12541,7 @@
       "element_type": 3,
       "team": 19,
       "total_points": 17,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12574,7 +12574,7 @@
       "element_type": 3,
       "team": 19,
       "total_points": 16,
-      "event_points": 7,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12585,7 +12585,7 @@
       "element_type": 4,
       "team": 19,
       "total_points": 19,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12618,7 +12618,7 @@
       "element_type": 1,
       "team": 20,
       "total_points": 23,
-      "event_points": 9,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12662,7 +12662,7 @@
       "element_type": 2,
       "team": 20,
       "total_points": 20,
-      "event_points": 1,
+      "event_points": 0,
       "status": "d"
     },
     {
@@ -12673,7 +12673,7 @@
       "element_type": 2,
       "team": 20,
       "total_points": 20,
-      "event_points": 6,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12684,7 +12684,7 @@
       "element_type": 2,
       "team": 20,
       "total_points": 1,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12695,7 +12695,7 @@
       "element_type": 2,
       "team": 20,
       "total_points": 15,
-      "event_points": 5,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12728,7 +12728,7 @@
       "element_type": 2,
       "team": 20,
       "total_points": 11,
-      "event_points": 9,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12761,7 +12761,7 @@
       "element_type": 3,
       "team": 20,
       "total_points": 27,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12772,7 +12772,7 @@
       "element_type": 3,
       "team": 20,
       "total_points": 7,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12783,7 +12783,7 @@
       "element_type": 3,
       "team": 20,
       "total_points": 28,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12794,7 +12794,7 @@
       "element_type": 3,
       "team": 20,
       "total_points": 18,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12827,7 +12827,7 @@
       "element_type": 3,
       "team": 20,
       "total_points": 6,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12838,7 +12838,7 @@
       "element_type": 3,
       "team": 20,
       "total_points": 2,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12860,7 +12860,7 @@
       "element_type": 3,
       "team": 20,
       "total_points": 21,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12871,7 +12871,7 @@
       "element_type": 4,
       "team": 20,
       "total_points": 26,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12904,7 +12904,7 @@
       "element_type": 2,
       "team": 3,
       "total_points": 29,
-      "event_points": 8,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12915,7 +12915,7 @@
       "element_type": 3,
       "team": 4,
       "total_points": 28,
-      "event_points": 4,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12970,7 +12970,7 @@
       "element_type": 3,
       "team": 11,
       "total_points": 4,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -12992,7 +12992,7 @@
       "element_type": 3,
       "team": 12,
       "total_points": 18,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13025,7 +13025,7 @@
       "element_type": 1,
       "team": 17,
       "total_points": 24,
-      "event_points": 8,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13036,7 +13036,7 @@
       "element_type": 3,
       "team": 18,
       "total_points": 23,
-      "event_points": 4,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13058,7 +13058,7 @@
       "element_type": 4,
       "team": 10,
       "total_points": 20,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13069,7 +13069,7 @@
       "element_type": 3,
       "team": 10,
       "total_points": 14,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13080,7 +13080,7 @@
       "element_type": 1,
       "team": 11,
       "total_points": 42,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13091,7 +13091,7 @@
       "element_type": 3,
       "team": 12,
       "total_points": 10,
-      "event_points": 4,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13113,7 +13113,7 @@
       "element_type": 3,
       "team": 7,
       "total_points": 16,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13146,7 +13146,7 @@
       "element_type": 3,
       "team": 11,
       "total_points": 15,
-      "event_points": 4,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13168,7 +13168,7 @@
       "element_type": 3,
       "team": 10,
       "total_points": 21,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13179,7 +13179,7 @@
       "element_type": 2,
       "team": 14,
       "total_points": 33,
-      "event_points": 10,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13223,7 +13223,7 @@
       "element_type": 3,
       "team": 7,
       "total_points": 5,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13234,7 +13234,7 @@
       "element_type": 2,
       "team": 11,
       "total_points": 9,
-      "event_points": 4,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13300,7 +13300,7 @@
       "element_type": 3,
       "team": 12,
       "total_points": 29,
-      "event_points": 10,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13311,7 +13311,7 @@
       "element_type": 2,
       "team": 12,
       "total_points": 21,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13344,7 +13344,7 @@
       "element_type": 2,
       "team": 17,
       "total_points": 24,
-      "event_points": 11,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13366,7 +13366,7 @@
       "element_type": 1,
       "team": 2,
       "total_points": 30,
-      "event_points": 4,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13377,7 +13377,7 @@
       "element_type": 4,
       "team": 7,
       "total_points": 16,
-      "event_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13487,7 +13487,7 @@
       "element_type": 3,
       "team": 5,
       "total_points": 23,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13586,7 +13586,7 @@
       "element_type": 3,
       "team": 2,
       "total_points": 2,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13597,7 +13597,7 @@
       "element_type": 3,
       "team": 11,
       "total_points": 10,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13608,7 +13608,7 @@
       "element_type": 3,
       "team": 12,
       "total_points": 20,
-      "event_points": 4,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13619,7 +13619,7 @@
       "element_type": 2,
       "team": 4,
       "total_points": 5,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13707,7 +13707,7 @@
       "element_type": 3,
       "team": 14,
       "total_points": 19,
-      "event_points": 6,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13740,7 +13740,7 @@
       "element_type": 3,
       "team": 2,
       "total_points": 8,
-      "event_points": 4,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13751,7 +13751,7 @@
       "element_type": 3,
       "team": 5,
       "total_points": 18,
-      "event_points": 1,
+      "event_points": 0,
       "status": "d"
     },
     {
@@ -13795,7 +13795,7 @@
       "element_type": 3,
       "team": 8,
       "total_points": 2,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13817,7 +13817,7 @@
       "element_type": 3,
       "team": 10,
       "total_points": 7,
-      "event_points": 3,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13839,7 +13839,7 @@
       "element_type": 2,
       "team": 10,
       "total_points": 27,
-      "event_points": 6,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13861,7 +13861,7 @@
       "element_type": 4,
       "team": 11,
       "total_points": 5,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13872,7 +13872,7 @@
       "element_type": 2,
       "team": 11,
       "total_points": 4,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -13905,7 +13905,7 @@
       "element_type": 4,
       "team": 12,
       "total_points": 13,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -14015,7 +14015,7 @@
       "element_type": 2,
       "team": 7,
       "total_points": 14,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -14147,7 +14147,7 @@
       "element_type": 3,
       "team": 20,
       "total_points": 2,
-      "event_points": 1,
+      "event_points": 0,
       "status": "a"
     },
     {
