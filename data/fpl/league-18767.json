@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-31T17:41:40.667Z",
+    "fetched_at": "2026-10-31T18:53:54.082Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -7238,8 +7238,8 @@
       "web_name": "Rogers",
       "element_type": 3,
       "team": 6,
-      "total_points": 49,
-      "event_points": 8,
+      "total_points": 50,
+      "event_points": 9,
       "status": "a"
     },
     {
@@ -7922,7 +7922,7 @@
       "team": 4,
       "total_points": 15,
       "event_points": 0,
-      "status": "s"
+      "status": "a"
     },
     {
       "id": 103,
@@ -8393,8 +8393,8 @@
       "web_name": "Fofana",
       "element_type": 2,
       "team": 6,
-      "total_points": 20,
-      "event_points": 12,
+      "total_points": 19,
+      "event_points": 11,
       "status": "a"
     },
     {
@@ -8481,8 +8481,8 @@
       "web_name": "Disasi",
       "element_type": 2,
       "team": 8,
-      "total_points": 5,
-      "event_points": 1,
+      "total_points": 7,
+      "event_points": 3,
       "status": "a"
     },
     {
@@ -8569,8 +8569,8 @@
       "web_name": "Lavia",
       "element_type": 3,
       "team": 6,
-      "total_points": 22,
-      "event_points": 9,
+      "total_points": 21,
+      "event_points": 8,
       "status": "a"
     },
     {
@@ -8976,8 +8976,8 @@
       "web_name": "Henderson",
       "element_type": 1,
       "team": 8,
-      "total_points": 6,
-      "event_points": 1,
+      "total_points": 7,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -9020,8 +9020,8 @@
       "web_name": "Richards",
       "element_type": 2,
       "team": 8,
-      "total_points": 24,
-      "event_points": 1,
+      "total_points": 26,
+      "event_points": 3,
       "status": "a"
     },
     {
@@ -9042,8 +9042,8 @@
       "web_name": "Mitchell",
       "element_type": 2,
       "team": 8,
-      "total_points": 30,
-      "event_points": 1,
+      "total_points": 32,
+      "event_points": 3,
       "status": "a"
     },
     {
@@ -9075,8 +9075,8 @@
       "web_name": "Mingueza",
       "element_type": 2,
       "team": 8,
-      "total_points": 3,
-      "event_points": 1,
+      "total_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9251,9 +9251,9 @@
       "web_name": "Mateta",
       "element_type": 4,
       "team": 8,
-      "total_points": 6,
-      "event_points": 1,
-      "status": "a"
+      "total_points": 3,
+      "event_points": -2,
+      "status": "s"
     },
     {
       "id": 224,
@@ -9979,7 +9979,7 @@
       "team": 11,
       "total_points": 6,
       "event_points": 0,
-      "status": "a"
+      "status": "s"
     },
     {
       "id": 290,
@@ -11385,8 +11385,8 @@
       "web_name": "Dalot",
       "element_type": 2,
       "team": 16,
-      "total_points": 14,
-      "event_points": 1,
+      "total_points": 16,
+      "event_points": 3,
       "status": "a"
     },
     {
@@ -12287,8 +12287,8 @@
       "web_name": "Pedro Porro",
       "element_type": 2,
       "team": 19,
-      "total_points": 10,
-      "event_points": 0,
+      "total_points": 11,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -12320,8 +12320,8 @@
       "web_name": "Robertson",
       "element_type": 2,
       "team": 19,
-      "total_points": 29,
-      "event_points": 1,
+      "total_points": 30,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -12430,8 +12430,8 @@
       "web_name": "Kudus",
       "element_type": 3,
       "team": 19,
-      "total_points": 20,
-      "event_points": 1,
+      "total_points": 26,
+      "event_points": 7,
       "status": "a"
     },
     {
@@ -12540,8 +12540,8 @@
       "web_name": "Gray",
       "element_type": 3,
       "team": 19,
-      "total_points": 18,
-      "event_points": 1,
+      "total_points": 25,
+      "event_points": 8,
       "status": "a"
     },
     {
