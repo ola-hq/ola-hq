@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-31T22:43:47.540Z",
+    "fetched_at": "2026-10-31T23:42:52.026Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -805,9 +805,9 @@
         "event": 9,
         "finished": false,
         "league_entry_1": 95309,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 26,
         "league_entry_2": 95298,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 30,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -816,9 +816,9 @@
         "event": 9,
         "finished": false,
         "league_entry_1": 95299,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 23,
         "league_entry_2": 95308,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 27,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -827,9 +827,9 @@
         "event": 9,
         "finished": false,
         "league_entry_1": 95300,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 43,
         "league_entry_2": 95307,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 24,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -838,9 +838,9 @@
         "event": 9,
         "finished": false,
         "league_entry_1": 95301,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 53,
         "league_entry_2": 95306,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 33,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -849,9 +849,9 @@
         "event": 9,
         "finished": false,
         "league_entry_1": 95302,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 6,
         "league_entry_2": 95305,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 15,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -860,9 +860,9 @@
         "event": 9,
         "finished": false,
         "league_entry_1": 95303,
-        "league_entry_1_points": 0,
+        "league_entry_1_points": 5,
         "league_entry_2": 95304,
-        "league_entry_2_points": 0,
+        "league_entry_2_points": 29,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -5715,6 +5715,12 @@
       },
       {
         "element": 669,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "a"
+      },
+      {
+        "element": 670,
         "in_accepted_trade": false,
         "owner": null,
         "status": "a"
@@ -14156,6 +14162,17 @@
       "second_name": "Sharman-Lowe",
       "web_name": "Sharman-Lowe",
       "element_type": 1,
+      "team": 6,
+      "total_points": 0,
+      "event_points": 0,
+      "status": "a"
+    },
+    {
+      "id": 670,
+      "first_name": "Olutayo",
+      "second_name": "Subuloye",
+      "web_name": "Subuloye",
+      "element_type": 2,
       "team": 6,
       "total_points": 0,
       "event_points": 0,
