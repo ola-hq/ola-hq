@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-31T13:52:28.011Z",
+    "fetched_at": "2026-10-31T14:45:30.395Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -8294,8 +8294,8 @@
       "web_name": "Welbeck",
       "element_type": 4,
       "team": 6,
-      "total_points": 7,
-      "event_points": 0,
+      "total_points": 8,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -8382,8 +8382,8 @@
       "web_name": "Gusto",
       "element_type": 2,
       "team": 6,
-      "total_points": 5,
-      "event_points": 0,
+      "total_points": 6,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -8393,8 +8393,8 @@
       "web_name": "Fofana",
       "element_type": 2,
       "team": 6,
-      "total_points": 10,
-      "event_points": 2,
+      "total_points": 20,
+      "event_points": 12,
       "status": "a"
     },
     {
@@ -8437,8 +8437,8 @@
       "web_name": "Colwill",
       "element_type": 2,
       "team": 6,
-      "total_points": 15,
-      "event_points": 1,
+      "total_points": 20,
+      "event_points": 6,
       "status": "a"
     },
     {
@@ -8459,8 +8459,8 @@
       "web_name": "Acheampong",
       "element_type": 2,
       "team": 6,
-      "total_points": 16,
-      "event_points": 1,
+      "total_points": 24,
+      "event_points": 9,
       "status": "a"
     },
     {
@@ -8470,8 +8470,8 @@
       "web_name": "Palestra",
       "element_type": 2,
       "team": 6,
-      "total_points": 3,
-      "event_points": 1,
+      "total_points": 8,
+      "event_points": 6,
       "status": "a"
     },
     {
@@ -8492,8 +8492,8 @@
       "web_name": "Palmer",
       "element_type": 3,
       "team": 6,
-      "total_points": 38,
-      "event_points": 1,
+      "total_points": 45,
+      "event_points": 8,
       "status": "a"
     },
     {
@@ -8514,8 +8514,8 @@
       "web_name": "Neto",
       "element_type": 3,
       "team": 6,
-      "total_points": 38,
-      "event_points": 1,
+      "total_points": 40,
+      "event_points": 3,
       "status": "a"
     },
     {
@@ -8525,8 +8525,8 @@
       "web_name": "Estêvão",
       "element_type": 3,
       "team": 6,
-      "total_points": 7,
-      "event_points": 1,
+      "total_points": 9,
+      "event_points": 3,
       "status": "a"
     },
     {
@@ -8547,8 +8547,8 @@
       "web_name": "Caicedo",
       "element_type": 3,
       "team": 6,
-      "total_points": 9,
-      "event_points": 1,
+      "total_points": 11,
+      "event_points": 3,
       "status": "a"
     },
     {
@@ -8580,8 +8580,8 @@
       "web_name": "Andrey Santos",
       "element_type": 3,
       "team": 16,
-      "total_points": 9,
-      "event_points": 1,
+      "total_points": 10,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -8602,8 +8602,8 @@
       "web_name": "Quenda",
       "element_type": 3,
       "team": 6,
-      "total_points": 6,
-      "event_points": 0,
+      "total_points": 7,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -10485,7 +10485,7 @@
       "team": 13,
       "total_points": 32,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 336,
@@ -11330,8 +11330,8 @@
       "web_name": "Lammens",
       "element_type": 1,
       "team": 16,
-      "total_points": 19,
-      "event_points": 2,
+      "total_points": 20,
+      "event_points": 3,
       "status": "a"
     },
     {
@@ -11396,8 +11396,8 @@
       "web_name": "Maguire",
       "element_type": 2,
       "team": 16,
-      "total_points": 17,
-      "event_points": 1,
+      "total_points": 16,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -11407,9 +11407,9 @@
       "web_name": "Martinez",
       "element_type": 2,
       "team": 16,
-      "total_points": 12,
-      "event_points": 1,
-      "status": "a"
+      "total_points": 9,
+      "event_points": -2,
+      "status": "s"
     },
     {
       "id": 420,
@@ -11429,8 +11429,8 @@
       "web_name": "Heaven",
       "element_type": 2,
       "team": 16,
-      "total_points": 2,
-      "event_points": 0,
+      "total_points": 3,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -11484,8 +11484,8 @@
       "web_name": "B.Fernandes",
       "element_type": 3,
       "team": 16,
-      "total_points": 34,
-      "event_points": 1,
+      "total_points": 35,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -11506,8 +11506,8 @@
       "web_name": "Cunha",
       "element_type": 3,
       "team": 16,
-      "total_points": 39,
-      "event_points": 1,
+      "total_points": 40,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -11528,8 +11528,8 @@
       "web_name": "Mount",
       "element_type": 3,
       "team": 16,
-      "total_points": 4,
-      "event_points": 0,
+      "total_points": 5,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -11539,8 +11539,8 @@
       "web_name": "Amad",
       "element_type": 3,
       "team": 16,
-      "total_points": 6,
-      "event_points": 1,
+      "total_points": 7,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -12113,7 +12113,7 @@
       "team": 18,
       "total_points": 27,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 484,
@@ -12883,7 +12883,7 @@
       "team": 20,
       "total_points": 17,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 554,
@@ -12925,8 +12925,8 @@
       "web_name": "Penders",
       "element_type": 1,
       "team": 6,
-      "total_points": 2,
-      "event_points": 1,
+      "total_points": 7,
+      "event_points": 6,
       "status": "a"
     },
     {
@@ -13046,8 +13046,8 @@
       "web_name": "Barco",
       "element_type": 3,
       "team": 6,
-      "total_points": 3,
-      "event_points": 0,
+      "total_points": 4,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -13211,8 +13211,8 @@
       "web_name": "Chavarria",
       "element_type": 2,
       "team": 6,
-      "total_points": 10,
-      "event_points": 0,
+      "total_points": 11,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -13752,7 +13752,7 @@
       "team": 5,
       "total_points": 18,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 633,
