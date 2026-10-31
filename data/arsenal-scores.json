@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-31T16:15:12.986Z",
+    "fetched_at": "2026-10-31T16:58:04.407Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-31T16:15:12.986Z"
+    "details_checked_at": "2026-10-31T16:58:04.407Z"
   },
   "matches": [
     {
@@ -6038,7 +6038,7 @@
       "home_score": 1,
       "away_score": 0,
       "status": "in",
-      "minute": 52,
+      "minute": 90,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -6052,7 +6052,17 @@
         {
           "minute": null,
           "type": "Yellow card",
+          "description": "Yellow card · Adams (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
           "description": "Yellow card · Christie (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Ampadu (Away)"
         },
         {
           "minute": null,
@@ -6073,15 +6083,20 @@
         "name": "Nott'm Forest",
         "short": "NFO"
       },
-      "home_score": 1,
+      "home_score": 2,
       "away_score": 0,
-      "status": "in",
-      "minute": 54,
+      "status": "post",
+      "minute": null,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
       "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Thiago (Home)"
+        },
         {
           "minute": null,
           "type": "Own goal",
@@ -6090,7 +6105,22 @@
         {
           "minute": null,
           "type": "Yellow card",
+          "description": "Yellow card · Kayode (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Muñoz (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
           "description": "Yellow card · Milenković (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · McAtee (Away)"
         }
       ],
       "lineups": null
@@ -6107,17 +6137,17 @@
         "short": "SUN"
       },
       "home_score": 3,
-      "away_score": 0,
-      "status": "in",
-      "minute": 58,
+      "away_score": 1,
+      "status": "post",
+      "minute": null,
       "venue": "Coventry Building Society Arena",
       "competition": "Premier League",
-      "match_url": "https://www.espn.com/soccer/match/_/gameId/401879247",
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/401879247/sunderland-coventry-city",
       "stats": [
         {
           "label": "Fouls",
-          "home": "10",
-          "away": "5"
+          "home": "16",
+          "away": "9"
         },
         {
           "label": "Yellow Cards",
@@ -6127,17 +6157,17 @@
         {
           "label": "Red Cards",
           "home": "0",
-          "away": "0"
+          "away": "1"
         },
         {
           "label": "Offsides",
-          "home": "1",
+          "home": "2",
           "away": "1"
         },
         {
           "label": "Corner Kicks",
-          "home": "3",
-          "away": "1"
+          "home": "4",
+          "away": "4"
         },
         {
           "label": "Saves",
@@ -6146,22 +6176,22 @@
         },
         {
           "label": "Possession",
-          "home": "45.9",
-          "away": "54.1"
+          "home": "43.4",
+          "away": "56.6"
         },
         {
           "label": "SHOTS",
-          "home": "7",
-          "away": "8"
+          "home": "12",
+          "away": "17"
         },
         {
           "label": "ON GOAL",
           "home": "4",
-          "away": "1"
+          "away": "2"
         },
         {
           "label": "On Target %",
-          "home": "0.6",
+          "home": "0.3",
           "away": "0.1"
         },
         {
@@ -6172,7 +6202,7 @@
         {
           "label": "Penalty Kicks Taken",
           "home": "0",
-          "away": "0"
+          "away": "1"
         }
       ],
       "events": [
@@ -6193,6 +6223,11 @@
         },
         {
           "minute": null,
+          "type": "Goal",
+          "description": "Goal · E.Le Fée (Away)"
+        },
+        {
+          "minute": null,
           "type": "Yellow card",
           "description": "Yellow card · Sakamoto (Home)"
         },
@@ -6200,6 +6235,11 @@
           "minute": null,
           "type": "Yellow card",
           "description": "Yellow card · Torp (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Alderete (Away)"
         }
       ],
       "lineups": {
@@ -6242,23 +6282,23 @@
         "name": "Ipswich Town",
         "short": "IPS"
       },
-      "home_score": 0,
-      "away_score": 1,
-      "status": "in",
-      "minute": 55,
+      "home_score": 2,
+      "away_score": 2,
+      "status": "post",
+      "minute": null,
       "venue": "The MKM Stadium",
       "competition": "Premier League",
-      "match_url": "https://www.espn.com/soccer/match/_/gameId/401878763",
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/401878763/ipswich-town-hull-city",
       "stats": [
         {
           "label": "Fouls",
-          "home": "8",
-          "away": "8"
+          "home": "13",
+          "away": "12"
         },
         {
           "label": "Yellow Cards",
-          "home": "1",
-          "away": "1"
+          "home": "3",
+          "away": "3"
         },
         {
           "label": "Red Cards",
@@ -6267,38 +6307,38 @@
         },
         {
           "label": "Offsides",
-          "home": "1",
-          "away": "2"
+          "home": "4",
+          "away": "3"
         },
         {
           "label": "Corner Kicks",
-          "home": "3",
+          "home": "6",
           "away": "3"
         },
         {
           "label": "Saves",
           "home": "1",
-          "away": "0"
+          "away": "1"
         },
         {
           "label": "Possession",
-          "home": "31",
-          "away": "69"
+          "home": "38.4",
+          "away": "61.6"
         },
         {
           "label": "SHOTS",
-          "home": "2",
-          "away": "6"
+          "home": "9",
+          "away": "15"
         },
         {
           "label": "ON GOAL",
-          "home": "0",
-          "away": "2"
+          "home": "3",
+          "away": "3"
         },
         {
           "label": "On Target %",
-          "home": "0.0",
-          "away": "0.3"
+          "home": "0.3",
+          "away": "0.2"
         },
         {
           "label": "Penalty Goals",
@@ -6315,12 +6355,47 @@
         {
           "minute": null,
           "type": "Goal",
+          "description": "Goal · Iroegbunam (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · McBurnie (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
           "description": "Goal · Florentino (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Enciso (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Ajayi (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Crooks (Home)"
         },
         {
           "minute": null,
           "type": "Yellow card",
           "description": "Yellow card · Stroud (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Diop (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Enciso (Away)"
         },
         {
           "minute": null,
@@ -6371,7 +6446,7 @@
       "home_score": 0,
       "away_score": 1,
       "status": "in",
-      "minute": 54,
+      "minute": 90,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -6386,6 +6461,11 @@
           "minute": null,
           "type": "Yellow card",
           "description": "Yellow card · De Cuyper (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Groß (Away)"
         },
         {
           "minute": null,
