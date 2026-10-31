@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-10-31T15:39:05.080Z",
+    "fetched_at": "2026-10-31T16:15:12.986Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-10-31T15:39:05.080Z"
+    "details_checked_at": "2026-10-31T16:15:12.986Z"
   },
   "matches": [
     {
@@ -6038,7 +6038,7 @@
       "home_score": 1,
       "away_score": 0,
       "status": "in",
-      "minute": 33,
+      "minute": 52,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -6048,6 +6048,16 @@
           "minute": null,
           "type": "Goal",
           "description": "Goal · Evanilson (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Christie (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Elvedi (Away)"
         }
       ],
       "lineups": null
@@ -6066,7 +6076,7 @@
       "home_score": 1,
       "away_score": 0,
       "status": "in",
-      "minute": 32,
+      "minute": 54,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -6076,6 +6086,11 @@
           "minute": null,
           "type": "Own goal",
           "description": "Own goal · Milenković (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Milenković (Away)"
         }
       ],
       "lineups": null
@@ -6091,22 +6106,22 @@
         "name": "Sunderland",
         "short": "SUN"
       },
-      "home_score": 2,
+      "home_score": 3,
       "away_score": 0,
       "status": "in",
-      "minute": 38,
+      "minute": 58,
       "venue": "Coventry Building Society Arena",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879247",
       "stats": [
         {
           "label": "Fouls",
-          "home": "5",
-          "away": "4"
+          "home": "10",
+          "away": "5"
         },
         {
           "label": "Yellow Cards",
-          "home": "1",
+          "home": "2",
           "away": "0"
         },
         {
@@ -6117,7 +6132,7 @@
         {
           "label": "Offsides",
           "home": "1",
-          "away": "0"
+          "away": "1"
         },
         {
           "label": "Corner Kicks",
@@ -6131,23 +6146,23 @@
         },
         {
           "label": "Possession",
-          "home": "46.9",
-          "away": "53.1"
+          "home": "45.9",
+          "away": "54.1"
         },
         {
           "label": "SHOTS",
-          "home": "5",
-          "away": "5"
+          "home": "7",
+          "away": "8"
         },
         {
           "label": "ON GOAL",
-          "home": "3",
+          "home": "4",
           "away": "1"
         },
         {
           "label": "On Target %",
           "home": "0.6",
-          "away": "0.2"
+          "away": "0.1"
         },
         {
           "label": "Penalty Goals",
@@ -6164,7 +6179,22 @@
         {
           "minute": null,
           "type": "Goal",
+          "description": "Goal · Rudoni (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
           "description": "Goal · Sakamoto (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Awoniyi (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Sakamoto (Home)"
         },
         {
           "minute": null,
@@ -6215,19 +6245,19 @@
       "home_score": 0,
       "away_score": 1,
       "status": "in",
-      "minute": 37,
+      "minute": 55,
       "venue": "The MKM Stadium",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878763",
       "stats": [
         {
           "label": "Fouls",
-          "home": "2",
-          "away": "3"
+          "home": "8",
+          "away": "8"
         },
         {
           "label": "Yellow Cards",
-          "home": "0",
+          "home": "1",
           "away": "1"
         },
         {
@@ -6237,12 +6267,12 @@
         },
         {
           "label": "Offsides",
-          "home": "0",
-          "away": "1"
+          "home": "1",
+          "away": "2"
         },
         {
           "label": "Corner Kicks",
-          "home": "0",
+          "home": "3",
           "away": "3"
         },
         {
@@ -6252,13 +6282,13 @@
         },
         {
           "label": "Possession",
-          "home": "24.1",
-          "away": "75.9"
+          "home": "31",
+          "away": "69"
         },
         {
           "label": "SHOTS",
-          "home": "0",
-          "away": "5"
+          "home": "2",
+          "away": "6"
         },
         {
           "label": "ON GOAL",
@@ -6268,7 +6298,7 @@
         {
           "label": "On Target %",
           "home": "0.0",
-          "away": "0.4"
+          "away": "0.3"
         },
         {
           "label": "Penalty Goals",
@@ -6286,6 +6316,11 @@
           "minute": null,
           "type": "Goal",
           "description": "Goal · Florentino (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Stroud (Home)"
         },
         {
           "minute": null,
@@ -6336,7 +6371,7 @@
       "home_score": 0,
       "away_score": 1,
       "status": "in",
-      "minute": 32,
+      "minute": 54,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
@@ -6346,6 +6381,11 @@
           "minute": null,
           "type": "Goal",
           "description": "Goal · Ayari (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · De Cuyper (Away)"
         },
         {
           "minute": null,
