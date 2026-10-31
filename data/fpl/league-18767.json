@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-31T09:49:30.720Z",
+    "fetched_at": "2026-10-31T10:45:56.437Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -3254,12 +3254,6 @@
         "status": "a"
       },
       {
-        "element": 460,
-        "in_accepted_trade": false,
-        "owner": null,
-        "status": "a"
-      },
-      {
         "element": 343,
         "in_accepted_trade": false,
         "owner": null,
@@ -5708,6 +5702,12 @@
         "status": "l"
       },
       {
+        "element": 403,
+        "in_accepted_trade": false,
+        "owner": null,
+        "status": "l"
+      },
+      {
         "element": 592,
         "in_accepted_trade": false,
         "owner": null,
@@ -5951,6 +5951,12 @@
         "element": 31,
         "in_accepted_trade": false,
         "owner": 95054,
+        "status": "o"
+      },
+      {
+        "element": 460,
+        "in_accepted_trade": false,
+        "owner": 95050,
         "status": "o"
       },
       {
@@ -6587,12 +6593,6 @@
         "element": 106,
         "in_accepted_trade": false,
         "owner": 95049,
-        "status": "o"
-      },
-      {
-        "element": 403,
-        "in_accepted_trade": false,
-        "owner": 95050,
         "status": "o"
       },
       {
