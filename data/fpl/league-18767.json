@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-10-31T21:44:01.437Z",
+    "fetched_at": "2026-10-31T22:43:47.540Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -7150,9 +7150,9 @@
       "web_name": "Cash",
       "element_type": 2,
       "team": 2,
-      "total_points": 19,
-      "event_points": 2,
-      "status": "a"
+      "total_points": 18,
+      "event_points": 1,
+      "status": "s"
     },
     {
       "id": 33,
@@ -7304,8 +7304,8 @@
       "web_name": "Barkley",
       "element_type": 3,
       "team": 2,
-      "total_points": 13,
-      "event_points": 0,
+      "total_points": 14,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -8558,8 +8558,8 @@
       "web_name": "Garnacho",
       "element_type": 3,
       "team": 2,
-      "total_points": 3,
-      "event_points": 0,
+      "total_points": 4,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -9592,8 +9592,8 @@
       "web_name": "Robinson",
       "element_type": 2,
       "team": 10,
-      "total_points": 28,
-      "event_points": 2,
+      "total_points": 30,
+      "event_points": 4,
       "status": "a"
     },
     {
@@ -9614,8 +9614,8 @@
       "web_name": "Tete",
       "element_type": 2,
       "team": 10,
-      "total_points": 2,
-      "event_points": 0,
+      "total_points": 3,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -9724,8 +9724,8 @@
       "web_name": "Cairney",
       "element_type": 3,
       "team": 10,
-      "total_points": 3,
-      "event_points": 1,
+      "total_points": 2,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9759,7 +9759,7 @@
       "team": 10,
       "total_points": 8,
       "event_points": 0,
-      "status": "s"
+      "status": "a"
     },
     {
       "id": 270,
@@ -9779,8 +9779,8 @@
       "web_name": "Muniz",
       "element_type": 4,
       "team": 10,
-      "total_points": 5,
-      "event_points": 0,
+      "total_points": 6,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -11121,8 +11121,8 @@
       "web_name": "Khusanov",
       "element_type": 2,
       "team": 15,
-      "total_points": 15,
-      "event_points": 2,
+      "total_points": 17,
+      "event_points": 4,
       "status": "a"
     },
     {
@@ -11198,8 +11198,8 @@
       "web_name": "Doku",
       "element_type": 3,
       "team": 15,
-      "total_points": 25,
-      "event_points": 4,
+      "total_points": 23,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -13068,8 +13068,8 @@
       "web_name": "Palacios",
       "element_type": 3,
       "team": 10,
-      "total_points": 14,
-      "event_points": 0,
+      "total_points": 15,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -13365,8 +13365,8 @@
       "web_name": "Suzuki",
       "element_type": 1,
       "team": 2,
-      "total_points": 30,
-      "event_points": 0,
+      "total_points": 31,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -13816,8 +13816,8 @@
       "web_name": "Larsson",
       "element_type": 3,
       "team": 10,
-      "total_points": 7,
-      "event_points": 0,
+      "total_points": 8,
+      "event_points": 1,
       "status": "a"
     },
     {
