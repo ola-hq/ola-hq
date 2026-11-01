@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-11-01T16:46:14.772Z",
+    "fetched_at": "2026-11-01T17:41:56.700Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -6947,8 +6947,8 @@
       "web_name": "Rice",
       "element_type": 3,
       "team": 1,
-      "total_points": 40,
-      "event_points": 1,
+      "total_points": 45,
+      "event_points": 6,
       "status": "a"
     },
     {
@@ -7090,8 +7090,8 @@
       "web_name": "Havertz",
       "element_type": 4,
       "team": 1,
-      "total_points": 25,
-      "event_points": 1,
+      "total_points": 32,
+      "event_points": 8,
       "status": "a"
     },
     {
@@ -7145,8 +7145,8 @@
       "web_name": "Konsa",
       "element_type": 2,
       "team": 1,
-      "total_points": 40,
-      "event_points": 1,
+      "total_points": 41,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -10742,8 +10742,8 @@
       "web_name": "Kerkez",
       "element_type": 2,
       "team": 14,
-      "total_points": 23,
-      "event_points": 1,
+      "total_points": 24,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -10929,8 +10929,8 @@
       "web_name": "Nyoni",
       "element_type": 3,
       "team": 14,
-      "total_points": 7,
-      "event_points": 1,
+      "total_points": 8,
+      "event_points": 2,
       "status": "a"
     },
     {
@@ -13712,8 +13712,8 @@
       "web_name": "Barcola",
       "element_type": 3,
       "team": 14,
-      "total_points": 20,
-      "event_points": 1,
+      "total_points": 19,
+      "event_points": 0,
       "status": "a"
     },
     {
