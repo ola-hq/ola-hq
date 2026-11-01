@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-arsenal-v1",
     "mode": "Auto-refreshed ESPN schedule",
-    "updated_at": "2026-11-01T18:07:49.420Z",
+    "updated_at": "2026-11-01T19:19:40.008Z",
     "updated_display": "Oct 6, 2026",
     "architecture": [
       "live source",
@@ -2291,6 +2291,10 @@
         "url": "https://fantasy.premierleague.com/api/fixtures/"
       },
       {
+        "label": "Premier League official fixture feed",
+        "url": "https://fantasy.premierleague.com/api/fixtures/"
+      },
+      {
         "label": "ESPN Arsenal schedule (automated, unofficial)",
         "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/359/schedule"
       },
@@ -2302,9 +2306,9 @@
     "refresh_strategy": "scheduled",
     "schedule_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/359/schedule?season=2026",
     "league_source": "https://site.api.espn.com/apis/v2/sports/soccer/eng.1/standings",
-    "league_updated_at": "2026-11-01T18:07:49.420Z",
+    "league_updated_at": "2026-11-01T19:19:40.008Z",
     "fixture_source": "automated",
-    "fixture_updated_at": "2026-11-01T18:07:49.420Z",
+    "fixture_updated_at": "2026-11-01T19:19:40.008Z",
     "official_fixture_feed": "https://fantasy.premierleague.com/api/fixtures/",
     "match_link_source": "Verified Premier League match centre"
   },
@@ -2321,22 +2325,22 @@
       "match_center_url": null
     },
     "latest_result": {
-      "opponent": "Everton",
-      "venue": "Home",
-      "score": "2–0",
+      "opponent": "Liverpool",
+      "venue": "Away",
+      "score": "1–0",
       "result": "W"
     },
     "league": {
       "competition": "Premier League",
-      "position": 2,
-      "points": 21,
-      "played": 8,
-      "wins": 7,
+      "position": 1,
+      "points": 24,
+      "played": 9,
+      "wins": 8,
       "draws": 0,
       "losses": 1,
-      "gf": 13,
+      "gf": 14,
       "ga": 5,
-      "gd": 8
+      "gd": 9
     },
     "recent_form": [
       "W",
