@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-11-01T17:00:30.713Z",
+    "fetched_at": "2026-11-01T17:38:13.385Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-11-01T17:00:30.713Z"
+    "details_checked_at": "2026-11-01T17:38:13.385Z"
   },
   "matches": [
     {
@@ -6643,19 +6643,19 @@
       "home_score": 0,
       "away_score": 1,
       "status": "in",
-      "minute": 30,
+      "minute": 49,
       "venue": "Anfield",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879246",
       "stats": [
         {
           "label": "Fouls",
-          "home": "3",
-          "away": "3"
+          "home": "6",
+          "away": "6"
         },
         {
           "label": "Yellow Cards",
-          "home": "0",
+          "home": "1",
           "away": "0"
         },
         {
@@ -6670,7 +6670,7 @@
         },
         {
           "label": "Corner Kicks",
-          "home": "5",
+          "home": "6",
           "away": "1"
         },
         {
@@ -6680,13 +6680,13 @@
         },
         {
           "label": "Possession",
-          "home": "49.4",
-          "away": "50.6"
+          "home": "56.6",
+          "away": "43.4"
         },
         {
           "label": "SHOTS",
-          "home": "2",
-          "away": "4"
+          "home": "8",
+          "away": "5"
         },
         {
           "label": "ON GOAL",
@@ -6696,7 +6696,7 @@
         {
           "label": "On Target %",
           "home": "0.0",
-          "away": "0.5"
+          "away": "0.4"
         },
         {
           "label": "Penalty Goals",
@@ -6714,6 +6714,11 @@
           "minute": null,
           "type": "Goal",
           "description": "Goal · Havertz (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Barcola (Home)"
         }
       ],
       "lineups": {
