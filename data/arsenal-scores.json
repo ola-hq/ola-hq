@@ -1,7 +1,7 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-11-01T19:10:01.350Z",
+    "fetched_at": "2026-11-01T20:40:10.980Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
@@ -6864,9 +6864,9 @@
       "away_score": null,
       "status": "pre",
       "minute": null,
-      "venue": null,
+      "venue": "Selhurst Park",
       "competition": "Premier League",
-      "match_url": null,
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/401879243/liverpool-crystal-palace",
       "stats": [],
       "events": [],
       "lineups": null
@@ -6908,9 +6908,9 @@
       "away_score": null,
       "status": "pre",
       "minute": null,
-      "venue": null,
+      "venue": "Stadium of Light",
       "competition": "Premier League",
-      "match_url": null,
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/401879239/chelsea-sunderland",
       "stats": [],
       "events": [],
       "lineups": null
