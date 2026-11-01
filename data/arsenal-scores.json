@@ -1,7 +1,7 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-11-01T14:21:02.935Z",
+    "fetched_at": "2026-11-01T15:39:43.791Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
@@ -6572,7 +6572,53 @@
       "venue": "Anfield",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879246/arsenal-liverpool",
-      "stats": [],
+      "stats": [
+        {
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "wonCorners",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "goalAssists",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "possessionPct",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "shotAssists",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "shotsOnTarget",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "totalGoals",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "totalShots",
+          "home": "0",
+          "away": "0"
+        }
+      ],
       "events": [],
       "lineups": null
     },
