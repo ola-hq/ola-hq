@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-11-01T23:42:03.545Z",
+    "fetched_at": "2026-11-02T01:16:06.336Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -6892,8 +6892,8 @@
       "web_name": "Calafiori",
       "element_type": 2,
       "team": 1,
-      "total_points": 53,
-      "event_points": 8,
+      "total_points": 51,
+      "event_points": 6,
       "status": "a"
     },
     {
