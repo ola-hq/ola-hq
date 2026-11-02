@@ -1,14 +1,14 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-11-02T19:38:24.029Z",
+    "fetched_at": "2026-11-02T20:26:48.711Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
     "secondary_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
     "coverage": "Premier League 2026/27; event stats where published by the source",
     "note": "In-play status is based on the feed; snapshot is not guaranteed real-time.",
-    "details_checked_at": "2026-11-02T19:38:24.029Z"
+    "details_checked_at": "2026-11-02T20:26:48.711Z"
   },
   "matches": [
     {
@@ -6781,62 +6781,104 @@
         "name": "Everton",
         "short": "EVE"
       },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
+      "home_score": 0,
+      "away_score": 0,
+      "status": "in",
+      "minute": 27,
       "venue": "St. James' Park",
       "competition": "Premier League",
-      "match_url": "https://www.espn.com/soccer/match/_/gameId/401878762/everton-newcastle-united",
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/401878762",
       "stats": [
         {
-          "label": "appearances",
+          "label": "Fouls",
+          "home": "3",
+          "away": "6"
+        },
+        {
+          "label": "Yellow Cards",
           "home": "0",
           "away": "0"
         },
         {
-          "label": "foulsCommitted",
+          "label": "Red Cards",
           "home": "0",
           "away": "0"
         },
         {
-          "label": "wonCorners",
+          "label": "Offsides",
+          "home": "0",
+          "away": "1"
+        },
+        {
+          "label": "Corner Kicks",
+          "home": "1",
+          "away": "0"
+        },
+        {
+          "label": "Saves",
           "home": "0",
           "away": "0"
         },
         {
-          "label": "goalAssists",
+          "label": "Possession",
+          "home": "43.7",
+          "away": "56.3"
+        },
+        {
+          "label": "SHOTS",
+          "home": "2",
+          "away": "5"
+        },
+        {
+          "label": "ON GOAL",
           "home": "0",
           "away": "0"
         },
         {
-          "label": "possessionPct",
+          "label": "On Target %",
+          "home": "0.0",
+          "away": "0.0"
+        },
+        {
+          "label": "Penalty Goals",
           "home": "0",
           "away": "0"
         },
         {
-          "label": "shotAssists",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "shotsOnTarget",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "totalGoals",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "totalShots",
+          "label": "Penalty Kicks Taken",
           "home": "0",
           "away": "0"
         }
       ],
       "events": [],
-      "lineups": null
+      "lineups": {
+        "home": [
+          "Lukás Hornícek",
+          "Dan Burn",
+          "Fabian Schär",
+          "Lewis Hall",
+          "Amar Dedic",
+          "Joe Willock",
+          "Nico González",
+          "Joelinton",
+          "William Osula",
+          "Harvey Barnes",
+          "Anthony Elanga"
+        ],
+        "away": [
+          "Jordan Pickford",
+          "Jarrad Branthwaite",
+          "James Tarkowski",
+          "Vitaliy Mykolenko",
+          "Jake O'Brien",
+          "Kiernan Dewsbury-Hall",
+          "James Garner",
+          "Harrison Armstrong",
+          "Thierno Barry",
+          "Tyrique George",
+          "Merlin Röhl"
+        ]
+      }
     },
     {
       "id": "pl-94",
