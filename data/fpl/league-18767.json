@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-11-02T21:51:17.600Z",
+    "fetched_at": "2026-11-02T22:51:21.072Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -816,9 +816,9 @@
         "event": 9,
         "finished": false,
         "league_entry_1": 95299,
-        "league_entry_1_points": 23,
+        "league_entry_1_points": 25,
         "league_entry_2": 95308,
-        "league_entry_2_points": 37,
+        "league_entry_2_points": 35,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -827,9 +827,9 @@
         "event": 9,
         "finished": false,
         "league_entry_1": 95300,
-        "league_entry_1_points": 43,
+        "league_entry_1_points": 44,
         "league_entry_2": 95307,
-        "league_entry_2_points": 24,
+        "league_entry_2_points": 46,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -849,9 +849,9 @@
         "event": 9,
         "finished": false,
         "league_entry_1": 95302,
-        "league_entry_1_points": 12,
+        "league_entry_1_points": 20,
         "league_entry_2": 95305,
-        "league_entry_2_points": 23,
+        "league_entry_2_points": 28,
         "started": true,
         "winning_league_entry": null,
         "winning_method": null
@@ -9103,8 +9103,8 @@
       "web_name": "Johnson",
       "element_type": 3,
       "team": 9,
-      "total_points": 15,
-      "event_points": 1,
+      "total_points": 14,
+      "event_points": 0,
       "status": "a"
     },
     {
@@ -9290,8 +9290,8 @@
       "web_name": "Pickford",
       "element_type": 1,
       "team": 9,
-      "total_points": 35,
-      "event_points": 6,
+      "total_points": 37,
+      "event_points": 8,
       "status": "a"
     },
     {
@@ -9334,8 +9334,8 @@
       "web_name": "Branthwaite",
       "element_type": 2,
       "team": 9,
-      "total_points": 38,
-      "event_points": 7,
+      "total_points": 37,
+      "event_points": 6,
       "status": "a"
     },
     {
@@ -9433,8 +9433,8 @@
       "web_name": "Garner",
       "element_type": 3,
       "team": 9,
-      "total_points": 23,
-      "event_points": 3,
+      "total_points": 25,
+      "event_points": 5,
       "status": "a"
     },
     {
@@ -9521,8 +9521,8 @@
       "web_name": "Hackney",
       "element_type": 3,
       "team": 9,
-      "total_points": 12,
-      "event_points": 0,
+      "total_points": 13,
+      "event_points": 1,
       "status": "a"
     },
     {
@@ -11710,8 +11710,8 @@
       "web_name": "Schär",
       "element_type": 2,
       "team": 17,
-      "total_points": 13,
-      "event_points": 4,
+      "total_points": 12,
+      "event_points": 3,
       "status": "a"
     },
     {
@@ -11820,9 +11820,9 @@
       "web_name": "J.Ramsey",
       "element_type": 3,
       "team": 17,
-      "total_points": 9,
-      "event_points": 1,
-      "status": "a"
+      "total_points": 6,
+      "event_points": -2,
+      "status": "s"
     },
     {
       "id": 457,
