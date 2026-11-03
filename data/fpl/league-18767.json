@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-11-02T23:46:14.965Z",
+    "fetched_at": "2026-11-03T01:13:55.101Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -9290,8 +9290,8 @@
       "web_name": "Pickford",
       "element_type": 1,
       "team": 9,
-      "total_points": 37,
-      "event_points": 8,
+      "total_points": 36,
+      "event_points": 7,
       "status": "a"
     },
     {
@@ -9334,8 +9334,8 @@
       "web_name": "Branthwaite",
       "element_type": 2,
       "team": 9,
-      "total_points": 37,
-      "event_points": 6,
+      "total_points": 40,
+      "event_points": 9,
       "status": "a"
     },
     {
@@ -9367,8 +9367,8 @@
       "web_name": "Mykolenko",
       "element_type": 2,
       "team": 9,
-      "total_points": 36,
-      "event_points": 8,
+      "total_points": 34,
+      "event_points": 6,
       "status": "a"
     },
     {
@@ -9400,8 +9400,8 @@
       "web_name": "Dewsbury-Hall",
       "element_type": 3,
       "team": 9,
-      "total_points": 40,
-      "event_points": 3,
+      "total_points": 41,
+      "event_points": 4,
       "status": "a"
     },
     {
@@ -9433,8 +9433,8 @@
       "web_name": "Garner",
       "element_type": 3,
       "team": 9,
-      "total_points": 25,
-      "event_points": 5,
+      "total_points": 23,
+      "event_points": 3,
       "status": "a"
     },
     {
