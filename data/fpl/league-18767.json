@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-11-03T21:58:12.698Z",
+    "fetched_at": "2026-11-03T22:55:03.447Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -8247,7 +8247,7 @@
       "team": 16,
       "total_points": 8,
       "event_points": 1,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 132,
