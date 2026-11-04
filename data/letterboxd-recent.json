@@ -2,9 +2,17 @@
   "account": "ourpolaroidproj",
   "source": "https://letterboxd.com/ourpolaroidproj/rss/",
   "scope": "recent_public_diary_entries_not_complete_library",
-  "checkedAt": "2026-11-03T20:07:15.323392Z",
+  "checkedAt": "2026-11-04T08:27:25.457565Z",
   "status": "ok",
   "entries": [
+    {
+      "title": "Borderlands",
+      "year": "2024",
+      "score": 2.0,
+      "watchedDate": "2026-11-03",
+      "activityDate": "2026-11-04",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/borderlands-2024/"
+    },
     {
       "title": "The Only Living Pickpocket in New York",
       "year": "2026",
@@ -308,14 +316,6 @@
       "watchedDate": "2026-05-19",
       "activityDate": "2026-05-20",
       "url": "https://letterboxd.com/ourpolaroidproj/film/goat-2026/"
-    },
-    {
-      "title": "Billie Eilish — Hit Me Hard and Soft: The Tour (Live in 3D)",
-      "year": "2026",
-      "score": 5.0,
-      "watchedDate": "2026-05-08",
-      "activityDate": "2026-05-09",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/billie-eilish-hit-me-hard-and-soft-the-tour/1/"
     }
   ],
   "totalEntries": 39
