@@ -2,7 +2,7 @@
   "account": "ourpolaroidproj",
   "source": "https://letterboxd.com/ourpolaroidproj/rss/",
   "scope": "recent_public_diary_entries_not_complete_library",
-  "checkedAt": "2026-11-06T00:22:29.470435Z",
+  "checkedAt": "2026-11-06T15:08:26.518021Z",
   "status": "ok",
   "entries": [
     {
@@ -300,15 +300,7 @@
       "watchedDate": "2026-06-11",
       "activityDate": "2026-06-12",
       "url": "https://letterboxd.com/ourpolaroidproj/film/i-love-boosters/"
-    },
-    {
-      "title": "Obsession",
-      "year": "2025",
-      "score": 4.5,
-      "watchedDate": "2026-06-11",
-      "activityDate": "2026-06-12",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/obsession-2025/"
     }
   ],
-  "totalEntries": 38
+  "totalEntries": 37
 }
