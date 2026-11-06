@@ -2,9 +2,17 @@
   "account": "ourpolaroidproj",
   "source": "https://letterboxd.com/ourpolaroidproj/rss/",
   "scope": "recent_public_diary_entries_not_complete_library",
-  "checkedAt": "2026-11-05T15:33:33.817151Z",
+  "checkedAt": "2026-11-06T00:22:29.470435Z",
   "status": "ok",
   "entries": [
+    {
+      "title": "Godzilla Minus Zero",
+      "year": "2026",
+      "score": 2.0,
+      "watchedDate": "2026-11-05",
+      "activityDate": "2026-11-06",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/godzilla-minus-zero/"
+    },
     {
       "title": "Borderlands",
       "year": "2024",
@@ -300,23 +308,7 @@
       "watchedDate": "2026-06-11",
       "activityDate": "2026-06-12",
       "url": "https://letterboxd.com/ourpolaroidproj/film/obsession-2025/"
-    },
-    {
-      "title": "Scary Movie",
-      "year": "2026",
-      "score": 4.0,
-      "watchedDate": "2026-06-04",
-      "activityDate": "2026-06-05",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/scary-movie-2026/"
-    },
-    {
-      "title": "GOAT",
-      "year": "2026",
-      "score": 2.0,
-      "watchedDate": "2026-05-19",
-      "activityDate": "2026-05-20",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/goat-2026/"
     }
   ],
-  "totalEntries": 39
+  "totalEntries": 38
 }
