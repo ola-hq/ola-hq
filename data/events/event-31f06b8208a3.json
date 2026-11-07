@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "event-31f06b8208a3",
+      "title": "Desert Air · 2024-11-16",
+      "route": "our-polaroid-project/events/event-31f06b8208a3/",
+      "year": 2024,
+      "date": "2024-11-16",
+      "dateStart": "2024-11-16",
+      "dateEnd": null,
+      "datePrecision": "DAY",
+      "dateLabel": "2024-11-16",
+      "location": "",
+      "description": "",
+      "searchTerms": [
+        "Desert Air · 2024-11-16",
+        "Desert Air 11:16:24",
+        "img20241120_18263614.jpg",
+        "img20241120_18294191.jpg",
+        "img20241120_18512594.jpg",
+        "img20241120_18563230.jpg"
+      ],
+      "coverId": "selected-31110f0e73d7fce2ecf4",
+      "secondaryCoverId": null,
+      "photoCount": 4,
+      "publicationStatus": "approved",
+      "photos": [
+        {
+          "id": "selected-31110f0e73d7fce2ecf4",
+          "order": 1,
+          "frameNumber": 1,
+          "caption": "img20241120_18563230.jpg",
+          "originalFilename": "selected-31110f0e73d7fce2ecf4.jpg",
+          "width": 405,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-31f06b8208a3/photos/selected-31110f0e73d7fce2ecf4.jpg",
+          "display": "our-polaroid-project/events/event-31f06b8208a3/photos/selected-31110f0e73d7fce2ecf4.jpg",
+          "download": "our-polaroid-project/events/event-31f06b8208a3/photos/selected-31110f0e73d7fce2ecf4.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-8cb8a4edd5d26bcd1092",
+          "order": 2,
+          "frameNumber": 2,
+          "caption": "img20241120_18512594.jpg",
+          "originalFilename": "selected-8cb8a4edd5d26bcd1092.jpg",
+          "width": 416,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-31f06b8208a3/photos/selected-8cb8a4edd5d26bcd1092.jpg",
+          "display": "our-polaroid-project/events/event-31f06b8208a3/photos/selected-8cb8a4edd5d26bcd1092.jpg",
+          "download": "our-polaroid-project/events/event-31f06b8208a3/photos/selected-8cb8a4edd5d26bcd1092.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-5c340e4eaf4890514cf8",
+          "order": 3,
+          "frameNumber": 3,
+          "caption": "img20241120_18294191.jpg",
+          "originalFilename": "selected-5c340e4eaf4890514cf8.jpg",
+          "width": 422,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-31f06b8208a3/photos/selected-5c340e4eaf4890514cf8.jpg",
+          "display": "our-polaroid-project/events/event-31f06b8208a3/photos/selected-5c340e4eaf4890514cf8.jpg",
+          "download": "our-polaroid-project/events/event-31f06b8208a3/photos/selected-5c340e4eaf4890514cf8.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-3aec0d036aaaea7d6e26",
+          "order": 4,
+          "frameNumber": 4,
+          "caption": "img20241120_18263614.jpg",
+          "originalFilename": "selected-3aec0d036aaaea7d6e26.jpg",
+          "width": 423,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-31f06b8208a3/photos/selected-3aec0d036aaaea7d6e26.jpg",
+          "display": "our-polaroid-project/events/event-31f06b8208a3/photos/selected-3aec0d036aaaea7d6e26.jpg",
+          "download": "our-polaroid-project/events/event-31f06b8208a3/photos/selected-3aec0d036aaaea7d6e26.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        }
+      ],
+      "packages": [
+        {
+          "url": "our-polaroid-project/events/event-31f06b8208a3/downloads/event-31f06b8208a3.zip",
+          "filename": "event-31f06b8208a3.zip",
+          "label": "Album JPEGs · 672 px display copies",
+          "bytes": 163816,
+          "publicationStatus": "approved"
+        }
+      ],
+      "archive": true,
+      "gallery": {
+        "eyebrow": "OUR POLAROID WAVE · EVENTS",
+        "heading": "Desert Air · 2024-11-16",
+        "emphasis": "A memory, kept.",
+        "coverLabel": "Desert Air · 2024-11-16",
+        "collectionLabel": "photographs",
+        "gridLabel": "Event photographs",
+        "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",
+        "downloadsHeading": "Keep the photographs.",
+        "downloadsDescription": "This album ZIP contains the same 672 px display JPEGs shown here.",
+        "related": [
+          {
+            "href": "our-polaroid-project/events/",
+            "label": "← All events"
+          }
+        ]
+      }
+    }
+  ]
+}

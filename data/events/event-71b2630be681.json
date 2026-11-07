@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "event-71b2630be681",
+      "title": "Carnival Cruise · 2022-03",
+      "route": "our-polaroid-project/events/event-71b2630be681/",
+      "year": 2022,
+      "date": null,
+      "dateStart": "2022-03",
+      "dateEnd": null,
+      "datePrecision": "MONTH",
+      "dateLabel": "2022-03",
+      "location": "",
+      "description": "",
+      "searchTerms": [
+        "Carnival Cruise · 2022-03",
+        "Carnival Cruise March 2022",
+        "img20220321_19333137.jpg",
+        "img20220321_19394319.jpg",
+        "img20220321_19414499.jpg",
+        "img20220321_19454923.jpg",
+        "img20220321_19515763.jpg",
+        "img20220321_19542048.jpg",
+        "img20220321_19565589.jpg"
+      ],
+      "coverId": "selected-becbfbcb97583d098735",
+      "secondaryCoverId": null,
+      "photoCount": 7,
+      "publicationStatus": "approved",
+      "photos": [
+        {
+          "id": "selected-becbfbcb97583d098735",
+          "order": 1,
+          "frameNumber": 1,
+          "caption": "img20220321_19542048.jpg",
+          "originalFilename": "selected-becbfbcb97583d098735.jpg",
+          "width": 417,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-71b2630be681/photos/selected-becbfbcb97583d098735.jpg",
+          "display": "our-polaroid-project/events/event-71b2630be681/photos/selected-becbfbcb97583d098735.jpg",
+          "download": "our-polaroid-project/events/event-71b2630be681/photos/selected-becbfbcb97583d098735.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-28306146b90afa8fe8aa",
+          "order": 2,
+          "frameNumber": 2,
+          "caption": "img20220321_19394319.jpg",
+          "originalFilename": "selected-28306146b90afa8fe8aa.jpg",
+          "width": 410,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-71b2630be681/photos/selected-28306146b90afa8fe8aa.jpg",
+          "display": "our-polaroid-project/events/event-71b2630be681/photos/selected-28306146b90afa8fe8aa.jpg",
+          "download": "our-polaroid-project/events/event-71b2630be681/photos/selected-28306146b90afa8fe8aa.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-7d03de1764bda7e9538c",
+          "order": 3,
+          "frameNumber": 3,
+          "caption": "img20220321_19333137.jpg",
+          "originalFilename": "selected-7d03de1764bda7e9538c.jpg",
+          "width": 419,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-71b2630be681/photos/selected-7d03de1764bda7e9538c.jpg",
+          "display": "our-polaroid-project/events/event-71b2630be681/photos/selected-7d03de1764bda7e9538c.jpg",
+          "download": "our-polaroid-project/events/event-71b2630be681/photos/selected-7d03de1764bda7e9538c.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-aaccdc361040b20907cd",
+          "order": 4,
+          "frameNumber": 4,
+          "caption": "img20220321_19515763.jpg",
+          "originalFilename": "selected-aaccdc361040b20907cd.jpg",
+          "width": 417,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-71b2630be681/photos/selected-aaccdc361040b20907cd.jpg",
+          "display": "our-polaroid-project/events/event-71b2630be681/photos/selected-aaccdc361040b20907cd.jpg",
+          "download": "our-polaroid-project/events/event-71b2630be681/photos/selected-aaccdc361040b20907cd.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-67ac2409d8c0b86f9635",
+          "order": 5,
+          "frameNumber": 5,
+          "caption": "img20220321_19454923.jpg",
+          "originalFilename": "selected-67ac2409d8c0b86f9635.jpg",
+          "width": 412,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-71b2630be681/photos/selected-67ac2409d8c0b86f9635.jpg",
+          "display": "our-polaroid-project/events/event-71b2630be681/photos/selected-67ac2409d8c0b86f9635.jpg",
+          "download": "our-polaroid-project/events/event-71b2630be681/photos/selected-67ac2409d8c0b86f9635.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-c402594fe59146eaab73",
+          "order": 6,
+          "frameNumber": 6,
+          "caption": "img20220321_19565589.jpg",
+          "originalFilename": "selected-c402594fe59146eaab73.jpg",
+          "width": 417,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-71b2630be681/photos/selected-c402594fe59146eaab73.jpg",
+          "display": "our-polaroid-project/events/event-71b2630be681/photos/selected-c402594fe59146eaab73.jpg",
+          "download": "our-polaroid-project/events/event-71b2630be681/photos/selected-c402594fe59146eaab73.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-d46f6040a072aba7b4f0",
+          "order": 7,
+          "frameNumber": 7,
+          "caption": "img20220321_19414499.jpg",
+          "originalFilename": "selected-d46f6040a072aba7b4f0.jpg",
+          "width": 419,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-71b2630be681/photos/selected-d46f6040a072aba7b4f0.jpg",
+          "display": "our-polaroid-project/events/event-71b2630be681/photos/selected-d46f6040a072aba7b4f0.jpg",
+          "download": "our-polaroid-project/events/event-71b2630be681/photos/selected-d46f6040a072aba7b4f0.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        }
+      ],
+      "packages": [
+        {
+          "url": "our-polaroid-project/events/event-71b2630be681/downloads/event-71b2630be681.zip",
+          "filename": "event-71b2630be681.zip",
+          "label": "Album JPEGs · 672 px display copies",
+          "bytes": 306223,
+          "publicationStatus": "approved"
+        }
+      ],
+      "archive": true,
+      "gallery": {
+        "eyebrow": "OUR POLAROID WAVE · EVENTS",
+        "heading": "Carnival Cruise · 2022-03",
+        "emphasis": "A memory, kept.",
+        "coverLabel": "Carnival Cruise · 2022-03",
+        "collectionLabel": "photographs",
+        "gridLabel": "Event photographs",
+        "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",
+        "downloadsHeading": "Keep the photographs.",
+        "downloadsDescription": "This album ZIP contains the same 672 px display JPEGs shown here.",
+        "related": [
+          {
+            "href": "our-polaroid-project/events/",
+            "label": "← All events"
+          }
+        ]
+      }
+    }
+  ]
+}

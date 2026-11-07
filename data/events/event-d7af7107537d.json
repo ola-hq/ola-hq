@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "event-d7af7107537d",
+      "title": "NFT LA · 2022-03-28",
+      "route": "our-polaroid-project/events/event-d7af7107537d/",
+      "year": 2022,
+      "date": "2022-03-28",
+      "dateStart": "2022-03-28",
+      "dateEnd": null,
+      "datePrecision": "DAY",
+      "dateLabel": "2022-03-28",
+      "location": "",
+      "description": "",
+      "searchTerms": [
+        "NFT LA · 2022-03-28",
+        "NFT LA 3-28-2022",
+        "img20220402_01442763.jpg"
+      ],
+      "coverId": "selected-2908389b8ed30a441eee",
+      "secondaryCoverId": null,
+      "photoCount": 1,
+      "publicationStatus": "approved",
+      "photos": [
+        {
+          "id": "selected-2908389b8ed30a441eee",
+          "order": 1,
+          "frameNumber": 1,
+          "caption": "img20220402_01442763.jpg",
+          "originalFilename": "selected-2908389b8ed30a441eee.jpg",
+          "width": 410,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-d7af7107537d/photos/selected-2908389b8ed30a441eee.jpg",
+          "display": "our-polaroid-project/events/event-d7af7107537d/photos/selected-2908389b8ed30a441eee.jpg",
+          "download": "our-polaroid-project/events/event-d7af7107537d/photos/selected-2908389b8ed30a441eee.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        }
+      ],
+      "packages": [
+        {
+          "url": "our-polaroid-project/events/event-d7af7107537d/downloads/event-d7af7107537d.zip",
+          "filename": "event-d7af7107537d.zip",
+          "label": "Album JPEGs · 672 px display copies",
+          "bytes": 42275,
+          "publicationStatus": "approved"
+        }
+      ],
+      "archive": true,
+      "gallery": {
+        "eyebrow": "OUR POLAROID WAVE · EVENTS",
+        "heading": "NFT LA · 2022-03-28",
+        "emphasis": "A memory, kept.",
+        "coverLabel": "NFT LA · 2022-03-28",
+        "collectionLabel": "photographs",
+        "gridLabel": "Event photographs",
+        "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",
+        "downloadsHeading": "Keep the photographs.",
+        "downloadsDescription": "This album ZIP contains the same 672 px display JPEGs shown here.",
+        "related": [
+          {
+            "href": "our-polaroid-project/events/nft-la-2022/",
+            "label": "← NFT LA · 2022"
+          },
+          {
+            "href": "our-polaroid-project/events/",
+            "label": "← All events"
+          }
+        ]
+      },
+      "parentEventId": "nft-la-2022"
+    }
+  ]
+}

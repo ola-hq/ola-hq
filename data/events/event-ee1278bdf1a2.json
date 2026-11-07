@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "event-ee1278bdf1a2",
+      "title": "Lil Nas X · Long Live Montero Tour · 2022-10-18",
+      "route": "our-polaroid-project/events/event-ee1278bdf1a2/",
+      "year": 2022,
+      "date": "2022-10-18",
+      "dateStart": "2022-10-18",
+      "dateEnd": null,
+      "datePrecision": "DAY",
+      "dateLabel": "2022-10-18",
+      "location": "",
+      "description": "",
+      "searchTerms": [
+        "Lil Nas X · Long Live Montero Tour · 2022-10-18",
+        "Lil Nas X Long Live Montero Tour 10-18-22",
+        "img20221205_19052821.jpg",
+        "img20221205_19062683.jpg"
+      ],
+      "coverId": "selected-12e4720a7db691190ee1",
+      "secondaryCoverId": null,
+      "photoCount": 2,
+      "publicationStatus": "approved",
+      "photos": [
+        {
+          "id": "selected-12e4720a7db691190ee1",
+          "order": 1,
+          "frameNumber": 1,
+          "caption": "img20221205_19052821.jpg",
+          "originalFilename": "selected-12e4720a7db691190ee1.jpg",
+          "width": 429,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-ee1278bdf1a2/photos/selected-12e4720a7db691190ee1.jpg",
+          "display": "our-polaroid-project/events/event-ee1278bdf1a2/photos/selected-12e4720a7db691190ee1.jpg",
+          "download": "our-polaroid-project/events/event-ee1278bdf1a2/photos/selected-12e4720a7db691190ee1.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-261f983cf806edad475e",
+          "order": 2,
+          "frameNumber": 2,
+          "caption": "img20221205_19062683.jpg",
+          "originalFilename": "selected-261f983cf806edad475e.jpg",
+          "width": 424,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-ee1278bdf1a2/photos/selected-261f983cf806edad475e.jpg",
+          "display": "our-polaroid-project/events/event-ee1278bdf1a2/photos/selected-261f983cf806edad475e.jpg",
+          "download": "our-polaroid-project/events/event-ee1278bdf1a2/photos/selected-261f983cf806edad475e.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        }
+      ],
+      "packages": [
+        {
+          "url": "our-polaroid-project/events/event-ee1278bdf1a2/downloads/event-ee1278bdf1a2.zip",
+          "filename": "event-ee1278bdf1a2.zip",
+          "label": "Album JPEGs · 672 px display copies",
+          "bytes": 64133,
+          "publicationStatus": "approved"
+        }
+      ],
+      "archive": true,
+      "gallery": {
+        "eyebrow": "OUR POLAROID WAVE · EVENTS",
+        "heading": "Lil Nas X · Long Live Montero Tour · 2022-10-18",
+        "emphasis": "A memory, kept.",
+        "coverLabel": "Lil Nas X · Long Live Montero Tour · 2022-10-18",
+        "collectionLabel": "photographs",
+        "gridLabel": "Event photographs",
+        "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",
+        "downloadsHeading": "Keep the photographs.",
+        "downloadsDescription": "This album ZIP contains the same 672 px display JPEGs shown here.",
+        "related": [
+          {
+            "href": "our-polaroid-project/events/",
+            "label": "← All events"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "event-d32df8a80a1a",
+      "title": "Cancun",
+      "route": "our-polaroid-project/events/event-d32df8a80a1a/",
+      "year": null,
+      "date": null,
+      "dateStart": null,
+      "dateEnd": null,
+      "datePrecision": "UNKNOWN",
+      "dateLabel": "Date/year unconfirmed",
+      "location": "Cancun",
+      "description": "",
+      "searchTerms": [
+        "Cancun",
+        "3. Cancun Polaroids",
+        "img20211215_18340561.jpg",
+        "img20211215_19235282.jpg"
+      ],
+      "coverId": "selected-2f91983ba9c66127ff13",
+      "secondaryCoverId": null,
+      "photoCount": 2,
+      "publicationStatus": "approved",
+      "photos": [
+        {
+          "id": "selected-2f91983ba9c66127ff13",
+          "order": 1,
+          "frameNumber": 1,
+          "caption": "img20211215_19235282.jpg",
+          "originalFilename": "selected-2f91983ba9c66127ff13.jpg",
+          "width": 425,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-d32df8a80a1a/photos/selected-2f91983ba9c66127ff13.jpg",
+          "display": "our-polaroid-project/events/event-d32df8a80a1a/photos/selected-2f91983ba9c66127ff13.jpg",
+          "download": "our-polaroid-project/events/event-d32df8a80a1a/photos/selected-2f91983ba9c66127ff13.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-c733e46c3234f36d00ae",
+          "order": 2,
+          "frameNumber": 2,
+          "caption": "img20211215_18340561.jpg",
+          "originalFilename": "selected-c733e46c3234f36d00ae.jpg",
+          "width": 414,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-d32df8a80a1a/photos/selected-c733e46c3234f36d00ae.jpg",
+          "display": "our-polaroid-project/events/event-d32df8a80a1a/photos/selected-c733e46c3234f36d00ae.jpg",
+          "download": "our-polaroid-project/events/event-d32df8a80a1a/photos/selected-c733e46c3234f36d00ae.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        }
+      ],
+      "packages": [
+        {
+          "url": "our-polaroid-project/events/event-d32df8a80a1a/downloads/event-d32df8a80a1a.zip",
+          "filename": "event-d32df8a80a1a.zip",
+          "label": "Album JPEGs · 672 px display copies",
+          "bytes": 84011,
+          "publicationStatus": "approved"
+        }
+      ],
+      "archive": true,
+      "gallery": {
+        "eyebrow": "OUR POLAROID WAVE · EVENTS",
+        "heading": "Cancun",
+        "emphasis": "A memory, kept.",
+        "coverLabel": "Cancun",
+        "collectionLabel": "photographs",
+        "gridLabel": "Event photographs",
+        "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",
+        "downloadsHeading": "Keep the photographs.",
+        "downloadsDescription": "This album ZIP contains the same 672 px display JPEGs shown here.",
+        "related": [
+          {
+            "href": "our-polaroid-project/events/",
+            "label": "← All events"
+          }
+        ]
+      }
+    }
+  ]
+}
