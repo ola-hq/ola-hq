@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "event-b95b331d4c6b",
+      "title": "John Summit · 2023-04-07",
+      "route": "our-polaroid-project/events/event-b95b331d4c6b/",
+      "year": 2023,
+      "date": "2023-04-07",
+      "dateStart": "2023-04-07",
+      "dateEnd": null,
+      "datePrecision": "DAY",
+      "dateLabel": "2023-04-07",
+      "location": "",
+      "description": "",
+      "searchTerms": [
+        "John Summit · 2023-04-07",
+        "John Summit 4:7:23",
+        "img20230522_19512055.jpg",
+        "img20230522_19522309.jpg",
+        "img20230522_19535360.jpg",
+        "img20230522_19571085.jpg",
+        "img20230522_19593465.jpg",
+        "img20230522_20004174.jpg",
+        "img20230522_20014215.jpg",
+        "img20230522_20025012.jpg"
+      ],
+      "coverId": "selected-370e3fab452486a92334",
+      "secondaryCoverId": null,
+      "photoCount": 8,
+      "publicationStatus": "approved",
+      "photos": [
+        {
+          "id": "selected-370e3fab452486a92334",
+          "order": 1,
+          "frameNumber": 1,
+          "caption": "img20230522_19535360.jpg",
+          "originalFilename": "selected-370e3fab452486a92334.jpg",
+          "width": 429,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-370e3fab452486a92334.jpg",
+          "display": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-370e3fab452486a92334.jpg",
+          "download": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-370e3fab452486a92334.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-a411a93ed9935e5ba722",
+          "order": 2,
+          "frameNumber": 2,
+          "caption": "img20230522_20025012.jpg",
+          "originalFilename": "selected-a411a93ed9935e5ba722.jpg",
+          "width": 417,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-a411a93ed9935e5ba722.jpg",
+          "display": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-a411a93ed9935e5ba722.jpg",
+          "download": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-a411a93ed9935e5ba722.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-afeb46861ef4af4e8d7e",
+          "order": 3,
+          "frameNumber": 3,
+          "caption": "img20230522_20014215.jpg",
+          "originalFilename": "selected-afeb46861ef4af4e8d7e.jpg",
+          "width": 416,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-afeb46861ef4af4e8d7e.jpg",
+          "display": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-afeb46861ef4af4e8d7e.jpg",
+          "download": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-afeb46861ef4af4e8d7e.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-533b25e9dc8efea22bc5",
+          "order": 4,
+          "frameNumber": 4,
+          "caption": "img20230522_19512055.jpg",
+          "originalFilename": "selected-533b25e9dc8efea22bc5.jpg",
+          "width": 415,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-533b25e9dc8efea22bc5.jpg",
+          "display": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-533b25e9dc8efea22bc5.jpg",
+          "download": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-533b25e9dc8efea22bc5.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-329a2970081d3badb647",
+          "order": 5,
+          "frameNumber": 5,
+          "caption": "img20230522_19593465.jpg",
+          "originalFilename": "selected-329a2970081d3badb647.jpg",
+          "width": 412,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-329a2970081d3badb647.jpg",
+          "display": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-329a2970081d3badb647.jpg",
+          "download": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-329a2970081d3badb647.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-f6c7ab428b50eccc2a7e",
+          "order": 6,
+          "frameNumber": 6,
+          "caption": "img20230522_20004174.jpg",
+          "originalFilename": "selected-f6c7ab428b50eccc2a7e.jpg",
+          "width": 415,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-f6c7ab428b50eccc2a7e.jpg",
+          "display": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-f6c7ab428b50eccc2a7e.jpg",
+          "download": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-f6c7ab428b50eccc2a7e.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-d9f61d51b0e47fb3d3c1",
+          "order": 7,
+          "frameNumber": 7,
+          "caption": "img20230522_19522309.jpg",
+          "originalFilename": "selected-d9f61d51b0e47fb3d3c1.jpg",
+          "width": 426,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-d9f61d51b0e47fb3d3c1.jpg",
+          "display": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-d9f61d51b0e47fb3d3c1.jpg",
+          "download": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-d9f61d51b0e47fb3d3c1.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-aad5665cac715611ffe1",
+          "order": 8,
+          "frameNumber": 8,
+          "caption": "img20230522_19571085.jpg",
+          "originalFilename": "selected-aad5665cac715611ffe1.jpg",
+          "width": 417,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-aad5665cac715611ffe1.jpg",
+          "display": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-aad5665cac715611ffe1.jpg",
+          "download": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-aad5665cac715611ffe1.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        }
+      ],
+      "packages": [
+        {
+          "url": "our-polaroid-project/events/event-b95b331d4c6b/downloads/event-b95b331d4c6b.zip",
+          "filename": "event-b95b331d4c6b.zip",
+          "label": "Album JPEGs · 672 px display copies",
+          "bytes": 318647,
+          "publicationStatus": "approved"
+        }
+      ],
+      "archive": true,
+      "gallery": {
+        "eyebrow": "OUR POLAROID WAVE · EVENTS",
+        "heading": "John Summit · 2023-04-07",
+        "emphasis": "A memory, kept.",
+        "coverLabel": "John Summit · 2023-04-07",
+        "collectionLabel": "photographs",
+        "gridLabel": "Event photographs",
+        "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",
+        "downloadsHeading": "Keep the photographs.",
+        "downloadsDescription": "This album ZIP contains the same 672 px display JPEGs shown here.",
+        "related": [
+          {
+            "href": "our-polaroid-project/events/",
+            "label": "← All events"
+          }
+        ]
+      }
+    }
+  ]
+}

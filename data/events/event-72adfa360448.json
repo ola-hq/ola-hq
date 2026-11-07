@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "event-72adfa360448",
+      "title": "Llannely & Freddy · 2024-04-13",
+      "route": "our-polaroid-project/events/event-72adfa360448/",
+      "year": 2024,
+      "date": "2024-04-13",
+      "dateStart": "2024-04-13",
+      "dateEnd": null,
+      "datePrecision": "DAY",
+      "dateLabel": "2024-04-13",
+      "location": "",
+      "description": "",
+      "searchTerms": [
+        "Llannely & Freddy · 2024-04-13",
+        "Llannely & Freddy 4:13:24",
+        "img20240416_00442211.jpg",
+        "img20240416_00452296.jpg",
+        "img20240424_20094129.jpg",
+        "img20240424_20141024.jpg"
+      ],
+      "coverId": "selected-3442b475f0eaf05ce43b",
+      "secondaryCoverId": null,
+      "photoCount": 4,
+      "publicationStatus": "approved",
+      "photos": [
+        {
+          "id": "selected-3442b475f0eaf05ce43b",
+          "order": 1,
+          "frameNumber": 1,
+          "caption": "img20240416_00442211.jpg",
+          "originalFilename": "selected-3442b475f0eaf05ce43b.jpg",
+          "width": 417,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-72adfa360448/photos/selected-3442b475f0eaf05ce43b.jpg",
+          "display": "our-polaroid-project/events/event-72adfa360448/photos/selected-3442b475f0eaf05ce43b.jpg",
+          "download": "our-polaroid-project/events/event-72adfa360448/photos/selected-3442b475f0eaf05ce43b.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-477501a203d020156d93",
+          "order": 2,
+          "frameNumber": 2,
+          "caption": "img20240416_00452296.jpg",
+          "originalFilename": "selected-477501a203d020156d93.jpg",
+          "width": 448,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-72adfa360448/photos/selected-477501a203d020156d93.jpg",
+          "display": "our-polaroid-project/events/event-72adfa360448/photos/selected-477501a203d020156d93.jpg",
+          "download": "our-polaroid-project/events/event-72adfa360448/photos/selected-477501a203d020156d93.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-94a4d619ee910b0c703f",
+          "order": 3,
+          "frameNumber": 3,
+          "caption": "img20240424_20094129.jpg",
+          "originalFilename": "selected-94a4d619ee910b0c703f.jpg",
+          "width": 420,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-72adfa360448/photos/selected-94a4d619ee910b0c703f.jpg",
+          "display": "our-polaroid-project/events/event-72adfa360448/photos/selected-94a4d619ee910b0c703f.jpg",
+          "download": "our-polaroid-project/events/event-72adfa360448/photos/selected-94a4d619ee910b0c703f.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-b863b8d1056e6edae1af",
+          "order": 4,
+          "frameNumber": 4,
+          "caption": "img20240424_20141024.jpg",
+          "originalFilename": "selected-b863b8d1056e6edae1af.jpg",
+          "width": 415,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-72adfa360448/photos/selected-b863b8d1056e6edae1af.jpg",
+          "display": "our-polaroid-project/events/event-72adfa360448/photos/selected-b863b8d1056e6edae1af.jpg",
+          "download": "our-polaroid-project/events/event-72adfa360448/photos/selected-b863b8d1056e6edae1af.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        }
+      ],
+      "packages": [
+        {
+          "url": "our-polaroid-project/events/event-72adfa360448/downloads/event-72adfa360448.zip",
+          "filename": "event-72adfa360448.zip",
+          "label": "Album JPEGs · 672 px display copies",
+          "bytes": 185128,
+          "publicationStatus": "approved"
+        }
+      ],
+      "archive": true,
+      "gallery": {
+        "eyebrow": "OUR POLAROID WAVE · EVENTS",
+        "heading": "Llannely & Freddy · 2024-04-13",
+        "emphasis": "A memory, kept.",
+        "coverLabel": "Llannely & Freddy · 2024-04-13",
+        "collectionLabel": "photographs",
+        "gridLabel": "Event photographs",
+        "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",
+        "downloadsHeading": "Keep the photographs.",
+        "downloadsDescription": "This album ZIP contains the same 672 px display JPEGs shown here.",
+        "related": [
+          {
+            "href": "our-polaroid-project/events/",
+            "label": "← All events"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "event-e11148bc0178",
+      "title": "Coachella · Weekend 2, Day 0 · 2022",
+      "route": "our-polaroid-project/events/event-e11148bc0178/",
+      "year": 2022,
+      "date": null,
+      "dateStart": null,
+      "dateEnd": null,
+      "datePrecision": "EVENT_DAY",
+      "dateLabel": "April 2022 · Weekend 2, Day 0 · date unconfirmed",
+      "location": "",
+      "description": "",
+      "searchTerms": [
+        "Coachella · Weekend 2, Day 0 · 2022",
+        "Coachella Day 0 Weekend 2 2022",
+        "img20220427_16442148.jpg",
+        "img20220427_16463511.jpg",
+        "img20220427_16474780.jpg",
+        "img20220427_16485613.jpg",
+        "img20220427_16500489.jpg",
+        "img20220427_16512423.jpg",
+        "img20220427_16562766.jpg"
+      ],
+      "coverId": "selected-daad73011d04c3348f22",
+      "secondaryCoverId": null,
+      "photoCount": 7,
+      "publicationStatus": "approved",
+      "photos": [
+        {
+          "id": "selected-daad73011d04c3348f22",
+          "order": 1,
+          "frameNumber": 1,
+          "caption": "img20220427_16512423.jpg",
+          "originalFilename": "selected-daad73011d04c3348f22.jpg",
+          "width": 412,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-e11148bc0178/photos/selected-daad73011d04c3348f22.jpg",
+          "display": "our-polaroid-project/events/event-e11148bc0178/photos/selected-daad73011d04c3348f22.jpg",
+          "download": "our-polaroid-project/events/event-e11148bc0178/photos/selected-daad73011d04c3348f22.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-6eda2de442c6a49d61aa",
+          "order": 2,
+          "frameNumber": 2,
+          "caption": "img20220427_16463511.jpg",
+          "originalFilename": "selected-6eda2de442c6a49d61aa.jpg",
+          "width": 415,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-e11148bc0178/photos/selected-6eda2de442c6a49d61aa.jpg",
+          "display": "our-polaroid-project/events/event-e11148bc0178/photos/selected-6eda2de442c6a49d61aa.jpg",
+          "download": "our-polaroid-project/events/event-e11148bc0178/photos/selected-6eda2de442c6a49d61aa.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-c8543c684a1488d28381",
+          "order": 3,
+          "frameNumber": 3,
+          "caption": "img20220427_16562766.jpg",
+          "originalFilename": "selected-c8543c684a1488d28381.jpg",
+          "width": 412,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-e11148bc0178/photos/selected-c8543c684a1488d28381.jpg",
+          "display": "our-polaroid-project/events/event-e11148bc0178/photos/selected-c8543c684a1488d28381.jpg",
+          "download": "our-polaroid-project/events/event-e11148bc0178/photos/selected-c8543c684a1488d28381.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-532309c32b2be042dc2b",
+          "order": 4,
+          "frameNumber": 4,
+          "caption": "img20220427_16474780.jpg",
+          "originalFilename": "selected-532309c32b2be042dc2b.jpg",
+          "width": 416,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-e11148bc0178/photos/selected-532309c32b2be042dc2b.jpg",
+          "display": "our-polaroid-project/events/event-e11148bc0178/photos/selected-532309c32b2be042dc2b.jpg",
+          "download": "our-polaroid-project/events/event-e11148bc0178/photos/selected-532309c32b2be042dc2b.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-a7170be5216ae3c42138",
+          "order": 5,
+          "frameNumber": 5,
+          "caption": "img20220427_16485613.jpg",
+          "originalFilename": "selected-a7170be5216ae3c42138.jpg",
+          "width": 417,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-e11148bc0178/photos/selected-a7170be5216ae3c42138.jpg",
+          "display": "our-polaroid-project/events/event-e11148bc0178/photos/selected-a7170be5216ae3c42138.jpg",
+          "download": "our-polaroid-project/events/event-e11148bc0178/photos/selected-a7170be5216ae3c42138.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-3c6892b299829d3a90b9",
+          "order": 6,
+          "frameNumber": 6,
+          "caption": "img20220427_16442148.jpg",
+          "originalFilename": "selected-3c6892b299829d3a90b9.jpg",
+          "width": 417,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-e11148bc0178/photos/selected-3c6892b299829d3a90b9.jpg",
+          "display": "our-polaroid-project/events/event-e11148bc0178/photos/selected-3c6892b299829d3a90b9.jpg",
+          "download": "our-polaroid-project/events/event-e11148bc0178/photos/selected-3c6892b299829d3a90b9.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-2470fc1c39a093850950",
+          "order": 7,
+          "frameNumber": 7,
+          "caption": "img20220427_16500489.jpg",
+          "originalFilename": "selected-2470fc1c39a093850950.jpg",
+          "width": 417,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-e11148bc0178/photos/selected-2470fc1c39a093850950.jpg",
+          "display": "our-polaroid-project/events/event-e11148bc0178/photos/selected-2470fc1c39a093850950.jpg",
+          "download": "our-polaroid-project/events/event-e11148bc0178/photos/selected-2470fc1c39a093850950.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        }
+      ],
+      "packages": [
+        {
+          "url": "our-polaroid-project/events/event-e11148bc0178/downloads/event-e11148bc0178.zip",
+          "filename": "event-e11148bc0178.zip",
+          "label": "Album JPEGs · 672 px display copies",
+          "bytes": 251449,
+          "publicationStatus": "approved"
+        }
+      ],
+      "archive": true,
+      "gallery": {
+        "eyebrow": "OUR POLAROID WAVE · EVENTS",
+        "heading": "Coachella · Weekend 2, Day 0 · 2022",
+        "emphasis": "A memory, kept.",
+        "coverLabel": "Coachella · Weekend 2, Day 0 · 2022",
+        "collectionLabel": "photographs",
+        "gridLabel": "Event photographs",
+        "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",
+        "downloadsHeading": "Keep the photographs.",
+        "downloadsDescription": "This album ZIP contains the same 672 px display JPEGs shown here.",
+        "related": [
+          {
+            "href": "our-polaroid-project/events/coachella-2022/",
+            "label": "← Coachella · 2022"
+          },
+          {
+            "href": "our-polaroid-project/events/",
+            "label": "← All events"
+          }
+        ]
+      },
+      "parentEventId": "coachella-2022"
+    }
+  ]
+}

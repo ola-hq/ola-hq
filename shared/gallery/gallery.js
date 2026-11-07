@@ -12,11 +12,54 @@ const registries=new Map();
 async function events(eventId=null) {
  const key=eventId||'catalog';
  if(!registries.has(key))registries.set(key,(async()=>{
-  const response=await fetch(new URL('data/events/index.json',ROOT));if(!response.ok)throw Error('Collection unavailable');return response.json();
+  const response=await fetch(new URL('data/events/index.json',ROOT));
+  if(!response.ok)throw Error('Collection unavailable');
+  const catalog=await response.json();
+  const summary=eventId&&catalog.events.find(event=>event.id===eventId);
+  if(!summary?.manifest)return catalog;
+  if(summary.publicationStatus!=='approved')throw Error('Collection unavailable');
+  const target=new URL(summary.manifest,ROOT);
+  if(target.origin!==ROOT.origin||!target.pathname.startsWith(new URL('data/events/',ROOT).pathname))throw Error('Invalid event manifest');
+  const detail=await fetch(target);if(!detail.ok)throw Error('Collection unavailable');
+  const data=await detail.json(),event=data.events?.find(event=>event.id===eventId);
+  if(!event||event.publicationStatus!=='approved')throw Error('Collection unavailable');
+  return {...catalog,events:[event]};
  })());
  return registries.get(key);
 }
 const image = (p, eager=false) => p.thumbnailAvailable===false?'<div class="og-missing-thumb" role="img" aria-label="Archive thumbnail unavailable">Preview unavailable<br>Source preserved</div>':`<img src="${esc(url(p.thumbnail))}" width="${p.width}" height="${p.height}" alt="${esc(p.caption)}" loading="${eager?'eager':'lazy'}" decoding="async">`;
+
+// Published event grouping uses only approved, present leaf galleries. No private-child metadata is needed.
+function groupPublishedEvents(data,filters={},parentId='') {
+ const approved=(data.events||[]).filter(event=>event.publicationStatus==='approved');
+ const byId=new Map(approved.map(event=>[event.id,event]));
+ const parents=(data.parentEvents||[]).filter(parent=>parent.publicationStatus==='approved').map(parent=>({...parent,children:parent.childEventIds.map(id=>byId.get(id)).filter(Boolean)})).filter(parent=>parent.children.length);
+ const byParent=new Map(parents.map(parent=>[parent.id,parent]));
+ const normalize=value=>String(value??'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().replace(/\s+/g,' ');
+ const query=normalize(filters.q);
+ const matches=(event,parent)=>{
+  if(filters.year&&(filters.year==='unknown'?!!event.year:String(event.year)!==filters.year))return false;
+  return (' '+normalize([event.title,event.dateLabel,event.location,...(event.searchTerms||[]),parent?.title,...(parent?.searchTerms||[])].join(' '))).includes(' '+query);
+ };
+ const selectedParent=parentId?byParent.get(parentId):null;
+ if(parentId&&!selectedParent)return {rows:[],eventCount:0,leafGalleryCount:0,photoCount:0,parentEventCount:0,dayGalleryCount:0};
+ if(selectedParent){
+  const rows=selectedParent.children.filter(event=>matches(event,selectedParent));
+  return {rows,eventCount:1,leafGalleryCount:rows.length,photoCount:rows.reduce((n,event)=>n+(event.photoCount??event.photos.length),0),parentEventCount:1,dayGalleryCount:rows.length,parent:selectedParent};
+ }
+ const parentByChild=new Map(parents.flatMap(parent=>parent.children.map(event=>[event.id,parent]))),seen=new Set(),rows=[];
+ for(const event of approved){
+  const parent=parentByChild.get(event.id);
+  if(!parent){if(matches(event))rows.push(event);continue;}
+  if(seen.has(parent.id))continue;seen.add(parent.id);
+  const children=parent.children.filter(child=>matches(child,parent));if(!children.length)continue;
+  const cover=children.flatMap(child=>child.photos).find(photo=>photo.id===parent.coverId)||children[0].photos[0];
+  rows.push({...parent,isParent:true,photos:cover?[cover]:[],coverId:cover?.id,photoCount:children.reduce((n,child)=>n+(child.photoCount??child.photos.length),0),galleryCount:children.length,matchingGalleries:query?children:[]});
+ }
+ return {rows,eventCount:rows.length,leafGalleryCount:rows.reduce((n,row)=>n+(row.isParent?row.galleryCount:1),0),photoCount:rows.reduce((n,row)=>n+(row.photoCount??row.photos.length),0),parentEventCount:rows.filter(row=>row.isParent).length,dayGalleryCount:rows.filter(row=>row.isParent).reduce((n,row)=>n+row.galleryCount,0)};
+}
+// End published event grouping.
+
 class OlaGallery extends HTMLElement {
   async connectedCallback() {
     try {
@@ -143,57 +186,40 @@ class OlaEvents extends HTMLElement {
   <div class="og-browse-heading" id="browse" tabindex="-1"><p class="og-eyebrow">THE COMPLETE EVENT ARCHIVE</p><h2>${family?'Every chapter.':'Find your chapter.'}</h2><p>Follow a year, a place, or a familiar name.</p></div>`;
  }
  renderPublished() {
-  this.publishedEvents = this.data.events.filter(event => event.publicationStatus === 'approved');
-  const years = [...new Set(this.publishedEvents.map(event => event.year).filter(Boolean))].sort((a, b) => b - a);
-  this.filters.family = '';
-  this.filters.view = 'events';
-  this.filters.sort = 'newest';
-  if (!years.some(year => String(year) === this.filters.year)) this.filters.year = '';
-  this.innerHTML = `<header class="og-events-intro"><h1>We were here</h1>
+  this.publishedEvents=this.data.events.filter(event=>event.publicationStatus==='approved');
+  const years=[...new Set(this.publishedEvents.map(event=>event.year).filter(Boolean))].sort((a,b)=>b-a);
+  const unknown=this.publishedEvents.some(event=>!event.year);
+  this.filters.family='';this.filters.view='events';this.filters.sort='newest';
+  if(!years.some(year=>String(year)===this.filters.year)&&!(unknown&&this.filters.year==='unknown'))this.filters.year='';
+  const parent=(this.data.parentEvents||[]).find(parent=>parent.id===this.getAttribute('parent'));
+  this.innerHTML=`<header class="og-events-intro"><h1>${parent?esc(parent.title):'We were here'}</h1>
     <p class="og-results" role="status" aria-live="polite"></p>
     <div class="og-events-filters" aria-label="Find an event">
-      <label>Search events<input id="og-search" aria-label="Search events" type="search" placeholder="Event, place, or name" value="${esc(this.filters.q)}"></label>
-      ${years.length > 1 ? `<label>Year<select id="og-year" aria-label="Year"><option value="">All years</option>${years.map(year => `<option value="${year}" ${String(year) === this.filters.year ? 'selected' : ''}>${year}</option>`).join('')}</select></label>` : ''}
+      <label>Search events<input id="og-search" aria-label="Search events" type="search" placeholder="Event, day, place, or name" value="${esc(this.filters.q)}"></label>
+      ${years.length>1||unknown?`<label>Year<select id="og-year" aria-label="Year"><option value="">All years</option>${years.map(year=>`<option value="${year}" ${String(year)===this.filters.year?'selected':''}>${year}</option>`).join('')}${unknown?`<option value="unknown" ${this.filters.year==='unknown'?'selected':''}>Year to confirm</option>`:''}</select></label>`:''}
       <button class="og-button og-clear" type="button">Clear filters</button>
-    </div></header>
-    <div class="og-event-grid" id="event-cards" tabindex="-1" aria-label="Published events"></div>`;
-  this.querySelector('#og-search').oninput = event => {
-    this.filters.q = event.target.value;
-    this.writeQuery();
-    this.drawPublished();
-  };
-  const year = this.querySelector('#og-year');
-  if (year) year.oninput = event => {
-    this.filters.year = event.target.value;
-    this.writeQuery();
-    this.drawPublished();
-  };
-  this.querySelector('.og-clear').onclick = () => {
-    this.filters.q = '';
-    this.filters.year = '';
-    this.writeQuery();
-    this.renderPublished();
-  };
+    </div></header><div class="og-event-grid" id="event-cards" tabindex="-1" aria-label="Published events"></div>`;
+  this.querySelector('#og-search').oninput=event=>{this.filters.q=event.target.value;this.writeQuery();this.drawPublished();};
+  const year=this.querySelector('#og-year');if(year)year.oninput=event=>{this.filters.year=event.target.value;this.writeQuery();this.drawPublished();};
+  this.querySelector('.og-clear').onclick=()=>{this.filters.q='';this.filters.year='';this.writeQuery();this.renderPublished();};
   this.drawPublished();
  }
  drawPublished() {
-  const normalize = value => String(value ?? '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-  const query = normalize(this.filters.q).trim();
-  const rows = this.publishedEvents.filter(event =>
-    (!this.filters.year || String(event.year) === this.filters.year) &&
-    normalize([event.title, event.dateLabel, event.location, ...(event.searchTerms || [])].join(' ')).includes(query)
-  );
-  const count = rows.reduce((sum, event) => sum + (event.photoCount ?? event.photos.length), 0);
-  this.querySelector('.og-results').textContent = `${rows.length} ${rows.length === 1 ? 'event' : 'events'} · ${count} photos`;
-  this.querySelector('.og-event-grid').innerHTML = rows.map(event => {
-    const cover = event.photos.find(photo => photo.id === event.coverId) || event.photos[0];
-    const detail = [event.dateLabel, event.location].filter(Boolean).join(' · ');
-    const media = cover?.publicationStatus === 'approved' ? image({...cover, caption: `${event.title} album cover`}) : '<div class="og-event-placeholder">✧</div>';
-    return `<a class="og-event-card" href="${esc(url(event.route || ('our-polaroid-project/events/' + encodeURIComponent(event.id) + '/')))}">
-      ${media}<div><h2>${esc(event.title)}</h2><p class="og-event-date">${esc(detail)}</p>
-      <span>${event.photoCount ?? event.photos.length} photos · Open album ↗</span></div></a>`;
-  }).join('') || '<p class="og-empty">No events match these filters. Try another year or name.</p>';
+  const result=groupPublishedEvents(this.data,this.filters,this.getAttribute('parent')||'');
+  const parent=result.parent;
+  this.querySelector('.og-results').textContent=parent?
+   `${result.leafGalleryCount} day ${result.leafGalleryCount===1?'gallery':'galleries'} · ${result.photoCount.toLocaleString()} photos`:
+   `${result.eventCount} ${result.eventCount===1?'event':'events'} · ${result.leafGalleryCount} ${result.leafGalleryCount===1?'gallery':'galleries'} · ${result.photoCount.toLocaleString()} photos`;
+  this.querySelector('.og-event-grid').innerHTML=result.rows.map(event=>{
+   const cover=event.photos.find(photo=>photo.id===event.coverId)||event.photos[0];
+   const detail=[event.dateLabel,event.location].filter(Boolean).join(' · ');
+   const media=cover?.publicationStatus==='approved'?image({...cover,caption:`${event.title} album cover`}):'<div class="og-event-placeholder">✧</div>';
+   const route=url(event.route||('our-polaroid-project/events/'+encodeURIComponent(event.id)+'/'));
+   const matches=(event.matchingGalleries||[]).map(child=>`<a href="${esc(url(child.route))}">${esc(child.title)} · ${child.photoCount??child.photos.length} photos ↗</a>`).join('');
+   return `<article class="og-event-card${event.isParent?' og-parent-event':''}"><a class="og-event-entry" href="${esc(route)}">${media}<div><h2>${esc(event.title)}</h2><p class="og-event-date">${esc(detail)}</p><span>${event.isParent?event.galleryCount+' day galleries · ':''}${(event.photoCount??event.photos.length).toLocaleString()} photos · ${event.isParent?'Open event':'Open album'} ↗</span></div></a>${matches?`<nav class="og-matching-days" aria-label="Matching day galleries">${matches}</nav>`:''}</article>`;
+  }).join('')||'<p class="og-empty">No events match these filters. Try another year or name.</p>';
  }
+
  render(){
   if(this.getAttribute('layout')==='published')return this.renderPublished();
   const data=this.data,f=this.filters,stats=data.archiveStats,all=data.events,families=data.families||[],family=families.find(p=>p.id===f.family),wedding=all.filter(p=>!p.archive),totalPhotos=all.reduce((sum,e)=>sum+(e.photoCount??e.photos.length),0),years=[...new Set(all.map(e=>e.year).filter(Boolean))].sort((a,b)=>b-a);

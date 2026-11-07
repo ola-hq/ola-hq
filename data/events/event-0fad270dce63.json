@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "event-0fad270dce63",
+      "title": "Noe’s Birthday · 2022-10-07",
+      "route": "our-polaroid-project/events/event-0fad270dce63/",
+      "year": 2022,
+      "date": "2022-10-07",
+      "dateStart": "2022-10-07",
+      "dateEnd": null,
+      "datePrecision": "DAY",
+      "dateLabel": "2022-10-07",
+      "location": "",
+      "description": "",
+      "searchTerms": [
+        "Noe’s Birthday · 2022-10-07",
+        "Noe's Bday 10-07-22",
+        "img20221205_18554689.jpg",
+        "img20221205_18583193.jpg"
+      ],
+      "coverId": "selected-70a0f5247f833f0c2b0d",
+      "secondaryCoverId": null,
+      "photoCount": 2,
+      "publicationStatus": "approved",
+      "photos": [
+        {
+          "id": "selected-70a0f5247f833f0c2b0d",
+          "order": 1,
+          "frameNumber": 1,
+          "caption": "img20221205_18583193.jpg",
+          "originalFilename": "selected-70a0f5247f833f0c2b0d.jpg",
+          "width": 428,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-0fad270dce63/photos/selected-70a0f5247f833f0c2b0d.jpg",
+          "display": "our-polaroid-project/events/event-0fad270dce63/photos/selected-70a0f5247f833f0c2b0d.jpg",
+          "download": "our-polaroid-project/events/event-0fad270dce63/photos/selected-70a0f5247f833f0c2b0d.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-fdbc646ec36c0011e8ac",
+          "order": 2,
+          "frameNumber": 2,
+          "caption": "img20221205_18554689.jpg",
+          "originalFilename": "selected-fdbc646ec36c0011e8ac.jpg",
+          "width": 415,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-0fad270dce63/photos/selected-fdbc646ec36c0011e8ac.jpg",
+          "display": "our-polaroid-project/events/event-0fad270dce63/photos/selected-fdbc646ec36c0011e8ac.jpg",
+          "download": "our-polaroid-project/events/event-0fad270dce63/photos/selected-fdbc646ec36c0011e8ac.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        }
+      ],
+      "packages": [
+        {
+          "url": "our-polaroid-project/events/event-0fad270dce63/downloads/event-0fad270dce63.zip",
+          "filename": "event-0fad270dce63.zip",
+          "label": "Album JPEGs · 672 px display copies",
+          "bytes": 78743,
+          "publicationStatus": "approved"
+        }
+      ],
+      "archive": true,
+      "gallery": {
+        "eyebrow": "OUR POLAROID WAVE · EVENTS",
+        "heading": "Noe’s Birthday · 2022-10-07",
+        "emphasis": "A memory, kept.",
+        "coverLabel": "Noe’s Birthday · 2022-10-07",
+        "collectionLabel": "photographs",
+        "gridLabel": "Event photographs",
+        "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",
+        "downloadsHeading": "Keep the photographs.",
+        "downloadsDescription": "This album ZIP contains the same 672 px display JPEGs shown here.",
+        "related": [
+          {
+            "href": "our-polaroid-project/events/",
+            "label": "← All events"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "event-206861df6482",
+      "title": "WVRP Sound · NFT LA · 2022-03-30",
+      "route": "our-polaroid-project/events/event-206861df6482/",
+      "year": 2022,
+      "date": "2022-03-30",
+      "dateStart": "2022-03-30",
+      "dateEnd": null,
+      "datePrecision": "DAY",
+      "dateLabel": "2022-03-30",
+      "location": "",
+      "description": "",
+      "searchTerms": [
+        "WVRP Sound · NFT LA · 2022-03-30",
+        "WVRP Sound NFT LA 3-30-2022",
+        "img20220402_00342204.jpg",
+        "img20220402_00355893.jpg",
+        "img20220402_00371452.jpg"
+      ],
+      "coverId": "selected-a0e6e3ebbcb884cfadae",
+      "secondaryCoverId": null,
+      "photoCount": 3,
+      "publicationStatus": "approved",
+      "photos": [
+        {
+          "id": "selected-a0e6e3ebbcb884cfadae",
+          "order": 1,
+          "frameNumber": 1,
+          "caption": "img20220402_00342204.jpg",
+          "originalFilename": "selected-a0e6e3ebbcb884cfadae.jpg",
+          "width": 412,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-206861df6482/photos/selected-a0e6e3ebbcb884cfadae.jpg",
+          "display": "our-polaroid-project/events/event-206861df6482/photos/selected-a0e6e3ebbcb884cfadae.jpg",
+          "download": "our-polaroid-project/events/event-206861df6482/photos/selected-a0e6e3ebbcb884cfadae.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-94b20df350c4f664bd45",
+          "order": 2,
+          "frameNumber": 2,
+          "caption": "img20220402_00355893.jpg",
+          "originalFilename": "selected-94b20df350c4f664bd45.jpg",
+          "width": 412,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-206861df6482/photos/selected-94b20df350c4f664bd45.jpg",
+          "display": "our-polaroid-project/events/event-206861df6482/photos/selected-94b20df350c4f664bd45.jpg",
+          "download": "our-polaroid-project/events/event-206861df6482/photos/selected-94b20df350c4f664bd45.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-a32a0698b9d889fbcf8e",
+          "order": 3,
+          "frameNumber": 3,
+          "caption": "img20220402_00371452.jpg",
+          "originalFilename": "selected-a32a0698b9d889fbcf8e.jpg",
+          "width": 414,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-206861df6482/photos/selected-a32a0698b9d889fbcf8e.jpg",
+          "display": "our-polaroid-project/events/event-206861df6482/photos/selected-a32a0698b9d889fbcf8e.jpg",
+          "download": "our-polaroid-project/events/event-206861df6482/photos/selected-a32a0698b9d889fbcf8e.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        }
+      ],
+      "packages": [
+        {
+          "url": "our-polaroid-project/events/event-206861df6482/downloads/event-206861df6482.zip",
+          "filename": "event-206861df6482.zip",
+          "label": "Album JPEGs · 672 px display copies",
+          "bytes": 101162,
+          "publicationStatus": "approved"
+        }
+      ],
+      "archive": true,
+      "gallery": {
+        "eyebrow": "OUR POLAROID WAVE · EVENTS",
+        "heading": "WVRP Sound · NFT LA · 2022-03-30",
+        "emphasis": "A memory, kept.",
+        "coverLabel": "WVRP Sound · NFT LA · 2022-03-30",
+        "collectionLabel": "photographs",
+        "gridLabel": "Event photographs",
+        "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",
+        "downloadsHeading": "Keep the photographs.",
+        "downloadsDescription": "This album ZIP contains the same 672 px display JPEGs shown here.",
+        "related": [
+          {
+            "href": "our-polaroid-project/events/nft-la-2022/",
+            "label": "← NFT LA · 2022"
+          },
+          {
+            "href": "our-polaroid-project/events/",
+            "label": "← All events"
+          }
+        ]
+      },
+      "parentEventId": "nft-la-2022"
+    }
+  ]
+}

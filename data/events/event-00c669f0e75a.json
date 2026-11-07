@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "event-00c669f0e75a",
+      "title": "AYYBO · 2024-08-01",
+      "route": "our-polaroid-project/events/event-00c669f0e75a/",
+      "year": 2024,
+      "date": "2024-08-01",
+      "dateStart": "2024-08-01",
+      "dateEnd": null,
+      "datePrecision": "DAY",
+      "dateLabel": "2024-08-01",
+      "location": "",
+      "description": "",
+      "searchTerms": [
+        "AYYBO · 2024-08-01",
+        "AYYBO 8.1.24",
+        "img20240805_17403868.jpg",
+        "img20240805_17424542.jpg",
+        "img20240805_17470071.jpg",
+        "img20240805_17510760.jpg"
+      ],
+      "coverId": "selected-da54969ac5479b364e83",
+      "secondaryCoverId": null,
+      "photoCount": 4,
+      "publicationStatus": "approved",
+      "photos": [
+        {
+          "id": "selected-da54969ac5479b364e83",
+          "order": 1,
+          "frameNumber": 1,
+          "caption": "img20240805_17424542.jpg",
+          "originalFilename": "selected-da54969ac5479b364e83.jpg",
+          "width": 416,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-00c669f0e75a/photos/selected-da54969ac5479b364e83.jpg",
+          "display": "our-polaroid-project/events/event-00c669f0e75a/photos/selected-da54969ac5479b364e83.jpg",
+          "download": "our-polaroid-project/events/event-00c669f0e75a/photos/selected-da54969ac5479b364e83.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-1084b15f59311bd5f13e",
+          "order": 2,
+          "frameNumber": 2,
+          "caption": "img20240805_17403868.jpg",
+          "originalFilename": "selected-1084b15f59311bd5f13e.jpg",
+          "width": 415,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-00c669f0e75a/photos/selected-1084b15f59311bd5f13e.jpg",
+          "display": "our-polaroid-project/events/event-00c669f0e75a/photos/selected-1084b15f59311bd5f13e.jpg",
+          "download": "our-polaroid-project/events/event-00c669f0e75a/photos/selected-1084b15f59311bd5f13e.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-12de1cd32c1eb61c168c",
+          "order": 3,
+          "frameNumber": 3,
+          "caption": "img20240805_17510760.jpg",
+          "originalFilename": "selected-12de1cd32c1eb61c168c.jpg",
+          "width": 423,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-00c669f0e75a/photos/selected-12de1cd32c1eb61c168c.jpg",
+          "display": "our-polaroid-project/events/event-00c669f0e75a/photos/selected-12de1cd32c1eb61c168c.jpg",
+          "download": "our-polaroid-project/events/event-00c669f0e75a/photos/selected-12de1cd32c1eb61c168c.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-c3d858531ad38525e29b",
+          "order": 4,
+          "frameNumber": 4,
+          "caption": "img20240805_17470071.jpg",
+          "originalFilename": "selected-c3d858531ad38525e29b.jpg",
+          "width": 421,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-00c669f0e75a/photos/selected-c3d858531ad38525e29b.jpg",
+          "display": "our-polaroid-project/events/event-00c669f0e75a/photos/selected-c3d858531ad38525e29b.jpg",
+          "download": "our-polaroid-project/events/event-00c669f0e75a/photos/selected-c3d858531ad38525e29b.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        }
+      ],
+      "packages": [
+        {
+          "url": "our-polaroid-project/events/event-00c669f0e75a/downloads/event-00c669f0e75a.zip",
+          "filename": "event-00c669f0e75a.zip",
+          "label": "Album JPEGs · 672 px display copies",
+          "bytes": 152795,
+          "publicationStatus": "approved"
+        }
+      ],
+      "archive": true,
+      "gallery": {
+        "eyebrow": "OUR POLAROID WAVE · EVENTS",
+        "heading": "AYYBO · 2024-08-01",
+        "emphasis": "A memory, kept.",
+        "coverLabel": "AYYBO · 2024-08-01",
+        "collectionLabel": "photographs",
+        "gridLabel": "Event photographs",
+        "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",
+        "downloadsHeading": "Keep the photographs.",
+        "downloadsDescription": "This album ZIP contains the same 672 px display JPEGs shown here.",
+        "related": [
+          {
+            "href": "our-polaroid-project/events/",
+            "label": "← All events"
+          }
+        ]
+      }
+    }
+  ]
+}

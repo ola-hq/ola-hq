@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "event-f0da42950bf2",
+      "title": "Holy Ship · Part 2 (Recovered Photographs) · 2023",
+      "route": "our-polaroid-project/events/event-f0da42950bf2/",
+      "year": 2023,
+      "date": null,
+      "dateStart": null,
+      "dateEnd": null,
+      "datePrecision": "YEAR_LABEL_UNCONFIRMED",
+      "dateLabel": "Labelled 2023 · edition/date unconfirmed",
+      "location": "",
+      "description": "",
+      "searchTerms": [
+        "Holy Ship · Part 2 (Recovered Photographs) · 2023",
+        "Holy Ship 2023 - PT 2 (Lost Pics)",
+        "img20230110_15451084.jpg",
+        "img20230110_15462651.jpg",
+        "img20230110_15483284.jpg"
+      ],
+      "coverId": "selected-76889eda41bb513a16c2",
+      "secondaryCoverId": null,
+      "photoCount": 3,
+      "publicationStatus": "approved",
+      "photos": [
+        {
+          "id": "selected-76889eda41bb513a16c2",
+          "order": 1,
+          "frameNumber": 1,
+          "caption": "img20230110_15462651.jpg",
+          "originalFilename": "selected-76889eda41bb513a16c2.jpg",
+          "width": 415,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-f0da42950bf2/photos/selected-76889eda41bb513a16c2.jpg",
+          "display": "our-polaroid-project/events/event-f0da42950bf2/photos/selected-76889eda41bb513a16c2.jpg",
+          "download": "our-polaroid-project/events/event-f0da42950bf2/photos/selected-76889eda41bb513a16c2.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-52bdf1aea1123f7da1a5",
+          "order": 2,
+          "frameNumber": 2,
+          "caption": "img20230110_15451084.jpg",
+          "originalFilename": "selected-52bdf1aea1123f7da1a5.jpg",
+          "width": 416,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-f0da42950bf2/photos/selected-52bdf1aea1123f7da1a5.jpg",
+          "display": "our-polaroid-project/events/event-f0da42950bf2/photos/selected-52bdf1aea1123f7da1a5.jpg",
+          "download": "our-polaroid-project/events/event-f0da42950bf2/photos/selected-52bdf1aea1123f7da1a5.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-09ddc699a9f57c30205f",
+          "order": 3,
+          "frameNumber": 3,
+          "caption": "img20230110_15483284.jpg",
+          "originalFilename": "selected-09ddc699a9f57c30205f.jpg",
+          "width": 412,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-f0da42950bf2/photos/selected-09ddc699a9f57c30205f.jpg",
+          "display": "our-polaroid-project/events/event-f0da42950bf2/photos/selected-09ddc699a9f57c30205f.jpg",
+          "download": "our-polaroid-project/events/event-f0da42950bf2/photos/selected-09ddc699a9f57c30205f.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        }
+      ],
+      "packages": [
+        {
+          "url": "our-polaroid-project/events/event-f0da42950bf2/downloads/event-f0da42950bf2.zip",
+          "filename": "event-f0da42950bf2.zip",
+          "label": "Album JPEGs · 672 px display copies",
+          "bytes": 125805,
+          "publicationStatus": "approved"
+        }
+      ],
+      "archive": true,
+      "gallery": {
+        "eyebrow": "OUR POLAROID WAVE · EVENTS",
+        "heading": "Holy Ship · Part 2 (Recovered Photographs) · 2023",
+        "emphasis": "A memory, kept.",
+        "coverLabel": "Holy Ship · Part 2 (Recovered Photographs) · 2023",
+        "collectionLabel": "photographs",
+        "gridLabel": "Event photographs",
+        "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",
+        "downloadsHeading": "Keep the photographs.",
+        "downloadsDescription": "This album ZIP contains the same 672 px display JPEGs shown here.",
+        "related": [
+          {
+            "href": "our-polaroid-project/events/",
+            "label": "← All events"
+          }
+        ]
+      }
+    }
+  ]
+}

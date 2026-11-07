@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "event-594405b98b8f",
+      "title": "Hard Summer · 2024-08-04",
+      "route": "our-polaroid-project/events/event-594405b98b8f/",
+      "year": 2024,
+      "date": "2024-08-04",
+      "dateStart": "2024-08-04",
+      "dateEnd": null,
+      "datePrecision": "DAY",
+      "dateLabel": "2024-08-04",
+      "location": "",
+      "description": "",
+      "searchTerms": [
+        "Hard Summer · 2024-08-04",
+        "Hard Summer 8.4.24",
+        "img20240805_18093976.jpg",
+        "img20240805_18104179.jpg",
+        "img20240805_18125798.jpg",
+        "img20240805_18145756.jpg",
+        "img20240805_18180761.jpg",
+        "img20240805_18190803.jpg"
+      ],
+      "coverId": "selected-09118c9d8c9dfe6dab27",
+      "secondaryCoverId": null,
+      "photoCount": 6,
+      "publicationStatus": "approved",
+      "photos": [
+        {
+          "id": "selected-09118c9d8c9dfe6dab27",
+          "order": 1,
+          "frameNumber": 1,
+          "caption": "img20240805_18093976.jpg",
+          "originalFilename": "selected-09118c9d8c9dfe6dab27.jpg",
+          "width": 416,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-594405b98b8f/photos/selected-09118c9d8c9dfe6dab27.jpg",
+          "display": "our-polaroid-project/events/event-594405b98b8f/photos/selected-09118c9d8c9dfe6dab27.jpg",
+          "download": "our-polaroid-project/events/event-594405b98b8f/photos/selected-09118c9d8c9dfe6dab27.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-8a377ad302c661a07973",
+          "order": 2,
+          "frameNumber": 2,
+          "caption": "img20240805_18145756.jpg",
+          "originalFilename": "selected-8a377ad302c661a07973.jpg",
+          "width": 416,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-594405b98b8f/photos/selected-8a377ad302c661a07973.jpg",
+          "display": "our-polaroid-project/events/event-594405b98b8f/photos/selected-8a377ad302c661a07973.jpg",
+          "download": "our-polaroid-project/events/event-594405b98b8f/photos/selected-8a377ad302c661a07973.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-f6a796c10fcc15126086",
+          "order": 3,
+          "frameNumber": 3,
+          "caption": "img20240805_18125798.jpg",
+          "originalFilename": "selected-f6a796c10fcc15126086.jpg",
+          "width": 414,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-594405b98b8f/photos/selected-f6a796c10fcc15126086.jpg",
+          "display": "our-polaroid-project/events/event-594405b98b8f/photos/selected-f6a796c10fcc15126086.jpg",
+          "download": "our-polaroid-project/events/event-594405b98b8f/photos/selected-f6a796c10fcc15126086.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-e09263f440caf5395712",
+          "order": 4,
+          "frameNumber": 4,
+          "caption": "img20240805_18104179.jpg",
+          "originalFilename": "selected-e09263f440caf5395712.jpg",
+          "width": 420,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-594405b98b8f/photos/selected-e09263f440caf5395712.jpg",
+          "display": "our-polaroid-project/events/event-594405b98b8f/photos/selected-e09263f440caf5395712.jpg",
+          "download": "our-polaroid-project/events/event-594405b98b8f/photos/selected-e09263f440caf5395712.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-84b042d90888a9ef49a2",
+          "order": 5,
+          "frameNumber": 5,
+          "caption": "img20240805_18180761.jpg",
+          "originalFilename": "selected-84b042d90888a9ef49a2.jpg",
+          "width": 412,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-594405b98b8f/photos/selected-84b042d90888a9ef49a2.jpg",
+          "display": "our-polaroid-project/events/event-594405b98b8f/photos/selected-84b042d90888a9ef49a2.jpg",
+          "download": "our-polaroid-project/events/event-594405b98b8f/photos/selected-84b042d90888a9ef49a2.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-aa47b850880455ac644d",
+          "order": 6,
+          "frameNumber": 6,
+          "caption": "img20240805_18190803.jpg",
+          "originalFilename": "selected-aa47b850880455ac644d.jpg",
+          "width": 414,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-594405b98b8f/photos/selected-aa47b850880455ac644d.jpg",
+          "display": "our-polaroid-project/events/event-594405b98b8f/photos/selected-aa47b850880455ac644d.jpg",
+          "download": "our-polaroid-project/events/event-594405b98b8f/photos/selected-aa47b850880455ac644d.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        }
+      ],
+      "packages": [
+        {
+          "url": "our-polaroid-project/events/event-594405b98b8f/downloads/event-594405b98b8f.zip",
+          "filename": "event-594405b98b8f.zip",
+          "label": "Album JPEGs · 672 px display copies",
+          "bytes": 255842,
+          "publicationStatus": "approved"
+        }
+      ],
+      "archive": true,
+      "gallery": {
+        "eyebrow": "OUR POLAROID WAVE · EVENTS",
+        "heading": "Hard Summer · 2024-08-04",
+        "emphasis": "A memory, kept.",
+        "coverLabel": "Hard Summer · 2024-08-04",
+        "collectionLabel": "photographs",
+        "gridLabel": "Event photographs",
+        "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",
+        "downloadsHeading": "Keep the photographs.",
+        "downloadsDescription": "This album ZIP contains the same 672 px display JPEGs shown here.",
+        "related": [
+          {
+            "href": "our-polaroid-project/events/",
+            "label": "← All events"
+          }
+        ]
+      }
+    }
+  ]
+}

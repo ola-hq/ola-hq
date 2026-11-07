@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "event-a48976b25e8d",
+      "title": "Smilesss × Chill Rx · NFT LA · 2022-03-27",
+      "route": "our-polaroid-project/events/event-a48976b25e8d/",
+      "year": 2022,
+      "date": "2022-03-27",
+      "dateStart": "2022-03-27",
+      "dateEnd": null,
+      "datePrecision": "DAY",
+      "dateLabel": "2022-03-27",
+      "location": "",
+      "description": "",
+      "searchTerms": [
+        "Smilesss × Chill Rx · NFT LA · 2022-03-27",
+        "Smilesss x Chill Rx NFT LA 3-27-2022",
+        "img20220402_01585098.jpg",
+        "img20220402_01595392.jpg",
+        "img20220402_02005809.jpg",
+        "img20220402_02020049.jpg",
+        "img20220402_02031033.jpg",
+        "img20220402_02041009.jpg",
+        "img20220402_02051300.jpg",
+        "img20220402_02061268.jpg",
+        "img20220402_02071370.jpg",
+        "img20220402_02081226.jpg"
+      ],
+      "coverId": "selected-d82b0dc82b4f3b76fe1b",
+      "secondaryCoverId": null,
+      "photoCount": 10,
+      "publicationStatus": "approved",
+      "photos": [
+        {
+          "id": "selected-d82b0dc82b4f3b76fe1b",
+          "order": 1,
+          "frameNumber": 1,
+          "caption": "img20220402_02081226.jpg",
+          "originalFilename": "selected-d82b0dc82b4f3b76fe1b.jpg",
+          "width": 423,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-d82b0dc82b4f3b76fe1b.jpg",
+          "display": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-d82b0dc82b4f3b76fe1b.jpg",
+          "download": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-d82b0dc82b4f3b76fe1b.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-3892e6f6e3adb6b6a417",
+          "order": 2,
+          "frameNumber": 2,
+          "caption": "img20220402_02061268.jpg",
+          "originalFilename": "selected-3892e6f6e3adb6b6a417.jpg",
+          "width": 410,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-3892e6f6e3adb6b6a417.jpg",
+          "display": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-3892e6f6e3adb6b6a417.jpg",
+          "download": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-3892e6f6e3adb6b6a417.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-7a21d02125f3d603273d",
+          "order": 3,
+          "frameNumber": 3,
+          "caption": "img20220402_02005809.jpg",
+          "originalFilename": "selected-7a21d02125f3d603273d.jpg",
+          "width": 414,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-7a21d02125f3d603273d.jpg",
+          "display": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-7a21d02125f3d603273d.jpg",
+          "download": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-7a21d02125f3d603273d.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-6fd582161ccde1b9e719",
+          "order": 4,
+          "frameNumber": 4,
+          "caption": "img20220402_02041009.jpg",
+          "originalFilename": "selected-6fd582161ccde1b9e719.jpg",
+          "width": 412,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-6fd582161ccde1b9e719.jpg",
+          "display": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-6fd582161ccde1b9e719.jpg",
+          "download": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-6fd582161ccde1b9e719.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-b4d38148428d5c951b6a",
+          "order": 5,
+          "frameNumber": 5,
+          "caption": "img20220402_02031033.jpg",
+          "originalFilename": "selected-b4d38148428d5c951b6a.jpg",
+          "width": 414,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-b4d38148428d5c951b6a.jpg",
+          "display": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-b4d38148428d5c951b6a.jpg",
+          "download": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-b4d38148428d5c951b6a.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-2df598318aaaf5150a8e",
+          "order": 6,
+          "frameNumber": 6,
+          "caption": "img20220402_02051300.jpg",
+          "originalFilename": "selected-2df598318aaaf5150a8e.jpg",
+          "width": 410,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-2df598318aaaf5150a8e.jpg",
+          "display": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-2df598318aaaf5150a8e.jpg",
+          "download": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-2df598318aaaf5150a8e.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-9302d5b7f03a3defe1da",
+          "order": 7,
+          "frameNumber": 7,
+          "caption": "img20220402_02020049.jpg",
+          "originalFilename": "selected-9302d5b7f03a3defe1da.jpg",
+          "width": 417,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-9302d5b7f03a3defe1da.jpg",
+          "display": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-9302d5b7f03a3defe1da.jpg",
+          "download": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-9302d5b7f03a3defe1da.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-81bf2ff5f38f4338ba65",
+          "order": 8,
+          "frameNumber": 8,
+          "caption": "img20220402_01595392.jpg",
+          "originalFilename": "selected-81bf2ff5f38f4338ba65.jpg",
+          "width": 411,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-81bf2ff5f38f4338ba65.jpg",
+          "display": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-81bf2ff5f38f4338ba65.jpg",
+          "download": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-81bf2ff5f38f4338ba65.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-e14f9d17803f4f7756ee",
+          "order": 9,
+          "frameNumber": 9,
+          "caption": "img20220402_01585098.jpg",
+          "originalFilename": "selected-e14f9d17803f4f7756ee.jpg",
+          "width": 412,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-e14f9d17803f4f7756ee.jpg",
+          "display": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-e14f9d17803f4f7756ee.jpg",
+          "download": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-e14f9d17803f4f7756ee.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        },
+        {
+          "id": "selected-9b197e58a2b4ecab3314",
+          "order": 10,
+          "frameNumber": 10,
+          "caption": "img20220402_02071370.jpg",
+          "originalFilename": "selected-9b197e58a2b4ecab3314.jpg",
+          "width": 420,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-9b197e58a2b4ecab3314.jpg",
+          "display": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-9b197e58a2b4ecab3314.jpg",
+          "download": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-9b197e58a2b4ecab3314.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        }
+      ],
+      "packages": [
+        {
+          "url": "our-polaroid-project/events/event-a48976b25e8d/downloads/event-a48976b25e8d.zip",
+          "filename": "event-a48976b25e8d.zip",
+          "label": "Album JPEGs · 672 px display copies",
+          "bytes": 390592,
+          "publicationStatus": "approved"
+        }
+      ],
+      "archive": true,
+      "gallery": {
+        "eyebrow": "OUR POLAROID WAVE · EVENTS",
+        "heading": "Smilesss × Chill Rx · NFT LA · 2022-03-27",
+        "emphasis": "A memory, kept.",
+        "coverLabel": "Smilesss × Chill Rx · NFT LA · 2022-03-27",
+        "collectionLabel": "photographs",
+        "gridLabel": "Event photographs",
+        "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",
+        "downloadsHeading": "Keep the photographs.",
+        "downloadsDescription": "This album ZIP contains the same 672 px display JPEGs shown here.",
+        "related": [
+          {
+            "href": "our-polaroid-project/events/nft-la-2022/",
+            "label": "← NFT LA · 2022"
+          },
+          {
+            "href": "our-polaroid-project/events/",
+            "label": "← All events"
+          }
+        ]
+      },
+      "parentEventId": "nft-la-2022"
+    }
+  ]
+}
