@@ -1,0 +1,97 @@
+
+#curated-albums {
+  color-scheme: dark;
+  --ink: #f3eee5;
+  --muted: #b6b4ad;
+  --paper: #101112;
+  --card: #1c1d1e;
+  --edge: #393b3b;
+  --link: #dac18d;
+  --gutter: clamp(16px, 4vw, 48px);
+}
+#curated-albums * { box-sizing: border-box; }
+#curated-albums { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 system-ui, sans-serif; }
+#curated-albums main, #curated-albums .site-nav { width: min(1220px, 100%); margin-inline: auto; padding-inline: var(--gutter); }
+#curated-albums .site-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; padding-block: 16px; font-size: .875rem; }
+#curated-albums .site-nav a[aria-current="page"] { font-weight: 750; }
+#curated-albums a { color: var(--link); text-underline-offset: 3px; }
+#curated-albums a:focus-visible, #curated-albums button:focus-visible { outline: 3px solid #dac18d; outline-offset: 4px; }
+#curated-albums h1, #curated-albums h2, #curated-albums h3, #curated-albums p { margin-top: 0; }
+#curated-albums h1, #curated-albums h2 { font-family: Georgia, serif; font-weight: 500; line-height: 1.12; }
+#curated-albums h1 { font-size: clamp(2.6rem, 7vw, 5.2rem); margin-bottom: 12px; letter-spacing: -.045em; }
+#curated-albums h2 { font-size: clamp(1.65rem, 4vw, 2.35rem); margin-bottom: 12px; }
+#curated-albums h3 { font-size: 1rem; margin-bottom: 6px; }
+#curated-albums .eyebrow, #curated-albums .meta { color: var(--muted); font-size: .85rem; }
+#curated-albums .eyebrow { font-weight: 740; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 10px; }
+#curated-albums .intro { padding-block: clamp(24px, 6vw, 66px) 24px; }
+#curated-albums .intro p:last-child { max-width: 62ch; margin-bottom: 0; }
+#curated-albums .event-grid, #curated-albums .photo-grid { display: grid; gap: 16px; }
+#curated-albums .event-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+#curated-albums .event-card, #curated-albums .photo-card, #curated-albums .decision { min-width: 0; background: var(--card); border: 1px solid var(--edge); border-radius: 10px; overflow: hidden; }
+#curated-albums .event-card-body { padding: 16px; }
+#curated-albums .event-card h2 { font-size: 1.62rem; }
+#curated-albums .cover-image, #curated-albums .photo-image, #curated-albums .compare-image { display: grid; place-items: center; background: #202222; padding: 12px; }
+#curated-albums .cover-image { height: clamp(180px, 23vw, 288px); }
+#curated-albums .cover-image img, #curated-albums .photo-image img, #curated-albums .compare-image img { display: block; width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: contain; }
+#curated-albums .button { display: inline-block; padding: 9px 14px; border-radius: 6px; background: #dac18d; color: #f3eee5; text-decoration: none; font-weight: 700; }
+#curated-albums .button:hover { background: #eed9a8; }
+#curated-albums .event-links { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+#curated-albums .review-section { margin-top: 40px; scroll-margin-top: 18px; }
+#curated-albums .decision { padding: 16px; margin-bottom: 10px; }
+#curated-albums .decision p { margin-bottom: 8px; }
+#curated-albums .decision details { margin-top: 8px; }
+#curated-albums .decision summary { cursor: pointer; color: var(--link); font-weight: 650; }
+#curated-albums .compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 125px), 1fr)); gap: 10px; margin-top: 10px; }
+#curated-albums .compare-grid figure { margin: 0; min-width: 0; }
+#curated-albums .compare-image { height: 132px; border-radius: 5px; }
+#curated-albums .compare-grid figcaption { margin-top: 4px; font-size: .83rem; }
+#curated-albums .reply { padding: 12px 0 8px; color: var(--muted); }
+#curated-albums .album-header { display: grid; grid-template-columns: 1fr minmax(0, .88fr); align-items: center; gap: 26px; padding-block: 28px; }
+#curated-albums .album-cover { margin: 0; }
+#curated-albums .album-cover .cover-image { height: clamp(250px, 34vw, 440px); border-radius: 10px; }
+#curated-albums .album-cover figcaption { margin-top: 6px; }
+#curated-albums .chapters { display: flex; flex-wrap: wrap; gap: 8px; padding-block: 14px; margin-bottom: 20px; border-block: 1px solid var(--edge); }
+#curated-albums .chapters a { display: inline-block; background: var(--card); padding: 5px 10px; border-radius: 6px; font-size: .86rem; }
+#curated-albums .chapter { margin-bottom: 36px; scroll-margin-top: 18px; }
+#curated-albums .photo-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+#curated-albums .photo-card { margin: 0; }
+#curated-albums .photo-image { height: clamp(140px, 19vw, 250px); }
+#curated-albums .photo-caption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2px 8px; padding: 9px 11px; font-size: .86rem; }
+#curated-albums .photo-caption span { color: var(--muted); }
+#curated-albums footer { margin-top: 38px; padding: 18px 0 32px; border-top: 1px solid var(--edge); color: var(--muted); font-size: .86rem; }
+#curated-albums dialog { width: min(920px, calc(100% - 20px)); max-height: 94dvh; padding: 14px; border: 1px solid #605545; border-radius: 12px; background: #1c1d1e; color: #f3eee5; }
+#curated-albums dialog::backdrop { background: #101112ec; }
+#curated-albums .viewer-bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+#curated-albums .viewer-bar p { margin: 0; }
+#curated-albums .viewer-stage { display: grid; place-items: center; margin-block: 10px; background: #101112; }
+#curated-albums .viewer-stage img { display: block; width: 100%; height: min(69dvh, 690px); object-fit: contain; }
+#curated-albums .viewer-actions { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+#curated-albums .viewer-actions small { text-align: center; }
+#curated-albums .viewer-button { background: #f3eee5; color: #1c1d1e; border: 0; border-radius: 6px; padding: 8px 11px; font: inherit; cursor: pointer; }
+#curated-albums .viewer-button:disabled { opacity: .42; cursor: default; }
+@media (max-width: 760px) {
+#curated-albums .event-grid { grid-template-columns: 1fr; }
+#curated-albums .event-card { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1fr); align-items: stretch; }
+#curated-albums .event-card .cover-image { height: 100%; min-height: 190px; }
+#curated-albums .album-header { grid-template-columns: 1fr; }
+#curated-albums .album-cover .cover-image { height: 255px; }
+#curated-albums .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+#curated-albums .photo-image { height: clamp(135px, 47vw, 230px); padding: 7px; }
+}
+@media (max-width: 365px) {
+#curated-albums .event-card { grid-template-columns: 1fr; }
+#curated-albums .event-card .cover-image { height: 185px; }
+#curated-albums .viewer-button { padding-inline: 7px; font-size: .83rem; }
+}
+#curated-albums .album-details { margin-block: 24px; }
+#curated-albums .album-details > summary { cursor: pointer; padding: 15px; background: var(--card); border: 1px solid var(--edge); border-radius: 8px; font-weight: 720; }
+#curated-albums .button { color: #101112; }
+#curated-albums .viewer-button { color: #101112; }
+#curated-albums .viewer-actions { flex-wrap: wrap; }
+#curated-albums .viewer-actions a { color: #dac18d; }
+#curated-albums .album-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin: 14px 0 24px; }
+#curated-albums .album-tools p { margin: 0; }
+#curated-albums code { overflow-wrap: anywhere; }
+
+#curated-albums { margin: 30px auto 44px; max-width: 1220px; }
+#curated-albums .button:hover { color: #101112; }

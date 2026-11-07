@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><meta name="theme-color" content="#101112">
+<title>LIB 2025 · Our Polaroid Wave</title><style>:root {
+  color-scheme: dark;
+  --ink: #f3eee5;
+  --muted: #b6b4ad;
+  --paper: #101112;
+  --card: #1c1d1e;
+  --edge: #393b3b;
+  --link: #dac18d;
+  --gutter: clamp(16px, 4vw, 48px);
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 system-ui, sans-serif; }
+main, .site-nav { width: min(1220px, 100%); margin-inline: auto; padding-inline: var(--gutter); }
+.site-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; padding-block: 16px; font-size: .875rem; }
+.site-nav a[aria-current="page"] { font-weight: 750; }
+a { color: var(--link); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 3px solid #dac18d; outline-offset: 4px; }
+h1, h2, h3, p { margin-top: 0; }
+h1, h2 { font-family: Georgia, serif; font-weight: 500; line-height: 1.12; }
+h1 { font-size: clamp(2.6rem, 7vw, 5.2rem); margin-bottom: 12px; letter-spacing: -.045em; }
+h2 { font-size: clamp(1.65rem, 4vw, 2.35rem); margin-bottom: 12px; }
+h3 { font-size: 1rem; margin-bottom: 6px; }
+.eyebrow, .meta { color: var(--muted); font-size: .85rem; }
+.eyebrow { font-weight: 740; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 10px; }
+.intro { padding-block: clamp(24px, 6vw, 66px) 24px; }
+.intro p:last-child { max-width: 62ch; margin-bottom: 0; }
+.event-grid, .photo-grid { display: grid; gap: 16px; }
+.event-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.event-card, .photo-card, .decision { min-width: 0; background: var(--card); border: 1px solid var(--edge); border-radius: 10px; overflow: hidden; }
+.event-card-body { padding: 16px; }
+.event-card h2 { font-size: 1.62rem; }
+.cover-image, .photo-image, .compare-image { display: grid; place-items: center; background: #202222; padding: 12px; }
+.cover-image { height: clamp(180px, 23vw, 288px); }
+.cover-image img, .photo-image img, .compare-image img { display: block; width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: contain; }
+.button { display: inline-block; padding: 9px 14px; border-radius: 6px; background: #dac18d; color: #f3eee5; text-decoration: none; font-weight: 700; }
+.button:hover { background: #eed9a8; }
+.event-links { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.review-section { margin-top: 40px; scroll-margin-top: 18px; }
+.decision { padding: 16px; margin-bottom: 10px; }
+.decision p { margin-bottom: 8px; }
+.decision details { margin-top: 8px; }
+.decision summary { cursor: pointer; color: var(--link); font-weight: 650; }
+.compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 125px), 1fr)); gap: 10px; margin-top: 10px; }
+.compare-grid figure { margin: 0; min-width: 0; }
+.compare-image { height: 132px; border-radius: 5px; }
+.compare-grid figcaption { margin-top: 4px; font-size: .83rem; }
+.reply { padding: 12px 0 8px; color: var(--muted); }
+.album-header { display: grid; grid-template-columns: 1fr minmax(0, .88fr); align-items: center; gap: 26px; padding-block: 28px; }
+.album-cover { margin: 0; }
+.album-cover .cover-image { height: clamp(250px, 34vw, 440px); border-radius: 10px; }
+.album-cover figcaption { margin-top: 6px; }
+.chapters { display: flex; flex-wrap: wrap; gap: 8px; padding-block: 14px; margin-bottom: 20px; border-block: 1px solid var(--edge); }
+.chapters a { display: inline-block; background: var(--card); padding: 5px 10px; border-radius: 6px; font-size: .86rem; }
+.chapter { margin-bottom: 36px; scroll-margin-top: 18px; }
+.photo-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.photo-card { margin: 0; }
+.photo-image { height: clamp(140px, 19vw, 250px); }
+.photo-caption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2px 8px; padding: 9px 11px; font-size: .86rem; }
+.photo-caption span { color: var(--muted); }
+footer { margin-top: 38px; padding: 18px 0 32px; border-top: 1px solid var(--edge); color: var(--muted); font-size: .86rem; }
+dialog { width: min(920px, calc(100% - 20px)); max-height: 94dvh; padding: 14px; border: 1px solid #605545; border-radius: 12px; background: #1c1d1e; color: #f3eee5; }
+dialog::backdrop { background: #101112ec; }
+.viewer-bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.viewer-bar p { margin: 0; }
+.viewer-stage { display: grid; place-items: center; margin-block: 10px; background: #101112; }
+.viewer-stage img { display: block; width: 100%; height: min(69dvh, 690px); object-fit: contain; }
+.viewer-actions { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+.viewer-actions small { text-align: center; }
+.viewer-button { background: #f3eee5; color: #1c1d1e; border: 0; border-radius: 6px; padding: 8px 11px; font: inherit; cursor: pointer; }
+.viewer-button:disabled { opacity: .42; cursor: default; }
+@media (max-width: 760px) {
+  .event-grid { grid-template-columns: 1fr; }
+  .event-card { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1fr); align-items: stretch; }
+  .event-card .cover-image { height: 100%; min-height: 190px; }
+  .album-header { grid-template-columns: 1fr; }
+  .album-cover .cover-image { height: 255px; }
+  .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .photo-image { height: clamp(135px, 47vw, 230px); padding: 7px; }
+}
+@media (max-width: 365px) {
+  .event-card { grid-template-columns: 1fr; }
+  .event-card .cover-image { height: 185px; }
+  .viewer-button { padding-inline: 7px; font-size: .83rem; }
+}
+
+.album-details { margin-block: 24px; } .album-details > summary { cursor: pointer; padding: 15px; background: var(--card); border: 1px solid var(--edge); border-radius: 8px; font-weight: 720; }
+
+.button { color: #101112; }
+.viewer-button { color: #101112; }
+.viewer-actions { flex-wrap: wrap; }
+.viewer-actions a { color: #dac18d; }
+.album-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin: 14px 0 24px; }
+.album-tools p { margin: 0; }
+code { overflow-wrap: anywhere; }
+</style></head><body id="top"><nav class="site-nav" aria-label="Location"><span>Our Polaroid Wave</span><a href="../">Events</a><span aria-current="page">LIB 2025</span></nav>
+<main><header class="album-header"><div><p class="eyebrow">Curated album · 63 photos</p><h1>LIB 2025</h1>
+<p>Select a frame to browse in order or download its display JPEG.</p><div class="album-tools"><a class="button" href="#album-lib-2025">Browse photos</a>
+<a href="downloads/lib-2025.zip" download>Download album ZIP</a><span class="meta">63 JPEGs · 2.38 MB</span></div></div>
+<figure class="album-cover"><a href="#album-lib-2025" class="cover-image" aria-label="Browse LIB 2025"><img src="photos/L25-016.jpg" alt="Frame L25-016" loading="eager" decoding="async"></a><figcaption class="meta">Cover L25-016</figcaption></figure></header>
+<details class="album-details" id="album-lib-2025" open><summary>LIB 2025 · 63 photos</summary><section class="chapter"><h2>Arrive and explore</h2><div class="photo-grid"><figure class="photo-card" id="L25-002"><a class="photo-image" href="#L25-002" data-photo="L25-002" data-group="lib-2025"><img src="photos/L25-002.jpg" alt="Frame L25-002" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-002</strong><span>1 / 63</span></figcaption></figure><figure class="photo-card" id="L25-003"><a class="photo-image" href="#L25-003" data-photo="L25-003" data-group="lib-2025"><img src="photos/L25-003.jpg" alt="Frame L25-003" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-003</strong><span>2 / 63</span></figcaption></figure><figure class="photo-card" id="L25-005"><a class="photo-image" href="#L25-005" data-photo="L25-005" data-group="lib-2025"><img src="photos/L25-005.jpg" alt="Frame L25-005" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-005</strong><span>3 / 63</span></figcaption></figure><figure class="photo-card" id="L25-008"><a class="photo-image" href="#L25-008" data-photo="L25-008" data-group="lib-2025"><img src="photos/L25-008.jpg" alt="Frame L25-008" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-008</strong><span>4 / 63</span></figcaption></figure><figure class="photo-card" id="L25-010"><a class="photo-image" href="#L25-010" data-photo="L25-010" data-group="lib-2025"><img src="photos/L25-010.jpg" alt="Frame L25-010" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-010</strong><span>5 / 63</span></figcaption></figure><figure class="photo-card" id="L25-012"><a class="photo-image" href="#L25-012" data-photo="L25-012" data-group="lib-2025"><img src="photos/L25-012.jpg" alt="Frame L25-012" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-012</strong><span>6 / 63</span></figcaption></figure><figure class="photo-card" id="L25-013"><a class="photo-image" href="#L25-013" data-photo="L25-013" data-group="lib-2025"><img src="photos/L25-013.jpg" alt="Frame L25-013" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-013</strong><span>7 / 63</span></figcaption></figure><figure class="photo-card" id="L25-015"><a class="photo-image" href="#L25-015" data-photo="L25-015" data-group="lib-2025"><img src="photos/L25-015.jpg" alt="Frame L25-015" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-015</strong><span>8 / 63</span></figcaption></figure><figure class="photo-card" id="L25-016"><a class="photo-image" href="#L25-016" data-photo="L25-016" data-group="lib-2025"><img src="photos/L25-016.jpg" alt="Frame L25-016" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-016</strong><span>9 / 63</span></figcaption></figure></div></section><section class="chapter"><h2>First night together</h2><div class="photo-grid"><figure class="photo-card" id="L25-019"><a class="photo-image" href="#L25-019" data-photo="L25-019" data-group="lib-2025"><img src="photos/L25-019.jpg" alt="Frame L25-019" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-019</strong><span>10 / 63</span></figcaption></figure><figure class="photo-card" id="L25-020"><a class="photo-image" href="#L25-020" data-photo="L25-020" data-group="lib-2025"><img src="photos/L25-020.jpg" alt="Frame L25-020" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-020</strong><span>11 / 63</span></figcaption></figure><figure class="photo-card" id="L25-025"><a class="photo-image" href="#L25-025" data-photo="L25-025" data-group="lib-2025"><img src="photos/L25-025.jpg" alt="Frame L25-025" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-025</strong><span>12 / 63</span></figcaption></figure><figure class="photo-card" id="L25-028"><a class="photo-image" href="#L25-028" data-photo="L25-028" data-group="lib-2025"><img src="photos/L25-028.jpg" alt="Frame L25-028" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-028</strong><span>13 / 63</span></figcaption></figure><figure class="photo-card" id="L25-029"><a class="photo-image" href="#L25-029" data-photo="L25-029" data-group="lib-2025"><img src="photos/L25-029.jpg" alt="Frame L25-029" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-029</strong><span>14 / 63</span></figcaption></figure><figure class="photo-card" id="L25-030"><a class="photo-image" href="#L25-030" data-photo="L25-030" data-group="lib-2025"><img src="photos/L25-030.jpg" alt="Frame L25-030" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-030</strong><span>15 / 63</span></figcaption></figure><figure class="photo-card" id="L25-037"><a class="photo-image" href="#L25-037" data-photo="L25-037" data-group="lib-2025"><img src="photos/L25-037.jpg" alt="Frame L25-037" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-037</strong><span>16 / 63</span></figcaption></figure><figure class="photo-card" id="L25-039"><a class="photo-image" href="#L25-039" data-photo="L25-039" data-group="lib-2025"><img src="photos/L25-039.jpg" alt="Frame L25-039" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-039</strong><span>17 / 63</span></figcaption></figure><figure class="photo-card" id="L25-041"><a class="photo-image" href="#L25-041" data-photo="L25-041" data-group="lib-2025"><img src="photos/L25-041.jpg" alt="Frame L25-041" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-041</strong><span>18 / 63</span></figcaption></figure><figure class="photo-card" id="L25-045"><a class="photo-image" href="#L25-045" data-photo="L25-045" data-group="lib-2025"><img src="photos/L25-045.jpg" alt="Frame L25-045" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-045</strong><span>19 / 63</span></figcaption></figure><figure class="photo-card" id="L25-046"><a class="photo-image" href="#L25-046" data-photo="L25-046" data-group="lib-2025"><img src="photos/L25-046.jpg" alt="Frame L25-046" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-046</strong><span>20 / 63</span></figcaption></figure><figure class="photo-card" id="L25-047"><a class="photo-image" href="#L25-047" data-photo="L25-047" data-group="lib-2025"><img src="photos/L25-047.jpg" alt="Frame L25-047" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-047</strong><span>21 / 63</span></figcaption></figure></div></section><section class="chapter"><h2>Life at camp</h2><div class="photo-grid"><figure class="photo-card" id="L25-052"><a class="photo-image" href="#L25-052" data-photo="L25-052" data-group="lib-2025"><img src="photos/L25-052.jpg" alt="Frame L25-052" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-052</strong><span>22 / 63</span></figcaption></figure><figure class="photo-card" id="L25-054"><a class="photo-image" href="#L25-054" data-photo="L25-054" data-group="lib-2025"><img src="photos/L25-054.jpg" alt="Frame L25-054" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-054</strong><span>23 / 63</span></figcaption></figure><figure class="photo-card" id="L25-056"><a class="photo-image" href="#L25-056" data-photo="L25-056" data-group="lib-2025"><img src="photos/L25-056.jpg" alt="Frame L25-056" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-056</strong><span>24 / 63</span></figcaption></figure><figure class="photo-card" id="L25-061"><a class="photo-image" href="#L25-061" data-photo="L25-061" data-group="lib-2025"><img src="photos/L25-061.jpg" alt="Frame L25-061" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-061</strong><span>25 / 63</span></figcaption></figure><figure class="photo-card" id="L25-062"><a class="photo-image" href="#L25-062" data-photo="L25-062" data-group="lib-2025"><img src="photos/L25-062.jpg" alt="Frame L25-062" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-062</strong><span>26 / 63</span></figcaption></figure><figure class="photo-card" id="L25-064"><a class="photo-image" href="#L25-064" data-photo="L25-064" data-group="lib-2025"><img src="photos/L25-064.jpg" alt="Frame L25-064" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-064</strong><span>27 / 63</span></figcaption></figure><figure class="photo-card" id="L25-077"><a class="photo-image" href="#L25-077" data-photo="L25-077" data-group="lib-2025"><img src="photos/L25-077.jpg" alt="Frame L25-077" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-077</strong><span>28 / 63</span></figcaption></figure><figure class="photo-card" id="L25-078"><a class="photo-image" href="#L25-078" data-photo="L25-078" data-group="lib-2025"><img src="photos/L25-078.jpg" alt="Frame L25-078" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-078</strong><span>29 / 63</span></figcaption></figure><figure class="photo-card" id="L25-079"><a class="photo-image" href="#L25-079" data-photo="L25-079" data-group="lib-2025"><img src="photos/L25-079.jpg" alt="Frame L25-079" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-079</strong><span>30 / 63</span></figcaption></figure><figure class="photo-card" id="L25-083"><a class="photo-image" href="#L25-083" data-photo="L25-083" data-group="lib-2025"><img src="photos/L25-083.jpg" alt="Frame L25-083" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-083</strong><span>31 / 63</span></figcaption></figure><figure class="photo-card" id="L25-085"><a class="photo-image" href="#L25-085" data-photo="L25-085" data-group="lib-2025"><img src="photos/L25-085.jpg" alt="Frame L25-085" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-085</strong><span>32 / 63</span></figcaption></figure><figure class="photo-card" id="L25-086"><a class="photo-image" href="#L25-086" data-photo="L25-086" data-group="lib-2025"><img src="photos/L25-086.jpg" alt="Frame L25-086" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-086</strong><span>33 / 63</span></figcaption></figure></div></section><section class="chapter"><h2>Daylight and downtime</h2><div class="photo-grid"><figure class="photo-card" id="L25-090"><a class="photo-image" href="#L25-090" data-photo="L25-090" data-group="lib-2025"><img src="photos/L25-090.jpg" alt="Frame L25-090" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-090</strong><span>34 / 63</span></figcaption></figure><figure class="photo-card" id="L25-091"><a class="photo-image" href="#L25-091" data-photo="L25-091" data-group="lib-2025"><img src="photos/L25-091.jpg" alt="Frame L25-091" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-091</strong><span>35 / 63</span></figcaption></figure><figure class="photo-card" id="L25-093"><a class="photo-image" href="#L25-093" data-photo="L25-093" data-group="lib-2025"><img src="photos/L25-093.jpg" alt="Frame L25-093" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-093</strong><span>36 / 63</span></figcaption></figure><figure class="photo-card" id="L25-095"><a class="photo-image" href="#L25-095" data-photo="L25-095" data-group="lib-2025"><img src="photos/L25-095.jpg" alt="Frame L25-095" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-095</strong><span>37 / 63</span></figcaption></figure><figure class="photo-card" id="L25-117"><a class="photo-image" href="#L25-117" data-photo="L25-117" data-group="lib-2025"><img src="photos/L25-117.jpg" alt="Frame L25-117" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-117</strong><span>38 / 63</span></figcaption></figure><figure class="photo-card" id="L25-118"><a class="photo-image" href="#L25-118" data-photo="L25-118" data-group="lib-2025"><img src="photos/L25-118.jpg" alt="Frame L25-118" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-118</strong><span>39 / 63</span></figcaption></figure><figure class="photo-card" id="L25-123"><a class="photo-image" href="#L25-123" data-photo="L25-123" data-group="lib-2025"><img src="photos/L25-123.jpg" alt="Frame L25-123" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-123</strong><span>40 / 63</span></figcaption></figure><figure class="photo-card" id="L25-124"><a class="photo-image" href="#L25-124" data-photo="L25-124" data-group="lib-2025"><img src="photos/L25-124.jpg" alt="Frame L25-124" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-124</strong><span>41 / 63</span></figcaption></figure><figure class="photo-card" id="L25-126"><a class="photo-image" href="#L25-126" data-photo="L25-126" data-group="lib-2025"><img src="photos/L25-126.jpg" alt="Frame L25-126" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-126</strong><span>42 / 63</span></figcaption></figure><figure class="photo-card" id="L25-130"><a class="photo-image" href="#L25-130" data-photo="L25-130" data-group="lib-2025"><img src="photos/L25-130.jpg" alt="Frame L25-130" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-130</strong><span>43 / 63</span></figcaption></figure><figure class="photo-card" id="L25-134"><a class="photo-image" href="#L25-134" data-photo="L25-134" data-group="lib-2025"><img src="photos/L25-134.jpg" alt="Frame L25-134" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-134</strong><span>44 / 63</span></figcaption></figure><figure class="photo-card" id="L25-135"><a class="photo-image" href="#L25-135" data-photo="L25-135" data-group="lib-2025"><img src="photos/L25-135.jpg" alt="Frame L25-135" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-135</strong><span>45 / 63</span></figcaption></figure></div></section><section class="chapter"><h2>Back into the lights</h2><div class="photo-grid"><figure class="photo-card" id="L25-065"><a class="photo-image" href="#L25-065" data-photo="L25-065" data-group="lib-2025"><img src="photos/L25-065.jpg" alt="Frame L25-065" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-065</strong><span>46 / 63</span></figcaption></figure><figure class="photo-card" id="L25-066"><a class="photo-image" href="#L25-066" data-photo="L25-066" data-group="lib-2025"><img src="photos/L25-066.jpg" alt="Frame L25-066" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-066</strong><span>47 / 63</span></figcaption></figure><figure class="photo-card" id="L25-067"><a class="photo-image" href="#L25-067" data-photo="L25-067" data-group="lib-2025"><img src="photos/L25-067.jpg" alt="Frame L25-067" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-067</strong><span>48 / 63</span></figcaption></figure><figure class="photo-card" id="L25-069"><a class="photo-image" href="#L25-069" data-photo="L25-069" data-group="lib-2025"><img src="photos/L25-069.jpg" alt="Frame L25-069" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-069</strong><span>49 / 63</span></figcaption></figure><figure class="photo-card" id="L25-073"><a class="photo-image" href="#L25-073" data-photo="L25-073" data-group="lib-2025"><img src="photos/L25-073.jpg" alt="Frame L25-073" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-073</strong><span>50 / 63</span></figcaption></figure><figure class="photo-card" id="L25-075"><a class="photo-image" href="#L25-075" data-photo="L25-075" data-group="lib-2025"><img src="photos/L25-075.jpg" alt="Frame L25-075" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-075</strong><span>51 / 63</span></figcaption></figure><figure class="photo-card" id="L25-100"><a class="photo-image" href="#L25-100" data-photo="L25-100" data-group="lib-2025"><img src="photos/L25-100.jpg" alt="Frame L25-100" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-100</strong><span>52 / 63</span></figcaption></figure><figure class="photo-card" id="L25-102"><a class="photo-image" href="#L25-102" data-photo="L25-102" data-group="lib-2025"><img src="photos/L25-102.jpg" alt="Frame L25-102" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-102</strong><span>53 / 63</span></figcaption></figure><figure class="photo-card" id="L25-103"><a class="photo-image" href="#L25-103" data-photo="L25-103" data-group="lib-2025"><img src="photos/L25-103.jpg" alt="Frame L25-103" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-103</strong><span>54 / 63</span></figcaption></figure><figure class="photo-card" id="L25-115"><a class="photo-image" href="#L25-115" data-photo="L25-115" data-group="lib-2025"><img src="photos/L25-115.jpg" alt="Frame L25-115" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-115</strong><span>55 / 63</span></figcaption></figure><figure class="photo-card" id="L25-137"><a class="photo-image" href="#L25-137" data-photo="L25-137" data-group="lib-2025"><img src="photos/L25-137.jpg" alt="Frame L25-137" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-137</strong><span>56 / 63</span></figcaption></figure><figure class="photo-card" id="L25-138"><a class="photo-image" href="#L25-138" data-photo="L25-138" data-group="lib-2025"><img src="photos/L25-138.jpg" alt="Frame L25-138" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-138</strong><span>57 / 63</span></figcaption></figure></div></section><section class="chapter"><h2>Close with friends</h2><div class="photo-grid"><figure class="photo-card" id="L25-141"><a class="photo-image" href="#L25-141" data-photo="L25-141" data-group="lib-2025"><img src="photos/L25-141.jpg" alt="Frame L25-141" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-141</strong><span>58 / 63</span></figcaption></figure><figure class="photo-card" id="L25-142"><a class="photo-image" href="#L25-142" data-photo="L25-142" data-group="lib-2025"><img src="photos/L25-142.jpg" alt="Frame L25-142" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-142</strong><span>59 / 63</span></figcaption></figure><figure class="photo-card" id="L25-145"><a class="photo-image" href="#L25-145" data-photo="L25-145" data-group="lib-2025"><img src="photos/L25-145.jpg" alt="Frame L25-145" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-145</strong><span>60 / 63</span></figcaption></figure><figure class="photo-card" id="L25-146"><a class="photo-image" href="#L25-146" data-photo="L25-146" data-group="lib-2025"><img src="photos/L25-146.jpg" alt="Frame L25-146" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-146</strong><span>61 / 63</span></figcaption></figure><figure class="photo-card" id="L25-150"><a class="photo-image" href="#L25-150" data-photo="L25-150" data-group="lib-2025"><img src="photos/L25-150.jpg" alt="Frame L25-150" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-150</strong><span>62 / 63</span></figcaption></figure><figure class="photo-card" id="L25-154"><a class="photo-image" href="#L25-154" data-photo="L25-154" data-group="lib-2025"><img src="photos/L25-154.jpg" alt="Frame L25-154" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L25-154</strong><span>63 / 63</span></figcaption></figure></div></section></details>
+<footer><a href="../">Back to Events</a> · Our Polaroid Wave</footer></main><dialog id="photo-viewer" aria-labelledby="viewer-title">
+  <div class="viewer-bar"><p><strong id="viewer-title">Photo</strong></p><button class="viewer-button" type="button" data-close>Close</button></div>
+  <div class="viewer-stage"><img alt=""></div>
+  <div class="viewer-actions"><button class="viewer-button" type="button" data-previous>← Previous</button>
+    <a data-download download>Download JPEG</a><small id="viewer-details" aria-live="polite"></small><button class="viewer-button" type="button" data-next>Next →</button></div>
+</dialog><script>(() => {
+  const dialog = document.querySelector('#photo-viewer');
+  if (typeof dialog?.showModal !== 'function') return;
+
+  const photo = dialog.querySelector('img');
+  const title = dialog.querySelector('#viewer-title');
+  const details = dialog.querySelector('#viewer-details');
+  const previous = dialog.querySelector('[data-previous]');
+  const next = dialog.querySelector('[data-next]');
+  const close = dialog.querySelector('[data-close]');
+  let frames = [];
+  let position = 0;
+  let opener;
+
+  function showFrame(index) {
+    if (index < 0 || index >= frames.length) return;
+    position = index;
+    const frame = frames[index];
+    photo.src = frame.querySelector('img').src;
+    photo.alt = `Frame ${frame.dataset.photo}`;
+    const download = dialog.querySelector('[data-download]');
+    download.href = photo.src;
+    download.download = `${frame.dataset.photo}.jpg`;
+    title.textContent = frame.dataset.photo;
+    details.textContent = `${index + 1} / ${frames.length}`;
+    previous.disabled = index === 0;
+    next.disabled = index === frames.length - 1;
+  }
+
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[data-photo]');
+    if (!link || event.defaultPrevented || event.button || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    const group = link.dataset.group;
+    frames = Array.from(document.querySelectorAll('a[data-photo]')).filter((frame) => frame.dataset.group === group);
+    event.preventDefault();
+    opener = link;
+    showFrame(frames.indexOf(link));
+    dialog.showModal();
+    close.focus();
+  });
+
+  previous.addEventListener('click', () => showFrame(position - 1));
+  next.addEventListener('click', () => showFrame(position + 1));
+  close.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    showFrame(position + (event.key === 'ArrowLeft' ? -1 : 1));
+  });
+  dialog.addEventListener('close', () => opener?.focus());
+})();
+
+function revealAlbumAnchor() {
+  const id = location.hash.slice(1);
+  const target = document.getElementById(id);
+  if (!target) return;
+  const album = target.closest('details.album-details');
+  if (album) album.open = true;
+  target.scrollIntoView();
+}
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a[href^="#album-"]');
+  if (link) document.getElementById(link.hash.slice(1)).open = true;
+});
+addEventListener('hashchange', revealAlbumAnchor);
+revealAlbumAnchor();
+</script></body></html>
