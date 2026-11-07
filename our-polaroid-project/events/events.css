@@ -8,3 +8,40 @@ body.og-exhibition{--og-paper:#101112;--og-ink:#f3eee5;--og-gold:#dac18d;--og-li
 /* Phase3.1: direct access keeps the exhibition, with a shorter mobile route to galleries. */
 .og-quick-jumps{display:flex;gap:24px;align-items:center;padding:15px 0;border-bottom:1px solid var(--og-line);font-size:11px}.og-quick-jumps a:first-child{color:#dac18d;font-weight:650}.og-quick-jumps span{margin-left:10px}.og-exhibition #event-cards,.og-exhibition #browse,.og-exhibition #event-families{scroll-margin-top:70px}
 @media(max-width:650px){.og-quick-jumps{position:sticky;top:0;z-index:4;background:#101112;padding:14px 0;gap:20px;font-size:10px;min-height:48px}.og-exhibition-hero{padding:25px 0 30px}.og-exhibition-copy h1{font-size:70px;margin:19px 0}.og-exhibition-lead{font-size:15px;margin-bottom:12px}.og-exhibition-note{margin-top:18px}.og-exhibition-art{height:285px}.og-exhibit-print img{height:230px}.og-exhibit-print+figure img{height:200px}.og-exhibit-print+figure{transform:rotate(8deg) translateY(24px)}.og-exhibition-heading{padding-top:25px;margin-bottom:24px}.og-family-exhibit-grid{gap:24px 16px}.og-family-exhibition{padding-bottom:32px}.og-exhibition .og-archive-stats{padding:17px 0;margin-bottom:15px;gap:15px}.og-exhibition .og-directory-controls{gap:10px;margin-bottom:20px}.og-exhibition .og-results{padding:13px 0;margin-bottom:20px}}
+
+/* One compact directory for the published event catalog. */
+.og-exhibition ola-events[layout="published"] { display: block; padding-bottom: 44px; }
+.og-exhibition .og-events-intro { display: block; padding: 36px 0 26px; }
+.og-exhibition .og-events-intro h1 { font: normal clamp(44px, 6vw, 72px)/1.1 Georgia, serif; letter-spacing: -.045em; margin: 0 0 12px; }
+.og-exhibition .og-events-intro .og-results { font-size: 14px; margin: 0 0 24px; }
+.og-exhibition .og-events-filters { display: flex; flex-wrap: wrap; gap: 16px; align-items: end; max-width: 760px; }
+.og-exhibition .og-events-filters label { display: grid; gap: 6px; font-size: 12px; min-width: 0; }
+.og-exhibition .og-events-filters label:first-child { flex: 1 1 240px; }
+.og-exhibition .og-events-filters input, .og-exhibition .og-events-filters select { width: 100%; background: #1c1d1e; color: #f3eee5; border: 1px solid #68665f; border-radius: 4px; padding: 11px; font: inherit; font-size: 14px; }
+.og-exhibition .og-events-filters .og-clear { margin: 0; padding: 11px 14px; font-size: 12px; }
+.og-exhibition ola-events[layout="published"] .og-event-grid { margin-top: 0; }
+.og-exhibition ola-events[layout="published"] .og-event-card h2 { margin: 0 0 8px; }
+.og-exhibition .og-event-date { font-size: 13px; color: #b6b4ad; margin: 0 0 10px; }
+@media(max-width:650px) {
+  .og-exhibition .og-events-intro { padding: 28px 0 22px; }
+  .og-exhibition .og-events-filters { gap: 10px; }
+  .og-exhibition .og-events-filters label:first-child { flex-basis: 100%; }
+  .og-exhibition .og-events-filters label:nth-child(2) { flex: 1; }
+  .og-exhibition .og-events-filters input { min-height: 44px; }
+}
+.og-exhibition ola-events[layout="published"] .og-event-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
+.og-exhibition ola-events[layout="published"] .og-event-card:first-child { grid-column: auto; }
+.og-exhibition ola-events[layout="published"] .og-event-card img { height: 320px; }
+.og-exhibition ola-events[layout="published"] .og-event-card:first-child h2 { font-size: 28px; }
+@media(max-width:1050px) {
+  .og-exhibition ola-events[layout="published"] .og-event-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media(max-width:650px) {
+  .og-exhibition ola-events[layout="published"] .og-event-grid { gap: 28px 16px; }
+  .og-exhibition ola-events[layout="published"] .og-event-card img { height: 220px; }
+  .og-exhibition ola-events[layout="published"] .og-event-card h2 { font-size: 24px; }
+}
+.og-exhibition ola-events[layout="published"] .og-event-grid .og-event-card:first-child img { height: 320px; }
+@media(max-width:650px) {
+  .og-exhibition ola-events[layout="published"] .og-event-grid .og-event-card:first-child img { height: 220px; }
+}
