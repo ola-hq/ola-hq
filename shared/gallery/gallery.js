@@ -142,7 +142,60 @@ class OlaEvents extends HTMLElement {
   ${family?'':`<section class="og-family-exhibition" id="event-families" tabindex="-1" aria-label="Featured archive families"><div class="og-exhibition-heading"><div><p class="og-eyebrow">THE COLLECTIONS WITHIN THE COLLECTION</p><h2>Some places stay with you.</h2></div><p>Go back to a feeling.</p></div><div class="og-family-exhibit-grid">${features.map((e,i)=>`<a class="og-family-exhibit" href="${esc(url(e.route))}"><div class="og-family-art">${e.photos?.[0]?image(e.photos[0]):''}<span>0${i+1}</span></div><div class="og-family-title"><h3>${esc(e.title)}</h3><span>↗</span></div><p>${e.galleryCount} galleries <span>·</span> ${e.photoCount} photographs</p></a>`).join('')}</div></section>`}
   <div class="og-browse-heading" id="browse" tabindex="-1"><p class="og-eyebrow">THE COMPLETE EVENT ARCHIVE</p><h2>${family?'Every chapter.':'Find your chapter.'}</h2><p>Follow a year, a place, or a familiar name.</p></div>`;
  }
+ renderPublished() {
+  this.publishedEvents = this.data.events.filter(event => event.publicationStatus === 'approved');
+  const years = [...new Set(this.publishedEvents.map(event => event.year).filter(Boolean))].sort((a, b) => b - a);
+  this.filters.family = '';
+  this.filters.view = 'events';
+  this.filters.sort = 'newest';
+  if (!years.some(year => String(year) === this.filters.year)) this.filters.year = '';
+  this.innerHTML = `<header class="og-events-intro"><h1>We were here</h1>
+    <p class="og-results" role="status" aria-live="polite"></p>
+    <div class="og-events-filters" aria-label="Find an event">
+      <label>Search events<input id="og-search" aria-label="Search events" type="search" placeholder="Event, place, or name" value="${esc(this.filters.q)}"></label>
+      ${years.length > 1 ? `<label>Year<select id="og-year" aria-label="Year"><option value="">All years</option>${years.map(year => `<option value="${year}" ${String(year) === this.filters.year ? 'selected' : ''}>${year}</option>`).join('')}</select></label>` : ''}
+      <button class="og-button og-clear" type="button">Clear filters</button>
+    </div></header>
+    <div class="og-event-grid" id="event-cards" tabindex="-1" aria-label="Published events"></div>`;
+  this.querySelector('#og-search').oninput = event => {
+    this.filters.q = event.target.value;
+    this.writeQuery();
+    this.drawPublished();
+  };
+  const year = this.querySelector('#og-year');
+  if (year) year.oninput = event => {
+    this.filters.year = event.target.value;
+    this.writeQuery();
+    this.drawPublished();
+  };
+  this.querySelector('.og-clear').onclick = () => {
+    this.filters.q = '';
+    this.filters.year = '';
+    this.writeQuery();
+    this.renderPublished();
+  };
+  this.drawPublished();
+ }
+ drawPublished() {
+  const normalize = value => String(value ?? '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const query = normalize(this.filters.q).trim();
+  const rows = this.publishedEvents.filter(event =>
+    (!this.filters.year || String(event.year) === this.filters.year) &&
+    normalize([event.title, event.dateLabel, event.location, ...(event.searchTerms || [])].join(' ')).includes(query)
+  );
+  const count = rows.reduce((sum, event) => sum + (event.photoCount ?? event.photos.length), 0);
+  this.querySelector('.og-results').textContent = `${rows.length} ${rows.length === 1 ? 'event' : 'events'} · ${count} photos`;
+  this.querySelector('.og-event-grid').innerHTML = rows.map(event => {
+    const cover = event.photos.find(photo => photo.id === event.coverId) || event.photos[0];
+    const detail = [event.dateLabel, event.location].filter(Boolean).join(' · ');
+    const media = cover?.publicationStatus === 'approved' ? image({...cover, caption: `${event.title} album cover`}) : '<div class="og-event-placeholder">✧</div>';
+    return `<a class="og-event-card" href="${esc(url(event.route || ('our-polaroid-project/events/' + encodeURIComponent(event.id) + '/')))}">
+      ${media}<div><h2>${esc(event.title)}</h2><p class="og-event-date">${esc(detail)}</p>
+      <span>${event.photoCount ?? event.photos.length} photos · Open album ↗</span></div></a>`;
+  }).join('') || '<p class="og-empty">No events match these filters. Try another year or name.</p>';
+ }
  render(){
+  if(this.getAttribute('layout')==='published')return this.renderPublished();
   const data=this.data,f=this.filters,stats=data.archiveStats,all=data.events,families=data.families||[],family=families.find(p=>p.id===f.family),wedding=all.filter(p=>!p.archive),totalPhotos=all.reduce((sum,e)=>sum+(e.photoCount??e.photos.length),0),years=[...new Set(all.map(e=>e.year).filter(Boolean))].sort((a,b)=>b-a);
   this.innerHTML=`${this.exhibition(family)}${data.privatePreview?'<p class="og-review">PRIVATE LOCAL ARCHIVE · Selected does not mean approved for public sharing · Links work on this Mac</p>':''}${stats?`<section class="og-archive-stats" aria-label="Connected archive totals"><div><strong>${stats.events}</strong><span>archive galleries</span></div><div><strong>${stats.photos.toLocaleString()}</strong><span>selected archive photographs</span></div><div><strong>${stats.destinations}</strong><span>preserved archive destinations</span></div><div><strong>${wedding.reduce((n,e)=>n+(e.photoCount??e.photos.length),0)}</strong><span>new-event candidates · ${wedding.reduce((n,e)=>n+(e.heldCount||0),0)} holds preserved</span></div></section>`:''}
    <section class="og-directory-controls" aria-label="Find an event"><label>Search events<input id="og-search" aria-label="Search events" type="search" placeholder="Event, festival, or collection name" value="${esc(f.q)}"></label><label>Year<select id="og-year" aria-label="Year"><option value="">All years</option>${years.map(y=>`<option value="${y}" ${String(y)===f.year?'selected':''}>${y}</option>`).join('')}<option value="unknown" ${f.year==='unknown'?'selected':''}>Year to confirm</option></select></label><label>Collection<select id="og-family" aria-label="Collection"><option value="">All collections</option>${families.map(p=>`<option value="${esc(p.id)}" ${p.id===f.family?'selected':''}>${esc(p.title)}</option>`).join('')}</select></label><label>Browse<select id="og-view" aria-label="Browse"><option value="events" ${f.view==='events'?'selected':''}>Every event</option><option value="destinations" ${f.view==='destinations'?'selected':''}>Archive destinations</option></select></label><label>Sort<select id="og-sort" aria-label="Sort">${[['newest','Newest first'],['oldest','Oldest first'],['title','Event name'],['largest','Most photographs']].map(([v,l])=>`<option value="${v}" ${f.sort===v?'selected':''}>${l}</option>`).join('')}</select></label><button class="og-button og-clear" type="button">Clear filters</button></section>
