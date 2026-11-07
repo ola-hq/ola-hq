@@ -2,9 +2,41 @@
   "account": "ourpolaroidproj",
   "source": "https://letterboxd.com/ourpolaroidproj/rss/",
   "scope": "recent_public_diary_entries_not_complete_library",
-  "checkedAt": "2026-11-06T23:44:27.924687Z",
+  "checkedAt": "2026-11-07T14:07:17.154454Z",
   "status": "ok",
   "entries": [
+    {
+      "title": "Finding Emily",
+      "year": "2026",
+      "score": 3.0,
+      "watchedDate": "2026-11-06",
+      "activityDate": "2026-11-07",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/finding-emily/"
+    },
+    {
+      "title": "Dracula",
+      "year": "2025",
+      "score": 4.0,
+      "watchedDate": "2026-11-06",
+      "activityDate": "2026-11-07",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/dracula-2025/1/"
+    },
+    {
+      "title": "Wicker",
+      "year": "2026",
+      "score": 3.5,
+      "watchedDate": "2026-11-05",
+      "activityDate": "2026-11-06",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/wicker/"
+    },
+    {
+      "title": "Wild Horse Nine",
+      "year": "2026",
+      "score": 3.5,
+      "watchedDate": "2026-11-05",
+      "activityDate": "2026-11-06",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/wild-horse-nine/"
+    },
     {
       "title": "Godzilla Minus Zero",
       "year": "2026",
@@ -292,15 +324,7 @@
       "watchedDate": "2026-06-30",
       "activityDate": "2026-07-01",
       "url": "https://letterboxd.com/ourpolaroidproj/film/couture/"
-    },
-    {
-      "title": "I Love Boosters",
-      "year": "2026",
-      "score": 3.0,
-      "watchedDate": "2026-06-11",
-      "activityDate": "2026-06-12",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/i-love-boosters/"
     }
   ],
-  "totalEntries": 37
+  "totalEntries": 40
 }
