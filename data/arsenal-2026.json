@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-arsenal-v1",
     "mode": "Auto-refreshed ESPN schedule",
-    "updated_at": "2026-11-07T15:06:06.116Z",
+    "updated_at": "2026-11-07T19:36:08.546Z",
     "updated_display": "Oct 6, 2026",
     "architecture": [
       "live source",
@@ -2539,6 +2539,10 @@
         "url": "https://fantasy.premierleague.com/api/fixtures/"
       },
       {
+        "label": "Premier League official fixture feed",
+        "url": "https://fantasy.premierleague.com/api/fixtures/"
+      },
+      {
         "label": "ESPN Arsenal schedule (automated, unofficial)",
         "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/359/schedule"
       },
@@ -2550,9 +2554,9 @@
     "refresh_strategy": "scheduled",
     "schedule_source": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/359/schedule?season=2026",
     "league_source": "https://site.api.espn.com/apis/v2/sports/soccer/eng.1/standings",
-    "league_updated_at": "2026-11-07T15:06:06.116Z",
+    "league_updated_at": "2026-11-07T19:36:08.546Z",
     "fixture_source": "automated",
-    "fixture_updated_at": "2026-11-07T15:06:06.116Z",
+    "fixture_updated_at": "2026-11-07T19:36:08.546Z",
     "official_fixture_feed": "https://fantasy.premierleague.com/api/fixtures/",
     "match_link_source": "Verified Premier League match centre"
   },
@@ -2569,22 +2573,22 @@
       "match_center_url": null
     },
     "latest_result": {
-      "opponent": "Liverpool",
-      "venue": "Away",
+      "opponent": "Hull City",
+      "venue": "Home",
       "score": "1–0",
       "result": "W"
     },
     "league": {
       "competition": "Premier League",
       "position": 1,
-      "points": 24,
-      "played": 9,
-      "wins": 8,
+      "points": 27,
+      "played": 10,
+      "wins": 9,
       "draws": 0,
       "losses": 1,
-      "gf": 14,
+      "gf": 15,
       "ga": 5,
-      "gd": 9
+      "gd": 10
     },
     "recent_form": [
       "W",
