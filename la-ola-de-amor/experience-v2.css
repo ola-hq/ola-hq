@@ -737,3 +737,6 @@ footer{padding:30px 4.5vw;border-top:1px solid var(--line);display:flex;justify-
 
 /* Keep wide photographs inside the gallery alongside its navigation controls. */
 .loda-gallery .loda-gallery-stage img{min-width:0}
+
+/* Additive photo archive entrance; preserve chapter artwork and existing galleries. */
+.memories-entry{display:grid;grid-template-columns:1.25fr 1fr;align-items:center;gap:50px;padding:70px 7vw;background:#f6f0e4;color:#10283e}.memories-entry h2{font:normal clamp(36px,5vw,68px)/1 Georgia,serif;margin:20px 0}.memories-entry p{max-width:520px;font:18px/1.65 Georgia,serif}.memories-entry .arrowlink{color:#10283e;border-color:#b58b48}.memories-preview{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#10283e;text-decoration:none;background:#ede3cd;min-height:260px;padding:30px}.memories-preview img{width:200px;max-width:80%;height:200px;object-fit:contain}.memories-preview span{font:10px/1.8 system-ui;letter-spacing:.12em;text-align:center;margin-top:15px}@media(max-width:650px){.memories-entry{grid-template-columns:1fr;padding:42px 6vw;gap:25px}}
