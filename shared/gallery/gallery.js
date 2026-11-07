@@ -32,8 +32,30 @@ const image = (p, eager=false) => p.thumbnailAvailable===false?'<div class="og-m
 // Published event grouping uses only approved, present leaf galleries. No private-child metadata is needed.
 function groupPublishedEvents(data,filters={},parentId='') {
  const approved=(data.events||[]).filter(event=>event.publicationStatus==='approved');
+ const alphabetical=(a,b)=>String(a.title??'').localeCompare(String(b.title??''),'en',{sensitivity:'base',numeric:true})||String(a.id??'').localeCompare(String(b.id??''),'en');
+ const recordedStart=event=>{
+  const value=event.dateStart||event.date||'';
+  if(!/^\d{4}-\d{2}(?:-\d{2})?$/.test(value))return '';
+  const [year,month,day]=value.split('-').map(Number);
+  if(month<1||month>12||day!=null&&(day<1||day>new Date(Date.UTC(year,month,0)).getUTCDate()))return '';
+  return value;
+ };
+ const newestFirst=(a,b)=>{
+  const startA=recordedStart(a),startB=recordedStart(b);
+  const yearA=Number(a.year)||Number(startA.slice(0,4)),yearB=Number(b.year)||Number(startB.slice(0,4));
+  // A partial month remains partial. Year-only entries follow known dates; unknown years sort last.
+  return yearB-yearA||Number(!!startB)-Number(!!startA)||startB.localeCompare(startA)||alphabetical(a,b);
+ };
+ const daySequence=(a,b)=>{
+  const weekendA=a.title?.match(/Weekend\s+(\d+)/i),weekendB=b.title?.match(/Weekend\s+(\d+)/i);
+  if(weekendA&&weekendB&&Number(weekendA[1])!==Number(weekendB[1]))return Number(weekendA[1])-Number(weekendB[1]);
+  const dayA=a.title?.match(/\bDay\s+(\d+)/i),dayB=b.title?.match(/\bDay\s+(\d+)/i);
+  if(dayA&&dayB)return Number(dayA[1])-Number(dayB[1])||alphabetical(a,b);
+  const startA=recordedStart(a),startB=recordedStart(b);
+  return Number(!!startB)-Number(!!startA)||startA.localeCompare(startB)||alphabetical(a,b);
+ };
  const byId=new Map(approved.map(event=>[event.id,event]));
- const parents=(data.parentEvents||[]).filter(parent=>parent.publicationStatus==='approved').map(parent=>({...parent,children:parent.childEventIds.map(id=>byId.get(id)).filter(Boolean)})).filter(parent=>parent.children.length);
+ const parents=(data.parentEvents||[]).filter(parent=>parent.publicationStatus==='approved').map(parent=>({...parent,children:parent.childEventIds.map(id=>byId.get(id)).filter(Boolean).sort(daySequence)})).filter(parent=>parent.children.length);
  const byParent=new Map(parents.map(parent=>[parent.id,parent]));
  const normalize=value=>String(value??'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().replace(/\s+/g,' ');
  const query=normalize(filters.q);
@@ -56,6 +78,7 @@ function groupPublishedEvents(data,filters={},parentId='') {
   const cover=children.flatMap(child=>child.photos).find(photo=>photo.id===parent.coverId)||children[0].photos[0];
   rows.push({...parent,isParent:true,photos:cover?[cover]:[],coverId:cover?.id,photoCount:children.reduce((n,child)=>n+(child.photoCount??child.photos.length),0),galleryCount:children.length,matchingGalleries:query?children:[]});
  }
+ rows.sort(newestFirst);
  return {rows,eventCount:rows.length,leafGalleryCount:rows.reduce((n,row)=>n+(row.isParent?row.galleryCount:1),0),photoCount:rows.reduce((n,row)=>n+(row.photoCount??row.photos.length),0),parentEventCount:rows.filter(row=>row.isParent).length,dayGalleryCount:rows.filter(row=>row.isParent).reduce((n,row)=>n+row.galleryCount,0)};
 }
 // End published event grouping.
