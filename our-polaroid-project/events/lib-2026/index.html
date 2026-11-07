@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><meta name="theme-color" content="#101112">
+<title>LIB 2026 · Our Polaroid Wave</title><style>:root {
+  color-scheme: dark;
+  --ink: #f3eee5;
+  --muted: #b6b4ad;
+  --paper: #101112;
+  --card: #1c1d1e;
+  --edge: #393b3b;
+  --link: #dac18d;
+  --gutter: clamp(16px, 4vw, 48px);
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 system-ui, sans-serif; }
+main, .site-nav { width: min(1220px, 100%); margin-inline: auto; padding-inline: var(--gutter); }
+.site-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; padding-block: 16px; font-size: .875rem; }
+.site-nav a[aria-current="page"] { font-weight: 750; }
+a { color: var(--link); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 3px solid #dac18d; outline-offset: 4px; }
+h1, h2, h3, p { margin-top: 0; }
+h1, h2 { font-family: Georgia, serif; font-weight: 500; line-height: 1.12; }
+h1 { font-size: clamp(2.6rem, 7vw, 5.2rem); margin-bottom: 12px; letter-spacing: -.045em; }
+h2 { font-size: clamp(1.65rem, 4vw, 2.35rem); margin-bottom: 12px; }
+h3 { font-size: 1rem; margin-bottom: 6px; }
+.eyebrow, .meta { color: var(--muted); font-size: .85rem; }
+.eyebrow { font-weight: 740; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 10px; }
+.intro { padding-block: clamp(24px, 6vw, 66px) 24px; }
+.intro p:last-child { max-width: 62ch; margin-bottom: 0; }
+.event-grid, .photo-grid { display: grid; gap: 16px; }
+.event-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.event-card, .photo-card, .decision { min-width: 0; background: var(--card); border: 1px solid var(--edge); border-radius: 10px; overflow: hidden; }
+.event-card-body { padding: 16px; }
+.event-card h2 { font-size: 1.62rem; }
+.cover-image, .photo-image, .compare-image { display: grid; place-items: center; background: #202222; padding: 12px; }
+.cover-image { height: clamp(180px, 23vw, 288px); }
+.cover-image img, .photo-image img, .compare-image img { display: block; width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: contain; }
+.button { display: inline-block; padding: 9px 14px; border-radius: 6px; background: #dac18d; color: #f3eee5; text-decoration: none; font-weight: 700; }
+.button:hover { background: #eed9a8; }
+.event-links { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.review-section { margin-top: 40px; scroll-margin-top: 18px; }
+.decision { padding: 16px; margin-bottom: 10px; }
+.decision p { margin-bottom: 8px; }
+.decision details { margin-top: 8px; }
+.decision summary { cursor: pointer; color: var(--link); font-weight: 650; }
+.compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 125px), 1fr)); gap: 10px; margin-top: 10px; }
+.compare-grid figure { margin: 0; min-width: 0; }
+.compare-image { height: 132px; border-radius: 5px; }
+.compare-grid figcaption { margin-top: 4px; font-size: .83rem; }
+.reply { padding: 12px 0 8px; color: var(--muted); }
+.album-header { display: grid; grid-template-columns: 1fr minmax(0, .88fr); align-items: center; gap: 26px; padding-block: 28px; }
+.album-cover { margin: 0; }
+.album-cover .cover-image { height: clamp(250px, 34vw, 440px); border-radius: 10px; }
+.album-cover figcaption { margin-top: 6px; }
+.chapters { display: flex; flex-wrap: wrap; gap: 8px; padding-block: 14px; margin-bottom: 20px; border-block: 1px solid var(--edge); }
+.chapters a { display: inline-block; background: var(--card); padding: 5px 10px; border-radius: 6px; font-size: .86rem; }
+.chapter { margin-bottom: 36px; scroll-margin-top: 18px; }
+.photo-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.photo-card { margin: 0; }
+.photo-image { height: clamp(140px, 19vw, 250px); }
+.photo-caption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2px 8px; padding: 9px 11px; font-size: .86rem; }
+.photo-caption span { color: var(--muted); }
+footer { margin-top: 38px; padding: 18px 0 32px; border-top: 1px solid var(--edge); color: var(--muted); font-size: .86rem; }
+dialog { width: min(920px, calc(100% - 20px)); max-height: 94dvh; padding: 14px; border: 1px solid #605545; border-radius: 12px; background: #1c1d1e; color: #f3eee5; }
+dialog::backdrop { background: #101112ec; }
+.viewer-bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.viewer-bar p { margin: 0; }
+.viewer-stage { display: grid; place-items: center; margin-block: 10px; background: #101112; }
+.viewer-stage img { display: block; width: 100%; height: min(69dvh, 690px); object-fit: contain; }
+.viewer-actions { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+.viewer-actions small { text-align: center; }
+.viewer-button { background: #f3eee5; color: #1c1d1e; border: 0; border-radius: 6px; padding: 8px 11px; font: inherit; cursor: pointer; }
+.viewer-button:disabled { opacity: .42; cursor: default; }
+@media (max-width: 760px) {
+  .event-grid { grid-template-columns: 1fr; }
+  .event-card { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1fr); align-items: stretch; }
+  .event-card .cover-image { height: 100%; min-height: 190px; }
+  .album-header { grid-template-columns: 1fr; }
+  .album-cover .cover-image { height: 255px; }
+  .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .photo-image { height: clamp(135px, 47vw, 230px); padding: 7px; }
+}
+@media (max-width: 365px) {
+  .event-card { grid-template-columns: 1fr; }
+  .event-card .cover-image { height: 185px; }
+  .viewer-button { padding-inline: 7px; font-size: .83rem; }
+}
+
+.album-details { margin-block: 24px; } .album-details > summary { cursor: pointer; padding: 15px; background: var(--card); border: 1px solid var(--edge); border-radius: 8px; font-weight: 720; }
+
+.button { color: #101112; }
+.viewer-button { color: #101112; }
+.viewer-actions { flex-wrap: wrap; }
+.viewer-actions a { color: #dac18d; }
+.album-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin: 14px 0 24px; }
+.album-tools p { margin: 0; }
+code { overflow-wrap: anywhere; }
+</style></head><body id="top"><nav class="site-nav" aria-label="Location"><span>Our Polaroid Wave</span><a href="../">Events</a><span aria-current="page">LIB 2026</span></nav>
+<main><header class="album-header"><div><p class="eyebrow">Curated album · 39 photos</p><h1>LIB 2026</h1>
+<p>Select a frame to browse in order or download its display JPEG.</p><div class="album-tools"><a class="button" href="#album-lib-2026">Browse photos</a>
+<a href="downloads/lib-2026.zip" download>Download album ZIP</a><span class="meta">39 JPEGs · 1.58 MB</span></div></div>
+<figure class="album-cover"><a href="#album-lib-2026" class="cover-image" aria-label="Browse LIB 2026"><img src="photos/L26-079.jpg" alt="Frame L26-079" loading="eager" decoding="async"></a><figcaption class="meta">Cover L26-079</figcaption></figure></header>
+<details class="album-details" id="album-lib-2026" open><summary>LIB 2026 · 39 photos</summary><section class="chapter"><h2>Set the scene</h2><div class="photo-grid"><figure class="photo-card" id="L26-093"><a class="photo-image" href="#L26-093" data-photo="L26-093" data-group="lib-2026"><img src="photos/L26-093.jpg" alt="Frame L26-093" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-093</strong><span>1 / 39</span></figcaption></figure><figure class="photo-card" id="L26-084"><a class="photo-image" href="#L26-084" data-photo="L26-084" data-group="lib-2026"><img src="photos/L26-084.jpg" alt="Frame L26-084" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-084</strong><span>2 / 39</span></figcaption></figure><figure class="photo-card" id="L26-081"><a class="photo-image" href="#L26-081" data-photo="L26-081" data-group="lib-2026"><img src="photos/L26-081.jpg" alt="Frame L26-081" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-081</strong><span>3 / 39</span></figcaption></figure><figure class="photo-card" id="L26-085"><a class="photo-image" href="#L26-085" data-photo="L26-085" data-group="lib-2026"><img src="photos/L26-085.jpg" alt="Frame L26-085" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-085</strong><span>4 / 39</span></figcaption></figure><figure class="photo-card" id="L26-086"><a class="photo-image" href="#L26-086" data-photo="L26-086" data-group="lib-2026"><img src="photos/L26-086.jpg" alt="Frame L26-086" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-086</strong><span>5 / 39</span></figcaption></figure><figure class="photo-card" id="L26-087"><a class="photo-image" href="#L26-087" data-photo="L26-087" data-group="lib-2026"><img src="photos/L26-087.jpg" alt="Frame L26-087" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-087</strong><span>6 / 39</span></figcaption></figure></div></section><section class="chapter"><h2>Camp company</h2><div class="photo-grid"><figure class="photo-card" id="L26-091"><a class="photo-image" href="#L26-091" data-photo="L26-091" data-group="lib-2026"><img src="photos/L26-091.jpg" alt="Frame L26-091" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-091</strong><span>7 / 39</span></figcaption></figure><figure class="photo-card" id="L26-079"><a class="photo-image" href="#L26-079" data-photo="L26-079" data-group="lib-2026"><img src="photos/L26-079.jpg" alt="Frame L26-079" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-079</strong><span>8 / 39</span></figcaption></figure><figure class="photo-card" id="L26-073"><a class="photo-image" href="#L26-073" data-photo="L26-073" data-group="lib-2026"><img src="photos/L26-073.jpg" alt="Frame L26-073" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-073</strong><span>9 / 39</span></figcaption></figure><figure class="photo-card" id="L26-074"><a class="photo-image" href="#L26-074" data-photo="L26-074" data-group="lib-2026"><img src="photos/L26-074.jpg" alt="Frame L26-074" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-074</strong><span>10 / 39</span></figcaption></figure><figure class="photo-card" id="L26-075"><a class="photo-image" href="#L26-075" data-photo="L26-075" data-group="lib-2026"><img src="photos/L26-075.jpg" alt="Frame L26-075" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-075</strong><span>11 / 39</span></figcaption></figure><figure class="photo-card" id="L26-076"><a class="photo-image" href="#L26-076" data-photo="L26-076" data-group="lib-2026"><img src="photos/L26-076.jpg" alt="Frame L26-076" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-076</strong><span>12 / 39</span></figcaption></figure><figure class="photo-card" id="L26-080"><a class="photo-image" href="#L26-080" data-photo="L26-080" data-group="lib-2026"><img src="photos/L26-080.jpg" alt="Frame L26-080" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-080</strong><span>13 / 39</span></figcaption></figure></div></section><section class="chapter"><h2>Night portraits</h2><div class="photo-grid"><figure class="photo-card" id="L26-001"><a class="photo-image" href="#L26-001" data-photo="L26-001" data-group="lib-2026"><img src="photos/L26-001.jpg" alt="Frame L26-001" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-001</strong><span>14 / 39</span></figcaption></figure><figure class="photo-card" id="L26-002"><a class="photo-image" href="#L26-002" data-photo="L26-002" data-group="lib-2026"><img src="photos/L26-002.jpg" alt="Frame L26-002" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-002</strong><span>15 / 39</span></figcaption></figure><figure class="photo-card" id="L26-007"><a class="photo-image" href="#L26-007" data-photo="L26-007" data-group="lib-2026"><img src="photos/L26-007.jpg" alt="Frame L26-007" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-007</strong><span>16 / 39</span></figcaption></figure><figure class="photo-card" id="L26-008"><a class="photo-image" href="#L26-008" data-photo="L26-008" data-group="lib-2026"><img src="photos/L26-008.jpg" alt="Frame L26-008" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-008</strong><span>17 / 39</span></figcaption></figure><figure class="photo-card" id="L26-012"><a class="photo-image" href="#L26-012" data-photo="L26-012" data-group="lib-2026"><img src="photos/L26-012.jpg" alt="Frame L26-012" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-012</strong><span>18 / 39</span></figcaption></figure><figure class="photo-card" id="L26-014"><a class="photo-image" href="#L26-014" data-photo="L26-014" data-group="lib-2026"><img src="photos/L26-014.jpg" alt="Frame L26-014" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-014</strong><span>19 / 39</span></figcaption></figure><figure class="photo-card" id="L26-015"><a class="photo-image" href="#L26-015" data-photo="L26-015" data-group="lib-2026"><img src="photos/L26-015.jpg" alt="Frame L26-015" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-015</strong><span>20 / 39</span></figcaption></figure><figure class="photo-card" id="L26-017"><a class="photo-image" href="#L26-017" data-photo="L26-017" data-group="lib-2026"><img src="photos/L26-017.jpg" alt="Frame L26-017" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-017</strong><span>21 / 39</span></figcaption></figure><figure class="photo-card" id="L26-019"><a class="photo-image" href="#L26-019" data-photo="L26-019" data-group="lib-2026"><img src="photos/L26-019.jpg" alt="Frame L26-019" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-019</strong><span>22 / 39</span></figcaption></figure><figure class="photo-card" id="L26-021"><a class="photo-image" href="#L26-021" data-photo="L26-021" data-group="lib-2026"><img src="photos/L26-021.jpg" alt="Frame L26-021" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-021</strong><span>23 / 39</span></figcaption></figure></div></section><section class="chapter"><h2>Lake and the larger crew</h2><div class="photo-grid"><figure class="photo-card" id="L26-036"><a class="photo-image" href="#L26-036" data-photo="L26-036" data-group="lib-2026"><img src="photos/L26-036.jpg" alt="Frame L26-036" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-036</strong><span>24 / 39</span></figcaption></figure><figure class="photo-card" id="L26-039"><a class="photo-image" href="#L26-039" data-photo="L26-039" data-group="lib-2026"><img src="photos/L26-039.jpg" alt="Frame L26-039" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-039</strong><span>25 / 39</span></figcaption></figure><figure class="photo-card" id="L26-040"><a class="photo-image" href="#L26-040" data-photo="L26-040" data-group="lib-2026"><img src="photos/L26-040.jpg" alt="Frame L26-040" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-040</strong><span>26 / 39</span></figcaption></figure><figure class="photo-card" id="L26-041"><a class="photo-image" href="#L26-041" data-photo="L26-041" data-group="lib-2026"><img src="photos/L26-041.jpg" alt="Frame L26-041" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-041</strong><span>27 / 39</span></figcaption></figure><figure class="photo-card" id="L26-044"><a class="photo-image" href="#L26-044" data-photo="L26-044" data-group="lib-2026"><img src="photos/L26-044.jpg" alt="Frame L26-044" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-044</strong><span>28 / 39</span></figcaption></figure><figure class="photo-card" id="L26-046"><a class="photo-image" href="#L26-046" data-photo="L26-046" data-group="lib-2026"><img src="photos/L26-046.jpg" alt="Frame L26-046" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-046</strong><span>29 / 39</span></figcaption></figure><figure class="photo-card" id="L26-052"><a class="photo-image" href="#L26-052" data-photo="L26-052" data-group="lib-2026"><img src="photos/L26-052.jpg" alt="Frame L26-052" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-052</strong><span>30 / 39</span></figcaption></figure><figure class="photo-card" id="L26-054"><a class="photo-image" href="#L26-054" data-photo="L26-054" data-group="lib-2026"><img src="photos/L26-054.jpg" alt="Frame L26-054" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-054</strong><span>31 / 39</span></figcaption></figure></div></section><section class="chapter"><h2>Close with camp friends</h2><div class="photo-grid"><figure class="photo-card" id="L26-032"><a class="photo-image" href="#L26-032" data-photo="L26-032" data-group="lib-2026"><img src="photos/L26-032.jpg" alt="Frame L26-032" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-032</strong><span>32 / 39</span></figcaption></figure><figure class="photo-card" id="L26-056"><a class="photo-image" href="#L26-056" data-photo="L26-056" data-group="lib-2026"><img src="photos/L26-056.jpg" alt="Frame L26-056" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-056</strong><span>33 / 39</span></figcaption></figure><figure class="photo-card" id="L26-058"><a class="photo-image" href="#L26-058" data-photo="L26-058" data-group="lib-2026"><img src="photos/L26-058.jpg" alt="Frame L26-058" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-058</strong><span>34 / 39</span></figcaption></figure><figure class="photo-card" id="L26-060"><a class="photo-image" href="#L26-060" data-photo="L26-060" data-group="lib-2026"><img src="photos/L26-060.jpg" alt="Frame L26-060" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-060</strong><span>35 / 39</span></figcaption></figure><figure class="photo-card" id="L26-062"><a class="photo-image" href="#L26-062" data-photo="L26-062" data-group="lib-2026"><img src="photos/L26-062.jpg" alt="Frame L26-062" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-062</strong><span>36 / 39</span></figcaption></figure><figure class="photo-card" id="L26-068"><a class="photo-image" href="#L26-068" data-photo="L26-068" data-group="lib-2026"><img src="photos/L26-068.jpg" alt="Frame L26-068" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-068</strong><span>37 / 39</span></figcaption></figure><figure class="photo-card" id="L26-069"><a class="photo-image" href="#L26-069" data-photo="L26-069" data-group="lib-2026"><img src="photos/L26-069.jpg" alt="Frame L26-069" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-069</strong><span>38 / 39</span></figcaption></figure><figure class="photo-card" id="L26-072"><a class="photo-image" href="#L26-072" data-photo="L26-072" data-group="lib-2026"><img src="photos/L26-072.jpg" alt="Frame L26-072" loading="lazy" decoding="async"></a>
+            <figcaption class="photo-caption"><strong>L26-072</strong><span>39 / 39</span></figcaption></figure></div></section></details>
+<footer><a href="../">Back to Events</a> · Our Polaroid Wave</footer></main><dialog id="photo-viewer" aria-labelledby="viewer-title">
+  <div class="viewer-bar"><p><strong id="viewer-title">Photo</strong></p><button class="viewer-button" type="button" data-close>Close</button></div>
+  <div class="viewer-stage"><img alt=""></div>
+  <div class="viewer-actions"><button class="viewer-button" type="button" data-previous>← Previous</button>
+    <a data-download download>Download JPEG</a><small id="viewer-details" aria-live="polite"></small><button class="viewer-button" type="button" data-next>Next →</button></div>
+</dialog><script>(() => {
+  const dialog = document.querySelector('#photo-viewer');
+  if (typeof dialog?.showModal !== 'function') return;
+
+  const photo = dialog.querySelector('img');
+  const title = dialog.querySelector('#viewer-title');
+  const details = dialog.querySelector('#viewer-details');
+  const previous = dialog.querySelector('[data-previous]');
+  const next = dialog.querySelector('[data-next]');
+  const close = dialog.querySelector('[data-close]');
+  let frames = [];
+  let position = 0;
+  let opener;
+
+  function showFrame(index) {
+    if (index < 0 || index >= frames.length) return;
+    position = index;
+    const frame = frames[index];
+    photo.src = frame.querySelector('img').src;
+    photo.alt = `Frame ${frame.dataset.photo}`;
+    const download = dialog.querySelector('[data-download]');
+    download.href = photo.src;
+    download.download = `${frame.dataset.photo}.jpg`;
+    title.textContent = frame.dataset.photo;
+    details.textContent = `${index + 1} / ${frames.length}`;
+    previous.disabled = index === 0;
+    next.disabled = index === frames.length - 1;
+  }
+
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[data-photo]');
+    if (!link || event.defaultPrevented || event.button || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    const group = link.dataset.group;
+    frames = Array.from(document.querySelectorAll('a[data-photo]')).filter((frame) => frame.dataset.group === group);
+    event.preventDefault();
+    opener = link;
+    showFrame(frames.indexOf(link));
+    dialog.showModal();
+    close.focus();
+  });
+
+  previous.addEventListener('click', () => showFrame(position - 1));
+  next.addEventListener('click', () => showFrame(position + 1));
+  close.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    showFrame(position + (event.key === 'ArrowLeft' ? -1 : 1));
+  });
+  dialog.addEventListener('close', () => opener?.focus());
+})();
+
+function revealAlbumAnchor() {
+  const id = location.hash.slice(1);
+  const target = document.getElementById(id);
+  if (!target) return;
+  const album = target.closest('details.album-details');
+  if (album) album.open = true;
+  target.scrollIntoView();
+}
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a[href^="#album-"]');
+  if (link) document.getElementById(link.hash.slice(1)).open = true;
+});
+addEventListener('hashchange', revealAlbumAnchor);
+revealAlbumAnchor();
+</script></body></html>
