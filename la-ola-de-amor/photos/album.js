@@ -125,15 +125,50 @@ class OlaGallery extends HTMLElement {
 customElements.define('ola-gallery', OlaGallery);
 })();
 
-/* Continuous browsing for the La Ola de Amor wedding album. */
+/* LIVE 1: verified film and stable continuous wedding album. */
 (()=>{'use strict';const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // ZIP membership is verified against these consecutive slices of the approved album.
 const partSizes = [50, 50, 50, 24];
 const partAnchors = partSizes.map((_, index) => '#part-' + (index + 1));
 
 class RefinedGallery extends customElements.get('ola-gallery'){
- render(){super.render();const e=this.event,cover=this.photos.find(p=>p.id===e.coverId)||this.photos[0],mirror=this.querySelector('.album-keepsakes'),mirrorURL=mirror?.href||'';
-  const hero=this.querySelector('.album-hero');hero.className='keepsake-opening';hero.innerHTML=`<div class="keepsake-title"><p>PLAZA SAN ROBERTO · GUADALAJARA</p><h1>Our night, in photographs.</h1><span>Bri + Jon <b>♥</b> October 16, 2026</span></div><figure class="keepsake-cover"><img src="${esc(cover.display)}" alt="${esc(cover.caption)}" fetchpriority="high" decoding="async"><figcaption><span>174 LITTLE PIECES OF THAT NIGHT</span><span>CON MUCHO AMOR, BRI + JON</span></figcaption></figure><div class="keepsake-foot"><div class="plaza-identity"><img src="/ola-hq/la-ola-de-amor/scan/guide/art/identity-01.webp" alt="Plaza San Roberto — original festival identity"><span>From our favorite corner,<br><i>with love.</i></span></div><nav aria-label="Album shortcuts"><a class="download-shortcut" href="#downloads">Downloads <span>↓</span></a>${mirrorURL?`<a class="mirror-button" href="${esc(mirrorURL)}">Magic Mirror Keepsakes <span>↗</span></a>`:''}</nav></div>`;
+
+ async connectedCallback() {
+  document.documentElement.classList.add('wedding-album-navigation');
+  this.previousScrollRestoration = history.scrollRestoration;
+  history.scrollRestoration = 'manual';
+  this.restoreNativeHistory = () => { history.scrollRestoration = this.previousScrollRestoration; };
+  this.useAlbumHistory = () => { history.scrollRestoration = 'manual'; };
+  window.addEventListener('pagehide', this.restoreNativeHistory);
+  window.addEventListener('pageshow', this.useAlbumHistory);
+  this.sectionClick = event => {
+    const link = event.target.closest?.('a[href]');
+    const target = link?.getAttribute('href');
+    if (!this.isAlbumSection(target)) return;
+    event.preventDefault();
+    if (location.hash !== target) history.pushState(history.state, '', target);
+    this.scrollToGrid();
+  };
+  document.addEventListener('click', this.sectionClick);
+  await super.connectedCallback();
+ }
+
+ disconnectedCallback() {
+  document.removeEventListener('click', this.sectionClick);
+  document.documentElement.classList.remove('wedding-album-navigation');
+  history.scrollRestoration = this.previousScrollRestoration;
+  window.removeEventListener('pagehide', this.restoreNativeHistory);
+  window.removeEventListener('pageshow', this.useAlbumHistory);
+  cancelAnimationFrame(this.sectionScroll);
+  super.disconnectedCallback();
+ }
+
+ isAlbumSection(target) {
+  return ['#photographs', '#downloads', '#keepsakes', ...partAnchors].includes(target);
+ }
+ render(){super.render();const mirror=this.querySelector('.album-keepsakes'),mirrorURL=mirror?.href||'';
+  const hero=this.querySelector('.album-hero');hero.className='keepsake-opening';hero.innerHTML=`<div class="keepsake-title"><p>PLAZA SAN ROBERTO · GUADALAJARA</p><h1>Our night, forever.</h1><span>Bri + Jon <b>♥</b> October 16, 2026</span></div><figure class="wedding-film" aria-labelledby="film-title"><div class="film-caption"><h2 id="film-title">Our wedding film.</h2><span>1 MIN 25 SEC · SOUND ON WHEN YOU PRESS PLAY</span></div><video id="wedding-film" width="1080" height="1920" style="aspect-ratio:9/16" controls playsinline preload="none" poster="https://loda-wedding-media.jonathanmlizardi.workers.dev/events/la-ola-de-amor-2026/film/la-ola-de-amor-wedding-film-guest-safe-review-v1-poster.jpg" aria-label="La Ola de Amor wedding film" aria-describedby="film-help"><source src="https://loda-wedding-media.jonathanmlizardi.workers.dev/events/la-ola-de-amor-2026/film/la-ola-de-amor-wedding-film-guest-safe-review-v1.mp4" type="video/mp4">Your browser cannot play this film. <a href="https://loda-wedding-media.jonathanmlizardi.workers.dev/events/la-ola-de-amor-2026/film/la-ola-de-amor-wedding-film-guest-safe-review-v1.mp4">Open the wedding film</a>.</video><figcaption id="film-help">Press play to relive the night. Sound and full-screen controls are in the player. <a href="https://loda-wedding-media.jonathanmlizardi.workers.dev/events/la-ola-de-amor-2026/film/la-ola-de-amor-wedding-film-guest-safe-review-v1.mp4">Open film separately ↗</a></figcaption><p class="film-error" role="status" hidden>The film could not load. <a href="https://loda-wedding-media.jonathanmlizardi.workers.dev/events/la-ola-de-amor-2026/film/la-ola-de-amor-wedding-film-guest-safe-review-v1.mp4">Try opening the film separately</a>, or continue to the photographs below.</p></figure><div class="keepsake-foot"><div class="plaza-identity"><img src="/ola-hq/la-ola-de-amor/scan/guide/art/identity-01.webp" alt="Plaza San Roberto — original festival identity"><span>From our favorite corner,<br><i>with love.</i></span></div><nav aria-label="Album shortcuts"><a class="download-shortcut" href="#downloads">Downloads <span>↓</span></a>${mirrorURL?`<a class="mirror-button" href="${esc(mirrorURL)}">Magic Mirror Keepsakes <span>↗</span></a>`:''}</nav></div>`;
+  this.querySelector('#wedding-film').addEventListener('error', () => { this.querySelector('.film-error').hidden = false; });
   this.querySelector('.album-section-heading h2').textContent='The photographs.';this.querySelector('.album-frame-search input').placeholder='Find a frame';
   this.querySelector('.album-section-heading .album-kicker').textContent='LA OLA DE AMOR / THE ALBUM';
   if(mirror){mirror.id='keepsakes';mirror.className='album-keepsakes refined-keepsakes';mirror.innerHTML='<span><small>THE PHOTO BOOTH / ESPEJO MÁGICO</small><strong>Magic Mirror Keepsakes</strong><span>One more little piece of the night. Explore all 40 keepsakes.</span></span><span class="mirror-button">Open keepsakes <b aria-hidden="true">↗</b></span>';this.querySelector('.og-downloads').after(mirror);}
@@ -157,7 +192,7 @@ class RefinedGallery extends customElements.get('ola-gallery'){
     <button type="button" class="og-frame" data-photo="${esc(photo.id)}"
       aria-label="Open photograph ${positions.get(photo.id)}: ${esc(photo.caption)}">
       <img src="${esc(photo.display || photo.thumbnail)}" width="${photo.width}" height="${photo.height}"
-        alt="${esc(photo.caption)}" loading="lazy" decoding="async">
+        alt="${esc(photo.caption)}" style="aspect-ratio:${photo.width}/${photo.height}" loading="lazy" decoding="async">
       <span>FRAME ${String(photo.frameNumber).padStart(3, '0')} <span aria-hidden="true">↗</span></span>
     </button>`).join('');
 
@@ -187,16 +222,20 @@ class RefinedGallery extends customElements.get('ola-gallery'){
 
  scrollToGrid() {
   const target = location.hash;
-  if (!['#photographs', '#downloads', '#keepsakes', ...partAnchors].includes(target)) return;
+  if (!this.isAlbumSection(target)) return;
   if (partAnchors.includes(target) && this.filteredPhotos) {
     this.querySelector('.album-frame-search input').value = '';
     this.filteredPhotos = null;
     this.draw();
   }
-  requestAnimationFrame(() => {
-    if (this.isConnected && location.hash === target) {
-      this.querySelector(target)?.scrollIntoView({block: 'start', behavior: 'instant'});
-    }
+  cancelAnimationFrame(this.sectionScroll);
+  this.sectionScroll = requestAnimationFrame(() => {
+    if (!this.isConnected || location.hash !== target) return;
+    const section = this.querySelector(target);
+    if (!section) return;
+    const headerHeight = document.querySelector('.og-shell-header')?.getBoundingClientRect().height || 0;
+    const top = window.scrollY + section.getBoundingClientRect().top - headerHeight - 12;
+    window.scrollTo({top: Math.max(0, top), behavior: 'auto'});
   });
  }
 
