@@ -2,9 +2,17 @@
   "account": "ourpolaroidproj",
   "source": "https://letterboxd.com/ourpolaroidproj/rss/",
   "scope": "recent_public_diary_entries_not_complete_library",
-  "checkedAt": "2026-11-07T22:47:39.905307Z",
+  "checkedAt": "2026-11-08T14:20:46.520826Z",
   "status": "ok",
   "entries": [
+    {
+      "title": "Ali G: Who Iz I?",
+      "year": "2026",
+      "score": 2.0,
+      "watchedDate": "2026-11-07",
+      "activityDate": "2026-11-08",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/ali-g-who-iz-i/"
+    },
     {
       "title": "Finding Emily",
       "year": "2026",
@@ -326,5 +334,5 @@
       "url": "https://letterboxd.com/ourpolaroidproj/film/couture/"
     }
   ],
-  "totalEntries": 40
+  "totalEntries": 41
 }
