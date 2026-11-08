@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-11-08T19:42:12.098Z",
+    "fetched_at": "2026-11-08T23:43:30.606Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -10171,8 +10171,8 @@
       "web_name": "Davis",
       "element_type": 2,
       "team": 12,
-      "total_points": 30,
-      "event_points": 1,
+      "total_points": 28,
+      "event_points": -1,
       "status": "a"
     },
     {
@@ -11381,8 +11381,8 @@
       "web_name": "Dorgu",
       "element_type": 3,
       "team": 16,
-      "total_points": 20,
-      "event_points": 10,
+      "total_points": 21,
+      "event_points": 11,
       "status": "a"
     },
     {
