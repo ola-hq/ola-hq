@@ -1,0 +1,103 @@
+/* Scoped to the three Events directory pages only. No album or wedding stylesheet changes. */
+body.opw-portrait-directory{
+ --opw-print:#f2eee5;--opw-ink:#f3eee5;--opw-gold:#dac18d;
+ background:#101112;color:var(--opw-ink);
+}
+body.opw-portrait-directory main{max-width:1512px;margin:0 auto;padding:0 40px 68px}
+body.opw-portrait-directory .og-shell-header{max-width:1512px;padding:26px 40px;gap:58px}
+body.opw-portrait-directory .og-events-intro{padding:40px 0 28px}
+body.opw-portrait-directory .og-events-intro h1{font:normal clamp(42px,5vw,68px)/1.08 Georgia,serif;margin:0 0 12px;letter-spacing:-.045em}
+body.opw-portrait-directory .og-events-intro .og-results{margin:0 0 22px;font-size:13px;color:#b9b7b0}
+body.opw-portrait-directory .og-events-filters{max-width:740px;gap:14px}
+body.opw-portrait-directory ola-events-portrait{display:block}
+body.opw-portrait-directory .og-event-grid{
+ display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:32px 22px;
+ align-items:stretch;margin:0;padding:0;
+}
+body.opw-portrait-directory .og-event-card,
+body.opw-portrait-directory .og-event-grid .og-event-card:first-child{
+ display:flex;flex-direction:column;min-width:0;margin:0;padding:0;
+ grid-column:auto;border:0;border-radius:0;background:transparent;box-shadow:none;
+ color:var(--opw-ink);transform:none;
+}
+body.opw-portrait-directory .og-event-entry{
+ display:grid;grid-template-rows:auto 1fr;height:100%;min-width:0;
+ color:inherit;text-decoration:none;outline-offset:7px;
+}
+body.opw-portrait-directory .opw-print{
+ aspect-ratio:2/3;width:100%;display:flex;align-items:center;justify-content:center;
+ overflow:hidden;min-width:0;padding:5px 5px 14px;
+ background:var(--opw-print);border:1px solid #d8d1c4;border-radius:1px;
+ box-shadow:0 4px 14px #0003;
+ transition:box-shadow .18s ease,border-color .18s ease;
+}
+body.opw-portrait-directory .og-event-grid .og-event-card .opw-print img,
+body.opw-portrait-directory .og-event-grid .og-event-card:first-child .opw-print img{
+ display:block;width:100%;height:100%;max-height:100%;min-height:0;aspect-ratio:auto;
+ object-fit:contain;object-position:center;padding:0;margin:0;border:0;border-radius:0;
+ background:var(--opw-print);transform:none;filter:none;
+}
+body.opw-portrait-directory .og-event-entry:hover .opw-print,
+body.opw-portrait-directory .og-event-entry:focus-visible .opw-print{
+ border-color:var(--opw-gold);box-shadow:0 5px 19px #0005;
+}
+body.opw-portrait-directory .og-event-entry>.opw-card-copy{
+ display:flex;flex-direction:column;align-items:flex-start;min-width:0;
+ padding:15px 0 0;height:176px;min-height:176px;
+}
+body.opw-portrait-directory .og-event-grid .og-event-card h2,
+body.opw-portrait-directory .og-event-grid .og-event-card:first-child h2{
+ font:normal 22px/1.15 Georgia,serif;letter-spacing:-.025em;
+ margin:0 0 9px;overflow-wrap:anywhere;color:var(--opw-ink);
+}
+body.opw-portrait-directory .og-event-entry:hover h2{color:var(--opw-gold)}
+body.opw-portrait-directory .og-event-entry .og-event-date{
+ font:11px/1.65 'Avenir Next',Arial,sans-serif;color:#b9b7b0;
+ margin:0 0 13px;overflow-wrap:anywhere;
+}
+body.opw-portrait-directory .og-event-entry .opw-card-copy>span{
+ margin-top:auto;padding-top:0;font:10px/1.65 'Avenir Next',Arial,sans-serif;
+ color:var(--opw-gold);text-decoration:none;overflow-wrap:anywhere;
+}
+body.opw-portrait-directory .og-event-card .og-matching-days{
+ display:grid;gap:8px;padding:14px 0 0;margin:0;font-size:11px;
+ border-top:1px solid #393b3b;
+}
+/* LIVE 1 owns this landscape cover. Keep the complete print without a large ivory mat. */
+body.opw-portrait-directory .opw-print--landscape{background:transparent;border-color:transparent;box-shadow:none;padding:0}
+body.opw-portrait-directory .og-event-grid .og-event-card .opw-print.opw-print--landscape img{background:transparent}
+body.opw-portrait-directory footer{max-width:1512px;margin:0 auto;padding:22px 40px 36px}
+@media(max-width:1199px){
+ body.opw-portrait-directory .og-event-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:30px 20px}
+ body.opw-portrait-directory main{padding-inline:30px}
+ body.opw-portrait-directory .og-shell-header{padding-inline:30px}
+ body.opw-portrait-directory .og-event-grid .og-event-card h2{font-size:21px}
+}
+@media(max-width:959px){
+ body.opw-portrait-directory .og-event-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ body.opw-portrait-directory .og-shell-header{gap:30px}
+}
+@media(max-width:719px){
+ body.opw-portrait-directory main{padding-inline:24px}
+ body.opw-portrait-directory .og-event-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 20px}
+ body.opw-portrait-directory .og-event-entry>.opw-card-copy{height:140px;min-height:140px}
+}
+@media(max-width:599px){
+ body.opw-portrait-directory main{padding:0 22px 48px}
+ body.opw-portrait-directory .og-shell-header{padding:23px 22px 22px;gap:24px}
+ body.opw-portrait-directory .og-events-intro{padding:30px 0 26px}
+ body.opw-portrait-directory .og-events-intro h1{font-size:44px}
+ body.opw-portrait-directory .og-events-intro .og-results{font-size:12px;margin-bottom:23px}
+ body.opw-portrait-directory .og-events-filters{gap:12px}
+ body.opw-portrait-directory .og-events-filters input,
+ body.opw-portrait-directory .og-events-filters select,
+ body.opw-portrait-directory .og-events-filters button{min-height:44px}
+ body.opw-portrait-directory .og-event-grid{grid-template-columns:minmax(0,1fr);row-gap:34px;max-width:348px;margin:0 auto}
+ body.opw-portrait-directory .og-event-entry>.opw-card-copy{padding-top:17px;height:140px;min-height:140px}
+ body.opw-portrait-directory .og-event-grid .og-event-card h2,
+ body.opw-portrait-directory .og-event-grid .og-event-card:first-child h2{font-size:26px;line-height:1.14}
+ body.opw-portrait-directory .og-event-entry .og-event-date{font-size:12px;margin-bottom:12px}
+ body.opw-portrait-directory .og-event-entry .opw-card-copy>span{font-size:11px}
+ body.opw-portrait-directory footer{padding:20px 22px 30px}
+}
+@media(prefers-reduced-motion:reduce){body.opw-portrait-directory .opw-print{transition:none}}

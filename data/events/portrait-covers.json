@@ -1,0 +1,469 @@
+{
+  "schemaVersion": 1,
+  "scope": "Owner-approved frozen Events directory covers. Saved album covers, LIVE 1 and all photo selections remain unchanged.",
+  "covers": {
+    "lib-2025": {
+      "photoId": "L25-016",
+      "sourceEventId": "lib-2025",
+      "thumbnail": "our-polaroid-project/events/lib-2025/photos/L25-016.jpg",
+      "width": 429,
+      "height": 672
+    },
+    "lib-2026": {
+      "photoId": "L26-079",
+      "sourceEventId": "lib-2026",
+      "thumbnail": "our-polaroid-project/events/lib-2026/photos/L26-079.jpg",
+      "width": 418,
+      "height": 672
+    },
+    "martins-bach-party": {
+      "photoId": "MB25-056",
+      "sourceEventId": "martins-bach-party",
+      "thumbnail": "our-polaroid-project/events/martins-bach-party/photos/MB25-056.jpg",
+      "width": 414,
+      "height": 672
+    },
+    "event-0606c8d3bb97": {
+      "photoId": "selected-a78b5eae4d1131784c3c",
+      "sourceEventId": "event-0606c8d3bb97",
+      "thumbnail": "our-polaroid-project/events/event-0606c8d3bb97/photos/selected-a78b5eae4d1131784c3c.jpg",
+      "width": 420,
+      "height": 672
+    },
+    "event-38881a679a38": {
+      "photoId": "selected-496ccc3252a7bb4c1150",
+      "sourceEventId": "event-38881a679a38",
+      "thumbnail": "our-polaroid-project/events/event-38881a679a38/photos/selected-496ccc3252a7bb4c1150.jpg",
+      "width": 421,
+      "height": 672
+    },
+    "event-cf6aa0248cee": {
+      "photoId": "selected-f4229fcb41d56f1647f4",
+      "sourceEventId": "event-cf6aa0248cee",
+      "thumbnail": "our-polaroid-project/events/event-cf6aa0248cee/photos/selected-f4229fcb41d56f1647f4.jpg",
+      "width": 417,
+      "height": 672
+    },
+    "event-f98e03f546ef": {
+      "photoId": "selected-53ac85ff9ba1bcaeb353",
+      "sourceEventId": "event-f98e03f546ef",
+      "thumbnail": "our-polaroid-project/events/event-f98e03f546ef/photos/selected-53ac85ff9ba1bcaeb353.jpg",
+      "width": 429,
+      "height": 672
+    },
+    "event-135f7648310c": {
+      "photoId": "selected-6f13a9c4499bbc794997",
+      "sourceEventId": "event-135f7648310c",
+      "thumbnail": "our-polaroid-project/events/event-135f7648310c/photos/selected-6f13a9c4499bbc794997.jpg",
+      "width": 414,
+      "height": 672
+    },
+    "event-91e9a50f9352": {
+      "photoId": "selected-c2ebefab61503fc9ea07",
+      "sourceEventId": "event-91e9a50f9352",
+      "thumbnail": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-c2ebefab61503fc9ea07.jpg",
+      "width": 415,
+      "height": 672
+    },
+    "event-b1ab401e001c": {
+      "photoId": "selected-c7cc7468e2c8cd852ccf",
+      "sourceEventId": "event-b1ab401e001c",
+      "thumbnail": "our-polaroid-project/events/event-b1ab401e001c/photos/selected-c7cc7468e2c8cd852ccf.jpg",
+      "width": 430,
+      "height": 672
+    },
+    "event-6c63e543ff5b": {
+      "photoId": "selected-0654add670cf44b10268",
+      "sourceEventId": "event-6c63e543ff5b",
+      "thumbnail": "our-polaroid-project/events/event-6c63e543ff5b/photos/selected-0654add670cf44b10268.jpg",
+      "width": 415,
+      "height": 672
+    },
+    "event-ef35b90c518a": {
+      "photoId": "selected-dcd367948c43edd693e8",
+      "sourceEventId": "event-ef35b90c518a",
+      "thumbnail": "our-polaroid-project/events/event-ef35b90c518a/photos/selected-dcd367948c43edd693e8.jpg",
+      "width": 420,
+      "height": 672
+    },
+    "event-aef4ef0f6443": {
+      "photoId": "selected-1805946960af302870b2",
+      "sourceEventId": "event-aef4ef0f6443",
+      "thumbnail": "our-polaroid-project/events/event-aef4ef0f6443/photos/selected-1805946960af302870b2.jpg",
+      "width": 415,
+      "height": 672
+    },
+    "event-3ad5f8a48489": {
+      "photoId": "selected-8e1e1cf3c1adb8d1371f",
+      "sourceEventId": "event-3ad5f8a48489",
+      "thumbnail": "our-polaroid-project/events/event-3ad5f8a48489/photos/selected-8e1e1cf3c1adb8d1371f.jpg",
+      "width": 415,
+      "height": 672
+    },
+    "event-8e0e22d197d7": {
+      "photoId": "selected-128a05a9f06cc0bb2a36",
+      "sourceEventId": "event-8e0e22d197d7",
+      "thumbnail": "our-polaroid-project/events/event-8e0e22d197d7/photos/selected-128a05a9f06cc0bb2a36.jpg",
+      "width": 410,
+      "height": 672
+    },
+    "event-54b8c286679f": {
+      "photoId": "selected-71d9f0ff1f8757851468",
+      "sourceEventId": "event-54b8c286679f",
+      "thumbnail": "our-polaroid-project/events/event-54b8c286679f/photos/selected-71d9f0ff1f8757851468.jpg",
+      "width": 417,
+      "height": 672
+    },
+    "event-420c76182345": {
+      "photoId": "selected-e3b88a1e6ba31f2e2750",
+      "sourceEventId": "event-420c76182345",
+      "thumbnail": "our-polaroid-project/events/event-420c76182345/photos/selected-e3b88a1e6ba31f2e2750.jpg",
+      "width": 412,
+      "height": 672
+    },
+    "event-e5212a8ce8f9": {
+      "photoId": "selected-24f353609149c6fe90bf",
+      "sourceEventId": "event-e5212a8ce8f9",
+      "thumbnail": "our-polaroid-project/events/event-e5212a8ce8f9/photos/selected-24f353609149c6fe90bf.jpg",
+      "width": 430,
+      "height": 672
+    },
+    "event-d7eddcb7223b": {
+      "photoId": "selected-c47a38ce698f5753957c",
+      "sourceEventId": "event-d7eddcb7223b",
+      "thumbnail": "our-polaroid-project/events/event-d7eddcb7223b/photos/selected-c47a38ce698f5753957c.jpg",
+      "width": 408,
+      "height": 672
+    },
+    "event-6fb38d4d3027": {
+      "photoId": "selected-aca56680b2c10bb91405",
+      "sourceEventId": "event-6fb38d4d3027",
+      "thumbnail": "our-polaroid-project/events/event-6fb38d4d3027/photos/selected-aca56680b2c10bb91405.jpg",
+      "width": 408,
+      "height": 672
+    },
+    "event-e2f967d3b54c": {
+      "photoId": "selected-4edbee3535803b808913",
+      "sourceEventId": "event-e2f967d3b54c",
+      "thumbnail": "our-polaroid-project/events/event-e2f967d3b54c/photos/selected-4edbee3535803b808913.jpg",
+      "width": 421,
+      "height": 672
+    },
+    "event-18284b896391": {
+      "photoId": "selected-872b3aa7dfcdb8e5e853",
+      "sourceEventId": "event-18284b896391",
+      "thumbnail": "our-polaroid-project/events/event-18284b896391/photos/selected-872b3aa7dfcdb8e5e853.jpg",
+      "width": 423,
+      "height": 672
+    },
+    "event-1cdc1ecdfd4f": {
+      "photoId": "selected-042c97bcb71e1142e860",
+      "sourceEventId": "event-1cdc1ecdfd4f",
+      "thumbnail": "our-polaroid-project/events/event-1cdc1ecdfd4f/photos/selected-042c97bcb71e1142e860.jpg",
+      "width": 410,
+      "height": 672
+    },
+    "event-bca23e0c4ea9": {
+      "photoId": "selected-f75b6436a82ec7ebde0f",
+      "sourceEventId": "event-bca23e0c4ea9",
+      "thumbnail": "our-polaroid-project/events/event-bca23e0c4ea9/photos/selected-f75b6436a82ec7ebde0f.jpg",
+      "width": 408,
+      "height": 672
+    },
+    "event-a3087620aaa2": {
+      "photoId": "selected-97a0bbf9f2d83ce1c62b",
+      "sourceEventId": "event-a3087620aaa2",
+      "thumbnail": "our-polaroid-project/events/event-a3087620aaa2/photos/selected-97a0bbf9f2d83ce1c62b.jpg",
+      "width": 415,
+      "height": 672
+    },
+    "event-6b57285f605d": {
+      "photoId": "selected-45c7df7c0dbc6cae64a7",
+      "sourceEventId": "event-6b57285f605d",
+      "thumbnail": "our-polaroid-project/events/event-6b57285f605d/photos/selected-45c7df7c0dbc6cae64a7.jpg",
+      "width": 416,
+      "height": 672
+    },
+    "event-a7ac96fa465e": {
+      "photoId": "selected-a0c41d0ae5b8189e291c",
+      "sourceEventId": "event-a7ac96fa465e",
+      "thumbnail": "our-polaroid-project/events/event-a7ac96fa465e/photos/selected-a0c41d0ae5b8189e291c.jpg",
+      "width": 412,
+      "height": 672
+    },
+    "event-ed9faea9a573": {
+      "photoId": "selected-6bf749c2cabf7745f4c7",
+      "sourceEventId": "event-ed9faea9a573",
+      "thumbnail": "our-polaroid-project/events/event-ed9faea9a573/photos/selected-6bf749c2cabf7745f4c7.jpg",
+      "width": 412,
+      "height": 672
+    },
+    "event-fdf2b476b08a": {
+      "photoId": "selected-19b7e9558ae582b84189",
+      "sourceEventId": "event-fdf2b476b08a",
+      "thumbnail": "our-polaroid-project/events/event-fdf2b476b08a/photos/selected-19b7e9558ae582b84189.jpg",
+      "width": 417,
+      "height": 672
+    },
+    "event-7d846edf39e1": {
+      "photoId": "selected-38a7b36bdfc5e2dc4cda",
+      "sourceEventId": "event-7d846edf39e1",
+      "thumbnail": "our-polaroid-project/events/event-7d846edf39e1/photos/selected-38a7b36bdfc5e2dc4cda.jpg",
+      "width": 412,
+      "height": 672
+    },
+    "event-c1f6bda068c4": {
+      "photoId": "selected-bc4e3f104cf81c6d3dd2",
+      "sourceEventId": "event-c1f6bda068c4",
+      "thumbnail": "our-polaroid-project/events/event-c1f6bda068c4/photos/selected-bc4e3f104cf81c6d3dd2.jpg",
+      "width": 410,
+      "height": 672
+    },
+    "event-c4611157e940": {
+      "photoId": "selected-024a8c254ba795778e37",
+      "sourceEventId": "event-c4611157e940",
+      "thumbnail": "our-polaroid-project/events/event-c4611157e940/photos/selected-024a8c254ba795778e37.jpg",
+      "width": 409,
+      "height": 672
+    },
+    "event-c0bf1edce3a2": {
+      "photoId": "selected-2dd301fb37772f10113b",
+      "sourceEventId": "event-c0bf1edce3a2",
+      "thumbnail": "our-polaroid-project/events/event-c0bf1edce3a2/photos/selected-2dd301fb37772f10113b.jpg",
+      "width": 425,
+      "height": 672
+    },
+    "event-78bf0603a82c": {
+      "photoId": "selected-b232baea24f265fa0dc4",
+      "sourceEventId": "event-78bf0603a82c",
+      "thumbnail": "our-polaroid-project/events/event-78bf0603a82c/photos/selected-b232baea24f265fa0dc4.jpg",
+      "width": 410,
+      "height": 672
+    },
+    "event-b343c76bc7a7": {
+      "photoId": "selected-4f4b8c6e165f4bcf24b5",
+      "sourceEventId": "event-b343c76bc7a7",
+      "thumbnail": "our-polaroid-project/events/event-b343c76bc7a7/photos/selected-4f4b8c6e165f4bcf24b5.jpg",
+      "width": 408,
+      "height": 672
+    },
+    "event-59af015a4e5f": {
+      "photoId": "selected-89649c523b38781e3a14",
+      "sourceEventId": "event-59af015a4e5f",
+      "thumbnail": "our-polaroid-project/events/event-59af015a4e5f/photos/selected-89649c523b38781e3a14.jpg",
+      "width": 411,
+      "height": 672
+    },
+    "event-7275089b9b8a": {
+      "photoId": "selected-23d4aeb6d7f47b99114f",
+      "sourceEventId": "event-7275089b9b8a",
+      "thumbnail": "our-polaroid-project/events/event-7275089b9b8a/photos/selected-23d4aeb6d7f47b99114f.jpg",
+      "width": 412,
+      "height": 672
+    },
+    "event-1c58369cd188": {
+      "photoId": "selected-29b52bdb7013ab7e84af",
+      "sourceEventId": "event-1c58369cd188",
+      "thumbnail": "our-polaroid-project/events/event-1c58369cd188/photos/selected-29b52bdb7013ab7e84af.jpg",
+      "width": 418,
+      "height": 672
+    },
+    "event-f2ecebb9c81a": {
+      "photoId": "selected-d1e44bbb29efa12b116f",
+      "sourceEventId": "event-f2ecebb9c81a",
+      "thumbnail": "our-polaroid-project/events/event-f2ecebb9c81a/photos/selected-d1e44bbb29efa12b116f.jpg",
+      "width": 410,
+      "height": 672
+    },
+    "event-a67b6754b885": {
+      "photoId": "selected-626ad08d83107ac88298",
+      "sourceEventId": "event-a67b6754b885",
+      "thumbnail": "our-polaroid-project/events/event-a67b6754b885/photos/selected-626ad08d83107ac88298.jpg",
+      "width": 415,
+      "height": 672
+    },
+    "event-5ef8c7704ba8": {
+      "photoId": "selected-479405544f8c3a1f368b",
+      "sourceEventId": "event-5ef8c7704ba8",
+      "thumbnail": "our-polaroid-project/events/event-5ef8c7704ba8/photos/selected-479405544f8c3a1f368b.jpg",
+      "width": 415,
+      "height": 672
+    },
+    "event-a55c9062f39c": {
+      "photoId": "selected-341aa2d5e0424cb8f9f2",
+      "sourceEventId": "event-a55c9062f39c",
+      "thumbnail": "our-polaroid-project/events/event-a55c9062f39c/photos/selected-341aa2d5e0424cb8f9f2.jpg",
+      "width": 412,
+      "height": 672
+    },
+    "event-da0bff6f2ca8": {
+      "photoId": "selected-df73e33f6ca48825d22b",
+      "sourceEventId": "event-da0bff6f2ca8",
+      "thumbnail": "our-polaroid-project/events/event-da0bff6f2ca8/photos/selected-df73e33f6ca48825d22b.jpg",
+      "width": 413,
+      "height": 672
+    },
+    "event-67469f366e1b": {
+      "photoId": "selected-affece455dd5c411fca2",
+      "sourceEventId": "event-67469f366e1b",
+      "thumbnail": "our-polaroid-project/events/event-67469f366e1b/photos/selected-affece455dd5c411fca2.jpg",
+      "width": 414,
+      "height": 672
+    },
+    "event-9694f2041c38": {
+      "photoId": "selected-b9dc51d7e8f082354519",
+      "sourceEventId": "event-9694f2041c38",
+      "thumbnail": "our-polaroid-project/events/event-9694f2041c38/photos/selected-b9dc51d7e8f082354519.jpg",
+      "width": 413,
+      "height": 672
+    },
+    "event-a9b5166dfd9f": {
+      "photoId": "selected-a71d61f86ae2d133dbc9",
+      "sourceEventId": "event-a9b5166dfd9f",
+      "thumbnail": "our-polaroid-project/events/event-a9b5166dfd9f/photos/selected-a71d61f86ae2d133dbc9.jpg",
+      "width": 414,
+      "height": 672
+    },
+    "event-a48976b25e8d": {
+      "photoId": "selected-d82b0dc82b4f3b76fe1b",
+      "sourceEventId": "event-a48976b25e8d",
+      "thumbnail": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-d82b0dc82b4f3b76fe1b.jpg",
+      "width": 423,
+      "height": 672
+    },
+    "event-11ac5f1896d5": {
+      "photoId": "selected-82c615325e66b9c84a6d",
+      "sourceEventId": "event-11ac5f1896d5",
+      "thumbnail": "our-polaroid-project/events/event-11ac5f1896d5/photos/selected-82c615325e66b9c84a6d.jpg",
+      "width": 420,
+      "height": 672
+    },
+    "event-b95b331d4c6b": {
+      "photoId": "selected-aad5665cac715611ffe1",
+      "sourceEventId": "event-b95b331d4c6b",
+      "thumbnail": "our-polaroid-project/events/event-b95b331d4c6b/photos/selected-aad5665cac715611ffe1.jpg",
+      "width": 417,
+      "height": 672
+    },
+    "event-71b2630be681": {
+      "photoId": "selected-becbfbcb97583d098735",
+      "sourceEventId": "event-71b2630be681",
+      "thumbnail": "our-polaroid-project/events/event-71b2630be681/photos/selected-becbfbcb97583d098735.jpg",
+      "width": 417,
+      "height": 672
+    },
+    "event-e11148bc0178": {
+      "photoId": "selected-daad73011d04c3348f22",
+      "sourceEventId": "event-e11148bc0178",
+      "thumbnail": "our-polaroid-project/events/event-e11148bc0178/photos/selected-daad73011d04c3348f22.jpg",
+      "width": 412,
+      "height": 672
+    },
+    "event-594405b98b8f": {
+      "photoId": "selected-09118c9d8c9dfe6dab27",
+      "sourceEventId": "event-594405b98b8f",
+      "thumbnail": "our-polaroid-project/events/event-594405b98b8f/photos/selected-09118c9d8c9dfe6dab27.jpg",
+      "width": 416,
+      "height": 672
+    },
+    "event-9c8dbd6c8ee2": {
+      "photoId": "selected-084d3f4996fad17f9897",
+      "sourceEventId": "event-9c8dbd6c8ee2",
+      "thumbnail": "our-polaroid-project/events/event-9c8dbd6c8ee2/photos/selected-084d3f4996fad17f9897.jpg",
+      "width": 435,
+      "height": 672
+    },
+    "event-00c669f0e75a": {
+      "photoId": "selected-da54969ac5479b364e83",
+      "sourceEventId": "event-00c669f0e75a",
+      "thumbnail": "our-polaroid-project/events/event-00c669f0e75a/photos/selected-da54969ac5479b364e83.jpg",
+      "width": 416,
+      "height": 672
+    },
+    "event-31f06b8208a3": {
+      "photoId": "selected-31110f0e73d7fce2ecf4",
+      "sourceEventId": "event-31f06b8208a3",
+      "thumbnail": "our-polaroid-project/events/event-31f06b8208a3/photos/selected-31110f0e73d7fce2ecf4.jpg",
+      "width": 405,
+      "height": 672
+    },
+    "event-72adfa360448": {
+      "photoId": "selected-3442b475f0eaf05ce43b",
+      "sourceEventId": "event-72adfa360448",
+      "thumbnail": "our-polaroid-project/events/event-72adfa360448/photos/selected-3442b475f0eaf05ce43b.jpg",
+      "width": 417,
+      "height": 672
+    },
+    "event-f0da42950bf2": {
+      "photoId": "selected-76889eda41bb513a16c2",
+      "sourceEventId": "event-f0da42950bf2",
+      "thumbnail": "our-polaroid-project/events/event-f0da42950bf2/photos/selected-76889eda41bb513a16c2.jpg",
+      "width": 415,
+      "height": 672
+    },
+    "event-206861df6482": {
+      "photoId": "selected-a0e6e3ebbcb884cfadae",
+      "sourceEventId": "event-206861df6482",
+      "thumbnail": "our-polaroid-project/events/event-206861df6482/photos/selected-a0e6e3ebbcb884cfadae.jpg",
+      "width": 412,
+      "height": 672
+    },
+    "event-d32df8a80a1a": {
+      "photoId": "selected-c733e46c3234f36d00ae",
+      "sourceEventId": "event-d32df8a80a1a",
+      "thumbnail": "our-polaroid-project/events/event-d32df8a80a1a/photos/selected-c733e46c3234f36d00ae.jpg",
+      "width": 414,
+      "height": 672
+    },
+    "event-fd0e4fbba408": {
+      "photoId": "selected-7829e25f90889b29322b",
+      "sourceEventId": "event-fd0e4fbba408",
+      "thumbnail": "our-polaroid-project/events/event-fd0e4fbba408/photos/selected-7829e25f90889b29322b.jpg",
+      "width": 420,
+      "height": 672
+    },
+    "event-ee1278bdf1a2": {
+      "photoId": "selected-12e4720a7db691190ee1",
+      "sourceEventId": "event-ee1278bdf1a2",
+      "thumbnail": "our-polaroid-project/events/event-ee1278bdf1a2/photos/selected-12e4720a7db691190ee1.jpg",
+      "width": 429,
+      "height": 672
+    },
+    "event-0fad270dce63": {
+      "photoId": "selected-70a0f5247f833f0c2b0d",
+      "sourceEventId": "event-0fad270dce63",
+      "thumbnail": "our-polaroid-project/events/event-0fad270dce63/photos/selected-70a0f5247f833f0c2b0d.jpg",
+      "width": 428,
+      "height": 672
+    },
+    "event-d7af7107537d": {
+      "photoId": "selected-2908389b8ed30a441eee",
+      "sourceEventId": "event-d7af7107537d",
+      "thumbnail": "our-polaroid-project/events/event-d7af7107537d/photos/selected-2908389b8ed30a441eee.jpg",
+      "width": 410,
+      "height": 672
+    },
+    "coachella-2022": {
+      "photoId": "selected-aca56680b2c10bb91405",
+      "sourceEventId": "event-6fb38d4d3027",
+      "thumbnail": "our-polaroid-project/events/event-6fb38d4d3027/photos/selected-aca56680b2c10bb91405.jpg",
+      "width": 408,
+      "height": 672
+    },
+    "nft-la-2022": {
+      "photoId": "selected-a32a0698b9d889fbcf8e",
+      "sourceEventId": "event-206861df6482",
+      "thumbnail": "our-polaroid-project/events/event-206861df6482/photos/selected-a32a0698b9d889fbcf8e.jpg",
+      "width": 414,
+      "height": 672
+    },
+    "la-ola-de-amor-2026": {
+      "photoId": "8855ca399389dbbb4d87",
+      "sourceEventId": "la-ola-de-amor-2026",
+      "thumbnail": "https://loda-wedding-media.jonathanmlizardi.workers.dev/events/la-ola-de-amor-2026/thumbnail/8855ca399389dbbb4d87.webp",
+      "width": 294,
+      "height": 480
+    }
+  },
+  "approvalStatus": "owner-creative-approved"
+}
