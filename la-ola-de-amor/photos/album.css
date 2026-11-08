@@ -73,3 +73,24 @@
   .album-part-links a { justify-content: center; padding: 6px 2px; font-size: 11px; }
   .album-part + .album-part { margin-top: 32px; }
 }
+
+/* Section navigation owns one instant jump; decoded images retain their reserved ratio. */
+html.wedding-album-navigation {
+  scroll-behavior: auto;
+  scroll-padding-top: 0;
+  overflow-anchor: none;
+}
+.wedding-album-navigation .album-parts {
+  overflow-anchor: none;
+}
+
+/* LIVE 1: portrait film, with its full frame reserved before playback begins. */
+.wedding-film{max-width:380px;margin:0 auto;background:#071d38;color:#fff7e3}
+.film-caption{display:flex;align-items:baseline;justify-content:space-between;gap:15px;margin-bottom:12px}
+.film-caption h2{font:normal 23px/1.15 var(--og-serif);margin:0}
+.film-caption>span{max-width:135px;font:7px/1.6 var(--og-sans);letter-spacing:.08em;text-align:right;color:#d9c38d}
+.wedding-film video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:contain;background:#000}
+.wedding-film figcaption,.film-error{font:11px/1.6 var(--og-sans);color:#d4c6a7;margin:10px 0 0}
+.wedding-film figcaption a{display:inline-block;min-height:32px;padding-top:7px;text-underline-offset:3px}
+.film-error a{color:#fff7e3}
+@media(max-width:600px){.wedding-film{max-width:310px}.film-caption h2{font-size:22px}.keepsake-title{margin-bottom:20px}.wedding-film figcaption{font-size:10px}}
