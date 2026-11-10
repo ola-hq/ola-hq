@@ -3,7 +3,7 @@
   "events": [
     {
       "id": "event-7d846edf39e1",
-      "title": "Bash’s Halloween Party · 2022-10-22",
+      "title": "Halloween Bash",
       "route": "our-polaroid-project/events/event-7d846edf39e1/",
       "year": 2022,
       "date": "2022-10-22",
@@ -14,10 +14,9 @@
       "location": "",
       "description": "",
       "searchTerms": [
-        "Bash’s Halloween Party · 2022-10-22",
-        "Bash's Halloween Party 10-22-22",
+        "Halloween Bash",
+        "Halloween Bash 2022",
         "img20221205_19141933.jpg",
-        "img20221205_19155447.jpg",
         "img20221205_19175787.jpg",
         "img20221205_19185969.jpg",
         "img20221205_19200474.jpg",
@@ -49,7 +48,7 @@
       ],
       "coverId": "selected-8376786cf3f57991888e",
       "secondaryCoverId": null,
-      "photoCount": 30,
+      "photoCount": 29,
       "publicationStatus": "approved",
       "photos": [
         {
@@ -183,21 +182,6 @@
           "thumbnail": "our-polaroid-project/events/event-7d846edf39e1/photos/selected-232505387bdaf47e50cf.jpg",
           "display": "our-polaroid-project/events/event-7d846edf39e1/photos/selected-232505387bdaf47e50cf.jpg",
           "download": "our-polaroid-project/events/event-7d846edf39e1/photos/selected-232505387bdaf47e50cf.jpg",
-          "downloadLabel": "Download JPEG (672 px)",
-          "inlineLabel": "Open JPEG to save",
-          "publicationStatus": "approved"
-        },
-        {
-          "id": "selected-74cd3ef2f2e3ea698889",
-          "order": 10,
-          "frameNumber": 10,
-          "caption": "img20221205_19155447.jpg",
-          "originalFilename": "selected-74cd3ef2f2e3ea698889.jpg",
-          "width": 417,
-          "height": 672,
-          "thumbnail": "our-polaroid-project/events/event-7d846edf39e1/photos/selected-74cd3ef2f2e3ea698889.jpg",
-          "display": "our-polaroid-project/events/event-7d846edf39e1/photos/selected-74cd3ef2f2e3ea698889.jpg",
-          "download": "our-polaroid-project/events/event-7d846edf39e1/photos/selected-74cd3ef2f2e3ea698889.jpg",
           "downloadLabel": "Download JPEG (672 px)",
           "inlineLabel": "Open JPEG to save",
           "publicationStatus": "approved"
@@ -508,16 +492,16 @@
           "url": "our-polaroid-project/events/event-7d846edf39e1/downloads/event-7d846edf39e1.zip",
           "filename": "event-7d846edf39e1.zip",
           "label": "Album JPEGs · 672 px display copies",
-          "bytes": 1220885,
+          "bytes": 1193627,
           "publicationStatus": "approved"
         }
       ],
       "archive": true,
       "gallery": {
         "eyebrow": "OUR POLAROID WAVE · EVENTS",
-        "heading": "Bash’s Halloween Party · 2022-10-22",
+        "heading": "Halloween Bash",
         "emphasis": "A memory, kept.",
-        "coverLabel": "Bash’s Halloween Party · 2022-10-22",
+        "coverLabel": "Halloween Bash",
         "collectionLabel": "photographs",
         "gridLabel": "Event photographs",
         "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",

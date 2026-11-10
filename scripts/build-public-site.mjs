@@ -4,9 +4,11 @@ import { createHash } from 'node:crypto';
 import { join, relative, dirname } from 'node:path';
 import { tmpdir } from 'node:os';
 import { syncAnnouncements } from './festival-updates.mjs';
+import { validateEventsPublicExclusions } from './events-public-exclusions.mjs';
 
 if (execFileSync('git', ['status','--porcelain','--untracked-files=no'], {encoding:'utf8'}).trim()) throw new Error('Refusing a projection from uncommitted tracked changes');
 syncAnnouncements('.', {check:true});
+validateEventsPublicExclusions('.');
 const source = execFileSync('git', ['rev-parse','HEAD'], {encoding:'utf8'}).trim();
 const output = '.site';
 rmSync(output, {recursive:true, force:true});
@@ -17,6 +19,7 @@ try {
   execFileSync('git', ['archive','--format=tar','-o',archive,source]);
   execFileSync('tar', ['--no-same-owner','-xf',archive,'-C',output,'--exclude=.github','--exclude=scripts']);
 } finally { rmSync(archive, {force:true}); }
+validateEventsPublicExclusions(output);
 // Add one shared collector to every published HTML entrypoint, including archival galleries.
 // Source content stays unchanged; release hashes below cover the final published bytes.
 function addAnalytics(folder) {

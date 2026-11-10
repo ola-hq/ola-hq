@@ -7543,7 +7543,7 @@
     },
     {
       "id": "event-7d846edf39e1",
-      "title": "Bash’s Halloween Party · 2022-10-22",
+      "title": "Halloween Bash",
       "route": "our-polaroid-project/events/event-7d846edf39e1/",
       "year": 2022,
       "date": "2022-10-22",
@@ -7554,10 +7554,9 @@
       "location": "",
       "description": "",
       "searchTerms": [
-        "Bash’s Halloween Party · 2022-10-22",
-        "Bash's Halloween Party 10-22-22",
+        "Halloween Bash",
+        "Halloween Bash 2022",
         "img20221205_19141933.jpg",
-        "img20221205_19155447.jpg",
         "img20221205_19175787.jpg",
         "img20221205_19185969.jpg",
         "img20221205_19200474.jpg",
@@ -7589,7 +7588,7 @@
       ],
       "coverId": "selected-8376786cf3f57991888e",
       "secondaryCoverId": null,
-      "photoCount": 30,
+      "photoCount": 29,
       "publicationStatus": "approved",
       "photos": [
         {
@@ -7613,16 +7612,16 @@
           "url": "our-polaroid-project/events/event-7d846edf39e1/downloads/event-7d846edf39e1.zip",
           "filename": "event-7d846edf39e1.zip",
           "label": "Album JPEGs · 672 px display copies",
-          "bytes": 1220885,
+          "bytes": 1193627,
           "publicationStatus": "approved"
         }
       ],
       "archive": true,
       "gallery": {
         "eyebrow": "OUR POLAROID WAVE · EVENTS",
-        "heading": "Bash’s Halloween Party · 2022-10-22",
+        "heading": "Halloween Bash",
         "emphasis": "A memory, kept.",
-        "coverLabel": "Bash’s Halloween Party · 2022-10-22",
+        "coverLabel": "Halloween Bash",
         "collectionLabel": "photographs",
         "gridLabel": "Event photographs",
         "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",
@@ -10299,9 +10298,9 @@
   ],
   "archivePublication": {
     "publishedHistoricalGalleries": 60,
-    "publishedHistoricalPhotos": 2016,
+    "publishedHistoricalPhotos": 2015,
     "leafGalleryCount": 64,
-    "photoCount": 2334,
+    "photoCount": 2333,
     "parentEventCount": 2,
     "dayGalleryCount": 12,
     "standaloneGalleryCount": 52,
