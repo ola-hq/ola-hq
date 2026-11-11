@@ -18,7 +18,6 @@
         "Sammy's Birthday 11-18-22",
         "img20221205_20274368.jpg",
         "img20221205_20290063.jpg",
-        "img20221205_20301973.jpg",
         "img20221205_20312217.jpg",
         "img20221205_20324657.jpg",
         "img20221205_20341064.jpg",
@@ -32,7 +31,7 @@
       ],
       "coverId": "selected-cf38110350cab2cc9a19",
       "secondaryCoverId": null,
-      "photoCount": 13,
+      "photoCount": 12,
       "publicationStatus": "approved",
       "photos": [
         {
@@ -91,21 +90,6 @@
           "thumbnail": "our-polaroid-project/events/event-da0bff6f2ca8/photos/selected-82e0b584e652a0a4e1a7.jpg",
           "display": "our-polaroid-project/events/event-da0bff6f2ca8/photos/selected-82e0b584e652a0a4e1a7.jpg",
           "download": "our-polaroid-project/events/event-da0bff6f2ca8/photos/selected-82e0b584e652a0a4e1a7.jpg",
-          "downloadLabel": "Download JPEG (672 px)",
-          "inlineLabel": "Open JPEG to save",
-          "publicationStatus": "approved"
-        },
-        {
-          "id": "selected-791ddcc0424bf9888073",
-          "order": 5,
-          "frameNumber": 5,
-          "caption": "img20221205_20301973.jpg",
-          "originalFilename": "selected-791ddcc0424bf9888073.jpg",
-          "width": 433,
-          "height": 672,
-          "thumbnail": "our-polaroid-project/events/event-da0bff6f2ca8/photos/selected-791ddcc0424bf9888073.jpg",
-          "display": "our-polaroid-project/events/event-da0bff6f2ca8/photos/selected-791ddcc0424bf9888073.jpg",
-          "download": "our-polaroid-project/events/event-da0bff6f2ca8/photos/selected-791ddcc0424bf9888073.jpg",
           "downloadLabel": "Download JPEG (672 px)",
           "inlineLabel": "Open JPEG to save",
           "publicationStatus": "approved"
@@ -236,7 +220,7 @@
           "url": "our-polaroid-project/events/event-da0bff6f2ca8/downloads/event-da0bff6f2ca8.zip",
           "filename": "event-da0bff6f2ca8.zip",
           "label": "Album JPEGs · 672 px display copies",
-          "bytes": 512061,
+          "bytes": 470520,
           "publicationStatus": "approved"
         }
       ],

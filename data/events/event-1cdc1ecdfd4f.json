@@ -23,7 +23,6 @@
         "img20220321_23022326.jpg",
         "img20220321_23134977.jpg",
         "img20220321_23144918.jpg",
-        "img20220321_23170545.jpg",
         "img20220321_23180997.jpg",
         "img20220321_23222711.jpg",
         "img20220321_23243576.jpg",
@@ -41,7 +40,7 @@
       ],
       "coverId": "selected-08044dd9c1de17211d32",
       "secondaryCoverId": null,
-      "photoCount": 22,
+      "photoCount": 21,
       "publicationStatus": "approved",
       "photos": [
         {
@@ -240,21 +239,6 @@
           "publicationStatus": "approved"
         },
         {
-          "id": "selected-3f8951e60e8656e2f92f",
-          "order": 14,
-          "frameNumber": 26,
-          "caption": "img20220321_23170545.jpg",
-          "originalFilename": "selected-3f8951e60e8656e2f92f.jpg",
-          "width": 413,
-          "height": 672,
-          "thumbnail": "our-polaroid-project/events/event-1cdc1ecdfd4f/photos/selected-3f8951e60e8656e2f92f.jpg",
-          "display": "our-polaroid-project/events/event-1cdc1ecdfd4f/photos/selected-3f8951e60e8656e2f92f.jpg",
-          "download": "our-polaroid-project/events/event-1cdc1ecdfd4f/photos/selected-3f8951e60e8656e2f92f.jpg",
-          "downloadLabel": "Download JPEG (672 px)",
-          "inlineLabel": "Open JPEG to save",
-          "publicationStatus": "approved"
-        },
-        {
           "id": "selected-5e77719713e5d2e088bc",
           "order": 15,
           "frameNumber": 28,
@@ -380,7 +364,7 @@
           "url": "our-polaroid-project/events/event-1cdc1ecdfd4f/downloads/event-1cdc1ecdfd4f.zip",
           "filename": "event-1cdc1ecdfd4f.zip",
           "label": "Album JPEGs · 672 px display copies",
-          "bytes": 914589,
+          "bytes": 868351,
           "publicationStatus": "approved"
         }
       ],

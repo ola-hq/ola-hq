@@ -17,7 +17,6 @@
         "Smilesss × Chill Rx · NFT LA · 2022-03-27",
         "Smilesss x Chill Rx NFT LA 3-27-2022",
         "img20220402_01585098.jpg",
-        "img20220402_01595392.jpg",
         "img20220402_02005809.jpg",
         "img20220402_02020049.jpg",
         "img20220402_02031033.jpg",
@@ -29,7 +28,7 @@
       ],
       "coverId": "selected-d82b0dc82b4f3b76fe1b",
       "secondaryCoverId": null,
-      "photoCount": 10,
+      "photoCount": 9,
       "publicationStatus": "approved",
       "photos": [
         {
@@ -138,21 +137,6 @@
           "publicationStatus": "approved"
         },
         {
-          "id": "selected-81bf2ff5f38f4338ba65",
-          "order": 8,
-          "frameNumber": 8,
-          "caption": "img20220402_01595392.jpg",
-          "originalFilename": "selected-81bf2ff5f38f4338ba65.jpg",
-          "width": 411,
-          "height": 672,
-          "thumbnail": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-81bf2ff5f38f4338ba65.jpg",
-          "display": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-81bf2ff5f38f4338ba65.jpg",
-          "download": "our-polaroid-project/events/event-a48976b25e8d/photos/selected-81bf2ff5f38f4338ba65.jpg",
-          "downloadLabel": "Download JPEG (672 px)",
-          "inlineLabel": "Open JPEG to save",
-          "publicationStatus": "approved"
-        },
-        {
           "id": "selected-e14f9d17803f4f7756ee",
           "order": 9,
           "frameNumber": 9,
@@ -188,7 +172,7 @@
           "url": "our-polaroid-project/events/event-a48976b25e8d/downloads/event-a48976b25e8d.zip",
           "filename": "event-a48976b25e8d.zip",
           "label": "Album JPEGs · 672 px display copies",
-          "bytes": 390592,
+          "bytes": 348147,
           "publicationStatus": "approved"
         }
       ],

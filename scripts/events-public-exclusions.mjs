@@ -6,6 +6,15 @@ import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 
 export const readExclusionPolicy=()=>JSON.parse(readFileSync(new URL('./events-public-exclusions.json',import.meta.url),'utf8'));
+export function normalizeExclusionPolicy(policy){
+ if(policy?.schemaVersion!==2)return policy;
+ if(!Array.isArray(policy.albums)||!policy.albums.length)fail('missing approved album contracts');
+ const holds=policy.albums.flatMap(album=>{
+  if(!Array.isArray(album.excludedAssets)||!album.excludedAssets.length)fail('empty exclusion album');
+  return album.excludedAssets.map(asset=>({...album,...asset,state:'excluded'}));
+ });
+ return {schemaVersion:1,holds};
+}
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const fail=message=>{throw new Error('Events exclusion guard: '+message);};
 const equal=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
@@ -50,13 +59,14 @@ print(json.dumps({'zipFiles':zip_count}))
 
 export function validateEventsPublicExclusions(root='.',{policy=readExclusionPolicy()}={}){
  root=resolve(root);
+ policy=normalizeExclusionPolicy(policy);
  if(policy?.schemaVersion!==1||!Array.isArray(policy.holds)||!policy.holds.length)fail('missing or empty approved exclusion policy');
  const seen=new Set();
  for(const hold of policy.holds){
-  if(!/^event-[a-f0-9]+$/.test(hold.eventId)||!/^selected-[a-f0-9]+$/.test(hold.assetId)||seen.has(hold.assetId))fail('invalid or duplicate asset binding');
-  seen.add(hold.assetId);
+  if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(hold.eventId)||!/^[-_a-zA-Z0-9]{1,96}$/.test(hold.assetId)||seen.has(hold.eventId+'|'+hold.assetId))fail('invalid or duplicate asset binding');
+  seen.add(hold.eventId+'|'+hold.assetId);
   if(hold.state!=='excluded'||!hold.title||!Array.isArray(hold.knownPublicVariantSha256)||!hold.knownPublicVariantSha256.length||!hold.knownPublicVariantSha256.every(s=>/^[a-f0-9]{64}$/.test(s)))fail('invalid exclusion rule');
-  if(!Array.isArray(hold.retainedPhotos)||hold.retainedPhotos.length!==29||new Set(hold.retainedPhotos.map(p=>p.id)).size!==29||hold.retainedPhotos.some(p=>p.id===hold.assetId||!/^selected-[a-f0-9]+$/.test(p.id)||p.filename!==p.id+'.jpg'||!/^[a-f0-9]{64}$/.test(p.sha256)))fail('invalid retained photo contract');
+  if(!Array.isArray(hold.retainedPhotos)||!hold.retainedPhotos.length||new Set(hold.retainedPhotos.map(p=>p.id)).size!==hold.retainedPhotos.length||hold.retainedPhotos.some(p=>p.id===hold.assetId||!/^[-_a-zA-Z0-9]{1,96}$/.test(p.id)||p.filename!==p.id+'.jpg'||!/^[a-f0-9]{64}$/.test(p.sha256)))fail('invalid retained photo contract; an emptied album requires a separate withdrawal plan');
   const prefix='our-polaroid-project/events/'+hold.eventId+'/';
   if(hold.packagePath!==prefix+'downloads/'+hold.eventId+'.zip')fail('invalid package path');
  }
@@ -80,10 +90,16 @@ export function validateEventsPublicExclusions(root='.',{policy=readExclusionPol
     if(photo[kind]!==`our-polaroid-project/events/${hold.eventId}/photos/${contract.filename}`||hash(readFileSync(inside(root,photo[kind])))!==contract.sha256)fail('retained '+kind+' bytes/path changed: '+photo.id);
    }
   }
+  if(hold.directoryCover){
+   const contract=hold.directoryCover,{sha256,...approved}=contract;
+   const actual=JSON.parse(readFileSync(join(root,'data/events/portrait-covers.json'),'utf8')).covers?.[hold.eventId];
+   const retained=expected.find(p=>p.id===contract.photoId);
+   if(contract.sourceEventId!==hold.eventId||!retained||retained.sha256!==sha256||contract.thumbnail!==`our-polaroid-project/events/${hold.eventId}/photos/${retained.filename}`||!equal(actual,approved))fail('approved directory cover changed');
+  }
   const actual=files(join(root,'our-polaroid-project/events',hold.eventId,'photos')).map(p=>relative(join(root,'our-polaroid-project/events',hold.eventId,'photos'),p)).sort();
   if(!equal(actual,expected.map(p=>p.filename).sort()))fail('orphan or missing album media');
   const page=readFileSync(join(root,'our-polaroid-project/events',hold.eventId,'index.html'),'utf8');
-  if(!page.includes('<title>'+hold.title+' · Our Polaroid Wave</title>')||!page.includes(hold.title+' · October 22, 2022 · 29 photographs.'))fail('album HTML title/description mismatch');
+  if(!page.includes('<title>'+hold.title+' · Our Polaroid Wave</title>')||!page.includes(expected.length+' photographs.'))fail('album HTML title/description mismatch');
  }
  const totals=index.archivePublication;
  const photoCount=e=>e.photoCount??e.photos?.length??0;

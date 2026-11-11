@@ -21,9 +21,7 @@
         "img20220427_18555456.jpg",
         "img20220427_18565554.jpg",
         "img20220427_18582275.jpg",
-        "img20220427_18593453.jpg",
         "img20220427_19004492.jpg",
-        "img20220427_19014854.jpg",
         "img20220427_19024978.jpg",
         "img20220427_19052656.jpg",
         "img20220427_19063261.jpg",
@@ -82,24 +80,19 @@
         "img20220427_20325548.jpg",
         "img20220427_20342070.jpg",
         "img20220427_20352036.jpg",
-        "img20220427_20362126.jpg",
         "img20220427_20374612.jpg",
         "img20220427_20390328.jpg",
         "img20220427_20412129.jpg",
         "img20220427_20421999.jpg",
         "img20220427_20432652.jpg",
         "img20220427_20442666.jpg",
-        "img20220427_20461573.jpg",
-        "img20220427_20474741.jpg",
-        "img20220427_20485085.jpg",
         "img20220427_20515554.jpg",
-        "img20220427_21012485.jpg",
         "img20220427_21033804.jpg",
         "img20220427_21044670.jpg"
       ],
       "coverId": "selected-88b970808e59b6f623a6",
       "secondaryCoverId": null,
-      "photoCount": 80,
+      "photoCount": 73,
       "publicationStatus": "approved",
       "photos": [
         {
@@ -223,21 +216,6 @@
           "publicationStatus": "approved"
         },
         {
-          "id": "selected-eae009fd7f727d74e20e",
-          "order": 9,
-          "frameNumber": 11,
-          "caption": "img20220427_21012485.jpg",
-          "originalFilename": "selected-eae009fd7f727d74e20e.jpg",
-          "width": 411,
-          "height": 672,
-          "thumbnail": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-eae009fd7f727d74e20e.jpg",
-          "display": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-eae009fd7f727d74e20e.jpg",
-          "download": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-eae009fd7f727d74e20e.jpg",
-          "downloadLabel": "Download JPEG (672 px)",
-          "inlineLabel": "Open JPEG to save",
-          "publicationStatus": "approved"
-        },
-        {
           "id": "selected-99809f1b7fa5047b305e",
           "order": 10,
           "frameNumber": 12,
@@ -328,21 +306,6 @@
           "publicationStatus": "approved"
         },
         {
-          "id": "selected-c2ebefab61503fc9ea07",
-          "order": 16,
-          "frameNumber": 18,
-          "caption": "img20220427_18593453.jpg",
-          "originalFilename": "selected-c2ebefab61503fc9ea07.jpg",
-          "width": 415,
-          "height": 672,
-          "thumbnail": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-c2ebefab61503fc9ea07.jpg",
-          "display": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-c2ebefab61503fc9ea07.jpg",
-          "download": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-c2ebefab61503fc9ea07.jpg",
-          "downloadLabel": "Download JPEG (672 px)",
-          "inlineLabel": "Open JPEG to save",
-          "publicationStatus": "approved"
-        },
-        {
           "id": "selected-4a568df7e762b26cf738",
           "order": 17,
           "frameNumber": 19,
@@ -368,21 +331,6 @@
           "thumbnail": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-9ed54aed1233c884c085.jpg",
           "display": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-9ed54aed1233c884c085.jpg",
           "download": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-9ed54aed1233c884c085.jpg",
-          "downloadLabel": "Download JPEG (672 px)",
-          "inlineLabel": "Open JPEG to save",
-          "publicationStatus": "approved"
-        },
-        {
-          "id": "selected-8d299f94df16176ec245",
-          "order": 19,
-          "frameNumber": 21,
-          "caption": "img20220427_20362126.jpg",
-          "originalFilename": "selected-8d299f94df16176ec245.jpg",
-          "width": 414,
-          "height": 672,
-          "thumbnail": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-8d299f94df16176ec245.jpg",
-          "display": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-8d299f94df16176ec245.jpg",
-          "download": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-8d299f94df16176ec245.jpg",
           "downloadLabel": "Download JPEG (672 px)",
           "inlineLabel": "Open JPEG to save",
           "publicationStatus": "approved"
@@ -518,21 +466,6 @@
           "thumbnail": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-a708a4b2328df96f4b51.jpg",
           "display": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-a708a4b2328df96f4b51.jpg",
           "download": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-a708a4b2328df96f4b51.jpg",
-          "downloadLabel": "Download JPEG (672 px)",
-          "inlineLabel": "Open JPEG to save",
-          "publicationStatus": "approved"
-        },
-        {
-          "id": "selected-032574a5f8d324016cec",
-          "order": 29,
-          "frameNumber": 31,
-          "caption": "img20220427_20461573.jpg",
-          "originalFilename": "selected-032574a5f8d324016cec.jpg",
-          "width": 414,
-          "height": 672,
-          "thumbnail": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-032574a5f8d324016cec.jpg",
-          "display": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-032574a5f8d324016cec.jpg",
-          "download": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-032574a5f8d324016cec.jpg",
           "downloadLabel": "Download JPEG (672 px)",
           "inlineLabel": "Open JPEG to save",
           "publicationStatus": "approved"
@@ -713,21 +646,6 @@
           "thumbnail": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-5713ef3bcb346d0292b7.jpg",
           "display": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-5713ef3bcb346d0292b7.jpg",
           "download": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-5713ef3bcb346d0292b7.jpg",
-          "downloadLabel": "Download JPEG (672 px)",
-          "inlineLabel": "Open JPEG to save",
-          "publicationStatus": "approved"
-        },
-        {
-          "id": "selected-b5fb8a5b7faca49a224f",
-          "order": 42,
-          "frameNumber": 44,
-          "caption": "img20220427_20474741.jpg",
-          "originalFilename": "selected-b5fb8a5b7faca49a224f.jpg",
-          "width": 417,
-          "height": 672,
-          "thumbnail": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-b5fb8a5b7faca49a224f.jpg",
-          "display": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-b5fb8a5b7faca49a224f.jpg",
-          "download": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-b5fb8a5b7faca49a224f.jpg",
           "downloadLabel": "Download JPEG (672 px)",
           "inlineLabel": "Open JPEG to save",
           "publicationStatus": "approved"
@@ -1213,21 +1131,6 @@
           "publicationStatus": "approved"
         },
         {
-          "id": "selected-68601239a0da61f66c7e",
-          "order": 75,
-          "frameNumber": 78,
-          "caption": "img20220427_19014854.jpg",
-          "originalFilename": "selected-68601239a0da61f66c7e.jpg",
-          "width": 416,
-          "height": 672,
-          "thumbnail": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-68601239a0da61f66c7e.jpg",
-          "display": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-68601239a0da61f66c7e.jpg",
-          "download": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-68601239a0da61f66c7e.jpg",
-          "downloadLabel": "Download JPEG (672 px)",
-          "inlineLabel": "Open JPEG to save",
-          "publicationStatus": "approved"
-        },
-        {
           "id": "selected-ca01608b4aacb52b2d67",
           "order": 76,
           "frameNumber": 79,
@@ -1238,21 +1141,6 @@
           "thumbnail": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-ca01608b4aacb52b2d67.jpg",
           "display": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-ca01608b4aacb52b2d67.jpg",
           "download": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-ca01608b4aacb52b2d67.jpg",
-          "downloadLabel": "Download JPEG (672 px)",
-          "inlineLabel": "Open JPEG to save",
-          "publicationStatus": "approved"
-        },
-        {
-          "id": "selected-f7ad25677862dbc38900",
-          "order": 77,
-          "frameNumber": 80,
-          "caption": "img20220427_20485085.jpg",
-          "originalFilename": "selected-f7ad25677862dbc38900.jpg",
-          "width": 412,
-          "height": 672,
-          "thumbnail": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-f7ad25677862dbc38900.jpg",
-          "display": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-f7ad25677862dbc38900.jpg",
-          "download": "our-polaroid-project/events/event-91e9a50f9352/photos/selected-f7ad25677862dbc38900.jpg",
           "downloadLabel": "Download JPEG (672 px)",
           "inlineLabel": "Open JPEG to save",
           "publicationStatus": "approved"
@@ -1308,7 +1196,7 @@
           "url": "our-polaroid-project/events/event-91e9a50f9352/downloads/event-91e9a50f9352.zip",
           "filename": "event-91e9a50f9352.zip",
           "label": "Album JPEGs · 672 px display copies",
-          "bytes": 3779767,
+          "bytes": 3433028,
           "publicationStatus": "approved"
         }
       ],

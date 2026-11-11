@@ -21,9 +21,6 @@
         "img20220427_21205388.jpg",
         "img20220427_21220314.jpg",
         "img20220427_21230398.jpg",
-        "img20220427_21240605.jpg",
-        "img20220427_21251072.jpg",
-        "img20220427_21264971.jpg",
         "img20220427_21275132.jpg",
         "img20220427_21285262.jpg",
         "img20220427_21300941.jpg",
@@ -55,7 +52,7 @@
       ],
       "coverId": "selected-f75b6436a82ec7ebde0f",
       "secondaryCoverId": null,
-      "photoCount": 36,
+      "photoCount": 33,
       "publicationStatus": "approved",
       "photos": [
         {
@@ -179,21 +176,6 @@
           "publicationStatus": "approved"
         },
         {
-          "id": "selected-4db3ba505e88aa06f860",
-          "order": 9,
-          "frameNumber": 9,
-          "caption": "img20220427_21251072.jpg",
-          "originalFilename": "selected-4db3ba505e88aa06f860.jpg",
-          "width": 417,
-          "height": 672,
-          "thumbnail": "our-polaroid-project/events/event-bca23e0c4ea9/photos/selected-4db3ba505e88aa06f860.jpg",
-          "display": "our-polaroid-project/events/event-bca23e0c4ea9/photos/selected-4db3ba505e88aa06f860.jpg",
-          "download": "our-polaroid-project/events/event-bca23e0c4ea9/photos/selected-4db3ba505e88aa06f860.jpg",
-          "downloadLabel": "Download JPEG (672 px)",
-          "inlineLabel": "Open JPEG to save",
-          "publicationStatus": "approved"
-        },
-        {
           "id": "selected-0bcad6b4629fe42ad44d",
           "order": 10,
           "frameNumber": 10,
@@ -299,21 +281,6 @@
           "publicationStatus": "approved"
         },
         {
-          "id": "selected-18a219d9a94588c80cbe",
-          "order": 17,
-          "frameNumber": 17,
-          "caption": "img20220427_21240605.jpg",
-          "originalFilename": "selected-18a219d9a94588c80cbe.jpg",
-          "width": 408,
-          "height": 672,
-          "thumbnail": "our-polaroid-project/events/event-bca23e0c4ea9/photos/selected-18a219d9a94588c80cbe.jpg",
-          "display": "our-polaroid-project/events/event-bca23e0c4ea9/photos/selected-18a219d9a94588c80cbe.jpg",
-          "download": "our-polaroid-project/events/event-bca23e0c4ea9/photos/selected-18a219d9a94588c80cbe.jpg",
-          "downloadLabel": "Download JPEG (672 px)",
-          "inlineLabel": "Open JPEG to save",
-          "publicationStatus": "approved"
-        },
-        {
           "id": "selected-e69a1c898be13df67e2a",
           "order": 18,
           "frameNumber": 18,
@@ -414,21 +381,6 @@
           "thumbnail": "our-polaroid-project/events/event-bca23e0c4ea9/photos/selected-fae113998988ac8c172f.jpg",
           "display": "our-polaroid-project/events/event-bca23e0c4ea9/photos/selected-fae113998988ac8c172f.jpg",
           "download": "our-polaroid-project/events/event-bca23e0c4ea9/photos/selected-fae113998988ac8c172f.jpg",
-          "downloadLabel": "Download JPEG (672 px)",
-          "inlineLabel": "Open JPEG to save",
-          "publicationStatus": "approved"
-        },
-        {
-          "id": "selected-942da0d6ce4fa37703c9",
-          "order": 25,
-          "frameNumber": 25,
-          "caption": "img20220427_21264971.jpg",
-          "originalFilename": "selected-942da0d6ce4fa37703c9.jpg",
-          "width": 415,
-          "height": 672,
-          "thumbnail": "our-polaroid-project/events/event-bca23e0c4ea9/photos/selected-942da0d6ce4fa37703c9.jpg",
-          "display": "our-polaroid-project/events/event-bca23e0c4ea9/photos/selected-942da0d6ce4fa37703c9.jpg",
-          "download": "our-polaroid-project/events/event-bca23e0c4ea9/photos/selected-942da0d6ce4fa37703c9.jpg",
           "downloadLabel": "Download JPEG (672 px)",
           "inlineLabel": "Open JPEG to save",
           "publicationStatus": "approved"
@@ -604,7 +556,7 @@
           "url": "our-polaroid-project/events/event-bca23e0c4ea9/downloads/event-bca23e0c4ea9.zip",
           "filename": "event-bca23e0c4ea9.zip",
           "label": "Album JPEGs · 672 px display copies",
-          "bytes": 1651523,
+          "bytes": 1493017,
           "publicationStatus": "approved"
         }
       ],
