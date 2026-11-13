@@ -2,9 +2,17 @@
   "account": "ourpolaroidproj",
   "source": "https://letterboxd.com/ourpolaroidproj/rss/",
   "scope": "recent_public_diary_entries_not_complete_library",
-  "checkedAt": "2026-11-13T00:32:03.384117Z",
+  "checkedAt": "2026-11-13T15:27:26.225671Z",
   "status": "ok",
   "entries": [
+    {
+      "title": "Ebenezer",
+      "year": "2026",
+      "score": 3.0,
+      "watchedDate": "2026-11-12",
+      "activityDate": "2026-11-13",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/ebenezer-2026/"
+    },
     {
       "title": "Ali G: Who Iz I?",
       "year": "2026",
@@ -334,5 +342,5 @@
       "url": "https://letterboxd.com/ourpolaroidproj/film/couture/"
     }
   ],
-  "totalEntries": 41
+  "totalEntries": 42
 }
