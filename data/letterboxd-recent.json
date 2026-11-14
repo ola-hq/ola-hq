@@ -2,9 +2,25 @@
   "account": "ourpolaroidproj",
   "source": "https://letterboxd.com/ourpolaroidproj/rss/",
   "scope": "recent_public_diary_entries_not_complete_library",
-  "checkedAt": "2026-11-14T00:21:54.519691Z",
+  "checkedAt": "2026-11-14T14:14:14.269861Z",
   "status": "ok",
   "entries": [
+    {
+      "title": "Gail Daughtry and the Celebrity Sex Pass",
+      "year": "2026",
+      "score": 2.0,
+      "watchedDate": "2026-11-10",
+      "activityDate": "2026-11-14",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/gail-daughtry-and-the-celebrity-sex-pass/"
+    },
+    {
+      "title": "Carolina Caroline",
+      "year": "2025",
+      "score": 3.0,
+      "watchedDate": "2026-11-13",
+      "activityDate": "2026-11-14",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/carolina-caroline/"
+    },
     {
       "title": "Ebenezer",
       "year": "2026",
@@ -342,5 +358,5 @@
       "url": "https://letterboxd.com/ourpolaroidproj/film/couture/"
     }
   ],
-  "totalEntries": 42
+  "totalEntries": 44
 }
