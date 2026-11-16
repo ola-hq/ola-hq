@@ -2,9 +2,17 @@
   "account": "ourpolaroidproj",
   "source": "https://letterboxd.com/ourpolaroidproj/rss/",
   "scope": "recent_public_diary_entries_not_complete_library",
-  "checkedAt": "2026-11-15T23:24:41.130311Z",
+  "checkedAt": "2026-11-16T17:06:34.126906Z",
   "status": "ok",
   "entries": [
+    {
+      "title": "Weekend at Bernie's",
+      "year": "1989",
+      "score": 3.0,
+      "watchedDate": "2026-11-15",
+      "activityDate": "2026-11-16",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/weekend-at-bernies/"
+    },
     {
       "title": "Gail Daughtry and the Celebrity Sex Pass",
       "year": "2026",
@@ -348,14 +356,6 @@
       "watchedDate": "2026-06-30",
       "activityDate": "2026-07-01",
       "url": "https://letterboxd.com/ourpolaroidproj/film/minions-monsters-2026/"
-    },
-    {
-      "title": "Couture",
-      "year": "2025",
-      "score": 3.5,
-      "watchedDate": "2026-06-30",
-      "activityDate": "2026-07-01",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/couture/"
     }
   ],
   "totalEntries": 44
