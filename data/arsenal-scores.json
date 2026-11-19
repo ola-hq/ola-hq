@@ -1,7 +1,7 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-11-19T09:29:18.375Z",
+    "fetched_at": "2026-11-19T18:39:41.732Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
@@ -6856,64 +6856,49 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879242/coventry-city-everton",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "9",
           "away": "6"
         },
         {
-          "label": "Yellow Cards",
-          "home": "1",
-          "away": "1"
-        },
-        {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Offsides",
-          "home": "1",
-          "away": "0"
-        },
-        {
-          "label": "Corner Kicks",
+          "label": "wonCorners",
           "home": "2",
           "away": "2"
         },
         {
-          "label": "Saves",
-          "home": "3",
-          "away": "4"
+          "label": "goalAssists",
+          "home": "2",
+          "away": "0"
         },
         {
-          "label": "Possession",
+          "label": "possessionPct",
           "home": "49.8",
           "away": "50.2"
         },
         {
-          "label": "SHOTS",
-          "home": "16",
-          "away": "15"
+          "label": "shotAssists",
+          "home": "13",
+          "away": "12"
         },
         {
-          "label": "ON GOAL",
+          "label": "shotsOnTarget",
           "home": "7",
           "away": "4"
         },
         {
-          "label": "On Target %",
-          "home": "0.4",
-          "away": "0.3"
+          "label": "totalGoals",
+          "home": "3",
+          "away": "1"
         },
         {
-          "label": "Penalty Goals",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Penalty Kicks Taken",
-          "home": "0",
-          "away": "0"
+          "label": "totalShots",
+          "home": "16",
+          "away": "15"
         }
       ],
       "events": [
@@ -7045,64 +7030,49 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878760/hull-city-arsenal",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "6",
           "away": "15"
         },
         {
-          "label": "Yellow Cards",
-          "home": "0",
-          "away": "5"
-        },
-        {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Offsides",
-          "home": "4",
-          "away": "1"
-        },
-        {
-          "label": "Corner Kicks",
+          "label": "wonCorners",
           "home": "7",
           "away": "4"
         },
         {
-          "label": "Saves",
-          "home": "2",
-          "away": "9"
+          "label": "goalAssists",
+          "home": "0",
+          "away": "0"
         },
         {
-          "label": "Possession",
+          "label": "possessionPct",
           "home": "66.9",
           "away": "33.1"
         },
         {
-          "label": "SHOTS",
-          "home": "21",
-          "away": "7"
+          "label": "shotAssists",
+          "home": "17",
+          "away": "5"
         },
         {
-          "label": "ON GOAL",
+          "label": "shotsOnTarget",
           "home": "10",
           "away": "2"
         },
         {
-          "label": "On Target %",
-          "home": "0.5",
-          "away": "0.3"
-        },
-        {
-          "label": "Penalty Goals",
-          "home": "0",
+          "label": "totalGoals",
+          "home": "1",
           "away": "0"
         },
         {
-          "label": "Penalty Kicks Taken",
-          "home": "0",
-          "away": "0"
+          "label": "totalShots",
+          "home": "21",
+          "away": "7"
         }
       ],
       "events": [
@@ -7186,64 +7156,49 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879241/newcastle-united-fulham",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "9",
           "away": "13"
         },
         {
-          "label": "Yellow Cards",
-          "home": "0",
-          "away": "2"
-        },
-        {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Offsides",
-          "home": "3",
-          "away": "1"
-        },
-        {
-          "label": "Corner Kicks",
+          "label": "wonCorners",
           "home": "3",
           "away": "3"
         },
         {
-          "label": "Saves",
-          "home": "4",
-          "away": "5"
+          "label": "goalAssists",
+          "home": "0",
+          "away": "0"
         },
         {
-          "label": "Possession",
+          "label": "possessionPct",
           "home": "57.9",
           "away": "42.1"
         },
         {
-          "label": "SHOTS",
-          "home": "11",
-          "away": "9"
+          "label": "shotAssists",
+          "home": "6",
+          "away": "7"
         },
         {
-          "label": "ON GOAL",
+          "label": "shotsOnTarget",
           "home": "5",
           "away": "5"
         },
         {
-          "label": "On Target %",
-          "home": "0.5",
-          "away": "0.6"
+          "label": "totalGoals",
+          "home": "1",
+          "away": "1"
         },
         {
-          "label": "Penalty Goals",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Penalty Kicks Taken",
-          "home": "0",
-          "away": "0"
+          "label": "totalShots",
+          "home": "11",
+          "away": "9"
         }
       ],
       "events": [
@@ -7443,64 +7398,49 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879243/liverpool-crystal-palace",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "10",
           "away": "18"
         },
         {
-          "label": "Yellow Cards",
-          "home": "2",
-          "away": "4"
-        },
-        {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Offsides",
-          "home": "3",
-          "away": "0"
-        },
-        {
-          "label": "Corner Kicks",
+          "label": "wonCorners",
           "home": "4",
           "away": "7"
         },
         {
-          "label": "Saves",
-          "home": "5",
-          "away": "6"
+          "label": "goalAssists",
+          "home": "0",
+          "away": "3"
         },
         {
-          "label": "Possession",
+          "label": "possessionPct",
           "home": "53.1",
           "away": "46.9"
         },
         {
-          "label": "SHOTS",
-          "home": "19",
-          "away": "20"
+          "label": "shotAssists",
+          "home": "15",
+          "away": "16"
         },
         {
-          "label": "ON GOAL",
+          "label": "shotsOnTarget",
           "home": "7",
           "away": "8"
         },
         {
-          "label": "On Target %",
-          "home": "0.4",
-          "away": "0.4"
-        },
-        {
-          "label": "Penalty Goals",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Penalty Kicks Taken",
+          "label": "totalGoals",
           "home": "1",
-          "away": "0"
+          "away": "3"
+        },
+        {
+          "label": "totalShots",
+          "home": "19",
+          "away": "20"
         }
       ],
       "events": [
@@ -7667,64 +7607,49 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879239/chelsea-sunderland",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "17",
           "away": "8"
         },
         {
-          "label": "Yellow Cards",
-          "home": "5",
-          "away": "4"
-        },
-        {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Offsides",
-          "home": "2",
-          "away": "0"
-        },
-        {
-          "label": "Corner Kicks",
+          "label": "wonCorners",
           "home": "2",
           "away": "2"
         },
         {
-          "label": "Saves",
-          "home": "4",
-          "away": "1"
-        },
-        {
-          "label": "Possession",
-          "home": "31.3",
-          "away": "68.7"
-        },
-        {
-          "label": "SHOTS",
-          "home": "9",
-          "away": "10"
-        },
-        {
-          "label": "ON GOAL",
-          "home": "2",
-          "away": "4"
-        },
-        {
-          "label": "On Target %",
-          "home": "0.2",
-          "away": "0.4"
-        },
-        {
-          "label": "Penalty Goals",
+          "label": "goalAssists",
           "home": "0",
           "away": "0"
         },
         {
-          "label": "Penalty Kicks Taken",
+          "label": "possessionPct",
+          "home": "31.3",
+          "away": "68.7"
+        },
+        {
+          "label": "shotAssists",
+          "home": "5",
+          "away": "7"
+        },
+        {
+          "label": "shotsOnTarget",
+          "home": "2",
+          "away": "4"
+        },
+        {
+          "label": "totalGoals",
           "home": "1",
           "away": "0"
+        },
+        {
+          "label": "totalShots",
+          "home": "9",
+          "away": "10"
         }
       ],
       "events": [
@@ -10082,59 +10007,15 @@
       "lineups": null
     },
     {
-      "id": "pl-201",
-      "kickoff": "2027-01-16T15:00:00.000Z",
+      "id": "pl-205",
+      "kickoff": "2027-01-16T12:30:00.000Z",
       "home": {
-        "name": "Aston Villa",
-        "short": "AVL"
+        "name": "Coventry City",
+        "short": "COV"
       },
       "away": {
-        "name": "Man Utd",
-        "short": "MUN"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-202",
-      "kickoff": "2027-01-16T15:00:00.000Z",
-      "home": {
-        "name": "Bournemouth",
-        "short": "BOU"
-      },
-      "away": {
-        "name": "Ipswich Town",
-        "short": "IPS"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-203",
-      "kickoff": "2027-01-16T15:00:00.000Z",
-      "home": {
-        "name": "Brentford",
-        "short": "BRE"
-      },
-      "away": {
-        "name": "Brighton",
-        "short": "BHA"
+        "name": "Everton",
+        "short": "EVE"
       },
       "home_score": null,
       "away_score": null,
@@ -10157,28 +10038,6 @@
       "away": {
         "name": "Sunderland",
         "short": "SUN"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-205",
-      "kickoff": "2027-01-16T15:00:00.000Z",
-      "home": {
-        "name": "Coventry City",
-        "short": "COV"
-      },
-      "away": {
-        "name": "Everton",
-        "short": "EVE"
       },
       "home_score": null,
       "away_score": null,
@@ -10280,8 +10139,52 @@
       "lineups": null
     },
     {
+      "id": "pl-201",
+      "kickoff": "2027-01-16T17:30:00.000Z",
+      "home": {
+        "name": "Aston Villa",
+        "short": "AVL"
+      },
+      "away": {
+        "name": "Man Utd",
+        "short": "MUN"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-202",
+      "kickoff": "2027-01-17T14:00:00.000Z",
+      "home": {
+        "name": "Bournemouth",
+        "short": "BOU"
+      },
+      "away": {
+        "name": "Ipswich Town",
+        "short": "IPS"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
       "id": "pl-210",
-      "kickoff": "2027-01-16T15:00:00.000Z",
+      "kickoff": "2027-01-17T16:30:00.000Z",
       "home": {
         "name": "Spurs",
         "short": "TOT"
@@ -10302,81 +10205,15 @@
       "lineups": null
     },
     {
-      "id": "pl-211",
-      "kickoff": "2027-01-23T15:00:00.000Z",
+      "id": "pl-203",
+      "kickoff": "2027-01-18T20:00:00.000Z",
       "home": {
-        "name": "Arsenal",
-        "short": "ARS"
-      },
-      "away": {
-        "name": "Newcastle",
-        "short": "NEW"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": "Emirates Stadium",
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-212",
-      "kickoff": "2027-01-23T15:00:00.000Z",
-      "home": {
-        "name": "Brighton",
-        "short": "BHA"
-      },
-      "away": {
-        "name": "Man City",
-        "short": "MCI"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-213",
-      "kickoff": "2027-01-23T15:00:00.000Z",
-      "home": {
-        "name": "Crystal Palace",
-        "short": "CRY"
-      },
-      "away": {
-        "name": "Spurs",
-        "short": "TOT"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-214",
-      "kickoff": "2027-01-23T15:00:00.000Z",
-      "home": {
-        "name": "Everton",
-        "short": "EVE"
-      },
-      "away": {
         "name": "Brentford",
         "short": "BRE"
+      },
+      "away": {
+        "name": "Brighton",
+        "short": "BHA"
       },
       "home_score": null,
       "away_score": null,
@@ -10434,15 +10271,37 @@
       "lineups": null
     },
     {
-      "id": "pl-217",
-      "kickoff": "2027-01-23T15:00:00.000Z",
+      "id": "pl-211",
+      "kickoff": "2027-01-23T17:30:00.000Z",
       "home": {
-        "name": "Leeds",
-        "short": "LEE"
+        "name": "Arsenal",
+        "short": "ARS"
       },
       "away": {
-        "name": "Chelsea",
-        "short": "CHE"
+        "name": "Newcastle",
+        "short": "NEW"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": "Emirates Stadium",
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-212",
+      "kickoff": "2027-01-23T20:00:00.000Z",
+      "home": {
+        "name": "Brighton",
+        "short": "BHA"
+      },
+      "away": {
+        "name": "Man City",
+        "short": "MCI"
       },
       "home_score": null,
       "away_score": null,
@@ -10456,15 +10315,37 @@
       "lineups": null
     },
     {
-      "id": "pl-218",
-      "kickoff": "2027-01-23T15:00:00.000Z",
+      "id": "pl-213",
+      "kickoff": "2027-01-24T14:00:00.000Z",
       "home": {
-        "name": "Man Utd",
-        "short": "MUN"
+        "name": "Crystal Palace",
+        "short": "CRY"
       },
       "away": {
-        "name": "Liverpool",
-        "short": "LIV"
+        "name": "Spurs",
+        "short": "TOT"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-214",
+      "kickoff": "2027-01-24T14:00:00.000Z",
+      "home": {
+        "name": "Everton",
+        "short": "EVE"
+      },
+      "away": {
+        "name": "Brentford",
+        "short": "BRE"
       },
       "home_score": null,
       "away_score": null,
@@ -10479,7 +10360,7 @@
     },
     {
       "id": "pl-219",
-      "kickoff": "2027-01-23T15:00:00.000Z",
+      "kickoff": "2027-01-24T14:00:00.000Z",
       "home": {
         "name": "Nott'm Forest",
         "short": "NFO"
@@ -10501,7 +10382,7 @@
     },
     {
       "id": "pl-220",
-      "kickoff": "2027-01-23T15:00:00.000Z",
+      "kickoff": "2027-01-24T14:00:00.000Z",
       "home": {
         "name": "Sunderland",
         "short": "SUN"
@@ -10509,6 +10390,72 @@
       "away": {
         "name": "Coventry City",
         "short": "COV"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-218",
+      "kickoff": "2027-01-24T16:30:00.000Z",
+      "home": {
+        "name": "Man Utd",
+        "short": "MUN"
+      },
+      "away": {
+        "name": "Liverpool",
+        "short": "LIV"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-217",
+      "kickoff": "2027-01-25T20:00:00.000Z",
+      "home": {
+        "name": "Leeds",
+        "short": "LEE"
+      },
+      "away": {
+        "name": "Chelsea",
+        "short": "CHE"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-227",
+      "kickoff": "2027-01-30T12:30:00.000Z",
+      "home": {
+        "name": "Liverpool",
+        "short": "LIV"
+      },
+      "away": {
+        "name": "Everton",
+        "short": "EVE"
       },
       "home_score": null,
       "away_score": null,
@@ -10544,160 +10491,6 @@
       "lineups": null
     },
     {
-      "id": "pl-222",
-      "kickoff": "2027-01-30T15:00:00.000Z",
-      "home": {
-        "name": "Bournemouth",
-        "short": "BOU"
-      },
-      "away": {
-        "name": "Fulham",
-        "short": "FUL"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-223",
-      "kickoff": "2027-01-30T15:00:00.000Z",
-      "home": {
-        "name": "Brentford",
-        "short": "BRE"
-      },
-      "away": {
-        "name": "Man Utd",
-        "short": "MUN"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-224",
-      "kickoff": "2027-01-30T15:00:00.000Z",
-      "home": {
-        "name": "Chelsea",
-        "short": "CHE"
-      },
-      "away": {
-        "name": "Nott'm Forest",
-        "short": "NFO"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-225",
-      "kickoff": "2027-01-30T15:00:00.000Z",
-      "home": {
-        "name": "Coventry City",
-        "short": "COV"
-      },
-      "away": {
-        "name": "Leeds",
-        "short": "LEE"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-226",
-      "kickoff": "2027-01-30T15:00:00.000Z",
-      "home": {
-        "name": "Hull City",
-        "short": "HUL"
-      },
-      "away": {
-        "name": "Crystal Palace",
-        "short": "CRY"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-227",
-      "kickoff": "2027-01-30T15:00:00.000Z",
-      "home": {
-        "name": "Liverpool",
-        "short": "LIV"
-      },
-      "away": {
-        "name": "Everton",
-        "short": "EVE"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
-      "id": "pl-228",
-      "kickoff": "2027-01-30T15:00:00.000Z",
-      "home": {
-        "name": "Man City",
-        "short": "MCI"
-      },
-      "away": {
-        "name": "Arsenal",
-        "short": "ARS"
-      },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
-      "minute": null,
-      "venue": null,
-      "competition": "Premier League",
-      "match_url": null,
-      "stats": [],
-      "events": [],
-      "lineups": null
-    },
-    {
       "id": "pl-229",
       "kickoff": "2027-01-30T15:00:00.000Z",
       "home": {
@@ -10720,8 +10513,96 @@
       "lineups": null
     },
     {
+      "id": "pl-224",
+      "kickoff": "2027-01-30T17:30:00.000Z",
+      "home": {
+        "name": "Chelsea",
+        "short": "CHE"
+      },
+      "away": {
+        "name": "Nott'm Forest",
+        "short": "NFO"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-222",
+      "kickoff": "2027-01-31T14:00:00.000Z",
+      "home": {
+        "name": "Bournemouth",
+        "short": "BOU"
+      },
+      "away": {
+        "name": "Fulham",
+        "short": "FUL"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-225",
+      "kickoff": "2027-01-31T14:00:00.000Z",
+      "home": {
+        "name": "Coventry City",
+        "short": "COV"
+      },
+      "away": {
+        "name": "Leeds",
+        "short": "LEE"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-226",
+      "kickoff": "2027-01-31T14:00:00.000Z",
+      "home": {
+        "name": "Hull City",
+        "short": "HUL"
+      },
+      "away": {
+        "name": "Crystal Palace",
+        "short": "CRY"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
       "id": "pl-230",
-      "kickoff": "2027-01-30T15:00:00.000Z",
+      "kickoff": "2027-01-31T14:00:00.000Z",
       "home": {
         "name": "Spurs",
         "short": "TOT"
@@ -10729,6 +10610,50 @@
       "away": {
         "name": "Sunderland",
         "short": "SUN"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-228",
+      "kickoff": "2027-01-31T16:30:00.000Z",
+      "home": {
+        "name": "Man City",
+        "short": "MCI"
+      },
+      "away": {
+        "name": "Arsenal",
+        "short": "ARS"
+      },
+      "home_score": null,
+      "away_score": null,
+      "status": "pre",
+      "minute": null,
+      "venue": null,
+      "competition": "Premier League",
+      "match_url": null,
+      "stats": [],
+      "events": [],
+      "lineups": null
+    },
+    {
+      "id": "pl-223",
+      "kickoff": "2027-02-01T20:00:00.000Z",
+      "home": {
+        "name": "Brentford",
+        "short": "BRE"
+      },
+      "away": {
+        "name": "Man Utd",
+        "short": "MUN"
       },
       "home_score": null,
       "away_score": null,
