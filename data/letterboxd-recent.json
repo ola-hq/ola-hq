@@ -2,9 +2,17 @@
   "account": "ourpolaroidproj",
   "source": "https://letterboxd.com/ourpolaroidproj/rss/",
   "scope": "recent_public_diary_entries_not_complete_library",
-  "checkedAt": "2026-11-18T16:30:04.175180Z",
+  "checkedAt": "2026-11-19T01:16:01.287717Z",
   "status": "ok",
   "entries": [
+    {
+      "title": "Victorian Psycho",
+      "year": "2026",
+      "score": 4.0,
+      "watchedDate": "2026-11-17",
+      "activityDate": "2026-11-19",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/victorian-psycho/"
+    },
     {
       "title": "Weekend at Bernie's",
       "year": "1989",
@@ -348,14 +356,6 @@
       "watchedDate": "2026-07-11",
       "activityDate": "2026-07-14",
       "url": "https://letterboxd.com/ourpolaroidproj/film/moana/"
-    },
-    {
-      "title": "Minions & Monsters",
-      "year": "2026",
-      "score": 3.0,
-      "watchedDate": "2026-06-30",
-      "activityDate": "2026-07-01",
-      "url": "https://letterboxd.com/ourpolaroidproj/film/minions-monsters-2026/"
     }
   ],
   "totalEntries": 44
