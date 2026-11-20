@@ -2,9 +2,25 @@
   "account": "ourpolaroidproj",
   "source": "https://letterboxd.com/ourpolaroidproj/rss/",
   "scope": "recent_public_diary_entries_not_complete_library",
-  "checkedAt": "2026-11-20T01:19:16.988043Z",
+  "checkedAt": "2026-11-20T16:12:52.003078Z",
   "status": "ok",
   "entries": [
+    {
+      "title": "The Hunger Games: Sunrise on the Reaping",
+      "year": "2026",
+      "score": 5.0,
+      "watchedDate": "2026-11-19",
+      "activityDate": "2026-11-20",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/the-hunger-games-sunrise-on-the-reaping/"
+    },
+    {
+      "title": "Club Kid",
+      "year": "2026",
+      "score": 5.0,
+      "watchedDate": "2026-11-19",
+      "activityDate": "2026-11-20",
+      "url": "https://letterboxd.com/ourpolaroidproj/film/club-kid/"
+    },
     {
       "title": "Victorian Psycho",
       "year": "2026",
@@ -358,5 +374,5 @@
       "url": "https://letterboxd.com/ourpolaroidproj/film/moana/"
     }
   ],
-  "totalEntries": 44
+  "totalEntries": 46
 }
