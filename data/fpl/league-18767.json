@@ -2,7 +2,7 @@
   "meta": {
     "schema": "ola-fpl-draft-v1",
     "league_id": 18767,
-    "fetched_at": "2026-11-20T11:49:09.632Z",
+    "fetched_at": "2026-11-20T20:19:28.298Z",
     "source": "draft.premierleague.com",
     "renewal_hints": [
       "is_renewed=true"
@@ -7126,7 +7126,7 @@
       "team": 6,
       "total_points": 20,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 29,
@@ -7170,7 +7170,7 @@
       "team": 2,
       "total_points": 18,
       "event_points": 0,
-      "status": "d"
+      "status": "i"
     },
     {
       "id": 33,
@@ -7401,7 +7401,7 @@
       "team": 2,
       "total_points": 40,
       "event_points": 2,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 54,
@@ -7742,7 +7742,7 @@
       "team": 4,
       "total_points": 11,
       "event_points": 1,
-      "status": "d"
+      "status": "i"
     },
     {
       "id": 85,
@@ -7808,7 +7808,7 @@
       "team": 4,
       "total_points": 9,
       "event_points": 0,
-      "status": "d"
+      "status": "i"
     },
     {
       "id": 91,
@@ -7918,7 +7918,7 @@
       "team": 4,
       "total_points": 6,
       "event_points": 0,
-      "status": "i"
+      "status": "d"
     },
     {
       "id": 101,
@@ -7951,7 +7951,7 @@
       "team": 4,
       "total_points": 0,
       "event_points": 0,
-      "status": "d"
+      "status": "i"
     },
     {
       "id": 104,
@@ -8435,7 +8435,7 @@
       "team": 19,
       "total_points": 3,
       "event_points": 0,
-      "status": "a"
+      "status": "i"
     },
     {
       "id": 148,
@@ -8479,7 +8479,7 @@
       "team": 6,
       "total_points": 24,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 152,
@@ -8567,7 +8567,7 @@
       "team": 6,
       "total_points": 14,
       "event_points": 3,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 160,
@@ -9964,7 +9964,7 @@
       "team": 11,
       "total_points": 48,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 287,
@@ -10393,7 +10393,7 @@
       "team": 16,
       "total_points": 0,
       "event_points": 0,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 326,
@@ -10426,7 +10426,7 @@
       "team": 5,
       "total_points": 5,
       "event_points": 0,
-      "status": "i"
+      "status": "a"
     },
     {
       "id": 329,
@@ -10734,7 +10734,7 @@
       "team": 14,
       "total_points": 43,
       "event_points": 4,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 357,
@@ -10745,7 +10745,7 @@
       "team": 14,
       "total_points": 4,
       "event_points": 0,
-      "status": "i"
+      "status": "d"
     },
     {
       "id": 358,
@@ -11097,7 +11097,7 @@
       "team": 15,
       "total_points": 22,
       "event_points": 1,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 390,
@@ -11119,7 +11119,7 @@
       "team": 15,
       "total_points": 44,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 392,
@@ -11141,7 +11141,7 @@
       "team": 15,
       "total_points": 18,
       "event_points": 1,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 394,
@@ -11251,7 +11251,7 @@
       "team": 19,
       "total_points": 10,
       "event_points": 0,
-      "status": "i"
+      "status": "a"
     },
     {
       "id": 404,
@@ -11449,7 +11449,7 @@
       "team": 16,
       "total_points": 2,
       "event_points": -1,
-      "status": "a"
+      "status": "d"
     },
     {
       "id": 422,
@@ -12472,7 +12472,7 @@
       "team": 19,
       "total_points": 24,
       "event_points": 1,
-      "status": "d"
+      "status": "i"
     },
     {
       "id": 515,
@@ -12538,7 +12538,7 @@
       "team": 19,
       "total_points": 6,
       "event_points": 0,
-      "status": "i"
+      "status": "a"
     },
     {
       "id": 521,
@@ -13264,7 +13264,7 @@
       "team": 11,
       "total_points": 34,
       "event_points": 3,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 587,
@@ -13539,7 +13539,7 @@
       "team": 2,
       "total_points": 13,
       "event_points": 0,
-      "status": "d"
+      "status": "a"
     },
     {
       "id": 612,
