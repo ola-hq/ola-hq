@@ -1,7 +1,7 @@
 {
   "meta": {
     "schema": "arsenal-wave-scores-v1",
-    "fetched_at": "2026-11-21T12:34:34.593Z",
+    "fetched_at": "2026-11-21T19:46:03.808Z",
     "refresh_strategy": "scheduled",
     "refresh_target_minutes": 15,
     "primary_source": "https://fantasy.premierleague.com/api/fixtures/",
@@ -6584,7 +6584,7 @@
       "away_score": 1,
       "status": "post",
       "minute": null,
-      "venue": "Anfield",
+      "venue": null,
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879246/arsenal-liverpool",
       "stats": [
@@ -6856,64 +6856,49 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879242/coventry-city-everton",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "9",
           "away": "6"
         },
         {
-          "label": "Yellow Cards",
-          "home": "1",
-          "away": "1"
-        },
-        {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Offsides",
-          "home": "1",
-          "away": "0"
-        },
-        {
-          "label": "Corner Kicks",
+          "label": "wonCorners",
           "home": "2",
           "away": "2"
         },
         {
-          "label": "Saves",
-          "home": "3",
-          "away": "4"
+          "label": "goalAssists",
+          "home": "2",
+          "away": "0"
         },
         {
-          "label": "Possession",
+          "label": "possessionPct",
           "home": "49.8",
           "away": "50.2"
         },
         {
-          "label": "SHOTS",
-          "home": "16",
-          "away": "15"
+          "label": "shotAssists",
+          "home": "13",
+          "away": "12"
         },
         {
-          "label": "ON GOAL",
+          "label": "shotsOnTarget",
           "home": "7",
           "away": "4"
         },
         {
-          "label": "On Target %",
-          "home": "0.4",
-          "away": "0.3"
+          "label": "totalGoals",
+          "home": "3",
+          "away": "1"
         },
         {
-          "label": "Penalty Goals",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Penalty Kicks Taken",
-          "home": "0",
-          "away": "0"
+          "label": "totalShots",
+          "home": "16",
+          "away": "15"
         }
       ],
       "events": [
@@ -7045,64 +7030,49 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878760/hull-city-arsenal",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "6",
           "away": "15"
         },
         {
-          "label": "Yellow Cards",
-          "home": "0",
-          "away": "5"
-        },
-        {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Offsides",
-          "home": "4",
-          "away": "1"
-        },
-        {
-          "label": "Corner Kicks",
+          "label": "wonCorners",
           "home": "7",
           "away": "4"
         },
         {
-          "label": "Saves",
-          "home": "2",
-          "away": "9"
+          "label": "goalAssists",
+          "home": "0",
+          "away": "0"
         },
         {
-          "label": "Possession",
+          "label": "possessionPct",
           "home": "66.9",
           "away": "33.1"
         },
         {
-          "label": "SHOTS",
-          "home": "21",
-          "away": "7"
+          "label": "shotAssists",
+          "home": "17",
+          "away": "5"
         },
         {
-          "label": "ON GOAL",
+          "label": "shotsOnTarget",
           "home": "10",
           "away": "2"
         },
         {
-          "label": "On Target %",
-          "home": "0.5",
-          "away": "0.3"
-        },
-        {
-          "label": "Penalty Goals",
-          "home": "0",
+          "label": "totalGoals",
+          "home": "1",
           "away": "0"
         },
         {
-          "label": "Penalty Kicks Taken",
-          "home": "0",
-          "away": "0"
+          "label": "totalShots",
+          "home": "21",
+          "away": "7"
         }
       ],
       "events": [
@@ -7186,64 +7156,49 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879241/newcastle-united-fulham",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "9",
           "away": "13"
         },
         {
-          "label": "Yellow Cards",
-          "home": "0",
-          "away": "2"
-        },
-        {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Offsides",
-          "home": "3",
-          "away": "1"
-        },
-        {
-          "label": "Corner Kicks",
+          "label": "wonCorners",
           "home": "3",
           "away": "3"
         },
         {
-          "label": "Saves",
-          "home": "4",
-          "away": "5"
+          "label": "goalAssists",
+          "home": "0",
+          "away": "0"
         },
         {
-          "label": "Possession",
+          "label": "possessionPct",
           "home": "57.9",
           "away": "42.1"
         },
         {
-          "label": "SHOTS",
-          "home": "11",
-          "away": "9"
+          "label": "shotAssists",
+          "home": "6",
+          "away": "7"
         },
         {
-          "label": "ON GOAL",
+          "label": "shotsOnTarget",
           "home": "5",
           "away": "5"
         },
         {
-          "label": "On Target %",
-          "home": "0.5",
-          "away": "0.6"
+          "label": "totalGoals",
+          "home": "1",
+          "away": "1"
         },
         {
-          "label": "Penalty Goals",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Penalty Kicks Taken",
-          "home": "0",
-          "away": "0"
+          "label": "totalShots",
+          "home": "11",
+          "away": "9"
         }
       ],
       "events": [
@@ -7443,64 +7398,49 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879243/liverpool-crystal-palace",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "10",
           "away": "18"
         },
         {
-          "label": "Yellow Cards",
-          "home": "2",
-          "away": "4"
-        },
-        {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Offsides",
-          "home": "3",
-          "away": "0"
-        },
-        {
-          "label": "Corner Kicks",
+          "label": "wonCorners",
           "home": "4",
           "away": "7"
         },
         {
-          "label": "Saves",
-          "home": "5",
-          "away": "6"
+          "label": "goalAssists",
+          "home": "0",
+          "away": "3"
         },
         {
-          "label": "Possession",
+          "label": "possessionPct",
           "home": "53.1",
           "away": "46.9"
         },
         {
-          "label": "SHOTS",
-          "home": "19",
-          "away": "20"
+          "label": "shotAssists",
+          "home": "15",
+          "away": "16"
         },
         {
-          "label": "ON GOAL",
+          "label": "shotsOnTarget",
           "home": "7",
           "away": "8"
         },
         {
-          "label": "On Target %",
-          "home": "0.4",
-          "away": "0.4"
-        },
-        {
-          "label": "Penalty Goals",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Penalty Kicks Taken",
+          "label": "totalGoals",
           "home": "1",
-          "away": "0"
+          "away": "3"
+        },
+        {
+          "label": "totalShots",
+          "home": "19",
+          "away": "20"
         }
       ],
       "events": [
@@ -7667,64 +7607,49 @@
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879239/chelsea-sunderland",
       "stats": [
         {
-          "label": "Fouls",
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
           "home": "17",
           "away": "8"
         },
         {
-          "label": "Yellow Cards",
-          "home": "5",
-          "away": "4"
-        },
-        {
-          "label": "Red Cards",
-          "home": "0",
-          "away": "0"
-        },
-        {
-          "label": "Offsides",
-          "home": "2",
-          "away": "0"
-        },
-        {
-          "label": "Corner Kicks",
+          "label": "wonCorners",
           "home": "2",
           "away": "2"
         },
         {
-          "label": "Saves",
-          "home": "4",
-          "away": "1"
-        },
-        {
-          "label": "Possession",
-          "home": "31.3",
-          "away": "68.7"
-        },
-        {
-          "label": "SHOTS",
-          "home": "9",
-          "away": "10"
-        },
-        {
-          "label": "ON GOAL",
-          "home": "2",
-          "away": "4"
-        },
-        {
-          "label": "On Target %",
-          "home": "0.2",
-          "away": "0.4"
-        },
-        {
-          "label": "Penalty Goals",
+          "label": "goalAssists",
           "home": "0",
           "away": "0"
         },
         {
-          "label": "Penalty Kicks Taken",
+          "label": "possessionPct",
+          "home": "31.3",
+          "away": "68.7"
+        },
+        {
+          "label": "shotAssists",
+          "home": "5",
+          "away": "7"
+        },
+        {
+          "label": "shotsOnTarget",
+          "home": "2",
+          "away": "4"
+        },
+        {
+          "label": "totalGoals",
           "home": "1",
           "away": "0"
+        },
+        {
+          "label": "totalShots",
+          "home": "9",
+          "away": "10"
         }
       ],
       "events": [
@@ -7892,15 +7817,46 @@
         "name": "Fulham",
         "short": "FUL"
       },
-      "home_score": null,
-      "away_score": null,
-      "status": "in",
-      "minute": 0,
+      "home_score": 1,
+      "away_score": 1,
+      "status": "post",
+      "minute": null,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Anderson (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Muniz (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Donnarumma (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Bassey (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Iwobi (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Charles (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -7914,15 +7870,82 @@
         "name": "Sunderland",
         "short": "SUN"
       },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
+      "home_score": 0,
+      "away_score": 0,
+      "status": "post",
       "minute": null,
       "venue": "Villa Park",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401878756/sunderland-aston-villa",
-      "stats": [],
-      "events": [],
+      "stats": [
+        {
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
+          "home": "15",
+          "away": "20"
+        },
+        {
+          "label": "wonCorners",
+          "home": "7",
+          "away": "2"
+        },
+        {
+          "label": "goalAssists",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "possessionPct",
+          "home": "72.5",
+          "away": "27.5"
+        },
+        {
+          "label": "shotAssists",
+          "home": "16",
+          "away": "5"
+        },
+        {
+          "label": "shotsOnTarget",
+          "home": "7",
+          "away": "1"
+        },
+        {
+          "label": "totalGoals",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "totalShots",
+          "home": "19",
+          "away": "7"
+        }
+      ],
+      "events": [
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Maatsen (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Goretzka (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Hume (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · N.Angulo (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -7936,15 +7959,46 @@
         "name": "Nott'm Forest",
         "short": "NFO"
       },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
+      "home_score": 2,
+      "away_score": 0,
+      "status": "post",
       "minute": null,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Kluivert (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Evanilson (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Scott (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Delap (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Muñoz (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Murillo (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -7958,15 +8012,102 @@
         "name": "Leeds",
         "short": "LEE"
       },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
+      "home_score": 1,
+      "away_score": 4,
+      "status": "post",
       "minute": null,
       "venue": "Stamford Bridge",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879236/leeds-united-chelsea",
-      "stats": [],
-      "events": [],
+      "stats": [
+        {
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
+          "home": "6",
+          "away": "16"
+        },
+        {
+          "label": "wonCorners",
+          "home": "3",
+          "away": "2"
+        },
+        {
+          "label": "goalAssists",
+          "home": "1",
+          "away": "2"
+        },
+        {
+          "label": "possessionPct",
+          "home": "57.1",
+          "away": "42.9"
+        },
+        {
+          "label": "shotAssists",
+          "home": "11",
+          "away": "14"
+        },
+        {
+          "label": "shotsOnTarget",
+          "home": "3",
+          "away": "8"
+        },
+        {
+          "label": "totalGoals",
+          "home": "1",
+          "away": "4"
+        },
+        {
+          "label": "totalShots",
+          "home": "14",
+          "away": "21"
+        }
+      ],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Emegha (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Okafor ×2 (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Aaronson (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Calvert-Lewin (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Lavia (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Bogle (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Gudmundsson (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Longstaff (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -7980,15 +8121,102 @@
         "name": "Crystal Palace",
         "short": "CRY"
       },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
+      "home_score": 3,
+      "away_score": 2,
+      "status": "post",
       "minute": null,
       "venue": "Coventry Building Society Arena",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879235/crystal-palace-coventry-city",
-      "stats": [],
-      "events": [],
+      "stats": [
+        {
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
+          "home": "12",
+          "away": "14"
+        },
+        {
+          "label": "wonCorners",
+          "home": "4",
+          "away": "6"
+        },
+        {
+          "label": "goalAssists",
+          "home": "2",
+          "away": "2"
+        },
+        {
+          "label": "possessionPct",
+          "home": "41.7",
+          "away": "58.3"
+        },
+        {
+          "label": "shotAssists",
+          "home": "8",
+          "away": "12"
+        },
+        {
+          "label": "shotsOnTarget",
+          "home": "7",
+          "away": "5"
+        },
+        {
+          "label": "totalGoals",
+          "home": "3",
+          "away": "2"
+        },
+        {
+          "label": "totalShots",
+          "home": "11",
+          "away": "14"
+        }
+      ],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Sakamoto (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Awoniyi (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Yeremy (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Strand Larsen (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Own goal",
+          "description": "Own goal · McNeil (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Grimes (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Wharton (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Yeremy (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -8002,15 +8230,51 @@
         "name": "Ipswich Town",
         "short": "IPS"
       },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
+      "home_score": 2,
+      "away_score": 0,
+      "status": "post",
       "minute": null,
       "venue": null,
       "competition": "Premier League",
       "match_url": null,
       "stats": [],
-      "events": [],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Solanke (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Williams-Barnett (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Kudus (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Maddison (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Fernandes (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Williams-Barnett (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Diop (Away)"
+        }
+      ],
       "lineups": null
     },
     {
@@ -8024,15 +8288,112 @@
         "name": "Arsenal",
         "short": "ARS"
       },
-      "home_score": null,
-      "away_score": null,
-      "status": "pre",
+      "home_score": 2,
+      "away_score": 2,
+      "status": "post",
       "minute": null,
       "venue": "St. James' Park",
       "competition": "Premier League",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/401879232/arsenal-newcastle-united",
-      "stats": [],
-      "events": [],
+      "stats": [
+        {
+          "label": "appearances",
+          "home": "0",
+          "away": "0"
+        },
+        {
+          "label": "foulsCommitted",
+          "home": "19",
+          "away": "7"
+        },
+        {
+          "label": "wonCorners",
+          "home": "6",
+          "away": "3"
+        },
+        {
+          "label": "goalAssists",
+          "home": "2",
+          "away": "2"
+        },
+        {
+          "label": "possessionPct",
+          "home": "33.6",
+          "away": "66.4"
+        },
+        {
+          "label": "shotAssists",
+          "home": "12",
+          "away": "11"
+        },
+        {
+          "label": "shotsOnTarget",
+          "home": "3",
+          "away": "4"
+        },
+        {
+          "label": "totalGoals",
+          "home": "2",
+          "away": "2"
+        },
+        {
+          "label": "totalShots",
+          "home": "12",
+          "away": "13"
+        }
+      ],
+      "events": [
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Thiaw (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Barnes (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Eze (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Goal",
+          "description": "Goal · Madueke (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Burn (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Barnes (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Dedić (Home)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Rice (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Madueke (Away)"
+        },
+        {
+          "minute": null,
+          "type": "Yellow card",
+          "description": "Yellow card · Gyökeres (Away)"
+        }
+      ],
       "lineups": null
     },
     {
