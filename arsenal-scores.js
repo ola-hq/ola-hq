@@ -1,3 +1,4 @@
+import {refreshScores} from './football-live.mjs?v=manual-football-1';
 
 (() => {
 'use strict';
@@ -25,10 +26,10 @@ function selectedGames(){
 }
 function freshness(){
  const ts=state.meta?.fetched_at,age=Date.now()-Date.parse(ts),recent=Number.isFinite(age)&&age>=-300000&&age<25*60000;
- const live=recent&&state.matches.some(m=>m.status==='in'),dot=document.querySelector('.ars-score-sync-dot');
- $('ars-scores-freshness').textContent=!state.ok?'SCORE FEED OFFLINE':live?'IN PLAY · SOURCE-SYNCED':recent?'RECENT SCORE SNAPSHOT':'CACHED SCORE SNAPSHOT';
+ const live=Boolean(state.meta?.direct_checked_at)&&state.matches.some(m=>m.status==='in'&&day(m.kickoff)===state.meta.checked_date),dot=document.querySelector('.ars-score-sync-dot');
+ $('ars-scores-freshness').textContent=!state.ok?'SCORE FEED OFFLINE':state.meta?.direct_checked_at?'MATCHDAY CHECKED ON DEMAND':'SAVED SCORE SNAPSHOT';
  const ageText=!Number.isFinite(age)?'unknown':age<60000?'just now':age<3600000?Math.floor(age/60000)+' min ago':age<86400000?Math.floor(age/3600000)+' hr ago':dated(ts);
- $('ars-scores-update').textContent=state.ok?'Last checked '+ageText+' · '+(state.meta?.refresh_target_minutes||15)+' min sync target':'Official fixtures linked below';
+ $('ars-scores-update').textContent=state.ok?(state.meta?.direct_checked_at?'Checked '+dated(state.meta.checked_date+'T12:00:00')+' at '+clock(state.meta.direct_checked_at)+' · ESPN · other dates use saved data':'Saved '+ageText+' · refresh a matchday when you need it'):'Official fixtures linked below';
  dot?.classList.toggle('is-current',recent&&!live);dot?.classList.toggle('is-live',live);
  const n=state.matches.filter(m=>m.status==='in').length;
  $('ars-live-count').hidden=!n;$('ars-live-count').textContent=String(n);
@@ -58,7 +59,7 @@ function details(){
  $('ars-details-heading').textContent=m.home.name+' vs '+m.away.name;
  $('ars-details-subtitle').textContent=dated(m.kickoff)+' · '+clock(m.kickoff)+' · '+(m.venue||'Premier League');
  $('ars-details-score').innerHTML='<span class="ars-details-team">'+esc(m.home.name)+'</span><strong>'+esc(score(m))+'</strong><span class="ars-details-team">'+esc(m.away.name)+'</span>';
- $('ars-details-source').textContent=m.stats?.length?'Verified statistics':'Official fixture feed';
+ $('ars-details-source').textContent=m.source==='espn'?'ESPN match feed':m.stats?.length?'Saved match statistics':'Saved fixture feed';
  $('ars-details-link').href=detailURL(m);
  $('ars-details-link').textContent=link(m.match_url)?'Open full match centre ↗':'See official fixtures ↗';
  document.querySelectorAll('[data-detail-tab]').forEach(b=>{const a=b.dataset.detailTab===state.detail;b.classList.toggle('is-active',a);b.setAttribute('aria-pressed',String(a))});
@@ -80,12 +81,12 @@ function details(){
   panel.innerHTML=m.lineups&&(Array.isArray(m.lineups.home)||Array.isArray(m.lineups.away))?'<div class="ars-lineup-side"><strong>'+esc(m.home.name)+'</strong><p>'+esc((m.lineups.home||[]).join(' · ')||'Pending')+'</p></div><div class="ars-lineup-side"><strong>'+esc(m.away.name)+'</strong><p>'+esc((m.lineups.away||[]).join(' · ')||'Pending')+'</p></div>':'<p>Starting XI information is not available in the source for this fixture.</p>';
  }
 }
-async function refresh(){
- try{const r=await fetch('data/arsenal-scores.json',{cache:'no-store'});if(!r.ok)throw Error('Score feed '+r.status);const d=await r.json();if(!Array.isArray(d.matches)||!d.meta?.fetched_at)throw Error('Invalid snapshot');
+async function refresh(manual=false){
+ try{let d;if(manual){d=await refreshScores({matches:state.matches,meta:state.meta},state.date||day(new Date().toISOString()));state.filter='all';}else{const r=await fetch('data/arsenal-scores.json',{cache:'no-store'});if(!r.ok)throw Error('Score feed '+r.status);d=await r.json();}if(!Array.isArray(d.matches)||!d.meta?.fetched_at)throw Error('Invalid snapshot');
  state.matches=d.matches.filter(m=>m&&typeof m.id==='string'&&m.home?.name&&m.away?.name&&Number.isFinite(Date.parse(m.kickoff))).sort((a,b)=>Date.parse(a.kickoff)-Date.parse(b.kickoff));
  state.meta=d.meta;state.ok=true;
  const days=matchdays();if(!state.date){const today=day(new Date().toISOString());state.date=days.find(x=>x>=today)||days[days.length-1]||today}
- }catch{if(!state.matches.length)state.ok=false}
+ }catch{if(!state.matches.length)state.ok=false;freshness();render();if(manual)$('ars-scores-update').textContent='Update unavailable · showing the last saved scores. Try again when the source is available.';return;}
  freshness();render();
 }
 document.querySelectorAll('[data-ars-filter]').forEach(b=>b.addEventListener('click',()=>{state.filter=b.dataset.arsFilter;state.selected=null;render()}));
@@ -103,7 +104,6 @@ board.addEventListener('click',e=>{
 });
 $('ars-date-prev')?.addEventListener('click',()=>{const ds=matchdays(),i=ds.indexOf(state.date);if(i>0){state.date=ds[i-1];state.selected=null;render()}});
 $('ars-date-next')?.addEventListener('click',()=>{const ds=matchdays(),i=ds.indexOf(state.date);if(i>=0&&i<ds.length-1){state.date=ds[i+1];state.selected=null;render()}});
-document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh()});
-window.setInterval(()=>{if(!document.hidden)refresh()},2*60*1000);
+$('ars-refresh-scores')?.addEventListener('click',async event=>{const b=event.currentTarget;b.disabled=true;b.textContent='Checking…';try{await refresh(true);}finally{b.disabled=false;b.textContent='Refresh this matchday';}});
 refresh();
 })();

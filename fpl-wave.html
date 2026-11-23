@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="hq.css">
 <link rel="stylesheet" href="deeper.css">
 <link rel="stylesheet" href="fpl.css">
-<link rel="stylesheet" href="football-controls.css?v=20261007-2"></head>
+<link rel="stylesheet" href="football-controls.css?v=20261007-2"><link rel="stylesheet" href="football-refresh.css?v=manual-football-1"></head>
 <body class="lafc">
 <a class="skip" href="#main">Skip to content</a>
 <header class="club-header"><a class="hq-return parent-left" href="index.html">← OLA HQ</a>
@@ -41,12 +41,12 @@
   <div class="league-entrance-copy">
     <p class="club-kicker">FPL DRAFT · LIVE SEASON</p>
     <h2>League HQ.</h2>
-    <p>The club site stays the club site. The live league now has its own sports center — standings, every matchup, La Ola FC, records, roster data and the season archive in one place.</p>
-    <div class="league-entrance-tags"><span>12 CLUBS</span><span>38 GAMEWEEKS</span><span>H2H</span><span>LIVE DATA</span></div>
+    <p>The club site stays the club site. The league now has its own sports center — standings, every matchup, La Ola FC, records, roster data and the season archive in one place.</p>
+    <div class="league-entrance-tags"><span>12 CLUBS</span><span>38 GAMEWEEKS</span><span>H2H</span><span>SAVED RESULTS</span></div>
   </div>
   <div class="league-portal-card league-standings-card">
-    <span class="portal-live"><i></i> LIVE LEAGUE CENTER</span>
-    <div class="mini-table-head"><span>STANDINGS</span><span>W–L</span><span>LP</span></div>
+    <span class="portal-live"><i></i> LEAGUE CENTER</span>
+    <div class="football-refresh-tools"><a class="football-update-link" href="https://github.com/ola-hq/ola-hq/actions/workflows/fpl-data-sync.yml" target="_blank" rel="noopener noreferrer">Update league data</a><button class="football-refresh-button" id="fpl-reload-snapshot" type="button">Reload results</button></div><p class="football-refresh-note">Owner update: in GitHub, choose Run workflow on main. Once it finishes publishing, return here and select Reload results. No scheduled football updates.</p><p class="football-refresh-note" id="home-football-status" role="status">Reading saved results…</p><div class="mini-table-head"><span>STANDINGS</span><span>W–L</span><span>LP</span></div>
     <div class="mini-standings" id="home-mini-standings">
       <div><b>1</b><span>Micky &amp; Friends</span><small>4–1</small><strong>12</strong></div>
       <div><b>2</b><span>Atzenal</span><small>4–1</small><strong>12</strong></div>
@@ -90,5 +90,5 @@
 <section class="coming"><p class="club-kicker">THE SEASON KEEPS MOVING</p><h2>Built to accumulate.</h2><p>Every gameweek adds evidence. Every season adds history. The club world grows without replacing what came before.</p></section>
 </main>
 <footer class="club-footer"><div><strong>LA OLA FC</strong><span>THE CLUB · OLA HQ</span></div><a href="more-waves.html">← Back to Deeper Waves</a><a href="index.html">OLA HQ</a></footer>
-<script src="fpl-home.js" defer></script>
+<script src="fpl-home.js?v=manual-football-1" defer></script>
 <script src="ui-arrows.js?v=20261008-1" defer></script><script src="analytics.js?v=20261023-worlds" defer></script></body></html>

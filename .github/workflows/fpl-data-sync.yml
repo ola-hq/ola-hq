@@ -1,14 +1,6 @@
 name: Refresh FPL Draft Hub data
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/fpl-sync.mjs'
-      - 'scripts/validate-fpl.mjs'
-      - '.github/workflows/fpl-data-sync.yml'
-  schedule:
-    - cron: '17 * * * *'
   workflow_dispatch:
 
 permissions:

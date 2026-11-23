@@ -32,7 +32,7 @@ test('keeps direct match link for the matching cached fixture only',() => {
   const snapshot=buildSnapshot(old,{events:[e]},null,new Date('2026-10-08T20:00:00Z'));
   assert.equal(snapshot.snapshot.next_match.match_center_url,old.snapshot.next_match.match_center_url);
   assert.equal(snapshot.snapshot.league,null);
-  assert.equal(snapshot.meta.refresh_strategy,'scheduled');
+  assert.equal(snapshot.meta.refresh_strategy,'manual');
 });
 test('refuses an empty or invalid API response',() => {
   assert.throws(()=>buildSnapshot({snapshot:{}},{events:[]},null),/No valid Arsenal fixtures/);

@@ -1,15 +1,7 @@
 name: Sync Arsenal Wave Premier League Scores
 
 on:
-  schedule:
-    - cron: '9,24,39,54 * * * *'
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/arsenal-scores-sync.mjs'
-      - 'scripts/arsenal-scores-sync.test.mjs'
-      - '.github/workflows/arsenal-scores-sync.yml'
   pull_request:
     paths:
       - 'arsenal-wave.html'

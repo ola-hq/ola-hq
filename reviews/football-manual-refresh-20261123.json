@@ -1,0 +1,73 @@
+{
+  "status": "browser-reviewed; not published; awaiting scoped approval",
+  "public_base": "8630a82f252f2856e6c7c323e9d7bebe33cb4db9",
+  "private_base": "d0ca24bc2217519517a5279bea5962725b055b63",
+  "files": [
+    {
+      "public_path": "arsenal-wave.html",
+      "public_sha256": "5f0e935ebedb095582e66fc597f88c6e822403e5cc90e9663fc8aa3fc32d1448",
+      "private_path": "visitor-source/arsenal-wave.html",
+      "private_sha256": "56ef897deba8a78b20e3a379af57f56fcb8b7ab46b0320be1ec3bf67424cb557"
+    },
+    {
+      "public_path": "arsenal.js",
+      "public_sha256": "cf14b7ee20b072e5a993eebe7b087e66d575883290034aa1c4ddcc4c3f6f7714",
+      "private_path": "visitor-source/arsenal.js",
+      "private_sha256": "cf14b7ee20b072e5a993eebe7b087e66d575883290034aa1c4ddcc4c3f6f7714"
+    },
+    {
+      "public_path": "arsenal-scores.js",
+      "public_sha256": "d1884089b9ca659839900d1055419f897c32af5b7eff56203d1779b0eeee58b0",
+      "private_path": "visitor-source/arsenal-scores.js",
+      "private_sha256": "d1884089b9ca659839900d1055419f897c32af5b7eff56203d1779b0eeee58b0"
+    },
+    {
+      "public_path": "fpl-wave.html",
+      "public_sha256": "cc746af5cd1d601fba245fbd85dbd10f950a2de215cb929b5f70a896efb61d98",
+      "private_path": "visitor-source/fpl-wave.html",
+      "private_sha256": "e517b39ee926f495dea723d9a2b9358404b9b4e905984ab6544d3aff4435cafc"
+    },
+    {
+      "public_path": "fpl-league-hq.html",
+      "public_sha256": "4643181d87f42a79c8bf08e6c1af357f62124c17fbf4c2df021f72e17035c142",
+      "private_path": "visitor-source/fpl-league-hq.html",
+      "private_sha256": "43a2941960700beb1c1b14970f17dfb716cf10ffb861970111b5e4d369c4b761"
+    },
+    {
+      "public_path": "fpl-home.js",
+      "public_sha256": "93d357b5ecb2e533410153f1fe3928770130698fcf6e7c7718153daddb8690d2",
+      "private_path": "visitor-source/fpl-home.js",
+      "private_sha256": "93d357b5ecb2e533410153f1fe3928770130698fcf6e7c7718153daddb8690d2"
+    },
+    {
+      "public_path": "fpl-hub.js",
+      "public_sha256": "92f66e08d980928ffcc84a3089a4739ac2d32e04f8f90025d78383dc32c906df",
+      "private_path": "visitor-source/fpl-hub.js",
+      "private_sha256": "92f66e08d980928ffcc84a3089a4739ac2d32e04f8f90025d78383dc32c906df"
+    },
+    {
+      "public_path": "football-live.mjs",
+      "public_sha256": "1c7d1a9ccaa56d114e47d19c491c1426492fbe80a1ee4a194211a34044f0b020",
+      "private_path": "visitor-source/football-live.mjs",
+      "private_sha256": "1c7d1a9ccaa56d114e47d19c491c1426492fbe80a1ee4a194211a34044f0b020"
+    },
+    {
+      "public_path": "football-refresh.css",
+      "public_sha256": "8f30fc322efa1eb6658828b8bd5de09d5b2f77d6cd0dfa6759e00f9d00ba7c80",
+      "private_path": "visitor-source/football-refresh.css",
+      "private_sha256": "8f30fc322efa1eb6658828b8bd5de09d5b2f77d6cd0dfa6759e00f9d00ba7c80"
+    },
+    {
+      "public_path": "shared/football-models.mjs",
+      "public_sha256": "4b3a55c419f43d23d1da4ad2c307484b207b871a2f1a87853897e70517bc08aa",
+      "private_path": "visitor-source/shared/football-models.mjs",
+      "private_sha256": "4b3a55c419f43d23d1da4ad2c307484b207b871a2f1a87853897e70517bc08aa"
+    },
+    {
+      "public_path": "data/football-refresh-policy.json",
+      "public_sha256": "69cdff680ff929594f644e3b50b1cf4dda9adee8a0bc14c03e8b5210e1f068d7",
+      "private_path": "visitor-source/data/football-refresh-policy.json",
+      "private_sha256": "69cdff680ff929594f644e3b50b1cf4dda9adee8a0bc14c03e8b5210e1f068d7"
+    }
+  ]
+}
