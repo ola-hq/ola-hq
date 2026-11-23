@@ -1,0 +1,32 @@
+{
+  "scope": "Add standalone Arsenal Academy entrances; host guide remains secondary",
+  "status": "development branch; not published; visual review pending Mac unlock",
+  "public_base": "6885d548055dae7b316af09477ff2c9d83ab2e64",
+  "master_base": "13426dd50be6740a88e015e3d924262637ba02fe",
+  "files": [
+    {
+      "public_path": "arsenal-wave.html",
+      "public_sha256": "e933592c3b5909713f0860c35cba8b19bdfd94898fc39c49575999c19334714b",
+      "master_path": "visitor-source/arsenal-wave.html",
+      "master_sha256": "5d7c6ff25877ff04af901c2347c1b0f9179de2c384414ee2581898bc72884cbd"
+    },
+    {
+      "public_path": "more-waves.html",
+      "public_sha256": "cea6965e2f3239677b339f75ba845acd4045acfadadd9595991ca6dbf0fd75b3",
+      "master_path": "visitor-source/more-waves.html",
+      "master_sha256": "c6e315944fac6a921c21f7414f6d5ad0843880cdc19252d5e199c49baf10f46f"
+    },
+    {
+      "public_path": "academy-entrances.css",
+      "public_sha256": "c36903aba3bfd9869d23c86bf7ef6adf350347aea6dd14f714985ebb268b2be7",
+      "master_path": "visitor-source/academy-entrances.css",
+      "master_sha256": "c36903aba3bfd9869d23c86bf7ef6adf350347aea6dd14f714985ebb268b2be7"
+    },
+    {
+      "public_path": "assets/entrances/arsenal-academy-clubhouse.jpg",
+      "public_sha256": "fde3bf412a5a3031d6b5e393c8e2137c1b44a51c8dfa68cd13fab00e09c1e74f",
+      "master_path": "visitor-source/assets/entrances/arsenal-academy-clubhouse.jpg",
+      "master_sha256": "fde3bf412a5a3031d6b5e393c8e2137c1b44a51c8dfa68cd13fab00e09c1e74f"
+    }
+  ]
+}
