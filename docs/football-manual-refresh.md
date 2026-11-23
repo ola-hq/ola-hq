@@ -1,5 +1,15 @@
 # Manual football refresh — 23 November 2026
 
+## Published and verified
+
+Published with the owner’s separate approval on 23 November 2026. Public implementation PR [#101](https://github.com/ola-hq/ola-hq/pull/101) merged as `3c477162caaac20e5a65a24f22afda011805aaf7`; private template PR #27 merged as `e68c8366bc4cc6d7616e173f0f594a47bac46723`. Pages [run 45256599480](https://github.com/ola-hq/ola-hq/actions/runs/45256599480) passed both verification and deployment, including the final live revision, all 31 protected file hashes and explicit manual-mode snapshot checks. The earlier FPL age-warning condition is resolved by the approved manual policy; the stored FPL snapshot was intentionally not refreshed or retimestamped.
+
+Live access: https://ola-hq.github.io/ola-hq/arsenal-wave.html?v=manual-football-1#scores and https://ola-hq.github.io/ola-hq/fpl-league-hq.html?v=manual-football-1#league-hq . An already-open old page needs a refresh; these version URLs avoid its cached HTML. The Academy remains live at https://ola-hq.github.io/arsenal-academy-worlds/?v=presenter-entry-1 .
+
+Actual public browser checks: both Arsenal refresh buttons fetched source data only after clicking; matchday showed the next Nov 29 fixture, and the selected-day board showed an ESPN match feed checked at 12:13 PM PST with a sourced 13-minute in-play status. La Ola FC showed the original saved timestamp and all 15 owned players; Reload results worked. No captured Arsenal warning/error entries. Actual live screenshots: `reviews/screenshots/football-manual-live-scores.jpg` and `football-manual-live-league.jpg`. Twelve runtime/policy/snapshot URLs matched the reviewed projection bytes. Receipt: `reviews/football-manual-live-checks.json`.
+
+Owner-authenticated Run workflow was not executed during testing. FPL updates still require the existing GitHub owner step; the public site does not contain a workflow token. The direct Arsenal refresh changes this open page rather than committing a new shared snapshot. No school-network or physical-device test claimed.
+
 Status: publication approved by the owner on 23 November 2026: “Publish manual football updates.” Reviewed implementation: public 4e88227 / private templates 5d32621. Public PR #101 and private PR #27 carry the release; deployment and public verification follow. The earlier review notes below are historical. The Academy toolbar/hub entrances are already published separately.
 
 The owner requested replacing automatic football updates with explicit refresh controls and chose the simplest existing-service approach.
