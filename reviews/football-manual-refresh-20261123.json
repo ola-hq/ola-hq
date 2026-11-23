@@ -1,5 +1,5 @@
 {
-  "status": "browser-reviewed; not published; awaiting scoped approval",
+  "status": "publication approved 2026-11-23; deployment/public verification follow",
   "public_base": "8630a82f252f2856e6c7c323e9d7bebe33cb4db9",
   "private_base": "d0ca24bc2217519517a5279bea5962725b055b63",
   "files": [
@@ -69,5 +69,6 @@
       "private_path": "visitor-source/data/football-refresh-policy.json",
       "private_sha256": "69cdff680ff929594f644e3b50b1cf4dda9adee8a0bc14c03e8b5210e1f068d7"
     }
-  ]
+  ],
+  "approval": "Publish manual football updates"
 }

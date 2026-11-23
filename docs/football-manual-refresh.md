@@ -1,6 +1,6 @@
 # Manual football refresh — 23 November 2026
 
-Status: reviewed development branch `codex/football-manual-refresh`; not published. The Academy toolbar/hub entrances are already published separately.
+Status: publication approved by the owner on 23 November 2026: “Publish manual football updates.” Reviewed implementation: public 4e88227 / private templates 5d32621. Public PR #101 and private PR #27 carry the release; deployment and public verification follow. The earlier review notes below are historical. The Academy toolbar/hub entrances are already published separately.
 
 The owner requested replacing automatic football updates with explicit refresh controls and chose the simplest existing-service approach.
 
@@ -28,4 +28,4 @@ The private master visitor-source receives the runtime and focused HTML patches.
 - Desktop 1280×720 and actual 390×844 embedded layouts were visually checked. The score-button grid width and league-link contrast found during review were corrected. No physical phone/ViewSonic check claimed.
 - Actual screenshots: reviews/screenshots/football-manual-{scores,league,phone}.jpg. Temporary review fixtures removed, owned review tabs closed and temporary server stopped after QA.
 
-Publication of this football behavior change requires the owner’s scoped approval under the existing instruction; the earlier Academy publication approval is not reused as approval for these changed update semantics.
+The owner separately approved this football behavior change on 23 November 2026 after the browser review and required GitHub checks passed. The earlier Academy publication approval was not reused for it.
