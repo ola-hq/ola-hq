@@ -1,18 +1,18 @@
 {
   "scope": "Add standalone Arsenal Academy entrances; host guide remains secondary",
-  "status": "publication approved 2026-11-23; deploy and public verification follow",
+  "status": "published; approved cache correction follows",
   "public_base": "6885d548055dae7b316af09477ff2c9d83ab2e64",
   "master_base": "13426dd50be6740a88e015e3d924262637ba02fe",
   "files": [
     {
       "public_path": "arsenal-wave.html",
-      "public_sha256": "e933592c3b5909713f0860c35cba8b19bdfd94898fc39c49575999c19334714b",
+      "public_sha256": "b4cd38f873b145ccfdb1572b73daa2a2cf1a519d65c9b6fb65499a9f543de023",
       "master_path": "visitor-source/arsenal-wave.html",
       "master_sha256": "5d7c6ff25877ff04af901c2347c1b0f9179de2c384414ee2581898bc72884cbd"
     },
     {
       "public_path": "more-waves.html",
-      "public_sha256": "cea6965e2f3239677b339f75ba845acd4045acfadadd9595991ca6dbf0fd75b3",
+      "public_sha256": "d8674c95a94a0a330f52de7552b0c8cd727dc6797c58cf10605b2823b4b8561e",
       "master_path": "visitor-source/more-waves.html",
       "master_sha256": "c6e315944fac6a921c21f7414f6d5ad0843880cdc19252d5e199c49baf10f46f"
     },
@@ -35,5 +35,9 @@
     "clicked separate presenter-guide destination",
     "390x844 Arsenal portal via scaled iframe fixture"
   ],
-  "approval": "Owner requested making the toolbar and OLA HQ entrances live in this chat."
+  "approval": "Owner requested making the toolbar and OLA HQ entrances live in this chat.",
+  "hub_merge": "0638d649eb3a467993699b7999c7e01c8b986593",
+  "master_merge": "2865ae0d09e66e0c3d72682c384e600f8a43f1f4",
+  "deployment": 45250880227,
+  "workflow_limit": "Post-deploy FPL snapshot freshness check failed; automatic review blocked separate FPL data refresh."
 }
