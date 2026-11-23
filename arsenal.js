@@ -1,3 +1,4 @@
+import {refreshMatchday,getJSON} from './football-live.mjs?v=manual-football-1';
 (() => {
   'use strict';
   const byId = id => document.getElementById(id);
@@ -14,23 +15,20 @@
     } catch { return null; }
   };
 
-  async function loadArsenal() {
+  let lastMatchday=null;
+  async function loadArsenal(manual=false) {
     const status = byId('ars-status');
     try {
-      const response = await fetch('data/arsenal-2026.json', {cache:'no-store'});
-      if (!response.ok) throw new Error('Arsenal data unavailable');
-      const data = await response.json();
+      const data=manual?await refreshMatchday(lastMatchday,await getJSON('data/arsenal-scores.json')):await getJSON('data/arsenal-2026.json');
+      lastMatchday=data;
       const s = data.snapshot || {};
       const next = s.next_match || {};
       const updated = data.meta?.updated_at;
       const age = updated ? Date.now() - Date.parse(updated) : Infinity;
-      const fresh = Number.isFinite(age) && age >= -300000 && age < 3 * 60 * 60 * 1000;
       const recentLive = Number.isFinite(age) && age >= -300000 && age < 15 * 60 * 1000;
-      const fixtureAutomaticallyUpdated = data.meta?.fixture_source === 'automated';
-      const isLive = next.status === 'in' && recentLive && fixtureAutomaticallyUpdated;
-      const auto = data.meta?.refresh_strategy === 'scheduled' && fresh && fixtureAutomaticallyUpdated;
-      const state = isLive ? 'live' : auto ? 'auto' : 'cached';
-      const label = isLive ? 'LIVE NOW' : auto ? 'AUTO-REFRESHED' : 'CACHED SNAPSHOT';
+      const isLive=manual&&next.status==='in'&&recentLive;
+      const state=isLive?'live':'cached';
+      const label=manual?'CHECKED ON DEMAND':'SAVED SNAPSHOT';
       if (status) {
         status.dataset.state = state;
         text('ars-status-label', label);
@@ -66,7 +64,7 @@
       const updatedAt = fmt(updated, {month:'short', day:'numeric', hour:'numeric', minute:'2-digit', timeZoneName:'short'});
       const fixtureAt = fmt(data.meta?.fixture_updated_at || updated, {month:'short', day:'numeric', hour:'numeric', minute:'2-digit', timeZoneName:'short'});
       const sourceChecked = updatedAt ? ' · feed checked ' + updatedAt : '';
-      const freshnessCopy = data.meta?.fixture_source === 'verified_cache' ? 'Fixture verified ' + (fixtureAt || 'earlier') + sourceChecked : updatedAt ? 'Last checked ' + updatedAt + (auto ? ' · scheduled sync' : ' · last saved data') : 'Saved data · update time unknown';
+      const freshnessCopy = data.meta?.fixture_source === 'verified_cache' ? 'Fixture verified ' + (fixtureAt || 'earlier') + sourceChecked : updatedAt ? 'Last checked ' + updatedAt + (manual ? ' · ESPN · manual update' : ' · saved data; use Refresh matchday') : 'Saved data · update time unknown';
       text('ars-data-status', freshnessCopy);
       const matchLink = byId('ars-match-centre');
       const direct = safeUrl(next.match_center_url);
@@ -75,6 +73,7 @@
         matchLink.textContent = direct ? 'Open match centre ↗' : 'See Arsenal fixtures ↗';
       }
     } catch {
+      if(manual&&lastMatchday){text('ars-data-status','Update unavailable · keeping the last checked matchday. Try again when the source is available.');return;}
       if (status) { status.dataset.state = 'offline'; text('ars-status-label', 'OFFLINE FALLBACK'); }
       text('ars-next', 'Arsenal matchday');
       text('ars-fixture-date', 'Fixture currently unavailable');
@@ -122,6 +121,7 @@
     window.setTimeout(() => panel.classList.remove('is-energized'), 1200);
   });
 
+  document.getElementById('ars-refresh-matchday')?.addEventListener('click',async event=>{const b=event.currentTarget;b.disabled=true;b.textContent='Checking…';try{await loadArsenal(true);}finally{b.disabled=false;b.textContent='Refresh matchday';}});
   loadArsenal();
   loadFpl();
 })();

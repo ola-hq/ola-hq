@@ -37,9 +37,11 @@ function addAnalytics(folder) {
 }
 addAnalytics(output);
 
-const protectedPaths = ['analytics.js','analytics/index.html','analytics/report.js','la-ola-de-amor/scan/sw.js','index.html','world-entrances.css','tools.html','tools.js','app/index.html','la-ola-de-amor/index.html','la-ola-de-amor/app.js','la-ola-de-amor/data/visitor-data.js','la-ola-de-amor/scan/guide/index.html','la-ola-de-amor/scan/guide/guide.css','la-ola-de-amor/scan/guide/guide.js','la-ola-de-amor/scan/guide/festival-updates.js','data/fpl/league-18767.json','data/letterboxd-recent.json','data/arsenal-2026.json','data/arsenal-scores.json'];
+const footballPolicy=JSON.parse(readFileSync(join(output,'data/football-refresh-policy.json'),'utf8'));
+if(footballPolicy.mode!=='manual')throw new Error('Expected manual football refresh policy');
+const protectedPaths = ['data/football-refresh-policy.json','arsenal-wave.html','arsenal.js','arsenal-scores.js','fpl-wave.html','fpl-league-hq.html','fpl-home.js','fpl-hub.js','football-live.mjs','football-refresh.css','shared/football-models.mjs','analytics.js','analytics/index.html','analytics/report.js','la-ola-de-amor/scan/sw.js','index.html','world-entrances.css','tools.html','tools.js','app/index.html','la-ola-de-amor/index.html','la-ola-de-amor/app.js','la-ola-de-amor/data/visitor-data.js','la-ola-de-amor/scan/guide/index.html','la-ola-de-amor/scan/guide/guide.css','la-ola-de-amor/scan/guide/guide.js','la-ola-de-amor/scan/guide/festival-updates.js','data/fpl/league-18767.json','data/letterboxd-recent.json','data/arsenal-2026.json','data/arsenal-scores.json'];
 const hashes = Object.fromEntries(protectedPaths.map(path => [path, createHash('sha256').update(readFileSync(join(output,path))).digest('hex')]));
 const fpl = JSON.parse(readFileSync(join(output,'data/fpl/league-18767.json'),'utf8'));
-const release = {schema:'ola-hq-release-v1', source_sha:source, workflow_run_id:process.env.GITHUB_RUN_ID || null, built_at:new Date().toISOString(), fpl_fetched_at:fpl.meta.fetched_at, protected_sha256:hashes};
+const release = {schema:'ola-hq-release-v1', source_sha:source, workflow_run_id:process.env.GITHUB_RUN_ID || null, football_refresh_mode:footballPolicy.mode, built_at:new Date().toISOString(), fpl_fetched_at:fpl.meta.fetched_at, protected_sha256:hashes};
 writeFileSync(join(output,'release.json'), JSON.stringify(release,null,2)+'\n');
 console.log('Public projection built from', source, 'with', protectedPaths.length, 'protected file hashes');

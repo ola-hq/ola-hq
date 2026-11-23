@@ -56,7 +56,8 @@ test('verified Arsenal match centre survives abbreviated opponent name',()=>{
 test('built snapshot uses actual official data and metadata',async()=>{
  const result=await buildScores({teams},fixtures,[],new Map(),null,new Date('2026-10-09T15:00:00Z'));
  assert.equal(result.matches.length,12);
- assert.equal(result.meta.refresh_target_minutes,15);
+ assert.equal(result.meta.refresh_strategy,'manual');
+ assert.equal(result.meta.refresh_on_demand,true);
  assert.equal(result.matches[0].home.name,'Arsenal');
  assert.equal(result.matches[0].stats.length,0);
 });

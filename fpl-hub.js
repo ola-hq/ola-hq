@@ -35,14 +35,13 @@
   }
   function setStatus(mode,stamp){
     const el=$('fpl-data-status');if(!el)return;el.classList.remove('live','fallback');
-    if(mode==='direct'){el.classList.add('live');el.innerHTML='<span></span>LIVE · DIRECT FPL DRAFT DATA';}
-    else if(mode==='cached'){el.classList.add('live');el.innerHTML='<span></span>AUTO-UPDATED · '+esc(stamp?new Date(stamp).toLocaleString(): 'CACHED SNAPSHOT');}
-    else{el.classList.add('fallback');el.innerHTML='<span></span>VALIDATION SNAPSHOT · LIVE FEED RETRYING';}
+    if(mode==='cached'){el.innerHTML='<span></span>SAVED LEAGUE DATA · '+esc(stamp?new Date(stamp).toLocaleString(): 'CACHED SNAPSHOT');}
+    else{el.classList.add('fallback');el.innerHTML='<span></span>HISTORICAL VALIDATION SNAPSHOT · UPDATE ON DEMAND';}
   }
   function renderFallback(){
     const v=FALLBACK.validation;$('ola-rank').textContent='#'+v.rank;$('forecast-live-rank').textContent='#'+v.rank;$('forecast-gap').textContent=(v.rank-CFG.preseasonRank)+' places off';$('ola-record').textContent=v.wins+'–'+v.losses;$('ola-pf').textContent=v.points_for;$('ola-league-points').textContent=v.league_points;$('ola-gw-points').textContent=v.event_points;
     const last=v.matches[v.matches.length-1];$('ola-matchup').textContent='GW'+last.event+' · '+(last.result==='W'?'WIN':last.result==='L'?'LOSS':'DRAW')+' · La Ola FC '+last.for+' — '+last.against+' '+last.opponent;
-    $('forecast-copy').textContent='Fantasy Reimagined put La Ola FC #1 before GW1. The captured five-week validation state has the club #'+v.rank+' at '+v.wins+'–'+v.losses+'. Live data will replace this automatically.';
+    $('forecast-copy').textContent='Fantasy Reimagined put La Ola FC #1 before GW1. The captured five-week validation state has the club #'+v.rank+' at '+v.wins+'–'+v.losses+'. Use the owner update control to request a current league snapshot.';
     $('matchup-list').innerHTML=v.matches.map(m=>'<div class="matchup is-laola"><strong>GW'+m.event+'<small>'+esc(m.result)+'</small></strong><span class="score">'+m.for+'–'+m.against+'</span><strong class="away">'+esc(m.opponent)+'</strong></div>').join('');
     $('gw-title').textContent='First five';setStatus('fallback');
   }
@@ -53,8 +52,8 @@
     const rank=num(ola?.rank)||0,lastRank=num(ola?.last_rank)||rank,move=lastRank-rank;
     $('ola-rank').textContent=rank?'#'+rank:'—';$('forecast-live-rank').textContent=rank?'#'+rank:'—';$('forecast-gap').textContent=rank?(rank===1?'on the forecast':Math.abs(rank-CFG.preseasonRank)+' place'+(Math.abs(rank-CFG.preseasonRank)===1?'':'s')+' off'):'waiting';
     $('ola-movement').textContent=move>0?'▲ '+move:move<0?'▼ '+Math.abs(move):'—';$('ola-record').textContent=olaStats.w+'–'+olaStats.d+'–'+olaStats.l;$('ola-pf').textContent=num(ola?.points_for)||olaStats.pf;$('ola-league-points').textContent=num(ola?.total);const olaSide=olaMatch?(num(olaMatch.league_entry_1)===CFG.leagueEntryId?1:2):null;$('ola-gw-points').textContent=olaSide?matchScore(olaMatch,olaSide):num(ola?.event_total);
-    $('forecast-copy').textContent=rank===1?'The magazine called La Ola FC #1 before GW1 — and the live table currently agrees.':'The magazine called La Ola FC #1 before GW1. The live table has the club #'+rank+', so every gameweek now becomes a running test of the preseason call.';
-    if(olaMatch){const side=olaSide,opp=side===1?2:1,of=matchScore(olaMatch,side),oa=matchScore(olaMatch,opp);let line='GW'+gw+' · '+esc(teamName(em,olaMatch['league_entry_'+opp]))+' · '+of+' — '+oa+(finished(olaMatch)?' · FINAL':' · LIVE / UPCOMING');if(nextOlaMatch){const ns=num(nextOlaMatch.league_entry_1)===CFG.leagueEntryId?1:2,no=ns===1?2:1;line+=' · NEXT GW'+num(nextOlaMatch.event)+': '+esc(teamName(em,nextOlaMatch['league_entry_'+no]));}$('ola-matchup').innerHTML=line;}
+    $('forecast-copy').textContent=rank===1?'The magazine called La Ola FC #1 before GW1 — and the saved table currently agrees.':'The magazine called La Ola FC #1 before GW1. The saved table has the club #'+rank+', so every gameweek now becomes a running test of the preseason call.';
+    if(olaMatch){const side=olaSide,opp=side===1?2:1,of=matchScore(olaMatch,side),oa=matchScore(olaMatch,opp);let line='GW'+gw+' · '+esc(teamName(em,olaMatch['league_entry_'+opp]))+' · '+of+' — '+oa+(finished(olaMatch)?' · FINAL':' · RECORDED / UPCOMING');if(nextOlaMatch){const ns=num(nextOlaMatch.league_entry_1)===CFG.leagueEntryId?1:2,no=ns===1?2:1;line+=' · NEXT GW'+num(nextOlaMatch.event)+': '+esc(teamName(em,nextOlaMatch['league_entry_'+no]));}$('ola-matchup').innerHTML=line;}
     const rows=standings.map(s=>{const id=num(s.league_entry),e=em.get(id),rs=rec.byId.get(id)||{w:0,d:0,l:0,pf:num(s.points_for),pa:0},delta=num(s.last_rank)-num(s.rank),mv=delta>0?'<span class="up">▲'+delta+'</span>':delta<0?'<span class="down">▼'+Math.abs(delta)+'</span>':'—';return '<tr'+(id===CFG.leagueEntryId?' class="is-laola"':'')+'><td>'+num(s.rank)+'</td><td><strong>'+esc(e?.entry_name||'Unknown')+'</strong></td><td>'+esc(managerName(e))+'</td><td>'+rs.w+'–'+rs.d+'–'+rs.l+'</td><td>'+num(s.total)+'</td><td>'+(num(s.points_for)||rs.pf)+'</td><td>'+(num(s.points_against)||rs.pa)+'</td><td>'+mv+'</td></tr>'}).join('');
     $('league-table-body').innerHTML=rows||'<tr><td colspan="8">Standings unavailable.</td></tr>';
     setupGW(d,em,gw);
@@ -65,7 +64,7 @@
   }
   function setupGW(d,em,initial){
     const sel=$('gw-select');sel.innerHTML='';for(let i=1;i<=38;i++){const o=document.createElement('option');o.value=i;o.textContent='GW '+i;if(i===initial)o.selected=true;sel.appendChild(o)}
-    const draw=gw=>{const ms=(d.matches||[]).filter(m=>num(m.event)===gw);$('gw-title').textContent='GW'+gw;$('matchup-list').innerHTML=ms.length?ms.map(m=>{const a=num(m.league_entry_1),b=num(m.league_entry_2),ap=matchScore(m,1),bp=matchScore(m,2),state=finished(m)?'FINAL':m.started?'LIVE':'UPCOMING';return '<div class="matchup'+(a===CFG.leagueEntryId||b===CFG.leagueEntryId?' is-laola':'')+'"><strong>'+esc(teamName(em,a))+'<small>'+state+'</small></strong><span class="score">'+(m.started||finished(m)?ap+'–'+bp:'vs')+'</span><strong class="away">'+esc(teamName(em,b))+'</strong></div>'}).join(''):'<p class="loading-copy">No matchup data for GW'+gw+'.</p>'};
+    const draw=gw=>{const ms=(d.matches||[]).filter(m=>num(m.event)===gw);$('gw-title').textContent='GW'+gw;$('matchup-list').innerHTML=ms.length?ms.map(m=>{const a=num(m.league_entry_1),b=num(m.league_entry_2),ap=matchScore(m,1),bp=matchScore(m,2),state=finished(m)?'FINAL':m.started?'IN PROGRESS AT CHECK':'UPCOMING';return '<div class="matchup'+(a===CFG.leagueEntryId||b===CFG.leagueEntryId?' is-laola':'')+'"><strong>'+esc(teamName(em,a))+'<small>'+state+'</small></strong><span class="score">'+(m.started||finished(m)?ap+'–'+bp:'vs')+'</span><strong class="away">'+esc(teamName(em,b))+'</strong></div>'}).join(''):'<p class="loading-copy">No matchup data for GW'+gw+'.</p>'};
     sel.onchange=()=>draw(num(sel.value));$('gw-prev').onclick=()=>{sel.value=Math.max(1,num(sel.value)-1);draw(num(sel.value))};$('gw-next').onclick=()=>{sel.value=Math.min(38,num(sel.value)+1);draw(num(sel.value))};draw(initial);
   }
   function renderRecords(rec){
@@ -84,12 +83,12 @@
     const rows=owned.map(x=>players.get(num(x.element))||{id:x.element,web_name:'Player '+x.element}).sort((a,b)=>num(b.total_points)-num(a.total_points));
     $('roster-count').textContent=rows.length+' owned players';$('roster-list').innerHTML=rows.map(p=>'<div class="roster-player"><span>'+esc(p.web_name||[p.first_name,p.second_name].filter(Boolean).join(' '))+'</span><span>'+num(p.total_points)+' pts</span></div>').join('');
   }
-  async function getJSON(url){const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error(r.status+' '+url);return r.json()}
+  async function getJSON(url){const r=await fetch(url,{cache:'no-store',signal:AbortSignal.timeout(20000)});if(!r.ok)throw new Error(r.status+' '+url);return r.json()}
   async function cached(){return getJSON(CFG.snapshot+'?v='+Date.now())}
-  async function direct(){const base='https://draft.premierleague.com/api/';const [details,element_status,boot]=await Promise.all([getJSON(base+'league/'+CFG.leagueId+'/details'),getJSON(base+'league/'+CFG.leagueId+'/element-status'),getJSON(base+'bootstrap-static')]);const els=boot.elements||[];return{meta:{mode:'direct',fetched_at:new Date().toISOString()},details,element_status,players:els.map(p=>({id:p.id,first_name:p.first_name,second_name:p.second_name,web_name:p.web_name,element_type:p.element_type,team:p.team,total_points:p.total_points,event_points:p.event_points,status:p.status}))}}
-  async function init(){
-    let snap=null;try{snap=await cached();render(snap,'cached')}catch(e){renderFallback()}
-    try{const fresh=await direct();render(fresh,'direct')}catch(e){if(!snap)console.info('FPL direct feed unavailable; using fallback/cached layer.')}
+  async function loadSaved(initial=false){
+    try{const snapshot=await cached();render(snapshot,'cached');}
+    catch{if(initial)renderFallback();else{const status=$('fpl-data-status');if(status)status.textContent='Unable to reload results · keeping the information already on screen.';}}
   }
-  init();
+  $('fpl-reload-snapshot')?.addEventListener('click',async event=>{const b=event.currentTarget;b.disabled=true;b.textContent='Reloading…';try{await loadSaved();}finally{b.disabled=false;b.textContent='Reload results';}});
+  loadSaved(true);
 })();

@@ -1,0 +1,6 @@
+{
+  "mode": "manual",
+  "football_schedules": false,
+  "browser_polling": false,
+  "saved_data": "Show the source timestamp; refresh only after an explicit action."
+}

@@ -46,3 +46,9 @@ for filename in data_files:
     assert any('bash scripts/commit-data.sh' in s.get('run','') for s in steps), f'Unsafe data commit: {filename}'
     assert any(s.get('uses','').startswith('actions/checkout@') and s.get('with',{}).get('fetch-depth')==0 for s in steps), f'Shallow rebase: {filename}'
 print('Workflow ownership PASS: one guarded publisher; four data completion handoffs; read-only PR validation.')
+
+for filename in ['fpl-data-sync.yml','arsenal-data-sync.yml','arsenal-scores-sync.yml']:
+    assert 'schedule' not in workflows[filename]['on'], f'Football schedule returned: {filename}'
+    assert 'push' not in workflows[filename]['on'], f'Automatic football data writer returned: {filename}'
+    assert 'workflow_dispatch' in workflows[filename]['on']
+print('Manual football policy PASS: no cron or push refresh; owner-requested updates only.')
