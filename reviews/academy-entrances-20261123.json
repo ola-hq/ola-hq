@@ -1,6 +1,6 @@
 {
   "scope": "Add standalone Arsenal Academy entrances; host guide remains secondary",
-  "status": "development branch; browser-reviewed; not published; awaiting scoped approval",
+  "status": "publication approved 2026-11-23; deploy and public verification follow",
   "public_base": "6885d548055dae7b316af09477ff2c9d83ab2e64",
   "master_base": "13426dd50be6740a88e015e3d924262637ba02fe",
   "files": [
@@ -34,5 +34,6 @@
     "clicked standalone Academy destination",
     "clicked separate presenter-guide destination",
     "390x844 Arsenal portal via scaled iframe fixture"
-  ]
+  ],
+  "approval": "Owner requested making the toolbar and OLA HQ entrances live in this chat."
 }

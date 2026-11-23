@@ -1,6 +1,6 @@
 # Arsenal Academy entrances — 2026-11-23
 
-Status: development branch `codex/academy-entrances`; not published. Browser review passed; scoped publication approval is pending.
+Status: browser review passed. Owner explicitly approved publication on 23 November 2026, including the Academy Presenter mode toolbar and both hub/template entrance changes. Follow public PR #99 / private master PR #25 and Pages workflow records for merge/deployment state. Earlier pending-publication wording below describes the pre-approval review.
 
 The Academy remains the primary standalone destination:
 https://ola-hq.github.io/arsenal-academy-worlds/
