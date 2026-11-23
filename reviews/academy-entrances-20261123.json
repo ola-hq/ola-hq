@@ -1,6 +1,6 @@
 {
   "scope": "Add standalone Arsenal Academy entrances; host guide remains secondary",
-  "status": "development branch; not published; visual review pending Mac unlock",
+  "status": "development branch; browser-reviewed; not published; awaiting scoped approval",
   "public_base": "6885d548055dae7b316af09477ff2c9d83ab2e64",
   "master_base": "13426dd50be6740a88e015e3d924262637ba02fe",
   "files": [
@@ -28,5 +28,11 @@
       "master_path": "visitor-source/assets/entrances/arsenal-academy-clubhouse.jpg",
       "master_sha256": "fde3bf412a5a3031d6b5e393c8e2137c1b44a51c8dfa68cd13fab00e09c1e74f"
     }
+  ],
+  "browser_checks": [
+    "desktop Arsenal and Deeper Waves visuals",
+    "clicked standalone Academy destination",
+    "clicked separate presenter-guide destination",
+    "390x844 Arsenal portal via scaled iframe fixture"
   ]
 }

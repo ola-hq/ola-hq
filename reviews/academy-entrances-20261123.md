@@ -1,6 +1,6 @@
 # Arsenal Academy entrances — 2026-11-23
 
-Status: development branch `codex/academy-entrances`; not published. Visual review is pending Mac unlock.
+Status: development branch `codex/academy-entrances`; not published. Browser review passed; scoped publication approval is pending.
 
 The Academy remains the primary standalone destination:
 https://ola-hq.github.io/arsenal-academy-worlds/
@@ -34,4 +34,7 @@ The public projection is `ola-hq/ola-hq`; authoritative entrance templates are i
 - Both HTML pages: separate valid links, no nested anchors, unique IDs.
 - All four local page/style/image URLs and both public Academy/Guide destinations: HTTP 200.
 - Git whitespace check: PASS.
-- Native-browser desktop/mobile visual review and click-through: pending Mac unlock.
+- Actual in-app browser: desktop Arsenal entrance and Deeper Waves card inspected; primary Academy and secondary guide links clicked through to their correct public destinations.
+- Phone-width 390×844 Arsenal portal inspected in a scaled same-origin iframe fixture. No physical phone check claimed.
+- Screenshots: reviews/screenshots/hub-academy-*.jpg.
+- Browser review completed; owned review tabs closed and preview stopped. Publication approval is still pending.
