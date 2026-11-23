@@ -1,0 +1,83 @@
+{
+  "public_merge": "3c477162caaac20e5a65a24f22afda011805aaf7",
+  "private_merge": "e68c8366bc4cc6d7616e173f0f594a47bac46723",
+  "deployment": 45256599480,
+  "deployment_status": "success",
+  "mode": "manual",
+  "protected_files_in_deployment_receipt": 31,
+  "original_fpl_snapshot_unchanged": true,
+  "files": [
+    {
+      "path": "arsenal-wave.html",
+      "http_status": 200,
+      "sha256": "df7c30ad368e9eb209a02cea2e202170dc2c1348d81f9884c329fd652a91cdaa",
+      "matches_reviewed_projection": true
+    },
+    {
+      "path": "arsenal.js",
+      "http_status": 200,
+      "sha256": "cf14b7ee20b072e5a993eebe7b087e66d575883290034aa1c4ddcc4c3f6f7714",
+      "matches_reviewed_projection": true
+    },
+    {
+      "path": "arsenal-scores.js",
+      "http_status": 200,
+      "sha256": "d1884089b9ca659839900d1055419f897c32af5b7eff56203d1779b0eeee58b0",
+      "matches_reviewed_projection": true
+    },
+    {
+      "path": "fpl-wave.html",
+      "http_status": 200,
+      "sha256": "5b4df826f9f4efa0cdf07aa99bf5a8fe6a072db9c1122d70e6b58d64dd3c1257",
+      "matches_reviewed_projection": true
+    },
+    {
+      "path": "fpl-league-hq.html",
+      "http_status": 200,
+      "sha256": "19a2c42f66eac7866916c04847a3c8542f56f469f0231ac79d95e15c1bdc740c",
+      "matches_reviewed_projection": true
+    },
+    {
+      "path": "fpl-home.js",
+      "http_status": 200,
+      "sha256": "93d357b5ecb2e533410153f1fe3928770130698fcf6e7c7718153daddb8690d2",
+      "matches_reviewed_projection": true
+    },
+    {
+      "path": "fpl-hub.js",
+      "http_status": 200,
+      "sha256": "92f66e08d980928ffcc84a3089a4739ac2d32e04f8f90025d78383dc32c906df",
+      "matches_reviewed_projection": true
+    },
+    {
+      "path": "football-live.mjs",
+      "http_status": 200,
+      "sha256": "1c7d1a9ccaa56d114e47d19c491c1426492fbe80a1ee4a194211a34044f0b020",
+      "matches_reviewed_projection": true
+    },
+    {
+      "path": "football-refresh.css",
+      "http_status": 200,
+      "sha256": "8f30fc322efa1eb6658828b8bd5de09d5b2f77d6cd0dfa6759e00f9d00ba7c80",
+      "matches_reviewed_projection": true
+    },
+    {
+      "path": "shared/football-models.mjs",
+      "http_status": 200,
+      "sha256": "4b3a55c419f43d23d1da4ad2c307484b207b871a2f1a87853897e70517bc08aa",
+      "matches_reviewed_projection": true
+    },
+    {
+      "path": "data/football-refresh-policy.json",
+      "http_status": 200,
+      "sha256": "69cdff680ff929594f644e3b50b1cf4dda9adee8a0bc14c03e8b5210e1f068d7",
+      "matches_reviewed_projection": true
+    },
+    {
+      "path": "data/fpl/league-18767.json",
+      "http_status": 200,
+      "sha256": "3a0c89f630a2bc28f07113bbbb0ee7593b05d384dc696dcf72d5a5c8d48b9188",
+      "matches_reviewed_projection": true
+    }
+  ]
+}

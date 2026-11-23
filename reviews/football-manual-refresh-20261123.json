@@ -1,5 +1,5 @@
 {
-  "status": "publication approved 2026-11-23; deployment/public verification follow",
+  "status": "published and public-browser verified 2026-11-23",
   "public_base": "8630a82f252f2856e6c7c323e9d7bebe33cb4db9",
   "private_base": "d0ca24bc2217519517a5279bea5962725b055b63",
   "files": [
@@ -70,5 +70,9 @@
       "private_sha256": "69cdff680ff929594f644e3b50b1cf4dda9adee8a0bc14c03e8b5210e1f068d7"
     }
   ],
-  "approval": "Publish manual football updates"
+  "approval": "Publish manual football updates",
+  "public_merge": "3c477162caaac20e5a65a24f22afda011805aaf7",
+  "private_merge": "e68c8366bc4cc6d7616e173f0f594a47bac46723",
+  "deployment": 45256599480,
+  "deployment_status": "success"
 }
