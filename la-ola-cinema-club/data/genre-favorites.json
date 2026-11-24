@@ -1,0 +1,188 @@
+[
+  {
+    "genre": "Comedy",
+    "clubLine": "If we’re still quoting it a week later, it did its job.",
+    "lineProvenance": "New editorial Club copy requested November24,2026; not a verbatim personal quotation",
+    "brain": [
+      "Mean Girls",
+      "Bridesmaids",
+      "21 Jump Street"
+    ],
+    "heart": [
+      "This Is the End",
+      "I Love You, Man",
+      "Hitch"
+    ],
+    "picksStatus": "Original saved favorites, preserved",
+    "sourcePage": 336,
+    "sourceCollection": "2025"
+  },
+  {
+    "genre": "Romance",
+    "clubLine": "Give us chemistry worth rooting for.",
+    "lineProvenance": "New editorial Club copy requested November24,2026; not a verbatim personal quotation",
+    "brain": [
+      "10 Things I Hate About You",
+      "17 Again",
+      "Crazy, Stupid, Love."
+    ],
+    "heart": [
+      "Cinema Paradiso",
+      "Romeo + Juliet",
+      "Titanic"
+    ],
+    "picksStatus": "Original saved favorites, preserved",
+    "sourcePage": 337,
+    "sourceCollection": "2025"
+  },
+  {
+    "genre": "Drama",
+    "clubLine": "Characters we believe. Choices we keep talking about.",
+    "lineProvenance": "New editorial Club copy requested November24,2026; not a verbatim personal quotation",
+    "brain": [
+      "The Bling Ring",
+      "Juno",
+      "The Wolf of Wall Street"
+    ],
+    "heart": [
+      "Pulp Fiction",
+      "Alpha Dog",
+      "Memento"
+    ],
+    "picksStatus": "Original saved favorites, preserved",
+    "sourcePage": 338,
+    "sourceCollection": "2025"
+  },
+  {
+    "genre": "Horror",
+    "clubLine": "Make us tense. Make us care. Then scare the hell out of us.",
+    "lineProvenance": "New editorial Club copy requested November24,2026; not a verbatim personal quotation",
+    "brain": [
+      "Jennifer’s Body",
+      "Hereditary",
+      "The Menu"
+    ],
+    "heart": [
+      "Dawn of the Dead",
+      "Talk to Me",
+      "Bubba Ho-Tep"
+    ],
+    "picksStatus": "Original saved favorites, preserved",
+    "sourcePage": 339,
+    "sourceCollection": "2025"
+  },
+  {
+    "genre": "Sci-Fi",
+    "clubLine": "Give us a big idea—and a reason to care about it.",
+    "lineProvenance": "New editorial Club copy requested November24,2026; not a verbatim personal quotation",
+    "brain": [
+      "Smart House",
+      "The Truman Show",
+      "Zenon: Girl of the 21st Century"
+    ],
+    "heart": [
+      "Tron: Legacy",
+      "Minority Report",
+      "Iron Man"
+    ],
+    "picksStatus": "Original saved favorites, preserved",
+    "sourcePage": 340,
+    "sourceCollection": "2025"
+  },
+  {
+    "genre": "Action",
+    "clubLine": "Big swings, real stakes, and a chase worth the ticket.",
+    "lineProvenance": "New editorial Club copy requested November24,2026; not a verbatim personal quotation",
+    "brain": [
+      "Charlie’s Angels",
+      "Mr. & Mrs. Smith",
+      "Ocean’s 8"
+    ],
+    "heart": [
+      "Once Upon a Time in Mexico",
+      "Ocean’s Eleven",
+      "Run Lola Run"
+    ],
+    "picksStatus": "Original saved favorites, preserved",
+    "sourcePage": 341,
+    "sourceCollection": "2025"
+  },
+  {
+    "genre": "Fantasy",
+    "clubLine": "Build a world we want to get lost in.",
+    "lineProvenance": "New editorial Club copy requested November24,2026; not a verbatim personal quotation",
+    "brain": [
+      "Harry Potter",
+      "Charlie & the Chocolate Factory",
+      "Night at the Museum"
+    ],
+    "heart": [
+      "Lilo & Stitch",
+      "Spy Kids",
+      "Matilda"
+    ],
+    "picksStatus": "Original saved favorites, preserved",
+    "sourcePage": 342,
+    "sourceCollection": "2025"
+  },
+  {
+    "genre": "Musical",
+    "clubLine": "Songs we replay. Performances we remember.",
+    "lineProvenance": "New editorial Club copy requested November24,2026; not a verbatim personal quotation",
+    "brain": [
+      "Wicked",
+      "Mean Girls",
+      "High School Musical"
+    ],
+    "heart": [
+      "Better Man",
+      "Anastasia",
+      "Selena"
+    ],
+    "picksStatus": "Original saved favorites, preserved",
+    "sourcePage": 343,
+    "sourceCollection": "2025"
+  },
+  {
+    "genre": "Historical",
+    "clubLine": "Make the past feel like people, not a history lesson.",
+    "lineProvenance": "New editorial Club copy requested November24,2026; not a verbatim personal quotation",
+    "brain": [
+      "A League of Their Own",
+      "Catch Me If You Can",
+      "Once Upon a Time in Hollywood"
+    ],
+    "heart": [
+      "United 93",
+      "Moneyball",
+      "Under the Electric Sky"
+    ],
+    "picksStatus": "Original saved favorites, preserved",
+    "sourcePage": 344,
+    "sourceCollection": "2025"
+  },
+  {
+    "genre": "Thriller",
+    "clubLine": "Keep us guessing. Make the payoff count.",
+    "lineProvenance": "New editorial Club copy, not a verbatim personal quotation",
+    "brain": [
+      "The Menu",
+      "Primetime",
+      "Victorian Psycho"
+    ],
+    "heart": [
+      "Memento",
+      "Minority Report",
+      "Run Lola Run"
+    ],
+    "picksStatus": "Proposed lineup awaiting owner confirmation",
+    "sources": {
+      "The Menu": "Brianna original Horror favorite",
+      "Primetime": "Saved Brain4/5current review; candidate, not previously confirmed favorite",
+      "Victorian Psycho": "Saved Brain4/5current review; candidate, not previously confirmed favorite",
+      "Memento": "Jonathan original Drama favorite",
+      "Minority Report": "Jonathan original Sci-Fi favorite",
+      "Run Lola Run": "Jonathan original Action favorite"
+    }
+  }
+]
