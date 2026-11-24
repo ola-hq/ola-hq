@@ -1,3 +1,4 @@
+import {collectionStats} from './stats-data.js';
 const base=new URL('../',import.meta.url);
 const $=(s,r=document)=>r.querySelector(s);
 const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n};
@@ -52,6 +53,7 @@ async function run(){
  if(!filmGrid&&!latest&&!genres&&!$('[data-watch-quiz]')&&!document.body.dataset.filmId)return;
  try{
   const films=await load('data/films.json');
+  const homeStats=$('[data-home-stats]');if(homeStats){const summary=collectionStats(films);homeStats.replaceChildren(...[[String(summary.total),'Films on the shelf'],[summary.average.toFixed(2)+'/10','Average recorded score'],[String(summary.pairs),'Two-perspective Club cards']].map(([value,label])=>{const a=el('a','stat');a.href=new URL('stats/',base);a.append(el('strong',null,value),el('span',null,label));return a;}));}
   const pageFilm=films.find(f=>f.id===document.body.dataset.filmId);if(pageFilm){const column=$('.film-art-column');if(column){const frame=el('div','film-art-frame');column.firstElementChild.before(frame);frame.append(column.querySelector('a'));artworkLinks(frame,pageFilm);}}
   const insights=$('[data-collection-insights]');if(insights){if(location.hash==='#insights')insights.closest('details').open=true;const rated=films.filter(f=>Number.isFinite(f.clubScore));for(const [label,value] of [['Films rated',String(rated.length)],['Average La Ola score',(rated.reduce((sum,f)=>sum+f.clubScore,0)/rated.length).toFixed(2)+'/10'],['Current Club cards',String(films.filter(f=>f.currentClubCard).length)]]){const box=el('div','stat');box.append(el('strong',null,value),el('span',null,label));insights.append(box)}}
   if(latest){latest.replaceChildren(...filterFilms(films.filter(f=>f.currentClubCard)).slice(0,8).map(card));$('[data-review-count]')?.replaceChildren(document.createTextNode(String(films.length)));}
