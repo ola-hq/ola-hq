@@ -3,6 +3,7 @@
 body.portal-hq{background:var(--portal-night);color:#f7f0e4;isolation:isolate}
 .portal-hq .home-topbar{position:relative;z-index:5;border-color:#e8c78626;background:#061325ad;backdrop-filter:blur(18px);color:#f7f0e4}
 .portal-hq .wordmark-text strong,.portal-hq .wordmark-text>span,.portal-hq .home-topbar a{color:inherit}
+.portal-hq .globe-lockup .wordmark-text{color:#f7f0e4}
 .portal-hq main{position:relative;z-index:1}
 .portal-hq .eyebrow{color:var(--portal-gold);font-size:.875rem}
 .portal-hq .lead,.portal-hq .quiet,.portal-hq .section-title>span{color:#c3cedd}
