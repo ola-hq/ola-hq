@@ -1,4 +1,15 @@
 const finite=x=>typeof x==='number'&&Number.isFinite(x);
+// Compare only the edition with separately recorded reviewer ratings.
+export function perspectiveStats(films,key){
+ if(!['brain','heart'].includes(key))throw new TypeError('Unknown reviewer');
+ const pairs=films.filter(f=>f.currentClubCard&&finite(f.brain)&&finite(f.heart));
+ const average=items=>items.length?items.reduce((sum,f)=>sum+f[key],0)/items.length:null;
+ const groups=new Map();
+ for(const f of pairs){if(f.genre&&f.genre!=='Unmapped'){if(!groups.has(f.genre))groups.set(f.genre,[]);groups.get(f.genre).push(f)}}
+ const genres=[...groups].filter(([,items])=>items.length>=3).map(([name,items])=>({name,count:items.length,average:average(items)})).sort((a,b)=>b.average-a.average||b.count-a.count||a.name.localeCompare(b.name));
+ const highest=[...pairs].sort((a,b)=>b[key]-a[key]||b.order-a.order);
+ return {count:pairs.length,average:average(pairs),high:pairs.filter(f=>f[key]>=4).length,low:pairs.filter(f=>f[key]<=2).length,genres,standout:highest[0]||null};
+}
 export function collectionStats(films){
  const rated=films.filter(f=>finite(f.clubScore));const current=films.filter(f=>f.currentClubCard);const pairs=current.filter(f=>finite(f.brain)&&finite(f.heart));
  const mean=a=>a.length?a.reduce((a,b)=>a+b,0)/a.length:null;const scores=rated.map(f=>f.clubScore).sort((a,b)=>a-b);const mid=Math.floor(scores.length/2);
