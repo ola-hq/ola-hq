@@ -1,6 +1,6 @@
 'use strict';
 // OLA HQ Tools: one quiz launcher, one timer, a grounded creative prompt,
-// and a source-derived Blockbuster Wave Top 5. No duplicate ratings ledger.
+// and a source-derived La Ola Cinema Club Top 5. No duplicate ratings ledger.
 const $=id=>document.getElementById(id);
 async function copy(text,status){
   try{await navigator.clipboard.writeText(text);$(status).textContent='Copied.';}
@@ -72,7 +72,7 @@ renderCreative();
 // All twelve destinations are linked to their real existing OLA HQ worlds.
 const worldCatalog={
 love:{name:'La Ola de Amor',url:'la-ola-de-amor/',about:'People, shared celebrations, love stories, and memories that become places.'},
-cinema:{name:'Blockbuster Wave',url:'blockbuster-wave/blockbuster-wave-complete-gallery.html',about:'Movies, reviews, ratings, and the stories wrapped around what we watch.'},
+cinema:{name:'La Ola Cinema Club',url:'la-ola-cinema-club/',about:'Movies, reviews, ratings, and the stories wrapped around what we watch.'},
 polaroid:{name:'Our Polaroid Wave',url:'our-polaroid-project/',about:'Photographs, captured nights, portraits, and little moments worth keeping.'},
 music:{name:'Wave 26',url:'wave-26.html',about:'Music, releases, experiments, and feelings translated into sound.'},
 fpl:{name:'FPL Wave',url:'fpl-wave.html',about:'A fantasy-football clubhouse, fixtures, strategy, and shared competition.'},
@@ -166,8 +166,8 @@ $('wave-random').addEventListener('click',revealRandomWave);
 $('wave-random-again').addEventListener('click',revealRandomWave);
 
 // Two independent film archives — Letterboxd ratings must NEVER be invented
-// or silently replaced with Blockbuster Wave scores.
-const blockbusterTop5=[{"id":"cinema2025-71","title":"One of Them Days","score":5,"order":12,"thumb":"blockbuster-wave-thumbs/cinema2025-71.jpg"},{"id":"cinema2025-258","title":"Unity","score":5,"order":100,"thumb":"blockbuster-wave-thumbs/cinema2025-258.jpg"},{"id":"cinema2025-284","title":"Elf","score":4.75,"order":126,"thumb":"blockbuster-wave-thumbs/cinema2025-284.jpg"},{"id":"cinema2025-56","title":"Wicked","score":4.5,"order":5,"thumb":"blockbuster-wave-thumbs/cinema2025-56.jpg"},{"id":"cinema2025-57","title":"Anora","score":4.5,"order":6,"thumb":"blockbuster-wave-thumbs/cinema2025-57.jpg"}];
+// or silently replaced with La Ola Cinema Club scores.
+const blockbusterTop5=[{"id":"cinema2025-71","title":"One of Them Days","score":5.0,"order":12,"thumb":"blockbuster-wave-thumbs/cinema2025-71.jpg"},{"id":"cinema2025-258","title":"Unity","score":5,"order":100,"thumb":"blockbuster-wave-thumbs/cinema2025-258.jpg"},{"id":"club-michael","title":"Michael","score":5.0,"order":191,"thumb":"../la-ola-cinema-club/assets/cards/club-michael.webp"},{"id":"club-billie-eilish-hit-me-hard-and-soft-the-tour-live-in-3d","title":"Billie Eilish: Hit Me Hard and Soft — The Tour (Live in 3D)","score":5.0,"order":194,"thumb":"../la-ola-cinema-club/assets/cards/club-billie-eilish-hit-me-hard-and-soft-the-tour-live-in-3d.webp"},{"id":"club-club-kid","title":"Club Kid","score":5.0,"order":233,"thumb":"../la-ola-cinema-club/assets/cards/club-club-kid.webp"}];
 const localMovieKey='ola-hq-letterboxd-ourpolaroidproj-v1';
 let letterboxdEntries=[];
 try{const saved=JSON.parse(localStorage.getItem(localMovieKey)||'[]');if(Array.isArray(saved))letterboxdEntries=saved.filter(x=>x&&typeof x.title==='string'&&Number.isFinite(x.score));}catch{}
@@ -218,7 +218,7 @@ const movieList=$('top-movie-list'),movieNote=$('top-movie-note');
 const diaryURL='https://letterboxd.com/ourpolaroidproj/diary/films/';
 function topFilmCard(movie,index,fromLetterboxd){
  const card=node('article','top-movie'),detail=node('div','top-movie-content');
- if(!fromLetterboxd&&movie.thumb){const img=node('img','');img.src='blockbuster-wave/'+movie.thumb;img.alt='Blockbuster Wave artwork for '+movie.title;img.loading='lazy';card.append(img);}
+ if(!fromLetterboxd&&movie.thumb){const img=node('img','');img.src='blockbuster-wave/'+movie.thumb;img.alt='La Ola Cinema Club artwork for '+movie.title;img.loading='lazy';card.append(img);}
  detail.append(node('span','top-movie-position','#'+(index+1)),node('strong','',movie.title),node('span','top-movie-score',(fromLetterboxd?'★ ':'🌊 ')+movie.score+'/5'));
  if(fromLetterboxd&&movie.url){const link=node('a','','View on Letterboxd ↗');link.href=movie.url;link.target='_blank';link.rel='noopener noreferrer';detail.append(link);}
  if(fromLetterboxd&&movie.watchedDate)detail.append(node('span','top-movie-date','Watched '+movie.watchedDate));
@@ -249,7 +249,7 @@ function renderTopFilms(){
  $('letterboxd-import').hidden=!isLB;
  const sourceLink=$('movie-source-link'),footnote=$('movie-source-footnote');
  sourceLink.href=isLB?diaryURL:'blockbuster-wave/blockbuster-wave-complete-gallery.html#insights';
- sourceLink.textContent=isLB?'Open our movie diary ↗':'Explore Blockbuster Wave ↗';
+ sourceLink.textContent=isLB?'Open our movie diary ↗':'Explore La Ola Cinema Club ↗';
  sourceLink.target=isLB?'_blank':'_self';
  if(isLB){
   footnote.textContent='Source: Our Polaroid Wave movie diary (via Letterboxd RSS when available) + optional browser-local export. RSS covers recent activity, not all-time ratings.';
@@ -273,13 +273,13 @@ function renderTopFilms(){
   }
   ranking.forEach((f,i)=>movieList.append(topFilmCard(f,i,true)));
  }else{
-  footnote.textContent='Source: verified Blockbuster Wave archive snapshot; exact theater visit dates are unavailable.';
+  footnote.textContent='Source: verified La Ola Cinema Club archive snapshot; exact theater visit dates are unavailable.';
   if(moviePeriod==='recent'){
-   movieNote.textContent='No movies with verified viewing dates in the last 30 days in the Blockbuster Wave archive. Its records do not contain exact viewing dates.';
+   movieNote.textContent='No movies with verified viewing dates in the last 30 days in the La Ola Cinema Club archive. Its records do not contain exact viewing dates.';
    // Blockbuster's undated older favorites must never leak into Last 30 Days.
    return;
   }
-  movieNote.textContent='These are Blockbuster Wave scores—not Letterboxd star ratings.';
+  movieNote.textContent='These are La Ola Cinema Club scores—not Letterboxd star ratings.';
   movieRanking(blockbusterTop5).slice(0,5).forEach((f,i)=>movieList.append(topFilmCard(f,i,false)));
  }
 }

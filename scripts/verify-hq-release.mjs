@@ -62,7 +62,7 @@ for(const id of ['love','cinema','polaroid','music','fpl','simulation','gdb','ar
 requireThat(toolsJS.includes('function csvEntries(')&&toolsJS.includes('function parseCSV(')&&toolsJS.includes('function renderTopFilms('), 'CSV-driven Letterboxd ranking logic missing');
 requireThat(toolsJS.includes('movieSource=')&&toolsJS.includes('letterboxdEntries')&&toolsJS.includes('blockbusterTop5'), 'Independent film sources not implemented');
 requireThat(toolsJS.includes('const records=letterboxdRecords()')&&toolsJS.includes('No verified ratings have synced yet'), 'Unsourced Letterboxd ratings must remain transparently empty');
-requireThat(toolsJS.includes('No movies with verified viewing dates in the last 30 days in the Blockbuster Wave archive'), 'Blockbuster last-30-days caveat missing');
+requireThat(toolsJS.includes('No movies with verified viewing dates in the last 30 days in the La Ola Cinema Club archive'), 'Blockbuster last-30-days caveat missing');
 requireThat(toolsJS.includes('const starts=')&&toolsJS.includes('renderCreative()')&&toolsJS.includes("querySelectorAll('[data-timer-use]')"), 'Creative or timer tools missing');
 requireThat(app.includes('href="../tools.html"')&&app.includes('Visit OLA HQ'), 'App return link to Tools missing');
 if(inline){
@@ -95,7 +95,7 @@ requireThat(tools.includes('Overall: 4★+ · Last 30 days: any rating.'), 'The 
 requireThat(toolsJS.includes('const recent=movieRanking(records.filter(f=>within30(f.activityDate||f.watchedDate)),0.5);'), 'Recent Letterboxd filter must use rating activity dates and include sub-4-star films');
 requireThat(toolsJS.includes("const ranking=(moviePeriod==='recent'?recent:overall).slice(0,5);"), 'Recent view cannot use overall ratings as fallback');
 requireThat(toolsJS.includes('letterboxdEntries=movieRanking(letterboxdEntries.concat(imported),0.5)')&&toolsJS.includes("activityAt=index('Date')")&&toolsJS.includes('activityDate=activityAt>=0?isoDate(row[activityAt]):null'), 'CSV import must preserve all rating scores and their rating dates');
-requireThat(toolsJS.includes("if(moviePeriod==='recent'){") && toolsJS.includes('Blockbuster Wave archive. Its records do not contain exact viewing dates.'), 'Undated Blockbuster view must remain empty for Last 30 Days');
+requireThat(toolsJS.includes("if(moviePeriod==='recent'){") && toolsJS.includes('La Ola Cinema Club archive. Its records do not contain exact viewing dates.'), 'Undated Blockbuster view must remain empty for Last 30 Days');
 requireThat(!toolsJS.includes('Showing its overall Top 5 instead.')&&!toolsJS.includes('Showing this account’s best available rated entries instead.'), 'Old 30-day fallback copy is still present');
 {
  const a=toolsJS.indexOf('function movieRanking('),b=toolsJS.indexOf('function renderTopFilms(',a);
