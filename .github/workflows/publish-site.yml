@@ -57,7 +57,7 @@ jobs:
       - name: Verify release, FPL and concurrency behavior
         run: |
           node scripts/verify-hq-release.mjs
-          node --test scripts/cinema.test.mjs
+          node --test scripts/cinema.test.mjs scripts/hq-portals.test.mjs
           node scripts/validate-fpl.mjs
           node --test scripts/football-manual.test.mjs
           node --test scripts/analytics.test.mjs
@@ -129,3 +129,4 @@ jobs:
           print('Manual football snapshot retained with its original timestamp; age in hours:', round(age/3600,1))
           print('Live source and protected assets verified:',release['source_sha'],'FPL:',release['fpl_fetched_at'])
           PY
+

@@ -1,0 +1,84 @@
+/* Shared HQ entrance atmosphere. World interiors keep their own design. */
+:root{--portal-gold:#e8c786;--portal-night:#061325}
+body.portal-hq{background:var(--portal-night);color:#f7f0e4;isolation:isolate}
+.portal-hq .home-topbar{position:relative;z-index:5;border-color:#e8c78626;background:#061325ad;backdrop-filter:blur(18px);color:#f7f0e4}
+.portal-hq .wordmark-text strong,.portal-hq .wordmark-text>span,.portal-hq .home-topbar a{color:inherit}
+.portal-hq main{position:relative;z-index:1}
+.portal-hq .eyebrow{color:var(--portal-gold);font-size:.875rem}
+.portal-hq .lead,.portal-hq .quiet,.portal-hq .section-title>span{color:#c3cedd}
+.portal-hq .section-title>span{font-size:.875rem}
+.portal-hq .section-title h2{font-size:1.75rem}
+.portal-hq footer{position:relative;border-color:#e8c78630;color:#c3cedd;font-size:.875rem}
+.portal-hq .banner{border-color:#e8c78630}
+.portal-hq .button{background:#e8c786;color:#10223a;border-color:#e8c786}
+.portal-hq .button.secondary{color:#e8c786;background:transparent;border-color:#e8c78680}
+.portal-hq .room{color:#172c3d}
+.portal-hq .room .eyebrow{color:#805e29}
+.portal-hq .room .enter{font-size:.875rem;color:#705126}
+.portal-hq .deeper-waves-invitation{color:#172c3d}
+.portal-hq .deeper-waves-invitation .quiet{color:#58666b}
+.portal-hq .deeper-waves-invitation .eyebrow{color:#705126}
+.portal-hq .deeper-waves-invitation .deeper-waves-copy>p:not(.eyebrow){color:#58666b}
+.portal-hq .systems .room-copy p{color:#58666b}
+.portal-hq .portal-launch{position:relative;display:grid;place-items:center;min-height:calc(100svh - 114px);min-height:calc(100dvh - 114px);margin-top:-64px;isolation:isolate}
+.portal-launch::before,#app-launch::before{content:'';position:absolute;inset:10%;pointer-events:none;background:radial-gradient(ellipse at center,#396c9e28,transparent 62%)}
+.portal-hq .portal-launch{min-height:calc(100svh - var(--portal-header-height,114px))}
+.portal-hq .portal-globe-door{display:grid;place-items:center;width:clamp(145px,20vw,210px);aspect-ratio:1;border-radius:50%;position:relative;z-index:2;filter:drop-shadow(0 0 44px #79b7f551);text-decoration:none}
+.portal-globe-door::before,.portal-globe-door::after,#hero-world-jump::before,#hero-world-jump::after{content:'';position:absolute;inset:-24%;border:1px solid #e8c78627;border-radius:50%;pointer-events:none;box-shadow:0 0 45px #4d9bd319}
+.portal-globe-door::after,#hero-world-jump::after{inset:-46%;border-color:#9ec6e212;transform:rotateX(62deg) rotate(-25deg)}
+.portal-globe-door img{display:block;width:100%;height:100%;object-fit:contain;animation:portal-float 7s ease-in-out infinite}
+.portal-launch-cue{position:absolute;bottom:32px;left:0;right:0;display:flex;justify-content:center;gap:22px;align-items:center;flex-wrap:wrap;font-size:.875rem;letter-spacing:.08em;color:#d3deeb}
+.portal-launch-cue a{text-underline-offset:6px;padding:12px;min-height:44px}
+.portal-hq .portal-intro{display:grid;place-items:center;text-align:center;min-height:65svh;padding:70px 0 90px;margin:0;scroll-margin-top:30px}
+.portal-intro .hero-copy{max-width:780px}
+.portal-hq .portal-intro h1{font-size:clamp(56px,8vw,106px);margin:22px 0;color:#f7f0e4}
+.portal-intro h1 em{color:var(--portal-gold);font-weight:normal}
+.portal-intro .lead{font-size:clamp(18px,2vw,21px);max-width:620px;margin:0 auto 30px}
+#waves{scroll-margin-top:30px}
+.portal-stars{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 18% 24%,#344b7b35,transparent 49%),radial-gradient(ellipse at 80% 60%,#583e7630,transparent 50%),#061325}
+body:has(#app-launch) .portal-stars{z-index:0}
+body:has(#app-launch) .app{position:relative;z-index:1}
+body:has(#app-launch) #app-launch.hero{background:transparent}
+body:has(#app-launch) #app-launch>.starfield{display:none}
+body:has(#app-launch) .world-intro{background:radial-gradient(ellipse at center,#16345e70,transparent 70%)}
+.portal-hq .world-entrances .room,.world-grid .world-card{--portal-x:50%;--portal-y:50%;--portal-rx:0deg;--portal-ry:0deg;position:relative;transition:transform .3s,box-shadow .3s,border-color .3s;transform-style:preserve-3d}
+.portal-hq .world-entrances .room:hover,.portal-hq .world-entrances .room:focus-within,.world-grid .world-card:hover,.world-grid .world-card:focus-visible{border-color:#e8c786c0;box-shadow:0 20px 65px #02091680,0 0 30px #e8c78625;transform:perspective(1200px) rotateX(var(--portal-rx)) rotateY(var(--portal-ry)) translateY(-5px)}
+.portal-hq .world-entrances .visual{height:auto!important;min-height:0!important;aspect-ratio:1672/941!important;padding:0!important;display:block!important;position:relative;overflow:hidden;background:#15263c!important}
+.portal-hq .world-entrances .visual>img{position:relative!important;inset:auto!important;display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;transition:transform .85s cubic-bezier(.2,.65,.2,1),filter .65s}
+.portal-hq .world-entrances .visual::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--portal-x) var(--portal-y),#fff0c719,transparent 52%);box-shadow:inset 0 0 0 1px #e8c78620;opacity:0;transition:opacity .4s}
+.portal-hq .world-entrances .visual::before{content:'';position:absolute;z-index:1;left:50%;top:50%;width:31%;aspect-ratio:1;border:1px solid #ffe0a88c;border-radius:50%;box-shadow:0 0 22px #f5c77780,inset 0 0 25px #f5c77750;opacity:0;transform:translate(-50%,-50%) scale(.8);transition:opacity .5s,transform .7s;pointer-events:none}
+.portal-hq .world-entrances .room:hover .visual::before,.portal-hq .world-entrances .room:focus-within .visual::before{opacity:.8;transform:translate(-50%,-50%) scale(1.15)}
+.portal-hq a:focus-visible{outline-color:#e8c786}
+.portal-hq .deeper-waves-invitation{border-color:#e8c78670;background:linear-gradient(125deg,#efe6d4,#fff8e9);color:#172c3d}
+.portal-hq .deeper-waves-invitation .deeper-waves-cta{background:#172c3d;color:#fff8e9}
+.portal-hq .deeper-waves-invitation .deeper-waves-art{color:#705126;background:#fff8e970;border-color:#c5a56770}
+.world-grid .world-card.portal-card>img{z-index:0}
+.world-grid .world-card.portal-card::before{content:'';position:absolute;z-index:1;left:50%;top:30%;width:30%;aspect-ratio:1;border:1px solid #ffe0a88c;border-radius:50%;box-shadow:0 0 22px #f5c77780,inset 0 0 25px #f5c77750;opacity:0;transform:translate(-50%,-50%) scale(.8);transition:opacity .4s,transform .6s;pointer-events:none}
+.world-grid .world-card.portal-card:hover::before,.world-grid .world-card.portal-card:focus-visible::before{opacity:.8;transform:translate(-50%,-50%) scale(1.15)}
+.portal-hq .world-entrances .room:hover .visual>img,.portal-hq .world-entrances .room:focus-within .visual>img{transform:scale(1.055);filter:saturate(1.08)}
+.portal-hq .world-entrances .room:hover .visual::after,.portal-hq .world-entrances .room:focus-within .visual::after{opacity:1}
+.portal-hq .world-entrances .visual>.portal-label{position:absolute;z-index:2;left:14px;top:14px;max-width:calc(100% - 28px);padding:7px 11px!important;border:1px solid #fff3!important;border-radius:4px!important;transform:none!important;font:700 .75rem/1.4 'Avenir Next',Arial,sans-serif!important;letter-spacing:.08em!important;color:#fff5df!important;background:#061325c9!important}
+.portal-hq .world-entrances .room-copy .entrance-category{font-size:.875rem}
+.portal-hq .world-entrances .room-copy .portal-access{font-size:.875rem;color:#70506b}
+.portal-hq .academy-card-presenter{color:#58666b}
+.world-grid .world-card.portal-card{aspect-ratio:auto;min-height:0;display:flex;flex-direction:column;background:#0c2139;text-align:left;overflow:hidden;padding:0;color:#f7f0e4;text-decoration:none}
+.world-grid .world-card.portal-card>img{position:relative!important;inset:auto!important;width:100%;height:auto!important;aspect-ratio:1672/941;object-fit:cover!important;object-position:center!important;opacity:1!important;filter:none!important;transform:none;transition:transform .7s}
+.world-grid .world-card.portal-card::after{display:none}
+.world-grid .world-card.portal-card .world-card-copy{position:relative!important;inset:auto!important;display:grid;gap:8px;padding:20px;width:100%;z-index:1;background:linear-gradient(145deg,#102943,#091a2f);text-shadow:none}
+.world-grid .world-card.portal-card .world-card-copy small{font-size:.875rem;line-height:1.4;color:#d9c29b}
+.world-grid .world-card.portal-card .world-card-copy strong{font-size:1.35rem;line-height:1.2}
+.world-grid .world-card.portal-card .world-card-copy>span{font-size:.875rem;color:#e5e7ed}
+.world-grid .world-card.portal-card:hover>img,.world-grid .world-card.portal-card:focus-visible>img{transform:scale(1.04)}
+.portal-transition{position:fixed;inset:0;z-index:10000;pointer-events:none;overflow:hidden;background:#061325;opacity:0;transition:opacity .16s}
+.portal-transition.is-visible{opacity:1}
+.portal-transition img{width:100%;height:100%;object-fit:cover;animation:portal-enter .46s cubic-bezier(.2,.65,.2,1) both}
+.portal-transition::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse,transparent 15%,#061325ad 90%);box-shadow:inset 0 0 100px #e8c78666}
+.portal-transition .portal-transition-name{position:absolute;z-index:1;left:20px;right:20px;bottom:12%;color:white;text-align:center;font:normal clamp(28px,5vw,56px)/1.2 Georgia,serif;text-shadow:0 2px 22px #000}
+.portal-launch.is-entering img,#hero-world-jump.is-entering img{filter:drop-shadow(0 0 70px #e8c786);transition:filter .3s}
+@keyframes portal-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes portal-enter{from{transform:scale(1.03);filter:brightness(.75)}to{transform:scale(1.3);filter:brightness(1.15)}}
+@media(max-width:760px){.portal-hq .portal-launch{margin-top:-40px;min-height:calc(100svh - 120px)}.portal-hq .portal-intro{min-height:60svh;padding:64px 0}.portal-hq .home-topbar{padding-top:16px;padding-bottom:16px}.portal-hq .home-topbar nav a{font-size:.875rem}.portal-hq .section-title{align-items:center}.portal-hq .portal-globe-door{width:145px}.portal-launch-cue{bottom:20px}.world-grid .world-card.portal-card .world-card-copy{padding:15px}.world-grid .world-card.portal-card .world-card-copy strong{font-size:1.125rem}}
+@media(prefers-reduced-motion:reduce){.portal-globe-door img{animation:none}.portal-hq .world-entrances .room,.world-grid .world-card,.portal-hq .world-entrances .visual>img,.world-grid .world-card.portal-card>img{transition:none!important;transform:none!important}.portal-transition{display:none!important}}
+@media(max-width:760px){.portal-hq .portal-launch{min-height:calc(100svh - var(--portal-header-height,180px))}}
+@media(hover:none){.portal-hq .world-entrances .room:hover,.world-grid .world-card:hover{transform:none}.portal-hq .world-entrances .visual::before,.world-grid .world-card.portal-card::before{display:none}}
+@media(prefers-reduced-motion:reduce){.portal-hq .world-entrances .visual::before,.world-grid .world-card.portal-card::before{display:none}}
