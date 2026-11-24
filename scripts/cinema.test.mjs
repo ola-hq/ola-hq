@@ -39,3 +39,14 @@ test('stats retain zero and quarter scores and exclude unrated entries from aver
 test('two-perspective comparisons exclude legacy combined-only cards and keep genuine zero ratings',()=>{const s=collectionStats(sample);assert.equal(s.pairs,3);assert.equal(s.agree,2);assert.equal(s.heartHigher,1);assert.equal(s.brainHigher,0);assert.equal(s.brainMean,8.5/3);assert.equal(s.heartMean,8.75/3);assert.equal(s.different[0].id,'quarter')});
 test('genre and stamp counts use current cards rather than imputing archive metadata',()=>{const s=collectionStats(sample);assert.deepEqual(s.genres,[['Fantasy',2],['Horror',1]]);assert.equal(s.stamps.reduce((n,x)=>n+x[1],0),3);assert.equal(collectionStats(sample.filter(f=>f.currentClubCard)).rated,3)});
 test('empty collections return unknown averages rather than invented zero scores',()=>{const s=collectionStats([]);assert.equal(s.average,null);assert.equal(s.median,null);assert.equal(s.brainMean,null);assert.equal(s.heartMean,null);assert.deepEqual(s.distribution,[])});
+
+test('reviewer patterns retain genuine zero scores and exclude archive-only or incomplete pairs',async()=>{
+ const {perspectiveStats}=await import('../la-ola-cinema-club/assets/stats-data.js');
+ const data=[{currentClubCard:true,brain:0,heart:4,genre:'Horror',order:1},{currentClubCard:true,brain:5,heart:5,genre:'Horror',order:2},{currentClubCard:true,brain:4,heart:3,genre:'Horror',order:3},{currentClubCard:false,brain:5,heart:5,genre:'Horror',order:4},{currentClubCard:true,brain:5,heart:null,genre:'Horror',order:5}];
+ const s=perspectiveStats(data,'brain');assert.equal(s.count,3);assert.equal(s.average,3);assert.equal(s.high,2);assert.equal(s.low,1);assert.equal(s.genres[0].average,3);assert.equal(s.standout.order,2);
+});
+test('genre patterns require three primary-genre records and do not infer preferences from secondary colors',async()=>{
+ const {perspectiveStats}=await import('../la-ola-cinema-club/assets/stats-data.js');
+ const data=[1,2,3].map(order=>({currentClubCard:true,brain:4,heart:5,genre:'Drama',secondaryGenre:'Horror',order}));data.push({currentClubCard:true,brain:5,heart:5,genre:'Musical',order:4});
+ assert.deepEqual(perspectiveStats(data,'heart').genres,[{name:'Drama',count:3,average:5}]);assert.equal(perspectiveStats([],'brain').average,null);assert.throws(()=>perspectiveStats(data,'unknown'),TypeError);
+});
