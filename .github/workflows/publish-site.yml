@@ -57,6 +57,7 @@ jobs:
       - name: Verify release, FPL and concurrency behavior
         run: |
           node scripts/verify-hq-release.mjs
+          node --test scripts/cinema.test.mjs
           node scripts/validate-fpl.mjs
           node --test scripts/football-manual.test.mjs
           node --test scripts/analytics.test.mjs

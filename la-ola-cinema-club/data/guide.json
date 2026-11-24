@@ -1,0 +1,56 @@
+{
+  "genres": {
+    "Drama": "#1E3A8A",
+    "Comedy": "#FFD23F",
+    "Horror": "#000000",
+    "Romance": "#EC4899",
+    "Sci-Fi": "#7C3AED",
+    "Musical": "#DC2626",
+    "Action": "#FF5E0E",
+    "Fantasy": "#10B981",
+    "Historical": "#7F1D1D",
+    "Thriller": "#0E707A"
+  },
+  "stamps": [
+    {
+      "name": "Cinema Banger",
+      "description": "Big-screen energy. The kind of watch we want to talk about on the way out.",
+      "image": "assets/stamps/cinema-banger.webp"
+    },
+    {
+      "name": "Hits Home",
+      "description": "The personal one: a feeling, memory, or truth that stays with us.",
+      "image": "assets/stamps/hits-home.webp"
+    },
+    {
+      "name": "Food for Thought",
+      "description": "Something to turn over afterward. Questions, perspectives, and conversations.",
+      "image": "assets/stamps/food-for-thought.webp"
+    },
+    {
+      "name": "Pure Vibes",
+      "description": "The mood, music, style, or atmosphere is a big part of the pleasure.",
+      "image": "assets/stamps/pure-vibes.webp"
+    },
+    {
+      "name": "Mixed Bag",
+      "description": "Things we enjoyed alongside things that did not quite come together.",
+      "image": "assets/stamps/mixed-bag.webp"
+    },
+    {
+      "name": "Messy Fun",
+      "description": "A wild or uneven ride that still gave us a good time.",
+      "image": "assets/stamps/messy-fun.webp"
+    },
+    {
+      "name": "Not For Us",
+      "description": "It may find its people. This time, we were not those people.",
+      "image": "assets/stamps/not-for-us.webp"
+    },
+    {
+      "name": "Skip It",
+      "description": "A watch we would have been happy to pass on.",
+      "image": "assets/stamps/skip-it.webp"
+    }
+  ]
+}

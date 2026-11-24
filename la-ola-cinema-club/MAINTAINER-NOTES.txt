@@ -1,0 +1,11 @@
+LA OLA CINEMA CLUB
+
+This release reconciles44 existing placeholders and adds44 films, preserving the190 original film IDs and125 archive records.
+
+Data lives in data/films.json, data/archives.json and data/guide.json. Every film has a stableID and canonical films/<slug>/ path. Combined clubScore is outof10; legacy score is retained outof5 for the HQ reader. Do not change numeric ratings when changing display formatting.
+
+Guide shelves show high-scoring examples rather than an asserted personal favorites list. Current full captions and card highlights have separate reviewKind values. Concept films are kept outside the review dataset.
+
+Saved favorites are device-local. Historical Blockbuster URLs forward to the new routes while preserving query strings and film hashes.
+
+Run node --test scripts/cinema.test.mjs and node scripts/verify-hq-release.mjs from the repository root before publication. Canonical editorial source and publication manifest live in the private Cinema project.
