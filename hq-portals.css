@@ -4,6 +4,8 @@ body.portal-hq{background:var(--portal-night);color:#f7f0e4;isolation:isolate}
 .portal-hq .home-topbar{position:relative;z-index:5;border-color:#e8c78626;background:#061325ad;backdrop-filter:blur(18px);color:#f7f0e4}
 .portal-hq .wordmark-text strong,.portal-hq .wordmark-text>span,.portal-hq .home-topbar a{color:inherit}
 .portal-hq .globe-lockup .wordmark-text{color:#f7f0e4}
+.portal-hq .skip{color:#172c3d;z-index:10001}
+.portal-hq .home-topbar a{min-height:44px}
 .portal-hq main{position:relative;z-index:1}
 .portal-hq .eyebrow{color:var(--portal-gold);font-size:.875rem}
 .portal-hq .lead,.portal-hq .quiet,.portal-hq .section-title>span{color:#c3cedd}
@@ -32,6 +34,7 @@ body.portal-hq{background:var(--portal-night);color:#f7f0e4;isolation:isolate}
 .portal-launch-cue a{text-underline-offset:6px;padding:12px;min-height:44px}
 .portal-hq .portal-intro{display:grid;place-items:center;text-align:center;min-height:65svh;padding:70px 0 90px;margin:0;scroll-margin-top:30px}
 .portal-intro .hero-copy{max-width:780px}
+.portal-hq .portal-intro{grid-template-columns:1fr;gap:0}
 .portal-hq .portal-intro h1{font-size:clamp(56px,8vw,106px);margin:22px 0;color:#f7f0e4}
 .portal-intro h1 em{color:var(--portal-gold);font-weight:normal}
 .portal-intro .lead{font-size:clamp(18px,2vw,21px);max-width:620px;margin:0 auto 30px}
