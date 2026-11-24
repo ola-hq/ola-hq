@@ -1,9 +1,20 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {filterFilms,scoreText,genreExamples,recommendFilms} from '../la-ola-cinema-club/assets/club.js';
+import {filterFilms,scoreText,genreExamples,recommendFilms,journeyPicks} from '../la-ola-cinema-club/assets/club.js';
 const films=JSON.parse(readFileSync(new URL('../la-ola-cinema-club/data/films.json',import.meta.url)));
 const current=films.filter(f=>f.currentClubCard);
+test('exact-score links preserve quarter scores and exclude unrated records',()=>{
+ const picks=filterFilms(films,{score:'7.25'});assert.ok(picks.length);assert.ok(picks.every(f=>f.clubScore===7.25));
+ assert.equal(filterFilms([{clubScore:null,order:1},{clubScore:0,order:2}],{score:'0'}).length,1);
+ assert.equal(filterFilms(films,{score:'invalid'}).length,0);
+});
+test('secondary genre shelves maximize available primary backgrounds',()=>{
+ for(const genre of ['Fantasy','Comedy']){const available=current.filter(f=>f.secondaryGenre===genre);const picks=genreExamples(films,genre,'secondary');assert.equal(new Set(picks.map(x=>x.film.genre)).size,Math.min(3,new Set(available.map(f=>f.genre)).size));}
+});
+test('mood journey excludes horror in both genre roles when gentle is selected',()=>{
+ const picks=journeyPicks(films,{dark:'gentle',energy:'tense',world:'imaginative',perspective:'heart'});assert.equal(picks.length,3);assert.ok(picks.every(x=>current.some(f=>f.id===x.film.id)&&![x.film.genre,x.film.secondaryGenre].includes('Horror')));
+});
 test('reconciles 44 existing placeholders and 44 additions without losing historic IDs',()=>{
  assert.equal(films.length,234);assert.equal(new Set(films.map(f=>f.id)).size,234);assert.equal(current.length,88);
  const legacy=JSON.parse(readFileSync(new URL('../blockbuster-wave/blockbuster-wave-complete-gallery.html',import.meta.url),'utf8').match(/id="data">(.*?)<\/script>/s)[1]);
