@@ -9,8 +9,8 @@ const worlds = {
   hq: { name: 'OLA HQ', path: '', parent: null },
   'la-ola': { name: 'La Ola de Amor', path: 'la-ola-de-amor/', parent: null },
   wave26: { name: 'Wave 26', path: 'wave-26.html', parent: null },
-  polaroid: { name: 'Polaroid Wave', path: 'our-polaroid-project/', parent: null },
-  blockbuster: { name: 'La Ola Cinema Club', path: 'blockbuster-wave/blockbuster-wave-complete-gallery.html', parent: null },
+  polaroid: { name: 'Our Polaroid Wave', path: 'our-polaroid-project/', parent: null },
+  blockbuster: { name: 'La Ola Cinema Club', path: 'la-ola-cinema-club/', parent: null },
   fpl: { name: 'FPL Wave', path: 'fpl-wave.html', parent: null },
   simulation: { name: 'Simulation Wave', path: 'simulation-wave/', parent: null },
   gdb: { name: 'GDB Wave', path: 'gdb-university/', parent: null },
@@ -49,6 +49,7 @@ function matchWorld(url) {
   if (path === '' || path === 'index.html') return 'hq';
   if (/^la-ola-de-amor\/scan\//.test(path)) return 'la-ola';
   if (/^la-ola-de-amor\//.test(path)) return 'la-ola';
+  if (/^la-ola-cinema-club\//.test(path)) return 'blockbuster';
   if (/^blockbuster-wave\//.test(path)) return 'blockbuster';
   if (/^our-polaroid-project\//.test(path)) return 'polaroid';
   if (/^simulation-wave\//.test(path) || path === 'simulation-wave.html') return 'simulation';
@@ -163,7 +164,11 @@ frame.addEventListener('load', () => {
     frame.contentDocument.addEventListener('click', followFrameLink);
   } catch {}
 });
-document.querySelectorAll('[data-world]').forEach(button => button.addEventListener('click', () => openWorld(button.dataset.world)));
+document.querySelectorAll('[data-world]').forEach(button => button.addEventListener('click', () => {
+  const navigate = () => openWorld(button.dataset.world);
+  if (window.OLAPortals) window.OLAPortals.enter(button, navigate);
+  else navigate();
+}));
 // The OLA HQ /app/ globe is a native anchor first, with an optional quick-glide enhancement.
 let globeJumpAnimation = 0;
 function quickScrollToWaves(event) {
@@ -250,3 +255,4 @@ nativeInstall.addEventListener('click', async () => {
   nativeInstall.hidden = true;
   installDialog.close();
 });
+
