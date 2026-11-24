@@ -50,3 +50,8 @@ test('genre patterns require three primary-genre records and do not infer prefer
  const data=[1,2,3].map(order=>({currentClubCard:true,brain:4,heart:5,genre:'Drama',secondaryGenre:'Horror',order}));data.push({currentClubCard:true,brain:5,heart:5,genre:'Musical',order:4});
  assert.deepEqual(perspectiveStats(data,'heart').genres,[{name:'Drama',count:3,average:5}]);assert.equal(perspectiveStats([],'brain').average,null);assert.throws(()=>perspectiveStats(data,'unknown'),TypeError);
 });
+
+test('touch artwork tilt remains bounded and respects the neutral center',async()=>{
+ const {tiltAt}=await import('../la-ola-cinema-club/assets/art-viewer.js');const box={left:10,top:20,width:100,height:200};
+ assert.deepEqual(tiltAt(60,120,box),{x:-0,y:0});assert.deepEqual(tiltAt(-100,-100,box),{x:9,y:-12});assert.deepEqual(tiltAt(1000,1000,box),{x:-9,y:12});assert.deepEqual(tiltAt(0,0,{left:0,top:0,width:0,height:0}),{x:-0,y:0});
+});
