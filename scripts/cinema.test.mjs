@@ -10,7 +10,7 @@ test('exact-score links preserve quarter scores and exclude unrated records',()=
  assert.equal(filterFilms(films,{score:'invalid'}).length,0);
 });
 test('secondary genre shelves maximize available primary backgrounds',()=>{
- for(const genre of ['Fantasy','Comedy']){const available=current.filter(f=>f.secondaryGenre===genre);const picks=genreExamples(films,genre,'secondary');assert.equal(new Set(picks.map(x=>x.film.genre)).size,Math.min(3,new Set(available.map(f=>f.genre)).size));}
+ for(const genre of ['Fantasy','Comedy','Sci-Fi','Musical']){const available=current.filter(f=>f.secondaryGenre===genre);const picks=genreExamples(films,genre,'secondary');assert.equal(new Set(picks.map(x=>x.film.genre)).size,Math.min(3,new Set(available.map(f=>f.genre)).size));}
 });
 test('mood journey excludes horror in both genre roles when gentle is selected',()=>{
  const picks=journeyPicks(films,{dark:'gentle',energy:'tense',world:'imaginative',perspective:'heart'});assert.equal(picks.length,3);assert.ok(picks.every(x=>current.some(f=>f.id===x.film.id)&&![x.film.genre,x.film.secondaryGenre].includes('Horror')));
