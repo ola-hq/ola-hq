@@ -1,4 +1,4 @@
-import {API,ANON} from './community-config.js?v=20261125-worlds34';
+import {API,ANON} from './community-config.js?v=20261125-worlds35';
 export function validFeedback(d){return Boolean(d&&['likes','dislikes','reviewCount'].every(k=>Number.isSafeInteger(d[k])&&d[k]>=0)&&Array.isArray(d.reviews)&&d.reviews.length<=20&&d.reviews.every(r=>typeof r.name==='string'&&typeof r.review==='string'&&r.name.length<=40&&r.review.length<=1600));}
 export async function feedbackRequest(film,action,extra={}){const r=await fetch(API,{method:'POST',headers:{'content-type':'application/json',apikey:ANON,authorization:'Bearer '+ANON},body:JSON.stringify({film,action,...extra})});const d=await r.json();if(!r.ok)throw Error(r.status===429?'Please wait a moment, then try again.':'Your response could not be saved. Please try again.');if(!validFeedback(d))throw Error('The conversation could not load. Please try again.');return d;}
 export function initFilmFeedback(){document.addEventListener('club-collection',e=>{
