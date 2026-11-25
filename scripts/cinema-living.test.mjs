@@ -21,12 +21,12 @@ test('historical means expose real equality versus display rounding without losi
 });
 test('distribution counts and linked shelf filters use the same paired perspective scope',()=>{
  for(const key of ['clubScore','brain','heart']){const d=distribution(films,key);assert.equal(d.count,key==='clubScore'?234:88);for(const bin of d.bins){const result=filterFilms(films,{score:bin.score,perspective:key});assert.deepEqual(new Set(result.map(f=>f.id)),new Set(bin.films.map(f=>f.id)));}}
- const f=films.find(f=>f.title==='Heart of the Beast');assert.equal(f.brain,1);assert.equal(f.heart,3);assert.equal(f.clubScore,4);assert.ok(f.artworkNotice);
+ const f=films.find(f=>f.title==='Heart of the Beast');assert.equal(f.brain,1);assert.equal(f.heart,3);assert.equal(f.clubScore,4);assert.equal(manifest.films[f.id].status,'approved');assert.equal(manifest.films[f.id].sourcePage,90);
 });
 test('one registry replacement propagates through the shared resolver and static film page with cache revision',()=>{
- const f=films[0],a=manifest.films[f.id];const next={...manifest,films:{...manifest.films,[f.id]:{...a,image:'assets/test-approved.webp',thumbnail:'assets/test-thumb.webp',revision:'new-proof',status:'approved',approvalReceipt:'test fixture approval only',sha256:createHash('sha256').update('fixture').digest('hex'),thumbnailSha256:createHash('sha256').update('thumb').digest('hex')}}};
+ const f=films[0],a=manifest.films[f.id];const next={...manifest,features:{},films:{...manifest.films,[f.id]:{...a,image:'assets/test-approved.webp',thumbnail:'assets/test-thumb.webp',revision:'new-proof',status:'approved',approvalReceipt:'test fixture approval only',sha256:createHash('sha256').update('fixture').digest('hex'),thumbnailSha256:createHash('sha256').update('thumb').digest('hex')}}};
  const updated=applyArtwork(films,next).find(x=>x.id===f.id);assert.equal(updated.image,'assets/test-approved.webp');assert.equal(updated.thumbnail,'assets/test-thumb.webp');assert.match(artworkURL(next.films[f.id],'image','https://example.org/club/'),/test-approved.webp\?art=new-proof$/);
- const dir=mkdtempSync(join(tmpdir(),'ola-art-sync-'));try{cpSync('la-ola-cinema-club/data',join(dir,'data'),{recursive:true});cpSync('la-ola-cinema-club/films/'+f.slug,join(dir,'films',f.slug),{recursive:true});mkdirSync(join(dir,'assets'));writeFileSync(join(dir,'assets/test-approved.webp'),'fixture');writeFileSync(join(dir,'assets/test-thumb.webp'),'thumb');writeFileSync(join(dir,'data/artwork.json'),JSON.stringify(next));execFileSync('python3',['scripts/sync-cinema-artwork.py','--site',dir]);assert.match(readFileSync(join(dir,'films',f.slug,'index.html'),'utf8'),/test-approved.webp\?art=new-proof/);next.films[f.id].status='draft';writeFileSync(join(dir,'data/artwork.json'),JSON.stringify(next));assert.notEqual(spawnSync('python3',['scripts/sync-cinema-artwork.py','--site',dir]).status,0);}finally{rmSync(dir,{recursive:true,force:true});}
+ const dir=mkdtempSync(join(tmpdir(),'ola-art-sync-'));try{cpSync('la-ola-cinema-club/data',join(dir,'data'),{recursive:true});cpSync('la-ola-cinema-club/films/'+f.slug,join(dir,'films',f.slug),{recursive:true});mkdirSync(join(dir,'assets'));cpSync('la-ola-cinema-club/assets/cards',join(dir,'assets/cards'),{recursive:true});writeFileSync(join(dir,'assets/test-approved.webp'),'fixture');writeFileSync(join(dir,'assets/test-thumb.webp'),'thumb');writeFileSync(join(dir,'data/artwork.json'),JSON.stringify(next));execFileSync('python3',['scripts/sync-cinema-artwork.py','--site',dir]);assert.match(readFileSync(join(dir,'films',f.slug,'index.html'),'utf8'),/test-approved.webp\?art=new-proof/);next.films[f.id].status='draft';writeFileSync(join(dir,'data/artwork.json'),JSON.stringify(next));assert.notEqual(spawnSync('python3',['scripts/sync-cinema-artwork.py','--site',dir]).status,0);}finally{rmSync(dir,{recursive:true,force:true});}
 });
 class Element{
  constructor(tag){this.tagName=tag.toUpperCase();this.children=[];this.attributes={};this.dataset={};this.listeners={};this.style={setProperty:(k,v)=>this.style[k]=v};this.clientWidth=400;this.clientHeight=600;this.hidden=false;}
@@ -71,7 +71,7 @@ test('AMC reservations are separate from confirmed watched dates and never becom
  const reservation={currentClubCard:true,brain:4,heart:5,clubScore:9,amcReservationDate:'2026-11-24',dates:{watched:{value:'2026-11-24',verified:true,kind:'amc-reservation',confirmedAttendance:false}}};assert.equal(filmDate(reservation),null);assert.equal(matchesDate(reservation,{year:'2026',month:'11'}),false);assert.equal(historicalTrends([reservation]).dated,0);assert.equal(historicalTrends([reservation]).unknown,1);
 });
 test('homepage hero retains the approved headline, phone, filmstrip source and stacked original cards',()=>{
- const html=readFileSync('la-ola-cinema-club/index.html','utf8');const hero=html.match(/<section class="hero hero-world">.*?<\/section>/s)[0];assert.equal(createHash('sha256').update(hero).digest('hex'),'44393f9520bd0adedb52ce9d412295e9b6192052fde6dba4bb923eba25e29d14');for(const cls of ['home-sky-window','home-ocean-stats','home-ocean-fresh','home-ocean-lanes'])assert.ok(html.includes(cls));assert.equal((html.match(/class="stage-cards"/g)||[]).length,1);
+ const html=readFileSync('la-ola-cinema-club/index.html','utf8');const hero=html.match(/<section class="hero hero-world">.*?<\/section>/s)[0];assert.equal(createHash('sha256').update(hero.replace(/\?art=[a-f0-9]+/g,'?art=approved')).digest('hex'),'354f26ccebe3d76f85ded7de096ee3c04e9638b314078766a6da364a5711c42b');for(const cls of ['home-sky-window','home-ocean-stats','home-ocean-fresh','home-ocean-lanes'])assert.ok(html.includes(cls));assert.equal((html.match(/class="stage-cards"/g)||[]).length,1);
 });
 
 test('immersive flicks animate exactly one card and activation targets the selected review',async()=>{
@@ -85,4 +85,21 @@ test('immersive cancellation cannot advance a card after the viewer closes',asyn
 });
 test('flick velocity never turns pinch, vertical or negligible movement into navigation',()=>{
  assert.equal(gestureAction({dx:-80,dy:0,threshold:150,velocity:-.8}),'next');assert.equal(gestureAction({dx:50,velocity:2,threshold:150}),'tilt');assert.equal(gestureAction({dx:-80,dy:90,velocity:2,threshold:150}),'tilt');assert.equal(gestureAction({dx:-80,multi:true,velocity:2,threshold:150}),'pan');assert.equal(gestureAction({dx:-80,scale:2,velocity:2,threshold:150}),'pan');
+});
+
+test('native two-finger rotation remains visible and retained at constant scale, even with reduced motion',()=>{
+ environment();try{const v=new CardViewer({immersive:true});v.open([{src:'a.jpg'},{src:'b.jpg'}]);v.reduced.matches=true;
+ const event=points=>({changedTouches:points.map(([identifier,clientX,clientY])=>({identifier,clientX,clientY})),preventDefault(){}});
+ v.stage.emit('touchstart',event([[1,150,200],[2,250,200]]));v.stage.emit('touchmove',event([[1,200,150],[2,200,250]]));assert.ok(Math.abs(v.rotZ-90)<.001);assert.match(v.card.style.transform,/rotateZ\(90deg\)/);assert.equal(v.scale,1);v.stage.emit('touchend',event([[1,200,150],[2,200,250]]));assert.ok(Math.abs(v.rotZ-90)<.001);assert.equal(v.index,0);assert.equal(v.dialog.open,true);v.reset();assert.equal(v.rotZ,0);
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+test('immersive downward dismissal animates off screen then opens the selected review, while back opens the full review',async()=>{
+ environment();try{const activated=[],v=new CardViewer({immersive:true,onActivate:item=>activated.push(item.title)});v.open([{src:'a.jpg',title:'First'},{src:'b.jpg',title:'Second'}]);const animations=[];v.card.animate=f=>{animations.push(f);return{finished:Promise.resolve()}};await v.dismiss();assert.equal(v.dialog.open,false);assert.deepEqual(activated,['First']);assert.match(animations[0][1].transform,/780px/);v.open(v.items,1);v.flip();assert.equal(v.dialog.open,false);assert.deepEqual(activated,['First','Second']);assert.equal(v.sound,true);
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('all owner-final review, identity and genre exports match registry receipts and current source pages',()=>{
+ const current=films.filter(f=>f.currentClubCard);assert.equal(current.length,88);assert.deepEqual(current.map(f=>f.sourcePage).sort((a,b)=>a-b),Array.from({length:88},(_,i)=>i+14));
+ for(const f of current){const a=manifest.films[f.id];assert.equal(a.status,'approved');assert.equal(a.sourcePage,f.sourcePage);assert.equal(a.sourceDesign,'DAHAZmy7qts');assert.equal(a.pendingRefresh,false);assert.equal(createHash('sha256').update(readFileSync('la-ola-cinema-club/'+a.image)).digest('hex'),a.sha256);assert.match(readFileSync('la-ola-cinema-club/films/'+f.slug+'/index.html','utf8'),new RegExp('art='+a.revision));}
+ const about=readFileSync('la-ola-cinema-club/about/index.html','utf8');assert.equal(Object.keys(manifest.features).length,13);for(const [key,a]of Object.entries(manifest.features)){assert.equal(a.status,'approved');assert.ok(a.approvalReceipt);assert.equal(createHash('sha256').update(readFileSync('la-ola-cinema-club/'+a.image)).digest('hex'),a.sha256);assert.ok(about.includes('data-artwork-key="'+key+'"'));assert.ok(about.includes(a.image+'?art='+a.revision));}
 });

@@ -24,3 +24,10 @@
 .ola-card-immersive .ola-card-caption,.ola-card-immersive .ola-card-source{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 .ola-card-immersive .ola-card-back{width:min(620px,84vw)}
 @media(prefers-reduced-motion:reduce){.ola-card-immersive .ola-physical-card{transition:none;filter:none}}
+
+.cinema-review-back{background:radial-gradient(ellipse at top right,#20364b,#0c192a 70%);text-align:left}
+.cinema-review-back h2{font:700 clamp(24px,4vw,38px)/1.08 Georgia,serif;margin:.5em 0}
+.cinema-review-back>p:first-child{font-size:12px;letter-spacing:.18em;color:#efc56b}
+.cinema-back-meta{color:#bac6d5}.cinema-back-scores{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:22px 0}
+.cinema-back-scores section{padding:12px 8px;background:#ffffff08;border:1px solid #a4b5c344;border-radius:14px;min-width:0}.cinema-back-scores span{display:block;color:#bac6d5;font-size:13px}.cinema-back-scores strong{display:block;font:700 28px Georgia,serif;white-space:nowrap}.cinema-back-scores small{font:14px system-ui,sans-serif}
+.cinema-review-back blockquote{margin:24px 0;padding-left:16px;border-left:3px solid #efc56b;font:italic 24px/1.35 Georgia,serif}.cinema-review-back>section{border-top:1px solid #65758b55;padding:16px 0}.cinema-review-back h3{font:700 17px system-ui,sans-serif;color:#efc56b;margin:0 0 8px}
