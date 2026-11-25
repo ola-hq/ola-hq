@@ -1,4 +1,4 @@
-import {readBrowse,detailURL} from './browse-context.js?v=20261125-worlds32';
+import {readBrowse,detailURL} from './browse-context.js?v=20261125-worlds33';
 export function detailSwipe({dx=0,dy=0,width=390,multi=false,scroll=0}={}){return !multi&&Math.abs(scroll)<25&&Math.abs(dx)>=Math.max(90,width*.23)&&Math.abs(dx)>Math.abs(dy)*1.6?(dx<0?1:-1):0;}
 export function initReviewNavigation(){document.addEventListener('club-collection',event=>{
  const id=document.body.dataset.filmId,main=document.querySelector('main'),article=document.querySelector('.film-layout');if(!id||!article||document.querySelector('#review-navigation'))return;
@@ -6,7 +6,7 @@ export function initReviewNavigation(){document.addEventListener('club-collectio
  const node=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text)e.textContent=text;return e;};
  const row=node('nav','review-navigation');row.id='review-navigation';row.setAttribute('aria-label','Review navigation');const collection=main.querySelector('.back-link')||node('a','back-link','The collection');collection.href=returnURL;const controls=node('div','review-page-controls'),position=node('span','review-position',(index+1)+' / '+films.length);position.setAttribute('aria-label','Review '+(index+1)+' of '+films.length);let busy=false;
  const targets=[films[(index-1+films.length)%films.length],films[(index+1)%films.length]];const links=[];
- for(const [i,label]of ['Back','Next'].entries()){const a=node('a','review-page-link',label);a.href=detailURL(targets[i],base);a.setAttribute('aria-label',(i?'Next':'Previous')+' review: '+targets[i].title);a.dataset.world=i?'cinema-detail-next':'cinema-detail-back';if(films.length<2){a.removeAttribute('href');a.setAttribute('aria-disabled','true');}links.push(a);controls.append(a);}controls.prepend(position);row.append(collection,controls);article.before(row);row.prepend(collection);
+ for(const [i,label]of ['Back','Next'].entries()){const a=node('a','review-page-link',label);a.href=detailURL(targets[i],base);a.setAttribute('aria-label',(i?'Next':'Previous')+' review: '+targets[i].title);a.dataset.world=i?'cinema-detail-next':'cinema-detail-back';if(films.length<2){a.removeAttribute('href');a.setAttribute('aria-disabled','true');}links.push(a);controls.append(a);}controls.prepend(position);row.append(collection,controls);const slot=document.querySelector('.review-navigation-slot');if(slot)slot.replaceWith(row);else article.before(row);row.prepend(collection);
  for(const p of article.querySelectorAll('.film-art-column > p.muted')){p.hidden=true;p.dataset.editionCaption='true';}
  const navigate=direction=>{if(busy||films.length<2)return;busy=true;window.dispatchEvent(new CustomEvent('ola:cinema',{detail:{action:'details_navigate',value:direction>0?'next':'back'}}));location.assign(links[direction>0?1:0].href);};
  let start=null,suppressUntil=0;

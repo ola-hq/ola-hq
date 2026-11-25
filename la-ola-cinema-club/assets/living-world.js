@@ -1,4 +1,4 @@
-import {oceanComposition,originalOceanComposition} from './ocean-layout.js?v=20261125-worlds32';
+import {oceanComposition,originalOceanComposition} from './ocean-layout.js?v=20261125-worlds33';
 // Reuses the supplied complete moon/ocean scenes. No private account access.
 const base=new URL('../',import.meta.url), reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const constrained=()=>reduced.matches||navigator.connection?.saveData;
