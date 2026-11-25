@@ -1,5 +1,5 @@
-import {scoreText,filmDate,distribution,historicalTrends,applyArtwork,artworkURL} from './collection-data.js?v=20261125-worlds34';
-import {collectionStats,perspectiveStats} from './stats-data.js?v=20261125-worlds34';
+import {scoreText,filmDate,distribution,historicalTrends,applyArtwork,artworkURL} from './collection-data.js?v=20261125-worlds35';
+import {collectionStats,perspectiveStats} from './stats-data.js?v=20261125-worlds35';
 const base=new URL('../',import.meta.url),root=document.querySelector('[data-club-stats]');
 const el=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e};
 const number=n=>scoreText(n);
