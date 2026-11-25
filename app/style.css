@@ -276,3 +276,9 @@ html.is-installed #install{display:none!important}
 
 /* Cinema has its own header; keep the embedded mobile bar focused on navigation. */
 @media(max-width:600px){#world-label[data-world="blockbuster"]{display:none}}
+
+/* Cinema's temporary card stage occupies the app viewport. All app navigation returns on exit. */
+body.cinema-card-stage{overflow:hidden}
+body.cinema-card-stage .appbar,body.cinema-card-stage .world-toolbar,body.cinema-card-stage #frame-help{display:none}
+body.cinema-card-stage #experience{position:fixed;inset:0;z-index:100;height:100dvh;min-height:0}
+body.cinema-card-stage #world-frame{height:100%;min-height:0}

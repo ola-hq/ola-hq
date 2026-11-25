@@ -1,5 +1,5 @@
-import {CardViewer} from '../../assets/ola-worlds/card-viewer.js?v=20261124-worlds24';
-import {scoreText} from './collection-data.js?v=20261124-worlds24';
+import {CardViewer} from '../../assets/ola-worlds/card-viewer.js?v=20261124-worlds25';
+import {scoreText} from './collection-data.js?v=20261124-worlds25';
 export function tiltAt(x,y,b){const clamp=n=>Math.max(-1,Math.min(1,n));return {x:-clamp(b.height?(y-b.top)/b.height*2-1:0)*9,y:clamp(b.width?(x-b.left)/b.width*2-1:0)*12};}
 export function initArtViewer(){
  let records=[],collection=[],base,viewer,inlineViewer;
@@ -14,11 +14,14 @@ export function initArtViewer(){
   const detail=document.querySelector('.film-art-column .film-art-frame');
   const current=records.find(f=>f.id===document.body.dataset.filmId);
   if(detail&&current&&directTouch()&&!inlineViewer){
-   const original=detail.querySelector('a');const mount=el('div');mount.className='inline-card-mount';original.replaceWith(mount);detail.dataset.viewerReady='true';detail.id='review-card';
+   const original=detail.querySelector('a');detail.dataset.viewerReady='true';detail.id='review-card';
    const source=collection.some(f=>f.id===current.id)?collection:records;const items=source.map(f=>({id:f.id,src:new URL(f.image,base).href,title:f.title,film:f}));
-   inlineViewer=new CardViewer({mount,label:'Interactive review card',intensity:11,renderBack:getViewer().renderBack,onNavigate:item=>{location.assign(new URL('films/'+item.film.slug+'/#review-card',base));},onExpand:index=>getViewer().open(items,index,inlineViewer.closeButton)});
-   inlineViewer.stage.tabIndex=0;inlineViewer.stage.setAttribute('aria-label','Drag in any direction to tilt. Swipe across for the next or previous review. Card controls include zoom and the back.');inlineViewer.open(items,items.findIndex(f=>f.id===current.id));
-   const focusCard=()=>requestAnimationFrame(()=>detail.scrollIntoView({block:'start'}));const style=document.querySelector('link[data-ola-viewer]');if(style?.sheet)focusCard();else style?.addEventListener('load',focusCard,{once:true});
+   const reveal=item=>{const target=new URL('films/'+item.film.slug+'/?details=1#review-card',base);if(item.id===current.id){history.replaceState(null,'',target);detail.scrollIntoView({block:'start'});}else location.assign(target);};
+   inlineViewer=new CardViewer({label:'Cinema card stage',immersive:true,intensity:18,renderBack:getViewer().renderBack,onActivate:reveal});
+   original.addEventListener('click',event=>{event.preventDefault();inlineViewer.open(items,items.findIndex(f=>f.id===current.id),original);});
+   // The collection opens with just the card; tapping it reveals this review's full page.
+   if(!new URL(location.href).searchParams.has('details'))inlineViewer.open(items,items.findIndex(f=>f.id===current.id),original);
+
   }
   for(const frame of document.querySelectorAll('.film-art-frame')){if(frame.dataset.viewerReady==='true')continue;const anchor=frame.querySelector('a[href*="films/"]');if(!anchor)continue;const f=records.find(f=>anchor.href===new URL('films/'+f.slug+'/',base).href);if(!f)continue;const b=el('button','View card');b.type='button';b.dataset.viewCard=f.id;b.dataset.world='cinema-view-card';b.className='view-card-button';b.onclick=()=>open(f.id,b);frame.after(b);frame.dataset.viewerReady='true';}
  };

@@ -94,6 +94,7 @@ function syncAddress(push = false) {
   else history.replaceState({}, '', u);
 }
 function showHome(push = true) {
+  document.body.classList.remove('cinema-card-stage');
   current = null;
   experience.hidden = true;
   universe.hidden = false;
@@ -105,6 +106,7 @@ function showHome(push = true) {
 }
 function openWorld(world, href = urlFor(world).href, push = true) {
   if (!worlds[world] || !isAllowed(href)) return;
+  document.body.classList.remove('cinema-card-stage');
   const absolute = new URL(href, ROOT).href;
   current = {world, url:absolute};
   universe.hidden = true;
@@ -153,7 +155,15 @@ function followFrameLink(event) {
   event.preventDefault();
   openWorld(world, anchor.href);
 }
+// Only the selected same-origin Cinema frame can request its temporary card-only stage.
+window.addEventListener('message', event => {
+  if(event.origin !== location.origin || event.source !== frame.contentWindow || current?.world !== 'blockbuster' || event.data?.type !== 'ola-cinema-card-stage') return;
+  document.body.classList.toggle('cinema-card-stage', event.data.active === true);
+});
 frame.addEventListener('load', () => {
+  let cardOpen = false;
+  try { cardOpen = current?.world === 'blockbuster' && Boolean(frame.contentDocument.querySelector('.ola-card-immersive[open]')); } catch {}
+  document.body.classList.toggle('cinema-card-stage', cardOpen);
   frameNavigating = false;
   if (frameTimer) clearInterval(frameTimer);
   readFrame();
