@@ -30,7 +30,7 @@ test('one registry replacement propagates through the shared resolver and static
 });
 class Element{
  constructor(tag){this.tagName=tag.toUpperCase();this.children=[];this.attributes={};this.dataset={};this.listeners={};this.style={setProperty:(k,v)=>this.style[k]=v};this.clientWidth=400;this.clientHeight=600;this.hidden=false;}
- append(...children){for(const c of children){c.parent=this;this.children.push(c);}} replaceChildren(...children){this.children=[];this.append(...children)} setAttribute(k,v){this.attributes[k]=v} addEventListener(k,fn){(this.listeners[k]??=[]).push(fn)} focus(){globalThis.document.activeElement=this} showModal(){this.open=true} close(){this.open=false;this.emit('close',{})} remove(){this.parent.children=this.parent.children.filter(x=>x!==this)} getClientRects(){return this.hidden?[]:[{}]} matches(s){return s.split(',').includes(this.tagName.toLowerCase())} querySelectorAll(){return this.children.flatMap(c=>[c,...c.querySelectorAll()]).filter(c=>['BUTTON','A','TEXTAREA','INPUT'].includes(c.tagName)||c.tabIndex===0)} getBoundingClientRect(){return {top:0,left:0,width:this.clientWidth,height:this.clientHeight}} setPointerCapture(){} emit(type,e){for(const fn of this.listeners[type]||[])fn({preventDefault(){},stopPropagation(){},...e})}
+ append(...children){for(const c of children){c.parent=this;this.children.push(c);}} replaceChildren(...children){this.children=[];this.append(...children)} setAttribute(k,v){this.attributes[k]=v} addEventListener(k,fn){(this.listeners[k]??=[]).push(fn)} removeEventListener(k,fn){this.listeners[k]=(this.listeners[k]||[]).filter(x=>x!==fn)} focus(){globalThis.document.activeElement=this} showModal(){this.open=true} close(){this.open=false;this.emit('close',{})} remove(){this.parent.children=this.parent.children.filter(x=>x!==this)} contains(n){return n===this||this.children.some(c=>c.contains(n))} getClientRects(){return this.hidden?[]:[{}]} matches(s){return s.split(',').includes(this.tagName.toLowerCase())} querySelectorAll(){return this.children.flatMap(c=>[c,...c.querySelectorAll()]).filter(c=>['BUTTON','A','TEXTAREA','INPUT'].includes(c.tagName)||c.tabIndex===0)} getBoundingClientRect(){return {top:0,left:0,width:this.clientWidth,height:this.clientHeight}} setPointerCapture(){} emit(type,e){for(const fn of this.listeners[type]||[])fn({preventDefault(){},stopPropagation(){},...e})}
 }
 function environment(){const document={body:new Element('body'),head:new Element('head'),documentElement:new Element('html'),createElement:tag=>new Element(tag),querySelector:()=>null};globalThis.document=document;globalThis.matchMedia=()=>({matches:false});return document;}
 const pointer=(x,y,id=1)=>({clientX:x,clientY:y,pointerId:id,preventDefault(){}});
@@ -253,3 +253,106 @@ test('Polaroid Portfolio loops while Event cards stop at both album boundaries',
 
 test('all 234 recorded Brain and Heart scores survive artwork-edition filtering in stats and shelf links',async()=>{const {collectionStats,perspectiveStats}=await import('../la-ola-cinema-club/assets/stats-data.js');const s=collectionStats(films);assert.equal(s.pairs,234);assert.equal(distribution(films,'brain').count,234);assert.equal(distribution(films,'heart').count,234);assert.ok(Math.abs(s.brainMean-3.1506410256410255)<1e-12);assert.ok(Math.abs(s.heartMean-3.4626068376068377)<1e-12);assert.equal(perspectiveStats(films,'brain').count,234);assert.equal(historicalTrends(films).unknown,208);const bad=films.filter(f=>Math.abs(f.brain+f.heart-f.clubScore)>1e-8);assert.deepEqual(bad.map(f=>f.title),['The Dutchman']);assert.match(bad[0].sourceConflict,/confirmation is pending/);});
 test('reading position follows the visible section rather than resetting every swipe to artwork',async()=>{const {readingPosition}=await import('../la-ola-cinema-club/assets/review-navigation.js');const anchors=[{id:'review-card',top:100,height:600},{id:'review-overview',top:740,height:1100},{id:'review-reactions',top:1200,height:400},{id:'community-feedback',top:1660,height:600}];assert.equal(readingPosition(anchors,80).section,'review-card');assert.equal(readingPosition(anchors,900).section,'review-overview');const p=readingPosition(anchors,1400);assert.equal(p.section,'review-reactions');assert.equal(p.fraction,.5);assert.equal(readingPosition(anchors,1900).section,'community-feedback');});
+// Owner's live iPhone refinements: opt-in, one shared gesture engine, no media edits.
+test('physical paper flip is an opt-in true reverse, keeping Cinema activation unchanged',()=>{
+ environment();try{
+  let cinemaDetails=0,photoDetails=0;
+  const cinema=new CardViewer({immersive:true,sound:false,onActivate:()=>cinemaDetails++});cinema.open([{src:'cinema.jpg'}]);
+  assert.equal(cinema.physicalCard,false);assert.equal(cinema.reverse,undefined);cinema.flip();assert.equal(cinemaDetails,1);assert.equal(cinema.dialog.open,false);
+  const v=new CardViewer({immersive:true,physicalCard:true,sound:false,onActivate:()=>photoDetails++});v.open([{id:'stable',src:'scan.jpg'}]);
+  v.flip();assert.equal(v.faceY,180);assert.match(v.card.style.transform,/rotateY\(180deg\)/);assert.equal(v.front.hidden,false,'front retains intrinsic sizing, its back face is culled in CSS');assert.equal(v.front.attributes['aria-hidden'],'true');assert.equal(v.reverse.attributes['aria-hidden'],'false');assert.equal(v.reverse.children.length,0,'no fabricated number/story or actual back scan');assert.equal(v.back.hidden,true);assert.equal(photoDetails,0);assert.equal(v.dialog.open,true);
+  v.reduced.matches=true;v.flip();assert.match(v.card.style.transform,/rotateY\(0deg\)/);v.flip();assert.match(v.card.style.transform,/rotateY\(180deg\)/,'reduced motion still selects the reverse');
+  assert.equal(v.image.src,'scan.jpg');v.activate();assert.equal(photoDetails,1);v.destroy();cinema.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('physical rotation controls contain the whole portrait and leave its canonical asset untouched',()=>{
+ environment();try{
+  const v=new CardViewer({immersive:true,physicalCard:true,sound:false});v.open([{id:'same',src:'source.jpg'}]);v.card.offsetWidth=360;v.card.offsetHeight=600;v.stage.clientWidth=390;v.stage.clientHeight=844;
+  v.rotate(90);assert.equal(v.orientation,90);let fit=Number(v.card.style.transform.match(/scale\(([^)]+)\)/)[1]);assert.ok(fit*600<=390*.94+.001);assert.match(v.card.style.transform,/rotateZ\(90deg\)/);
+  v.rotate(-90);assert.equal(v.orientation,0);v.rotate(-90);assert.equal(v.orientation,270);v.reset();assert.equal(v.orientation,0);assert.equal(v.items[0].id,'same');assert.equal(v.image.src,'source.jpg');v.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('two-finger paper sweep turns only on release; pinch/twist and cancellation never flip or browse',()=>{
+ environment();try{
+  const v=new CardViewer({immersive:true,physicalCard:true,sound:false});v.open([{src:'a.jpg'},{src:'b.jpg'}]);
+  const event=points=>({changedTouches:points.map(([identifier,clientX,clientY])=>({identifier,clientX,clientY,target:v.image})),preventDefault(){}});
+  v.stage.emit('touchstart',event([[1,80,250],[2,180,250]]));v.stage.emit('touchmove',event([[1,210,250],[2,310,250]]));assert.equal(v.faceY,0);assert.ok(v.turnPreview>=90);v.stage.emit('touchend',event([[1,210,250],[2,310,250]]));assert.equal(v.faceY,180);assert.equal(v.index,0);assert.equal(v.dialog.open,true);
+  v.reset();v.stage.emit('touchstart',event([[1,80,250],[2,180,250]]));v.stage.emit('touchend',event([[1,210,250],[2,310,250]]));assert.equal(v.faceY,180,'native release coordinates can complete a turn without touchmove');
+  v.reset();v.stage.emit('touchstart',event([[1,80,250],[2,180,250]]));v.stage.emit('touchmove',event([[1,210,250],[2,310,250]]));v.stage.emit('touchcancel',event([[1,210,250],[2,310,250]]));assert.equal(v.faceY,0);
+  v.reset();v.stage.emit('touchstart',event([[1,100,250],[2,200,250]]));v.stage.emit('touchmove',event([[1,200,180],[2,350,340]]));v.stage.emit('touchend',event([[1,200,180],[2,350,340]]));assert.equal(v.faceY,0);assert.ok(v.scale>2);assert.ok(v.rotZ>40);assert.equal(v.index,0);
+  v.reset();v.stage.emit('touchstart',event([[1,100,250],[2,200,250]]));v.stage.emit('touchmove',event([[1,110,250],[2,210,250]]));v.stage.emit('touchend',event([[1,110,250],[2,210,250]]));assert.equal(v.faceY,0);assert.equal(v.index,0);v.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('upward physical toss returns the SAME item without navigation or activation and cancels on close/reset',async()=>{
+ const d=environment();try{
+  let navigated=0,activated=0,finish,cancelled=0;const v=new CardViewer({immersive:true,physicalCard:true,sound:false,onNavigate:()=>navigated++,onActivate:()=>activated++});v.open([{id:'same',src:'a.jpg'},{id:'other',src:'b.jpg'}]);
+  const captured=[];v.card.animate=(frames)=>{captured.push(frames);return{finished:new Promise(resolve=>finish=resolve),cancel(){cancelled++;finish();}}};
+  const home=v.card.style.transform,pending=v.loft();await v.loft();assert.equal(captured.length,1,'rapid repeated toss does not create another animation');assert.equal(v.index,0);assert.equal(v.turning,true);finish();await pending;assert.equal(v.items[v.index].id,'same');assert.equal(v.card.style.transform,home);assert.equal(v.turning,false);assert.equal(navigated,0);assert.equal(activated,0);
+  const opener=new Element('button');v.opener=opener;const closed=v.loft();v.close();await closed;assert.equal(cancelled,1);assert.equal(d.activeElement,opener);assert.equal(v.turning,false);assert.equal(v.index,0);
+  v.open(v.items);const reset=v.loft();v.reset();await reset;assert.equal(cancelled,2);assert.equal(v.turning,false);
+  v.reduced.matches=true;const before=captured.length;await v.loft();assert.equal(captured.length,before);assert.equal(v.index,0);v.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('native up/down physical releases enforce distance, zoom and multi conflicts, then return to grid',async()=>{
+ const d=environment();try{
+  let exit=0,details=0,loft=0,nav=0;const opener=new Element('button');const v=new CardViewer({immersive:true,physicalCard:true,sound:false,onDismiss:()=>exit++,onActivate:()=>details++,onNavigate:()=>nav++});v.reduced.matches=true;v.open([{src:'a.jpg'},{src:'b.jpg'}],0,opener);
+  const actual=v.loft.bind(v);v.loft=()=>{loft++;return actual()};const point=(x,y)=>({...pointer(x,y),pointerType:'native-touch',target:v.image});
+  v.down(point(200,400));v.up(point(200,350),true);assert.equal(loft,0);
+  v.down(point(200,400));v.up(point(200,150),true);await Promise.resolve();assert.equal(loft,1);assert.equal(nav,0);assert.equal(details,0);assert.equal(v.index,0);assert.equal(v.suppressTap,true);
+  v.zoom(2);v.down(point(200,400));v.up(point(200,50),true);assert.equal(loft,1);v.reset();
+  v.down(point(200,50));v.up(point(200,400),true);assert.equal(exit,0,'long middle release stays');v.down(point(200,450));v.up(point(200,580),true);assert.equal(exit,0,'short bottom release stays');
+  v.down(point(200,100));v.drag(point(200,580));assert.equal(exit,0,'held card never dismisses');v.up(point(200,580),true);await Promise.resolve();assert.equal(exit,1);assert.equal(details,0);assert.equal(v.dialog.open,false);assert.equal(d.activeElement,opener);assert.equal(nav,0);v.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('physical keyboard controls and one visibility state reveal and release every control area',()=>{
+ const d=environment();try{
+  let exit=0;const v=new CardViewer({immersive:true,physicalCard:true,sound:false,onDismiss:()=>exit++});v.open([{src:'a.jpg'}]);
+  assert.equal(v.dialog.dataset.controls,'false');v.dialog.emit('keydown',{key:'Tab',target:v.stage});assert.equal(v.dialog.dataset.controls,'true');const top=new Element('button');v.dialog.append(top);top.focus();v.setControls(false);assert.equal(d.activeElement,v.stage);assert.equal(v.dialog.dataset.controls,'false');
+  v.stage.emit('click',{target:v.stage});assert.equal(v.dialog.dataset.controls,'true');v.stage.emit('click',{target:v.stage});assert.equal(v.dialog.dataset.controls,'false');
+  v.dialog.emit('keydown',{key:'f',target:v.stage});assert.equal(v.faceY,180);v.dialog.emit('keydown',{key:'R',shiftKey:true,target:v.stage});assert.equal(v.orientation,270);v.dialog.emit('keydown',{key:'Escape',target:v.stage});assert.equal(exit,1);assert.equal(v.dialog.open,false);v.destroy();
+  const css=readFileSync('our-polaroid-project/memory-viewer.css','utf8');assert.doesNotMatch(css,/focus-visible\s+\.ola-physical-card\s*\{outline/);assert.match(css,/data-controls=true.*polaroid-stage-return/);assert.match(css,/button:focus-visible\{outline:3px/);
+  const shared=readFileSync('assets/ola-worlds/card-viewer.css','utf8');assert.match(shared,/data-physical=true.*ola-card-front\{backface-visibility:hidden/);assert.match(shared,/ola-card-paper-reverse.*rotateY\(180deg\)/);
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('physical two-finger angle wraparound retains simultaneous pan and zoom, never a flip or toss',()=>{
+ environment();try{
+  const v=new CardViewer({immersive:true,physicalCard:true,sound:false});v.open([{src:'a.jpg'},{src:'b.jpg'}]);
+  const event=points=>({changedTouches:points.map(([identifier,clientX,clientY])=>({identifier,clientX,clientY,target:v.image})),preventDefault(){}});
+  const points=(angle,length,cx=200,cy=250)=>{const x=Math.cos(angle*Math.PI/180)*length/2,y=Math.sin(angle*Math.PI/180)*length/2;return [[1,cx-x,cy-y],[2,cx+x,cy+y]]};
+  v.stage.emit('touchstart',event(points(170,100)));v.stage.emit('touchmove',event(points(-170,150,230,280)));
+  assert.ok(Math.abs(v.rotZ-20)<.001,'angle delta crosses the wrap rather than jumping 340 degrees');assert.ok(Math.abs(v.scale-1.5)<.001);assert.ok(Math.abs(v.panX-30)<.001);assert.ok(Math.abs(v.panY-30)<.001);assert.equal(v.turnPreview,0);
+  v.stage.emit('touchend',event(points(-170,150,230,280)));assert.equal(v.faceY,0);assert.equal(v.index,0);assert.equal(v.dialog.open,true);v.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('physical Event endpoints stay bounded even when reversed; Portfolio still wraps',async()=>{
+ const {PolaroidCardViewer}=await import('../our-polaroid-project/memory-viewer.js');environment();try{
+  const items=[{id:'first',src:'a.jpg'},{id:'last',src:'b.jpg'}];const e=new PolaroidCardViewer({immersive:true,physicalCard:true,sound:false,loop:false});e.reduced.matches=true;e.open(items);e.flip();await e.toss(-1);assert.equal(e.index,0);assert.equal(e.faceY,180);assert.equal(e.prev.disabled,true);await e.toss(1);assert.equal(e.index,1);assert.equal(e.next.disabled,true);assert.equal(e.faceY,0);await e.toss(1);assert.equal(e.index,1);await e.loft();assert.equal(e.index,1);e.destroy();
+  const p=new PolaroidCardViewer({immersive:true,physicalCard:true,sound:false});p.reduced.matches=true;p.open(items);await p.toss(-1);assert.equal(p.index,1);await p.toss(1);assert.equal(p.index,0);p.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('Polaroid factory keeps actual details/downloads distinct from paper reverse and returns downward to the grid',async()=>{
+ const {createPolaroidMemoryViewer}=await import('../our-polaroid-project/memory-viewer.js');const d=environment(),oldObserver=globalThis.MutationObserver,oldLocation=globalThis.location;
+ const create=d.createElement;d.createElement=tag=>{const n=create(tag);if(tag==='link')n.sheet={};n.removeAttribute=k=>delete n.attributes[k];return n;};d.querySelector=selector=>selector==='link[data-ola-viewer]'?d.head.children.find(n=>'olaViewer' in n.dataset):null;
+ globalThis.MutationObserver=class{observe(){}disconnect(){}};globalThis.location={href:'https://example.test/album/#photo=owner-approved'};
+ try{
+  let closed=0,navigated=0;const controller=await createPolaroidMemoryViewer({loop:false,onClose:()=>closed++,onNavigate:()=>navigated++});const opener=new Element('button');opener.isConnected=true;
+  const photo={sourceId:'owner-approved',src:'display.jpg',download:'original.jpg',inline:'original.jpg?inline=1',filename:'original-scan.jpg',alt:'Recorded memory',story:'Public story',privateMemory:'NEVER SHOW'};
+  assert.equal(controller.open([photo],0,opener,{collection:'Approved event'}),true);
+  const dialog=d.body.children.find(n=>n.className.includes('ola-card-immersive')),details=d.body.children.find(n=>n.className==='polaroid-memory-dialog');const tools=dialog.children.find(n=>n.className==='ola-card-tools'),stage=dialog.children.find(n=>n.className==='ola-card-stage');
+  assert.equal(dialog.dataset.controls,'false');assert.equal(dialog.dataset.physical,'true');assert.equal(details.open,undefined);
+  tools.children.find(n=>n.textContent==='Turn card over').onclick();assert.equal(details.open,undefined,'physical back does not pretend to be memory details');
+  tools.children.find(n=>n.textContent==='Memory details').onclick();assert.equal(details.open,true);assert.equal(dialog.open,false);assert.equal(details.dataset.photoId,'owner-approved');
+  const link=details.children.find(n=>n.className==='memory-original');assert.equal(link.href,'original.jpg');assert.equal(link.download,'original-scan.jpg');assert.equal(details.children.find(n=>n.className==='memory-inline').href,'original.jpg?inline=1');
+  details.children.find(n=>n.className==='memory-toolbar').children[0].emit('click',{});assert.equal(dialog.open,true);assert.equal(details.open,false);
+  stage.emit('touchstart',{changedTouches:[{identifier:1,clientX:200,clientY:100,target:stage.children[0]}]});stage.emit('touchend',{changedTouches:[{identifier:1,clientX:200,clientY:580,target:stage.children[0]}]});await Promise.resolve();
+  assert.equal(dialog.open,false);assert.equal(details.open,false);assert.equal(closed,1);assert.equal(navigated,0);assert.equal(d.activeElement,opener);controller.destroy();
+ }finally{if(oldObserver===undefined)delete globalThis.MutationObserver;else globalThis.MutationObserver=oldObserver;if(oldLocation===undefined)delete globalThis.location;else globalThis.location=oldLocation;delete globalThis.document;delete globalThis.matchMedia;}
+});

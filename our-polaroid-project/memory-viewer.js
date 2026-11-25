@@ -1,5 +1,5 @@
-import {CardViewer} from '../assets/ola-worlds/card-viewer.js?v=20261125-worlds33';
-import {PaperSound} from './paper-sound.js?v=20261125-polaroid36';
+import {CardViewer} from '../assets/ola-worlds/card-viewer.js?v=20261125-physical37';
+import {PaperSound} from './paper-sound.js?v=20261125-polaroid37';
 
 // Reuse every shared gesture; only Polaroid's sound backend differs from Cinema.
 export class PolaroidCardViewer extends CardViewer {
@@ -114,21 +114,22 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
   const downloadNote = element('p', 'memory-download-note');
   details.append(top, title, body, original, inline, share, downloadNote, status, browse, feedback); document.body.append(details);
 
-  const viewer = new PolaroidCardViewer({theme:'polaroid', immersive:true, intensity:18, loop,
+  const viewer = new PolaroidCardViewer({theme:'polaroid', immersive:true, physicalCard:true, intensity:18, loop,
+    onDismiss:() => { pendingMemory = null; onClose?.(); },
     label:'Polaroid Wave photograph viewer', renderBack:renderPublicMemory,
     onNavigate:item => { index = items.indexOf(item); onNavigate?.(item); },
-    // Immersive activation, Read the back, Escape and deliberate bottom-release
-    // all reveal the real details panel AFTER the engine has closed/restored focus.
+    // A photograph tap opens real public memory details. Physical flip is plain paper;
+    // Escape and deliberate bottom-release return to the collection.
     onActivate:item => { pendingMemory = item; }
   });
   viewer.closeButton.textContent = 'Memory details';
-  viewer.stage.setAttribute('aria-label', 'Photograph. Drag to move and tilt, pinch and turn with two fingers, or flick sideways to browse. Tap for memory details. Use Photo controls or the keyboard for alternatives.');
+  viewer.stage.setAttribute('aria-label', 'Photograph. Drag to move and tilt. Pinch and twist with two fingers; sweep both fingers sideways to turn the card over. Flick sideways to browse, up to toss and return, or pull all the way down and release to leave. Tap the photograph for memory details or empty space for controls. Tab reveals controls. F flips, R rotates, Shift R rotates left, Up tosses, arrows browse, Escape returns to collection.');
 
   const toGrid = viewer.button('Back to collection', () => { pendingMemory = null; viewer.close(); onClose?.(); });
   toGrid.className = 'polaroid-stage-return';
   const controls = viewer.button('Photo controls', () => {
     const expanded = viewer.dialog.dataset.controls !== 'true';
-    viewer.dialog.dataset.controls = String(expanded);
+    viewer.setControls(expanded);
     controls.setAttribute('aria-expanded', String(expanded));
     if (expanded) viewer.closeButton.focus();
   });
@@ -199,7 +200,7 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
   let css = document.querySelector('link[data-polaroid-memory]');
   if (!css) {
     css = element('link'); css.rel = 'stylesheet';
-    css.href = new URL('./memory-viewer.css?v=20261125-polaroid36', import.meta.url);
+    css.href = new URL('./memory-viewer.css?v=20261125-polaroid37', import.meta.url);
     css.dataset.polaroidMemory = ''; document.head.append(css);
   }
   try { await Promise.all([stylesheetReady(css), stylesheetReady(document.querySelector('link[data-ola-viewer]'))]); }
