@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 950" fill="none">
+<defs><linearGradient id="gold" x1="0" y1="400" x2="1600" y2="700" gradientUnits="userSpaceOnUse"><stop stop-color="#62401a"/><stop offset=".18" stop-color="#fff0bc"/><stop offset=".32" stop-color="#b97b29"/><stop offset=".55" stop-color="#ffe1a0"/><stop offset=".72" stop-color="#956023"/><stop offset=".9" stop-color="#ffe5a3"/><stop offset="1" stop-color="#ae742e"/></linearGradient><linearGradient id="film" x2="0" y2="1"><stop stop-color="#d6a44a" stop-opacity=".46"/><stop offset=".43" stop-color="#102330" stop-opacity=".92"/><stop offset="1" stop-color="#b07c31" stop-opacity=".6"/></linearGradient><filter id="halo"><feGaussianBlur stdDeviation="10"/></filter><path id="ribbon" d="M-180 600C80 255 290 470 530 650S1000 775 1270 582S1550 450 1790 590"/></defs>
+<use href="#ribbon" stroke="#f8bd56" stroke-width="115" opacity=".18" filter="url(#halo)"/>
+<use href="#ribbon" stroke="url(#gold)" stroke-width="109"/>
+<use href="#ribbon" stroke="url(#film)" stroke-width="103"/>
+<use href="#ribbon" stroke="#f9d58b" stroke-width="78" opacity=".7"/>
+<use href="#ribbon" stroke="#061523" stroke-width="75"/>
+<use href="#ribbon" stroke="url(#film)" stroke-width="72"/>
+<use href="#ribbon" stroke="#071522" stroke-width="96" stroke-dasharray="17 12"/>
+<use href="#ribbon" stroke="url(#gold)" stroke-width="74"/>
+<use href="#ribbon" stroke="#0a1926" stroke-width="71"/>
+<use href="#ribbon" stroke="url(#film)" stroke-width="69"/>
+<use href="#ribbon" stroke="#f4d394" stroke-width="69" stroke-dasharray="1 109" opacity=".5"/>
+</svg>
