@@ -100,3 +100,5 @@
 
 /* The final Canva cards are complete posters, not cropped illustration windows. */
 .taste-card .favorite-world{aspect-ratio:auto;background:#0b1629;padding:10px}.taste-card[data-favorite-genre] .favorite-world img{position:static;display:block;width:100%;height:auto;max-width:100%;object-fit:contain;left:auto;top:auto;border-radius:10px}.club-portrait img[data-artwork-key]{object-fit:contain}
+
+@media(max-width:700px){.site-nav{flex-wrap:nowrap;justify-content:space-between;gap:0;overflow-x:auto;max-width:100%;scrollbar-width:none}.site-nav a{flex:none;white-space:nowrap;padding:10px 3px;min-height:44px;font-size:.875rem}.site-nav::-webkit-scrollbar{display:none}}
