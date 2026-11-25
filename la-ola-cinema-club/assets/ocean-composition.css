@@ -1,0 +1,39 @@
+/* Move each intact moon/ocean frame into clear space; the reflection moves with it. */
+.living-cinema{background:#071524;--ocean-gap:0px}
+.living-cinema::before{background:linear-gradient(90deg,#071524b0 0%,#07152432 72%,#0715240d)}
+.ocean-canvas{position:fixed;inset:0;overflow:hidden;z-index:-2;pointer-events:none;background:#071524}
+.ocean-canvas>.ocean-still,.ocean-canvas>.living-ocean{position:absolute;inset:auto;left:var(--ocean-left);top:var(--ocean-top);width:var(--ocean-width);height:var(--ocean-height);max-width:none;object-fit:contain;opacity:.88;mask-image:linear-gradient(90deg,transparent,#000 13%,#000 90%,transparent),linear-gradient(180deg,transparent,#000 7%,#000 78%,transparent);mask-composite:intersect;pointer-events:none}
+.ocean-canvas>.living-ocean{z-index:1;opacity:0;transition:opacity .45s ease}
+.ocean-canvas.ocean-playing:not(.ocean-seam)>.living-ocean{opacity:1}
+.ocean-canvas.ocean-playing>.ocean-still{opacity:1}
+.living-cinema main::before{content:"";display:block;height:var(--ocean-gap);pointer-events:none}
+.living-cinema .site-header{background:#0b1629e8}
+/* Combined leads; reviewer accents retain their actual meaning after reordering. */
+.score-averages .stat:nth-child(1){border-top:3px solid #e9bf6d}
+.score-averages .stat:nth-child(2){border-top:3px solid #ec4899}
+.score-averages .stat:nth-child(3){border-top:3px solid #8294e7}
+/* Homepage scenes surround the preserved phone feature, never replace it. */
+.cinema-home .home-sky-window{position:relative;height:220px;isolation:isolate;overflow:hidden;margin:-8px -24px 0;pointer-events:none;mask-image:linear-gradient(180deg,transparent,#000 12%,#000 72%,transparent)}
+.home-sky-window picture{display:contents}
+.home-sky-window img{position:absolute;width:620px;height:auto;max-width:none;left:calc(76% - 295px);top:calc(50% - 92px);opacity:.84;mask-image:linear-gradient(90deg,transparent,#000 20%,#000 80%,transparent),linear-gradient(180deg,transparent,#000 8%,#000 65%,transparent);mask-composite:intersect}
+.cinema-home .home-ocean-panel{position:relative;isolation:isolate;border:1px solid #9faec22e;border-radius:24px;padding:40px 32px;margin:30px 0;overflow:hidden;background:#0b182ac9}
+.home-ocean-panel::before{content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;background-repeat:no-repeat;mask-image:linear-gradient(180deg,transparent,#000 22%,#000 80%,transparent)}
+.home-ocean-panel::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(110deg,#0b1629ea,#0b1629a3 62%,#0b162947)}
+.home-ocean-stats::before{background-image:url('living-world/ocean-desktop.jpg');background-size:auto 235%;background-position:68% bottom;opacity:.88}
+.home-ocean-fresh::before{background-image:url('living-world/ocean-mobile.jpg');background-size:auto 240%;background-position:center bottom;opacity:.58}
+.home-ocean-fresh::after{background:linear-gradient(180deg,#0b1629ef,#0b1629ac 45%,#0b162965)}
+.home-ocean-lanes::before{background-image:url('living-world/ocean-desktop.jpg');background-size:auto 270%;background-position:25% bottom;opacity:.8}
+.home-ocean-lanes::after{background:linear-gradient(125deg,#0b1629e8,#0b16298c 60%,#15253d66)}
+.home-ocean-lanes .lane{background:#11233bd9;backdrop-filter:blur(3px);border-color:#c3b18159}
+.home-ocean-panel .section-heading,.home-ocean-lanes>h2,.home-ocean-lanes>.eyebrow{position:relative;z-index:1}
+@media(max-width:1100px){.living-cinema main::before{min-height:var(--ocean-gap)}}
+@media(max-width:700px){
+ .cinema-home .home-sky-window{height:220px;margin-inline:-20px;margin-top:-10px}
+ .home-sky-window img{width:260px;left:calc(58% - 113px);top:-10px;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent),linear-gradient(180deg,transparent,#000 8%,#000 65%,transparent);mask-composite:intersect}
+ .cinema-home .home-ocean-panel{padding:28px 18px;border-radius:20px;margin:24px 0}
+ .home-ocean-stats::before{background-size:auto 225%;background-position:70% bottom}
+ .home-ocean-fresh::before{background-size:auto 220%;background-position:45% bottom}
+ .home-ocean-lanes::before{background-size:auto 250%;background-position:62% bottom}
+ .home-ocean-panel::after{background:linear-gradient(180deg,#0b1629dd,#0b1629b0)}
+}
+@media(prefers-reduced-motion:reduce){.ocean-canvas>.living-ocean{display:none}.ocean-canvas>.ocean-still{visibility:visible;opacity:1}.ocean-canvas *{transition:none}.home-ocean-lanes .lane{backdrop-filter:none}}

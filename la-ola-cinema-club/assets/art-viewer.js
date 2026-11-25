@@ -1,36 +1,14 @@
-export function tiltAt(x,y,box){
- const unit=(value,start,size)=>size>0?Math.max(-1,Math.min(1,2*(value-start)/size-1)):0;
- return {x:-unit(y,box.top,box.height)*9,y:unit(x,box.left,box.width)*12};
-}
+import {CardViewer} from '../../assets/ola-worlds/card-viewer.js?v=20261124-worlds22';
+import {scoreText} from './collection-data.js?v=20261124-worlds22';
+export function tiltAt(x,y,b){const clamp=n=>Math.max(-1,Math.min(1,n));return {x:-clamp(b.height?(y-b.top)/b.height*2-1:0)*9,y:clamp(b.width?(x-b.left)/b.width*2-1:0)*12};}
 export function initArtViewer(){
- const links=[...document.querySelectorAll('.film-art-column > a')].filter(a=>a.querySelector('.film-main-art'));
- if(!links.length)return;
- const dialog=document.createElement('dialog');dialog.className='art-viewer';dialog.setAttribute('aria-label','Review artwork viewer');
- const close=document.createElement('button');close.type='button';close.className='button secondary art-viewer-close';close.textContent='Close artwork';
- const caption=document.createElement('p');caption.className='art-viewer-caption';
- const stage=document.createElement('div');stage.className='art-viewer-stage';
- const image=document.createElement('img');image.className='art-viewer-image';image.draggable=false;stage.append(image);
- const full=document.createElement('a');full.className='art-viewer-full';full.textContent='Open full-size image';
- dialog.append(close,caption,stage,full);document.body.append(dialog);
- const coarse=matchMedia('(hover: none) and (pointer: coarse)'),reduced=matchMedia('(prefers-reduced-motion: reduce)');let origin=null,dragging=false,previousOverflow='';
- const reset=()=>{dragging=false;image.style.transform='';stage.classList.remove('is-dragging')};
- const shut=()=>dialog.close();close.addEventListener('click',shut);
- dialog.addEventListener('close',()=>{reset();document.body.style.overflow=previousOverflow;if(origin)origin.focus()});
- dialog.addEventListener('click',e=>{if(e.target===dialog)shut()});
- for(const link of links)link.addEventListener('click',event=>{
-  if(!(event.pointerType==='touch'||coarse.matches))return;
-  event.preventDefault();origin=link;const source=link.querySelector('img');image.src=link.href;image.alt=source.alt;full.href=link.href;
-  caption.textContent=reduced.matches?'Review artwork':'Drag gently to tilt the card. Lift your finger to settle it.';
-  reset();previousOverflow=document.body.style.overflow;document.body.style.overflow='hidden';dialog.showModal();close.focus();
- });
- stage.addEventListener('pointerdown',event=>{
-  if(event.pointerType!=='touch'||reduced.matches)return;
-  dragging=true;stage.classList.add('is-dragging');stage.setPointerCapture(event.pointerId);event.preventDefault();
- });
- stage.addEventListener('pointermove',event=>{
-  if(!dragging||reduced.matches)return;
-  const tilt=tiltAt(event.clientX,event.clientY,stage.getBoundingClientRect());image.style.transform=`rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`;
- });
- stage.addEventListener('pointerup',reset);stage.addEventListener('pointercancel',reset);stage.addEventListener('lostpointercapture',reset);
- reduced.addEventListener('change',reset);
+ let records=[],collection=[],base,viewer;
+ const el=(tag,text)=>{const n=document.createElement(tag);if(text)n.textContent=text;return n;};
+ const getViewer=()=>viewer||(viewer=new CardViewer({label:'Cinema Club card viewer',renderBack:(target,item)=>{const f=item.film;target.append(el('h2',f.title),el('p','La Ola '+scoreText(f.clubScore)+'/10 · Brain '+scoreText(f.brain)+'/5 · Heart '+scoreText(f.heart)+'/5'));if(f.quote)target.append(el('blockquote',f.quote));if(f.review)target.append(el('p',f.review));else for(const [key,label]of [['brain','Brianna · The Brain'],['heart','Jonathan · The Heart']]){target.append(el('h3',label),el('p',f[key+'Reaction']||'No separate reaction is recorded.'));}if(f.artworkNotice)target.append(el('p',f.artworkNotice));const a=el('a','Read the review');a.href=new URL('films/'+f.slug+'/',base);target.append(a);}}));
+ const open=(id,opener)=>{const source=collection.some(f=>f.id===id)?collection:records;const items=source.map(f=>({id:f.id,src:new URL(f.image,base).href,title:f.title,film:f}));getViewer().open(items,items.findIndex(f=>f.id===id),opener);};
+ document.addEventListener('club-collection',e=>{records=collection=e.detail.films;base=e.detail.base;const f=records.find(f=>f.id===document.body.dataset.filmId);if(f){const a=document.querySelector('.film-art-column a');if(a){a.addEventListener('click',event=>{event.preventDefault();open(f.id,a)});const img=a.querySelector('img');if(img)img.src=new URL(f.image,base);}if(f.artworkNotice&&!document.querySelector('[data-edition-notice]')){const p=el('p',f.artworkNotice);p.className='artwork-edition-note';a?.after(p);}}});
+ document.addEventListener('club-filtered',e=>collection=e.detail);
+ // Review navigation and the educational stamp remain separate from this explicit viewer control.
+ const decorate=()=>{for(const frame of document.querySelectorAll('.film-art-frame')){if(frame.dataset.viewerReady==='true')continue;const anchor=frame.querySelector('a[href*="films/"]');if(!anchor)continue;const f=records.find(f=>anchor.href===new URL('films/'+f.slug+'/',base).href);if(!f)continue;const b=el('button','View card');b.type='button';b.dataset.viewCard=f.id;b.dataset.world='cinema-view-card';b.className='view-card-button';b.onclick=()=>open(f.id,b);frame.after(b);frame.dataset.viewerReady='true';}};
+ const observer=new MutationObserver(()=>{observer.disconnect();decorate();observer.observe(document.querySelector('main'),{childList:true,subtree:true});});observer.observe(document.querySelector('main'),{childList:true,subtree:true});
 }
