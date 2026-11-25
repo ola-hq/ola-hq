@@ -16,12 +16,16 @@ function stop(){video.pause();canvas.classList.remove('ocean-playing');button.di
 async function play(){if(!livingBackground||constrained()||paused||document.hidden){stop();return;}if(video.getAttribute('src')!==source)video.src=source;try{await video.play();if(paused||constrained()||document.hidden){stop();return;}canvas.classList.add('ocean-playing');button.disabled=false;button.textContent='Pause ocean motion';button.setAttribute('aria-pressed','true');}catch{stop();}}
 function layout(){
  const header=document.querySelector('.site-header');const headerBottom=header?header.offsetTop+header.offsetHeight:160;
- const view=originalWallpaper?originalOceanComposition(innerWidth,innerHeight,headerBottom,Boolean(document.body.dataset.filmId)):oceanComposition(innerWidth,headerBottom);
+ // Anchor the intact scene below review navigation. The non-sticky main origin
+ // prevents scrolling from making the moon chase the navigation row.
+ const main=document.querySelector('main'),nav=document.querySelector('#review-navigation');
+ const boundary=document.body.dataset.filmId&&main?Math.max(headerBottom,main.getBoundingClientRect().top+scrollY+parseFloat(getComputedStyle(main).paddingTop||0)+(nav?.offsetHeight||62)):headerBottom;
+ const view=originalWallpaper?originalOceanComposition(innerWidth,innerHeight,boundary,Boolean(document.body.dataset.filmId)):oceanComposition(innerWidth,boundary);
  for(const [name,value]of Object.entries({left:view.left,top:view.top,width:view.mediaWidth,height:view.mediaHeight,gap:view.skyGap}))document.body.style.setProperty('--ocean-'+name,value+'px');
  const next=view.portrait?'mobile':'desktop';if(next!==variant){variant=next;source=new URL('assets/living-world/ocean-'+variant+'.mp4',base).href;still.src=new URL(originalWallpaper?'assets/la-ola-wave-banner-v3.webp':'assets/living-world/ocean-'+variant+'.jpg',base);video.poster=new URL('assets/living-world/ocean-'+variant+'.jpg',base).href;if(livingBackground&&!paused&&!constrained())play();}
 }
 layout();
-if(world){let resizeFrame=0;const relayout=()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(layout)};addEventListener('resize',relayout);if(typeof ResizeObserver!=='undefined'){const header=document.querySelector('.site-header');if(header)new ResizeObserver(relayout).observe(header);}document.fonts?.ready.then(relayout);}
+if(world){let resizeFrame=0;const relayout=()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(layout)};addEventListener('resize',relayout);if(typeof ResizeObserver!=='undefined'){const header=document.querySelector('.site-header');if(header)new ResizeObserver(relayout).observe(header);}document.fonts?.ready.then(relayout);document.addEventListener('club-collection',relayout);addEventListener('cinema:review-changed',relayout);}
 button.onclick=()=>{if(originalWallpaper){originalWallpaper=false;livingBackground=true;variant='';document.body.dataset.oceanArtwork='living';layout();paused=false;play();return;}paused=!video.paused;try{localStorage.setItem('ola-cinema-motion',paused?'paused':'playing')}catch{}paused?stop():play();};
 video.addEventListener('error',stop);
 // The sources are ten-second cinematic takes, not exact matched-end loops.
