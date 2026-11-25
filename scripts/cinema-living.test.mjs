@@ -73,3 +73,16 @@ test('AMC reservations are separate from confirmed watched dates and never becom
 test('homepage hero retains the approved headline, phone, filmstrip source and stacked original cards',()=>{
  const html=readFileSync('la-ola-cinema-club/index.html','utf8');const hero=html.match(/<section class="hero hero-world">.*?<\/section>/s)[0];assert.equal(createHash('sha256').update(hero).digest('hex'),'44393f9520bd0adedb52ce9d412295e9b6192052fde6dba4bb923eba25e29d14');for(const cls of ['home-sky-window','home-ocean-stats','home-ocean-fresh','home-ocean-lanes'])assert.ok(html.includes(cls));assert.equal((html.match(/class="stage-cards"/g)||[]).length,1);
 });
+
+test('immersive flicks animate exactly one card and activation targets the selected review',async()=>{
+ environment();try{const activated=[],v=new CardViewer({immersive:true,onActivate:item=>activated.push(item.title)});v.open([{src:'a.jpg',title:'First'},{src:'b.jpg',title:'Second'}]);assert.equal(v.dialog.open,true);assert.equal(v.source.hidden,true);const frames=[];v.card.animate=(f)=>{frames.push(f);return{finished:Promise.resolve()}};
+ const first=v.toss(1);v.toss(1);await first;assert.equal(v.index,1,'rapid duplicate navigation must be ignored');assert.equal(frames.length,2);assert.match(frames[0][1].transform,/rotateZ\(-26deg\)/);assert.equal(v.turning,false);v.activate();assert.deepEqual(activated,['Second']);assert.equal(v.dialog.open,false);
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+test('immersive cancellation cannot advance a card after the viewer closes',async()=>{
+ environment();try{const v=new CardViewer({immersive:true});v.open([{src:'a.jpg'},{src:'b.jpg'}]);let finish;v.card.animate=()=>({finished:new Promise(resolve=>finish=resolve)});const pending=v.toss(1);v.close();finish();await pending;assert.equal(v.index,0);assert.equal(v.turning,false);
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+test('flick velocity never turns pinch, vertical or negligible movement into navigation',()=>{
+ assert.equal(gestureAction({dx:-80,dy:0,threshold:150,velocity:-.8}),'next');assert.equal(gestureAction({dx:50,velocity:2,threshold:150}),'tilt');assert.equal(gestureAction({dx:-80,dy:90,velocity:2,threshold:150}),'tilt');assert.equal(gestureAction({dx:-80,multi:true,velocity:2,threshold:150}),'pan');assert.equal(gestureAction({dx:-80,scale:2,velocity:2,threshold:150}),'pan');
+});
