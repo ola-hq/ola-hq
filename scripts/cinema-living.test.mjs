@@ -7,7 +7,7 @@ import {join} from 'node:path';
 import {execFileSync,spawnSync} from 'node:child_process';
 import {scoreText,filmDate,matchesDate,historicalTrends,distribution,applyArtwork,artworkURL} from '../la-ola-cinema-club/assets/collection-data.js';
 import {filterFilms} from '../la-ola-cinema-club/assets/club.js';
-import {CardViewer,gestureAction} from '../assets/ola-worlds/card-viewer.js';
+import {CardViewer,gestureAction,downwardExit} from '../assets/ola-worlds/card-viewer.js';
 const films=JSON.parse(readFileSync('la-ola-cinema-club/data/films.json'));
 const manifest=JSON.parse(readFileSync('la-ola-cinema-club/data/artwork.json'));
 test('date filters preserve unknowns and distinguish recorded release years from verified watch days',()=>{
@@ -30,7 +30,7 @@ test('one registry replacement propagates through the shared resolver and static
 });
 class Element{
  constructor(tag){this.tagName=tag.toUpperCase();this.children=[];this.attributes={};this.dataset={};this.listeners={};this.style={setProperty:(k,v)=>this.style[k]=v};this.clientWidth=400;this.clientHeight=600;this.hidden=false;}
- append(...children){for(const c of children){c.parent=this;this.children.push(c);}} replaceChildren(...children){this.children=[];this.append(...children)} setAttribute(k,v){this.attributes[k]=v} addEventListener(k,fn){(this.listeners[k]??=[]).push(fn)} focus(){globalThis.document.activeElement=this} showModal(){this.open=true} close(){this.open=false;this.emit('close',{})} remove(){this.parent.children=this.parent.children.filter(x=>x!==this)} getClientRects(){return this.hidden?[]:[{}]} matches(s){return s.split(',').includes(this.tagName.toLowerCase())} querySelectorAll(){return this.children.flatMap(c=>[c,...c.querySelectorAll()]).filter(c=>['BUTTON','A','TEXTAREA','INPUT'].includes(c.tagName)||c.tabIndex===0)} setPointerCapture(){} emit(type,e){for(const fn of this.listeners[type]||[])fn(e)}
+ append(...children){for(const c of children){c.parent=this;this.children.push(c);}} replaceChildren(...children){this.children=[];this.append(...children)} setAttribute(k,v){this.attributes[k]=v} addEventListener(k,fn){(this.listeners[k]??=[]).push(fn)} focus(){globalThis.document.activeElement=this} showModal(){this.open=true} close(){this.open=false;this.emit('close',{})} remove(){this.parent.children=this.parent.children.filter(x=>x!==this)} getClientRects(){return this.hidden?[]:[{}]} matches(s){return s.split(',').includes(this.tagName.toLowerCase())} querySelectorAll(){return this.children.flatMap(c=>[c,...c.querySelectorAll()]).filter(c=>['BUTTON','A','TEXTAREA','INPUT'].includes(c.tagName)||c.tabIndex===0)} getBoundingClientRect(){return {top:0,left:0,width:this.clientWidth,height:this.clientHeight}} setPointerCapture(){} emit(type,e){for(const fn of this.listeners[type]||[])fn(e)}
 }
 function environment(){const document={body:new Element('body'),head:new Element('head'),documentElement:new Element('html'),createElement:tag=>new Element(tag),querySelector:()=>null};globalThis.document=document;globalThis.matchMedia=()=>({matches:false});return document;}
 const pointer=(x,y,id=1)=>({clientX:x,clientY:y,pointerId:id,preventDefault(){}});
@@ -102,4 +102,15 @@ test('all owner-final review, identity and genre exports match registry receipts
  const current=films.filter(f=>f.currentClubCard);assert.equal(current.length,88);assert.deepEqual(current.map(f=>f.sourcePage).sort((a,b)=>a-b),Array.from({length:88},(_,i)=>i+14));
  for(const f of current){const a=manifest.films[f.id];assert.equal(a.status,'approved');assert.equal(a.sourcePage,f.sourcePage);assert.equal(a.sourceDesign,'DAHAZmy7qts');assert.equal(a.pendingRefresh,false);assert.equal(createHash('sha256').update(readFileSync('la-ola-cinema-club/'+a.image)).digest('hex'),a.sha256);assert.match(readFileSync('la-ola-cinema-club/films/'+f.slug+'/index.html','utf8'),new RegExp('art='+a.revision));}
  const about=readFileSync('la-ola-cinema-club/about/index.html','utf8');assert.equal(Object.keys(manifest.features).length,13);for(const [key,a]of Object.entries(manifest.features)){assert.equal(a.status,'approved');assert.ok(a.approvalReceipt);assert.equal(createHash('sha256').update(readFileSync('la-ola-cinema-club/'+a.image)).digest('hex'),a.sha256);assert.ok(about.includes('data-artwork-key="'+key+'"'));assert.ok(about.includes(a.image+'?art='+a.revision));}
+});
+
+test('downward exit requires a long pull AND release near the bottom, excluding mid-screen drops, pinch and sideways motion',()=>{
+ const stage={stageTop:20,stageHeight:800};
+ assert.equal(downwardExit({...stage,dy:400,releaseY:600}),false,'even a long pull released in the middle must stay');
+ assert.equal(downwardExit({...stage,dy:200,releaseY:800}),false,'a short pull near the bottom must stay');
+ assert.equal(downwardExit({...stage,dy:400,releaseY:780}),true);
+ assert.equal(downwardExit({...stage,dy:400,releaseY:780,multi:true}),false);
+ assert.equal(downwardExit({...stage,dy:400,releaseY:780,scale:2}),false);
+ assert.equal(downwardExit({...stage,dx:400,dy:400,releaseY:780}),false);
+ assert.equal(downwardExit({...stage,dy:-400,releaseY:780}),false);
 });

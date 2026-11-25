@@ -1,5 +1,5 @@
-import {CardViewer} from '../../assets/ola-worlds/card-viewer.js?v=20261124-worlds26';
-import {scoreText} from './collection-data.js?v=20261124-worlds26';
+import {CardViewer} from '../../assets/ola-worlds/card-viewer.js?v=20261124-worlds27';
+import {scoreText} from './collection-data.js?v=20261124-worlds27';
 export function tiltAt(x,y,b){const clamp=n=>Math.max(-1,Math.min(1,n));return {x:-clamp(b.height?(y-b.top)/b.height*2-1:0)*9,y:clamp(b.width?(x-b.left)/b.width*2-1:0)*12};}
 export function initArtViewer(){
  let records=[],collection=[],base,viewer,inlineViewer;
