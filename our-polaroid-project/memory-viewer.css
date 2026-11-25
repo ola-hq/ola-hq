@@ -1,0 +1,35 @@
+/* Polaroid-only adapter styles. The shared Cinema engine and artwork stay unchanged. */
+.ola-card-immersive[data-theme="polaroid"]{background:#101112;color:#f3eee5;font-family:"Avenir Next",Arial,sans-serif}
+.ola-card-immersive[data-theme="polaroid"] .ola-physical-card{width:max-content;height:auto;max-width:90vw;max-height:82dvh;aspect-ratio:auto}
+.ola-card-immersive[data-theme="polaroid"] .ola-card-front{width:max-content;height:auto;max-width:90vw;max-height:82dvh}
+.ola-card-immersive[data-theme="polaroid"] .ola-card-front img{width:auto;height:auto;max-width:90vw;max-height:82dvh;border-radius:1px;object-fit:contain}
+.ola-card-immersive[data-theme="polaroid"] .ola-card-front::after{border-radius:1px;opacity:.35}
+.ola-card-immersive[data-theme="polaroid"] .ola-card-stage:focus-visible .ola-physical-card{outline:2px solid #dac18d;outline-offset:5px}
+.ola-card-immersive[data-theme="polaroid"] .ola-card-tools{padding:10px;background:#101112ee;border:1px solid #dac18d66;border-radius:8px;max-height:35dvh;overflow:auto}
+.ola-card-immersive[data-theme="polaroid"] button{font-family:inherit;background:#1c1d1e;color:#f3eee5;border:1px solid #dac18d88;border-radius:5px;min-height:44px;padding:9px 13px;font-size:14px;cursor:pointer}
+.ola-card-immersive[data-theme="polaroid"]>.polaroid-stage-return,.ola-card-immersive[data-theme="polaroid"]>.polaroid-stage-controls{position:absolute;top:max(12px,env(safe-area-inset-top));z-index:4;background:#101112dd}
+.ola-card-immersive[data-theme="polaroid"]>.polaroid-stage-return{left:max(12px,env(safe-area-inset-left))}
+.ola-card-immersive[data-theme="polaroid"]>.polaroid-stage-controls{right:max(12px,env(safe-area-inset-right))}
+.polaroid-memory-dialog{font-family:"Avenir Next",Arial,sans-serif;box-sizing:border-box;background:#101112;color:#f3eee5;border:1px solid #dac18d77;border-radius:8px;width:min(760px,94vw);max-height:92dvh;padding:clamp(18px,4vw,38px);overflow:auto;overscroll-behavior:contain}
+.polaroid-memory-dialog::backdrop{background:#000d}
+.polaroid-memory-dialog h1,.polaroid-memory-dialog h2{font-family:Georgia,serif;font-weight:400;letter-spacing:-.035em;line-height:1.15}
+.polaroid-memory-dialog h1{font-size:clamp(25px,5vw,40px);margin:24px 0;max-width:100%}
+.polaroid-memory-dialog .memory-body>h2{display:none}
+.polaroid-memory-dialog h3{font-size:16px;letter-spacing:0;margin:20px 0 6px}
+.polaroid-memory-dialog p{white-space:pre-line;overflow-wrap:anywhere}
+.polaroid-memory-dialog .memory-toolbar{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.polaroid-memory-dialog .memory-browse{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 24px;flex-wrap:wrap}
+.polaroid-memory-dialog .memory-position{font-size:14px;color:#b6b4ad}
+.polaroid-memory-dialog button,.polaroid-memory-dialog .memory-original,.polaroid-memory-dialog .memory-inline{font:inherit;font-size:14px;min-height:44px;padding:10px 13px;color:#f3eee5;background:#1c1d1e;border:1px solid #dac18d77;border-radius:5px;cursor:pointer;display:inline-flex;align-items:center}
+.polaroid-memory-dialog .memory-original,.polaroid-memory-dialog .memory-inline{margin:12px 0 22px;color:#dac18d}
+.polaroid-memory-dialog .memory-eyebrow{color:#dac18d;font-size:14px}
+.polaroid-memory-dialog .memory-unrecorded{color:#b6b4ad}
+.polaroid-memory-dialog .memory-collection-context summary{cursor:pointer;min-height:44px;padding:10px 0;color:#dac18d;font-size:14px}
+.polaroid-memory-dialog .memory-feedback{border-top:1px solid #393b3b;padding-top:22px}
+.polaroid-memory-dialog .feedback{padding:0;border:0}
+.polaroid-memory-dialog .feedback label,.polaroid-memory-dialog .feedback-note,.polaroid-memory-dialog .feedback-status{font-size:14px}
+.polaroid-memory-dialog .feedback textarea{width:100%;max-width:100%;min-height:100px;background:#1c1d1e;color:#f3eee5;border:1px solid #dac18d88;padding:12px;font:inherit;font-size:16px}
+.polaroid-memory-dialog :focus-visible{outline:3px solid #dac18d;outline-offset:3px}
+.polaroid-memory-dialog [hidden]{display:none!important}
+@media(max-width:420px){.ola-card-immersive[data-theme="polaroid"] button{padding:9px 10px}.polaroid-memory-dialog{width:96vw;max-height:94dvh}}
+@media(prefers-reduced-motion:reduce){.ola-card-immersive[data-theme="polaroid"] .ola-physical-card{transition:none;filter:none}.ola-card-immersive[data-theme="polaroid"] .ola-card-front::after{display:none}}

@@ -97,6 +97,14 @@ class OlaGallery extends HTMLElement {
       if(this.selectionPreview)this.photos=this.photos.filter(p=>p.draftDecision==='include');
       this.shown = 36;
       this.render();
+      // Opt in only the Events entrance. Dedicated Wedding/Guide viewers remain unchanged.
+      if(this.getAttribute('brand')==='polaroid' && location.pathname.startsWith(new URL('our-polaroid-project/events/',ROOT).pathname)){
+        try{
+          const {createEventMemoryViewer}=await import(new URL('our-polaroid-project/events/memory-gallery.js?v=20261125-polaroid36',ROOT));
+          this.memoryViewer=await createEventMemoryViewer(this,url);
+          if(!this.isConnected){this.memoryViewer.destroy();return;}
+        }catch{/* Keep the original gallery/download viewer if enhancement cannot load. */}
+      }
       this.onHash = () => {this.restorePhoto();this.scrollToGrid();};
       window.addEventListener('hashchange', this.onHash);
       this.restorePhoto();
@@ -107,7 +115,7 @@ class OlaGallery extends HTMLElement {
     if(location.hash!=='#photographs')return;
     requestAnimationFrame(()=>{if(this.isConnected&&location.hash==='#photographs')this.querySelector('#photographs')?.scrollIntoView({block:'start',behavior:'instant'});});
   }
-  disconnectedCallback() { window.removeEventListener('hashchange',this.onHash); }
+  disconnectedCallback() { window.removeEventListener('hashchange',this.onHash); this.memoryViewer?.destroy(); }
   render() {
     const e=this.event,brand=this.getAttribute('brand')||'default';
     const copy={eyebrow:'EVENT PHOTO ARCHIVE',heading:e.title,emphasis:'One frame at a time.',coverLabel:e.title+' · '+e.dateLabel,collectionLabel:'photographs',gridLabel:'Event photographs',emptyMessage:'The photographs are being prepared.',relatedPrefix:'',gridEyebrow:'A LITTLE PIECE OF THAT NIGHT',gridHeading:'Keep the feeling.',gridButton:'Find your people ↓',downloadHint:'Photographs need an internet connection. On iPhone, open the original and touch and hold to save it to Photos.',downloadsHeading:'A little wave. Or all of it.',downloadsDescription:'Choose a smaller part for your phone, or keep the complete collection.',...e.gallery,...e.gallery?.brands?.[brand]};
@@ -148,8 +156,10 @@ class OlaGallery extends HTMLElement {
   restorePhoto() {
     const id=new URLSearchParams(location.hash.slice(1)).get('photo');
     const index=this.photos.findIndex(p=>p.id===id);
-    if(index<0){if(this.dialog.open)this.dialog.close();return;}
-    this.index=index;this.showPhoto();
+    if(index<0){this.memoryViewer?.close();if(this.dialog.open)this.dialog.close();return;}
+    this.index=index;
+    if(this.memoryViewer?.open(index,this.opener))return;
+    this.showPhoto();
     if(!this.dialog.open)this.dialog.showModal();
   }
   showPhoto() {
@@ -171,14 +181,14 @@ class OlaGallery extends HTMLElement {
     this.showPhoto();
   }
   closePhoto() {
+    this.memoryViewer?.close();
     this.dialog.close();
     // Replace the photograph state; preserve the app shell's joint history.
     history.replaceState(history.state,'',location.pathname+location.search+'#photographs');
     window.dispatchEvent(new HashChangeEvent('hashchange'));
     this.opener?.focus({preventScroll:true});
   }
-  async share() {
-    const status=this.querySelector('.og-feedback');
+  async share(status=this.querySelector('.og-feedback')) {
     try {
       if(navigator.share&&!this.event.gallery?.privateLinkOnly) await navigator.share({title:this.event.title,text:this.photos[this.index].caption,url:location.href});
       else {await navigator.clipboard.writeText(location.href);status.textContent='Photo link copied.';}

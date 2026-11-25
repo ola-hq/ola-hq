@@ -161,3 +161,92 @@ test('hiding immersive controls releases focus so focus-within cannot pin the tr
 });
 test('extended review layout reserves navigation before module startup, preserving art data',()=>{for(const f of films){const h=readFileSync('la-ola-cinema-club/films/'+f.slug+'/index.html','utf8');assert.match(h,/dataset.reviewFocus='true'/);assert.match(h,/review-navigation-slot/);}assert.match(readFileSync('la-ola-cinema-club/assets/club.css','utf8'),/html\[data-review-focus=true\] \.site-header/);});
 test('visitor feedback only accepts sane public response shapes and is plain-text rendered',async()=>{const {validFeedback}=await import('../la-ola-cinema-club/assets/film-feedback.js');assert.ok(validFeedback({likes:1,dislikes:0,reviewCount:1,reviews:[{name:'Visitor',review:'<script>alert(1)</script>'}]}));assert.equal(validFeedback({likes:-1,dislikes:0,reviewCount:0,reviews:[]}),false);const s=readFileSync('la-ola-cinema-club/assets/film-feedback.js','utf8');assert.doesNotMatch(s,/innerHTML|insertAdjacentHTML/);assert.match(s,/film_remove_review/);assert.match(s,/Browser storage is needed/);});
+
+
+
+
+// Approved Polaroid adapter regressions; current Cinema cases above are retained.
+import vm from 'node:vm';
+import {publicMemoryItems,publicMemoryTitle} from '../our-polaroid-project/memory-viewer.js';
+test('Polaroid public memory keeps canonical IDs, source order and unavailable positions without mutating records',()=>{
+ const photos=Object.freeze([Object.freeze({sourceId:'photo-a',src:'a.jpg',alt:'Instant film photograph'}),Object.freeze({sourceId:'missing',alt:'unavailable'}),Object.freeze({sourceId:'photo-b',src:'b.jpg',alt:'img20221228_18260763'})]);
+ const items=publicMemoryItems(photos,{collection:'Through My Lens'});
+ assert.deepEqual(items.map(x=>[x.id,x.src,x.position]),[['photo-a','a.jpg',0],['photo-b','b.jpg',2]]);
+ assert.equal(items[1].title,'Through My Lens · Frame 3');assert.equal(photos.length,3);
+});
+test('Polaroid memory exposes only explicit published date/location/story, never private fields or filename dates',()=>{
+ const [item]=publicMemoryItems([{sourceId:'img20261016',src:'public.jpg',alt:'A recorded caption',date:'October 16, 2026',location:'Guadalajara',story:'Recorded public story',privateMemory:'PRIVATE',ownerNotes:'PRIVATE',captionDraft:'PRIVATE'}]);
+ assert.deepEqual(item.fields,{date:'October 16, 2026',location:'Guadalajara',story:'Recorded public story'});
+ assert.equal(item.title,'A recorded caption');assert.ok(!JSON.stringify(item).includes('PRIVATE'));
+ const [undated]=publicMemoryItems([{sourceId:'img20261016',src:'undated.jpg',date:2026,location:null,story:'  '}]);assert.deepEqual(undated.fields,{});
+});
+test('Polaroid filtered results remain the exact supplied collection including repeated assets in separate positions',()=>{
+ const selected=[{sourceId:'same',src:'same.jpg',collection:'After Dark'},{sourceId:'other',src:'other.jpg',collection:'Framed Faces'},{sourceId:'same',src:'same.jpg',collection:'Through My Lens'}];
+ const items=publicMemoryItems(selected);
+ assert.deepEqual(items.map(x=>[x.id,x.position,x.collection]),[['same',0,'After Dark'],['other',1,'Framed Faces'],['same',2,'Through My Lens']]);
+ assert.ok(items.every(x=>x.fields&&Object.keys(x.fields).length===0));assert.equal(items[1].title,'Framed Faces · Frame 2');
+});
+test('Polaroid original public captions are retained and technical scan names stay descriptive frame labels',()=>{
+ assert.equal(publicMemoryTitle({alt:'The dance floor'},5,'After Dark'),'The dance floor');
+ for(const alt of ['img20221228_18260763','DSC_1234.jpg','PXL-20261016.jpg','Instant film photograph',''])assert.equal(publicMemoryTitle({alt},5,'After Dark'),'After Dark · Frame 6');
+});
+test('HQ app stage messages are limited to the selected Cinema or Polaroid frame and exact origin/type/boolean',()=>{
+ const app=readFileSync('app/app.js','utf8');
+ const start=app.indexOf("window.addEventListener('message', event => {");
+ const end=app.indexOf("frame.addEventListener('load'",start);
+ const frameWindow={},changes=[],scope={location:{origin:'https://example.test'},frame:{contentWindow:frameWindow},current:{world:'polaroid'},document:{body:{classList:{toggle:(...args)=>changes.push(args)}}},window:{addEventListener:(name,fn)=>{scope.handler=fn;}}};
+ vm.runInNewContext(app.slice(start,end),scope);
+ const valid={origin:scope.location.origin,source:frameWindow,data:{type:'ola-cinema-card-stage',active:true}};
+ for(const world of ['polaroid','blockbuster']){scope.current.world=world;scope.handler(valid);assert.deepEqual(changes.pop(),['cinema-card-stage',true]);scope.handler({...valid,data:{...valid.data,active:false}});assert.deepEqual(changes.pop(),['cinema-card-stage',false]);}
+ for(const change of [{origin:'https://untrusted.test'},{source:{}},{data:{type:'different',active:true}}])scope.handler({...valid,...change});assert.equal(changes.length,0);
+ for(const world of ['fpl','arsenal','love',undefined]){scope.current.world=world;scope.handler(valid);}assert.equal(changes.length,0);
+ scope.current.world='polaroid';scope.handler({...valid,data:{...valid.data,active:'true'}});assert.deepEqual(changes.pop(),['cinema-card-stage',false]);
+});
+
+
+test('Events memory projection retains canonical IDs and separate original/download contracts',async()=>{
+ const {eventMemoryPhotos}=await import('../our-polaroid-project/events/memory-gallery.js');
+ const resolve=value=>new URL(value,'https://example.test/ola-hq/').href;
+ const photos=Object.freeze([Object.freeze({id:'approved-asset',caption:'Real public caption',display:'display/a.webp',download:'download/a.jpg',originalFilename:'source-scan.jpg',date:'Recorded date',privateStory:'NEVER COPY'}),Object.freeze({id:'unavailable',displayAvailable:false,downloadAvailable:false})]);
+ const rows=eventMemoryPhotos(photos,resolve),items=publicMemoryItems(rows,{collection:'Event'});
+ assert.deepEqual(items.map(x=>[x.id,x.position]),[['approved-asset',0]]);
+ assert.equal(items[0].src,'https://example.test/ola-hq/display/a.webp');
+ assert.equal(items[0].download,'https://example.test/ola-hq/download/a.jpg');
+ assert.equal(items[0].inline,'https://example.test/ola-hq/download/a.jpg?inline=1');assert.equal(items[0].filename,'source-scan.jpg');assert.equal(items[0].title,'Real public caption');
+ assert.deepEqual(items[0].fields,{date:'Recorded date'});assert.equal(rows[1].src,'');assert.equal(rows[1].downloadAvailable,false);
+ assert.doesNotMatch(JSON.stringify(items),/NEVER COPY/);
+});
+
+test('Polaroid paper audio plays a finite source and cancels delayed activation on mute or destroy',async()=>{
+ const {PaperSound}=await import('../our-polaroid-project/paper-sound.js');
+ const oldAudio=globalThis.AudioContext,oldFetch=globalThis.fetch;let requested,started=0,stopped=0,closed=0,decoded=0;
+ class Audio {constructor(){this.state='running';this.destination={};} resume(){return Promise.resolve();} decodeAudioData(){decoded++;return Promise.resolve({duration:.24});} createGain(){return {gain:{value:0},connect(){},disconnect(){}};} createBufferSource(){return {loop:null,connect(){},disconnect(){},start(){started++;},stop(){stopped++;}};} close(){closed++;this.state='closed';return Promise.resolve();}}
+ globalThis.AudioContext=Audio;globalThis.fetch=()=>new Promise(resolve=>requested=()=>resolve({ok:true,arrayBuffer:async()=>new ArrayBuffer(4)}));
+ try{
+  const a=new PaperSound();assert.equal(a.ctx,undefined);a.burst();a.stop();requested();await a.ready;await Promise.resolve();assert.equal(started,0,'mute cancels pending decode');
+  a.burst();assert.equal(started,1);assert.equal(a.source.loop,false);assert.equal(a.gain.gain.value,1);
+  a.burst();assert.equal(started,2);assert.equal(stopped,1,'replacement retains one source');
+  a.source.onended();assert.equal(a.source,null,'finite source releases after playback');
+  a.burst();a.destroy();assert.equal(a.source,null);assert.equal(a.ctx,null);assert.equal(closed,1);assert.equal(decoded,1);
+ }finally{if(oldAudio===undefined)delete globalThis.AudioContext;else globalThis.AudioContext=oldAudio;globalThis.fetch=oldFetch;}
+});
+
+test('Polaroid paper sample is short quiet PCM with smooth silent endpoints',()=>{
+ const wav=readFileSync('our-polaroid-project/audio/paper-floop-v33.wav');
+ assert.equal(wav.toString('ascii',0,4),'RIFF');assert.equal(wav.readUInt16LE(22),1);assert.equal(wav.readUInt32LE(24),24000);
+ const samples=[];for(let i=44;i<wav.length;i+=2)samples.push(wav.readInt16LE(i));
+ assert.equal(samples.length/24000,.51);assert.equal(samples[0],0);assert.equal(samples.at(-1),0);assert.ok(Math.max(...samples.map(Math.abs))<5000);
+});
+
+
+test('Polaroid Portfolio loops while Event cards stop at both album boundaries',async()=>{
+ const {PolaroidCardViewer}=await import('../our-polaroid-project/memory-viewer.js');
+ environment();try{
+  const items=[{src:'a.jpg',title:'First'},{src:'b.jpg',title:'Last'}];
+  const event=new PolaroidCardViewer({immersive:true,loop:false,sound:false});event.reduced.matches=true;event.open(items);
+  assert.equal(event.prev.disabled,true);assert.equal(event.next.disabled,false);await event.toss(-1);assert.equal(event.index,0);assert.equal(event.turning,false);
+  await event.toss(1);assert.equal(event.index,1);assert.equal(event.next.disabled,true);assert.equal(event.prev.disabled,false);await event.toss(1);assert.equal(event.index,1);event.destroy();
+  const portfolio=new PolaroidCardViewer({immersive:true,sound:false});portfolio.reduced.matches=true;portfolio.open(items);assert.equal(portfolio.prev.disabled,false);await portfolio.toss(-1);assert.equal(portfolio.index,1);await portfolio.toss(1);assert.equal(portfolio.index,0);portfolio.destroy();
+  const single=new PolaroidCardViewer({immersive:true,loop:false,sound:false});single.open([items[0]]);assert.equal(single.prev.disabled,true);assert.equal(single.next.disabled,true);single.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
