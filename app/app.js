@@ -155,14 +155,14 @@ function followFrameLink(event) {
   event.preventDefault();
   openWorld(world, anchor.href);
 }
-// Only the selected same-origin Cinema frame can request its temporary card-only stage.
+// Only the selected same-origin Cinema or Polaroid frame can request its temporary card-only stage.
 window.addEventListener('message', event => {
-  if(event.origin !== location.origin || event.source !== frame.contentWindow || current?.world !== 'blockbuster' || event.data?.type !== 'ola-cinema-card-stage') return;
+  if(event.origin !== location.origin || event.source !== frame.contentWindow || !['blockbuster','polaroid'].includes(current?.world) || event.data?.type !== 'ola-cinema-card-stage') return;
   document.body.classList.toggle('cinema-card-stage', event.data.active === true);
 });
 frame.addEventListener('load', () => {
   let cardOpen = false;
-  try { cardOpen = current?.world === 'blockbuster' && Boolean(frame.contentDocument.querySelector('.ola-card-immersive[open]')); } catch {}
+  try { cardOpen = ['blockbuster','polaroid'].includes(current?.world) && Boolean(frame.contentDocument.querySelector('.ola-card-immersive[open]')); } catch {}
   document.body.classList.toggle('cinema-card-stage', cardOpen);
   frameNavigating = false;
   if (frameTimer) clearInterval(frameTimer);

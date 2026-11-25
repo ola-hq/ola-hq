@@ -1,0 +1,9 @@
+Polaroid soft floom / airy swish v33
+Original procedural sound created for this owner-requested Polaroid interaction.
+510 ms mono PCM, 24 kHz. Owner preferred B airy swish with A rounded opening; this candidate blends A into B with smooth overlap and quiet fade.
+Peak0.082 / RMS0.018; playback gain1 matches the direct audition exactly.
+SHA25648f3accdbfddca47aebd4edf58e1324d9bed5c93009ea4b21a96f07468f11934.
+No projector recording, third-party sample, voice, YouTube extraction or personal data.
+Played only on deliberate photo navigation/dismissal after user activation; mute/close/destroy stop it.
+Cinema audio and shared CardViewer are unchanged.
+Original rejected240ms draft preserved in private checkpoint and Git history; not included in release projection.
