@@ -1,5 +1,5 @@
-import {scoreText,distribution,historicalTrends,applyArtwork,artworkURL} from './collection-data.js?v=20261124-worlds31';
-import {collectionStats,perspectiveStats} from './stats-data.js?v=20261124-worlds31';
+import {scoreText,distribution,historicalTrends,applyArtwork,artworkURL} from './collection-data.js?v=20261125-worlds32';
+import {collectionStats,perspectiveStats} from './stats-data.js?v=20261125-worlds32';
 const base=new URL('../',import.meta.url),root=document.querySelector('[data-club-stats]');
 const el=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e};
 const number=n=>scoreText(n);

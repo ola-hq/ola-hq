@@ -35,7 +35,7 @@ test('offline events replay once with their original IDs and expire sessions',as
 
 function server(){
  let handler;const inserted=[],reports=[],acceptedHash=createHash('sha256').update('a'.repeat(64)).digest('hex');
- const db={from:()=>{const filters={};return {select(){return this},eq(k,v){filters[k]=v;return this},gte(){return this},then(resolve){return Promise.resolve({count:0,error:null}).then(resolve)},async maybeSingle(){return {data:filters.token_hash===acceptedHash?{id:'owner'}:null}},async upsert(rows){inserted.push(...rows);return {error:null}}}},async rpc(name,args){reports.push({name,args});return {data:{summary:{visitors:0}},error:null}}};
+ const db={from:()=>{const filters={};return {select(){return this},eq(k,v){filters[k]=v;return this},gte(){return this},order(){return this},limit(){return this},like(){return this},then(resolve){return Promise.resolve({count:0,data:[],error:null}).then(resolve)},async maybeSingle(){return {data:filters.token_hash===acceptedHash?{id:'owner'}:null}},async upsert(rows){inserted.push(...rows);return {error:null}}}},async rpc(name,args){reports.push({name,args});return {data:{summary:{visitors:0}},error:null}}};
  const code=stripTypeScriptTypes(readFileSync('scripts/supabase/ola-analytics/index.ts','utf8').replace(/^import[^\n]+\n/,''));
  runInNewContext(code,{createClient:()=>db,Deno:{env:{get:k=>k==='SUPABASE_URL'?'https://example.supabase.co':'test-server-secret'},serve:fn=>handler=fn},Response,Date,JSON,Array,Number,crypto:webcrypto,TextEncoder});
  const request=(body,extra={})=>handler(new Request('https://example.com',{method:'POST',headers:{origin:'https://ola-hq.github.io','content-type':'application/json','user-agent':'OLA verification',...extra},body:JSON.stringify(body)}));
@@ -54,4 +54,8 @@ test('report requires an active host token and rejects foreign origins',async()=
  assert.equal((await s.request({action:'report'},{'x-loda-moderator-token':'b'.repeat(64)})).status,401);
  assert.equal((await s.request({action:'report',days:7,scope:'loda'},{'x-loda-moderator-token':'a'.repeat(64)})).status,200);
  assert.equal(s.reports[0].args.report_days,7);assert.equal((await s.request({action:'report'},{origin:'https://untrusted.example'})).status,403);
+});
+
+test('Cinema custom actions use bounded labels without typed searches and respect opt-out',async()=>{
+ const b=browser();b.context.location=new URL('https://ola-hq.github.io/ola-hq/la-ola-cinema-club/reviews/');await tick();b.events['ola:cinema']({detail:{action:'search_used',value:'nonempty'}});await tick();assert.equal(b.requests.at(-1).events[0].label,'cinema:search_used:nonempty');assert.equal(b.requests.at(-1).events[0].event_name,'engagement');assert.equal(b.requests.at(-1).events[0].duration_seconds,0);const count=b.requests.length;b.events['ola:cinema']({detail:{action:'not_allowed',value:'private'}});await tick();assert.equal(b.requests.length,count);b.context.location=new URL('https://ola-hq.github.io/ola-hq/our-polaroid-project/');b.events['ola:cinema']({detail:{action:'search_used',value:'private'}});await tick();assert.equal(b.requests.length,count);
 });
