@@ -46,6 +46,24 @@ test('shared Cinema/Polaroid viewer supports touch navigation, zoom/drag separat
 test('vertical gestures, pinch and zoom never trigger horizontal navigation',()=>{assert.equal(gestureAction({dx:90,dy:100}),'tilt');assert.equal(gestureAction({dx:100,multi:true}),'pan');assert.equal(gestureAction({dx:100,scale:2}),'pan');assert.equal(gestureAction({dx:-100}),'next')});
 
 import {oceanComposition} from '../la-ola-cinema-club/assets/ocean-layout.js';
+import {originalOceanComposition} from '../la-ola-cinema-club/assets/ocean-layout.js';
+test('inline touch card moves in both directions without opening a modal or trapping page focus',()=>{
+ const d=environment();try{const mount=new Element('div'),navigated=[];const v=new CardViewer({mount,onNavigate:item=>navigated.push(item.title)});v.open([{src:'a.jpg',title:'First'},{src:'b.jpg',title:'Second'}]);assert.equal(v.dialog.tagName,'SECTION');assert.notEqual(d.documentElement.style.overflow,'hidden');assert.equal(v.dialog.open,undefined);
+ v.down(pointer(200,200));v.drag(pointer(240,280));assert.ok(v.panX>0&&v.panY>0);assert.notEqual(v.rotX,0);v.up(pointer(240,280),true);assert.equal(v.index,0);assert.equal(v.panX,0);assert.equal(v.panY,0);
+ let trapped=false;v.dialog.emit('keydown',{key:'Tab',target:v.stage,preventDefault(){trapped=true}});assert.equal(trapped,false);assert.deepEqual(navigated,[]);
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+test('inline next-review navigation needs a deliberate full swipe, never a pinch or cancelled drag',()=>{
+ environment();try{const navigated=[],v=new CardViewer({mount:new Element('div'),onNavigate:item=>navigated.push(item.title)});v.open([{src:'a.jpg',title:'First'},{src:'b.jpg',title:'Second'}]);
+ v.down(pointer(300,200));v.drag(pointer(210,200));v.up(pointer(210,200),true);assert.equal(v.index,0,'small sideways drags only tilt');
+ v.down(pointer(300,200));v.drag(pointer(80,200));v.up(pointer(80,200),false);assert.equal(v.index,0,'cancel must not navigate');
+ v.down(pointer(300,200));v.drag(pointer(80,200));v.up(pointer(80,200),true);assert.deepEqual(navigated,['Second']);
+ v.zoom(2);v.down(pointer(300,200));v.drag(pointer(40,200));v.up(pointer(40,200),true);assert.equal(v.index,1);assert.equal(navigated.length,1);v.flip();assert.equal(v.back.hidden,false);v.dialog.emit('keydown',{key:'Escape',target:v.stage});assert.equal(v.back.hidden,true);assert.equal(v.scale,1);
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+test('restored original artwork keeps its moon outside navigation and reserves clear mobile sky',()=>{
+ for(const width of [320,390,430,834,1100,1440,1920]){const header=width<=700?290:180;const s=originalOceanComposition(width,900,header);assert.ok(s.moonY-s.radius>=header+31);assert.ok(s.moonX-s.radius>=0);assert.ok(s.moonX+s.radius<=width);assert.equal(s.skyGap>0,width<=1100);assert.ok(Math.abs((s.left+s.mediaWidth*.684)-s.moonX)<.001);assert.ok(Math.abs((s.top+s.mediaHeight*82/667)-s.moonY)<.001);}
+});
 test('complete ocean frame keeps its one moon below navigation and within desktop/mobile bounds',()=>{
  for(const width of [390,430,834,1440,1920]){const headerBottom=width<700?270:180;const scene=oceanComposition(width,headerBottom);assert.ok(scene.moonY-scene.radius>=headerBottom+30);assert.ok(scene.moonX-scene.radius>=0);assert.ok(scene.moonX+scene.radius<=width);assert.equal(scene.portrait,width<=700);assert.equal(scene.skyGap>0,width<=1100);if(width<=1100)assert.ok(scene.skyGap>scene.radius*2);}
 });

@@ -37,3 +37,12 @@
  .home-ocean-panel::after{background:linear-gradient(180deg,#0b1629dd,#0b1629b0)}
 }
 @media(prefers-reduced-motion:reduce){.ocean-canvas>.living-ocean{display:none}.ocean-canvas>.ocean-still{visibility:visible;opacity:1}.ocean-canvas *{transition:none}.home-ocean-lanes .lane{backdrop-filter:none}}
+
+/* Full upper-home atmosphere; the approved phone/cards/filmstrip section is untouched. */
+body.cinema-home{isolation:isolate;position:relative}
+body.cinema-home::before{content:"";position:absolute;inset:0 0 auto;height:1000px;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#07152420 0%,#07152400 42%,#0b1629 92%),url('living-world/ocean-desktop.jpg') center top/cover no-repeat}
+.cinema-home .site-header{background:linear-gradient(180deg,#071524ad,transparent)}
+.cinema-home .home-sky-window{height:250px;mask-image:none;background:none}
+.cinema-home .home-sky-window img{display:none}
+body[data-ocean-artwork=original] .living-ocean{display:none}
+@media(max-width:700px){body.cinema-home::before{height:1100px;background-image:linear-gradient(180deg,#07152410 0%,transparent 56%,#0b1629 94%),url('living-world/ocean-mobile.jpg');background-size:cover,auto 850px;background-position:center,center 190px}.cinema-home .home-sky-window{height:300px}}
