@@ -58,9 +58,9 @@
  const engagement=()=>{active();const delta=Math.floor(activeSeconds)-lastReported;if(delta>=5){lastReported+=delta;track('engagement','','active_seconds',{duration_seconds:delta})}};
  setInterval(engagement,15000);
  let highWater=0;addEventListener('scroll',()=>{const max=document.documentElement.scrollHeight-innerHeight;if(max<=0)return;const depth=Math.floor(scrollY/max*100);for(const mark of [25,50,75,100])if(depth>=mark&&highWater<mark){highWater=mark;track('scroll_depth','','scroll',{metric_value:mark})}},{passive:true});
- document.addEventListener('play',e=>{if(e.target instanceof HTMLMediaElement)track('media_play','','media')},true);
- document.addEventListener('ended',e=>{if(e.target instanceof HTMLMediaElement)track('media_complete','','media')},true);
- document.addEventListener('timeupdate',e=>{const m=e.target;if(!(m instanceof HTMLMediaElement)||!Number.isFinite(m.duration)||m.duration<=0)return;const percentage=Math.floor(m.currentTime/m.duration*4)*25;const old=Number(m.dataset.olaProgress||'0');if(percentage>old&&percentage<=100){m.dataset.olaProgress=String(percentage);track('media_progress','','media',{metric_value:percentage})}},true);
+ document.addEventListener('play',e=>{if(e.target instanceof HTMLMediaElement&&!e.target.closest('[data-analytics-ignore]'))track('media_play','','media')},true);
+ document.addEventListener('ended',e=>{if(e.target instanceof HTMLMediaElement&&!e.target.closest('[data-analytics-ignore]'))track('media_complete','','media')},true);
+ document.addEventListener('timeupdate',e=>{const m=e.target;if(!(m instanceof HTMLMediaElement)||m.closest('[data-analytics-ignore]')||!Number.isFinite(m.duration)||m.duration<=0)return;const percentage=Math.floor(m.currentTime/m.duration*4)*25;const old=Number(m.dataset.olaProgress||'0');if(percentage>old&&percentage<=100){m.dataset.olaProgress=String(percentage);track('media_progress','','media',{metric_value:percentage})}},true);
  window.addEventListener('hashchange',()=>{engagement();activeSeconds=0;lastReported=0;highWater=0;page()});
  window.addEventListener('popstate',page);
  window.addEventListener('pageshow',e=>{if(e.persisted){lastPath='';page()}});

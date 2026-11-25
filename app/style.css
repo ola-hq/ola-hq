@@ -273,3 +273,6 @@ html.is-installed #install{display:none!important}
 /* The small globe and wordmark return to the website from every app view. */
 .appbar .brand-globe{display:inline-flex;align-items:center;justify-content:center;gap:9px;flex:none;min-width:44px;min-height:44px;padding:2px;border:0;border-radius:8px;background:transparent;color:inherit;cursor:pointer;text-decoration:none}
 .appbar .brand-globe:hover strong{text-decoration:underline;text-underline-offset:4px}
+
+/* Cinema has its own header; keep the embedded mobile bar focused on navigation. */
+@media(max-width:600px){#world-label[data-world="blockbuster"]{display:none}}

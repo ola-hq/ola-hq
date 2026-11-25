@@ -79,6 +79,7 @@ function renderNav() {
   upLabel.textContent = target ? worlds[target].name : 'OLA HQ';
   up.setAttribute('aria-label', target ? 'Return to ' + worlds[target].name + ' home' : 'Return to OLA HQ app home');
   label.textContent = worlds[world].name;
+  label.dataset.world = world;
   document.title = worlds[world].name + ' · OLA HQ';
   frame.title = worlds[world].name + ' inside OLA HQ';
   openAlone.href = current.url;
