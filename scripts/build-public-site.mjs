@@ -32,7 +32,7 @@ function addAnalytics(folder) {
     const html=readFileSync(file,'utf8');
     if(/http-equiv=["']refresh["']/i.test(html)||!html.includes('</head>'))continue;
     const script=relative(dirname(file),join(output,'analytics.js')).split('\\').join('/');
-    writeFileSync(file,html.replace('</head>',`<script defer src="${script}?v=1"></script></head>`));
+    writeFileSync(file,html.replace('</head>',`<script defer src="${script}?v=${source.slice(0,12)}"></script></head>`));
   }
 }
 addAnalytics(output);

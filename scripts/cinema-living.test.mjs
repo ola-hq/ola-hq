@@ -120,9 +120,9 @@ test('coalesced native drag never becomes a tap when no intermediate touchmove a
  }finally{delete globalThis.document;delete globalThis.matchMedia;}
 });
 
-test('real projector asset is compact mono PCM, licensed, nonempty and below clipping',()=>{
- const wav=readFileSync('assets/ola-worlds/audio/projector-35mm-v30.wav');assert.equal(wav.toString('ascii',0,4),'RIFF');assert.equal(wav.readUInt16LE(22),1);assert.equal(wav.readUInt32LE(24),24000);assert.equal(wav.readUInt16LE(34),16);assert.ok(wav.length<100000);let peak=0,sum=0;for(let i=44;i<wav.length;i+=2){const n=wav.readInt16LE(i)/32768;peak=Math.max(peak,Math.abs(n));sum+=n*n;}const rms=Math.sqrt(sum/((wav.length-44)/2));assert.ok(peak<.7&&peak>.1);assert.ok(rms>.03&&rms<.2);assert.match(readFileSync('assets/ola-worlds/audio/PROJECTOR-CREDITS.txt','utf8'),/Joseph SARDIN/);
- const sound=readFileSync('assets/ola-worlds/projector-sound.js','utf8');assert.doesNotMatch(sound,/createOscillator|projectorSamples|Math\.random|playbackRate/);assert.match(sound,/decodeAudioData/);
+test('soft paper sound is a bounded short non-looped recording',()=>{
+ const wav=readFileSync('assets/ola-worlds/audio/paper-card-v32.wav');assert.equal(wav.toString('ascii',0,4),'RIFF');assert.equal(wav.readUInt16LE(22),1);assert.equal(wav.readUInt32LE(24),24000);assert.equal(wav.readUInt16LE(34),16);assert.ok(wav.length<100000);let peak=0,sum=0;for(let i=44;i<wav.length;i+=2){const n=wav.readInt16LE(i)/32768;peak=Math.max(peak,Math.abs(n));sum+=n*n;}const rms=Math.sqrt(sum/((wav.length-44)/2));assert.ok(peak<.7&&peak>.1);assert.ok(rms>.005&&rms<.15);assert.ok((wav.length-44)/48000<.5);assert.match(readFileSync('assets/ola-worlds/audio/CARD-SOUND-CREDITS.txt','utf8'),/Joseph SARDIN/);
+ const sound=readFileSync('assets/ola-worlds/card-sound.js','utf8');assert.doesNotMatch(sound,/createOscillator|projectorSamples|Math\.random|playbackRate/);assert.match(sound,/decodeAudioData/);
 });
 test('Cinema forward-button flourish returns the next card once while ordinary swipes remain quick',async()=>{
  environment();try{const v=new CardViewer({forwardFlourish:true,sound:true});v.open([{src:'a.jpg'},{src:'b.jpg'}]);const animations=[];v.card.animate=(frames,options)=>{animations.push({frames,options});return {finished:Promise.resolve()}};await v.forward();assert.equal(v.index,1);assert.deepEqual(animations.map(a=>a.options.duration),[850,950]);assert.match(animations[0].frames[1].transform,/rotateY\(210deg\)/);assert.equal(v.turning,false);v.destroy();const generic=new CardViewer({theme:'polaroid'});assert.equal(generic.forwardFlourish,false);assert.equal(generic.sound,false);generic.destroy();}finally{delete globalThis.document;delete globalThis.matchMedia;}
@@ -137,4 +137,17 @@ test('contact sheet uses resolved collection artwork and preserves full review d
 
 test('opening a sound-enabled card warms the recording before its first navigation',()=>{
  environment();try{const v=new CardViewer({sound:true});let warmed=0;v.unlockAudio=()=>warmed++;v.open([{src:'a.jpg'}]);assert.equal(warmed,1);v.sound=false;v.open([{src:'a.jpg'}]);assert.equal(warmed,1);v.destroy();}finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('review order preserves selected filters and never defaults from the newest card into the oldest archive',async()=>{
+ const {orderedReviews}=await import('../la-ola-cinema-club/assets/browse-context.js');const f=[{id:'old',order:1},{id:'new',order:3},{id:'middle',order:2}];assert.deepEqual(orderedReviews(f,[],'new').map(f=>f.id),['new','middle','old']);assert.deepEqual(orderedReviews(f,['middle','new','new','bad'],'new').map(f=>f.id),['middle','new']);assert.deepEqual(orderedReviews(f,['middle'],'new').map(f=>f.id),['new','middle','old']);
+});
+test('expanded-detail swipes reject vertical scrolling, small drags and pinch gestures',async()=>{
+ const {detailSwipe}=await import('../la-ola-cinema-club/assets/review-navigation.js');assert.equal(detailSwipe({dx:-140,dy:10}),1);assert.equal(detailSwipe({dx:140,dy:10}),-1);assert.equal(detailSwipe({dx:-40}),0);assert.equal(detailSwipe({dx:-140,dy:110}),0);assert.equal(detailSwipe({dx:-140,multi:true}),0);assert.equal(detailSwipe({dx:-140,scroll:50}),0);
+});
+test('browse context permits only known films and a same-origin review return path',async()=>{
+ const {rememberBrowse,readBrowse}=await import('../la-ola-cinema-club/assets/browse-context.js');let saved='';globalThis.sessionStorage={setItem:(k,v)=>saved=v,getItem:()=>saved};try{const base='https://ola-hq.github.io/ola-hq/la-ola-cinema-club/',records=[{id:'a',order:2},{id:'b',order:1}];rememberBrowse(records,base,base+'reviews/?genre=Drama');assert.match(readBrowse(records,'a',base).returnURL,/genre=Drama/);rememberBrowse(records,base,'https://bad.example/');assert.equal(readBrowse(records,'a',base).returnURL,base+'reviews/');saved='{broken';assert.equal(readBrowse(records,'a',base).films.length,2);}finally{delete globalThis.sessionStorage;}
+});
+test('poll tally stays distinct from movie scores and rejects inconsistent aggregates',async()=>{
+ const {tallyText}=await import('../la-ola-cinema-club/assets/community.js');assert.match(tallyText({yes:2,no:1,total:3}),/2 yes/);assert.match(tallyText({yes:0,no:0,total:0}),/No responses/);assert.throws(()=>tallyText({yes:2,no:1,total:4}));assert.throws(()=>tallyText({yes:-1,no:1,total:0}));
 });

@@ -1,4 +1,4 @@
-import {ProjectorSound} from './projector-sound.js?v=20261124-worlds31';
+import {CardFlickSound} from './card-sound.js?v=20261125-worlds32';
 // One viewer for public artwork in every Ola world. No account or private-media fetching.
 export function gestureAction({dx=0,dy=0,scale=1,multi=false,threshold=65,velocity=0}={}){
  if(multi||scale>1.01)return 'pan';
@@ -13,7 +13,7 @@ export class CardViewer{
  constructor({theme='cinema',intensity=8,renderBack,label='Artwork viewer',mount=null,onNavigate=null,onExpand=null,immersive=false,onActivate=null,sound=immersive,forwardFlourish=false}={}){
   this.immersive=immersive;this.onActivate=onActivate;this.turn=0;this.turning=false;this.sound=Boolean(sound);this.soundAvailable=Boolean(sound);this.forwardFlourish=forwardFlourish;this.inline=Boolean(mount);this.onNavigate=onNavigate;this.onExpand=onExpand;
   this.items=[];this.index=0;this.intensity=intensity;this.renderBack=renderBack;this.reduced=matchMedia('(prefers-reduced-motion: reduce)');
-  if(!document.querySelector('link[data-ola-viewer]')){const css=node('link');css.rel='stylesheet';css.href=new URL('./card-viewer.css?v=20261124-worlds31',import.meta.url);css.dataset.olaViewer='';document.head.append(css);}
+  if(!document.querySelector('link[data-ola-viewer]')){const css=node('link');css.rel='stylesheet';css.href=new URL('./card-viewer.css?v=20261125-worlds32',import.meta.url);css.dataset.olaViewer='';document.head.append(css);}
   this.dialog=node(this.inline?'section':'dialog',this.inline?'ola-inline-card-viewer':'ola-card-dialog');this.dialog.setAttribute('aria-label',label);this.dialog.dataset.theme=theme;if(this.immersive)this.dialog.className+=' ola-card-immersive';
   const tools=node('div','ola-card-tools');this.closeButton=this.button('Close',()=>this.close());this.prev=this.button('Previous',()=>this.move(-1));this.next=this.button('Next',()=>this.forward());this.flipButton=this.button('Read the back',()=>this.flip());this.zoomButton=this.button('Zoom in',()=>this.zoom(this.scale>1?1:2));this.resetButton=this.button('Reset view',()=>this.reset());tools.append(this.closeButton,this.prev,this.next,this.flipButton,this.zoomButton,this.resetButton);
   this.stage=node('div','ola-card-stage');this.card=node('div','ola-physical-card');this.front=node('div','ola-card-front');this.image=node('img');this.image.draggable=false;this.image.decoding='async';this.front.append(this.image);this.back=node('section','ola-card-back');this.back.hidden=true;this.back.tabIndex=0;this.card.append(this.front,this.back);this.stage.append(this.card);this.caption=node('p','ola-card-caption');this.caption.setAttribute('role','status');this.source=node('a','ola-card-source','Open original image');this.source.target='_blank';this.source.rel='noopener';
@@ -58,8 +58,8 @@ export class CardViewer{
   if(token!==this.turn)return;this.index=(this.index+delta+this.items.length)%this.items.length;this.show();this.onNavigate?.(this.items[this.index]);
   await animate([{transform:flourish?`translate(${-sign*80}px,-30px) rotateY(${-sign*165}deg) rotateZ(${-sign*16}deg) scale(.5)`:`translate(${-sign*45}px,12px) rotateZ(${-sign*8}deg) scale(.94)`,opacity:0},{transform:'translate(0px,0px) rotateY(0deg) rotateZ(0deg) scale(1)',opacity:1}],flourish?950:240);if(token===this.turn)this.turning=false;
  }
- unlockAudio(){if(this.sound)(this.projector||(this.projector=new ProjectorSound())).unlock();}
- reelSound(){if(this.sound)(this.projector||(this.projector=new ProjectorSound())).burst();}
+ unlockAudio(){if(this.sound)(this.projector||(this.projector=new CardFlickSound())).unlock();}
+ reelSound(){if(this.sound)(this.projector||(this.projector=new CardFlickSound())).burst();}
  async dismiss(){if(this.turning)return;this.turning=true;const token=++this.turn;this.reelSound();this.dialog.dataset.dragging='false';if(!this.reduced.matches&&this.card.animate){const a=this.card.animate([{transform:this.card.style.transform,opacity:1},{transform:`translate(${this.panX}px,${this.stage.clientHeight*1.3}px) rotateZ(${this.rotZ||8}deg) scale(.9)`,opacity:0}],{duration:260,easing:'ease-in',fill:'none'});try{await a.finished;}catch{}}if(token!==this.turn)return;this.turning=false;this.activate();}
 
  destroy(){this.close();this.projector?.destroy();this.dialog.remove();}

@@ -27,7 +27,7 @@
   const node=by('coach-tips');node.replaceChildren();
   for(const [title,description] of tips.slice(0,4)){const card=document.createElement('article'),heading=document.createElement('b'),p=document.createElement('p');card.className='tip';heading.textContent=title;p.textContent=description;card.append(heading,p);node.append(card)}
  }
- const worlds=[['wedding','La Ola de Amor'],['blockbuster','Blockbuster Wave'],['polaroid','Polaroid Project'],['wave26','Wave 26'],['fpl','FPL Wave'],['simulation','Simulation Wave'],['gdb','GDB Wave'],['arsenal','Arsenal Wave'],['offbrand','Offbrand Wave'],['willpwr','Willpwr Wave'],['wuwei','Wu Wei Wave'],['capybara','Capybara Wave'],['aios','AIOS'],['tools','Tools'],['archive','Archive']];
+ const worlds=[['wedding','La Ola de Amor'],['cinema','La Ola Cinema Club'],['blockbuster','Blockbuster Wave archive'],['polaroid','Polaroid Project'],['wave26','Wave 26'],['fpl','FPL Wave'],['simulation','Simulation Wave'],['gdb','GDB Wave'],['arsenal','Arsenal Wave'],['offbrand','Offbrand Wave'],['willpwr','Willpwr Wave'],['wuwei','Wu Wei Wave'],['capybara','Capybara Wave'],['aios','AIOS'],['tools','Tools'],['archive','Archive']];
  const sites=[['all','All experiences'],['hq_site','OLA HQ website'],['hq_app','OLA HQ app'],['loda_site','La Ola de Amor'],['loda_app','Festival Guide'],['loda_app_entrance','Guide entrance']];
  function siteNavigation(data){
   const tabs=by('site-tabs');tabs.replaceChildren();
@@ -67,7 +67,7 @@
   table('surfaces',['Experience','Visitors','Views'],data.surfaces.map(r=>[names[r.surface]||r.surface,r.visitors,r.views]));
   table('days-table',['Date · Mexico City','Visitors','Views','Clicks'],data.days.map(r=>[r.day,r.visitors,r.views,r.clicks]));
   table('sources',['Referring website','Visitors'],data.sources.map(r=>[r.referrer_host,r.visitors]));
-  const more=data.extended||{};
+  const more=data.extended||{};table('cinema-actions',['Club action','Count'],more.cinema_actions||[]);
   for(const [id,key,label] of [['devices','devices','Device'],['oses','operating_systems','OS'],['browsers','browsers','Browser'],['locations','locations','Country'],['campaigns','campaigns','Campaign source'],['files','files','Attachment'],['activity','activity','Event type']])table(id,[label,'Count'],more[key]||[]);
   by('active-time').textContent='Measured active time (new events only): '+Math.round((more.active_seconds||0)/60)+' minutes (from new engagement events only).'+(more.sampled?' Recent rows capped at 10,000.':'');
  }
@@ -89,7 +89,7 @@
   }catch{status('Unable to unlock the report.');by('unlock').disabled=false}
  });
  by('refresh').addEventListener('click',load);by('days').addEventListener('change',load);by('scope').addEventListener('change',load);
- by('lock').addEventListener('click',()=>{token='';by('report').hidden=true;by('login').hidden=false;by('cards').replaceChildren();aiHistory.length=0;aiThread.replaceChildren();aiStatus.textContent='Conversation cleared on lock.';for(const id of ['pages','clicks','surfaces','days-table','sources','devices','oses','browsers','locations','campaigns','files','activity'])by(id).replaceChildren();status('Report locked.');});
+ by('lock').addEventListener('click',()=>{token='';by('report').hidden=true;by('login').hidden=false;by('cards').replaceChildren();aiHistory.length=0;aiThread.replaceChildren();aiStatus.textContent='Conversation cleared on lock.';for(const id of ['pages','clicks','surfaces','days-table','sources','devices','oses','browsers','locations','campaigns','files','activity','cinema-actions'])by(id).replaceChildren();status('Report locked.');});
 
  const aiHistory=[],aiThread=by('ola-ai-thread'),aiInput=by('ola-ai-input'),aiStatus=by('ola-ai-status');
  let aiBusy=false;

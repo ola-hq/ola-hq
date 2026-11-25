@@ -1,0 +1,9 @@
+// Soft paper movement — Joseph SARDIN / BigSoundBank, CC0. See audio/CARD-SOUND-CREDITS.txt.
+export class CardFlickSound{
+ constructor(){this.request=0;this.until=0;}
+ unlock(){try{const Audio=globalThis.AudioContext||globalThis.webkitAudioContext;if(!Audio)return;const ctx=this.ctx||(this.ctx=new Audio());ctx.resume()?.catch?.(()=>{});if(!this.ready)this.ready=fetch(new URL('./audio/paper-card-v32.wav',import.meta.url)).then(r=>{if(!r.ok)throw Error('Audio unavailable');return r.arrayBuffer()}).then(bytes=>ctx.decodeAudioData(bytes)).then(buffer=>this.buffer=buffer).catch(()=>{this.ready=null;return null});return ctx;}catch{}}
+ burst(){const ctx=this.unlock();if(!ctx)return;const request=++this.request,at=performance.now();const play=()=>{if(request!==this.request||!this.buffer||performance.now()-at>1200||ctx.state==='closed')return;try{this.halt();const source=ctx.createBufferSource(),gain=ctx.createGain(),t=ctx.currentTime;source.buffer=this.buffer;source.loop=false;source.connect(gain);gain.connect(ctx.destination);gain.gain.value=.25;source.onended=()=>{if(this.source===source)this.source=null;source.disconnect();gain.disconnect();};source.start();this.source=source;this.gain=gain;this.until=t+this.buffer.duration;this.timer=setTimeout(()=>this.stop(),Math.ceil(this.buffer.duration*1000)+100);}catch{}};if(this.buffer)play();else this.ready?.then(play);}
+ halt(){clearTimeout(this.timer);if(this.source){const old=this.source,gain=this.gain;this.source=null;try{gain.gain.setTargetAtTime(0,this.ctx.currentTime,.005);old.stop(this.ctx.currentTime+.02);}catch{}}}
+ stop(){this.request++;this.halt();this.until=0;}
+ destroy(){this.stop();this.ctx?.close()?.catch?.(()=>{});this.ctx=null;}
+}
