@@ -1,4 +1,4 @@
-import {CardViewer} from '../../assets/ola-worlds/card-viewer.js?v=20261124-worlds30';
+import {CardViewer} from '../../assets/ola-worlds/card-viewer.js?v=20261124-worlds31';
 const node=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text)e.textContent=text;return e;};
 // One full collection, sourced from the approved registry-resolved records used by the shelf.
 export function initContactSheet(){

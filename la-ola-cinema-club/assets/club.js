@@ -1,8 +1,8 @@
-import {initContactSheet} from './contact-sheet.js?v=20261124-worlds30';
-import {scoreText, matchesDate, applyArtwork, artworkURL} from './collection-data.js?v=20261124-worlds30';
-export {scoreText} from './collection-data.js?v=20261124-worlds30';
-import {initArtViewer} from './art-viewer.js?v=20261124-worlds30';
-import {collectionStats} from './stats-data.js?v=20261124-worlds30';
+import {initContactSheet} from './contact-sheet.js?v=20261124-worlds31';
+import {scoreText, matchesDate, applyArtwork, artworkURL} from './collection-data.js?v=20261124-worlds31';
+export {scoreText} from './collection-data.js?v=20261124-worlds31';
+import {initArtViewer} from './art-viewer.js?v=20261124-worlds31';
+import {collectionStats} from './stats-data.js?v=20261124-worlds31';
 const base=new URL('../',import.meta.url);
 const $=(s,r=document)=>r.querySelector(s);
 const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n};
