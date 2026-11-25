@@ -20,6 +20,11 @@ for film in films:
    candidate=(site/entry.get(field,entry['image'])).resolve();assert candidate.is_relative_to((site/'assets').resolve()),'Approved art must remain inside this world assets directory'
    digest=hashlib.sha256(candidate.read_bytes()).hexdigest();expected=entry['sha256'] if field=='image' or entry.get(field)==entry['image'] else entry.get('thumbnailSha256')
    assert digest==expected,'Artwork checksum differs from approved receipt'
+# About/genre artwork uses the same approved registry and checksum gate as review cards.
+for key,entry in registry.get('features',{}).items():
+ assert entry.get('status')=='approved' and entry.get('approvalReceipt') and entry.get('sha256'),'Feature artwork needs approved receipt'
+ candidate=(site/entry['image']).resolve();assert candidate.is_relative_to((site/'assets').resolve()),'Feature art must remain inside world assets'
+ assert hashlib.sha256(candidate.read_bytes()).hexdigest()==entry['sha256'],'Feature artwork checksum differs'
 for f in films:
  a=registry['films'][f['id']];assert a['status'] in ['previously-published','approved'],'Draft artwork cannot be projected'
  if a['status']=='approved':assert a.get('approvalReceipt') and a.get('sha256'),'New artwork needs approval receipt and checksum'
@@ -44,3 +49,12 @@ if home.exists():
  home.write_text(text)
 p=site/'data/films.json';tmp=p.with_suffix('.tmp');tmp.write_text(json.dumps(films,ensure_ascii=False,separators=(',',':'))+'\n');os.replace(tmp,p)
 print('Synchronized',len(films),'registry records and static film pages; no draft artwork imported.')
+
+for page in [site/'about/index.html',site/'favorites/thriller/index.html']:
+ if not page.exists():continue
+ text=page.read_text()
+ for key,entry in registry.get('features',{}).items():
+  source=os.path.relpath(site/entry['image'],page.parent).replace(os.sep,'/')+'?art='+entry['revision']
+  text=re.sub(r'(<img[^>]*data-artwork-key="'+re.escape(key)+r'"[^>]*src=")[^"]+',lambda m:m[1]+source,text)
+ page.write_text(text)
+print('Synchronized',len(registry.get('features',{})),'approved identity/genre records.')
