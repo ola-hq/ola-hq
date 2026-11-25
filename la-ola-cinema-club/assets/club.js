@@ -1,7 +1,8 @@
-import {scoreText, matchesDate, applyArtwork, artworkURL} from './collection-data.js?v=20261124-worlds28';
-export {scoreText} from './collection-data.js?v=20261124-worlds28';
-import {initArtViewer} from './art-viewer.js?v=20261124-worlds28';
-import {collectionStats} from './stats-data.js?v=20261124-worlds28';
+import {initContactSheet} from './contact-sheet.js?v=20261124-worlds29';
+import {scoreText, matchesDate, applyArtwork, artworkURL} from './collection-data.js?v=20261124-worlds29';
+export {scoreText} from './collection-data.js?v=20261124-worlds29';
+import {initArtViewer} from './art-viewer.js?v=20261124-worlds29';
+import {collectionStats} from './stats-data.js?v=20261124-worlds29';
 const base=new URL('../',import.meta.url);
 const $=(s,r=document)=>r.querySelector(s);
 const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n};
@@ -87,6 +88,7 @@ function showError(){for(const grid of document.querySelectorAll('[data-review-g
 const genreDescriptions={'Drama':'People, relationships, and the choices that carry weight.','Comedy':'A sense of humor, whether gentle, chaotic, awkward, or sharp.','Horror':'Fear, dread, and the pleasure of being unsettled.','Romance':'Connection, longing, love, and everything that complicates them.','Sci-Fi':'Big ideas, other possibilities, and worlds beyond the everyday.','Musical':'Stories that give music or performance a central role.','Action':'Momentum, confrontation, and the physical thrill of the ride.','Fantasy':'Magic, myth, and impossible worlds with something human inside.','Historical':'Stories shaped by the past and the lives lived within it.','Thriller':'Tension, uncertainty, and that feeling of needing to know what happens.'};
 if(typeof document!=='undefined'){
 initArtViewer();
+initContactSheet();
 const briefDialog=document.querySelector('.concept-brief-dialog');
 if(briefDialog){
  const brief=briefDialog.querySelector('textarea'),status=briefDialog.querySelector('[role="status"]');
