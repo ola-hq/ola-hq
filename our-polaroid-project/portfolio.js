@@ -1,7 +1,7 @@
 // One public-photo adapter; all gestures and audio are owned by the shared CardViewer.
 // If the optional module/styles fail, keep the existing lightbox usable.
 let worldViewer = null, viewerRequest = 0;
-const sharedViewerReady = import('./memory-viewer.js?v=20261125-polaroid37')
+const sharedViewerReady = import('./memory-viewer.js?v=20261125-polaroid38')
   .then(({createPolaroidMemoryViewer}) => createPolaroidMemoryViewer({mountFeedback}))
   .then(viewer => (worldViewer = viewer)).catch(() => null);
 async function openSharedPhoto(index, opener) {

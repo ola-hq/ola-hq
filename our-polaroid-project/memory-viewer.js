@@ -1,5 +1,5 @@
-import {CardViewer} from '../assets/ola-worlds/card-viewer.js?v=20261125-physical37';
-import {PaperSound} from './paper-sound.js?v=20261125-polaroid37';
+import {CardViewer} from '../assets/ola-worlds/card-viewer.js?v=20261125-physical38';
+import {PaperSound} from './paper-sound.js?v=20261125-polaroid38';
 
 // Reuse every shared gesture; only Polaroid's sound backend differs from Cinema.
 export class PolaroidCardViewer extends CardViewer {
@@ -200,7 +200,7 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
   let css = document.querySelector('link[data-polaroid-memory]');
   if (!css) {
     css = element('link'); css.rel = 'stylesheet';
-    css.href = new URL('./memory-viewer.css?v=20261125-polaroid37', import.meta.url);
+    css.href = new URL('./memory-viewer.css?v=20261125-polaroid38', import.meta.url);
     css.dataset.polaroidMemory = ''; document.head.append(css);
   }
   try { await Promise.all([stylesheetReady(css), stylesheetReady(document.querySelector('link[data-ola-viewer]'))]); }
