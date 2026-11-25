@@ -1,4 +1,4 @@
-import {createPolaroidMemoryViewer} from '../memory-viewer.js?v=20261125-polaroid36';
+import {createPolaroidMemoryViewer} from '../memory-viewer.js?v=20261125-polaroid37';
 
 // Only records already admitted by OlaGallery's public/selection filters enter here.
 export function eventMemoryPhotos(photos, resolve) {
