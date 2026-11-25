@@ -40,10 +40,10 @@ test('two-perspective comparisons exclude legacy combined-only cards and keep ge
 test('genre and stamp counts use current cards rather than imputing archive metadata',()=>{const s=collectionStats(sample);assert.deepEqual(s.genres,[['Fantasy',2],['Horror',1]]);assert.equal(s.stamps.reduce((n,x)=>n+x[1],0),3);assert.equal(collectionStats(sample.filter(f=>f.currentClubCard)).rated,3)});
 test('empty collections return unknown averages rather than invented zero scores',()=>{const s=collectionStats([]);assert.equal(s.average,null);assert.equal(s.median,null);assert.equal(s.brainMean,null);assert.equal(s.heartMean,null);assert.deepEqual(s.distribution,[])});
 
-test('reviewer patterns retain genuine zero scores and exclude archive-only or incomplete pairs',async()=>{
+test('reviewer patterns retain genuine zero scores and include archive ratings and exclude incomplete pairs',async()=>{
  const {perspectiveStats}=await import('../la-ola-cinema-club/assets/stats-data.js');
  const data=[{currentClubCard:true,brain:0,heart:4,genre:'Horror',order:1},{currentClubCard:true,brain:5,heart:5,genre:'Horror',order:2},{currentClubCard:true,brain:4,heart:3,genre:'Horror',order:3},{currentClubCard:false,brain:5,heart:5,genre:'Horror',order:4},{currentClubCard:true,brain:5,heart:null,genre:'Horror',order:5}];
- const s=perspectiveStats(data,'brain');assert.equal(s.count,3);assert.equal(s.average,3);assert.equal(s.high,2);assert.equal(s.low,1);assert.equal(s.genres[0].average,3);assert.equal(s.standout.order,2);
+ const s=perspectiveStats(data,'brain');assert.equal(s.count,4);assert.equal(s.average,3.5);assert.equal(s.high,3);assert.equal(s.low,1);assert.equal(s.genres[0].average,3.5);assert.equal(s.standout.order,4);
 });
 test('genre patterns require three primary-genre records and do not infer preferences from secondary colors',async()=>{
  const {perspectiveStats}=await import('../la-ola-cinema-club/assets/stats-data.js');

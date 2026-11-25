@@ -1,17 +1,17 @@
-import {initFilmFeedback} from './film-feedback.js?v=20261125-worlds33';
-import {initReviewNavigation} from './review-navigation.js?v=20261125-worlds33';
-import {initCinemaEvents} from './cinema-events.js?v=20261125-worlds33';
-import {initContactSheet} from './contact-sheet.js?v=20261125-worlds33';
-import {scoreText, matchesDate, applyArtwork, artworkURL} from './collection-data.js?v=20261125-worlds33';
-export {scoreText} from './collection-data.js?v=20261125-worlds33';
-import {initArtViewer} from './art-viewer.js?v=20261125-worlds33';
-import {collectionStats} from './stats-data.js?v=20261125-worlds33';
+import {initFilmFeedback} from './film-feedback.js?v=20261125-worlds34';
+import {initReviewNavigation} from './review-navigation.js?v=20261125-worlds34';
+import {initCinemaEvents} from './cinema-events.js?v=20261125-worlds34';
+import {initContactSheet} from './contact-sheet.js?v=20261125-worlds34';
+import {scoreText, matchesDate, applyArtwork, artworkURL} from './collection-data.js?v=20261125-worlds34';
+export {scoreText} from './collection-data.js?v=20261125-worlds34';
+import {initArtViewer} from './art-viewer.js?v=20261125-worlds34';
+import {collectionStats} from './stats-data.js?v=20261125-worlds34';
 const base=new URL('../',import.meta.url);
 const $=(s,r=document)=>r.querySelector(s);
 const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n};
 export function filterFilms(films,{q='',genre='',stamp='',saved=false,ids=[],sort='latest',score='',perspective='clubScore',edition='',basis='watched',year='',month=''}={}){
  const normalize=s=>String(s||'').normalize('NFKD').replace(/\p{Diacritic}/gu,'').toLowerCase();
- const needle=normalize(q);let a=films.filter(f=>(!needle||normalize([f.title,f.director,f.genre,f.secondaryGenre,f.stamp].join(' ')).includes(needle))&&(!genre||f.genre===genre||f.secondaryGenre===genre)&&((score===''||score===null)||(Number.isFinite(f[perspective])&&f[perspective]===Number(score)))&&(!edition||edition!=='current'||f.currentClubCard)&&(perspective==='clubScore'||f.currentClubCard&&Number.isFinite(f.brain)&&Number.isFinite(f.heart))&&matchesDate(f,{basis,year,month})&&(!stamp||f.stamp===stamp)&&(!saved||ids.includes(f.id)));
+ const needle=normalize(q);let a=films.filter(f=>(!needle||normalize([f.title,f.director,f.genre,f.secondaryGenre,f.stamp].join(' ')).includes(needle))&&(!genre||f.genre===genre||f.secondaryGenre===genre)&&((score===''||score===null)||(Number.isFinite(f[perspective])&&f[perspective]===Number(score)))&&(!edition||edition!=='current'||f.currentClubCard)&&(perspective==='clubScore'||Number.isFinite(f.brain)&&Number.isFinite(f.heart))&&matchesDate(f,{basis,year,month})&&(!stamp||f.stamp===stamp)&&(!saved||ids.includes(f.id)));
  return a.sort((a,b)=>sort==='score'?(b.clubScore??-1)-(a.clubScore??-1)||a.order-b.order:sort==='title'?a.title.localeCompare(b.title):b.order-a.order);
 }
 
@@ -60,8 +60,7 @@ async function run(){
  try{
   const [records,manifest]=await Promise.all([load('data/films.json'),load('data/artwork.json')]);const films=applyArtwork(records,manifest);
   for(const f of films){const entry={...manifest.films[f.id]};f.image=artworkURL(entry,'image',base);f.thumbnail=artworkURL(entry,'thumbnail',base);}document.dispatchEvent(new CustomEvent('club-collection',{detail:{films,base}}));
-  const homeStats=$('[data-home-stats]');if(homeStats){const summary=collectionStats(films);homeStats.replaceChildren(...[[String(summary.total),'Films on the shelf'],[scoreText(summary.average,2)+'/10','Average recorded score'],[String(summary.pairs),'Two-perspective Club cards']].map(([value,label])=>{const a=el('a','stat');a.href=new URL(label==='Average recorded score'?'stats/#score-shape':'stats/',base);a.append(el('strong',null,value),el('span',null,label));return a;}));}
-  const pageFilm=films.find(f=>f.id===document.body.dataset.filmId);if(pageFilm){const column=$('.film-art-column');if(column){const frame=el('div','film-art-frame');column.firstElementChild.before(frame);frame.append(column.querySelector('a'));artworkLinks(frame,pageFilm);}}
+  const homeStats=$('[data-home-stats]');if(homeStats){const summary=collectionStats(films);homeStats.replaceChildren(...[[String(summary.total),'Films on the shelf'],[scoreText(summary.average,2)+'/10','Average recorded score'],[String(summary.pairs),'Brain + Heart rating pairs']].map(([value,label])=>{const a=el('a','stat');a.href=new URL(label==='Average recorded score'?'stats/#score-shape':'stats/',base);a.append(el('strong',null,value),el('span',null,label));return a;}));}
   const insights=$('[data-collection-insights]');if(insights){if(location.hash==='#insights')insights.closest('details').open=true;const rated=films.filter(f=>Number.isFinite(f.clubScore));for(const [label,value] of [['Films rated',String(rated.length)],['Average La Ola score',scoreText(rated.length?rated.reduce((sum,f)=>sum+f.clubScore,0)/rated.length:null,2)+'/10'],['Current Club cards',String(films.filter(f=>f.currentClubCard).length)]]){const box=el('div','stat');box.append(el('strong',null,value),el('span',null,label));insights.append(box)}}
   if(latest){latest.replaceChildren(...filterFilms(films.filter(f=>f.currentClubCard)).slice(0,8).map(card));$('[data-review-count]')?.replaceChildren(document.createTextNode(String(films.length)));}
   if(genres){const guide=await load('data/guide.json');for(const [name,color]of Object.entries(guide.genres)){
@@ -90,6 +89,7 @@ async function run(){
 function showError(){for(const grid of document.querySelectorAll('[data-review-grid],[data-latest-grid]')){const n=empty('The collection could not load. Please try again.');const b=el('button','button secondary','Try again');b.onclick=()=>location.reload();n.append(b);grid.replaceChildren(n)}}
 const genreDescriptions={'Drama':'People, relationships, and the choices that carry weight.','Comedy':'A sense of humor, whether gentle, chaotic, awkward, or sharp.','Horror':'Fear, dread, and the pleasure of being unsettled.','Romance':'Connection, longing, love, and everything that complicates them.','Sci-Fi':'Big ideas, other possibilities, and worlds beyond the everyday.','Musical':'Stories that give music or performance a central role.','Action':'Momentum, confrontation, and the physical thrill of the ride.','Fantasy':'Magic, myth, and impossible worlds with something human inside.','Historical':'Stories shaped by the past and the lives lived within it.','Thriller':'Tension, uncertainty, and that feeling of needing to know what happens.'};
 if(typeof document!=='undefined'){
+document.addEventListener('club-collection',e=>{const f=e.detail.films.find(f=>f.id===document.body.dataset.filmId),column=$('.film-art-column');if(f&&column&&!column.querySelector('.film-art-frame')){const frame=el('div','film-art-frame');column.firstElementChild.before(frame);frame.append(column.querySelector('a'));artworkLinks(frame,f);}});
 initFilmFeedback();
 initReviewNavigation();
 initArtViewer();
@@ -104,7 +104,7 @@ if(briefDialog){
  briefDialog.querySelector('[data-brief-copy]').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(brief.value);status.textContent='Creative brief copied. Your version starts here.';}catch{brief.focus();brief.select();status.textContent='Select and copy the brief to take it with you.';}});
  briefDialog.querySelector('[data-brief-download]').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([brief.value],{type:'text/plain;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download=document.body.dataset.concept+'-creative-brief.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);status.textContent='Creative brief saved.';});
 }
-document.querySelectorAll('[data-share]').forEach(b=>b.addEventListener('click',async()=>{try{if(navigator.share)await navigator.share({title:document.title,url:location.href});else{await navigator.clipboard.writeText(location.href);b.textContent='Link copied'}}catch{b.textContent='Copy the address to share'}}));
-const id=document.body.dataset.filmId;if(id){const target=$('[data-film-save]');if(target)target.append(saveButton({id,title:document.body.dataset.filmTitle}));}
+document.addEventListener('click',async e=>{const b=e.target.closest('[data-share]');if(!b)return;try{if(navigator.share)await navigator.share({title:document.title,url:location.href});else{await navigator.clipboard.writeText(location.href);b.textContent='Link copied'}}catch{b.textContent='Copy the address to share'}});
+document.addEventListener('club-collection',()=>{const id=document.body.dataset.filmId,target=$('[data-film-save]');if(id&&target&&!target.children.length)target.append(saveButton({id,title:document.body.dataset.filmTitle}));});
 run();
 }
