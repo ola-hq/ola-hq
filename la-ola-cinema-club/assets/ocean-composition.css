@@ -46,3 +46,14 @@ body.cinema-home::before{content:"";position:absolute;inset:0 0 auto;height:1000
 .cinema-home .home-sky-window img{display:none}
 body[data-ocean-artwork=original] .living-ocean{display:none}
 @media(max-width:700px){body.cinema-home::before{height:1100px;background-image:linear-gradient(180deg,#07152410 0%,transparent 56%,#0b1629 94%),url('living-world/ocean-mobile.jpg');background-size:cover,auto 850px;background-position:center,center 190px}.cinema-home .home-sky-window{height:300px}}
+
+/* Totals lead; partial date coverage belongs to its own diary note. */
+.stats-at-glance{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.stats-at-glance .stat{background:linear-gradient(135deg,#182b42c9,#0b192b85);border:1px solid #8ca1b64d;border-top:2px solid var(--gold);border-radius:14px;padding:22px}
+.stats-at-glance .stat strong{font-size:clamp(2.2rem,5vw,3.5rem);line-height:1.1}
+.stats-at-glance .stat span{margin-top:10px}
+.date-coverage{margin:18px 0 12px;padding:16px 18px;border:1px solid #8ca1b64d;border-radius:12px;background:#0b192bbb}
+.date-coverage summary{cursor:pointer;color:var(--cream);font-weight:600;min-height:28px}
+.date-coverage progress{display:block;width:100%;height:8px;margin-top:18px;accent-color:var(--gold)}
+.date-coverage p{margin-bottom:0;max-width:68ch}
+@media(max-width:420px){.stats-at-glance{gap:10px}.stats-at-glance .stat{padding:18px 13px}.stats-at-glance .stat span{font-size:.85rem}}
