@@ -1,23 +1,24 @@
-import {oceanComposition} from './ocean-layout.js?v=20261124-worlds22';
+import {oceanComposition,originalOceanComposition} from './ocean-layout.js?v=20261124-worlds24';
 // Reuses the supplied complete moon/ocean scenes. No private account access.
 const base=new URL('../',import.meta.url), reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const constrained=()=>reduced.matches||navigator.connection?.saveData;
 let paused=false;try{paused=localStorage.getItem('ola-cinema-motion')==='paused'}catch{}
 const world=document.body.classList.contains('club-wave')||document.body.classList.contains('stats-world');
+const originalWallpaper=world&&new URLSearchParams(location.search).get('ocean')!=='living',livingBackground=world&&!originalWallpaper;
 const canvas=document.createElement('div');canvas.className='ocean-canvas';canvas.setAttribute('aria-hidden','true');
 const still=document.createElement('img');still.className='ocean-still';still.alt='';still.decoding='async';
 const video=document.createElement('video');video.muted=true;video.defaultMuted=true;video.playsInline=true;video.loop=true;video.preload='none';video.className='living-ocean';video.setAttribute('aria-hidden','true');video.dataset.analyticsIgnore='';video.tabIndex=-1;
 canvas.append(still,video);
 let source='',variant='',seam=false;
 const button=document.createElement('button');button.type='button';button.className='ocean-motion-control';button.dataset.world='cinema-ocean-motion';button.textContent='Play ocean motion';
-if(world){document.body.classList.add('living-cinema');document.body.prepend(canvas);document.body.append(button);}
+if(world){document.body.classList.add('living-cinema');document.body.dataset.oceanArtwork=originalWallpaper?'original':'living';document.body.prepend(canvas);if(livingBackground)document.body.append(button);}
 function stop(){video.pause();canvas.classList.remove('ocean-playing');button.disabled=Boolean(constrained());button.textContent=constrained()?'Motion off':'Play ocean motion';button.setAttribute('aria-pressed','false');}
-async function play(){if(!world||constrained()||paused||document.hidden){stop();return;}if(video.getAttribute('src')!==source)video.src=source;try{await video.play();if(paused||constrained()||document.hidden){stop();return;}canvas.classList.add('ocean-playing');button.disabled=false;button.textContent='Pause ocean motion';button.setAttribute('aria-pressed','true');}catch{stop();}}
+async function play(){if(!livingBackground||constrained()||paused||document.hidden){stop();return;}if(video.getAttribute('src')!==source)video.src=source;try{await video.play();if(paused||constrained()||document.hidden){stop();return;}canvas.classList.add('ocean-playing');button.disabled=false;button.textContent='Pause ocean motion';button.setAttribute('aria-pressed','true');}catch{stop();}}
 function layout(){
  const header=document.querySelector('.site-header');const headerBottom=header?header.offsetTop+header.offsetHeight:160;
- const view=oceanComposition(innerWidth,headerBottom);
+ const view=originalWallpaper?originalOceanComposition(innerWidth,innerHeight,headerBottom,Boolean(document.body.dataset.filmId)):oceanComposition(innerWidth,headerBottom);
  for(const [name,value]of Object.entries({left:view.left,top:view.top,width:view.mediaWidth,height:view.mediaHeight,gap:view.skyGap}))document.body.style.setProperty('--ocean-'+name,value+'px');
- const next=view.portrait?'mobile':'desktop';if(next!==variant){variant=next;source=new URL('assets/living-world/ocean-'+variant+'.mp4',base).href;still.src=new URL('assets/living-world/ocean-'+variant+'.jpg',base);video.poster=still.src;if(world&&!paused&&!constrained())play();}
+ const next=view.portrait?'mobile':'desktop';if(next!==variant){variant=next;source=new URL('assets/living-world/ocean-'+variant+'.mp4',base).href;still.src=new URL(originalWallpaper?'assets/la-ola-wave-banner-v3.webp':'assets/living-world/ocean-'+variant+'.jpg',base);video.poster=new URL('assets/living-world/ocean-'+variant+'.jpg',base).href;if(livingBackground&&!paused&&!constrained())play();}
 }
 layout();
 if(world){let resizeFrame=0;const relayout=()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(layout)};addEventListener('resize',relayout);if(typeof ResizeObserver!=='undefined'){const header=document.querySelector('.site-header');if(header)new ResizeObserver(relayout).observe(header);}document.fonts?.ready.then(relayout);}
@@ -32,6 +33,6 @@ let seen=false;try{seen=sessionStorage.getItem('ola-cinema-entered')==='yes';ses
 if(!seen&&!constrained()&&!paused){
  const intro=document.createElement('div');intro.className='cinema-entrance';const scene=video;scene.className='entrance-ocean';scene.src=source;scene.preload='metadata';
  const strip=document.createElement('div');strip.className='entrance-filmstrip';strip.setAttribute('aria-hidden','true');const logo=document.createElement('img');logo.src=new URL('assets/brand/la-ola-wordmark-official-v2.webp',base);logo.alt='';logo.className='entrance-logo';const skip=document.createElement('button');skip.type='button';skip.dataset.world='cinema-entrance-skip';skip.className='entrance-skip';skip.textContent='Skip entrance';
- intro.append(scene,strip,logo,skip);document.body.append(intro);let done=false;const finish=()=>{if(done)return;done=true;clearTimeout(timer);if(world){video.className='living-ocean';canvas.append(video);}else scene.pause();intro.remove();document.removeEventListener('pointerdown',dismiss,true);document.removeEventListener('keydown',dismiss,true);};const dismiss=()=>finish();const timer=setTimeout(finish,3200);skip.onclick=finish;scene.addEventListener('error',finish,{once:true});document.addEventListener('pointerdown',dismiss,true);document.addEventListener('keydown',dismiss,true);scene.play().catch(finish);
+ intro.append(scene,strip,logo,skip);document.body.append(intro);let done=false;const finish=()=>{if(done)return;done=true;clearTimeout(timer);if(livingBackground){video.className='living-ocean';canvas.append(video);}else scene.pause();intro.remove();document.removeEventListener('pointerdown',dismiss,true);document.removeEventListener('keydown',dismiss,true);};const dismiss=()=>finish();const timer=setTimeout(finish,3200);skip.onclick=finish;scene.addEventListener('error',finish,{once:true});document.addEventListener('pointerdown',dismiss,true);document.addEventListener('keydown',dismiss,true);scene.play().catch(finish);
 }
-if(world){if(!constrained()&&!paused)play();else stop();}
+if(livingBackground){if(!constrained()&&!paused)play();else stop();}
