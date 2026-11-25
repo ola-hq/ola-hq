@@ -120,8 +120,15 @@ test('coalesced native drag never becomes a tap when no intermediate touchmove a
  }finally{delete globalThis.document;delete globalThis.matchMedia;}
 });
 
-test('projector sound is a bounded mechanical pulse train without a sustained loud bed',async()=>{
- const {projectorSamples}=await import('../assets/ola-worlds/projector-sound.js');const samples=projectorSamples(24000,1);assert.equal(samples.length,24000);assert.ok(samples.every(Number.isFinite));const peak=Math.max(...samples.map(Math.abs));const rms=Math.sqrt(samples.reduce((n,x)=>n+x*x,0)/samples.length);assert.ok(peak<.8&&peak>.2);assert.ok(rms<.08&&rms>.01);assert.ok(peak/rms>6,'transients dominate the motor bed');
+test('real projector asset is compact mono PCM, licensed, nonempty and below clipping',()=>{
+ const wav=readFileSync('assets/ola-worlds/audio/projector-35mm-v30.wav');assert.equal(wav.toString('ascii',0,4),'RIFF');assert.equal(wav.readUInt16LE(22),1);assert.equal(wav.readUInt32LE(24),24000);assert.equal(wav.readUInt16LE(34),16);assert.ok(wav.length<100000);let peak=0,sum=0;for(let i=44;i<wav.length;i+=2){const n=wav.readInt16LE(i)/32768;peak=Math.max(peak,Math.abs(n));sum+=n*n;}const rms=Math.sqrt(sum/((wav.length-44)/2));assert.ok(peak<.7&&peak>.1);assert.ok(rms>.03&&rms<.2);assert.match(readFileSync('assets/ola-worlds/audio/PROJECTOR-CREDITS.txt','utf8'),/Joseph SARDIN/);
+ const sound=readFileSync('assets/ola-worlds/projector-sound.js','utf8');assert.doesNotMatch(sound,/createOscillator|projectorSamples|Math\.random|playbackRate/);assert.match(sound,/decodeAudioData/);
+});
+test('Cinema forward-button flourish returns the next card once while ordinary swipes remain quick',async()=>{
+ environment();try{const v=new CardViewer({forwardFlourish:true,sound:true});v.open([{src:'a.jpg'},{src:'b.jpg'}]);const animations=[];v.card.animate=(frames,options)=>{animations.push({frames,options});return {finished:Promise.resolve()}};await v.forward();assert.equal(v.index,1);assert.deepEqual(animations.map(a=>a.options.duration),[850,950]);assert.match(animations[0].frames[1].transform,/rotateY\(210deg\)/);assert.equal(v.turning,false);v.destroy();const generic=new CardViewer({theme:'polaroid'});assert.equal(generic.forwardFlourish,false);assert.equal(generic.sound,false);generic.destroy();}finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+test('reduced motion skips the long forward flourish',async()=>{
+ environment();try{const v=new CardViewer({forwardFlourish:true});v.reduced.matches=true;v.open([{src:'a.jpg'},{src:'b.jpg'}]);let animated=false;v.card.animate=()=>{animated=true};await v.forward();assert.equal(animated,false);assert.equal(v.index,1);assert.equal(v.turning,false);v.destroy();}finally{delete globalThis.document;delete globalThis.matchMedia;}
 });
 test('contact sheet uses resolved collection artwork and preserves full review destinations',()=>{
  const source=readFileSync('la-ola-cinema-club/assets/contact-sheet.js','utf8');assert.match(source,/club-collection/);assert.match(source,/new CardViewer/);assert.match(source,/details=1#review-details/);assert.match(source,/touchmove.*passive:true/);assert.match(source,/im.loading='lazy'/);assert.doesNotMatch(source,/canva.com|innerHTML|preventDefault\(\).*touchmove/);

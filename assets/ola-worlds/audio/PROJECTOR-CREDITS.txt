@@ -1,0 +1,6 @@
+35mm cinema projector #1 — Joseph SARDIN / BigSoundBank.
+Recording: Kinoton FP30 mechanism, without fan or lamp.
+https://bigsoundbank.com/35mm-cinema-projector-1-s0065.html
+Source states CC0 / public-domain equivalent; download, edit, redistribute and commercial use permitted.
+Excerpt from12–14s, DC removed, gently softened above3200Hz, resampled mono24kHz PCM16,40ms loop seam, normalized below clipping. Natural playback rate; no oscillators or synthetic pulse train.
+Source preserved privately with SHA256/edit receipt. The owner's YouTube reference was unavailable; this is a separately licensed real-projector alternative, not an exact match claim.
