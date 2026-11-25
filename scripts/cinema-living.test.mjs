@@ -44,3 +44,14 @@ test('shared Cinema/Polaroid viewer supports touch navigation, zoom/drag separat
  }finally{delete globalThis.document;delete globalThis.matchMedia;}
 });
 test('vertical gestures, pinch and zoom never trigger horizontal navigation',()=>{assert.equal(gestureAction({dx:90,dy:100}),'tilt');assert.equal(gestureAction({dx:100,multi:true}),'pan');assert.equal(gestureAction({dx:100,scale:2}),'pan');assert.equal(gestureAction({dx:-100}),'next')});
+
+import {oceanComposition} from '../la-ola-cinema-club/assets/ocean-layout.js';
+test('complete ocean frame keeps its one moon below navigation and within desktop/mobile bounds',()=>{
+ for(const width of [390,430,834,1440,1920]){const headerBottom=width<700?270:180;const scene=oceanComposition(width,headerBottom);assert.ok(scene.moonY-scene.radius>=headerBottom+30);assert.ok(scene.moonX-scene.radius>=0);assert.ok(scene.moonX+scene.radius<=width);assert.equal(scene.portrait,width<=700);assert.equal(scene.skyGap>0,width<=1100);if(width<=1100)assert.ok(scene.skyGap>scene.radius*2);}
+});
+test('AMC reservations are separate from confirmed watched dates and never become historical totals',()=>{
+ const reservation={currentClubCard:true,brain:4,heart:5,clubScore:9,amcReservationDate:'2026-11-24',dates:{watched:{value:'2026-11-24',verified:true,kind:'amc-reservation',confirmedAttendance:false}}};assert.equal(filmDate(reservation),null);assert.equal(matchesDate(reservation,{year:'2026',month:'11'}),false);assert.equal(historicalTrends([reservation]).dated,0);assert.equal(historicalTrends([reservation]).unknown,1);
+});
+test('homepage hero retains the approved headline, phone, filmstrip source and stacked original cards',()=>{
+ const html=readFileSync('la-ola-cinema-club/index.html','utf8');const hero=html.match(/<section class="hero hero-world">.*?<\/section>/s)[0];assert.equal(createHash('sha256').update(hero).digest('hex'),'44393f9520bd0adedb52ce9d412295e9b6192052fde6dba4bb923eba25e29d14');for(const cls of ['home-sky-window','home-ocean-stats','home-ocean-fresh','home-ocean-lanes'])assert.ok(html.includes(cls));assert.equal((html.match(/class="stage-cards"/g)||[]).length,1);
+});

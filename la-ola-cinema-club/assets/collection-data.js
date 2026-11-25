@@ -5,6 +5,7 @@ export function scoreText(value,places){
 }
 export function filmDate(film,basis='watched'){
  const date=film.dates?.[basis];
+ if(basis==='watched'&&date&&(date.kind==='reservation'||date.kind==='amc-reservation'||date.confirmedAttendance===false))return null;
  if(!date||typeof date.value!=='string'||!/^\d{4}(?:-\d{2})?(?:-\d{2})?$/.test(date.value))return null;
  const [y,m,d]=date.value.split('-').map(Number);
  if(y<1880||y>2200||(m!==undefined&&(m<1||m>12))||(d!==undefined&&(d<1||d>new Date(Date.UTC(y,m,0)).getUTCDate())))return null;

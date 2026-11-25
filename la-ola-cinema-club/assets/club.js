@@ -1,7 +1,7 @@
-import {scoreText, matchesDate, applyArtwork, artworkURL} from './collection-data.js?v=20261124-worlds21';
-export {scoreText} from './collection-data.js?v=20261124-worlds21';
-import {initArtViewer} from './art-viewer.js?v=20261124-worlds21';
-import {collectionStats} from './stats-data.js?v=20261124-worlds21';
+import {scoreText, matchesDate, applyArtwork, artworkURL} from './collection-data.js?v=20261124-worlds22';
+export {scoreText} from './collection-data.js?v=20261124-worlds22';
+import {initArtViewer} from './art-viewer.js?v=20261124-worlds22';
+import {collectionStats} from './stats-data.js?v=20261124-worlds22';
 const base=new URL('../',import.meta.url);
 const $=(s,r=document)=>r.querySelector(s);
 const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n};
