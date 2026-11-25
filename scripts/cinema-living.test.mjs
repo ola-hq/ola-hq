@@ -356,3 +356,21 @@ test('Polaroid factory keeps actual details/downloads distinct from paper revers
   assert.equal(dialog.open,false);assert.equal(details.open,false);assert.equal(closed,1);assert.equal(navigated,0);assert.equal(d.activeElement,opener);controller.destroy();
  }finally{if(oldObserver===undefined)delete globalThis.MutationObserver;else globalThis.MutationObserver=oldObserver;if(oldLocation===undefined)delete globalThis.location;else globalThis.location=oldLocation;delete globalThis.document;delete globalThis.matchMedia;}
 });
+
+import {watchedRecords,collectionStats} from '../la-ola-cinema-club/assets/stats-data.js';
+const datedFilmFixture=(id,date,extra={})=>({id,dates:{watched:date},...extra});
+test('watched stats require verified dates and reject reservation/attendance conflicts',()=>{
+ const source=[datedFilmFixture('confirmed',{value:'2026-11-01',verified:true}),datedFilmFixture('reservation',{value:'2026-11-01',verified:true,kind:'amc-reservation'}),datedFilmFixture('not-attended',{value:'2026-11-01',verified:true,confirmedAttendance:false}),datedFilmFixture('unverified',{value:'2026-11-01',verified:false}),datedFilmFixture('invalid',{value:'2026-02-30',verified:true}),{id:'legacy',watchMonth:'2026-11',year:2026,currentClubCard:true}];
+ assert.deepEqual(watchedRecords(source,{year:'2026'}).map(f=>f.id),['confirmed']);
+});
+test('year/month scopes use watched dates independently of edition/release year',()=>{
+ const source=[datedFilmFixture('archive',{value:'2026-11-01',verified:true},{currentClubCard:false,year:2025,genre:'Drama',stamp:'Hits Home'}),datedFilmFixture('older-year',{value:'2025-11-01',verified:true},{currentClubCard:true,year:2026,genre:'Drama'}),datedFilmFixture('other-month',{value:'2026-10-01',verified:true},{genre:'Horror'}),datedFilmFixture('year-only',{value:'2026',verified:true})];
+ assert.equal(watchedRecords(source,{year:2026}).length,3);
+ assert.deepEqual(watchedRecords(source,{year:2026,month:11,genre:'Drama',stamp:'Hits Home'}).map(f=>f.id),['archive']);
+ assert.deepEqual(watchedRecords(source,{year:2025}).map(f=>f.id),['older-year']);
+ assert.equal(watchedRecords(source,{year:2026,month:12}).length,0);
+});
+test('current verified diary is a partial26-film year, with9 verified November films',()=>{
+ const source=JSON.parse(readFileSync('la-ola-cinema-club/data/films.json'));const year=watchedRecords(source,{year:'2026'}),nov=watchedRecords(source,{year:'2026',month:'11'});
+ assert.equal(source.length,234);assert.equal(year.length,26);assert.equal(source.length-watchedRecords(source).length,208);assert.equal(nov.length,9);assert.equal(collectionStats(source).pairs,234);assert.ok(Math.abs(collectionStats(nov).average-7.666666666666667)<1e-10);
+});

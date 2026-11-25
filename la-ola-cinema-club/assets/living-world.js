@@ -31,16 +31,31 @@ video.addEventListener('error',stop);
 // The sources are ten-second cinematic takes, not exact matched-end loops.
 // Briefly blend to their matching still frame at the boundary instead of a hard reset.
 video.addEventListener('timeupdate',()=>{const next=Number.isFinite(video.duration)&&video.duration-video.currentTime<.65; if(next!==seam){seam=next;canvas.classList.toggle('ocean-seam',seam);}});
-if(world)document.addEventListener('visibilitychange',()=>document.hidden?stop():play());reduced.addEventListener('change',()=>constrained()?stop():play());navigator.connection?.addEventListener?.('change',()=>constrained()?stop():play());
+if(world)document.addEventListener('visibilitychange',()=>document.hidden?stop():play());const motionChanged=()=>constrained()?stop():play();if(reduced.addEventListener)reduced.addEventListener('change',motionChanged);else reduced.addListener?.(motionChanged);navigator.connection?.addEventListener?.('change',()=>constrained()?stop():play());
 if(navigator.getBattery)navigator.getBattery().then(b=>{if(!b.charging&&b.level<.2){paused=true;stop();}}).catch(()=>{});
 let seen=false;try{seen=sessionStorage.getItem('ola-cinema-entered')==='yes'}catch{seen=true;}
-function entrance(){
+function entrance({manual=false}={}){
  if(document.querySelector('.cinema-entrance'))return;
- const intro=document.createElement('div');intro.className='cinema-entrance';const scene=document.createElement('video');scene.muted=true;scene.defaultMuted=true;scene.playsInline=true;scene.className='entrance-ocean';scene.src=source;scene.poster=new URL('assets/living-world/ocean-'+(innerWidth<=700?'mobile':'desktop')+'.jpg',base).href;scene.preload='auto';scene.dataset.analyticsIgnore='';
- const strip=document.createElement('img');strip.src=new URL('assets/entrance-ribbon.svg',base);strip.alt='';strip.className='entrance-filmstrip';strip.setAttribute('aria-hidden','true');const logo=document.createElement('img');logo.src=new URL('assets/brand/la-ola-wordmark-official-v2.webp',base);logo.alt='';logo.className='entrance-logo';const skip=document.createElement('button');skip.type='button';skip.dataset.world='cinema-entrance-skip';skip.className='entrance-skip';skip.textContent='Skip entrance';
- const emblem=document.createElement('img');emblem.src=new URL('assets/brand/la-ola-emblem-v2.webp',base);emblem.alt='';emblem.className='entrance-emblem';const light=document.createElement('div');light.className='entrance-light';const lockup=document.createElement('div');lockup.className='entrance-lockup';lockup.append(emblem,logo);intro.append(scene,light,strip,lockup,skip);document.body.append(intro);let done=false,timer;const fallback=setTimeout(()=>start(),5000);const finish=()=>{if(done)return;done=true;clearTimeout(timer);clearTimeout(fallback);scene.pause();intro.remove();};const start=()=>{if(done||timer)return;clearTimeout(fallback);intro.dataset.ready='true';try{sessionStorage.setItem('ola-cinema-entered','yes')}catch{}timer=setTimeout(finish,3200);};
- skip.onclick=finish;scene.addEventListener('playing',start,{once:true});scene.addEventListener('error',start,{once:true});if(constrained()){scene.poster=new URL('assets/living-world/ocean-'+(innerWidth<=700?'mobile':'desktop')+'.jpg',base).href;start();}else scene.play().catch(start);
+ const intro=document.createElement('div');intro.className='cinema-entrance';intro.dataset.manual=String(manual);
+ const scene=document.createElement('video');
+ // Set inline/muted attributes before attaching a source: WebKit evaluates these at play().
+ scene.muted=true;scene.defaultMuted=true;scene.playsInline=true;scene.autoplay=true;
+ for(const name of ['muted','playsinline','webkit-playsinline','autoplay'])scene.setAttribute(name,'');
+ scene.className='entrance-ocean';scene.poster=new URL('assets/living-world/ocean-'+(innerWidth<=700?'mobile':'desktop')+'.jpg',base).href;scene.preload='auto';scene.dataset.analyticsIgnore='';scene.src=source;
+ const strip=document.createElement('img');strip.src=new URL('assets/entrance-ribbon.svg',base);strip.alt='';strip.className='entrance-filmstrip';strip.setAttribute('aria-hidden','true');const logo=document.createElement('img');logo.src=new URL('assets/brand/la-ola-wordmark-official-v2.webp',base);logo.alt='';logo.className='entrance-logo';
+ const skip=document.createElement('button');skip.type='button';skip.dataset.world='cinema-entrance-skip';skip.className='entrance-skip';skip.textContent='Skip entrance';
+ const retry=document.createElement('button');retry.type='button';retry.className='entrance-play';retry.textContent='Play entrance';retry.hidden=true;
+ const status=document.createElement('p');status.className='entrance-status';status.setAttribute('role','status');status.textContent='Opening the Club…';
+ const emblem=document.createElement('img');emblem.src=new URL('assets/brand/la-ola-emblem-v2.webp',base);emblem.alt='';emblem.className='entrance-emblem';const light=document.createElement('div');light.className='entrance-light';const lockup=document.createElement('div');lockup.className='entrance-lockup';lockup.append(emblem,logo);intro.append(scene,light,strip,lockup,status,retry,skip);document.body.append(intro);
+ let done=false,timer;
+ const finish=()=>{if(done)return;done=true;clearTimeout(timer);clearTimeout(fallback);scene.pause();intro.remove();document.removeEventListener('keydown',escape);if(manual)replay.focus({preventScroll:true});};
+ const escape=e=>{if(e.key==='Escape'){e.preventDefault();finish();}};document.addEventListener('keydown',escape);
+ const blocked=()=>{if(done||timer)return;clearTimeout(fallback);intro.dataset.blocked='true';status.textContent=scene.error?'The entrance video could not load. You can retry or enter the Club.':'Tap to play the entrance.';retry.hidden=false;skip.textContent='Enter the Club';};
+ const fallback=setTimeout(blocked,5000);
+ const start=()=>{if(done||timer)return;clearTimeout(fallback);delete intro.dataset.blocked;intro.dataset.ready='true';retry.hidden=true;status.hidden=true;try{sessionStorage.setItem('ola-cinema-entered','yes')}catch{}timer=setTimeout(finish,3200);};
+ const attempt=()=>{if(done)return;status.textContent='Opening the Club…';retry.hidden=true;if(scene.error)scene.load();try{scene.play()?.catch(blocked);}catch{blocked();}};
+ skip.onclick=finish;retry.onclick=attempt;scene.addEventListener('playing',start,{once:true});scene.addEventListener('error',blocked);attempt();
 }
-const replay=document.createElement('button');replay.type='button';replay.className='entrance-replay';replay.textContent='Replay cinema entrance';replay.onclick=entrance;(document.querySelector('.site-footer')||document.body).append(replay);
+const replay=document.createElement('button');replay.type='button';replay.className='entrance-replay';replay.textContent='Replay cinema entrance';replay.onclick=()=>entrance({manual:true});(document.querySelector('.site-footer')||document.body).append(replay);
 if(!seen&&!constrained()&&!paused)entrance();
 if(livingBackground){if(!constrained()&&!paused)play();else stop();}else if(world){button.textContent=constrained()?'Motion off':'Play ocean motion';button.disabled=Boolean(constrained());}

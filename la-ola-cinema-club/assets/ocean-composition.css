@@ -40,12 +40,12 @@
 
 /* Full upper-home atmosphere; the approved phone/cards/filmstrip section is untouched. */
 body.cinema-home{isolation:isolate;position:relative}
-body.cinema-home::before{content:"";position:absolute;inset:0 0 auto;height:1000px;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#07152420 0%,#07152400 42%,#0b1629 92%),url('living-world/ocean-desktop.jpg') center top/cover no-repeat}
+body.cinema-home::before{content:"";position:absolute;inset:0 0 auto;height:900px;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#07152420 0%,#07152400 48%,#0b1629 94%),url('living-world/ocean-desktop.jpg') center 160px/100% auto no-repeat}
 .cinema-home .site-header{background:linear-gradient(180deg,#071524ad,transparent)}
-.cinema-home .home-sky-window{height:250px;mask-image:none;background:none}
+.cinema-home .home-sky-window{height:210px;mask-image:none;background:none}
 .cinema-home .home-sky-window img{display:none}
 body[data-ocean-artwork=original] .living-ocean{display:none}
-@media(max-width:700px){body.cinema-home::before{height:1100px;background-image:linear-gradient(180deg,#07152410 0%,transparent 56%,#0b1629 94%),url('living-world/ocean-mobile.jpg');background-size:cover,auto 850px;background-position:center,center 190px}.cinema-home .home-sky-window{height:300px}}
+@media(max-width:700px){body.cinema-home::before{height:850px;background-image:linear-gradient(180deg,#07152410 0%,transparent 56%,#0b1629 96%),url('living-world/ocean-desktop.jpg');background-size:cover,auto 360px;background-position:center,calc(50% + 15px) 230px}.cinema-home .home-sky-window{height:185px}}
 
 /* Totals lead; partial date coverage belongs to its own diary note. */
 .stats-at-glance{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
@@ -57,3 +57,18 @@ body[data-ocean-artwork=original] .living-ocean{display:none}
 .date-coverage progress{display:block;width:100%;height:8px;margin-top:18px;accent-color:var(--gold)}
 .date-coverage p{margin-bottom:0;max-width:68ch}
 @media(max-width:420px){.stats-at-glance{gap:10px}.stats-at-glance .stat{padding:18px 13px}.stats-at-glance .stat span{font-size:.85rem}}
+
+/* Never let the overlay fade out while WebKit is still loading or blocking play. */
+.cinema-entrance:not([data-ready=true]){animation-play-state:paused}
+.entrance-play,.entrance-status{position:absolute;z-index:3;left:50%;transform:translateX(-50%);text-align:center}
+.entrance-status{bottom:150px;width:min(80vw,420px);color:#fff2d7;font-size:16px}
+.entrance-play{bottom:85px;min-height:48px;padding:12px 24px;border-radius:26px;border:1px solid #e9bf6d;background:#10253cf5;color:#fff2d7;font:inherit;pointer-events:auto;cursor:pointer}
+@media(prefers-reduced-motion:reduce){.cinema-entrance[data-manual=true]{display:grid;animation:none}.cinema-entrance[data-manual=true] .entrance-lockup,.cinema-entrance[data-manual=true] .entrance-filmstrip,.cinema-entrance[data-manual=true] .entrance-light{animation:none}}
+
+.stats-period-controls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:20px 0;padding:18px;border:1px solid #8ca1b64d;border-radius:14px;background:#0b192bd9}
+.stats-period-controls label{display:grid;gap:8px;min-width:0;color:#bac4d0;font-size:14px}
+.stats-period-controls select{box-sizing:border-box;width:100%;min-width:0;min-height:46px;padding:10px 30px 10px 12px;border:1px solid #657993;border-radius:8px;background-color:#0b192b;color:#fff2d7;font:inherit;font-size:16px}
+@media(max-width:850px){.stats-period-controls{grid-template-columns:repeat(2,minmax(0,1fr));padding:14px}}
+@media(max-width:360px){.stats-period-controls{grid-template-columns:1fr}}
+
+.stats-period-controls select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%23e9bf6d' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;line-height:1.4}

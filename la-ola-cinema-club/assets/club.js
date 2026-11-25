@@ -16,12 +16,16 @@ export function filterFilms(films,{q='',genre='',stamp='',saved=false,ids=[],sor
 }
 
 export function genreExamples(films,name,role='primary',limit=3){
- // Michael's native colors changed; keep its old export out of examples until the owner-approved refresh.
- const current=films.filter(f=>f.currentClubCard&&f.id!=='club-michael'),field=role==='secondary'?'secondaryGenre':'genre';
+ // Approved examples can be curated without changing their artwork or ratings.
+ const current=films.filter(f=>f.currentClubCard),field=role==='secondary'?'secondaryGenre':'genre';
  const ranked=filterFilms(current.filter(f=>f[field]===name),{sort:'score'});let chosen=[];
+ if(role==='primary'&&name==='Drama'){
+  const preferred=['club-club-kid','cinema2026-31','cinema2026-16'];
+  ranked.sort((a,b)=>(preferred.includes(a.id)?preferred.indexOf(a.id):preferred.length)-(preferred.includes(b.id)?preferred.indexOf(b.id):preferred.length));
+ }
  if(role==='secondary'){const used=new Set();for(const f of ranked){if(!used.has(f.genre)){chosen.push(f);used.add(f.genre);if(chosen.length===limit)break;}}for(const f of ranked){if(chosen.length===limit)break;if(!chosen.includes(f))chosen.push(f);}}
  else chosen=ranked.slice(0,limit);
- const direct=chosen.map(f=>({film:f,role}));if(role==='primary'&&direct.length<limit){const ids=new Set(direct.map(x=>x.film.id));for(const f of filterFilms(current.filter(f=>f.secondaryGenre===name&&!ids.has(f.id)),{sort:'score'}).slice(0,limit-direct.length))direct.push({film:f,role:'secondary'});}
+ const direct=chosen.map(f=>({film:f,role}));if(role==='primary'&&direct.length<limit){const ids=new Set(direct.map(x=>x.film.id));const fallback=filterFilms(current.filter(f=>f.secondaryGenre===name&&!ids.has(f.id)),{sort:'score'});if(name==='Historical')fallback.sort((a,b)=>Number(b.id==='cinema2026-15')-Number(a.id==='cinema2026-15'));for(const f of fallback.slice(0,limit-direct.length))direct.push({film:f,role:'secondary'});}
  return direct;
 }
 export function recommendFilms(films,{mood='surprise',genre='',perspective='club'}={}){
