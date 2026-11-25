@@ -114,3 +114,8 @@ test('downward exit requires a long pull AND release near the bottom, excluding 
  assert.equal(downwardExit({...stage,dx:400,dy:400,releaseY:780}),false);
  assert.equal(downwardExit({...stage,dy:-400,releaseY:780}),false);
 });
+
+test('coalesced native drag never becomes a tap when no intermediate touchmove arrives',()=>{
+ environment();try{const activated=[],v=new CardViewer({immersive:true,onActivate:()=>activated.push(true)});v.open([{src:'a.jpg'}]);const point=(x,y)=>({...pointer(x,y),pointerType:'native-touch',target:v.image});v.down(point(200,100));v.up(point(200,440),true);assert.equal(v.dialog.open,true,'release above bottom stays open');assert.deepEqual(activated,[]);assert.equal(v.travel,340);v.down(point(200,440));v.up(point(200,580),true);assert.equal(v.dialog.open,true,'short near-bottom pull stays open');assert.deepEqual(activated,[]);
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
