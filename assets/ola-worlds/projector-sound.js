@@ -6,7 +6,7 @@ export class ProjectorSound{
   if(!this.ready)this.ready=fetch(new URL('./audio/projector-35mm-v30.wav',import.meta.url)).then(r=>{if(!r.ok)throw Error('Audio unavailable');return r.arrayBuffer()}).then(bytes=>ctx.decodeAudioData(bytes)).then(buffer=>this.buffer=buffer).catch(()=>{this.ready=null;return null});return ctx;
  }catch{}}
  burst(){const ctx=this.unlock();if(!ctx)return;const request=++this.request,requested=performance.now();
-  const play=()=>{if(request!==this.request||performance.now()-requested>500||!this.buffer||ctx.state==='closed')return;try{const now=ctx.currentTime;
+  const play=()=>{if(request!==this.request||performance.now()-requested>1200||!this.buffer||ctx.state==='closed')return;try{const now=ctx.currentTime;
    if(!this.source){const source=ctx.createBufferSource(),gain=ctx.createGain();source.buffer=this.buffer;source.loop=true;source.connect(gain);gain.connect(ctx.destination);gain.gain.value=0;source.start();this.source=source;this.gain=gain;}
    // Keep the recording's natural pitch. Repeated swipes extend one quiet source.
    this.until=now+.23;const g=this.gain.gain;if(g.cancelAndHoldAtTime)g.cancelAndHoldAtTime(now);else g.cancelScheduledValues(now);g.setTargetAtTime(.18,now,.018);g.setTargetAtTime(0,this.until,.045);clearTimeout(this.timer);this.timer=setTimeout(()=>this.stop(),500);

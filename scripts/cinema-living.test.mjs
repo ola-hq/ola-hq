@@ -134,3 +134,7 @@ test('contact sheet uses resolved collection artwork and preserves full review d
  const source=readFileSync('la-ola-cinema-club/assets/contact-sheet.js','utf8');assert.match(source,/club-collection/);assert.match(source,/new CardViewer/);assert.match(source,/details=1#review-details/);assert.match(source,/touchmove.*passive:true/);assert.match(source,/im.loading='lazy'/);assert.doesNotMatch(source,/canva.com|innerHTML|preventDefault\(\).*touchmove/);
  const intro=readFileSync('la-ola-cinema-club/assets/living-world.js','utf8');assert.match(intro,/entrance-ribbon.svg/);assert.match(intro,/la-ola-emblem-v2.webp/);assert.match(intro,/setTimeout\(finish,3200\)/);
 });
+
+test('opening a sound-enabled card warms the recording before its first navigation',()=>{
+ environment();try{const v=new CardViewer({sound:true});let warmed=0;v.unlockAudio=()=>warmed++;v.open([{src:'a.jpg'}]);assert.equal(warmed,1);v.sound=false;v.open([{src:'a.jpg'}]);assert.equal(warmed,1);v.destroy();}finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
