@@ -1,10 +1,11 @@
-import {initReviewNavigation} from './review-navigation.js?v=20261125-worlds32';
-import {initCinemaEvents} from './cinema-events.js?v=20261125-worlds32';
-import {initContactSheet} from './contact-sheet.js?v=20261125-worlds32';
-import {scoreText, matchesDate, applyArtwork, artworkURL} from './collection-data.js?v=20261125-worlds32';
-export {scoreText} from './collection-data.js?v=20261125-worlds32';
-import {initArtViewer} from './art-viewer.js?v=20261125-worlds32';
-import {collectionStats} from './stats-data.js?v=20261125-worlds32';
+import {initFilmFeedback} from './film-feedback.js?v=20261125-worlds33';
+import {initReviewNavigation} from './review-navigation.js?v=20261125-worlds33';
+import {initCinemaEvents} from './cinema-events.js?v=20261125-worlds33';
+import {initContactSheet} from './contact-sheet.js?v=20261125-worlds33';
+import {scoreText, matchesDate, applyArtwork, artworkURL} from './collection-data.js?v=20261125-worlds33';
+export {scoreText} from './collection-data.js?v=20261125-worlds33';
+import {initArtViewer} from './art-viewer.js?v=20261125-worlds33';
+import {collectionStats} from './stats-data.js?v=20261125-worlds33';
 const base=new URL('../',import.meta.url);
 const $=(s,r=document)=>r.querySelector(s);
 const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n};
@@ -89,6 +90,7 @@ async function run(){
 function showError(){for(const grid of document.querySelectorAll('[data-review-grid],[data-latest-grid]')){const n=empty('The collection could not load. Please try again.');const b=el('button','button secondary','Try again');b.onclick=()=>location.reload();n.append(b);grid.replaceChildren(n)}}
 const genreDescriptions={'Drama':'People, relationships, and the choices that carry weight.','Comedy':'A sense of humor, whether gentle, chaotic, awkward, or sharp.','Horror':'Fear, dread, and the pleasure of being unsettled.','Romance':'Connection, longing, love, and everything that complicates them.','Sci-Fi':'Big ideas, other possibilities, and worlds beyond the everyday.','Musical':'Stories that give music or performance a central role.','Action':'Momentum, confrontation, and the physical thrill of the ride.','Fantasy':'Magic, myth, and impossible worlds with something human inside.','Historical':'Stories shaped by the past and the lives lived within it.','Thriller':'Tension, uncertainty, and that feeling of needing to know what happens.'};
 if(typeof document!=='undefined'){
+initFilmFeedback();
 initReviewNavigation();
 initArtViewer();
 initCinemaEvents();

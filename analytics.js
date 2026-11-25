@@ -65,7 +65,7 @@
  window.addEventListener('popstate',page);
  window.addEventListener('pageshow',e=>{if(e.persisted){lastPath='';page()}});
  // Explicit Cinema UI actions only; never collect typed searches, messages or free text.
- window.addEventListener('ola:cinema',e=>{if(!location.pathname.startsWith(ROOT+'la-ola-cinema-club/'))return;const d=e.detail||{};if(!/^(filter_genre|filter_stamp|filter_score|filter_date|search_used|shelf_view|archive_folder|genre_role|save_film|quiz_start|quiz_answer|quiz_complete|quiz_restart|brief_open|brief_copy|brief_download|concept_vote|stats_scope|spoiler_reveal|card_open|details_navigate)$/.test(d.action||''))return;const value=String(d.value||'').replace(/[^a-z0-9_-]/gi,'-').slice(0,60);track('engagement','button:cinema:'+d.action+(value?':'+value:''),'cinema:'+d.action+(value?':'+value:''),{duration_seconds:0});});
+ window.addEventListener('ola:cinema',e=>{if(!location.pathname.startsWith(ROOT+'la-ola-cinema-club/'))return;const d=e.detail||{};if(!/^(filter_genre|filter_stamp|filter_score|filter_date|search_used|shelf_view|archive_folder|genre_role|save_film|quiz_start|quiz_answer|quiz_complete|quiz_restart|brief_open|brief_copy|brief_download|concept_vote|stats_scope|spoiler_reveal|card_open|details_navigate|film_reaction|visitor_review)$/.test(d.action||''))return;const value=String(d.value||'').replace(/[^a-z0-9_-]/gi,'-').slice(0,60);track('engagement','button:cinema:'+d.action+(value?':'+value:''),'cinema:'+d.action+(value?':'+value:''),{duration_seconds:0});});
  window.addEventListener('appinstalled',()=>track('app_install'));
  window.addEventListener('online',()=>void flush());
  window.addEventListener('pagehide',()=>{engagement();void flush()});
