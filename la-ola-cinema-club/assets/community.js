@@ -1,4 +1,4 @@
-import {API,ANON} from './community-config.js?v=20261125-worlds33';
+import {API,ANON} from './community-config.js?v=20261125-worlds34';
 export function tallyText(data){if(!data||![data.yes,data.no,data.total].every(n=>Number.isInteger(n)&&n>=0)||data.yes+data.no!==data.total)throw Error('Invalid tally');return data.total?data.yes+' yes · '+data.no+' no · '+data.total+' response'+(data.total===1?'':'s'):'No responses yet. Be the first.';}
 export async function pollRequest(concept,action,extra={}){const r=await fetch(API,{method:'POST',headers:{'content-type':'application/json',apikey:ANON,authorization:'Bearer '+ANON},body:JSON.stringify({concept,action,...extra})});const d=await r.json();if(!r.ok)throw Error(d.error==='TRY_LATER'?'Please wait a moment before changing your answer.':'The shared tally is unavailable. Please try again.');tallyText(d);return d;}
 if(typeof document!=='undefined')for(const poll of document.querySelectorAll('[data-concept-poll]')){
