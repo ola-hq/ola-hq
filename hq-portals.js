@@ -69,6 +69,7 @@
   let busy = false, overlay = null, timer = 0;
   function reset() { clearTimeout(timer); overlay?.remove(); overlay = null; busy = false; }
   function enter(card, navigate) {
+    if (window.OLAPortals && window.OLAPortals.enter !== enter) return window.OLAPortals.enter(card, navigate);
     if (busy) return;
     if (motion.matches) { navigate(); return; }
     busy = true;

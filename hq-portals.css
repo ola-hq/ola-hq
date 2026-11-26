@@ -86,3 +86,17 @@ body:has(#app-launch) .world-intro{background:radial-gradient(ellipse at center,
 @media(max-width:760px){.portal-hq .portal-launch{min-height:calc(100svh - var(--portal-header-height,180px))}}
 @media(hover:none){.portal-hq .world-entrances .room:hover,.world-grid .world-card:hover{transform:none}.portal-hq .world-entrances .visual::before,.world-grid .world-card.portal-card::before{display:none}}
 @media(prefers-reduced-motion:reduce){.portal-hq .world-entrances .visual::before,.world-grid .world-card.portal-card::before{display:none}}
+
+/* Cursor-created interior portal; existing card framing remains unchanged. */
+.portal-hq .world-entrances .room.ola-portal-card:hover,.portal-hq .world-entrances .room.ola-portal-card:focus-within,.world-grid .world-card.ola-portal-card:hover{transform:none}
+.ola-portal-art{position:relative!important;display:block;overflow:hidden;touch-action:auto;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none}
+.world-grid .world-card.portal-card>.ola-portal-art>img{position:relative!important;inset:auto!important;display:block;width:100%;height:auto!important;aspect-ratio:1672/941;object-fit:cover;opacity:1!important;filter:none!important;transform:none!important;z-index:0}
+.portal-hq .world-entrances .ola-portal-art>img{transform:none!important;filter:none!important;-webkit-user-drag:none}
+.ola-portal-art::before,.ola-portal-art::after{display:none!important}
+.ola-peek-lens{position:absolute;z-index:4;left:0;top:0;width:190px;height:190px;opacity:0;pointer-events:none;border-radius:50%;mask-image:radial-gradient(circle,#000 58%,#000d 65%,transparent 72%);-webkit-mask-image:radial-gradient(circle,#000 58%,#000d 65%,transparent 72%)}
+.ola-peek-canvas{position:absolute;z-index:5;inset:0;width:100%;height:100%;pointer-events:none}
+.ola-world-entry{position:fixed;z-index:10001;inset:0;pointer-events:none;overflow:hidden;background:#071526}
+.ola-entry-scene{position:absolute;width:max(100vw,100svh);height:max(100vw,100svh);left:calc(50% - max(50vw,50svh));top:calc(50% - max(50vw,50svh));background-repeat:no-repeat}
+.ola-world-entry>canvas{position:absolute;inset:0;width:100%;height:100%}
+.ola-portal-controls{display:flex;align-items:center;gap:12px;justify-content:flex-end;margin:12px 0 20px;font-size:14px;color:inherit}
+.ola-portal-controls select{font:inherit;background:#10243b;border:1px solid #8196a9;border-radius:8px;padding:10px;color:#fff;min-height:44px}
