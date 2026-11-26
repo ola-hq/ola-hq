@@ -3,6 +3,17 @@ export const catalog = {
   "brand": "Wave26",
   "tracks": [
     {
+      "id": "13-years-6dee29b5",
+      "title": "13 Years",
+      "src": "assets/wave26/audio/13-years-6dee29b5.mp3",
+      "duration": 229.56,
+      "collection": "La Ola de Amor",
+      "cover": "assets/worlds/la-ola-track-01.png",
+      "sourceLabel": "Thirteen Years",
+      "albumId": "laola",
+      "trackNumber": 13
+    },
+    {
       "id": "absolutely-94e25bdd",
       "src": "assets/wave26/audio/absolutely-94e25bdd.mp3",
       "duration": 307.6,
@@ -56,6 +67,26 @@ export const catalog = {
       ]
     },
     {
+      "id": "encore-une-fois-558b313a",
+      "title": "Encore Une Fois",
+      "src": "assets/wave26/audio/encore-une-fois-558b313a.mp3",
+      "duration": 220.0,
+      "collection": "We See Yes",
+      "cover": "assets/worlds/oui-si-yes.png",
+      "albumId": "oui",
+      "trackNumber": 2
+    },
+    {
+      "id": "golden-hour-138cf2dc",
+      "title": "Golden Hour",
+      "src": "assets/wave26/audio/golden-hour-138cf2dc.mp3",
+      "duration": 263.92,
+      "collection": "La Ola de Amor",
+      "cover": "assets/worlds/la-ola-track-01.png",
+      "albumId": "laola",
+      "trackNumber": 5
+    },
+    {
       "id": "good-news-from-the-future-f4d566b5",
       "src": "assets/wave26/audio/good-news-from-the-future-f4d566b5.mp3",
       "duration": 186.96,
@@ -63,6 +94,16 @@ export const catalog = {
       "variant": null,
       "cover": "assets/worlds/wave-26-brand-live.jpg",
       "collection": "Music Library"
+    },
+    {
+      "id": "i-accept-443d97e9",
+      "title": "I Accept",
+      "src": "assets/wave26/audio/i-accept-443d97e9.mp3",
+      "duration": 261.52,
+      "collection": "We See Yes",
+      "cover": "assets/worlds/oui-si-yes.png",
+      "albumId": "oui",
+      "trackNumber": 8
     },
     {
       "id": "i-don-t-wanna-write-a-song-87cfc98e",
@@ -74,20 +115,20 @@ export const catalog = {
       "collection": "Music Library"
     },
     {
-      "id": "i-know-a-place-1-a34b0bce",
-      "src": "assets/wave26/audio/i-know-a-place-1-a34b0bce.mp3",
-      "duration": 204.96,
-      "title": "I Know A Place",
-      "variant": "Alternate cut 1",
-      "cover": "assets/worlds/wave-26-brand-live.jpg",
-      "collection": "Music Library"
-    },
-    {
       "id": "i-know-a-place-39f4ba13",
       "src": "assets/wave26/audio/i-know-a-place-39f4ba13.mp3",
       "duration": 244.76,
       "title": "I Know A Place",
       "variant": null,
+      "cover": "assets/worlds/wave-26-brand-live.jpg",
+      "collection": "Music Library"
+    },
+    {
+      "id": "i-know-a-place-1-a34b0bce",
+      "src": "assets/wave26/audio/i-know-a-place-1-a34b0bce.mp3",
+      "duration": 204.96,
+      "title": "I Know A Place",
+      "variant": "Alternate cut 1",
       "cover": "assets/worlds/wave-26-brand-live.jpg",
       "collection": "Music Library"
     },
@@ -105,6 +146,34 @@ export const catalog = {
       ]
     },
     {
+      "id": "jalisco-time-73fa009b",
+      "title": "Jalisco Time",
+      "src": "assets/wave26/audio/jalisco-time-73fa009b.mp3",
+      "duration": 259.52,
+      "collection": "La Ola de Amor",
+      "cover": "assets/worlds/la-ola-track-01.png",
+      "albumId": "laola",
+      "trackNumber": 3
+    },
+    {
+      "id": "la-maquina-del-tiempo-3c8c7954",
+      "title": "La Máquina del Tiempo",
+      "src": "assets/wave26/audio/la-maquina-del-tiempo-3c8c7954.mp3",
+      "duration": 84.76,
+      "collection": "Show Audio",
+      "cover": "assets/worlds/wave-26-brand-live.jpg"
+    },
+    {
+      "id": "la-plaza-san-roberto-5eba2822",
+      "title": "La Plaza San Roberto",
+      "src": "assets/wave26/audio/la-plaza-san-roberto-5eba2822.mp3",
+      "duration": 370.0,
+      "collection": "La Ola de Amor",
+      "cover": "assets/worlds/la-ola-track-01.png",
+      "albumId": "laola",
+      "trackNumber": 9
+    },
+    {
       "id": "mommy-daddy-ground-control-240ecd78",
       "src": "assets/wave26/audio/mommy-daddy-ground-control-240ecd78.mp3",
       "duration": 286.8,
@@ -118,6 +187,16 @@ export const catalog = {
       ]
     },
     {
+      "id": "neon-mirage-0df406f9",
+      "title": "Neon Mirage",
+      "src": "assets/wave26/audio/neon-mirage-0df406f9.mp3",
+      "duration": 78.731,
+      "collection": "Show Audio",
+      "cover": "assets/worlds/wave-26-brand-live.jpg",
+      "variant": "Edit",
+      "sourceLabel": "Neon Mirage (Edit)"
+    },
+    {
       "id": "night-frequency-0e4a83ac",
       "src": "assets/wave26/audio/night-frequency-0e4a83ac.mp3",
       "duration": 99.48,
@@ -125,6 +204,16 @@ export const catalog = {
       "variant": null,
       "cover": "assets/worlds/wave-26-brand-live.jpg",
       "collection": "Show Audio"
+    },
+    {
+      "id": "no-subtitles-f378dcb6",
+      "title": "No Subtitles",
+      "src": "assets/wave26/audio/no-subtitles-f378dcb6.mp3",
+      "duration": 301.76,
+      "collection": "We See Yes",
+      "cover": "assets/worlds/oui-si-yes.png",
+      "albumId": "oui",
+      "trackNumber": 7
     },
     {
       "id": "off-brand-heaven-3bd3ba31",
@@ -154,6 +243,44 @@ export const catalog = {
       "collection": "Music Library"
     },
     {
+      "id": "oui-si-yes-a9d35216",
+      "title": "Oui Sí Yes",
+      "src": "assets/wave26/audio/oui-si-yes-a9d35216.mp3",
+      "duration": 277.56,
+      "collection": "We See Yes",
+      "cover": "assets/worlds/oui-si-yes.png",
+      "albumId": "oui",
+      "trackNumber": 1
+    },
+    {
+      "id": "perdon-pardon-sorry-f0f82622",
+      "title": "Perdón / Pardon / Sorry",
+      "src": "assets/wave26/audio/perdon-pardon-sorry-f0f82622.mp3",
+      "duration": 184.72,
+      "collection": "We See Yes",
+      "cover": "assets/worlds/oui-si-yes.png",
+      "albumId": "oui",
+      "trackNumber": 5
+    },
+    {
+      "id": "perreo-paraiso-cf8b5861",
+      "title": "Perreo Paraíso",
+      "src": "assets/wave26/audio/perreo-paraiso-cf8b5861.mp3",
+      "duration": 75.729,
+      "collection": "Show Audio",
+      "cover": "assets/worlds/wave-26-brand-live.jpg"
+    },
+    {
+      "id": "perreo-paraiso-1b7a69c8",
+      "title": "Perreo Paraíso",
+      "src": "assets/wave26/audio/perreo-paraiso-1b7a69c8.mp3",
+      "duration": 115.618,
+      "collection": "Show Audio",
+      "cover": "assets/worlds/wave-26-brand-live.jpg",
+      "variant": "Alternate source cut",
+      "sourceLabel": "Perreo Paraíso (1)"
+    },
+    {
       "id": "put-a-banner-on-it-2e32530c",
       "src": "assets/wave26/audio/put-a-banner-on-it-2e32530c.mp3",
       "duration": 199.0,
@@ -172,10 +299,49 @@ export const catalog = {
       "collection": "Music Library"
     },
     {
+      "id": "same-babe-different-country-16b406ae",
+      "title": "Same Babe, Different Country",
+      "src": "assets/wave26/audio/same-babe-different-country-16b406ae.mp3",
+      "duration": 358.8,
+      "collection": "We See Yes",
+      "cover": "assets/worlds/oui-si-yes.png",
+      "albumId": "oui",
+      "trackNumber": 6
+    },
+    {
       "id": "same-babe-different-country-af12292c",
       "src": "assets/wave26/audio/same-babe-different-country-af12292c.mp3",
       "duration": 339.532,
       "title": "Same Babe, Different Country",
+      "variant": "Earlier downloaded cut",
+      "cover": "assets/worlds/wave-26-brand-live.jpg",
+      "collection": "Music Library"
+    },
+    {
+      "id": "say-it-again-f03585eb",
+      "title": "Say It Again",
+      "src": "assets/wave26/audio/say-it-again-f03585eb.mp3",
+      "duration": 290.819,
+      "collection": "We See Yes",
+      "cover": "assets/worlds/oui-si-yes.png",
+      "albumId": "oui",
+      "trackNumber": 3
+    },
+    {
+      "id": "shes-just-bri-eab89e6b",
+      "title": "She’s Just Bri",
+      "src": "assets/wave26/audio/shes-just-bri-eab89e6b.mp3",
+      "duration": 235.04,
+      "collection": "Love Lore",
+      "cover": "assets/worlds/love-lore.png",
+      "albumId": "lore",
+      "trackNumber": 3
+    },
+    {
+      "id": "six-step-program-137e02a9",
+      "src": "assets/wave26/audio/six-step-program-137e02a9.mp3",
+      "duration": 225.28,
+      "title": "Six-Step Program",
       "variant": null,
       "cover": "assets/worlds/wave-26-brand-live.jpg",
       "collection": "Music Library"
@@ -186,15 +352,6 @@ export const catalog = {
       "duration": 213.68,
       "title": "Six-Step Program",
       "variant": "Cut B",
-      "cover": "assets/worlds/wave-26-brand-live.jpg",
-      "collection": "Music Library"
-    },
-    {
-      "id": "six-step-program-137e02a9",
-      "src": "assets/wave26/audio/six-step-program-137e02a9.mp3",
-      "duration": 225.28,
-      "title": "Six-Step Program",
-      "variant": null,
       "cover": "assets/worlds/wave-26-brand-live.jpg",
       "collection": "Music Library"
     },
@@ -215,6 +372,27 @@ export const catalog = {
       "variant": null,
       "cover": "assets/worlds/wave-26-brand-live.jpg",
       "collection": "Music Library"
+    },
+    {
+      "id": "sunset-selectors-1f589110",
+      "title": "Sunset Selectors",
+      "src": "assets/wave26/audio/sunset-selectors-1f589110.mp3",
+      "duration": 73.6,
+      "collection": "Show Audio",
+      "cover": "assets/worlds/wave-26-brand-live.jpg",
+      "variant": "L’ source cut",
+      "sourceLabel": "L'Sunset Selectors"
+    },
+    {
+      "id": "thank-you-we-really-mean-it-5b1e1701",
+      "title": "THANK YOU (We Really Mean It)",
+      "src": "assets/wave26/audio/thank-you-we-really-mean-it-5b1e1701.mp3",
+      "duration": 212.24,
+      "collection": "La Ola de Amor",
+      "cover": "assets/worlds/la-ola-track-01.png",
+      "sourceLabel": "THANK YOU, THANK YOU (We Really Mean It)",
+      "albumId": "laola",
+      "trackNumber": 12
     },
     {
       "id": "the-music-that-raised-us-a002b2c7",
@@ -253,6 +431,16 @@ export const catalog = {
       "collection": "Music Library"
     },
     {
+      "id": "this-moment-might-fe3f416f",
+      "title": "This Moment Might",
+      "src": "assets/wave26/audio/this-moment-might-fe3f416f.mp3",
+      "duration": 304.8,
+      "collection": "Love Lore",
+      "cover": "assets/worlds/love-lore.png",
+      "albumId": "lore",
+      "trackNumber": 5
+    },
+    {
       "id": "too-much-lore-736710c4",
       "src": "assets/wave26/audio/too-much-lore-736710c4.mp3",
       "duration": 247.24,
@@ -271,6 +459,16 @@ export const catalog = {
       "collection": "Music Library"
     },
     {
+      "id": "we-keep-getting-married-65e4b2e4",
+      "title": "We Keep Getting Married",
+      "src": "assets/wave26/audio/we-keep-getting-married-65e4b2e4.mp3",
+      "duration": 234.4,
+      "collection": "Love Lore",
+      "cover": "assets/worlds/love-lore.png",
+      "albumId": "lore",
+      "trackNumber": 1
+    },
+    {
       "id": "we-said-we-were-leaving-629e1c07",
       "src": "assets/wave26/audio/we-said-we-were-leaving-629e1c07.mp3",
       "duration": 194.8,
@@ -286,7 +484,9 @@ export const catalog = {
       "title": "We Were Here",
       "variant": null,
       "cover": "assets/worlds/love-lore.png",
-      "collection": "Love Lore"
+      "collection": "Love Lore",
+      "albumId": "lore",
+      "trackNumber": 6
     },
     {
       "id": "welcome-to-our-world-929345b2",
@@ -298,13 +498,34 @@ export const catalog = {
       "collection": "Music Library"
     },
     {
+      "id": "were-pretty-good-at-this-dbb5b63f",
+      "title": "We’re Pretty Good at This",
+      "src": "assets/wave26/audio/were-pretty-good-at-this-dbb5b63f.mp3",
+      "duration": 181.28,
+      "collection": "Love Lore",
+      "cover": "assets/worlds/love-lore.png",
+      "albumId": "lore",
+      "trackNumber": 4
+    },
+    {
       "id": "what-s-mine-8ca86dfe",
       "src": "assets/wave26/audio/what-s-mine-8ca86dfe.mp3",
       "duration": 210.72,
       "title": "What's Mine",
       "variant": null,
       "cover": "assets/worlds/to-ai-or-not.png",
-      "collection": "To AI or Not"
+      "collection": "To AI or Not",
+      "albumId": "ai",
+      "trackNumber": 7
+    },
+    {
+      "id": "when-the-house-is-ours-e329dd01",
+      "src": "assets/wave26/audio/when-the-house-is-ours-e329dd01.mp3",
+      "duration": 341.48,
+      "title": "When the House Is Ours",
+      "variant": null,
+      "cover": "assets/worlds/wave-26-brand-live.jpg",
+      "collection": "Music Library"
     },
     {
       "id": "when-the-house-is-ours-copy-2-73618f62",
@@ -316,13 +537,25 @@ export const catalog = {
       "collection": "Music Library"
     },
     {
-      "id": "when-the-house-is-ours-e329dd01",
-      "src": "assets/wave26/audio/when-the-house-is-ours-e329dd01.mp3",
-      "duration": 341.48,
-      "title": "When the House Is Ours",
-      "variant": null,
-      "cover": "assets/worlds/wave-26-brand-live.jpg",
-      "collection": "Music Library"
+      "id": "wrong-way-right-place-08be54cd",
+      "title": "Wrong Way, Right Place",
+      "src": "assets/wave26/audio/wrong-way-right-place-08be54cd.mp3",
+      "duration": 178.756,
+      "collection": "La Ola de Amor",
+      "cover": "assets/worlds/la-ola-track-01.png",
+      "sourceLabel": "Wrong_Way_Right_Place",
+      "albumId": "laola",
+      "trackNumber": 7
+    },
+    {
+      "id": "ya-se-d2563530",
+      "title": "Ya Sé",
+      "src": "assets/wave26/audio/ya-se-d2563530.mp3",
+      "duration": 247.2,
+      "collection": "We See Yes",
+      "cover": "assets/worlds/oui-si-yes.png",
+      "albumId": "oui",
+      "trackNumber": 4
     },
     {
       "id": "you-couldn-t-even-beat-spurs-9e9c8b60",
@@ -350,6 +583,16 @@ export const catalog = {
       "variant": null,
       "cover": "assets/worlds/wave-26-brand-live.jpg",
       "collection": "Music Library"
+    },
+    {
+      "id": "you-ve-always-been-that-girl-a124c0ba",
+      "title": "You've Always Been That Girl",
+      "src": "assets/wave26/audio/you-ve-always-been-that-girl-a124c0ba.mp3",
+      "duration": 284.96,
+      "collection": "Love Lore",
+      "cover": "assets/worlds/love-lore.png",
+      "albumId": "lore",
+      "trackNumber": 2
     },
     {
       "id": "you-re-always-that-guy-e7a33ced",
@@ -394,7 +637,7 @@ export const catalog = {
         },
         {
           "title": "Jalisco Time",
-          "recordingId": null
+          "recordingId": "jalisco-time-73fa009b"
         },
         {
           "title": "Gates Open",
@@ -402,7 +645,7 @@ export const catalog = {
         },
         {
           "title": "Golden Hour",
-          "recordingId": null
+          "recordingId": "golden-hour-138cf2dc"
         },
         {
           "title": "LA OLA",
@@ -410,7 +653,7 @@ export const catalog = {
         },
         {
           "title": "Wrong Way, Right Place",
-          "recordingId": null
+          "recordingId": "wrong-way-right-place-08be54cd"
         },
         {
           "title": "O-L-A",
@@ -418,7 +661,7 @@ export const catalog = {
         },
         {
           "title": "La Plaza San Roberto",
-          "recordingId": null
+          "recordingId": "la-plaza-san-roberto-5eba2822"
         },
         {
           "title": "Leavin'",
@@ -430,11 +673,11 @@ export const catalog = {
         },
         {
           "title": "THANK YOU (We Really Mean It)",
-          "recordingId": null
+          "recordingId": "thank-you-we-really-mean-it-5b1e1701"
         },
         {
           "title": "13 Years",
-          "recordingId": null
+          "recordingId": "13-years-6dee29b5"
         }
       ]
     },
@@ -444,46 +687,52 @@ export const catalog = {
       "art": "assets/worlds/oui-si-yes.png",
       "playlist": "PLaoiYhsrkD8g",
       "suno": "https://suno.com/playlist/e9342a76-9fc7-4375-92fe-5b8b9eb51acb",
-      "desc": "A multilingual OLA record built around the same feeling surviving the trip from English to Spanish to French. Seven songs turn translation, flirtation, repetition, and crossed wires into part of the hook instead of something to solve.",
+      "desc": "A multilingual OLA record built around the same feeling surviving the trip from English to Spanish to French. Eight songs turn translation, flirtation, repetition, and crossed wires into part of the hook instead of something to solve.",
       "tracks": [
         "Oui Sí Yes",
         "Encore Une Fois",
         "Say It Again",
-        "Tu Sais",
+        "Ya Sé",
         "Perdón / Pardon / Sorry",
-        "Same Bed, Different Country",
+        "Same Babe, Different Country",
+        "No Subtitles",
         "I Accept"
       ],
       "trackEntries": [
         {
           "title": "Oui Sí Yes",
-          "recordingId": null
+          "recordingId": "oui-si-yes-a9d35216"
         },
         {
           "title": "Encore Une Fois",
-          "recordingId": null
+          "recordingId": "encore-une-fois-558b313a"
         },
         {
           "title": "Say It Again",
-          "recordingId": null
+          "recordingId": "say-it-again-f03585eb"
         },
         {
-          "title": "Tu Sais",
-          "recordingId": null
+          "title": "Ya Sé",
+          "recordingId": "ya-se-d2563530"
         },
         {
           "title": "Perdón / Pardon / Sorry",
-          "recordingId": null
+          "recordingId": "perdon-pardon-sorry-f0f82622"
         },
         {
-          "title": "Same Bed, Different Country",
-          "recordingId": null
+          "title": "Same Babe, Different Country",
+          "recordingId": "same-babe-different-country-16b406ae"
+        },
+        {
+          "title": "No Subtitles",
+          "recordingId": "no-subtitles-f378dcb6"
         },
         {
           "title": "I Accept",
-          "recordingId": null
+          "recordingId": "i-accept-443d97e9"
         }
-      ]
+      ],
+      "sourceEdition": "OUI SI YES — official eight-track album"
     },
     {
       "id": "ai",
@@ -575,23 +824,23 @@ export const catalog = {
       "trackEntries": [
         {
           "title": "We Keep Getting Married",
-          "recordingId": null
+          "recordingId": "we-keep-getting-married-65e4b2e4"
         },
         {
           "title": "You've Always Been That Girl",
-          "recordingId": null
+          "recordingId": "you-ve-always-been-that-girl-a124c0ba"
         },
         {
           "title": "She’s Just Bri",
-          "recordingId": null
+          "recordingId": "shes-just-bri-eab89e6b"
         },
         {
           "title": "We’re Pretty Good at This",
-          "recordingId": null
+          "recordingId": "were-pretty-good-at-this-dbb5b63f"
         },
         {
           "title": "This Moment Might",
-          "recordingId": null
+          "recordingId": "this-moment-might-fe3f416f"
         },
         {
           "title": "We Were Here",
@@ -705,7 +954,7 @@ export const catalog = {
   "showAudio": [
     {
       "title": "Neon Mirage",
-      "recordingId": null
+      "recordingId": "neon-mirage-0df406f9"
     },
     {
       "title": "Night Frequency",
@@ -713,15 +962,15 @@ export const catalog = {
     },
     {
       "title": "La Máquina del Tiempo",
-      "recordingId": null
+      "recordingId": "la-maquina-del-tiempo-3c8c7954"
     },
     {
       "title": "Perreo Paraíso",
-      "recordingId": null
+      "recordingId": "perreo-paraiso-cf8b5861"
     },
     {
       "title": "Sunset Selectors",
-      "recordingId": null
+      "recordingId": "sunset-selectors-1f589110"
     }
   ],
   "rawVersions": [
