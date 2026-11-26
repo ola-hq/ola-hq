@@ -24,6 +24,8 @@
     const leave = clamp(box.bottom / (height * .5));
     wavePresence = universe?.hidden ? 0 : Math.min(enter, leave) * .82;
     wave.style.setProperty('--wave-presence', wavePresence.toFixed(3));
+    const reveal=document.querySelector('.hq-wave-reveal')?.getBoundingClientRect();
+    window.OLASound?.ocean(!universe?.hidden&&(wavePresence>.12||!!(reveal&&reveal.top<height*.7&&reveal.bottom>height*.2)));
     if (motion.matches) { wave.style.setProperty('--wave-x','0.00px'); wave.style.setProperty('--wave-y','0.00px'); }
   }
   function resize() {
@@ -34,8 +36,8 @@
     canvas.width = width * dpr; canvas.height = height * dpr;
     ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);
     // Three times the previous desktop ceiling, with a separate touch budget.
-    const limit = fine.matches ? 720 : 180;
-    const count = Math.min(limit, Math.round(width * height / (fine.matches ? 1800 : 2600)));
+    const limit = fine.matches ? 1400 : 320;
+    const count = Math.min(limit, Math.round(width * height / (fine.matches ? 1000 : 1200)));
     stars = Array.from({length: count}, () => ({
       x: Math.random() * width, y: Math.random() * height,
       dx: 0, dy: 0, r: .3 + Math.random() * 1.45,

@@ -16,7 +16,7 @@ test('holding the globe still before release removes momentum',()=>{const h=cont
 test('pointer cancellation stops interaction without accidental entry',()=>{const h=controls();h.e.emit('pointerdown');h.e.emit('pointermove',{clientX:140});h.e.emit('pointercancel');assert.deepEqual(h.releases.at(-1),[0,0]);assert.equal(h.e.emit('click').prevented,true)});
 test('keyboard rotation and reset preserve Enter activation',()=>{const h=controls();assert.equal(h.e.emit('keydown',{key:'ArrowRight'}).prevented,true);assert.deepEqual(h.moves,[[16,0]]);h.e.emit('keydown',{key:'Home'});assert.equal(h.resets,1);assert.equal(h.e.emit('click',{detail:0}).prevented,false)});
 test('modifier clicks and renderer teardown retain the native link fallback',()=>{const h=controls();h.e.emit('pointerdown',{ctrlKey:true});assert.equal(h.e.emit('click').prevented,false);h.c.destroy();h.e.emit('pointerdown');h.e.emit('pointermove',{clientX:160});assert.equal(h.moves.length,0);assert.equal(h.e.emit('click').prevented,false)});
-function continuousModel(){const {decode}=require('../hq-globe-model.js'),b=fs.readFileSync(path.join(__dirname,'../assets/models/ola-hq-sculpted-globe-v5.glb'));return decode(b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength))}
+function continuousModel(){const {decode}=require('../hq-globe-model.js'),b=fs.readFileSync(path.join(__dirname,'../assets/models/ola-hq-sculpted-globe-v6.glb'));return decode(b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength))}
 test('the active globe has one closed body, floating marquee and separate raised wave curls',()=>{
  const m=continuousModel();assert.equal(m.primitives.length,4);assert.equal(m.json.extras.continuousBody,true);
  const original=fs.readFileSync(path.join(__dirname,'../assets/entrances/ola-hq-floating-hero-20261007.webp'));
@@ -32,7 +32,7 @@ test('the body is a watertight sphere with no cap boundary or disconnected seam'
  for(const count of edges.values())assert.equal(count,2);assert.equal(vertices.size-edges.size+p.indices.length/3,2);
 });
 test('full spins and extreme tilts remain opaque through the entire body',()=>{
- const {software}=require('../hq-globe-model.js'),m=continuousModel(),tex=(r,g,b)=>({width:1,height:1,data:new Uint8ClampedArray([r,g,b,255])}),render=software(m,[tex(20,90,100),tex(218,175,87),tex(240,220,180)]),size=64,radius=size*.80*.77/2;
+ const {software}=require('../hq-globe-model.js'),m=continuousModel(),tex=(r,g,b)=>({width:1,height:1,data:new Uint8ClampedArray([r,g,b,255])}),render=software(m,[tex(20,90,100),tex(218,175,87),tex(240,220,180),tex(246,223,174)]),size=64,radius=size*.80*.77/2;
  for(let a=0;a<24;a++)for(const pitch of [-1.2,-.8,-.4,0,.4,.8,1.2]){const pixels=render(size,a*Math.PI/12,pitch);for(let y=0;y<size;y++)for(let x=0;x<size;x++)if(Math.hypot(x+.5-size/2,y+.5-size/2)<radius)assert.equal(pixels[(y*size+x)*4+3],255,`hole at yaw ${a}, pitch ${pitch}, ${x}/${y}`)}
 });
 test('software rendering respects texture alpha, front culling and depth occlusion',()=>{

@@ -1,6 +1,6 @@
 /* Continuous original-art globe: one closed body, one feathered UV material and a sculpted orbit. */
 (()=>{'use strict';
- const modelURL=new URL('assets/models/ola-hq-sculpted-globe-v5.glb?v=20261126-patch1',document.currentScript.src),motion=matchMedia('(prefers-reduced-motion: reduce)');
+ const modelURL=new URL('assets/models/ola-hq-sculpted-globe-v6.glb?v=20261126-space1',document.currentScript.src),motion=matchMedia('(prefers-reduced-motion: reduce)');
  const vertex=`attribute vec3 position;attribute vec3 normal;attribute vec2 uv;uniform mat3 rotation;varying vec3 N;varying vec2 UV;varying float Z;
  vec3 turn(vec3 p){return rotation*p;}
  void main(){vec3 p=turn(position);N=turn(normal);UV=uv;Z=p.z;gl_Position=vec4(p.xy*.80,-p.z*.4,1.);}`;
