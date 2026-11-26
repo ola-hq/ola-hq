@@ -44,3 +44,18 @@
 .polaroid-stage-wave{font-family:Georgia,serif;font-size:24px;line-height:1}
 .ola-card-immersive[data-theme="polaroid"] .ola-card-stage{z-index:1}
 .ola-card-immersive[data-theme="polaroid"][data-controls=true]>.polaroid-stage-mark{visibility:hidden}
+
+/* The room owns its perspective. The photograph's existing interaction plane stays in front. */
+.ola-card-immersive[data-theme="polaroid"]>.polaroid-cosmic-room{--room-depth:clamp(260px,32vw,480px);--room-art:url('./assets/space/milky-way-great-wave-landscape-v47.jpg');position:absolute;inset:0;z-index:0;overflow:hidden;perspective:900px;perspective-origin:50% 45%;pointer-events:none;user-select:none;background:#030713}
+.polaroid-cosmic-room-scene{position:absolute;inset:0;transform-style:preserve-3d;pointer-events:none}
+.polaroid-cosmic-wall{position:absolute;box-sizing:border-box;background-image:var(--room-art);background-size:cover;background-position:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;pointer-events:none;box-shadow:inset 0 0 70px #02040b88;border:1px solid #a9c8ff22}
+.polaroid-cosmic-wall--back{inset:0;transform:translateZ(calc(-1 * var(--room-depth)));background-position:60% 50%;filter:brightness(.85) saturate(1.12)}
+.polaroid-cosmic-wall--left{left:0;top:0;width:var(--room-depth);height:100%;transform-origin:0 50%;transform:rotateY(90deg);background-position:20% 50%;filter:brightness(.55) saturate(1.2)}
+.polaroid-cosmic-wall--right{right:0;top:0;width:var(--room-depth);height:100%;transform-origin:100% 50%;transform:rotateY(-90deg);background-position:80% 50%;filter:brightness(.7) saturate(1.15)}
+.polaroid-cosmic-wall--floor{left:0;bottom:0;width:100%;height:var(--room-depth);transform-origin:50% 100%;transform:rotateX(90deg);background-image:linear-gradient(#05091d44,#21397655),var(--room-art);background-position:50% 90%;filter:brightness(.72)}
+.polaroid-cosmic-wall--ceiling{left:0;top:0;width:100%;height:var(--room-depth);transform-origin:50% 0;transform:rotateX(-90deg);background-position:50% 5%;filter:brightness(.52)}
+.polaroid-cosmic-room::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 44%,transparent 30%,#02040b55 100%)}
+.ola-card-immersive[data-theme="polaroid"]>.polaroid-stage-mark{z-index:2;text-shadow:0 2px 12px #000}
+@media(max-width:650px){.ola-card-immersive[data-theme="polaroid"]>.polaroid-cosmic-room{--room-art:url('./assets/space/milky-way-great-wave-portrait-v47.jpg');perspective:650px}}
+@media(prefers-contrast:more){.polaroid-cosmic-room{opacity:.35}}
+@supports not (perspective:1px){.polaroid-cosmic-wall--back{transform:none}.polaroid-cosmic-wall:not(.polaroid-cosmic-wall--back){display:none}}
