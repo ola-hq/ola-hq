@@ -8,7 +8,7 @@ import {esc,musicClock as clock} from './utils.js?v=wave26-20261126';
 const $=id=>document.getElementById(id),allIds=catalog.tracks.map(t=>t.id);
 const trackById=new Map(catalog.tracks.map(t=>[t.id,t]));
 const normal=s=>s.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]/g,'');
-const mainByTitle=new Map(catalog.tracks.filter(t=>!t.variant).map(t=>[normal(t.title),t]));
+const mainByTitle=new Map(catalog.tracks.filter(t=>!t.variant).flatMap(t=>[t.title,...(t.aliases||[])].map(title=>[normal(title),t])));
 const label=t=>t.title+(t.variant?' · '+t.variant:'');
 let albumId=null,queueLabel='All recordings',started=false;
 const deck=$('wave26-player');
