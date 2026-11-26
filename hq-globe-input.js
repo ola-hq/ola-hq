@@ -10,7 +10,9 @@
    if(!state)return;const s=state;state=null;
    try{element.releasePointerCapture(s.id)}catch{}
    if(s.dragged||cancelled){suppressUntil=now()+500;clearTaps()}
-   if(s.dragged&&!cancelled){const moving=now()-s.time<100;release(moving?s.vx:0,moving?s.vy:0)}else release(0,0);
+   if(s.dragged&&!cancelled){const moving=now()-s.motionTime<120;
+    if(s.touch&&moving&&s.samples.length>1){const end=s.samples.at(-1),start=s.samples.find(p=>p!==end&&end.t-p.t<=80)||s.samples.at(-2)||end,dt=Math.max(16,end.t-start.t);release(clamp((end.x-start.x)*20/dt),clamp((end.y-start.y)*20/dt))}
+    else release(moving?s.vx:0,moving?s.vy:0)}else release(0,0);
   }
   on('dragstart',e=>e.preventDefault(),true);
   on('dblclick',e=>e.preventDefault());
@@ -20,14 +22,14 @@
    clear(tapTimer);tapTimer=0;clear(wheelTimer);wheelTimer=0;
    // Cancel the anchor's native mouse drag without blocking touch pinch zoom.
    if(e.pointerType==='mouse'&&e.cancelable){e.preventDefault();element.focus?.({preventScroll:true})}
-   suppressUntil=0;press();state={id:e.pointerId,x:e.clientX,y:e.clientY,lastX:e.clientX,lastY:e.clientY,time:now(),vx:0,vy:0,dragged:false};
+   suppressUntil=0;press();state={id:e.pointerId,x:e.clientX,y:e.clientY,lastX:e.clientX,lastY:e.clientY,time:now(),vx:0,vy:0,motionTime:now(),touch:e.pointerType==='touch',samples:[{x:e.clientX,y:e.clientY,t:now()}],dragged:false};
    try{element.setPointerCapture(e.pointerId)}catch{}
   },{passive:false});
   on('pointermove',e=>{
    if(!state||e.pointerId!==state.id)return;
    const s=state,t=now(),dx=e.clientX-s.lastX,dy=e.clientY-s.lastY,dt=Math.max(8,t-s.time);
    if(Math.hypot(e.clientX-s.x,e.clientY-s.y)>6){if(!s.dragged)clearTaps();s.dragged=true}
-   if(s.dragged){if(e.cancelable)e.preventDefault();rotate(dx,dy);s.vx=clamp(dx*16/dt);s.vy=clamp(dy*16/dt)}
+   if(s.dragged){if(e.cancelable)e.preventDefault();rotate(dx,dy);s.vx=clamp(dx*16/dt);s.vy=clamp(dy*16/dt);if(Math.hypot(dx,dy)>.25){s.motionTime=t;s.samples.push({x:e.clientX,y:e.clientY,t});s.samples=s.samples.filter(p=>t-p.t<160)}}
    s.lastX=e.clientX;s.lastY=e.clientY;s.time=t;
   },{passive:false});
   on('pointerup',e=>{if(state?.id===e.pointerId)finish()});

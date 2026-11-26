@@ -2,16 +2,13 @@
 .has-3d-globe{position:relative!important;touch-action:pinch-zoom!important;cursor:grab;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
 .has-3d-globe:active{cursor:grabbing}
 .has-3d-globe>img{visibility:hidden;animation:none!important}
-.hq-globe-canvas{position:absolute;inset:-12%;width:124%;height:124%;display:block;touch-action:pinch-zoom}
+.hq-globe-canvas{position:absolute;inset:-22%;width:144%;height:144%;display:block;touch-action:pinch-zoom}
 .hq-globe-help{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 @media(prefers-reduced-motion:reduce){.hq-globe-canvas{animation:none}}
 
 /* Keep the browser from dragging the anchor or artwork instead of the sphere. */
 .has-3d-globe,.has-3d-globe *{-webkit-user-drag:none!important;user-select:none!important;-webkit-user-select:none!important}
 .hq-globe-canvas{pointer-events:none;filter:drop-shadow(0 0 calc(5px + var(--globe-charge,0)*12px) #d9ad5845)}
-.hq-globe-warp{position:fixed;inset:0;z-index:10002;pointer-events:none;overflow:hidden}
-.hq-globe-warp-ring{position:absolute;left:var(--warp-x);top:var(--warp-y);width:150px;height:150px;margin:-75px;border-radius:50%;border:2px solid #f5d292;box-shadow:0 0 26px #f3b85e88,inset 0 0 20px #4eb5ba66;animation:globe-warp-ring .55s ease-out both}
-.hq-globe-warp-spark{position:absolute;left:var(--warp-x);top:var(--warp-y);width:4px;height:4px;border-radius:50%;background:#f5d292;box-shadow:0 0 10px #f5ca70;animation:globe-warp-spark .48s ease-out both}
-@keyframes globe-warp-ring{from{transform:scale(.3);opacity:.8}to{transform:scale(12);opacity:0}}
-@keyframes globe-warp-spark{from{transform:translate(0,0);opacity:1}to{transform:translate(var(--spark-x),var(--spark-y));opacity:0}}
-@media(prefers-reduced-motion:reduce){.hq-globe-warp-ring{animation:none;opacity:.3;box-shadow:none}.hq-globe-canvas{filter:none}}
+/* Pointer focus has no extra circular border. Keyboard focus remains visible. */
+.has-3d-globe:focus{outline:none!important;box-shadow:none!important}
+.has-3d-globe:focus-visible .hq-globe-canvas{filter:drop-shadow(0 0 12px #f5d292)}
