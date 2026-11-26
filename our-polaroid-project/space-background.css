@@ -1,12 +1,17 @@
 /* Polaroid documents only: a transparent ink layer over a quiet, scroll-driven universe. */
-body.opw-space-page{background:#05070d;background-image:radial-gradient(ellipse at 70% 15%,#28213e55,transparent 52%),radial-gradient(1px 1px at 20% 15%,#d7d8e1aa,transparent),radial-gradient(1px 1px at 72% 64%,#b6b9df88,transparent);background-size:auto,337px 291px,467px 389px;isolation:isolate;--paper:#0a0c13;--og-paper:#0a0c13}
+body.opw-space-page{background:#05070d url('./assets/space/milky-way-great-wave-landscape-v47.jpg') center/cover fixed;isolation:isolate;--paper:#0a0c13;--og-paper:#0a0c13}
 html[data-opw-space] body.opw-space-page{background:#05070d}
 .opw-universe{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden;contain:strict;background:#05070d}
-.opw-universe canvas{display:block;width:100%;height:100%;opacity:.9;pointer-events:none}
-body.opw-space-page::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#05070d88,#05070d30 40%,#05070d66),linear-gradient(0deg,#05070d5c,transparent 40%,#05070d33)}
+.opw-universe::before{content:"";position:absolute;inset:-4%;background:url('./assets/space/milky-way-great-wave-landscape-v47.jpg') 60% 50%/cover no-repeat;opacity:.98;transform:translate3d(var(--opw-wave-x,0px),var(--opw-wave-y,0px),0) scale(1.03);filter:saturate(1.08) contrast(1.04)}
+.opw-universe canvas{position:relative;display:block;width:100%;height:100%;opacity:.55;pointer-events:none}
+body.opw-space-page::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#03060d55,#03060d08 55%,#03060d22),linear-gradient(0deg,#05070d33,transparent 40%,#05070d11)}
 body.opw-space-page>.hq-return{background:#0a101bcc;backdrop-filter:blur(12px)}
 body.opw-space-page>header,body.opw-space-page>.site-nav{background:#080b1388;backdrop-filter:blur(12px);border-color:#c8c4e02b}
-body.opw-space-page main{background:linear-gradient(110deg,#080a1266,#080a1222 65%,#080a1244)}
+body.opw-space-page main{background:linear-gradient(90deg,#040711a8,#04071160 38%,#04071114 70%)}
+body.opw-space-page main p,body.opw-space-page main h1,body.opw-space-page main h2{text-shadow:0 2px 8px #000c,0 6px 24px #0008}
+/* Keep the bright crest exposed around the photographs; soften only the reading areas. */
+body.opw-space-page :is(.og-hero>div:first-child,.album-header>div:first-child,.opw-love-copy,.opw-directory-opening){position:relative;isolation:isolate}
+body.opw-space-page :is(.og-hero>div:first-child,.album-header>div:first-child,.opw-love-copy,.opw-directory-opening)::before{content:"";position:absolute;inset:-20px -14px;z-index:-1;pointer-events:none;background:#03060dd9;filter:blur(22px);border-radius:24px}
 body.opw-space-page .og-event-entry>.opw-card-copy{background:linear-gradient(#070a1255,#070a12b8);padding-inline:10px}
 body.opw-space-page .journal-card,body.opw-space-page .event-card,body.opw-space-page .og-downloads{background:#0b101ac9}
 body.opw-space-page .collection img{background:#11141eaa}
@@ -16,4 +21,5 @@ body.opw-space-page .og-hero,body.opw-space-page .album-header{position:relative
 body.opw-space-page .og-hero h1,body.opw-space-page .album-header h1{text-wrap:balance;text-shadow:0 4px 35px #0009}
 body.opw-space-page .og-description,body.opw-space-page .album-intro-lead{color:#c8c5ce}
 @media(prefers-contrast:more){.opw-universe{opacity:.3}body.opw-space-page::before{background:#05070de6}}
+@media(max-width:650px){body.opw-space-page{background-image:url('./assets/space/milky-way-great-wave-portrait-v47.jpg')}.opw-universe::before{background-image:url('./assets/space/milky-way-great-wave-portrait-v47.jpg');background-position:50% 48%}body.opw-space-page::before{background:linear-gradient(90deg,#03060d88,#03060d33 60%,#03060d11)}body.opw-space-page main{background:linear-gradient(90deg,#04071199,#04071133 65%,#04071111)}}
 @media(prefers-reduced-motion:reduce){body.opw-space-page{scroll-behavior:auto}}
