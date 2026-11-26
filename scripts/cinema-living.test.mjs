@@ -348,7 +348,7 @@ test('Polaroid factory keeps actual details/downloads distinct from paper revers
   assert.equal(controller.open([photo],0,opener,{collection:'Approved event'}),true);
   const dialog=d.body.children.find(n=>n.className.includes('ola-card-immersive')),details=d.body.children.find(n=>n.className==='polaroid-memory-dialog');const tools=dialog.children.find(n=>n.className==='ola-card-tools'),stage=dialog.children.find(n=>n.className==='ola-card-stage');
   assert.equal(dialog.dataset.controls,'false');assert.equal(dialog.dataset.physical,'true');assert.equal(details.open,undefined);
-  const backControl=tools.children.find(n=>n.dataset.world==='card-read-the-back'),soundControl=tools.children.find(n=>n.dataset.world==='card-sound-on');assert.equal(backControl.hidden,true);assert.equal(backControl.disabled,true);assert.equal(soundControl.hidden,false);assert.equal(Boolean(soundControl.disabled),false);assert.equal(soundControl.attributes['aria-pressed'],'true');assert.equal(soundControl.textContent,'Camera sound on');
+  const backControl=tools.children.find(n=>n.dataset.world==='card-read-the-back'),soundControl=tools.children.find(n=>n.dataset.world==='card-sound-on');assert.equal(backControl.hidden,true);assert.equal(backControl.disabled,true);assert.equal(soundControl.hidden,false);assert.equal(Boolean(soundControl.disabled),false);assert.equal(soundControl.attributes['aria-pressed'],'true');assert.equal(soundControl.textContent,'Photo sound on');
   tools.children.find(n=>n.textContent==='Turn card over').onclick();assert.equal(details.open,undefined,'physical back does not pretend to be memory details');
   tools.children.find(n=>n.textContent==='Memory details').onclick();assert.equal(details.open,true);assert.equal(dialog.open,false);assert.equal(details.dataset.photoId,'owner-approved');
   const link=details.children.find(n=>n.className==='memory-original');assert.equal(link.href,'original.jpg');assert.equal(link.download,'original-scan.jpg');assert.equal(details.children.find(n=>n.className==='memory-inline').href,'original.jpg?inline=1');
@@ -557,7 +557,7 @@ test('background recovery never converts multi-touch or vertical gestures into h
 
 test('current Polaroid camera audio is the exact owner-selected recording and finite quiet PCM',()=>{
  const wav=readFileSync('our-polaroid-project/audio/polaroid-650-eject-v42.wav');assert.equal(createHash('sha256').update(wav).digest('hex'),'c5d2c58c20451b4bd5a63cbc693977811c6732d2fc679dbebcf1a3ec47d8ffdf');assert.equal(wav.toString('ascii',0,4),'RIFF');assert.equal(wav.readUInt16LE(22),1);assert.equal(wav.readUInt32LE(24),24000);assert.ok((wav.length-44)/48000>.5&&(wav.length-44)/48000<.7);
- const source=readFileSync('our-polaroid-project/paper-sound.js','utf8');assert.match(source,/audio\/polaroid-650-eject-v42.wav/);assert.doesNotMatch(source,/audio\/paper-floop-v33.wav/);const credits=readFileSync('our-polaroid-project/audio/POLAROID-650-EJECT-v42.txt','utf8');assert.match(credits,/larspriebe/);assert.match(credits,/CC0/);
+ const source=readFileSync('our-polaroid-project/paper-sound.js','utf8');assert.match(source,/audio\/polaroid-650-eject-v42.wav/);assert.match(source,/audio\/paper-floop-v33.wav/);const credits=readFileSync('our-polaroid-project/audio/POLAROID-650-EJECT-v42.txt','utf8');assert.match(credits,/larspriebe/);assert.match(credits,/CC0/);
 });
 
 test('owner diary corrections retain delayed Letterboxd provenance and separate researched Unseen dates',()=>{
@@ -565,4 +565,29 @@ test('owner diary corrections retain delayed Letterboxd provenance and separate 
  assert.equal(filmDate(emily).value,'2026-09-04');assert.equal(emily.dateHistory[0].superseded.value,'2026-11-06');assert.equal(filmDate(paris).value,'2026-01-29');assert.equal(filmDate(dracula).value,'2026-11-06');
  const revealed=films.filter(f=>f.dates?.watched?.verificationMethod==='corroborated_unseen_reconciliation');assert.equal(revealed.length,12);assert.ok(revealed.every(f=>f.dates.watched.source.includes('AMC Unseen booking + historical reveal + existing reviewed card/order')));
  assert.equal(films.some(f=>f.title==='How to Rob a Bank'),false,'pending review must not receive invented ratings');
+});
+
+test('Polaroid upward fling animates from held edge and released flick even with reduced motion, then returns same photo',async()=>{
+ const {PolaroidCardViewer}=await import('../our-polaroid-project/memory-viewer.js');
+ environment();try{
+  for(const reduced of [false,true])for(const input of ['held','flick']){
+   let frames,finish,plays=0;const sounds=[],navigated=[];const v=new PolaroidCardViewer({immersive:true,physicalCard:true,paperBack:false,sound:false,onNavigate:item=>navigated.push(item.id)});v.reduced.matches=reduced;v.open([{id:'same',src:'a.jpg'},{id:'other',src:'b.jpg'}]);v.rotZ=90;v.zoom(1.2);v.paint();v.reelSound=kind=>sounds.push(kind);
+   v.card.animate=f=>{plays++;frames=f;return{finished:new Promise(r=>finish=r),cancel(){finish()}}};
+   const p=(y,t)=>({...pointer(200,y),pointerType:'native-touch',timeStamp:t,target:v.image});v.down(p(450,1000));v.drag(p(input==='held'?140:330,input==='held'?1600:1100));if(input==='flick')v.up(p(330,1100),true);
+   assert.equal(plays,1,input+' must play a real animation, not only recenter');assert.equal(v.returning,true);assert.deepEqual(sounds,['return']);assert.equal(v.index,0);assert.equal(v.items[v.index].id,'same');assert.ok(frames.some(f=>/translate\(0px,-/.test(f.transform)));
+   v.up(p(100,1800),true);assert.equal(plays,1,'release cannot repeat the consumed fling');finish();await new Promise(r=>setImmediate(r));assert.equal(v.turning,false);assert.equal(v.returning,false);assert.equal(v.panX,0);assert.equal(v.panY,0);assert.equal(v.scale,1);assert.equal(v.rotZ,0);assert.equal(v.image.src,'a.jpg');assert.deepEqual(navigated,[]);assert.equal(v.reduced.matches,reduced);v.destroy();
+  }
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('camera changes and return swoosh share one audio source and mute/destroy cancel either pending sound',async()=>{
+ const {PaperSound}=await import('../our-polaroid-project/paper-sound.js');const oldAudio=globalThis.AudioContext,oldFetch=globalThis.fetch;const requests=new Map(),started=[];let stopped=0,closed=0;
+ class Audio{constructor(){this.state='running';this.destination={}}resume(){return Promise.resolve()}decodeAudioData(bytes){return Promise.resolve({file:new TextDecoder().decode(bytes)})}createGain(){return{gain:{value:0},connect(){},disconnect(){}}}createBufferSource(){return{loop:null,connect(){},disconnect(){},start(){started.push(this.buffer.file)},stop(){stopped++}}}close(){closed++;this.state='closed';return Promise.resolve()}}
+ globalThis.AudioContext=Audio;globalThis.fetch=url=>new Promise(resolve=>requests.set(String(url),()=>resolve({ok:true,arrayBuffer:async()=>new TextEncoder().encode(String(url)).buffer})));const flush=()=>new Promise(r=>setImmediate(r));
+ try{
+  const a=new PaperSound();a.burst();for(const release of requests.values())release();await flush();assert.equal(started.length,1);assert.match(started[0],/polaroid-650-eject-v42.wav/);
+  a.burst('return');for(const release of requests.values())release();await flush();assert.equal(started.length,2);assert.match(started[1],/paper-floop-v33.wav/);assert.equal(stopped,1);assert.equal(a.source.loop,false);assert.equal(a.gain.gain.value,1);
+  a.burst();assert.equal(started.length,3);assert.match(started[2],/polaroid-650-eject-v42.wav/);assert.equal(stopped,2);a.stop();assert.equal(a.source,null);a.destroy();assert.equal(closed,1);
+  for(const action of ['stop','destroy']){requests.clear();const b=new PaperSound();b.burst('return');b[action]();for(const release of requests.values())release();await flush();assert.equal(started.length,3,'pending swoosh must not start after '+action);if(action==='stop')b.destroy();}
+ }finally{if(oldAudio===undefined)delete globalThis.AudioContext;else globalThis.AudioContext=oldAudio;globalThis.fetch=oldFetch;}
 });

@@ -28,7 +28,7 @@ export class CardViewer{
  constructor({theme='cinema',intensity=8,renderBack,label='Artwork viewer',mount=null,onNavigate=null,onExpand=null,immersive=false,onActivate=null,sound=immersive,forwardFlourish=false,physicalCard=false,paperBack=true,backgroundNavigation=false,onDismiss=null}={}){
   this.immersive=immersive;this.physicalCard=Boolean(physicalCard&&immersive);this.paperBack=Boolean(paperBack);this.backgroundNavigation=Boolean(this.physicalCard&&backgroundNavigation);this.onDismiss=onDismiss;this.onActivate=onActivate;this.turn=0;this.turning=false;this.sound=Boolean(sound);this.soundAvailable=Boolean(sound);this.forwardFlourish=forwardFlourish;this.inline=Boolean(mount);this.onNavigate=onNavigate;this.onExpand=onExpand;
   this.items=[];this.index=0;this.intensity=intensity;this.renderBack=renderBack;this.reduced=matchMedia('(prefers-reduced-motion: reduce)');
-  if(!document.querySelector('link[data-ola-viewer]')){const css=node('link');css.rel='stylesheet';css.href=new URL('./card-viewer.css?v=20261125-physical42',import.meta.url);css.dataset.olaViewer='';document.head.append(css);}
+  if(!document.querySelector('link[data-ola-viewer]')){const css=node('link');css.rel='stylesheet';css.href=new URL('./card-viewer.css?v=20261125-physical43',import.meta.url);css.dataset.olaViewer='';document.head.append(css);}
   this.dialog=node(this.inline?'section':'dialog',this.inline?'ola-inline-card-viewer':'ola-card-dialog');this.dialog.setAttribute('aria-label',label);this.dialog.dataset.theme=theme;if(this.immersive)this.dialog.className+=' ola-card-immersive';
   const tools=this.tools=node('div','ola-card-tools');this.closeButton=this.button('Close',()=>this.close());this.prev=this.button('Previous',()=>this.move(-1));this.next=this.button('Next',()=>this.forward());this.flipButton=this.button('Read the back',()=>this.flip());this.zoomButton=this.button('Zoom in',()=>this.zoom(this.scale>1?1:2));this.resetButton=this.button('Reset view',()=>this.reset());tools.append(this.closeButton,this.prev,this.next,this.flipButton,this.zoomButton,this.resetButton);
   this.stage=node('div','ola-card-stage');this.card=node('div','ola-physical-card');this.front=node('div','ola-card-front');this.image=node('img');this.image.draggable=false;this.image.decoding='async';this.front.append(this.image);this.back=node('section','ola-card-back');this.back.hidden=true;this.back.tabIndex=0;this.card.append(this.front,this.back);this.stage.append(this.card);
@@ -91,7 +91,7 @@ export class CardViewer{
  restorePhysicalPose(pose){for(const key of ['panX','panY','rotX','rotY','rotZ','orientation','faceY','scale'])if(Number.isFinite(pose[key]))this[key]=pose[key];this.zoomButton.textContent=this.scale>1?'Zoom out':'Zoom in';this.updateFace();this.paint();}
  async loft({playMotion=false}={}){
   if(!this.physicalCard||this.turning||this.pointers.size)return;
-  this.turning=this.returning=true;const token=++this.turn;this.dialog.dataset.dragging='false';this.reelSound();
+  this.turning=this.returning=true;const token=++this.turn;this.dialog.dataset.dragging='false';this.reelSound('return');
   const departure=this.card.style.transform;
   this.restorePhysicalPose({panX:0,panY:0,rotX:0,rotY:0,rotZ:0,orientation:0,faceY:0,scale:1});
   const home=this.card.style.transform;
@@ -165,6 +165,7 @@ export class CardViewer{
    const recent=gestureTime(e)-this.last.time<=140;
    const action=physicalGestureAction({dx,dy,multi:this.multi,velocityX:recent?this.velocity:0,velocityY:recent?this.velocityY:0});
    if(action==='next'||action==='previous'){this.move(action==='next'?1:-1);return;}
+   if(action==='return'){this.loft();return;}
   }
   // Position, twist, tilt, scale and paper face stay where the owner left them.
   this.paint();

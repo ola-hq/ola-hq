@@ -1,9 +1,11 @@
-import {CardViewer} from '../assets/ola-worlds/card-viewer.js?v=20261125-physical42';
-import {PaperSound} from './paper-sound.js?v=20261125-polaroid42';
+import {CardViewer} from '../assets/ola-worlds/card-viewer.js?v=20261125-physical43';
+import {PaperSound} from './paper-sound.js?v=20261125-polaroid43';
 
 // Reuse every shared gesture; only Polaroid's sound backend differs from Cinema.
 export class PolaroidCardViewer extends CardViewer {
   constructor(options) { super(options); this.loopPhotos = options.loop !== false; }
+  // A deliberate Polaroid fling requests its one-shot motion without changing the system preference.
+  loft(options = {}) { return super.loft({playMotion:true, ...options}); }
   show() {
     super.show();
     if (!this.loopPhotos) {
@@ -16,7 +18,7 @@ export class PolaroidCardViewer extends CardViewer {
     return super.toss(delta, options);
   }
   unlockAudio() { if (this.sound) (this.projector || (this.projector = new PaperSound())).unlock(); }
-  reelSound() { if (this.sound) (this.projector || (this.projector = new PaperSound())).burst(); }
+  reelSound(action) { if (this.sound) (this.projector || (this.projector = new PaperSound())).burst(action); }
 }
 
 // Public photographs only. Album membership is supplied by its approved renderer.
@@ -145,8 +147,8 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
   const controlsObserver = new MutationObserver(() => controls.setAttribute('aria-expanded', viewer.dialog.dataset.controls));
   controlsObserver.observe(viewer.dialog, {attributes:true, attributeFilter:['data-controls']});
   const audioLabel = () => {
-    viewer.soundButton.textContent = viewer.sound ? 'Camera sound on' : 'Camera sound off';
-    viewer.soundButton.title = 'Recorded Polaroid 650 eject. Turn off for silent browsing.';
+    viewer.soundButton.textContent = viewer.sound ? 'Photo sound on' : 'Photo sound off';
+    viewer.soundButton.title = 'Camera eject for photo changes; paper swoosh for toss and return. Turn off for silent browsing.';
     viewer.soundButton.dataset.audioStatus = 'recorded-polaroid-650';
   };
   audioLabel(); viewer.soundButton.addEventListener('click', audioLabel);
@@ -207,7 +209,7 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
   let css = document.querySelector('link[data-polaroid-memory]');
   if (!css) {
     css = element('link'); css.rel = 'stylesheet';
-    css.href = new URL('./memory-viewer.css?v=20261125-polaroid42', import.meta.url);
+    css.href = new URL('./memory-viewer.css?v=20261125-polaroid43', import.meta.url);
     css.dataset.polaroidMemory = ''; document.head.append(css);
   }
   try { await Promise.all([stylesheetReady(css), stylesheetReady(document.querySelector('link[data-ola-viewer]'))]); }

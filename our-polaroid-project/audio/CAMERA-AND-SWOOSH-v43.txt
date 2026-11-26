@@ -1,0 +1,13 @@
+Polaroid interaction sounds — v43
+
+Photo changes: the owner-selected recorded Polaroid 650 short eject.
+File: polaroid-650-eject-v42.wav (unchanged)
+SHA256 c5d2c58c20451b4bd5a63cbc693977811c6732d2fc679dbebcf1a3ec47d8ffdf
+Source, CC0 license, edits and exact audition identity: POLAROID-650-EJECT-v42.txt.
+
+Toss and return: the earlier soft paper swoosh, restored for this action at the owner's explicit request.
+File: paper-floop-v33.wav (unchanged, 510ms)
+SHA256 48f3accdbfddca47aebd4edf58e1324d9bed5c93009ea4b21a96f07468f11934
+Earlier procedural-source/creative history: PAPER-SOUND.txt. This is not a camera recording.
+
+Both use their existing baked level and playback gain1. Only one source may run at once. The same Sound control mutes both; close, mute and destroy cancel pending and active playback. No ambient autoplay. An explicit upward Polaroid fling or Toss and return button plays the return animation once without changing the system reduced-motion preference; default Cinema behavior stays unchanged.
