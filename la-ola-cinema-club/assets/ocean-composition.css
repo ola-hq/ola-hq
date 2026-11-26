@@ -38,14 +38,26 @@
 }
 @media(prefers-reduced-motion:reduce){.ocean-canvas>.living-ocean{display:none}.ocean-canvas>.ocean-still{visibility:visible;opacity:1}.ocean-canvas *{transition:none}.home-ocean-lanes .lane{backdrop-filter:none}}
 
-/* Full upper-home atmosphere; the approved phone/cards/filmstrip section is untouched. */
+/* One continuous upper sky, behind the official identity as well as the entrance. */
 body.cinema-home{isolation:isolate;position:relative}
-body.cinema-home::before{content:"";position:absolute;inset:0 0 auto;height:900px;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#07152420 0%,#07152400 48%,#0b1629 94%),url('living-world/ocean-desktop.jpg') center 160px/100% auto no-repeat}
-.cinema-home .site-header{background:linear-gradient(180deg,#071524ad,transparent)}
+body.cinema-home::before{content:"";position:absolute;inset:0 0 auto;height:900px;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#07152424 0%,#07152400 48%,#0b1629 94%),url('living-world/ocean-desktop.jpg') center -40px/100% auto no-repeat}
+.cinema-home .site-header{position:relative;z-index:1;background:transparent;text-shadow:0 1px 2px #000,0 0 10px #000,0 0 18px #071524}
 .cinema-home .home-sky-window{height:210px;mask-image:none;background:none}
 .cinema-home .home-sky-window img{display:none}
 body[data-ocean-artwork=original] .living-ocean{display:none}
-@media(max-width:700px){body.cinema-home::before{height:850px;background-image:linear-gradient(180deg,#07152410 0%,transparent 56%,#0b1629 96%),url('living-world/ocean-desktop.jpg');background-size:cover,auto 360px;background-position:center,calc(50% + 15px) 230px}.cinema-home .home-sky-window{height:185px}}
+@media(max-width:700px){
+ /* A moon-free crop carries the source's clouds behind the phone-sized header.
+    Its intact moon/reflection scene is feathered into clear sky below/right. */
+ body.cinema-home::before{height:850px;z-index:-2;background:linear-gradient(180deg,#07152422,transparent 46%,#0b1629 94%),url('living-world/ocean-desktop.jpg') -180px -40px/2600px auto no-repeat}
+ body.cinema-home::after{content:"";position:absolute;inset:0 0 auto;height:850px;z-index:-1;pointer-events:none;background:url('living-world/ocean-desktop.jpg') calc(50% + 120px) 210px/auto 360px no-repeat;mask-image:linear-gradient(180deg,transparent 190px,#000 270px,#000 490px,transparent 620px)}
+ .cinema-home .home-sky-window{height:185px}
+}
+
+/* Between tablet and compact desktop, reserve the open sky below the two header groups. */
+@media (min-width:701px) and (max-width:1100px){
+ body.cinema-home::before{z-index:-2;background:linear-gradient(180deg,#07152422,transparent 46%,#0b1629 94%),url('living-world/ocean-desktop.jpg') -300px -40px/4200px auto no-repeat}
+ body.cinema-home::after{content:"";position:absolute;inset:0 0 auto;height:850px;z-index:-1;pointer-events:none;background:url('living-world/ocean-desktop.jpg') center 190px/100% auto no-repeat;mask-image:linear-gradient(180deg,transparent 150px,#000 260px,#000 600px,transparent 820px)}
+}
 
 /* Totals lead; partial date coverage belongs to its own diary note. */
 .stats-at-glance{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
