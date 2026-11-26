@@ -9,6 +9,9 @@ body.opw-space-page>.hq-return{background:#0a101bcc;backdrop-filter:blur(12px)}
 body.opw-space-page>header,body.opw-space-page>.site-nav{background:#080b1388;backdrop-filter:blur(12px);border-color:#c8c4e02b}
 body.opw-space-page main{background:linear-gradient(90deg,#040711a8,#04071160 38%,#04071114 70%)}
 body.opw-space-page main p,body.opw-space-page main h1,body.opw-space-page main h2{text-shadow:0 2px 8px #000c,0 6px 24px #0008}
+/* Keep the bright crest exposed around the photographs; soften only the reading areas. */
+body.opw-space-page :is(.og-hero>div:first-child,.album-header>div:first-child,.opw-love-copy,.opw-directory-opening){position:relative;isolation:isolate}
+body.opw-space-page :is(.og-hero>div:first-child,.album-header>div:first-child,.opw-love-copy,.opw-directory-opening)::before{content:"";position:absolute;inset:-20px -14px;z-index:-1;pointer-events:none;background:#03060dd9;filter:blur(22px);border-radius:24px}
 body.opw-space-page .og-event-entry>.opw-card-copy{background:linear-gradient(#070a1255,#070a12b8);padding-inline:10px}
 body.opw-space-page .journal-card,body.opw-space-page .event-card,body.opw-space-page .og-downloads{background:#0b101ac9}
 body.opw-space-page .collection img{background:#11141eaa}
