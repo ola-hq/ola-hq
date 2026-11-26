@@ -131,7 +131,7 @@ test('reduced motion skips the long forward flourish',async()=>{
  environment();try{const v=new CardViewer({forwardFlourish:true});v.reduced.matches=true;v.open([{src:'a.jpg'},{src:'b.jpg'}]);let animated=false;v.card.animate=()=>{animated=true};await v.forward();assert.equal(animated,false);assert.equal(v.index,1);assert.equal(v.turning,false);v.destroy();}finally{delete globalThis.document;delete globalThis.matchMedia;}
 });
 test('contact sheet uses resolved collection artwork and preserves full review destinations',()=>{
- const source=readFileSync('la-ola-cinema-club/assets/contact-sheet.js','utf8');assert.match(source,/club-collection/);assert.match(source,/new CardViewer/);assert.match(source,/details=1#review-details/);assert.match(source,/touchmove.*passive:true/);assert.match(source,/im.loading='lazy'/);assert.doesNotMatch(source,/canva.com|innerHTML|preventDefault\(\).*touchmove/);
+ const source=readFileSync('la-ola-cinema-club/assets/contact-sheet.js','utf8');assert.match(source,/club-collection/);assert.match(source,/new CinemaCardViewer/);assert.match(source,/details=1#review-details/);assert.match(source,/touchmove.*passive:true/);assert.match(source,/im.loading='lazy'/);assert.doesNotMatch(source,/canva.com|innerHTML|preventDefault\(\).*touchmove/);
  const intro=readFileSync('la-ola-cinema-club/assets/living-world.js','utf8');assert.match(intro,/entrance-ribbon.svg/);assert.match(intro,/la-ola-emblem-v2.webp/);assert.match(intro,/setTimeout\(finish,3200\)/);
 });
 
@@ -695,4 +695,34 @@ test('review-backed dates retain ambiguous days and partial-viewing exclusions',
  assert.equal(added.length,168);
  assert.ok(added.every(x=>filmDate(x).source.includes('existing reviewed film')));
  assert.ok(added.every(x=>!('confirmedAttendance' in filmDate(x))));
+});
+
+import {CinemaCardViewer} from '../la-ola-cinema-club/assets/cinema-card-viewer.js';
+test('Cinema opts into physical parity while review details remain the real card back',()=>{
+ environment();try{
+  const opened=[];const v=new CinemaCardViewer({sound:false,onActivate:item=>opened.push(item.id)});
+  v.open([{id:'review',src:'review.webp',title:'A review'}]);
+  assert.equal(v.physicalCard,true);assert.equal(v.backgroundNavigation,true);assert.equal(v.doubleTapDetails,true);assert.equal(v.paperBack,false);
+  assert.equal(v.reverse.hidden,true);assert.equal(v.flipButton.hidden,false);assert.equal(v.flipButton.textContent,'Read the back');
+  v.photoTap({timeStamp:100,clientX:20,clientY:20});assert.equal(v.dialog.open,true);
+  v.photoTap({timeStamp:250,clientX:20,clientY:20});assert.deepEqual(opened,['review']);assert.equal(v.dialog.open,false);
+  v.open([{id:'review',src:'review.webp'}]);v.flip();assert.deepEqual(opened,['review','review']);
+  v.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+test('Cinema sideways flip starts at the retained pose and returns the next review centered',async()=>{
+ environment();try{
+  const v=new CinemaCardViewer({sound:false});v.open([{id:'a',src:'a.webp'},{id:'b',src:'b.webp'}]);
+  v.panX=120;v.panY=60;v.rotZ=25;v.orientation=90;v.scale=1.3;v.paint();const departure=v.card.style.transform,frames=[];
+  v.card.animate=(f,o)=>{frames.push({f,o});return{finished:Promise.resolve(),cancel(){}}};
+  await v.toss(1);assert.equal(v.index,1);assert.equal(frames.length,2);assert.equal(frames[0].f[0].transform,departure);assert.equal(frames[0].o.duration,420);assert.equal(frames[1].o.duration,520);
+  assert.equal(v.panX,0);assert.equal(v.panY,0);assert.equal(v.orientation,0);assert.equal(v.turning,false);v.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+test('Cinema retains its sound backend with separate browse return and exit trigger slots',()=>{
+ environment();try{
+  const v=new CinemaCardViewer({sound:false});const actions=[];v.sound=true;v.projector={burst:action=>actions.push(action),stop(){},destroy(){}};
+  v.reelSound();v.reelSound('return');v.reelSound('exit');assert.deepEqual(actions,['browse','return','exit']);v.destroy();
+  const source=readFileSync('la-ola-cinema-club/assets/cinema-card-viewer.js','utf8');assert.match(source,/CardFlickSound/);assert.ok(!source.includes('paper-sound.js'));assert.ok(!source.includes('PaperSound'));
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
 });
