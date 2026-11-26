@@ -74,7 +74,7 @@ const worldCatalog={
 love:{name:'La Ola de Amor',url:'la-ola-de-amor/',about:'People, shared celebrations, love stories, and memories that become places.'},
 cinema:{name:'La Ola Cinema Club',url:'la-ola-cinema-club/',about:'Movies, reviews, ratings, and the stories wrapped around what we watch.'},
 polaroid:{name:'Our Polaroid Wave',url:'our-polaroid-project/',about:'Photographs, captured nights, portraits, and little moments worth keeping.'},
-music:{name:'Wave 26',url:'wave-26.html',about:'Music, releases, experiments, and feelings translated into sound.'},
+music:{name:'Wave26',url:'wave-26.html',about:'Music, releases, experiments, and feelings translated into sound.'},
 fpl:{name:'FPL Wave',url:'fpl-wave.html',about:'A fantasy-football clubhouse, fixtures, strategy, and shared competition.'},
 simulation:{name:'Simulation Wave',url:'simulation-wave/',about:'AI art, impossible ideas, and playful creative worlds.'},
 gdb:{name:'GDB Wave',url:'gdb-wave.html',about:'A fictional university of sound, dancefloor culture, and musical mythology.'},
