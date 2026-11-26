@@ -28,14 +28,14 @@ export class CardViewer{
  constructor({theme='cinema',intensity=8,renderBack,label='Artwork viewer',mount=null,onNavigate=null,onExpand=null,immersive=false,onActivate=null,sound=immersive,forwardFlourish=false,physicalCard=false,onDismiss=null}={}){
   this.immersive=immersive;this.physicalCard=Boolean(physicalCard&&immersive);this.onDismiss=onDismiss;this.onActivate=onActivate;this.turn=0;this.turning=false;this.sound=Boolean(sound);this.soundAvailable=Boolean(sound);this.forwardFlourish=forwardFlourish;this.inline=Boolean(mount);this.onNavigate=onNavigate;this.onExpand=onExpand;
   this.items=[];this.index=0;this.intensity=intensity;this.renderBack=renderBack;this.reduced=matchMedia('(prefers-reduced-motion: reduce)');
-  if(!document.querySelector('link[data-ola-viewer]')){const css=node('link');css.rel='stylesheet';css.href=new URL('./card-viewer.css?v=20261125-physical39',import.meta.url);css.dataset.olaViewer='';document.head.append(css);}
+  if(!document.querySelector('link[data-ola-viewer]')){const css=node('link');css.rel='stylesheet';css.href=new URL('./card-viewer.css?v=20261125-physical40',import.meta.url);css.dataset.olaViewer='';document.head.append(css);}
   this.dialog=node(this.inline?'section':'dialog',this.inline?'ola-inline-card-viewer':'ola-card-dialog');this.dialog.setAttribute('aria-label',label);this.dialog.dataset.theme=theme;if(this.immersive)this.dialog.className+=' ola-card-immersive';
   const tools=this.tools=node('div','ola-card-tools');this.closeButton=this.button('Close',()=>this.close());this.prev=this.button('Previous',()=>this.move(-1));this.next=this.button('Next',()=>this.forward());this.flipButton=this.button('Read the back',()=>this.flip());this.zoomButton=this.button('Zoom in',()=>this.zoom(this.scale>1?1:2));this.resetButton=this.button('Reset view',()=>this.reset());tools.append(this.closeButton,this.prev,this.next,this.flipButton,this.zoomButton,this.resetButton);
   this.stage=node('div','ola-card-stage');this.card=node('div','ola-physical-card');this.front=node('div','ola-card-front');this.image=node('img');this.image.draggable=false;this.image.decoding='async';this.front.append(this.image);this.back=node('section','ola-card-back');this.back.hidden=true;this.back.tabIndex=0;this.card.append(this.front,this.back);this.stage.append(this.card);
   if(this.physicalCard){
    this.dialog.dataset.physical='true';
    this.reverse=node('div','ola-card-paper-reverse');this.reverse.setAttribute('role','img');this.reverse.setAttribute('aria-label','Plain paper reverse. A scan of the actual back has not been added.');this.card.append(this.reverse);
-   this.rotateLeft=this.button('Rotate left',()=>this.rotate(-90));this.rotateRight=this.button('Rotate right',()=>this.rotate(90));this.returnButton=this.button('Toss and return',()=>this.loft());tools.append(this.rotateLeft,this.rotateRight,this.returnButton);
+   this.rotateLeft=this.button('Rotate left',()=>this.rotate(-90));this.rotateRight=this.button('Rotate right',()=>this.rotate(90));this.returnButton=this.button('Toss and return',()=>this.loft({playMotion:true}));this.returnButton.title='Play the full spin-and-return animation once';tools.append(this.rotateLeft,this.rotateRight,this.returnButton);
   }
   this.caption=node('p','ola-card-caption');this.caption.setAttribute('role','status');this.source=node('a','ola-card-source','Open original image');this.source.target='_blank';this.source.rel='noopener';
   if(this.inline){const controls=node('details','ola-inline-controls');controls.append(node('summary',null,'Card controls'),tools,this.source);this.closeButton.textContent='Expand card';this.closeButton.onclick=()=>this.onExpand?.(this.index);this.caption.className='ola-inline-caption';this.dialog.append(this.stage,controls,this.caption);mount.append(this.dialog);}else{this.dialog.append(tools,this.stage,this.caption,this.source);document.body.append(this.dialog);}this.pointers=new Map();
@@ -47,7 +47,7 @@ export class CardViewer{
   if(this.soundAvailable){this.soundButton=this.button('Sound on',()=>{this.sound=!this.sound;if(!this.sound)this.projector?.stop();this.soundButton.textContent=this.sound?'Sound on':'Sound off';this.soundButton.setAttribute('aria-pressed',String(this.sound));if(this.sound)this.reelSound();});this.soundButton.setAttribute('aria-pressed','true');tools.append(this.soundButton);}
 
   this.dialog.addEventListener('close',()=>{document.documentElement.style.overflow=this.oldOverflow||'';this.notifyStage(false);this.pointers.clear();this.projector?.stop();this.turn++;this.turning=false;this.returning=false;this.returnAnimation?.cancel?.();this.returnAnimation=null;this.opener?.focus({preventScroll:true});});
-  this.dialog.addEventListener('keydown',e=>{if(e.target.matches('input,textarea,select'))return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();this.move(e.key==='ArrowRight'?1:-1)}if(this.immersive&&(e.key==='Enter'||e.key===' ' )&&e.target===this.stage){e.preventDefault();this.activate();}if(this.physicalCard&&e.target===this.stage&&['f','F','r','R','ArrowUp'].includes(e.key)){e.preventDefault();if(e.key==='ArrowUp')this.loft();else if(e.key.toLowerCase()==='f')this.flip();else this.rotate(e.shiftKey?-90:90);}if(this.immersive&&e.key==='Tab')this.setControls(true);if(e.key==='Escape'){e.preventDefault();e.stopPropagation();if(this.physicalCard)this.exit();else if(this.immersive)this.activate();else if(this.inline)this.reset();else this.close();return;}if(e.key==='Tab'&&!this.inline)this.trapFocus(e);});
+  this.dialog.addEventListener('keydown',e=>{if(e.target.matches('input,textarea,select'))return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();this.move(e.key==='ArrowRight'?1:-1)}if(this.immersive&&(e.key==='Enter'||e.key===' ' )&&e.target===this.stage){e.preventDefault();this.activate();}if(this.physicalCard&&e.target===this.stage&&['f','F','r','R','ArrowUp'].includes(e.key)){e.preventDefault();if(e.key==='ArrowUp')this.loft({playMotion:true});else if(e.key.toLowerCase()==='f')this.flip();else this.rotate(e.shiftKey?-90:90);}if(this.immersive&&e.key==='Tab')this.setControls(true);if(e.key==='Escape'){e.preventDefault();e.stopPropagation();if(this.physicalCard)this.exit();else if(this.immersive)this.activate();else if(this.inline)this.reset();else this.close();return;}if(e.key==='Tab'&&!this.inline)this.trapFocus(e);});
   this.stage.addEventListener('pointerdown',e=>{if(!(this.immersive&&e.pointerType==='touch'))this.down(e)});this.stage.addEventListener('pointermove',e=>{if(!(this.immersive&&e.pointerType==='touch'))this.drag(e)});for(const type of ['pointerup','pointercancel','lostpointercapture'])this.stage.addEventListener(type,e=>{if(!(this.immersive&&e.pointerType==='touch'))this.up(e,type==='pointerup')});
   if(this.immersive){
    // Native touch events keep both fingers through Safari's gesture recognition. Do not process pointer-touch duplicates.
@@ -89,13 +89,13 @@ export class CardViewer{
  }
  physicalPose(){return {panX:this.panX,panY:this.panY,rotX:this.rotX,rotY:this.rotY,rotZ:this.rotZ,orientation:this.orientation,faceY:this.faceY,scale:this.scale};}
  restorePhysicalPose(pose){for(const key of ['panX','panY','rotX','rotY','rotZ','orientation','faceY','scale'])if(Number.isFinite(pose[key]))this[key]=pose[key];this.zoomButton.textContent=this.scale>1?'Zoom out':'Zoom in';this.updateFace();this.paint();}
- async loft(){
+ async loft({playMotion=false}={}){
   if(!this.physicalCard||this.turning||this.pointers.size)return;
   this.turning=this.returning=true;const token=++this.turn;this.dialog.dataset.dragging='false';this.reelSound();
   const departure=this.card.style.transform;
   this.restorePhysicalPose({panX:0,panY:0,rotX:0,rotY:0,rotZ:0,orientation:0,faceY:0,scale:1});
   const home=this.card.style.transform;
-  if(!this.reduced.matches&&this.card.animate){
+  if((playMotion===true||!this.reduced.matches)&&this.card.animate){
    // A visible spinning departure, then the SAME photograph returns centered at its natural full fit.
    const distance=this.stage.clientHeight+Math.hypot(this.card.offsetWidth||this.stage.clientWidth,this.card.offsetHeight||this.stage.clientHeight);
    const spin=`translate(${this.stage.clientWidth*.08}px,-${this.stage.clientHeight*.65}px) rotateX(150deg) rotateY(200deg) rotateZ(170deg) scale(.55)`;

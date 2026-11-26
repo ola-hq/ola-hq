@@ -486,3 +486,31 @@ test('shared reviewer distribution aligns exact grades and keeps zero counts on 
  assert.deepEqual(data.rows.map(r=>[r.brain.length,r.heart.length]),[[2,0],[1,2],[0,1]]);
  const full=comparisonDistribution(films);assert.equal(full.brainCount,234);assert.equal(full.heartCount,234);assert.equal(full.rows.reduce((n,r)=>n+r.brain.length,0),234);assert.equal(full.rows.reduce((n,r)=>n+r.heart.length,0),234);
 });
+
+
+test('explicit Toss and return plays once with reduced motion while automatic top-edge motion stays reduced',async()=>{
+ environment();try{
+  let finish,animations=0,frames,nav=0;const v=new CardViewer({immersive:true,physicalCard:true,sound:false,onNavigate:()=>nav++});v.reduced.matches=true;v.open([{id:'same',src:'a.jpg'},{id:'other',src:'b.jpg'}]);v.card.animate=f=>{animations++;frames=f;return{finished:new Promise(r=>finish=r),cancel(){finish()}}};
+  v.rotZ=90;v.panX=20;v.scale=1.2;v.paint();await v.loft();assert.equal(animations,0,'automatic reduced-motion path still recenters without a flourish');
+  assert.match(v.returnButton.title,/Play the full/);const pending=v.returnButton.onclick();assert.equal(animations,1,'explicit button requests one playback, without changing the preference');assert.equal(v.reduced.matches,true);assert.equal(v.turning,true);assert.match(frames[1].transform,/rotateX\(150deg\)/);assert.equal(frames[2].opacity,0);finish();await pending;assert.equal(v.turning,false);assert.equal(v.items[v.index].id,'same');assert.equal(nav,0);assert.equal(v.scale,1);assert.equal(v.panX,0);
+  v.dialog.emit('keydown',{key:'ArrowUp',target:v.stage});assert.equal(animations,2,'explicit keyboard alternative also requests playback');v.close();await Promise.resolve();assert.equal(v.turning,false);assert.equal(v.reduced.matches,true);v.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('explicit motion choice does not enable automatic edge animations or affect default Cinema',async()=>{
+ environment();try{
+  let plays=0;const v=new CardViewer({immersive:true,physicalCard:true,sound:false});v.reduced.matches=true;v.open([{src:'a.jpg'}]);v.card.animate=()=>{plays++;return{finished:Promise.resolve(),cancel(){}}};await v.loft({playMotion:true});assert.equal(plays,1);
+  const p=(y,t)=>({...pointer(200,y),timeStamp:t,target:v.image});v.down(p(350,1000));v.drag(p(100,1400));v.up(p(100,1500),true);await Promise.resolve();assert.equal(plays,1,'a later gesture still respects the unchanged system preference');assert.equal(v.reduced.matches,true);v.destroy();
+  const cinema=new CardViewer({immersive:true,sound:false});cinema.reduced.matches=true;cinema.open([{src:'cinema.jpg'}]);cinema.card.animate=()=>{throw Error('default Cinema must not run the Polaroid effect')};assert.equal(cinema.returnButton,undefined);await cinema.loft({playMotion:true});assert.equal(cinema.turning,false);cinema.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('explicit toss keeps existing cancellation and safe missing-animation fallback',async()=>{
+ environment();try{
+  for(const action of ['close','reset','show','destroy']){
+   let finish,cancelled=0;const v=new CardViewer({immersive:true,physicalCard:true,sound:false});v.reduced.matches=true;v.open([{id:'a',src:'a.jpg'},{id:'b',src:'b.jpg'}]);v.card.animate=()=>({finished:new Promise(r=>finish=r),cancel(){cancelled++;finish()}});const pending=v.returnButton.onclick();assert.equal(v.returning,true);
+   if(action==='show'){v.index=1;v.show();}else v[action]();await pending;assert.equal(cancelled,1);assert.equal(v.turning,false);assert.equal(v.returning,false);assert.equal(v.reduced.matches,true);assert.equal(v.index,action==='show'?1:0);if(action!=='destroy')v.destroy();
+  }
+  const v=new CardViewer({immersive:true,physicalCard:true,sound:false});v.reduced.matches=true;v.open([{id:'same',src:'a.jpg'}]);v.panX=90;v.card.animate=undefined;await v.returnButton.onclick();assert.equal(v.turning,false);assert.equal(v.panX,0);assert.equal(v.items[v.index].id,'same');assert.equal(v.reduced.matches,true);v.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
