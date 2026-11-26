@@ -11,3 +11,16 @@ Each film ID maps to `image`, `thumbnail`, `sha256`, `revision` and an approval 
 5. Run the Cinema tests and normal HQ release guard, compare fresh main, publish with the existing release workflow, then verify the actual public responses.
 
 The synchronizer validates all records before writing. It rejects draft status, an unapproved path replacement, missing approval receipt, files outside this world's assets directory and checksum mismatches. It does not fetch Canva or guess approval from the latest modified image. Keep image pixels, written scores and edition labels consistent; an older retained image must be identified when the current rating has changed.
+
+## Final Canva master and temporary drafts — owner requirement, November 26, 2026
+
+The canonical final design is **La Ola Cinema 2026**, design ID `DAHAZmy7qts`. A saved temporary design is not completion. For every future review:
+
+1. Finish the owner-approved card using the existing template and original icons/logos/stamps.
+2. Transfer it into the final master in the appropriate collection position. If the owner already transferred it, verify it rather than insert a duplicate.
+3. Reopen/read the saved master and verify the card, scores, placement and page identity. Record both page ID and current page number because page numbers can move. Preserve the protected baseline artwork.
+4. Export the final master page at full resolution, promote that approved export through the registry, and verify the deployed result.
+5. Tell the owner the card is in the final master and where it is.
+6. Only after transfer, saved readback and export verification, move the exact completed temporary design to recoverable Canva Trash. Never empty Trash or remove canonical masters, reusable templates or unrelated work. Keep local approved exports and receipts for rollback.
+
+Verified owner transfers: Bank page 98, Focker page 103 (`PBhL3zXW07WnCv2S`). Temporary two-page design `DAHb_wZ0Tu8` was moved to recoverable Trash after both master pages were verified and the corrected Focker export completed. Other historical drafts are outside this bounded cleanup.
