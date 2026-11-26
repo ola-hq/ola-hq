@@ -14,17 +14,17 @@ function harness(){
  return{s,audio,catalog,ready,created:()=>created,handlers};
 }
 test('Every supplied recording has a unique real media file',()=>{
- const {catalog,s}=harness();assert.equal(catalog.tracks.length,38);assert.equal(new Set(catalog.tracks.map(t=>t.id)).size,38);assert.equal(new Set(catalog.tracks.map(t=>t.src)).size,38);
+ const {catalog,s}=harness();assert.equal(catalog.tracks.length,62);assert.equal(new Set(catalog.tracks.map(t=>t.id)).size,62);assert.equal(new Set(catalog.tracks.map(t=>t.src)).size,62);
  for(const t of catalog.tracks){assert(t.duration>0);assert(t.src.startsWith('assets/wave26/audio/'));const p=path.join(root,t.src),data=fs.readFileSync(p);assert(data.length>100000);assert(data.length<32*1024*1024);assert(data.subarray(0,3).toString()==='ID3'||(data[0]===255&&(data[1]&224)===224));}
  s.dispose();
 });
 test('Albums retain complete track order and only real recording associations',()=>{
- const {catalog,s}=harness();assert.deepEqual(Array.from(catalog.albums,a=>a.tracks.length),[13,7,12,6]);let ready=0;
+ const {catalog,s}=harness();assert.deepEqual(Array.from(catalog.albums,a=>a.tracks.length),[13,8,12,6]);let ready=0;
  for(const a of catalog.albums){assert.equal(a.trackEntries.length,a.tracks.length);a.trackEntries.forEach((t,i)=>{assert.equal(t.title,a.tracks[i]);if(t.recordingId){ready++;assert(catalog.tracks.some(r=>r.id===t.recordingId))}})}
- assert.equal(ready,2);assert.equal(catalog.showAudio.filter(t=>t.recordingId).length,1);assert.equal(catalog.showAudio.find(t=>t.recordingId).title,'Night Frequency');assert.equal(catalog.tracks.filter(t=>t.variant).length,3);s.dispose();
+ assert.equal(ready,21);assert.equal(catalog.showAudio.filter(t=>t.recordingId).length,5);assert.equal(catalog.showAudio.find(t=>t.title==='Night Frequency').title,'Night Frequency');assert(catalog.tracks.filter(t=>t.variant).length>=5);s.dispose();
 });
 test('Title similarities never substitute a different song',()=>{
- const {catalog,s}=harness();const oui=catalog.albums.find(a=>a.id==='oui'),love=catalog.albums.find(a=>a.id==='laola');assert.equal(oui.trackEntries.find(t=>t.title==='Same Bed, Different Country').recordingId,null);assert.equal(love.trackEntries.find(t=>t.title==='Welcome to La Ola de Amor').recordingId,null);s.dispose();
+ const {catalog,s}=harness();const oui=catalog.albums.find(a=>a.id==='oui'),love=catalog.albums.find(a=>a.id==='laola');assert(!oui.tracks.includes('Same Bed, Different Country'));assert(oui.trackEntries.find(t=>t.title==='Same Babe, Different Country').recordingId);assert.equal(oui.tracks[3],'Ya Sé');assert.equal(oui.tracks[6],'No Subtitles');assert.equal(love.trackEntries.find(t=>t.title==='Welcome to La Ola de Amor').recordingId,null);s.dispose();
 });
 test('One quiet audio element serves every source selection',async()=>{
  const {s,audio,ready,created}=harness();assert(audio.paused);assert(!s.state().wantPlaying);
@@ -43,5 +43,7 @@ test('Mute, speed, media failure and page exit retain safe transport state',asyn
  const {s,audio,ready,handlers}=harness();s.setRate(1.13);assert.equal(audio.playbackRate,1.13);s.setRate(9);assert.equal(audio.playbackRate,1.13);s.setVolume(.23);s.toggleMute();assert(s.state().muted);s.toggleMute();assert.equal(s.state().volume,.23);await s.play();ready();audio.emit('error');assert(audio.paused);assert(s.state().error.includes('could not load'));await s.play();handlers.pagehide();assert(audio.paused);s.dispose();
 });
 test('The world has a native player, album mini players and stable app route',()=>{
- const page=fs.readFileSync(path.join(root,'wave-26.html'),'utf8'),ui=fs.readFileSync(path.join(assets,'player.js'),'utf8');assert(page.indexOf('<h2>Projects</h2>')<page.indexOf('id="wave26-player"'));assert(page.indexOf('id="wave26-player"')<page.indexOf('<h2>Songbook</h2>'));assert(ui.includes('data-mini-album'));assert(ui.includes('data-queue-album'));assert(ui.includes('data-external-listen'));assert(ui.includes('Audio to add'));assert(!page.includes('youtube.com/embed'));assert(fs.readFileSync(path.join(root,'app/app.js'),'utf8').includes("wave26: { name: 'Wave26', path: 'wave-26.html'"));
+ const page=fs.readFileSync(path.join(root,'wave-26.html'),'utf8'),ui=fs.readFileSync(path.join(assets,'player.js'),'utf8');assert(page.indexOf('<h2>Projects</h2>')>page.indexOf('<h2>Songbook</h2>'));assert(page.indexOf('<h2>Projects</h2>')<page.indexOf('<h2>Show Audio</h2>'));assert(page.indexOf('id="wave26-player"')<page.indexOf('<h2>Songbook</h2>'));assert(ui.includes('data-mini-album'));assert(ui.includes('data-queue-album'));assert(ui.includes('data-external-listen'));assert(ui.includes('Audio to add'));assert(!page.includes('youtube.com/embed'));assert(fs.readFileSync(path.join(root,'app/app.js'),'utf8').includes("wave26: { name: 'Wave26', path: 'wave-26.html'"));
 });
+
+test('Extended controls are optional and Songbook has a collection filter',()=>{const page=fs.readFileSync(path.join(root,'wave-26.html'),'utf8'),ui=fs.readFileSync(path.join(assets,'player.js'),'utf8'),css=fs.readFileSync(path.join(assets,'player.css'),'utf8');assert(page.includes('id="songCollection"'));assert(ui.includes('Extended view'));assert(ui.includes('setExtended(false)'));assert(ui.includes('data-songbook'));assert(css.includes('.songbook .song button .device-icon{width:16px;height:16px'));});

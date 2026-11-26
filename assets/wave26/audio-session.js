@@ -1,6 +1,6 @@
-import {effectDefaults,effectLimits,effectiveEffects,anyEffect,createEffectsRack} from './audio-effects.js?v=wave26-20261126';
-import {approvedTracks,bonusTrack} from './catalog.js?v=wave26-20261126';
-import {createSoundPads,soundPadNames,recordedHorn,recordedSounds,sampleVersion} from './sound-pads.js?v=wave26-20261126';
+import {effectDefaults,effectLimits,effectiveEffects,anyEffect,createEffectsRack} from './audio-effects.js?v=wave26-polish-20261126';
+import {approvedTracks,bonusTrack} from './catalog.js?v=wave26-polish-20261126';
+import {createSoundPads,soundPadNames,recordedHorn,recordedSounds,sampleVersion} from './sound-pads.js?v=wave26-polish-20261126';
 
 // One audio element and audible graph for the whole site, independent of room lifecycles.
 export function createSoundtrackSession(){
