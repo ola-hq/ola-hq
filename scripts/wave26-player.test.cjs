@@ -14,7 +14,7 @@ function harness(){
  return{s,audio,catalog,ready,created:()=>created,handlers};
 }
 test('Every supplied recording has a unique real media file',()=>{
- const {catalog,s}=harness();assert.equal(catalog.tracks.length,62);assert.equal(new Set(catalog.tracks.map(t=>t.id)).size,62);assert.equal(new Set(catalog.tracks.map(t=>t.src)).size,62);
+ const {catalog,s}=harness();assert.equal(catalog.tracks.length,79);assert.equal(new Set(catalog.tracks.map(t=>t.id)).size,79);assert.equal(new Set(catalog.tracks.map(t=>t.src)).size,79);
  for(const t of catalog.tracks){assert(t.duration>0);assert(t.src.startsWith('assets/wave26/audio/'));const p=path.join(root,t.src),data=fs.readFileSync(p);assert(data.length>100000);assert(data.length<32*1024*1024);assert(data.subarray(0,3).toString()==='ID3'||(data[0]===255&&(data[1]&224)===224));}
  s.dispose();
 });

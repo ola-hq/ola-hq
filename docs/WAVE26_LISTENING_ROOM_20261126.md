@@ -16,3 +16,6 @@ The Songbook returns to compact editorial rows: small Play/Pause icons, discreet
 There are now 62 playable recordings. We See Yes uses the official eight-track OUI SI YES order, including Ya Sé and No Subtitles; Love Lore has all six tracks. Six of thirteen La Ola de Amor slots and all five Show Audio entries have recordings. Earlier cuts remain distinct; Neon Mirage’s available recording is labelled Edit. Original audio and artwork are preserved.
 
 Source/media and application DOM checks accompany the update. DOM checks use controlled media and layout; rendered desktop/mobile and audible/device acceptance remain separate and unverified when browser access is unavailable.
+
+
+The final Songbook gap check adds 17 recordings covering 16 more existing titles, bringing the library to 79 recordings. Picture Portal preserves both supplied source cuts with explicit WAV/M4A cut labels. Other recovered titles include Paris Disappears, Yellow M&Ms, Half Past Four, Same Dumb Luck and Twelve Fake Therapists. These remain singles/sketches unless an album/project relationship is verified.

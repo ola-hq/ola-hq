@@ -77,6 +77,22 @@ export const catalog = {
       "trackNumber": 2
     },
     {
+      "id": "every-flag-becomes-a-doorway-4798e2b0",
+      "title": "Every Flag Becomes a Doorway",
+      "src": "assets/wave26/audio/every-flag-becomes-a-doorway-4798e2b0.mp3",
+      "duration": 182.073,
+      "collection": "Music Library",
+      "cover": "assets/worlds/wave-26-brand-live.jpg"
+    },
+    {
+      "id": "forty-six-at-seven-thirty-2702bc86",
+      "title": "Forty-Six at Seven-Thirty",
+      "src": "assets/wave26/audio/forty-six-at-seven-thirty-2702bc86.mp3",
+      "duration": 174.681,
+      "collection": "Music Library",
+      "cover": "assets/worlds/wave-26-brand-live.jpg"
+    },
+    {
       "id": "golden-hour-138cf2dc",
       "title": "Golden Hour",
       "src": "assets/wave26/audio/golden-hour-138cf2dc.mp3",
@@ -94,6 +110,14 @@ export const catalog = {
       "variant": null,
       "cover": "assets/worlds/wave-26-brand-live.jpg",
       "collection": "Music Library"
+    },
+    {
+      "id": "half-past-four-a3a1d395",
+      "title": "Half Past Four",
+      "src": "assets/wave26/audio/half-past-four-a3a1d395.mp3",
+      "duration": 176.3,
+      "collection": "Music Library",
+      "cover": "assets/worlds/wave-26-brand-live.jpg"
     },
     {
       "id": "i-accept-443d97e9",
@@ -156,6 +180,14 @@ export const catalog = {
       "trackNumber": 3
     },
     {
+      "id": "jump-the-fucking-fence-2e9d218e",
+      "title": "Jump The Fucking Fence",
+      "src": "assets/wave26/audio/jump-the-fucking-fence-2e9d218e.mp3",
+      "duration": 180.219,
+      "collection": "Music Library",
+      "cover": "assets/worlds/wave-26-brand-live.jpg"
+    },
+    {
       "id": "la-maquina-del-tiempo-3c8c7954",
       "title": "La Máquina del Tiempo",
       "src": "assets/wave26/audio/la-maquina-del-tiempo-3c8c7954.mp3",
@@ -172,6 +204,14 @@ export const catalog = {
       "cover": "assets/worlds/la-ola-track-01.png",
       "albumId": "laola",
       "trackNumber": 9
+    },
+    {
+      "id": "maintenance-da311724",
+      "title": "Maintenance",
+      "src": "assets/wave26/audio/maintenance-da311724.mp3",
+      "duration": 173.714,
+      "collection": "Music Library",
+      "cover": "assets/worlds/wave-26-brand-live.jpg"
     },
     {
       "id": "mommy-daddy-ground-control-240ecd78",
@@ -243,6 +283,14 @@ export const catalog = {
       "collection": "Music Library"
     },
     {
+      "id": "open-your-trap-1915d048",
+      "title": "Open Your Trap",
+      "src": "assets/wave26/audio/open-your-trap-1915d048.mp3",
+      "duration": 178.991,
+      "collection": "Music Library",
+      "cover": "assets/worlds/wave-26-brand-live.jpg"
+    },
+    {
       "id": "oui-si-yes-a9d35216",
       "title": "Oui Sí Yes",
       "src": "assets/wave26/audio/oui-si-yes-a9d35216.mp3",
@@ -251,6 +299,14 @@ export const catalog = {
       "cover": "assets/worlds/oui-si-yes.png",
       "albumId": "oui",
       "trackNumber": 1
+    },
+    {
+      "id": "paris-disappears-dd2be174",
+      "title": "Paris Disappears",
+      "src": "assets/wave26/audio/paris-disappears-dd2be174.mp3",
+      "duration": 63.138,
+      "collection": "Music Library",
+      "cover": "assets/worlds/wave-26-brand-live.jpg"
     },
     {
       "id": "perdon-pardon-sorry-f0f82622",
@@ -279,6 +335,24 @@ export const catalog = {
       "cover": "assets/worlds/wave-26-brand-live.jpg",
       "variant": "Alternate source cut",
       "sourceLabel": "Perreo Paraíso (1)"
+    },
+    {
+      "id": "picture-portal-fa63cc46",
+      "title": "Picture Portal",
+      "src": "assets/wave26/audio/picture-portal-fa63cc46.mp3",
+      "duration": 357.134,
+      "collection": "Music Library",
+      "cover": "assets/worlds/wave-26-brand-live.jpg",
+      "variant": "M4A source cut"
+    },
+    {
+      "id": "picture-portal-7de3fcb4",
+      "title": "Picture Portal",
+      "src": "assets/wave26/audio/picture-portal-7de3fcb4.mp3",
+      "duration": 357.12,
+      "collection": "Music Library",
+      "cover": "assets/worlds/wave-26-brand-live.jpg",
+      "variant": "WAV source cut"
     },
     {
       "id": "put-a-banner-on-it-2e32530c",
@@ -316,6 +390,22 @@ export const catalog = {
       "variant": "Earlier downloaded cut",
       "cover": "assets/worlds/wave-26-brand-live.jpg",
       "collection": "Music Library"
+    },
+    {
+      "id": "same-beat-same-ground-121f3953",
+      "title": "Same Beat Same Ground",
+      "src": "assets/wave26/audio/same-beat-same-ground-121f3953.mp3",
+      "duration": 179.2,
+      "collection": "Music Library",
+      "cover": "assets/worlds/wave-26-brand-live.jpg"
+    },
+    {
+      "id": "same-dumb-luck-819c15d9",
+      "title": "Same Dumb Luck",
+      "src": "assets/wave26/audio/same-dumb-luck-819c15d9.mp3",
+      "duration": 170.527,
+      "collection": "Music Library",
+      "cover": "assets/worlds/wave-26-brand-live.jpg"
     },
     {
       "id": "say-it-again-f03585eb",
@@ -404,6 +494,14 @@ export const catalog = {
       "collection": "Music Library"
     },
     {
+      "id": "the-night-talks-back-af989f75",
+      "title": "The Night Talks Back",
+      "src": "assets/wave26/audio/the-night-talks-back-af989f75.mp3",
+      "duration": 172.46,
+      "collection": "Music Library",
+      "cover": "assets/worlds/wave-26-brand-live.jpg"
+    },
+    {
       "id": "the-ones-ef2920e2",
       "src": "assets/wave26/audio/the-ones-ef2920e2.mp3",
       "duration": 213.96,
@@ -420,6 +518,14 @@ export const catalog = {
       "variant": null,
       "cover": "assets/worlds/wave-26-brand-live.jpg",
       "collection": "Music Library"
+    },
+    {
+      "id": "thirteen-year-habit-422066d1",
+      "title": "Thirteen Year Habit",
+      "src": "assets/wave26/audio/thirteen-year-habit-422066d1.mp3",
+      "duration": 181.002,
+      "collection": "Music Library",
+      "cover": "assets/worlds/wave-26-brand-live.jpg"
     },
     {
       "id": "this-is-what-i-mean-b3f23632",
@@ -450,6 +556,14 @@ export const catalog = {
       "collection": "Music Library"
     },
     {
+      "id": "twelve-fake-therapists-7b51cb42",
+      "title": "Twelve Fake Therapists",
+      "src": "assets/wave26/audio/twelve-fake-therapists-7b51cb42.mp3",
+      "duration": 178.155,
+      "collection": "Music Library",
+      "cover": "assets/worlds/wave-26-brand-live.jpg"
+    },
+    {
       "id": "waiting-for-an-adult-341007ce",
       "src": "assets/wave26/audio/waiting-for-an-adult-341007ce.mp3",
       "duration": 327.2,
@@ -457,6 +571,14 @@ export const catalog = {
       "variant": null,
       "cover": "assets/worlds/wave-26-brand-live.jpg",
       "collection": "Music Library"
+    },
+    {
+      "id": "we-don-t-know-shit-0c89bcfc",
+      "title": "We Don't Know Shit",
+      "src": "assets/wave26/audio/we-don-t-know-shit-0c89bcfc.mp3",
+      "duration": 171.416,
+      "collection": "Music Library",
+      "cover": "assets/worlds/wave-26-brand-live.jpg"
     },
     {
       "id": "we-keep-getting-married-65e4b2e4",
@@ -537,6 +659,14 @@ export const catalog = {
       "collection": "Music Library"
     },
     {
+      "id": "whoever-you-walked-in-as-eb590b38",
+      "title": "Whoever You Walked In As",
+      "src": "assets/wave26/audio/whoever-you-walked-in-as-eb590b38.mp3",
+      "duration": 179.331,
+      "collection": "Music Library",
+      "cover": "assets/worlds/wave-26-brand-live.jpg"
+    },
+    {
       "id": "wrong-way-right-place-08be54cd",
       "title": "Wrong Way, Right Place",
       "src": "assets/wave26/audio/wrong-way-right-place-08be54cd.mp3",
@@ -556,6 +686,14 @@ export const catalog = {
       "cover": "assets/worlds/oui-si-yes.png",
       "albumId": "oui",
       "trackNumber": 4
+    },
+    {
+      "id": "yellow-m-ms-6bc63be6",
+      "title": "Yellow M&Ms",
+      "src": "assets/wave26/audio/yellow-m-ms-6bc63be6.mp3",
+      "duration": 181.238,
+      "collection": "Music Library",
+      "cover": "assets/worlds/wave-26-brand-live.jpg"
     },
     {
       "id": "you-couldn-t-even-beat-spurs-9e9c8b60",
