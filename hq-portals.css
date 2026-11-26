@@ -39,7 +39,7 @@ body.portal-hq{background:var(--portal-night);color:#f7f0e4;isolation:isolate}
 .portal-intro h1 em{color:var(--portal-gold);font-weight:normal}
 .portal-intro .lead{font-size:clamp(18px,2vw,21px);max-width:620px;margin:0 auto 30px}
 #waves{scroll-margin-top:30px}
-.portal-stars{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 18% 24%,#344b7b35,transparent 49%),radial-gradient(ellipse at 80% 60%,#583e7630,transparent 50%),#061325}
+.portal-stars{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 18% 24%,#344b7b35,transparent 49%),radial-gradient(ellipse at 80% 60%,#583e7630,transparent 50%)}
 body:has(#app-launch) .portal-stars{z-index:0}
 body:has(#app-launch) .app{position:relative;z-index:1}
 body:has(#app-launch) #app-launch.hero{background:transparent}
@@ -98,3 +98,9 @@ body:has(#app-launch) .world-intro{background:radial-gradient(ellipse at center,
 .ola-world-entry{position:fixed;z-index:10001;inset:0;pointer-events:none;overflow:hidden;background:#071526}
 .ola-entry-scene{position:absolute;inset:0;background-repeat:no-repeat}
 .ola-world-entry>canvas{position:absolute;inset:0;width:100%;height:100%}
+
+/* The starfield opens onto an illustrated ocean as the Waves selector arrives. */
+.portal-wave-backdrop{position:fixed;inset:-3%;z-index:-1;pointer-events:none;opacity:var(--wave-presence,0);background:linear-gradient(180deg,#0613251a,#06132500 48%,#06132552),url('assets/entrances/hq-great-wave-night-20261125.webp') 32% center/cover no-repeat;transform:translate3d(var(--wave-x,0px),var(--wave-y,0px),0);transition:opacity .45s ease;will-change:opacity}
+body:has(#app-launch) .portal-wave-backdrop{z-index:0}
+@media(max-width:650px){.portal-wave-backdrop{background-position:25% center;inset:0;transform:none}.portal-hq #waves{background:#061325a6;border-radius:10px;padding:10px 14px}.worlds .section-head{text-shadow:0 2px 18px #061325,0 1px 4px #061325}}
+@media(prefers-reduced-motion:reduce){.portal-wave-backdrop{transform:none;transition:none;will-change:auto}}
