@@ -1,0 +1,103 @@
+/* Expanded controls only. Original illustration, source plane and gallery stay intact. */
+.wave26-deck .dj-studio{--led:#b4d4ee;--amber:#e5bd72;--ink:#f7eedb;box-sizing:border-box;width:calc(100% - 32px);max-width:880px;margin:20px auto 32px;padding:25px;gap:24px;border:1px solid #bcd3eb32;border-top-color:#c1d7ed68;border-radius:24px;background:radial-gradient(ellipse at 10% 0,#18466e42,transparent 60%),linear-gradient(150deg,#0e2941f5,#08182afa);box-shadow:inset 0 1px #e5eef813,0 16px 60px #03060988,0 0 48px #b9955111;color:var(--ink);font:14px/1.5 system-ui,sans-serif;isolation:isolate}
+.wave26-deck .dj-studio *{box-sizing:border-box}
+.wave26-deck .dj-header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.wave26-deck .dj-eyebrow{font:9px/1.5 ui-monospace,monospace;letter-spacing:2px;color:#a5b4c4}
+.wave26-deck .dj-header h2{font:500 24px/1.3 system-ui,sans-serif;margin:5px 0 0;letter-spacing:-.8px;color:#fff6e3}
+.wave26-deck .dj-header h2 span{font-size:20px;margin-left:12px;color:var(--amber)}
+.wave26-deck .dj-live{display:flex;align-items:center;gap:7px;color:#9faebd;font:8px/1.4 ui-monospace,monospace;letter-spacing:1px;white-space:nowrap}
+.wave26-deck .dj-live i{width:5px;height:5px;background:#eccb8b;border-radius:50%;box-shadow:0 0 10px #d4a84f}
+.wave26-deck .dj-main{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;align-items:center}
+.wave26-deck .dj-studio .track-heading{order:0;display:flex!important;gap:14px;margin:0;min-height:64px}
+.wave26-deck .dj-studio .track-heading .track-art-reserved{width:64px;height:64px;margin:0;border:1px solid #bcd3eb3a;border-radius:10px;overflow:hidden;box-shadow:0 0 20px #72a3d622}
+.wave26-deck .dj-studio .track-readout h2{font:500 16px/1.35 system-ui,sans-serif!important;margin:4px 0!important;letter-spacing:-.2px;color:#e9f1f9}
+.wave26-deck .dj-studio .track-readout>span{font:8px/1.4 ui-monospace,monospace;color:#a1b7ce;letter-spacing:1px}
+.wave26-deck .dj-studio .track-readout p{color:#a0acb8;font:10px/1.4 system-ui!important}
+.wave26-deck .dj-scope{height:64px;position:relative;overflow:hidden;background:repeating-linear-gradient(0deg,transparent,transparent 15px,#b5cee90b 16px);border-bottom:1px solid #6893bf26}
+.wave26-deck .dj-scope canvas{width:100%;height:64px;display:block}
+.wave26-deck .dj-scope>span{position:absolute;top:0;right:0;font:8px/1.4 ui-monospace,monospace;letter-spacing:1px;color:#7a90a7}
+.wave26-deck .dj-scope[data-active=true]{filter:drop-shadow(0 0 4px #7daad955)}
+.wave26-deck .dj-timeline{grid-column:1/-1}
+.wave26-deck .dj-studio input[type=range]{accent-color:#e0bc70;cursor:pointer;background:transparent;touch-action:pan-y}
+.wave26-deck .dj-studio #seek{width:100%!important;height:32px!important;margin:0;touch-action:none}
+.wave26-deck .dj-studio .tape-time{margin:0;display:flex;justify-content:space-between;font:10px/1.3 ui-monospace,monospace;color:#a8b7c7}
+.wave26-deck .dj-studio button{font:500 12px/1.3 system-ui,sans-serif;cursor:pointer;transition:background .15s,box-shadow .15s,border-color .15s;touch-action:manipulation}
+.wave26-deck .dj-studio button:focus-visible,.wave26-deck .dj-studio input:focus-visible,.wave26-deck .dj-studio select:focus-visible{outline:2px solid #ffcf92;outline-offset:3px}
+.wave26-deck .dj-studio .transport{order:0;display:flex;align-items:center;justify-content:center;gap:10px;height:60px!important;min-width:0;padding:0;border:0;background:none;box-shadow:none;margin:0!important;width:100%!important}
+.wave26-deck .dj-studio .transport button{flex:none;width:44px;height:44px;min-height:44px!important;border-radius:50%;border:1px solid #96b0cc30;background:linear-gradient(145deg,#28323d,#1d232a);color:#d5e4f3;box-shadow:inset 0 1px #fff1;padding:10px}
+.wave26-deck .dj-studio .transport button[data-audio=toggle]{width:56px;height:56px;background:linear-gradient(130deg,#e8d5a8,#c7a661);color:#11283e;border-color:#efcf8d;box-shadow:0 0 25px #7eabd92b,inset 0 1px #fff6}
+.wave26-deck .dj-studio .transport button[aria-pressed=true]{color:var(--amber);border-color:#ffcf9277}
+.wave26-deck .dj-studio .device-icon{width:21px!important;height:21px!important}
+.wave26-deck .dj-section-label{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#a1b0c0;font:9px/1.5 ui-monospace,monospace;letter-spacing:1.6px;margin:0 0 9px}
+.wave26-deck .dj-section-label output{letter-spacing:0;color:var(--amber);font-size:11px}
+.wave26-deck .dj-speed{min-width:0}
+.wave26-deck .speed-keys{display:flex;gap:3px;border:1px solid #87a4c32e;background:#090b1288;border-radius:30px;padding:3px}
+.wave26-deck .speed-keys button{flex:1;min-width:0;min-height:36px;padding:4px;border:0;border-radius:24px;background:none;color:#9dacbc;font:11px ui-monospace,monospace}
+.wave26-deck .speed-keys button[aria-pressed=true]{background:#a1c2e424;color:#dae7f4;box-shadow:inset 0 0 0 1px #a9c7e663}
+.wave26-deck .dj-speed>small,.wave26-deck .dj-loop>small{display:block;font:9px/1.4 system-ui;color:#94869f;margin-top:7px}
+.wave26-deck .dj-library{grid-column:1/-1;padding-top:6px}
+.wave26-deck .dj-studio .tape-slots{display:grid!important;grid-template-columns:repeat(8,minmax(0,1fr))!important;gap:5px!important;margin:0 0 12px!important;padding:0!important}
+.wave26-deck .dj-studio .tape-slot{min-width:0;min-height:44px!important;padding:0!important;border:1px solid #87a4c330;border-radius:10px;background:#1b222a;color:#a9b9c9;box-shadow:inset 0 1px #fff1}
+.wave26-deck .dj-studio .tape-slot span{font:12px ui-monospace,monospace!important}
+.wave26-deck .dj-studio .tape-slot[aria-pressed=true]{background:#2b65902b;border-color:#d2ad61;color:#f1d694;box-shadow:0 0 16px #6b9ed422,inset 0 0 10px #6b9ed41a}
+.wave26-deck .dj-studio .playlist-selector{margin:0;order:0;width:100%}
+.wave26-deck .dj-studio #track-select{width:100%;height:46px!important;padding:10px 30px 10px 14px;background:#0a0c14;color:#ccd9e7;border:1px solid #8baed331;border-radius:10px;font:13px system-ui!important}
+.wave26-deck .dj-studio .volume-control{order:0;grid-column:1/-1;display:grid!important;grid-template-columns:60px 1fr 42px;align-items:center;gap:12px;padding:0!important;min-height:44px!important;width:100%!important;height:auto!important;background:none;border:0;margin:0!important}
+.wave26-deck .dj-studio .volume-control label{font:9px ui-monospace,monospace;letter-spacing:1.5px;color:#9aa9b8}
+.wave26-deck .dj-studio #volume{grid-column:auto;grid-row:auto;height:40px!important;min-height:40px!important;margin:0;opacity:1}
+.wave26-deck .dj-studio #volume-value{position:static;padding:0;background:none;color:#e6c897;font:11px ui-monospace,monospace;grid-column:auto;grid-row:auto}
+.wave26-deck .dj-tools{grid-column:1/-1}
+.wave26-deck .dj-studio #music-tray-toggle{min-height:44px;width:100%;font-size:11px;background:none;color:#9ab0c6;border:0;border-top:1px solid #96b3d124;border-radius:0;margin:0}
+.wave26-deck .dj-studio .deck-bottom{gap:8px;padding-top:8px}
+.wave26-deck .dj-studio .deck-bottom .small-key{min-height:44px;font:11px system-ui;border:1px solid #81a1c330;border-radius:12px;background:#20262d;color:#baccdf;padding:8px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:none}
+.wave26-deck .dj-lab{border-top:1px solid #96b3d12e;padding-top:18px}
+.wave26-deck #effects-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:48px;padding:5px 0;background:none;border:0;color:#d6e4f3;text-align:left;font-size:14px}
+.wave26-deck #fx-summary{font:9px ui-monospace,monospace;letter-spacing:1px;color:var(--amber)}
+.wave26-deck #effects-panel{padding-top:20px}.wave26-deck #effects-panel[hidden]{display:none}
+.wave26-deck #effects-reset{font:10px system-ui;letter-spacing:0;min-height:36px;padding:4px 12px;border:1px solid #e9bd852d;border-radius:20px;color:#e3c194;background:transparent}
+.wave26-deck .dj-hint{font:11px/1.5 system-ui;color:#92a0ae;margin:0 0 18px}
+.wave26-deck .fx-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.wave26-deck .fx-module{min-width:0;padding:12px 10px;background:linear-gradient(145deg,#20293299,#12121c);border:1px solid #80a6cd29;border-radius:14px}
+.wave26-deck .fx-module[data-active=true]{border-color:#afcbe880;box-shadow:0 0 20px #6b9ed416}
+.wave26-deck .fx-module button{width:100%;display:flex;flex-wrap:wrap;align-items:center;gap:7px;padding:0;background:none;border:0;color:#c2d2e2;min-height:44px;font-size:11px;text-align:left}
+.wave26-deck .fx-module button i{width:5px;height:5px;border-radius:50%;background:#65576e;flex:none}
+.wave26-deck .fx-module button[aria-pressed=true] i{background:#bad2eb;box-shadow:0 0 10px #a5c4e5}
+.wave26-deck .fx-module button span{font:8px ui-monospace,monospace;color:#7c92a8;width:100%}
+.wave26-deck .fx-module input{width:100%;height:44px;margin:4px 0}
+.wave26-deck .fx-module output{display:block;text-align:center;font:10px ui-monospace,monospace;color:var(--amber)}
+.wave26-deck .fx-extra{display:grid;grid-template-columns:90px 1fr 54px;gap:10px;align-items:center;margin:14px 0 28px;font:10px system-ui;color:#95a8bb}
+.wave26-deck .fx-extra input{width:100%;height:44px;margin:0}
+.wave26-deck .fx-extra output{font:10px ui-monospace,monospace;color:var(--amber)}
+.wave26-deck .dj-pads{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.wave26-deck .dj-pads button{touch-action:none;min-height:76px;border:1px solid #8bb2da42;border-radius:15px;color:#b9d2eb;background:radial-gradient(ellipse at top,#344e6a50,transparent),#161c22;box-shadow:inset 0 1px #bfd5ec20,0 4px 0 #080b0e;padding:10px 3px}
+.wave26-deck .dj-pads b{display:block;font:10px ui-monospace,monospace;letter-spacing:.5px}
+.wave26-deck .dj-pads small{display:block;font:8px ui-monospace,monospace;color:#70869d;margin-top:10px}
+.wave26-deck .dj-pads button[aria-pressed=true]{background:#284f7299;border-color:#b9d2eb;color:#f3f7fc;box-shadow:inset 0 0 22px #e8c67d40,0 0 28px #b9955166;transform:translateY(2px)}
+.wave26-deck #effects-status{font:11px system-ui;color:#ffd69d;margin:10px 0 0}.wave26-deck #effects-status:empty{display:none}
+.wave26-deck .dj-loop{border-top:1px solid #96b3d124;padding-top:18px}
+.wave26-deck .dj-loop .dj-section-label{flex-wrap:wrap;letter-spacing:1px}
+.wave26-deck .dj-loop .dj-section-label output{font:10px system-ui;color:#8b9aaa;letter-spacing:0}
+.wave26-deck .dj-loop>div+div{display:flex;gap:8px}
+.wave26-deck .dj-loop button{flex:1;min-height:44px;border:1px solid #84a4c62c;border-radius:25px;background:#1b2530;color:#aec5dc;font:11px system-ui}
+.wave26-deck .dj-loop button[aria-pressed=true]{border-color:#bad2eb;color:#dde9f5;background:#344e6a6b}
+.wave26-deck .dj-studio button:disabled{opacity:.4;cursor:default}
+@media(max-width:600px){.wave26-deck .dj-studio{width:calc(100% - 20px);padding:19px 15px;margin:12px auto 24px;border-radius:20px;gap:18px}.wave26-deck .dj-header h2{font-size:22px}.wave26-deck .dj-live{font-size:0;gap:0}.wave26-deck .dj-live i{width:6px;height:6px}.wave26-deck .dj-main{grid-template-columns:minmax(0,1fr);gap:14px}.wave26-deck .dj-main>*{grid-column:1!important}.wave26-deck .dj-scope{height:42px}.wave26-deck .dj-scope canvas{height:42px}.wave26-deck .dj-studio .track-heading{min-height:64px}.wave26-deck .dj-studio .transport{gap:14px}.wave26-deck .dj-studio .tape-slots{gap:3px!important}.wave26-deck .dj-studio .tape-slot{border-radius:8px}.wave26-deck .fx-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.wave26-deck .fx-module:last-child{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;column-gap:12px;align-items:center}.wave26-deck .fx-module:last-child output{grid-column:2}.wave26-deck .dj-pads{gap:7px}.wave26-deck .dj-pads button{min-height:72px;border-radius:11px}.wave26-deck .dj-pads b{font-size:8px}.wave26-deck .dj-studio #track-select{font-size:16px!important}}
+@media(prefers-reduced-motion:reduce){.wave26-deck .dj-studio *{transition:none!important;animation:none!important}}
+
+/* Precise tempo and quick loop controls share the existing audio session. */
+.wave26-deck #playback-rate{display:block;width:100%;height:44px;margin:0;touch-action:none}
+.wave26-deck .tempo-limits{display:flex;justify-content:space-between;gap:12px;font:9px/1.4 ui-monospace,monospace;color:#92a7bc;margin:0 0 10px}
+.wave26-deck .speed-keys button{min-height:44px;font-size:11px}
+.wave26-deck .dj-hint strong{font-weight:600;color:#cfe0f1}
+.wave26-deck .fx-module button span{font-size:9px;line-height:1.5;letter-spacing:.03em}
+.wave26-deck .fx-module button[aria-pressed=true] span{color:#d1e1f2}
+.wave26-deck .loop-quick{display:flex;align-items:center;gap:8px;margin-top:12px}
+.wave26-deck .loop-quick>span{font:9px/1.4 ui-monospace,monospace;color:#a1b0c0;letter-spacing:1px;max-width:60px}
+.wave26-deck #loop-status{font:11px/1.5 system-ui,sans-serif;color:#e5bd72;margin:10px 0 0}
+.wave26-deck #loop-status:empty{display:none}
+
+.wave26-deck .dj-sounds{border-top:1px solid #96b3d12e;padding-top:18px}
+.wave26-deck #sounds-stop{min-height:44px;padding:6px 13px;border:1px solid #e9bd854a;border-radius:20px;background:transparent;color:#efc994;font:11px system-ui;letter-spacing:0}
+.wave26-deck .sound-pads button[data-playing=true]{background:#744b2466;border-color:#ffca88;color:#ffe7b9;box-shadow:inset 0 0 20px #e5a34c22,0 0 20px #e5a34c22}
+.wave26-deck #sounds-status{font:11px/1.5 system-ui;color:#a4b8cc;margin:12px 0 0}
+@media(max-width:600px){.wave26-deck .sound-pads{grid-template-columns:repeat(2,minmax(0,1fr))}}

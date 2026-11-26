@@ -8,7 +8,7 @@ const ROOT = new URL('../', location.href);
 const worlds = {
   hq: { name: 'OLA HQ', path: '', parent: null },
   'la-ola': { name: 'La Ola de Amor', path: 'la-ola-de-amor/', parent: null },
-  wave26: { name: 'Wave 26', path: 'wave-26.html', parent: null },
+  wave26: { name: 'Wave26', path: 'wave-26.html', parent: null },
   polaroid: { name: 'Our Polaroid Wave', path: 'our-polaroid-project/', parent: null },
   blockbuster: { name: 'La Ola Cinema Club', path: 'la-ola-cinema-club/', parent: null },
   fpl: { name: 'FPL Wave', path: 'fpl-wave.html', parent: null },
