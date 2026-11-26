@@ -13,8 +13,10 @@
   const paint=()=>{
    frame=0;if(document.hidden)return;
    ctx.setTransform(scale,0,0,scale,0,0);ctx.clearRect(0,0,width,height);ctx.drawImage(sky,0,0,width,height);
+   const y=Math.max(0,window.scrollY||0),drift=motion.matches?0:Math.sin(y/height*.75);
+   layer.style.setProperty('--opw-wave-x',`${drift*10}px`);layer.style.setProperty('--opw-wave-y',`${drift*-24}px`);
    if(motion.matches)return;
-   const y=Math.max(0,window.scrollY||0),cycle=Math.floor(y/(height*2.3)),phase=y/(height*2.3)-cycle;
+   const cycle=Math.floor(y/(height*2.3)),phase=y/(height*2.3)-cycle;
    const rng=random(cycle+379),entry=.1+rng()*.18,travel=(phase-entry)/.64;
    if(travel<0||travel>1)return;
    const crest=height*(1.35-travel*1.9),swell=Math.sin(travel*Math.PI)*height*.14,alpha=Math.sin(travel*Math.PI);
@@ -25,11 +27,11 @@
   const queue=()=>{if(!frame&&!document.hidden)frame=requestAnimationFrame(paint);};
   const resize=()=>{
    width=Math.max(1,window.innerWidth);height=Math.max(1,window.innerHeight);scale=Math.min(window.devicePixelRatio||1,1.5);
-   canvas.width=sky.width=Math.ceil(width*scale);canvas.height=sky.height=Math.ceil(height*scale);stars.setTransform(scale,0,0,scale,0,0);stars.fillStyle='#05070d';stars.fillRect(0,0,width,height);
+   canvas.width=sky.width=Math.ceil(width*scale);canvas.height=sky.height=Math.ceil(height*scale);stars.setTransform(scale,0,0,scale,0,0);stars.clearRect(0,0,width,height);
    const rand=random(171026),cloud=(x,y,r,color)=>{const g=stars.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,color);g.addColorStop(1,'transparent');stars.fillStyle=g;stars.fillRect(x-r,y-r,r*2,r*2);};
    stars.save();stars.translate(width*.48,height*.47);stars.rotate(-.48);stars.scale(1,.38);const span=Math.max(width,height);
    cloud(-span*.24,0,span*.46,'#70608777');cloud(span*.18,0,span*.4,'#3a578488');cloud(0,0,span*.34,'#c1aec538');stars.restore();
-   const count=width<650?220:480;
+   const count=width<650?90:160;
    for(let i=0;i<count;i++){const x=rand()*width,y=rand()*height,r=rand()>.97?1.6:.4+rand()*.6;stars.fillStyle=`rgba(224,222,239,${.3+rand()*.65})`;stars.beginPath();stars.arc(x,y,r,0,Math.PI*2);stars.fill();}
    for(let i=0;i<count*2;i++){const x=(rand()-.5)*Math.max(width,height)*1.6,scatter=(rand()+rand()+rand()-1.5)*height*.14;const px=width*.48+x*Math.cos(-.48)-scatter*Math.sin(-.48),py=height*.47+x*Math.sin(-.48)+scatter*Math.cos(-.48);stars.fillStyle=`rgba(190,179,220,${rand()*.24})`;stars.fillRect(px,py,.6+rand(),.6+rand());}
    queue();

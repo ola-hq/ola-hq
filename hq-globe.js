@@ -1,6 +1,6 @@
 /* Continuous original-art globe: one closed body, one feathered UV material and a sculpted orbit. */
 (()=>{'use strict';
- const modelURL=new URL('assets/models/ola-hq-sculpted-globe-v4.glb?v=20261126-sculpted1',document.currentScript.src),motion=matchMedia('(prefers-reduced-motion: reduce)');
+ const modelURL=new URL('assets/models/ola-hq-sculpted-globe-v5.glb?v=20261126-patch1',document.currentScript.src),motion=matchMedia('(prefers-reduced-motion: reduce)');
  const vertex=`attribute vec3 position;attribute vec3 normal;attribute vec2 uv;uniform mat3 rotation;varying vec3 N;varying vec2 UV;varying float Z;
  vec3 turn(vec3 p){return rotation*p;}
  void main(){vec3 p=turn(position);N=turn(normal);UV=uv;Z=p.z;gl_Position=vec4(p.xy*.80,-p.z*.4,1.);}`;
@@ -28,7 +28,7 @@
  }
  function surpriseTargets(){return [...document.querySelectorAll('.home-six-waves>a.room,.world-card[data-tier="main"]')].filter(card=>card.target!=='_blank')}
  async function setup(anchor,index){
-  let canvas=document.createElement('canvas'),render,engine='webgl',frame=0,visible=true,last=0,controls,burst=null,burstTimer=0,cooldown=0,surpriseBusy=false;
+  let canvas=document.createElement('canvas'),render,engine='webgl',frame=0,visible=true,last=0,controls,burst=null,burstTimer=0,cooldown=0,surpriseBusy=false,preparedTarget=null;
   const ball=OLAGlobeMotion.create();anchor.dataset.globe3d='loading';
   const stop=()=>{cancelAnimationFrame(frame);frame=0;last=0;ball.stop();anchor.classList.remove('is-spinning');anchor.style.setProperty('--globe-charge','0')};
   const cancelSurprise=()=>{clearTimeout(burstTimer);clearTimeout(cooldown);burstTimer=cooldown=0;burst?.remove();burst=null;surpriseBusy=false};
@@ -49,8 +49,9 @@
     if(moving)frame=requestAnimationFrame(spin);else{last=0;anchor.classList.remove('is-spinning');anchor.style.setProperty('--globe-charge','0')}
    }
    function release(x,y){stop();if(!motion.matches&&visible&&!document.hidden){ball.release(x,y);if(ball.moving){anchor.classList.add('is-spinning');frame=requestAnimationFrame(spin);return}}draw()}
+   function prepare(){if(preparedTarget)return;preparedTarget=OLAGlobeMotion.choose(surpriseTargets());if(preparedTarget){const r=anchor.getBoundingClientRect();window.OLAPortals?.primeOrigin?.(preparedTarget,{x:r.x+r.width/2,y:r.y+r.height/2})}}
    function surprise(){
-    if(surpriseBusy)return;const target=OLAGlobeMotion.choose(surpriseTargets());if(!target){anchor.click();return}
+    if(surpriseBusy)return;prepare();const target=preparedTarget;preparedTarget=null;if(!target){anchor.click();return}
     surpriseBusy=true;stop();const r=anchor.getBoundingClientRect(),point={x:r.x+r.width/2,y:r.y+r.height/2};
     window.OLAPortals?.primeOrigin?.(target,point);
     anchor.dataset.surpriseWorld=target.dataset.world||target.getAttribute('href');
@@ -60,7 +61,7 @@
    }
    canvas.className='hq-globe-canvas';canvas.setAttribute('aria-hidden','true');canvas.draggable=false;anchor.append(canvas);anchor.classList.add('has-3d-globe');anchor.dataset.globe3d='ready';anchor.dataset.globeEngine=engine;draw();
    anchor.draggable=false;anchor.querySelectorAll('img').forEach(img=>{img.draggable=false});
-   controls=OLAGlobeInput.attach(anchor,{press(){stop();if(!surpriseBusy)draw()},rotate(dx,dy){if(surpriseBusy)return;ball.rotate(dx,dy);draw(true)},release,reset(){stop();ball.reset();draw()},activate(){if(!surpriseBusy)anchor.click()},surprise});
+   controls=OLAGlobeInput.attach(anchor,{press(){stop();prepare();if(!surpriseBusy)draw()},rotate(dx,dy){if(surpriseBusy)return;ball.rotate(dx,dy);draw(true)},release,reset(){stop();ball.reset();draw()},activate(){if(!surpriseBusy)anchor.click()},surprise});
    const help=document.createElement('span');help.className='hq-globe-help';help.id='hq-globe-help-'+index;help.textContent='Click and drag or use two fingers on a trackpad over the globe to spin it. Tap or press Enter to explore Waves. Arrow keys rotate; Home resets. Triple tap or press R for a surprise world.';anchor.setAttribute('aria-describedby',help.id);anchor.append(help);
    const cancel=()=>{stop();controls.cancel();cancelSurprise();draw()};
    const observer=typeof IntersectionObserver==='undefined'?null:new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(!visible){stop();controls.cancel()}else draw()});observer?.observe(anchor);
