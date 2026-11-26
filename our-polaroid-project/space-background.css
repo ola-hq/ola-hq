@@ -3,10 +3,10 @@ body.opw-space-page{background:#05070d;background-image:radial-gradient(ellipse 
 html[data-opw-space] body.opw-space-page{background:#05070d}
 .opw-universe{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden;contain:strict;background:#05070d}
 .opw-universe canvas{display:block;width:100%;height:100%;opacity:.9;pointer-events:none}
-body.opw-space-page::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#05070db3,#05070d70 40%,#05070d99),linear-gradient(0deg,#05070d5c,transparent 40%,#05070d33)}
+body.opw-space-page::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#05070d88,#05070d30 40%,#05070d66),linear-gradient(0deg,#05070d5c,transparent 40%,#05070d33)}
 body.opw-space-page>.hq-return{background:#0a101bcc;backdrop-filter:blur(12px)}
 body.opw-space-page>header,body.opw-space-page>.site-nav{background:#080b1388;backdrop-filter:blur(12px);border-color:#c8c4e02b}
-body.opw-space-page main{background:linear-gradient(110deg,#080a1299,#080a1245 65%,#080a1277)}
+body.opw-space-page main{background:linear-gradient(110deg,#080a1266,#080a1222 65%,#080a1244)}
 body.opw-space-page .og-event-entry>.opw-card-copy{background:linear-gradient(#070a1255,#070a12b8);padding-inline:10px}
 body.opw-space-page .journal-card,body.opw-space-page .event-card,body.opw-space-page .og-downloads{background:#0b101ac9}
 body.opw-space-page .collection img{background:#11141eaa}
