@@ -1,4 +1,4 @@
-import {createPolaroidMemoryViewer} from '../memory-viewer.js?v=20261125-polaroid40';
+import {createPolaroidMemoryViewer} from '../memory-viewer.js?v=20261125-polaroid41';
 
 // The three static curated albums keep their own original links and modal fallback.
 let viewerPromise, sequence = 0, fallback = false;

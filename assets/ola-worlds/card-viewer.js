@@ -28,7 +28,7 @@ export class CardViewer{
  constructor({theme='cinema',intensity=8,renderBack,label='Artwork viewer',mount=null,onNavigate=null,onExpand=null,immersive=false,onActivate=null,sound=immersive,forwardFlourish=false,physicalCard=false,onDismiss=null}={}){
   this.immersive=immersive;this.physicalCard=Boolean(physicalCard&&immersive);this.onDismiss=onDismiss;this.onActivate=onActivate;this.turn=0;this.turning=false;this.sound=Boolean(sound);this.soundAvailable=Boolean(sound);this.forwardFlourish=forwardFlourish;this.inline=Boolean(mount);this.onNavigate=onNavigate;this.onExpand=onExpand;
   this.items=[];this.index=0;this.intensity=intensity;this.renderBack=renderBack;this.reduced=matchMedia('(prefers-reduced-motion: reduce)');
-  if(!document.querySelector('link[data-ola-viewer]')){const css=node('link');css.rel='stylesheet';css.href=new URL('./card-viewer.css?v=20261125-physical40',import.meta.url);css.dataset.olaViewer='';document.head.append(css);}
+  if(!document.querySelector('link[data-ola-viewer]')){const css=node('link');css.rel='stylesheet';css.href=new URL('./card-viewer.css?v=20261125-physical41',import.meta.url);css.dataset.olaViewer='';document.head.append(css);}
   this.dialog=node(this.inline?'section':'dialog',this.inline?'ola-inline-card-viewer':'ola-card-dialog');this.dialog.setAttribute('aria-label',label);this.dialog.dataset.theme=theme;if(this.immersive)this.dialog.className+=' ola-card-immersive';
   const tools=this.tools=node('div','ola-card-tools');this.closeButton=this.button('Close',()=>this.close());this.prev=this.button('Previous',()=>this.move(-1));this.next=this.button('Next',()=>this.forward());this.flipButton=this.button('Read the back',()=>this.flip());this.zoomButton=this.button('Zoom in',()=>this.zoom(this.scale>1?1:2));this.resetButton=this.button('Reset view',()=>this.reset());tools.append(this.closeButton,this.prev,this.next,this.flipButton,this.zoomButton,this.resetButton);
   this.stage=node('div','ola-card-stage');this.card=node('div','ola-physical-card');this.front=node('div','ola-card-front');this.image=node('img');this.image.draggable=false;this.image.decoding='async';this.front.append(this.image);this.back=node('section','ola-card-back');this.back.hidden=true;this.back.tabIndex=0;this.card.append(this.front,this.back);this.stage.append(this.card);
@@ -96,12 +96,18 @@ export class CardViewer{
   this.restorePhysicalPose({panX:0,panY:0,rotX:0,rotY:0,rotZ:0,orientation:0,faceY:0,scale:1});
   const home=this.card.style.transform;
   if((playMotion===true||!this.reduced.matches)&&this.card.animate){
-   // A visible spinning departure, then the SAME photograph returns centered at its natural full fit.
+   // One continuous end-over-end turn; no yaw reversal or overlapping-axis tumble.
    const distance=this.stage.clientHeight+Math.hypot(this.card.offsetWidth||this.stage.clientWidth,this.card.offsetHeight||this.stage.clientHeight);
-   const spin=`translate(${this.stage.clientWidth*.08}px,-${this.stage.clientHeight*.65}px) rotateX(150deg) rotateY(200deg) rotateZ(170deg) scale(.55)`;
-   const away=`translate(0px,-${distance}px) rotateX(360deg) rotateY(360deg) rotateZ(360deg) scale(.25)`;
-   const incoming=`translate(0px,-${distance}px) rotateX(-120deg) rotateY(-180deg) rotateZ(-160deg) scale(.4)`;
-   const animation=this.returnAnimation=this.card.animate([{transform:departure,opacity:1},{transform:spin,opacity:1,offset:.28},{transform:away,opacity:0,offset:.47},{transform:incoming,opacity:0,offset:.56},{transform:home,opacity:1}],{duration:1250,easing:'cubic-bezier(.22,.61,.36,1)',fill:'none'});
+   const fit=Number(home.match(/scale\(([^)]+)\)/)?.[1])||1;
+   const pose=(x,y,size,pitch,roll=0)=>`translate(${x}px,${y}px) scale(${fit*size}) rotateX(${pitch}deg) rotateY(0deg) rotateZ(${roll}deg)`;
+   const animation=this.returnAnimation=this.card.animate([
+    {transform:departure,offset:0},
+    {transform:pose(0,-this.stage.clientHeight*.5,.8,75,-5),offset:.22},
+    {transform:pose(0,-distance,.55,180,-7),offset:.43},
+    {transform:pose(0,-distance,.55,245,-4),offset:.53},
+    {transform:pose(0,9,1,355,0),offset:.88},
+    {transform:pose(0,0,1,360,0),offset:1}
+   ],{duration:1150,easing:'cubic-bezier(.3,0,.25,1)',fill:'none'});
    try{await animation.finished;}catch{}
   }
   if(token!==this.turn)return;

@@ -409,7 +409,7 @@ test('top-zone boomerang visibly spins offscreen and returns same photo centered
   let navigation=0,resolve,frames;const v=new CardViewer({immersive:true,physicalCard:true,sound:false,onNavigate:()=>navigation++});v.open([{id:'same',src:'a.jpg'},{id:'other',src:'b.jpg'}]);const centered=v.card.style.transform;v.rotZ=135;v.orientation=90;v.panX=22;v.panY=31;v.scale=1.2;v.paint();
   v.card.animate=f=>{frames=f;return{finished:new Promise(r=>resolve=r),cancel(){resolve()}}};
   const point=(y,timeStamp)=>({...pointer(200,y),timeStamp,pointerType:'native-touch',target:v.image});v.down(point(400,1000));v.drag(point(100,1400));
-  assert.equal(v.returning,true);assert.equal(frames[0].opacity,1);assert.equal(frames[1].opacity,1);assert.match(frames[1].transform,/rotateX\(150deg\).*rotateY\(200deg\)/);assert.equal(frames[2].opacity,0);assert.equal(frames[3].opacity,0);assert.equal(frames.at(-1).transform,centered);assert.ok(Number(frames[2].transform.match(/,-([\d.]+)px/)[1])>v.stage.clientHeight+v.card.clientHeight);
+  assert.equal(v.returning,true);assert.match(frames[1].transform,/rotateX\(75deg\).*rotateY\(0deg\)/);assert.equal(frames.at(-1).transform,centered.replace('rotateX(0deg)','rotateX(360deg)'));assert.ok(frames.every(f=>f.opacity===undefined),'natural viewport departure, not a fade');assert.ok(Number(frames[2].transform.match(/,-([\d.]+)px/)[1])>v.stage.clientHeight+v.card.clientHeight);
   v.up(point(100,1500),true);resolve();await Promise.resolve();assert.deepEqual(v.physicalPose(),{panX:0,panY:0,rotX:0,rotY:0,rotZ:0,orientation:0,faceY:0,scale:1});assert.equal(v.card.style.transform,centered);assert.equal(v.items[v.index].id,'same');assert.equal(v.image.src,'a.jpg');assert.equal(globalThis.location.hash,'#photo=same');assert.equal(navigation,0);v.destroy();
  }finally{if(oldLocation===undefined)delete globalThis.location;else globalThis.location=oldLocation;delete globalThis.document;delete globalThis.matchMedia;}
 });
@@ -492,7 +492,7 @@ test('explicit Toss and return plays once with reduced motion while automatic to
  environment();try{
   let finish,animations=0,frames,nav=0;const v=new CardViewer({immersive:true,physicalCard:true,sound:false,onNavigate:()=>nav++});v.reduced.matches=true;v.open([{id:'same',src:'a.jpg'},{id:'other',src:'b.jpg'}]);v.card.animate=f=>{animations++;frames=f;return{finished:new Promise(r=>finish=r),cancel(){finish()}}};
   v.rotZ=90;v.panX=20;v.scale=1.2;v.paint();await v.loft();assert.equal(animations,0,'automatic reduced-motion path still recenters without a flourish');
-  assert.match(v.returnButton.title,/Play the full/);const pending=v.returnButton.onclick();assert.equal(animations,1,'explicit button requests one playback, without changing the preference');assert.equal(v.reduced.matches,true);assert.equal(v.turning,true);assert.match(frames[1].transform,/rotateX\(150deg\)/);assert.equal(frames[2].opacity,0);finish();await pending;assert.equal(v.turning,false);assert.equal(v.items[v.index].id,'same');assert.equal(nav,0);assert.equal(v.scale,1);assert.equal(v.panX,0);
+  assert.match(v.returnButton.title,/Play the full/);const pending=v.returnButton.onclick();assert.equal(animations,1,'explicit button requests one playback, without changing the preference');assert.equal(v.reduced.matches,true);assert.equal(v.turning,true);assert.match(frames[1].transform,/rotateX\(75deg\)/);assert.match(frames[2].transform,/rotateX\(180deg\)/);finish();await pending;assert.equal(v.turning,false);assert.equal(v.items[v.index].id,'same');assert.equal(nav,0);assert.equal(v.scale,1);assert.equal(v.panX,0);
   v.dialog.emit('keydown',{key:'ArrowUp',target:v.stage});assert.equal(animations,2,'explicit keyboard alternative also requests playback');v.close();await Promise.resolve();assert.equal(v.turning,false);assert.equal(v.reduced.matches,true);v.destroy();
  }finally{delete globalThis.document;delete globalThis.matchMedia;}
 });
@@ -512,5 +512,14 @@ test('explicit toss keeps existing cancellation and safe missing-animation fallb
    if(action==='show'){v.index=1;v.show();}else v[action]();await pending;assert.equal(cancelled,1);assert.equal(v.turning,false);assert.equal(v.returning,false);assert.equal(v.reduced.matches,true);assert.equal(v.index,action==='show'?1:0);if(action!=='destroy')v.destroy();
   }
   const v=new CardViewer({immersive:true,physicalCard:true,sound:false});v.reduced.matches=true;v.open([{id:'same',src:'a.jpg'}]);v.panX=90;v.card.animate=undefined;await v.returnButton.onclick();assert.equal(v.turning,false);assert.equal(v.panX,0);assert.equal(v.items[v.index].id,'same');assert.equal(v.reduced.matches,true);v.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+
+test('gentle physical return makes one monotonic pitch turn, keeps yaw zero and lands without overscale',async()=>{
+ environment();try{
+  let frames,options,finish;const v=new CardViewer({immersive:true,physicalCard:true,sound:false});v.open([{id:'same',src:'source.jpg'}]);v.card.offsetWidth=360;v.card.offsetHeight=600;v.stage.clientWidth=390;v.stage.clientHeight=844;v.paint();
+  const fit=Number(v.card.style.transform.match(/scale\(([^)]+)\)/)[1]);v.card.animate=(f,o)=>{frames=f;options=o;return{finished:new Promise(r=>finish=r),cancel(){finish()}}};const p=v.loft({playMotion:true});
+  const pitches=frames.slice(1).map(f=>Number(f.transform.match(/rotateX\(([^)]+)deg\)/)[1]));assert.deepEqual(pitches,[75,180,245,355,360]);assert.ok(frames.slice(1).every(f=>/rotateY\(0deg\)/.test(f.transform)));assert.ok(frames.slice(1).every(f=>Number(f.transform.match(/scale\(([^)]+)\)/)[1])<=fit));assert.equal(options.duration,1150);assert.match(frames.at(-1).transform,/translate\(0px,0px\)/);finish();await p;assert.equal(v.index,0);assert.equal(v.image.src,'source.jpg');assert.match(v.card.style.transform,/rotateX\(0deg\)/);v.destroy();
  }finally{delete globalThis.document;delete globalThis.matchMedia;}
 });
