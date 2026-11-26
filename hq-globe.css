@@ -8,7 +8,7 @@
 
 /* Keep the browser from dragging the anchor or artwork instead of the sphere. */
 .has-3d-globe,.has-3d-globe *{-webkit-user-drag:none!important;user-select:none!important;-webkit-user-select:none!important}
-.hq-globe-canvas{pointer-events:none;filter:drop-shadow(0 0 calc(5px + var(--globe-charge,0)*12px) #d9ad5845)}
+.hq-globe-canvas{pointer-events:auto;filter:drop-shadow(0 0 calc(5px + var(--globe-charge,0)*12px) #d9ad5845)}
 /* Pointer focus has no extra circular border. Keyboard focus remains visible. */
 .has-3d-globe:focus{outline:none!important;box-shadow:none!important}
 .has-3d-globe:focus-visible .hq-globe-canvas{filter:drop-shadow(0 0 12px #f5d292)}
