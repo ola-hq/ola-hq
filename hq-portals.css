@@ -104,3 +104,32 @@ body:has(#app-launch) .world-intro{background:radial-gradient(ellipse at center,
 body:has(#app-launch) .portal-wave-backdrop{z-index:0}
 @media(max-width:650px){.portal-wave-backdrop{background-position:25% center;inset:0;transform:none}.portal-hq #waves{background:#061325a6;border-radius:10px;padding:10px 14px}.worlds .section-head{text-shadow:0 2px 18px #061325,0 1px 4px #061325}}
 @media(prefers-reduced-motion:reduce){.portal-wave-backdrop{transform:none;transition:none;will-change:auto}}
+
+/* One compact mobile header preserves the opening globe's breathing room. */
+@media(max-width:760px){
+ .portal-hq .home-topbar{display:flex;flex-wrap:nowrap!important;gap:10px;padding:10px 12px;min-height:64px}
+ .portal-hq .home-topbar .wordmark{order:0;flex:none;gap:0}
+ .portal-hq .home-topbar .wordmark>img{width:32px;height:32px}
+ .portal-hq .home-topbar .wordmark-text{display:none}
+ .portal-hq .home-topbar .topbar-left{order:1;flex:none}
+ .portal-hq .home-topbar .topbar-right{order:2;margin-left:auto}
+ .portal-hq .home-topbar nav{display:flex;flex-wrap:nowrap;gap:10px;align-items:center}
+ .portal-hq .home-topbar nav a{font-size:14px;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
+ .portal-hq .home-topbar .topbar-right>a[href="index.html"]{display:none}
+}
+/* The collective Deeper Waves doorway shares the same cursor/touch portal. */
+.portal-hq .deeper-waves-invitation{background:#071526;color:#f7f0e4;min-height:300px;isolation:isolate}
+.portal-hq .deeper-waves-invitation .deeper-waves-copy{z-index:6}
+.portal-hq .deeper-waves-invitation .deeper-waves-copy>p:not(.eyebrow),.portal-hq .deeper-waves-invitation .eyebrow{color:#e8d4af}
+.portal-hq .deeper-waves-invitation .deeper-waves-cta{background:#e8c786;color:#10223a}
+.deeper-portal-visual{position:absolute!important;inset:0;display:block;overflow:hidden;z-index:0}
+.deeper-portal-visual>img{display:block;width:100%;height:100%;object-fit:cover;opacity:.44}
+.portal-hq .deeper-waves-invitation.ola-portal-card:hover{transform:none}
+@media(max-width:360px){
+ .portal-hq .home-topbar{gap:6px;padding:8px;min-height:61px}
+ .portal-hq .home-topbar .wordmark>img{width:28px;height:28px}
+ .portal-hq .home-topbar nav{gap:6px}
+ .portal-hq .home-topbar nav a{font-size:13px}
+}
+/* Orbital decoration must not create a horizontal scroll area on small phones. */
+.portal-hq .portal-launch{overflow-x:clip}

@@ -136,7 +136,7 @@
     timer = setTimeout(() => { try { navigate(); } finally { reset(); } }, 420);
   }
   window.OLAPortals = Object.freeze({enter});
-  document.querySelectorAll('.world-entrances a.room, .academy-card-door').forEach(card => card.addEventListener('click', e => {
+  document.querySelectorAll('.world-entrances a.room, .academy-card-door, .deeper-waves-invitation[data-hq-portal]').forEach(card => card.addEventListener('click', e => {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.altKey || e.shiftKey || card.target === '_blank' || card.hasAttribute('download')) return;
     e.preventDefault(); enter(card, () => location.assign(card.href));
   }));

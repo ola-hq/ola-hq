@@ -10,7 +10,7 @@ function runtime({key='cinema',saved=null,reduced=false,target='',loaded=true,wi
  const node=()=>({children:[],style:{},classList:{add(){}},setAttribute(){},addEventListener(){},append(...nodes){this.children.push(...nodes)},remove(){removed++},getContext:()=>ctx,getAnimations:()=>[],animate(keys,options){let resolve;const a={keys,options,finished:new Promise(r=>{resolve=r}),resolve:()=>resolve(),cancel(){}};animations.push(a);return a}});
  const art={...node(),getBoundingClientRect:()=>rect};
  const img={src:'https://example.test/ola-hq/assets/portals-20261124/'+key+'.jpg',currentSrc:'',getAttribute:()=>'/ola-hq/assets/portals-20261124/'+key+'.jpg',closest:()=>art,getBoundingClientRect:()=>rect};
- const card={...node(),target,querySelector:()=>img};
+ const card={...node(),target,getAttribute:name=>name==='data-hq-portal'&&key==='deeper'?'deeper':null,querySelector:()=>img};
  const document={currentScript:{src:'https://example.test/ola-hq/hq-world-portals.js'},hidden:false,body:{append(n){overlays.push(n)}},createElement:()=>node(),querySelectorAll(selector){return selector.includes('a.room')?[card]:[]},querySelector:()=>null,addEventListener(){}};
  const window={OLAPressPeek:{attach(a,b,cb){callbacks.push(cb);return {cancel(){}}}}};
  const context={document,window,URL,Image:class{complete=loaded;naturalWidth=loaded?100:0},matchMedia:()=>({matches:reduced,addEventListener(){}}),localStorage:{getItem:()=>saved,setItem(){}},WeakMap,Map,Math,performance:{now:()=>0},innerWidth:width,innerHeight:844,devicePixelRatio:2,requestAnimationFrame(fn){frames.push(fn);return frames.length},cancelAnimationFrame(){},setTimeout(fn){tasks.push(fn);return tasks.length},clearTimeout(){},addEventListener(){}};
@@ -72,4 +72,10 @@ test('desktop page arrival keeps landscape proportions rather than stretching it
  const r=runtime({key:'polaroid',width:1333});r.api.enter(r.card,()=>{});
  const scene=r.overlays[0].children[0];assert.ok(scene.style.backgroundImage.includes('polaroid-destination.webp'));
  assert.equal(scene.style.backgroundSize,'1333px 926px');
+});
+
+test('Deeper Waves is a collective portal with a real-destination transition',()=>{
+ const r=runtime({key:'deeper',width:1200});r.callbacks[0].start({clientX:250,clientY:300});r.frames[0](350);
+ assert.ok(r.art.children[0].style.backgroundImage.includes('deeper-destination.webp'));
+ let entered=0;r.api.enter(r.card,()=>entered++);assert.equal(r.animations[0].options.duration,2000);r.tasks[0]();assert.equal(entered,1);
 });
