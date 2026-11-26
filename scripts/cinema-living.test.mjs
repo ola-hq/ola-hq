@@ -13,14 +13,14 @@ const manifest=JSON.parse(readFileSync('la-ola-cinema-club/data/artwork.json'));
 test('date filters preserve unknowns and distinguish recorded release years from verified watch days',()=>{
  const f={dates:{release:{value:'2026',precision:'year',verified:false},watched:{value:'2026-11-19',precision:'day',verified:true}}};
  assert.equal(matchesDate(f,{basis:'release',year:'2026'}),true);assert.equal(matchesDate(f,{basis:'release',month:'11'}),false);assert.equal(matchesDate(f,{year:'2026',month:'11'}),true);assert.equal(matchesDate({},{}),true);assert.equal(matchesDate({},{year:'2026'}),false);assert.equal(filmDate({dates:{watched:{value:'2026-02-30'}}}),null);
- assert.equal(filterFilms(films,{year:'2026',month:'11'}).length,8);assert.equal(filterFilms(films,{basis:'reviewed',year:'2026'}).length,0);
+ assert.equal(filterFilms(films,{year:'2026',month:'11'}).length,10);assert.equal(filterFilms(films,{basis:'reviewed',year:'2026'}).length,0);
 });
 test('historical means expose real equality versus display rounding without losing denominator',()=>{
  const pairs=[{currentClubCard:true,brain:3.0001,heart:3,clubScore:6.0001,dates:{watched:{value:'2026-11-01',verified:true}}},{currentClubCard:true,brain:4,heart:4,clubScore:8}];
  const h=historicalTrends(pairs);assert.equal(h.total,2);assert.equal(h.dated,1);assert.equal(h.unknown,1);assert.equal(h.groups[0].equal,false);assert.equal(scoreText(h.groups[0].brain,2),scoreText(h.groups[0].heart,2));assert.equal(scoreText(0),'0');assert.equal(scoreText(null),'—');assert.equal(scoreText(7.25),'7.25');assert.equal(scoreText(10,2),'10');
 });
 test('distribution counts and linked shelf filters use the same paired perspective scope',()=>{
- for(const key of ['clubScore','brain','heart']){const d=distribution(films,key);assert.equal(d.count,234);for(const bin of d.bins){const result=filterFilms(films,{score:bin.score,perspective:key});assert.deepEqual(new Set(result.map(f=>f.id)),new Set(bin.films.map(f=>f.id)));}}
+ for(const key of ['clubScore','brain','heart']){const d=distribution(films,key);assert.equal(d.count,236);for(const bin of d.bins){const result=filterFilms(films,{score:bin.score,perspective:key});assert.deepEqual(new Set(result.map(f=>f.id)),new Set(bin.films.map(f=>f.id)));}}
  const f=films.find(f=>f.title==='Heart of the Beast');assert.equal(f.brain,1);assert.equal(f.heart,3);assert.equal(f.clubScore,4);assert.equal(manifest.films[f.id].status,'approved');assert.equal(manifest.films[f.id].sourcePage,90);
 });
 test('one registry replacement propagates through the shared resolver and static film page with cache revision',()=>{
@@ -70,8 +70,15 @@ test('complete ocean frame keeps its one moon below navigation and within deskto
 test('AMC reservations are separate from confirmed watched dates and never become historical totals',()=>{
  const reservation={currentClubCard:true,brain:4,heart:5,clubScore:9,amcReservationDate:'2026-11-24',dates:{watched:{value:'2026-11-24',verified:true,kind:'amc-reservation',confirmedAttendance:false}}};assert.equal(filmDate(reservation),null);assert.equal(matchesDate(reservation,{year:'2026',month:'11'}),false);assert.equal(historicalTrends([reservation]).dated,0);assert.equal(historicalTrends([reservation]).unknown,1);
 });
-test('homepage hero retains the approved headline, phone, filmstrip source and stacked original cards',()=>{
- const html=readFileSync('la-ola-cinema-club/index.html','utf8');const hero=html.match(/<section class="hero hero-world">.*?<\/section>/s)[0];assert.equal(createHash('sha256').update(hero.replace(/\?art=[a-f0-9]+/g,'?art=approved')).digest('hex'),'354f26ccebe3d76f85ded7de096ee3c04e9638b314078766a6da364a5711c42b');for(const cls of ['home-sky-window','home-ocean-stats','home-ocean-fresh','home-ocean-lanes'])assert.ok(html.includes(cls));assert.equal((html.match(/class="stage-cards"/g)||[]).length,1);
+test('homepage retains its approved composition while showing the latest three owner-approved reviews',()=>{
+ const html=readFileSync('la-ola-cinema-club/index.html','utf8'),old=execFileSync('git',['show','b87fea47:la-ola-cinema-club/index.html'],{encoding:'utf8'});
+ const hero=s=>s.match(/<section class="hero hero-world">.*?<\/section>/s)[0];
+ const normalize=s=>hero(s).replace(/\d+ films on the shelves\./,'COUNT').replace(/<div class="stage-cards"[^>]*>.*?<div class="stage-footer">.*?<\/div>/s,'DYNAMIC LATEST THREE');
+ assert.equal(normalize(html),normalize(old),'headline, phone structure and all unrelated hero content remain intact');
+ for(const cls of ['home-sky-window','home-ocean-stats','home-ocean-fresh','home-ocean-lanes'])assert.ok(html.includes(cls));
+ const stack=html.match(/<div class="stage-cards"[^>]*>(.*?)<div class="stage-footer">/s)[1];
+ const ids=[...stack.matchAll(/data-film-id="([^"]+)"/g)].map(m=>m[1]);
+ assert.deepEqual(ids,filterFilms(films).slice(0,3).reverse().map(f=>f.id));assert.match(html,/Our latest three reviews/);assert.match(stack,/datetime="2026-11-25"/);
 });
 
 test('immersive flicks animate exactly one card and activation targets the selected review',async()=>{
@@ -99,7 +106,7 @@ test('immersive downward dismissal animates off screen then opens the selected r
 });
 
 test('all owner-final review, identity and genre exports match registry receipts and current source pages',()=>{
- const current=films.filter(f=>f.currentClubCard);assert.equal(current.length,88);assert.deepEqual(current.map(f=>f.sourcePage).sort((a,b)=>a-b),Array.from({length:88},(_,i)=>i+14));
+ const current=films.filter(f=>f.currentClubCard&&!f.sourceDesign);assert.equal(current.length,88);assert.deepEqual(current.map(f=>f.sourcePage).sort((a,b)=>a-b),Array.from({length:88},(_,i)=>i+14));
  for(const f of current){const a=manifest.films[f.id];assert.equal(a.status,'approved');assert.equal(a.sourcePage,f.sourcePage);assert.equal(a.sourceDesign,'DAHAZmy7qts');assert.equal(a.pendingRefresh,false);assert.equal(createHash('sha256').update(readFileSync('la-ola-cinema-club/'+a.image)).digest('hex'),a.sha256);assert.match(readFileSync('la-ola-cinema-club/films/'+f.slug+'/index.html','utf8'),new RegExp('art='+a.revision));}
  const about=readFileSync('la-ola-cinema-club/about/index.html','utf8');assert.equal(Object.keys(manifest.features).length,13);for(const [key,a]of Object.entries(manifest.features)){assert.equal(a.status,'approved');assert.ok(a.approvalReceipt);assert.equal(createHash('sha256').update(readFileSync('la-ola-cinema-club/'+a.image)).digest('hex'),a.sha256);assert.ok(about.includes('data-artwork-key="'+key+'"'));assert.ok(about.includes(a.image+'?art='+a.revision));}
 });
@@ -251,7 +258,7 @@ test('Polaroid Portfolio loops while Event cards stop at both album boundaries',
  }finally{delete globalThis.document;delete globalThis.matchMedia;}
 });
 
-test('all 234 recorded Brain and Heart scores survive artwork-edition filtering in stats and shelf links',async()=>{const {collectionStats,perspectiveStats}=await import('../la-ola-cinema-club/assets/stats-data.js');const s=collectionStats(films);assert.equal(s.pairs,234);assert.equal(distribution(films,'brain').count,234);assert.equal(distribution(films,'heart').count,234);assert.ok(Math.abs(s.brainMean-3.1506410256410255)<1e-12);assert.ok(Math.abs(s.heartMean-3.4626068376068377)<1e-12);assert.equal(perspectiveStats(films,'brain').count,234);assert.equal(historicalTrends(films).unknown,30);const bad=films.filter(f=>Math.abs(f.brain+f.heart-f.clubScore)>1e-8);assert.deepEqual(bad.map(f=>f.title),['The Dutchman']);assert.match(bad[0].ratingAuthority,/printed review card is authoritative/);});
+test('all 234 recorded Brain and Heart scores survive artwork-edition filtering in stats and shelf links',async()=>{const {collectionStats,perspectiveStats}=await import('../la-ola-cinema-club/assets/stats-data.js');const s=collectionStats(films);assert.equal(s.pairs,236);assert.equal(distribution(films,'brain').count,236);assert.equal(distribution(films,'heart').count,236);assert.ok(Math.abs(s.brainMean-3.1514830508474576)<1e-12);assert.ok(Math.abs(s.heartMean-3.469279661016949)<1e-12);assert.equal(perspectiveStats(films,'brain').count,236);assert.equal(historicalTrends(films).unknown,30);const bad=films.filter(f=>Math.abs(f.brain+f.heart-f.clubScore)>1e-8);assert.deepEqual(bad.map(f=>f.title),['The Dutchman']);assert.match(bad[0].ratingAuthority,/printed review card is authoritative/);});
 test('reading position follows the visible section rather than resetting every swipe to artwork',async()=>{const {readingPosition}=await import('../la-ola-cinema-club/assets/review-navigation.js');const anchors=[{id:'review-card',top:100,height:600},{id:'review-overview',top:740,height:1100},{id:'review-reactions',top:1200,height:400},{id:'community-feedback',top:1660,height:600}];assert.equal(readingPosition(anchors,80).section,'review-card');assert.equal(readingPosition(anchors,900).section,'review-overview');const p=readingPosition(anchors,1400);assert.equal(p.section,'review-reactions');assert.equal(p.fraction,.5);assert.equal(readingPosition(anchors,1900).section,'community-feedback');});
 // Owner's live iPhone refinements: opt-in, one shared gesture engine, no media edits.
 test('physical paper flip is an opt-in true reverse, keeping Cinema activation unchanged',()=>{
@@ -440,7 +447,7 @@ test('year/month scopes use watched dates independently of edition/release year'
 });
 test('review-backed AMC reconciliation populates viewing years without changing the November sample',()=>{
  const source=JSON.parse(readFileSync('la-ola-cinema-club/data/films.json'));const year=watchedRecords(source,{year:'2026'}),nov=watchedRecords(source,{year:'2026',month:'11'});
- assert.equal(source.length,234);assert.equal(year.length,79);assert.equal(source.length-watchedRecords(source).length,27);assert.equal(nov.length,8);assert.equal(collectionStats(source).pairs,234);assert.ok(Math.abs(collectionStats(nov).average-7.6875)<1e-10);
+ assert.equal(source.length,236);assert.equal(year.length,81);assert.equal(source.length-watchedRecords(source).length,27);assert.equal(nov.length,10);assert.equal(collectionStats(source).pairs,236);assert.ok(Math.abs(collectionStats(nov).average-7.65)<1e-10);
 });
 
 
@@ -487,7 +494,7 @@ test('shared reviewer distribution aligns exact grades and keeps zero counts on 
  const data=comparisonDistribution([{brain:3.25,heart:4},{brain:4,heart:4},{brain:3.25,heart:5},{brain:5,heart:null}]);
  assert.deepEqual(data.rows.map(r=>r.score),[3.25,4,5]);assert.equal(data.brainCount,3);assert.equal(data.heartCount,3);assert.equal(data.maxCount,2);
  assert.deepEqual(data.rows.map(r=>[r.brain.length,r.heart.length]),[[2,0],[1,2],[0,1]]);
- const full=comparisonDistribution(films);assert.equal(full.brainCount,234);assert.equal(full.heartCount,234);assert.equal(full.rows.reduce((n,r)=>n+r.brain.length,0),234);assert.equal(full.rows.reduce((n,r)=>n+r.heart.length,0),234);
+ const full=comparisonDistribution(films);assert.equal(full.brainCount,236);assert.equal(full.heartCount,236);assert.equal(full.rows.reduce((n,r)=>n+r.brain.length,0),236);assert.equal(full.rows.reduce((n,r)=>n+r.heart.length,0),236);
 });
 
 
@@ -566,7 +573,7 @@ test('owner diary corrections retain delayed Letterboxd provenance and separate 
  const emily=films.find(f=>f.id==='club-finding-emily'),paris=films.find(f=>f.id==='cinema2026-26'),dracula=films.find(f=>f.id==='cinema2026-30');
  assert.equal(filmDate(emily).value,'2026-09-04');assert.equal(emily.dateHistory[0].superseded.value,'2026-11-06');assert.equal(filmDate(paris).value,'2026-01-29');assert.equal(filmDate(dracula).value,'2026-11-06');
  const revealed=films.filter(f=>f.dates?.watched?.verificationMethod==='corroborated_unseen_reconciliation');assert.equal(revealed.length,12);assert.ok(revealed.every(f=>f.dates.watched.source.includes('AMC Unseen booking + historical reveal + existing reviewed card/order')));
- assert.equal(films.some(f=>f.title==='How to Rob a Bank'),false,'pending review must not receive invented ratings');
+ const bank=films.find(f=>f.id==='club-how-to-rob-a-bank');assert.equal(bank.brain,3);assert.equal(bank.heart,4.25);assert.equal(filmDate(bank).value,'2026-11-11');
 });
 
 test('Polaroid upward fling animates from held edge and released flick even with reduced motion, then returns same photo',async()=>{
@@ -683,8 +690,8 @@ test('physical flip has safe missing-animation and decode fallbacks; navigation 
 test('review-backed dates retain ambiguous days and partial-viewing exclusions',()=>{
  const source=JSON.parse(readFileSync('la-ola-cinema-club/data/films.json'));
  const f=title=>source.find(x=>x.title===title);
- assert.equal(watchedRecords(source).length,207);
- assert.deepEqual(['2024','2025','2026'].map(year=>watchedRecords(source,{year}).length),[7,121,79]);
+ assert.equal(watchedRecords(source).length,209);
+ assert.deepEqual(['2024','2025','2026'].map(year=>watchedRecords(source,{year}).length),[7,121,81]);
  assert.equal(filmDate(f('Opus')).value,'2025-03');
  assert.equal(filmDate(f('F1')).value,'2025');
  assert.equal(filmDate(f('The Devil Wears Prada 2')).value,'2026');
@@ -725,4 +732,14 @@ test('Cinema retains its sound backend with separate browse return and exit trig
   v.reelSound();v.reelSound('return');v.reelSound('exit');assert.deepEqual(actions,['browse','return','exit']);v.destroy();
   const source=readFileSync('la-ola-cinema-club/assets/cinema-card-viewer.js','utf8');assert.match(source,/CardFlickSound/);assert.ok(!source.includes('paper-sound.js'));assert.ok(!source.includes('PaperSound'));
  }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+
+test('two new approved reviews retain exact owner ratings, watched days, art approval and chronology',()=>{
+ for(const [id,b,h,date] of [['club-focker-in-law',3.5,4.25,'2026-11-25'],['club-how-to-rob-a-bank',3,4.25,'2026-11-11']]){
+ const f=films.find(f=>f.id===id),a=manifest.films[id];assert.equal(f.brain,b);assert.equal(f.heart,h);assert.equal(f.clubScore,b+h);assert.equal(filmDate(f).value,date);assert.equal(a.status,'approved');assert.equal(a.pendingRefresh,false);assert.deepEqual(a.dimensions,[1000,1500]);assert.equal(a.sourceDesign,'DAHb_wZ0Tu8');assert.equal(createHash('sha256').update(readFileSync('la-ola-cinema-club/'+a.image)).digest('hex'),a.sha256);
+ const page=readFileSync('la-ola-cinema-club/films/'+f.slug+'/index.html','utf8');assert.ok(page.includes(f.title));assert.ok(page.includes(date));assert.ok(!page.includes('Brain 5/5, Heart 5/5, Club 10/10.'));
+ }
+ const bank=films.find(f=>f.id==='club-how-to-rob-a-bank');assert.ok(bank.order>films.find(f=>f.id==='club-wicker').order);assert.ok(bank.order<films.find(f=>f.id==='club-ebenezer').order);assert.equal(filterFilms(films)[0].id,'club-focker-in-law');
+ const original=JSON.parse(execFileSync('git',['show','b87fea47:la-ola-cinema-club/data/films.json'],{encoding:'utf8'}));for(const f of original)assert.deepEqual(films.find(x=>x.id===f.id),f,'existing film data unchanged: '+f.id);
 });
