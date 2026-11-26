@@ -13,7 +13,7 @@ const manifest=JSON.parse(readFileSync('la-ola-cinema-club/data/artwork.json'));
 test('date filters preserve unknowns and distinguish recorded release years from verified watch days',()=>{
  const f={dates:{release:{value:'2026',precision:'year',verified:false},watched:{value:'2026-11-19',precision:'day',verified:true}}};
  assert.equal(matchesDate(f,{basis:'release',year:'2026'}),true);assert.equal(matchesDate(f,{basis:'release',month:'11'}),false);assert.equal(matchesDate(f,{year:'2026',month:'11'}),true);assert.equal(matchesDate({},{}),true);assert.equal(matchesDate({},{year:'2026'}),false);assert.equal(filmDate({dates:{watched:{value:'2026-02-30'}}}),null);
- assert.equal(filterFilms(films,{year:'2026',month:'11'}).length,9);assert.equal(filterFilms(films,{basis:'reviewed',year:'2026'}).length,0);
+ assert.equal(filterFilms(films,{year:'2026',month:'11'}).length,8);assert.equal(filterFilms(films,{basis:'reviewed',year:'2026'}).length,0);
 });
 test('historical means expose real equality versus display rounding without losing denominator',()=>{
  const pairs=[{currentClubCard:true,brain:3.0001,heart:3,clubScore:6.0001,dates:{watched:{value:'2026-11-01',verified:true}}},{currentClubCard:true,brain:4,heart:4,clubScore:8}];
@@ -251,7 +251,7 @@ test('Polaroid Portfolio loops while Event cards stop at both album boundaries',
  }finally{delete globalThis.document;delete globalThis.matchMedia;}
 });
 
-test('all 234 recorded Brain and Heart scores survive artwork-edition filtering in stats and shelf links',async()=>{const {collectionStats,perspectiveStats}=await import('../la-ola-cinema-club/assets/stats-data.js');const s=collectionStats(films);assert.equal(s.pairs,234);assert.equal(distribution(films,'brain').count,234);assert.equal(distribution(films,'heart').count,234);assert.ok(Math.abs(s.brainMean-3.1506410256410255)<1e-12);assert.ok(Math.abs(s.heartMean-3.4626068376068377)<1e-12);assert.equal(perspectiveStats(films,'brain').count,234);assert.equal(historicalTrends(films).unknown,208);const bad=films.filter(f=>Math.abs(f.brain+f.heart-f.clubScore)>1e-8);assert.deepEqual(bad.map(f=>f.title),['The Dutchman']);assert.match(bad[0].sourceConflict,/confirmation is pending/);});
+test('all 234 recorded Brain and Heart scores survive artwork-edition filtering in stats and shelf links',async()=>{const {collectionStats,perspectiveStats}=await import('../la-ola-cinema-club/assets/stats-data.js');const s=collectionStats(films);assert.equal(s.pairs,234);assert.equal(distribution(films,'brain').count,234);assert.equal(distribution(films,'heart').count,234);assert.ok(Math.abs(s.brainMean-3.1506410256410255)<1e-12);assert.ok(Math.abs(s.heartMean-3.4626068376068377)<1e-12);assert.equal(perspectiveStats(films,'brain').count,234);assert.equal(historicalTrends(films).unknown,195);const bad=films.filter(f=>Math.abs(f.brain+f.heart-f.clubScore)>1e-8);assert.deepEqual(bad.map(f=>f.title),['The Dutchman']);assert.match(bad[0].sourceConflict,/confirmation is pending/);});
 test('reading position follows the visible section rather than resetting every swipe to artwork',async()=>{const {readingPosition}=await import('../la-ola-cinema-club/assets/review-navigation.js');const anchors=[{id:'review-card',top:100,height:600},{id:'review-overview',top:740,height:1100},{id:'review-reactions',top:1200,height:400},{id:'community-feedback',top:1660,height:600}];assert.equal(readingPosition(anchors,80).section,'review-card');assert.equal(readingPosition(anchors,900).section,'review-overview');const p=readingPosition(anchors,1400);assert.equal(p.section,'review-reactions');assert.equal(p.fraction,.5);assert.equal(readingPosition(anchors,1900).section,'community-feedback');});
 // Owner's live iPhone refinements: opt-in, one shared gesture engine, no media edits.
 test('physical paper flip is an opt-in true reverse, keeping Cinema activation unchanged',()=>{
@@ -436,9 +436,9 @@ test('year/month scopes use watched dates independently of edition/release year'
  assert.deepEqual(watchedRecords(source,{year:2025}).map(f=>f.id),['older-year']);
  assert.equal(watchedRecords(source,{year:2026,month:12}).length,0);
 });
-test('current verified diary is a partial26-film year, with9 verified November films',()=>{
+test('reconciled diary retains a partial27-film 2026 sample and8 November films',()=>{
  const source=JSON.parse(readFileSync('la-ola-cinema-club/data/films.json'));const year=watchedRecords(source,{year:'2026'}),nov=watchedRecords(source,{year:'2026',month:'11'});
- assert.equal(source.length,234);assert.equal(year.length,26);assert.equal(source.length-watchedRecords(source).length,208);assert.equal(nov.length,9);assert.equal(collectionStats(source).pairs,234);assert.ok(Math.abs(collectionStats(nov).average-7.666666666666667)<1e-10);
+ assert.equal(source.length,234);assert.equal(year.length,27);assert.equal(source.length-watchedRecords(source).length,195);assert.equal(nov.length,8);assert.equal(collectionStats(source).pairs,234);assert.ok(Math.abs(collectionStats(nov).average-7.6875)<1e-10);
 });
 
 
@@ -558,4 +558,11 @@ test('background recovery never converts multi-touch or vertical gestures into h
 test('current Polaroid camera audio is the exact owner-selected recording and finite quiet PCM',()=>{
  const wav=readFileSync('our-polaroid-project/audio/polaroid-650-eject-v42.wav');assert.equal(createHash('sha256').update(wav).digest('hex'),'c5d2c58c20451b4bd5a63cbc693977811c6732d2fc679dbebcf1a3ec47d8ffdf');assert.equal(wav.toString('ascii',0,4),'RIFF');assert.equal(wav.readUInt16LE(22),1);assert.equal(wav.readUInt32LE(24),24000);assert.ok((wav.length-44)/48000>.5&&(wav.length-44)/48000<.7);
  const source=readFileSync('our-polaroid-project/paper-sound.js','utf8');assert.match(source,/audio\/polaroid-650-eject-v42.wav/);assert.doesNotMatch(source,/audio\/paper-floop-v33.wav/);const credits=readFileSync('our-polaroid-project/audio/POLAROID-650-EJECT-v42.txt','utf8');assert.match(credits,/larspriebe/);assert.match(credits,/CC0/);
+});
+
+test('owner diary corrections retain delayed Letterboxd provenance and separate researched Unseen dates',()=>{
+ const emily=films.find(f=>f.id==='club-finding-emily'),paris=films.find(f=>f.id==='cinema2026-26'),dracula=films.find(f=>f.id==='cinema2026-30');
+ assert.equal(filmDate(emily).value,'2026-09-04');assert.equal(emily.dateHistory[0].superseded.value,'2026-11-06');assert.equal(filmDate(paris).value,'2026-01-29');assert.equal(filmDate(dracula).value,'2026-11-06');
+ const revealed=films.filter(f=>f.dates?.watched?.verificationMethod==='corroborated_unseen_reconciliation');assert.equal(revealed.length,12);assert.ok(revealed.every(f=>f.dates.watched.source.includes('AMC Unseen booking + historical reveal + existing reviewed card/order')));
+ assert.equal(films.some(f=>f.title==='How to Rob a Bank'),false,'pending review must not receive invented ratings');
 });
