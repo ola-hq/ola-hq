@@ -100,7 +100,7 @@ class OlaGallery extends HTMLElement {
       // Opt in only the Events entrance. Dedicated Wedding/Guide viewers remain unchanged.
       if(this.getAttribute('brand')==='polaroid' && location.pathname.startsWith(new URL('our-polaroid-project/events/',ROOT).pathname)){
         try{
-          const {createEventMemoryViewer}=await import(new URL('our-polaroid-project/events/memory-gallery.js?v=20261125-polaroid44',ROOT));
+          const {createEventMemoryViewer}=await import(new URL('our-polaroid-project/events/memory-gallery.js?v=20261125-polaroid45',ROOT));
           this.memoryViewer=await createEventMemoryViewer(this,url);
           if(!this.isConnected){this.memoryViewer.destroy();return;}
         }catch{/* Keep the original gallery/download viewer if enhancement cannot load. */}

@@ -28,7 +28,7 @@ export class CardViewer{
  constructor({theme='cinema',intensity=8,renderBack,label='Artwork viewer',mount=null,onNavigate=null,onExpand=null,immersive=false,onActivate=null,sound=immersive,forwardFlourish=false,physicalCard=false,paperBack=true,backgroundNavigation=false,doubleTapDetails=false,onDismiss=null}={}){
   this.immersive=immersive;this.physicalCard=Boolean(physicalCard&&immersive);this.paperBack=Boolean(paperBack);this.backgroundNavigation=Boolean(this.physicalCard&&backgroundNavigation);this.doubleTapDetails=Boolean(this.physicalCard&&doubleTapDetails);this.onDismiss=onDismiss;this.onActivate=onActivate;this.turn=0;this.turning=false;this.sound=Boolean(sound);this.soundAvailable=Boolean(sound);this.forwardFlourish=forwardFlourish;this.inline=Boolean(mount);this.onNavigate=onNavigate;this.onExpand=onExpand;
   this.items=[];this.index=0;this.intensity=intensity;this.renderBack=renderBack;this.reduced=matchMedia('(prefers-reduced-motion: reduce)');
-  if(!document.querySelector('link[data-ola-viewer]')){const css=node('link');css.rel='stylesheet';css.href=new URL('./card-viewer.css?v=20261125-physical44',import.meta.url);css.dataset.olaViewer='';document.head.append(css);}
+  if(!document.querySelector('link[data-ola-viewer]')){const css=node('link');css.rel='stylesheet';css.href=new URL('./card-viewer.css?v=20261125-physical45',import.meta.url);css.dataset.olaViewer='';document.head.append(css);}
   this.dialog=node(this.inline?'section':'dialog',this.inline?'ola-inline-card-viewer':'ola-card-dialog');this.dialog.setAttribute('aria-label',label);this.dialog.dataset.theme=theme;if(this.immersive)this.dialog.className+=' ola-card-immersive';
   const tools=this.tools=node('div','ola-card-tools');this.closeButton=this.button('Close',()=>this.close());this.prev=this.button('Previous',()=>this.move(-1));this.next=this.button('Next',()=>this.forward());this.flipButton=this.button('Read the back',()=>this.flip());this.zoomButton=this.button('Zoom in',()=>this.zoom(this.scale>1?1:2));this.resetButton=this.button('Reset view',()=>this.reset());tools.append(this.closeButton,this.prev,this.next,this.flipButton,this.zoomButton,this.resetButton);
   this.stage=node('div','ola-card-stage');this.card=node('div','ola-physical-card');this.front=node('div','ola-card-front');this.image=node('img');this.image.draggable=false;this.image.decoding='async';this.front.append(this.image);this.back=node('section','ola-card-back');this.back.hidden=true;this.back.tabIndex=0;this.card.append(this.front,this.back);this.stage.append(this.card);
@@ -46,7 +46,7 @@ export class CardViewer{
   for(const type of ['touchend','pointerup','keydown'])this.dialog.addEventListener(type,()=>{if(this.sound)this.unlockAudio();},{capture:true,passive:true});
   if(this.soundAvailable){this.soundButton=this.button('Sound on',()=>{this.sound=!this.sound;if(!this.sound)this.projector?.stop();this.soundButton.textContent=this.sound?'Sound on':'Sound off';this.soundButton.setAttribute('aria-pressed',String(this.sound));if(this.sound)this.reelSound();});this.soundButton.setAttribute('aria-pressed','true');tools.append(this.soundButton);}
 
-  this.dialog.addEventListener('close',()=>{this.clearPhotoTap();this.exitWaiting=false;document.documentElement.style.overflow=this.oldOverflow||'';this.notifyStage(false);this.pointers.clear();this.projector?.stop();this.turn++;this.turning=false;this.returning=false;this.returnAnimation?.cancel?.();this.returnAnimation=null;this.opener?.focus({preventScroll:true});});
+  this.dialog.addEventListener('close',()=>{this.cancelBrowse();this.clearPhotoTap();this.exitWaiting=false;document.documentElement.style.overflow=this.oldOverflow||'';this.notifyStage(false);this.pointers.clear();this.projector?.stop();this.turn++;this.turning=false;this.returning=false;this.returnAnimation?.cancel?.();this.returnAnimation=null;this.opener?.focus({preventScroll:true});});
   this.dialog.addEventListener('keydown',e=>{if(e.target.matches('input,textarea,select'))return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();this.move(e.key==='ArrowRight'?1:-1)}if(this.immersive&&(e.key==='Enter'||e.key===' ' )&&e.target===this.stage){e.preventDefault();this.activate();}if(this.physicalCard&&e.target===this.stage&&['f','F','r','R','ArrowUp'].includes(e.key)){e.preventDefault();if(e.key==='ArrowUp')this.loft({playMotion:true});else if(e.key.toLowerCase()==='f')this.flip();else this.rotate(e.shiftKey?-90:90);}if(this.immersive&&e.key==='Tab')this.setControls(true);if(e.key==='Escape'){e.preventDefault();e.stopPropagation();if(this.physicalCard)this.exit();else if(this.immersive)this.activate();else if(this.inline)this.reset();else this.close();return;}if(e.key==='Tab'&&!this.inline)this.trapFocus(e);});
   this.stage.addEventListener('pointerdown',e=>{if(!(this.immersive&&e.pointerType==='touch'))this.down(e)});this.stage.addEventListener('pointermove',e=>{if(!(this.immersive&&e.pointerType==='touch'))this.drag(e)});for(const type of ['pointerup','pointercancel','lostpointercapture'])this.stage.addEventListener(type,e=>{if(!(this.immersive&&e.pointerType==='touch'))this.up(e,type==='pointerup')});
   if(this.immersive){
@@ -63,12 +63,12 @@ export class CardViewer{
  trapFocus(e){const list=[...this.dialog.querySelectorAll('button:not(:disabled),a[href],textarea,input,[tabindex="0"]')].filter(n=>n.getClientRects().length);const first=list[0],last=list.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}
  setCollection(items){this.items=items.filter(x=>x?.src);}
  open(items,index=0,opener=document.activeElement){this.consumedPointers?.clear();this.setCollection(items);if(!this.items.length)return;this.index=Math.max(0,Math.min(index,this.items.length-1));this.opener=opener;if(this.sound)this.unlockAudio();this.show();if(this.inline)return;if(!this.dialog.open){this.oldOverflow=document.documentElement.style.overflow;document.documentElement.style.overflow='hidden';this.dialog.showModal();this.notifyStage(true);}if(this.immersive)this.stage.focus();else this.closeButton.focus();}
- close(){this.clearPhotoTap();if(this.dialog.open)this.dialog.close();}
+ close(){this.cancelBrowse();this.clearPhotoTap();if(this.dialog.open)this.dialog.close();}
  show(){const f=this.items[this.index];this.reset();this.image.src=f.src;this.image.alt=f.alt||f.title||'Artwork';this.source.href=f.src;this.back.replaceChildren();if(this.renderBack)this.renderBack(this.back,f);else this.back.append(node('h2',null,f.title||'About this card'),node('p',null,f.description||'No additional details are published for this image.'));this.caption.textContent=(f.title||f.alt||'Artwork')+' · '+(this.index+1)+' of '+this.items.length;this.prev.disabled=this.next.disabled=this.items.length<2;}
  forward(){if(this.forwardFlourish)return this.toss(1,{flourish:true});this.move(1);}
  move(delta){this.clearPhotoTap();if(this.immersive){this.toss(delta);return;}if(this.items.length<2)return;this.reelSound();this.index=(this.index+delta+this.items.length)%this.items.length;this.show();if(this.inline)this.onNavigate?.(this.items[this.index]);}
  flip(){if(this.pointers.size||this.turning||(this.physicalCard&&!this.paperBack))return;if(this.physicalCard){this.faceY=this.faceY?0:180;this.turnPreview=0;this.updateFace();this.paint();return;}if(this.immersive){this.activate();return;}this.flipped=!this.flipped;this.front.hidden=this.flipped;this.back.hidden=!this.flipped;this.flipButton.textContent=this.flipped?'See the image':'Read the back';this.flipButton.setAttribute('aria-pressed',String(this.flipped));this.zoomButton.disabled=this.flipped;this.stage.style.touchAction=this.flipped?'pan-y':'none';if(this.flipped)this.back.focus();}
- reset(){this.clearPhotoTap();if(this.exitWaiting){this.exitWaiting=false;this.turn++;this.turning=false;this.projector?.stop();}if(this.returning){this.turn++;this.turning=false;this.returning=false;this.returnAnimation?.cancel?.();this.returnAnimation=null;}this.faceY=0;this.turnPreview=0;this.orientation=0;this.scale=1;this.panX=this.panY=this.rotX=this.rotY=this.rotZ=0;this.flipped=false;this.front.hidden=false;this.back.hidden=true;this.zoomButton.disabled=false;this.flipButton.textContent='Read the back';this.flipButton.setAttribute('aria-pressed','false');this.zoomButton.textContent='Zoom in';this.stage.style.touchAction='none';if(this.physicalCard)this.updateFace();this.paint();}
+ reset(){if(!this.browseCommitting)this.cancelBrowse();this.clearPhotoTap();if(this.exitWaiting){this.exitWaiting=false;this.turn++;this.turning=false;this.projector?.stop();}if(this.returning){this.turn++;this.turning=false;this.returning=false;this.returnAnimation?.cancel?.();this.returnAnimation=null;}this.faceY=0;this.turnPreview=0;this.orientation=0;this.scale=1;this.panX=this.panY=this.rotX=this.rotY=this.rotZ=0;this.flipped=false;this.front.hidden=false;this.back.hidden=true;this.zoomButton.disabled=false;this.flipButton.textContent='Read the back';this.flipButton.setAttribute('aria-pressed','false');this.zoomButton.textContent='Zoom in';this.stage.style.touchAction='none';if(this.physicalCard)this.updateFace();this.paint();}
  zoom(scale,{keepPan=false}={}){this.clearPhotoTap();this.scale=Math.max(1,Math.min(3,scale));if(this.scale===1&&!keepPan)this.panX=this.panY=0;this.zoomButton.textContent=this.scale>1?'Zoom out':'Zoom in';this.paint();}
  // Physical mode is opt-in; Cinema retains its original front/details behavior.
  updateFace(){
@@ -114,7 +114,7 @@ export class CardViewer{
   if(token!==this.turn)return;
   this.returnAnimation=null;this.returning=this.turning=false;this.paint();
  }
- exit(){if(this.turning||this.pointers.size)return;this.close();this.onDismiss?.(this.items[this.index]);}
+ exit(){if(this.browsing)this.cancelBrowse();if(this.turning||this.pointers.size)return;this.close();this.onDismiss?.(this.items[this.index]);}
  down(e){
   if(this.physicalCard&&this.consumedPointers?.size){this.consumedPointers.add(e.pointerId);e.preventDefault();return;}
   if(this.flipped||this.turning)return;e.preventDefault();this.dialog.dataset.dragging='true';if(e.pointerType!=='native-touch')this.stage.setPointerCapture(e.pointerId);if(this.sound)this.unlockAudio();
@@ -184,13 +184,60 @@ export class CardViewer{
   else this.lastPhotoTap=tap;
  }
  activate(){this.clearPhotoTap();if(this.turning||this.pointers.size)return;this.onActivate?.(this.items[this.index]);this.close();}
- async toss(delta,{flourish=false}={}){
+ cancelBrowse(){
+  if(!this.browsing)return;
+  this.turn++;this.browsing=this.turning=false;this.browseCommitting=false;
+  this.browseDecodeCancel?.();this.browseDecodeCancel=null;
+  this.browseAnimation?.cancel?.();this.browseAnimation=null;this.projector?.stop();
+ }
+ waitForBrowseImage(){
+  if(!this.image.decode)return Promise.resolve();
+  let decode;try{decode=this.image.decode();}catch{return Promise.resolve();}
+  return new Promise(resolve=>{
+   let finished=false;const done=()=>{if(finished)return;finished=true;clearTimeout(timer);if(this.browseDecodeCancel===done)this.browseDecodeCancel=null;resolve();};
+   const timer=setTimeout(done,500);this.browseDecodeCancel=done;Promise.resolve(decode).then(done,done);
+  });
+ }
+ async toss(delta,{flourish=false,paperFlip=false,playMotion=false}={}){
   this.clearPhotoTap();
-  if(this.turning||this.items.length<2)return;this.turning=true;const token=++this.turn;const sign=delta>0?-1:1;this.dialog.dataset.dragging='false';this.reelSound();
-  const animate=async (frames,duration=240)=>{if(this.reduced.matches||!this.card.animate)return;const a=this.card.animate(frames,{duration,easing:'cubic-bezier(.2,.7,.3,1)',fill:'none'});try{await a.finished;}catch{}};
+  if(this.turning||this.items.length<2)return;
+  const physicalFlip=Boolean(this.physicalCard&&paperFlip);
+  this.turning=true;if(physicalFlip)this.browsing=true;
+  const token=++this.turn,sign=delta>0?-1:1;this.dialog.dataset.dragging='false';this.reelSound();
+  const animate=async (frames,duration=240)=>{
+   if((this.reduced.matches&&!(physicalFlip&&playMotion))||!this.card.animate)return;
+   const a=this.card.animate(frames,{duration,easing:'cubic-bezier(.2,.7,.3,1)',fill:physicalFlip?'both':'none'});
+   if(physicalFlip){const previous=this.browseAnimation;this.browseAnimation=a;previous?.cancel?.();}
+   try{await a.finished;}catch{}
+  };
+  const distance=this.stage.clientWidth+Math.hypot(this.card.offsetWidth||this.stage.clientWidth,this.card.offsetHeight||this.stage.clientHeight);
+  const pose=(x,y,size,yaw,roll=0)=>`translate(${x}px,${y}px) scale(${size}) rotateX(0deg) rotateY(${yaw}deg) rotateZ(${roll}deg)`;
+  const departure=this.card.style.transform,departureScale=Number(departure.match(/scale\(([^)]+)\)/)?.[1])||1;
   const away=`translate(${sign*this.stage.clientWidth*1.25}px,-${this.stage.clientHeight*.35}px) rotateZ(${sign*40}deg) rotateY(${sign*-210}deg) scale(.45)`;
-  await animate(flourish?[{transform:this.card.style.transform,opacity:1},{transform:away,opacity:0,offset:.65},{transform:away,opacity:0}]:[{transform:this.card.style.transform,opacity:1},{transform:`translate(${sign*this.stage.clientWidth*1.25}px,${this.panY-30}px) rotateZ(${sign*26}deg) rotateY(${sign*-35}deg) scale(.88)`,opacity:0}],flourish?850:240);
-  if(token!==this.turn)return;this.index=(this.index+delta+this.items.length)%this.items.length;this.show();this.onNavigate?.(this.items[this.index]);
+  const outgoing=physicalFlip?[
+   {transform:departure,opacity:1,offset:0},
+   {transform:pose(sign*this.stage.clientWidth*.42,this.panY*.4,departureScale*.86,sign*75,((this.rotZ||0)+(this.orientation||0))*.35),opacity:1,offset:.45},
+   {transform:pose(sign*distance,-this.stage.clientHeight*.12,departureScale*.55,sign*180,sign*8),opacity:0,offset:1}
+  ]:flourish?[{transform:departure,opacity:1},{transform:away,opacity:0,offset:.65},{transform:away,opacity:0}]:[{transform:departure,opacity:1},{transform:`translate(${sign*this.stage.clientWidth*1.25}px,${this.panY-30}px) rotateZ(${sign*26}deg) rotateY(${sign*-35}deg) scale(.88)`,opacity:0}];
+  await animate(outgoing,physicalFlip?420:flourish?850:240);
+  if(token!==this.turn)return;
+  this.index=(this.index+delta+this.items.length)%this.items.length;
+  if(physicalFlip)this.browseCommitting=true;
+  try{this.show();}finally{if(physicalFlip)this.browseCommitting=false;}
+  this.onNavigate?.(this.items[this.index]);
+  if(physicalFlip){
+   if(token!==this.turn)return;
+   if(this.card.animate)await this.waitForBrowseImage();
+   if(token!==this.turn)return;
+   this.paint();const home=this.card.style.transform,fit=Number(home.match(/scale\(([^)]+)\)/)?.[1])||1;
+   await animate([
+    {transform:pose(-sign*distance,-this.stage.clientHeight*.12,fit*.55,-sign*180,-sign*8),opacity:0,offset:0},
+    {transform:pose(-sign*this.stage.clientWidth*.12,9,fit*.94,-sign*35,0),opacity:1,offset:.6},
+    {transform:home,opacity:1,offset:1}
+   ],520);
+   if(token!==this.turn)return;
+   this.browsing=false;this.browseAnimation?.cancel?.();this.browseAnimation=null;this.turning=false;this.paint();return;
+  }
   await animate([{transform:flourish?`translate(${-sign*80}px,-30px) rotateY(${-sign*165}deg) rotateZ(${-sign*16}deg) scale(.5)`:`translate(${-sign*45}px,12px) rotateZ(${-sign*8}deg) scale(.94)`,opacity:0},{transform:'translate(0px,0px) rotateY(0deg) rotateZ(0deg) scale(1)',opacity:1}],flourish?950:240);if(token===this.turn)this.turning=false;
  }
  unlockAudio(){if(this.sound)(this.projector||(this.projector=new CardFlickSound())).unlock();}

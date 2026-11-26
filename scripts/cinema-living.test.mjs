@@ -640,3 +640,41 @@ test('Polaroid reduced-motion exit allows its short sound without movement and c
   }
  }finally{delete globalThis.document;delete globalThis.matchMedia;}
 });
+
+test('Polaroid sideways flips depart from any pose and bring the adjacent photo in mirrored and fully fitted',async()=>{
+ const {PolaroidCardViewer}=await import('../our-polaroid-project/memory-viewer.js');environment();try{
+  for(const delta of [-1,1])for(const rotation of [0,90,180,270])for(const scale of [1,1.3])for(const reduced of [false,true]){
+   const frames=[],options=[],navigated=[],sounds=[];let cancelled=0;const v=new PolaroidCardViewer({immersive:true,physicalCard:true,paperBack:false,sound:false,onNavigate:item=>navigated.push(item.id)});v.reduced.matches=reduced;v.stage.clientWidth=390;v.stage.clientHeight=844;v.card.offsetWidth=360;v.card.offsetHeight=600;const items=[{id:'a',src:'a.jpg'},{id:'b',src:'b.jpg'},{id:'c',src:'c.jpg'}];v.open(items,1);v.rotZ=rotation;v.panX=160;v.panY=-45;v.zoom(scale,{keepPan:true});const departure=v.card.style.transform;v.reelSound=action=>sounds.push(action);
+   v.card.animate=(f,o)=>{frames.push(f);options.push(o);return{finished:Promise.resolve(),cancel(){cancelled++}}};v.image.decode=async()=>{v.card.offsetWidth=600;v.card.offsetHeight=360;};await v.toss(delta);
+   const sign=delta>0?-1:1;assert.equal(frames.length,2);assert.equal(frames[0][0].transform,departure);assert.match(frames[0].at(-1).transform,new RegExp('rotateY\\('+sign*180+'deg\\)'));assert.match(frames[1][0].transform,new RegExp('rotateY\\('+-sign*180+'deg\\)'));assert.equal(Math.sign(Number(frames[0].at(-1).transform.match(/translate\(([^p]+)px/)[1])),sign);assert.equal(Math.sign(Number(frames[1][0].transform.match(/translate\(([^p]+)px/)[1])),-sign);
+   assert.ok(Math.abs(Number(frames[0].at(-1).transform.match(/translate\(([^p]+)px/)[1]))>v.stage.clientWidth);assert.deepEqual(options.map(o=>o.duration),[420,520]);assert.ok(options.every(o=>o.fill==='both'));assert.equal(cancelled,2,'outgoing hold and incoming animation are both released');assert.equal(frames[1].at(-1).transform,v.card.style.transform);const fit=Number(v.card.style.transform.match(/scale\(([^)]+)\)/)[1]);assert.ok(fit>0&&fit<=1);assert.ok(frames[1].every(f=>Number(f.transform.match(/scale\(([^)]+)\)/)[1])<=fit));assert.equal(v.index,1+delta);assert.equal(v.image.src,items[1+delta].src);assert.deepEqual(navigated,[items[1+delta].id]);assert.deepEqual(sounds,[undefined],'sideways retains its camera sound');assert.equal(v.panX,0);assert.equal(v.panY,0);assert.equal(v.scale,1);assert.equal(v.turning,false);assert.equal(v.browsing,false);assert.equal(v.browseAnimation,null);assert.equal(v.browseDecodeCancel,null);assert.equal(v.reduced.matches,reduced);v.destroy();
+  }
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('native sideways swipe and buttons share the physical flip, retaining Events bounds and Portfolio wrap',async()=>{
+ const {PolaroidCardViewer}=await import('../our-polaroid-project/memory-viewer.js');environment();try{
+  const items=[{id:'a',src:'a.jpg'},{id:'b',src:'b.jpg'}];let pending,plays=0,navigated=0;const v=new PolaroidCardViewer({immersive:true,physicalCard:true,sound:false,loop:false,onNavigate:()=>navigated++});v.reduced.matches=true;v.card.animate=()=>{plays++;return{finished:Promise.resolve(),cancel(){}}};const toss=v.toss.bind(v);v.toss=(...args)=>(pending=toss(...args));v.open(items);v.rotZ=180;
+  const e=(x,t)=>({timeStamp:t,changedTouches:[{identifier:1,clientX:x,clientY:300,target:v.image}]});v.stage.emit('touchstart',e(260,1000));v.stage.emit('touchmove',e(100,1100));v.stage.emit('touchend',e(100,1120));await pending;assert.equal(plays,2);assert.equal(v.index,1);assert.equal(navigated,1);assert.equal(v.next.disabled,true);await v.toss(1);assert.equal(plays,2);assert.equal(navigated,1);v.prev.onclick();await pending;assert.equal(v.index,0);assert.equal(plays,4);assert.equal(v.prev.disabled,true);await v.toss(-1);assert.equal(plays,4);v.open([items[0]]);await v.toss(1);assert.equal(plays,4);v.destroy();
+  const p=new PolaroidCardViewer({immersive:true,physicalCard:true,sound:false});p.reduced.matches=true;p.card.animate=()=>({finished:Promise.resolve(),cancel(){}});p.open(items,1);await p.toss(1);assert.equal(p.index,0);await p.toss(-1);assert.equal(p.index,1);p.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('sideways flip cancellation cannot navigate twice or resurrect a closed, reset, replaced or destroyed viewer',async()=>{
+ const {PolaroidCardViewer}=await import('../our-polaroid-project/memory-viewer.js');environment();try{
+  for(const phase of ['outgoing','decode','incoming'])for(const action of ['close','reset','show','open','destroy','escape']){
+   const animations=[],navigated=[];const items=[{id:'a',src:'a.jpg'},{id:'b',src:'b.jpg'},{id:'c',src:'c.jpg'}];const v=new PolaroidCardViewer({immersive:true,physicalCard:true,sound:false,onNavigate:item=>navigated.push(item.id)});v.open(items);v.card.animate=()=>{let finish;const a={finished:new Promise(r=>finish=r),cancel(){finish()},finish:()=>finish()};animations.push(a);return a;};if(phase==='decode')v.image.decode=()=>new Promise(()=>{});
+   const pending=v.toss(1);await v.toss(1);assert.equal(animations.length,1,'repeat input is ignored');if(phase!=='outgoing'){animations[0].finish();await new Promise(r=>setImmediate(r));assert.equal(navigated.length,1);if(phase==='decode')assert.equal(typeof v.browseDecodeCancel,'function');else assert.equal(animations.length,2);}
+   if(action==='show'){v.index=2;v.show();}else if(action==='open')v.open(items,2);else if(action==='escape')v.dialog.emit('keydown',{key:'Escape',target:v.stage});else v[action]();await pending;
+   assert.equal(navigated.length,phase==='outgoing'?0:1);assert.equal(v.index,['show','open'].includes(action)?2:phase==='outgoing'?0:1);assert.equal(v.dialog.open,!['close','destroy','escape'].includes(action));assert.equal(v.browsing,false);assert.equal(v.turning,false);assert.equal(v.browseAnimation,null);assert.equal(v.browseDecodeCancel,null);if(action!=='destroy')v.destroy();
+  }
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('physical flip has safe missing-animation and decode fallbacks; navigation callback may close it without incoming motion',async()=>{
+ const {PolaroidCardViewer}=await import('../our-polaroid-project/memory-viewer.js');environment();try{
+  for(const mode of ['missing','decode-reject','decode-throw','callback-close']){
+   let count=0;const nav=[];const v=new PolaroidCardViewer({immersive:true,physicalCard:true,sound:false,onNavigate:item=>{nav.push(item.id);if(mode==='callback-close')v.close();}});v.open([{id:'a',src:'a.jpg'},{id:'b',src:'b.jpg'}]);if(mode!=='missing')v.card.animate=()=>{count++;return{finished:Promise.resolve(),cancel(){}}};if(mode==='decode-reject')v.image.decode=()=>Promise.reject(Error('not decoded'));if(mode==='decode-throw')v.image.decode=()=>{throw Error('not decoded')};await v.toss(1);assert.equal(count,mode==='missing'?0:mode==='callback-close'?1:2);assert.deepEqual(nav,['b']);assert.equal(v.index,1);assert.equal(v.turning,false);assert.equal(v.browsing,false);v.destroy();
+  }
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
