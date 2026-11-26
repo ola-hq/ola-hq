@@ -9,7 +9,11 @@ export const catalog = {
       "title": "Absolutely",
       "variant": null,
       "cover": "assets/worlds/wave-26-brand-live.jpg",
-      "collection": "Music Library"
+      "collection": "Ground Control",
+      "project": "Ground Control",
+      "aliases": [
+        "SEE YOU NEXT WEEKEND"
+      ]
     },
     {
       "id": "bri-throw-a8066010",
@@ -45,7 +49,11 @@ export const catalog = {
       "title": "Copy That",
       "variant": null,
       "cover": "assets/worlds/wave-26-brand-live.jpg",
-      "collection": "Music Library"
+      "collection": "Ground Control",
+      "project": "Ground Control",
+      "aliases": [
+        "CAN I GET A COPY?"
+      ]
     },
     {
       "id": "good-news-from-the-future-f4d566b5",
@@ -90,7 +98,11 @@ export const catalog = {
       "title": "I'm Not Fine!!!!",
       "variant": null,
       "cover": "assets/worlds/wave-26-brand-live.jpg",
-      "collection": "Music Library"
+      "collection": "Ground Control",
+      "project": "Ground Control",
+      "aliases": [
+        "I’M NOT FINE (EVERYTHING IS WRONG)"
+      ]
     },
     {
       "id": "mommy-daddy-ground-control-240ecd78",
@@ -99,7 +111,11 @@ export const catalog = {
       "title": "Mommy? Daddy? Ground Control.",
       "variant": null,
       "cover": "assets/worlds/wave-26-brand-live.jpg",
-      "collection": "Music Library"
+      "collection": "Ground Control",
+      "project": "Ground Control",
+      "aliases": [
+        "MOMMY? DADDY? GROUND CONTROL"
+      ]
     },
     {
       "id": "night-frequency-0e4a83ac",

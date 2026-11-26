@@ -97,13 +97,13 @@ function openAlbum(id){
  updateMini(session.state());
 }
 
-const ground=catalog.tracks.filter(t=>/ground control/i.test(t.title));
-$('projectShelf').innerHTML=catalog.projects.map(p=>`<article class="project"><h3>${esc(p.title)}</h3><div class="project-desc">${esc(p.desc)}</div>${p.title==='Ground Control'&&ground.length?`<button type="button" class="project-link" data-play="${ground[0].id}" data-project="ground-control">Play available recording</button>`:p.suno?`<a class="project-link" href="${p.suno}" target="_blank" rel="noopener" data-external-listen>Suno</a>`:''}</article>`).join('');
+const ground=catalog.tracks.filter(t=>t.project==='Ground Control'||/ground control/i.test(t.title));
+$('projectShelf').innerHTML=catalog.projects.map(p=>`<article class="project"><h3>${esc(p.title)}</h3><div class="project-desc">${esc(p.desc)}</div>${p.title==='Ground Control'&&ground.length?`<button type="button" class="project-link" data-play="${ground[0].id}" data-project="ground-control">Play ${ground.length} recordings</button>`:p.suno?`<a class="project-link" href="${p.suno}" target="_blank" rel="noopener" data-external-listen>Suno</a>`:''}</article>`).join('');
 const songbook=$('songbook'),search=$('songSearch');
 function renderSongs(){
- const q=normal(search.value),recordings=catalog.tracks.filter(t=>!q||normal(label(t)).includes(q));
+ const q=normal(search.value),recordings=catalog.tracks.filter(t=>!q||normal(label(t)).includes(q)||normal((t.aliases||[]).join(' ')).includes(q));
  const loose=[...new Set(catalog.songbook)].filter(t=>!mainByTitle.has(normal(t))&&(!q||normal(t).includes(q))).sort((a,b)=>a.localeCompare(b));
- songbook.innerHTML=recordings.map(t=>`<article class="song song-ready"><span class="recording-tag">${esc(t.collection)}</span><h3>${esc(t.title)}</h3>${t.variant?`<p>${esc(t.variant)}</p>`:''}<div class="song-action"><button type="button" data-play="${t.id}" aria-label="Play ${esc(label(t))}">Play</button><span>${clock(t.duration)}</span></div></article>`).join('')+loose.map(t=>`<article class="song"><h3>${esc(t)}</h3><span class="audio-needed">Audio to add</span></article>`).join('');
+ songbook.innerHTML=recordings.map(t=>`<article class="song song-ready"><span class="recording-tag">${esc(t.collection)}</span><h3>${esc(t.title)}</h3>${t.variant?`<p>${esc(t.variant)}</p>`:''}${t.aliases?.length?`<p class="recording-alias">Ground Control: ${esc(t.aliases[0])}</p>`:''}<div class="song-action"><button type="button" data-play="${t.id}" aria-label="Play ${esc(label(t))}">Play</button><span>${clock(t.duration)}</span></div></article>`).join('')+loose.map(t=>`<article class="song"><h3>${esc(t)}</h3><span class="audio-needed">Audio to add</span></article>`).join('');
  $('songEmpty').style.display=recordings.length+loose.length?'none':'block';
 }
 search.addEventListener('input',renderSongs);renderSongs();
