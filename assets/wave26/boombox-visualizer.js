@@ -1,4 +1,4 @@
-import {bandLevel,logBands} from './boombox-spectrum.js?v=wave26-20261126';
+import {bandLevel,logBands} from './boombox-spectrum.js?v=wave26-polish-20261126';
 
 // Attaches only artwork overlays. Disposing a room never pauses the shared audio session.
 export function createBoomboxVisualizer({session,scene,canvases}){

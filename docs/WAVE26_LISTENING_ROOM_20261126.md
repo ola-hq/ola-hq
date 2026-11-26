@@ -7,3 +7,12 @@ The intake contains 38 distinct recordings, including three separately labeled a
 The boombox adapts the owner's existing HOME BASE soundtrack controls into a separate Wave26 implementation. Its source project and access controls are unchanged. New original Wave26 artwork uses the approved ocean identity; original references and the generated master/prompt remain preserved privately. The public player contains only the approved new recordings and CC0 sound-pad samples, not private HOME BASE songs or records. Effects, speed and loops affect listening only. Sound-pad source credits are displayed in the interface.
 
 Source and controlled-media/DOM checks cover track selection, album queues, quiet entry, seeking, mute, tempo, errors and returns. FFmpeg decoded every listening derivative. Current chat browser access was unavailable, so this receipt does not claim new rendered desktop/mobile, audible playback, Safari or installed-PWA acceptance. The website and app use the same world URL; the app label is Wave26. Hosting remains the existing reviewed GitHub Pages pipeline.
+
+
+## Compact listening update — November 26, 2026
+
+The Songbook returns to compact editorial rows: small Play/Pause icons, discreet durations, alphabetical browsing and collection filters. Album filters and the player menu follow verified album track order. Projects sits below Songbook. The listening room starts in compact mode; Extended view reveals tempo, effects, sound pads and loops without replacing or restarting the shared audio session.
+
+There are now 62 playable recordings. We See Yes uses the official eight-track OUI SI YES order, including Ya Sé and No Subtitles; Love Lore has all six tracks. Six of thirteen La Ola de Amor slots and all five Show Audio entries have recordings. Earlier cuts remain distinct; Neon Mirage’s available recording is labelled Edit. Original audio and artwork are preserved.
+
+Source/media and application DOM checks accompany the update. DOM checks use controlled media and layout; rendered desktop/mobile and audible/device acceptance remain separate and unverified when browser access is unavailable.
