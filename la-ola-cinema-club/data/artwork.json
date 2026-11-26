@@ -2580,18 +2580,20 @@
     "club-focker-in-law": {
       "image": "assets/cards/club-focker-in-law.webp",
       "thumbnail": "assets/cards/club-focker-in-law.webp",
-      "revision": "e3c7a8607c5df474",
+      "revision": "6a53e027867e2b22",
       "status": "approved",
-      "sha256": "e3c7a8607c5df4745c2687e972c6122f02c5eb694f2e81ac074ee1b7735c45d9",
+      "sha256": "6a53e027867e2b22492deb4fa575ee55983d7d6360f50311b6165e1594713909",
       "pendingRefresh": false,
-      "approvalReceipt": "Owner explicitly approved both posters and site publication November26 2026; additionally approved final12px rightward Focker title position via async reply. Saved native Canva designDAHb_wZ0Tu8, page1Focker/page2Bank;1000x1500 highPNG export visually checked.",
-      "sourceDesign": "DAHb_wZ0Tu8",
-      "sourcePage": 1,
-      "sourcePngSha256": "e176c640f223fae57460825502030a3e719e029037d145c4e024ac316af292a9",
+      "approvalReceipt": "Owner confirmed final-master transfer November 26, 2026; saved master page verified. Owner-centered Focker correction exported directly from final master page 103.",
+      "sourceDesign": "DAHAZmy7qts",
+      "sourcePage": 103,
+      "sourcePngSha256": "cbd0bc11bf677901936e4428c89e8ad4bccb931ef10780149c7ace2a12418b24",
       "dimensions": [
         1000,
         1500
-      ]
+      ],
+      "originalDraftDesign": "DAHb_wZ0Tu8",
+      "masterTransferVerified": true
     },
     "club-how-to-rob-a-bank": {
       "image": "assets/cards/club-how-to-rob-a-bank.webp",
@@ -2600,14 +2602,16 @@
       "status": "approved",
       "sha256": "d306cc261f241445f665deb705a75bce0462afdb69f72632368410ffe4b01e7a",
       "pendingRefresh": false,
-      "approvalReceipt": "Owner explicitly approved both posters and site publication November26 2026; additionally approved final12px rightward Focker title position via async reply. Saved native Canva designDAHb_wZ0Tu8, page1Focker/page2Bank;1000x1500 highPNG export visually checked.",
-      "sourceDesign": "DAHb_wZ0Tu8",
-      "sourcePage": 2,
+      "approvalReceipt": "Owner confirmed final-master transfer November 26, 2026; saved master page verified. Bank transferred into final master page 98 by owner.",
+      "sourceDesign": "DAHAZmy7qts",
+      "sourcePage": 98,
       "sourcePngSha256": "164879c704f3594d9d1663da6e98c9019f7d3795297ad4ec68b35b6ac21b694b",
       "dimensions": [
         1000,
         1500
-      ]
+      ],
+      "originalDraftDesign": "DAHb_wZ0Tu8",
+      "masterTransferVerified": true
     }
   },
   "features": {

@@ -737,7 +737,7 @@ test('Cinema retains its sound backend with separate browse return and exit trig
 
 test('two new approved reviews retain exact owner ratings, watched days, art approval and chronology',()=>{
  for(const [id,b,h,date] of [['club-focker-in-law',3.5,4.25,'2026-11-25'],['club-how-to-rob-a-bank',3,4.25,'2026-11-11']]){
- const f=films.find(f=>f.id===id),a=manifest.films[id];assert.equal(f.brain,b);assert.equal(f.heart,h);assert.equal(f.clubScore,b+h);assert.equal(filmDate(f).value,date);assert.equal(a.status,'approved');assert.equal(a.pendingRefresh,false);assert.deepEqual(a.dimensions,[1000,1500]);assert.equal(a.sourceDesign,'DAHb_wZ0Tu8');assert.equal(createHash('sha256').update(readFileSync('la-ola-cinema-club/'+a.image)).digest('hex'),a.sha256);
+ const f=films.find(f=>f.id===id),a=manifest.films[id];assert.equal(f.brain,b);assert.equal(f.heart,h);assert.equal(f.clubScore,b+h);assert.equal(filmDate(f).value,date);assert.equal(a.status,'approved');assert.equal(a.pendingRefresh,false);assert.deepEqual(a.dimensions,[1000,1500]);assert.equal(a.sourceDesign,'DAHAZmy7qts');assert.equal(a.sourcePage,id==='club-focker-in-law'?103:98);assert.equal(a.masterTransferVerified,true);assert.equal(createHash('sha256').update(readFileSync('la-ola-cinema-club/'+a.image)).digest('hex'),a.sha256);
  const page=readFileSync('la-ola-cinema-club/films/'+f.slug+'/index.html','utf8');assert.ok(page.includes(f.title));assert.ok(page.includes(date));assert.ok(!page.includes('Brain 5/5, Heart 5/5, Club 10/10.'));
  }
  const bank=films.find(f=>f.id==='club-how-to-rob-a-bank');assert.ok(bank.order>films.find(f=>f.id==='club-wicker').order);assert.ok(bank.order<films.find(f=>f.id==='club-ebenezer').order);assert.equal(filterFilms(films)[0].id,'club-focker-in-law');
