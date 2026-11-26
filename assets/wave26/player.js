@@ -1,9 +1,9 @@
-import {catalog} from './catalog.js?v=wave26-polish-20261126';
-import {soundtrack as session} from './audio-session.js?v=wave26-polish-20261126';
-import {initDJStudio} from './dj-studio.js?v=wave26-polish-20261126';
-import {createBoomboxVisualizer} from './boombox-visualizer.js?v=wave26-polish-20261126';
-import {deviceIcon,setDeviceIcon} from './device-icons.js?v=wave26-polish-20261126';
-import {esc,musicClock as clock} from './utils.js?v=wave26-polish-20261126';
+import {catalog} from './catalog.js?v=wave26-polish-20261126-v2';
+import {soundtrack as session} from './audio-session.js?v=wave26-polish-20261126-v2';
+import {initDJStudio} from './dj-studio.js?v=wave26-polish-20261126-v2';
+import {createBoomboxVisualizer} from './boombox-visualizer.js?v=wave26-polish-20261126-v2';
+import {deviceIcon,setDeviceIcon} from './device-icons.js?v=wave26-polish-20261126-v2';
+import {esc,musicClock as clock} from './utils.js?v=wave26-polish-20261126-v2';
 
 const $=id=>document.getElementById(id),allIds=catalog.tracks.map(t=>t.id);
 const trackById=new Map(catalog.tracks.map(t=>[t.id,t]));
