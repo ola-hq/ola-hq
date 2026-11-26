@@ -14,15 +14,24 @@ export class PaperSound {
       return ctx;
     } catch {}
   }
+  prepareExit(ctx = this.unlock()) {
+    if (!ctx) return;
+    if (!this.exitReady) this.exitReady = fetch(new URL('./audio/paper-exit-v44.wav', import.meta.url))
+      .then(r => { if (!r.ok) throw Error('Audio unavailable'); return r.arrayBuffer(); })
+      .then(bytes => ctx.decodeAudioData(bytes)).then(buffer => this.exitBuffer = buffer)
+      .catch(() => { this.exitReady = null; return null; });
+    return this.exitReady;
+  }
   burst(action) {
     const ctx = this.unlock(); if (!ctx) return;
-    const returning = action === 'return';
+    const returning = action === 'return', exiting = action === 'exit';
+    if (exiting) this.prepareExit(ctx);
     if (returning && !this.returnReady) this.returnReady = fetch(new URL('./audio/paper-floop-v33.wav', import.meta.url))
       .then(r => { if (!r.ok) throw Error('Audio unavailable'); return r.arrayBuffer(); })
       .then(bytes => ctx.decodeAudioData(bytes)).then(buffer => this.returnBuffer = buffer)
       .catch(() => { this.returnReady = null; return null; });
-    const ready = returning ? this.returnReady : this.ready;
-    const buffer = () => returning ? this.returnBuffer : this.buffer;
+    const ready = returning ? this.returnReady : exiting ? this.exitReady : this.ready;
+    const buffer = () => returning ? this.returnBuffer : exiting ? this.exitBuffer : this.buffer;
     const request = ++this.request, requested = performance.now();
     const play = () => {
       if (request !== this.request || performance.now() - requested > 1200 || !buffer() || ctx.state === 'closed') return;
