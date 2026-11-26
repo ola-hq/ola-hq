@@ -1,4 +1,4 @@
-import {filmDate} from './collection-data.js?v=20261125-worlds35';
+import {filmDate,distribution} from './collection-data.js?v=20261125-worlds35';
 const finite=x=>typeof x==='number'&&Number.isFinite(x);
 // Recorded reviewer ratings belong to the whole collection, independently of artwork edition.
 export function perspectiveStats(films,key){
@@ -22,4 +22,12 @@ export function collectionStats(films){
 // artwork editions, legacy filing months or unconfirmed reservations.
 export function watchedRecords(films,{year='',month='',genre='',stamp=''}={}){
  return films.filter(f=>{const d=filmDate(f,'watched');return d?.verified===true&&(!year||d.value.slice(0,4)===String(year))&&(!month||(d.value.length>=7&&d.value.slice(5,7)===String(month).padStart(2,'0')))&&(!genre||f.genre===genre)&&(!stamp||f.stamp===stamp);});
+}
+
+// One shared score domain and count scale; the two reviewer counts are never added.
+export function comparisonDistribution(films){
+ const brain=distribution(films,'brain'),heart=distribution(films,'heart');
+ const maps={brain:new Map(brain.bins.map(b=>[b.score,b.films])),heart:new Map(heart.bins.map(b=>[b.score,b.films]))};
+ const rows=[...new Set([...maps.brain.keys(),...maps.heart.keys()])].sort((a,b)=>a-b).map(score=>({score,brain:maps.brain.get(score)||[],heart:maps.heart.get(score)||[]}));
+ return {brainCount:brain.count,heartCount:heart.count,maxCount:Math.max(1,...rows.flatMap(r=>[r.brain.length,r.heart.length])),rows};
 }

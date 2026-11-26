@@ -478,3 +478,11 @@ test('closing, resetting or destroying a held-edge return consumes its late rele
   }
  }finally{delete globalThis.document;delete globalThis.matchMedia;}
 });
+
+test('shared reviewer distribution aligns exact grades and keeps zero counts on one common scale',async()=>{
+ const {comparisonDistribution}=await import('../la-ola-cinema-club/assets/stats-data.js');
+ const data=comparisonDistribution([{brain:3.25,heart:4},{brain:4,heart:4},{brain:3.25,heart:5},{brain:5,heart:null}]);
+ assert.deepEqual(data.rows.map(r=>r.score),[3.25,4,5]);assert.equal(data.brainCount,3);assert.equal(data.heartCount,3);assert.equal(data.maxCount,2);
+ assert.deepEqual(data.rows.map(r=>[r.brain.length,r.heart.length]),[[2,0],[1,2],[0,1]]);
+ const full=comparisonDistribution(films);assert.equal(full.brainCount,234);assert.equal(full.heartCount,234);assert.equal(full.rows.reduce((n,r)=>n+r.brain.length,0),234);assert.equal(full.rows.reduce((n,r)=>n+r.heart.length,0),234);
+});
