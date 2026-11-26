@@ -39,14 +39,15 @@ test('generic introduction supplies no invented dates, places, personal stories 
 test('curated entrances preserve full approved grids, scripts, downloads, primary and secondary cover IDs',()=>{
  for(const id of ['lib-2025','lib-2026','martins-bach-party']){
   const path=`our-polaroid-project/events/${id}/index.html`,current=readFileSync(path,'utf8'),old=execFileSync('git',['show',`${baseline}:${path}`],{encoding:'utf8'}),record=catalog.events.find(e=>e.id===id);
-  const body=s=>s.slice(s.indexOf('</header>',s.indexOf('<header class="album-header'))+9);assert.equal(body(current),body(old),'approved grids and existing script/download logic untouched');
+  assert.match(current,/curated-memory\.js\?v=20261126-room48/);
+  const body=s=>s.slice(s.indexOf('</header>',s.indexOf('<header class="album-header'))+9).replace('curated-memory.js?v=20261126-room48','curated-memory.js?v=20261125-polaroid45');assert.equal(body(current),body(old),'approved grids and existing script/download logic untouched except the explicit viewer cache pin');
   const header=current.slice(current.indexOf('<header class="album-header'),current.indexOf('</header>',current.indexOf('<header class="album-header')));
   assert.ok(header.includes(`photos/${record.coverId}.jpg`));assert.ok(header.includes(`photos/${record.secondaryCoverId}.jpg`));assert.doesNotMatch(header,/<figcaption/);assert.match(header,/<em>/);assert.ok(header.includes(record.dateLabel));
  }
 });
 test('every shared Events route loads versioned enhancement while dedicated LIVE1 stays outside it',()=>{
  for(const e of catalog.events.filter(e=>e.manifest||e.id==='la-ola-de-amor-2026')){
-  const path=`our-polaroid-project/events/${e.id}/index.html`,html=readFileSync(path,'utf8');assert.match(html,/gallery\.js\?v=20261126-events-intro46/);assert.match(html,/album-introductions\.css\?v=20261126-intro46/);
+  const path=`our-polaroid-project/events/${e.id}/index.html`,html=readFileSync(path,'utf8');assert.match(html,/gallery\.js\?v=20261126-events-room48/);assert.match(html,/album-introductions\.css\?v=20261126-intro46/);
  }
  const dedicated=readFileSync('la-ola-de-amor/photos/index.html','utf8');assert.doesNotMatch(dedicated,/album-introductions|intro-copy/);
 });

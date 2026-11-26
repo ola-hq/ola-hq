@@ -126,6 +126,14 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
     // Escape and the deliberate bottom-edge drag return to the collection.
     onActivate:item => { pendingMemory = item; }
   });
+  // A separate, non-interactive room surrounds the card without changing its gesture plane.
+  const room = element('div', 'polaroid-cosmic-room');
+  room.setAttribute('aria-hidden', 'true'); room.inert = true;
+  const scene = element('div', 'polaroid-cosmic-room-scene');
+  for (const face of ['back', 'left', 'right', 'floor', 'ceiling']) {
+    scene.append(element('div', `polaroid-cosmic-wall polaroid-cosmic-wall--${face}`));
+  }
+  room.append(scene); viewer.dialog.append(room);
   // The owner requested front-only browsing until a meaningful paper back is available.
   viewer.flipButton.hidden = true;
   viewer.flipButton.disabled = true;
@@ -211,7 +219,7 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
   let css = document.querySelector('link[data-polaroid-memory]');
   if (!css) {
     css = element('link'); css.rel = 'stylesheet';
-    css.href = new URL('./memory-viewer.css?v=20261125-polaroid45', import.meta.url);
+    css.href = new URL('./memory-viewer.css?v=20261126-room48', import.meta.url);
     css.dataset.polaroidMemory = ''; document.head.append(css);
   }
   try { await Promise.all([stylesheetReady(css), stylesheetReady(document.querySelector('link[data-ola-viewer]'))]); }
