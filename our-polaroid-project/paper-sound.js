@@ -1,4 +1,4 @@
-// Polaroid-only recorded camera eject. The shared Cinema recording remains untouched.
+// Polaroid-only recorded camera eject and the owner-requested earlier return swoosh. The shared Cinema recording remains untouched.
 export class PaperSound {
   constructor() { this.request = 0; }
   unlock() {
@@ -14,22 +14,29 @@ export class PaperSound {
       return ctx;
     } catch {}
   }
-  burst() {
+  burst(action) {
     const ctx = this.unlock(); if (!ctx) return;
+    const returning = action === 'return';
+    if (returning && !this.returnReady) this.returnReady = fetch(new URL('./audio/paper-floop-v33.wav', import.meta.url))
+      .then(r => { if (!r.ok) throw Error('Audio unavailable'); return r.arrayBuffer(); })
+      .then(bytes => ctx.decodeAudioData(bytes)).then(buffer => this.returnBuffer = buffer)
+      .catch(() => { this.returnReady = null; return null; });
+    const ready = returning ? this.returnReady : this.ready;
+    const buffer = () => returning ? this.returnBuffer : this.buffer;
     const request = ++this.request, requested = performance.now();
     const play = () => {
-      if (request !== this.request || performance.now() - requested > 1200 || !this.buffer || ctx.state === 'closed') return;
+      if (request !== this.request || performance.now() - requested > 1200 || !buffer() || ctx.state === 'closed') return;
       this.release();
       try {
         const source = ctx.createBufferSource(), gain = ctx.createGain();
-        source.buffer = this.buffer; source.loop = false;
+        source.buffer = buffer(); source.loop = false;
         gain.gain.value = 1; source.connect(gain); gain.connect(ctx.destination);
         this.source = source; this.gain = gain;
         source.onended = () => { if (this.source === source) this.release(); };
         source.start();
       } catch { this.release(); }
     };
-    if (this.buffer) play(); else this.ready?.then(play);
+    if (buffer()) play(); else ready?.then(play);
   }
   release() {
     const source = this.source, gain = this.gain;
