@@ -7,7 +7,7 @@ import {join} from 'node:path';
 import {execFileSync,spawnSync} from 'node:child_process';
 import {scoreText,filmDate,matchesDate,historicalTrends,distribution,applyArtwork,artworkURL} from '../la-ola-cinema-club/assets/collection-data.js';
 import {filterFilms} from '../la-ola-cinema-club/assets/club.js';
-import {CardViewer,gestureAction,physicalGestureAction,downwardExit} from '../assets/ola-worlds/card-viewer.js';
+import {CardViewer,gestureAction,physicalGestureAction,physicalEdgeAction,downwardExit} from '../assets/ola-worlds/card-viewer.js';
 const films=JSON.parse(readFileSync('la-ola-cinema-club/data/films.json'));
 const manifest=JSON.parse(readFileSync('la-ola-cinema-club/data/artwork.json'));
 test('date filters preserve unknowns and distinguish recorded release years from verified watch days',()=>{
@@ -297,15 +297,15 @@ test('upward physical toss returns the SAME item without navigation or activatio
  }finally{delete globalThis.document;delete globalThis.matchMedia;}
 });
 
-test('native up/down physical releases enforce distance, zoom and multi conflicts, then return to grid',async()=>{
+test('physical top/bottom quarters trigger during held movement after twist and zoom; release cannot repeat',async()=>{
  const d=environment();try{
-  let exit=0,details=0,loft=0,nav=0;const opener=new Element('button');const v=new CardViewer({immersive:true,physicalCard:true,sound:false,onDismiss:()=>exit++,onActivate:()=>details++,onNavigate:()=>nav++});v.reduced.matches=true;v.open([{src:'a.jpg'},{src:'b.jpg'}],0,opener);
-  const actual=v.loft.bind(v);v.loft=()=>{loft++;return actual()};const point=(x,y)=>({...pointer(x,y),pointerType:'native-touch',target:v.image});
-  v.down(point(200,400));v.up(point(200,350),true);assert.equal(loft,0);
-  v.down(point(200,400));v.up(point(200,150),true);await Promise.resolve();assert.equal(loft,1);assert.equal(nav,0);assert.equal(details,0);assert.equal(v.index,0);assert.equal(v.suppressTap,true);
-  v.zoom(2);v.down({...point(200,400),timeStamp:1000});v.up({...point(200,50),timeStamp:2200},true);assert.equal(loft,1,'slow zoomed positioning is not an upward flick');v.reset();
-  v.down(point(200,50));v.up(point(200,400),true);assert.equal(exit,0,'long middle release stays');v.down(point(200,450));v.up(point(200,580),true);assert.equal(exit,0,'short bottom release stays');
-  v.down(point(200,100));v.drag(point(200,580));assert.equal(exit,0,'held card never dismisses');v.up(point(200,580),true);await Promise.resolve();assert.equal(exit,1);assert.equal(details,0);assert.equal(v.dialog.open,false);assert.equal(d.activeElement,opener);assert.equal(nav,0);v.destroy();
+  let exit=0,details=0,loft=0,nav=0;const opener=new Element('button');const v=new CardViewer({immersive:true,physicalCard:true,sound:false,onDismiss:()=>exit++,onActivate:()=>details++,onNavigate:()=>nav++});v.reduced.matches=true;
+  const actual=v.loft.bind(v);v.loft=()=>{loft++;return actual()};const point=(x,y,timeStamp=1000)=>({...pointer(x,y),timeStamp,pointerType:'native-touch',target:v.image});
+  for(const rot of [0,90,180,270])for(const scale of [1,1.2,2]){
+   v.open([{src:'a.jpg'},{src:'b.jpg'}],0,opener);v.rotZ=rot;v.zoom(scale);v.down(point(200,320));v.drag(point(200,151,1200));const before=loft;v.drag(point(200,140,1300));await Promise.resolve();assert.equal(loft,before+1,'held top-quarter entry triggers at any pose');assert.equal(v.index,0);assert.equal(v.panX,0);assert.equal(v.scale,1);v.up(point(200,100,1500),true);assert.equal(loft,before+1);
+   v.open(v.items,0,opener);v.rotZ=rot;v.zoom(scale);v.down(point(200,320));v.drag(point(200,449,1200));const exits=exit;assert.equal(v.dialog.open,true);v.drag(point(200,460,1300));await Promise.resolve();assert.equal(exit,exits+1,'held bottom-quarter entry exits even after zoom/twist');assert.equal(v.dialog.open,false);v.up(point(200,580,1400),true);assert.equal(exit,exits+1);assert.equal(d.activeElement,opener);
+  }
+  assert.equal(nav,0);assert.equal(details,0);v.destroy();
  }finally{delete globalThis.document;delete globalThis.matchMedia;}
 });
 
@@ -404,13 +404,13 @@ test('batched and staggered native two-finger releases cannot browse, dismiss or
  }finally{delete globalThis.document;delete globalThis.matchMedia;}
 });
 
-test('upward native flick leaves the viewport and returns to exact pre-flick pose without changing photo or hash',async()=>{
+test('top-zone boomerang visibly spins offscreen and returns same photo centered/full-fit without changing hash',async()=>{
  environment();const oldLocation=globalThis.location;globalThis.location={hash:'#photo=same'};try{
-  let navigation=0,resolve,frames;const v=new CardViewer({immersive:true,physicalCard:true,sound:false,onNavigate:()=>navigation++});v.open([{id:'same',src:'a.jpg'},{id:'other',src:'b.jpg'}]);v.rotZ=135;v.orientation=90;v.panX=22;v.panY=31;v.scale=1.2;v.paint();const home=v.card.style.transform,pose=v.physicalPose();
+  let navigation=0,resolve,frames;const v=new CardViewer({immersive:true,physicalCard:true,sound:false,onNavigate:()=>navigation++});v.open([{id:'same',src:'a.jpg'},{id:'other',src:'b.jpg'}]);const centered=v.card.style.transform;v.rotZ=135;v.orientation=90;v.panX=22;v.panY=31;v.scale=1.2;v.paint();
   v.card.animate=f=>{frames=f;return{finished:new Promise(r=>resolve=r),cancel(){resolve()}}};
-  const point=(y,timeStamp)=>({...pointer(200,y),timeStamp,pointerType:'native-touch',target:v.image});v.down(point(400,1000));v.up(point(100,1100),true);
-  assert.equal(v.returning,true);assert.equal(frames[0].opacity,1);assert.equal(frames[1].opacity,0);assert.equal(frames[2].opacity,0);assert.equal(frames.at(-1).transform,home);assert.ok(Number(frames[1].transform.match(/,-([\d.]+)px/)[1])>v.stage.clientHeight+v.card.clientHeight);
-  resolve();await Promise.resolve();assert.deepEqual(v.physicalPose(),pose);assert.equal(v.card.style.transform,home);assert.equal(v.items[v.index].id,'same');assert.equal(v.image.src,'a.jpg');assert.equal(globalThis.location.hash,'#photo=same');assert.equal(navigation,0);v.destroy();
+  const point=(y,timeStamp)=>({...pointer(200,y),timeStamp,pointerType:'native-touch',target:v.image});v.down(point(400,1000));v.drag(point(100,1400));
+  assert.equal(v.returning,true);assert.equal(frames[0].opacity,1);assert.equal(frames[1].opacity,1);assert.match(frames[1].transform,/rotateX\(150deg\).*rotateY\(200deg\)/);assert.equal(frames[2].opacity,0);assert.equal(frames[3].opacity,0);assert.equal(frames.at(-1).transform,centered);assert.ok(Number(frames[2].transform.match(/,-([\d.]+)px/)[1])>v.stage.clientHeight+v.card.clientHeight);
+  v.up(point(100,1500),true);resolve();await Promise.resolve();assert.deepEqual(v.physicalPose(),{panX:0,panY:0,rotX:0,rotY:0,rotZ:0,orientation:0,faceY:0,scale:1});assert.equal(v.card.style.transform,centered);assert.equal(v.items[v.index].id,'same');assert.equal(v.image.src,'a.jpg');assert.equal(globalThis.location.hash,'#photo=same');assert.equal(navigation,0);v.destroy();
  }finally{if(oldLocation===undefined)delete globalThis.location;else globalThis.location=oldLocation;delete globalThis.document;delete globalThis.matchMedia;}
 });
 
@@ -438,4 +438,32 @@ test('year/month scopes use watched dates independently of edition/release year'
 test('current verified diary is a partial26-film year, with9 verified November films',()=>{
  const source=JSON.parse(readFileSync('la-ola-cinema-club/data/films.json'));const year=watchedRecords(source,{year:'2026'}),nov=watchedRecords(source,{year:'2026',month:'11'});
  assert.equal(source.length,234);assert.equal(year.length,26);assert.equal(source.length-watchedRecords(source).length,208);assert.equal(nov.length,9);assert.equal(collectionStats(source).pairs,234);assert.ok(Math.abs(collectionStats(nov).average-7.666666666666667)<1e-10);
+});
+
+
+test('physical edge zones use stage offsets, deliberate travel and vertical dominance, never edge taps',()=>{
+ for(const input of [{dy:50,y:590},{dy:-30,y:20},{dy:100,dx:100,y:590},{dy:-120,y:30,multi:true},{dy:140,y:480,multi:true}])assert.equal(physicalEdgeAction({stageHeight:600,...input}),'pose');
+ assert.equal(physicalEdgeAction({dy:100,y:550,stageTop:100,stageHeight:600}),'exit');assert.equal(physicalEdgeAction({dy:-100,y:250,stageTop:100,stageHeight:600}),'return');
+ assert.equal(physicalEdgeAction({dy:100,y:549,stageTop:100,stageHeight:600}),'pose');assert.equal(physicalEdgeAction({dy:-100,y:251,stageTop:100,stageHeight:600}),'pose');
+});
+
+test('a consumed held gesture cannot restart or navigate when a second finger arrives or release is delayed',async()=>{
+ environment();try{
+  let resolve,nav=0;const v=new CardViewer({immersive:true,physicalCard:true,sound:false,onNavigate:()=>nav++});v.open([{src:'a.jpg'},{src:'b.jpg'}]);v.card.animate=()=>({finished:new Promise(r=>resolve=r),cancel(){resolve()}});
+  const p=(x,y,id=1)=>({...pointer(x,y,id),timeStamp:1000,target:v.image});v.down(p(200,350));v.drag(p(200,100));assert.equal(v.returning,true);assert.equal(v.pointers.size,0);v.down(p(100,200,2));assert.equal(v.pointers.size,0);assert.equal(v.consumedPointers.size,2);resolve();await Promise.resolve();
+  v.drag(p(0,100));v.up(p(0,100),true);assert.equal(v.index,0);v.up(p(380,590,2),false);assert.equal(v.consumedPointers.size,0);assert.equal(nav,0);assert.equal(v.dialog.open,true);v.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('mid-screen upward positioning stays put; short edge pulls and edge-start taps do not trigger',()=>{
+ environment();try{
+  let loft=0,exit=0;const v=new CardViewer({immersive:true,physicalCard:true,sound:false,onDismiss:()=>exit++});v.open([{src:'a.jpg'},{src:'b.jpg'}]);v.loft=()=>loft++;
+  const p=(y,t)=>({...pointer(200,y),timeStamp:t,target:v.image});
+  for(const [from,to] of [[400,230],[550,590],[80,25]]){v.down(p(from,1000));v.drag(p(to,1800));const pose=v.physicalPose();v.up(p(to,2000),true);assert.deepEqual(v.physicalPose(),pose);assert.equal(loft,0);assert.equal(exit,0);assert.equal(v.dialog.open,true);}
+  v.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('Polaroid controls use a low safe-area inset and stage-only mark that cannot cover or intercept the scan',()=>{
+ const css=readFileSync('our-polaroid-project/memory-viewer.css','utf8'),source=readFileSync('our-polaroid-project/memory-viewer.js','utf8');assert.match(css,/inset:auto 8px max\(4px,env\(safe-area-inset-bottom\)\)/);assert.match(css,/polaroid-stage-mark\{[^}]*pointer-events:none/);assert.match(css,/data-controls=true\]>.polaroid-stage-mark\{visibility:hidden/);assert.match(source,/stageMark.setAttribute\('aria-hidden', 'true'\)/);assert.match(source,/viewer.dialog.append\(stageMark, toGrid, controls\)/);
 });

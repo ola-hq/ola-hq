@@ -1,5 +1,5 @@
-import {CardViewer} from '../assets/ola-worlds/card-viewer.js?v=20261125-physical38';
-import {PaperSound} from './paper-sound.js?v=20261125-polaroid38';
+import {CardViewer} from '../assets/ola-worlds/card-viewer.js?v=20261125-physical39';
+import {PaperSound} from './paper-sound.js?v=20261125-polaroid39';
 
 // Reuse every shared gesture; only Polaroid's sound backend differs from Cinema.
 export class PolaroidCardViewer extends CardViewer {
@@ -134,7 +134,11 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
     if (expanded) viewer.closeButton.focus();
   });
   controls.className = 'polaroid-stage-controls'; controls.setAttribute('aria-expanded', 'false');
-  viewer.dialog.append(toGrid, controls);
+  const stageMark = element('div', 'polaroid-stage-mark');
+  stageMark.setAttribute('aria-hidden', 'true');
+  stageMark.append(element('span', 'polaroid-stage-wave', '≈'), element('span', '', 'OUR POLAROID WAVE'));
+  viewer.dialog.append(stageMark, toGrid, controls);
+  viewer.stage.setAttribute('aria-label', 'Move and twist the photograph. Flick sideways to browse. Slide into the top quarter to spin and return centered; slide into the bottom quarter to return to the collection. Tap surrounding space for controls.');
   const controlsObserver = new MutationObserver(() => controls.setAttribute('aria-expanded', viewer.dialog.dataset.controls));
   controlsObserver.observe(viewer.dialog, {attributes:true, attributeFilter:['data-controls']});
   const audioLabel = () => {
@@ -200,7 +204,7 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
   let css = document.querySelector('link[data-polaroid-memory]');
   if (!css) {
     css = element('link'); css.rel = 'stylesheet';
-    css.href = new URL('./memory-viewer.css?v=20261125-polaroid38', import.meta.url);
+    css.href = new URL('./memory-viewer.css?v=20261125-polaroid39', import.meta.url);
     css.dataset.polaroidMemory = ''; document.head.append(css);
   }
   try { await Promise.all([stylesheetReady(css), stylesheetReady(document.querySelector('link[data-ola-viewer]'))]); }
