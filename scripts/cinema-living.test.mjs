@@ -439,3 +439,12 @@ test('current verified diary is a partial26-film year, with9 verified November f
  const source=JSON.parse(readFileSync('la-ola-cinema-club/data/films.json'));const year=watchedRecords(source,{year:'2026'}),nov=watchedRecords(source,{year:'2026',month:'11'});
  assert.equal(source.length,234);assert.equal(year.length,26);assert.equal(source.length-watchedRecords(source).length,208);assert.equal(nov.length,9);assert.equal(collectionStats(source).pairs,234);assert.ok(Math.abs(collectionStats(nov).average-7.666666666666667)<1e-10);
 });
+
+
+test('shared reviewer distribution aligns exact grades and keeps zero counts on one common scale',async()=>{
+ const {comparisonDistribution}=await import('../la-ola-cinema-club/assets/stats-data.js');
+ const data=comparisonDistribution([{brain:3.25,heart:4},{brain:4,heart:4},{brain:3.25,heart:5},{brain:5,heart:null}]);
+ assert.deepEqual(data.rows.map(r=>r.score),[3.25,4,5]);assert.equal(data.brainCount,3);assert.equal(data.heartCount,3);assert.equal(data.maxCount,2);
+ assert.deepEqual(data.rows.map(r=>[r.brain.length,r.heart.length]),[[2,0],[1,2],[0,1]]);
+ const full=comparisonDistribution(films);assert.equal(full.brainCount,234);assert.equal(full.heartCount,234);assert.equal(full.rows.reduce((n,r)=>n+r.brain.length,0),234);assert.equal(full.rows.reduce((n,r)=>n+r.heart.length,0),234);
+});

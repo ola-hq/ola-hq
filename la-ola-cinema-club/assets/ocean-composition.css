@@ -72,3 +72,22 @@ body[data-ocean-artwork=original] .living-ocean{display:none}
 @media(max-width:360px){.stats-period-controls{grid-template-columns:1fr}}
 
 .stats-period-controls select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%23e9bf6d' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;line-height:1.4}
+
+/* Paired reviewer bars share both score rows and one count scale. */
+.score-distribution.score-comparison{display:block}
+.comparison-legend{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0 10px}
+.comparison-key{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:10px 14px;border:1px solid #75859a;border-radius:24px;background:#102137;color:var(--cream);font:inherit;font-size:14px;cursor:pointer}
+.comparison-key::before{content:'';width:12px;height:12px;border-radius:3px;background:var(--series)}
+.comparison-key.brain,.comparison-series.brain{--series:#e9549c}.comparison-key.heart,.comparison-series.heart{--series:#6e91ef}
+.comparison-key[aria-pressed=true]{border-color:var(--series);box-shadow:inset 0 0 0 1px var(--series)}
+.comparison-status{font-size:14px}.comparison-headings,.comparison-row{display:grid;grid-template-columns:64px minmax(0,1fr) 54px;align-items:center;gap:16px}
+.comparison-headings{font-size:14px;color:var(--muted);padding:12px 0;border-bottom:1px solid #6d80914d}
+.comparison-headings>:last-child{text-align:right}
+.comparison-row{padding:9px 0;border-bottom:1px solid #6d80912e}
+.comparison-grade{font-size:16px}.comparison-bars{display:grid;gap:3px;min-width:0}
+.comparison-series{display:grid;grid-template-columns:45px minmax(0,1fr);align-items:center;gap:8px;min-height:32px;padding:3px 0;width:100%;border:0;background:transparent;color:var(--cream);text-align:left;font:inherit;font-size:14px;cursor:pointer;border-radius:4px}
+.comparison-series-label{color:var(--series)}.comparison-track{display:block;height:12px;border-radius:3px;background:#2a394e;overflow:hidden}.comparison-track i{display:block;height:100%;background:var(--series);border-radius:3px}
+.comparison-count{text-align:right;font-size:16px;font-variant-numeric:tabular-nums;font-weight:700}
+.score-comparison[data-counts=brain] .comparison-count,.score-comparison[data-counts=brain] .comparison-count-heading{color:#f08bbb}.score-comparison[data-counts=heart] .comparison-count,.score-comparison[data-counts=heart] .comparison-count-heading{color:#a2b7ff}
+.comparison-series:hover,.comparison-series:focus-visible{outline:2px solid var(--series);outline-offset:3px;background:#ffffff08}
+@media(max-width:700px){.comparison-headings,.comparison-row{grid-template-columns:48px minmax(0,1fr) 42px;gap:10px}.comparison-series{grid-template-columns:40px minmax(0,1fr);gap:6px;min-height:44px}.comparison-headings{font-size:14px}}
