@@ -1,4 +1,4 @@
-// Polaroid-only paper movement. The shared Cinema recording remains untouched.
+// Polaroid-only recorded camera eject. The shared Cinema recording remains untouched.
 export class PaperSound {
   constructor() { this.request = 0; }
   unlock() {
@@ -7,7 +7,7 @@ export class PaperSound {
       if (!Audio) return;
       const ctx = this.ctx || (this.ctx = new Audio());
       ctx.resume()?.catch?.(() => {});
-      if (!this.ready) this.ready = fetch(new URL('./audio/paper-floop-v33.wav', import.meta.url))
+      if (!this.ready) this.ready = fetch(new URL('./audio/polaroid-650-eject-v42.wav', import.meta.url))
         .then(r => { if (!r.ok) throw Error('Audio unavailable'); return r.arrayBuffer(); })
         .then(bytes => ctx.decodeAudioData(bytes)).then(buffer => this.buffer = buffer)
         .catch(() => { this.ready = null; return null; });
