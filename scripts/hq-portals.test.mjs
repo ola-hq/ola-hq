@@ -26,7 +26,7 @@ test('app routes Cinema to the current Club and keeps gated worlds as direct ext
   assert.ok(html.includes('href="https://home-base-purple-angels.jonathanmlizardi.workers.dev/" target="_blank"'));
   assert.ok(html.includes('href="https://ola-hq.github.io/arsenal-academy-worlds/?v=presenter-entry-1" target="_blank"'));
   assert.ok(read('index.html').includes('class="portal-globe-door" href="#waves"'));
-  assert.ok(read('index.html').includes('href="app/">Open the app</a>'));
+  assert.match(read('index.html').match(/<header[\s\S]*?<\/header>/)[0], /href="app\/"/);
 });
 function atmosphere(reduced=false) {
   const tasks=[], raf=[], overlays=[]; let moved=0;
