@@ -1,0 +1,14 @@
+Recorded Polaroid 650 eject — owner-selected v42
+Source: taking a Polaroid photo by larspriebe
+https://freesound.org/people/larspriebe/sounds/444682/
+License: CC0 1.0 Universal
+https://creativecommons.org/publicdomain/zero/1.0/
+
+The author describes an original Polaroid 650 Land Camera taking and printing a photo without flash.
+Edited from the public HQ MP3 preview (original WAV requires login): trim start0.9s, duration1.15s; pitch-preserving2x tempo;4ms/25ms fades; quiet baked gain0.18206824421493006. No synthesized elements.
+Output: mono24kHz16bitPCM WAV,574.4167ms.
+SHA256 c5d2c58c20451b4bd5a63cbc693977811c6732d2fc679dbebcf1a3ec47d8ffdf
+Playback gain1, byte-identical to the in-chat audition selected by the owner.
+
+Plays only on deliberate viewer interactions after user activation. Mute, close and destroy stop pending/active playback. No ambient autoplay. No endorsement by Polaroid or the recording author is implied.
+The prior effect is no longer used by the viewer; its earlier source and history remain preserved. The selected source is a camera recording.

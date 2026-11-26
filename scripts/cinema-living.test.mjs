@@ -348,6 +348,7 @@ test('Polaroid factory keeps actual details/downloads distinct from paper revers
   assert.equal(controller.open([photo],0,opener,{collection:'Approved event'}),true);
   const dialog=d.body.children.find(n=>n.className.includes('ola-card-immersive')),details=d.body.children.find(n=>n.className==='polaroid-memory-dialog');const tools=dialog.children.find(n=>n.className==='ola-card-tools'),stage=dialog.children.find(n=>n.className==='ola-card-stage');
   assert.equal(dialog.dataset.controls,'false');assert.equal(dialog.dataset.physical,'true');assert.equal(details.open,undefined);
+  const backControl=tools.children.find(n=>n.dataset.world==='card-read-the-back'),soundControl=tools.children.find(n=>n.dataset.world==='card-sound-on');assert.equal(backControl.hidden,true);assert.equal(backControl.disabled,true);assert.equal(soundControl.hidden,false);assert.equal(Boolean(soundControl.disabled),false);assert.equal(soundControl.attributes['aria-pressed'],'true');assert.equal(soundControl.textContent,'Camera sound on');
   tools.children.find(n=>n.textContent==='Turn card over').onclick();assert.equal(details.open,undefined,'physical back does not pretend to be memory details');
   tools.children.find(n=>n.textContent==='Memory details').onclick();assert.equal(details.open,true);assert.equal(dialog.open,false);assert.equal(details.dataset.photoId,'owner-approved');
   const link=details.children.find(n=>n.className==='memory-original');assert.equal(link.href,'original.jpg');assert.equal(link.download,'original-scan.jpg');assert.equal(details.children.find(n=>n.className==='memory-inline').href,'original.jpg?inline=1');
@@ -524,6 +525,40 @@ test('gentle physical return makes one monotonic pitch turn, keeps yaw zero and 
  }finally{delete globalThis.document;delete globalThis.matchMedia;}
 });
 
+
+test('front-only physical mode disables button, F and two-finger paper sweep while keeping twist and pan',()=>{
+ environment();try{
+  const v=new CardViewer({immersive:true,physicalCard:true,paperBack:false,sound:false});v.open([{src:'a.jpg'},{src:'b.jpg'}]);assert.equal(v.flipButton.hidden,true);assert.equal(v.flipButton.disabled,true);v.flip();assert.equal(v.faceY,0);v.dialog.emit('keydown',{key:'f',target:v.stage});assert.equal(v.faceY,0);
+  const ev=(points,t)=>({timeStamp:t,changedTouches:points.map(([identifier,clientX,clientY])=>({identifier,clientX,clientY,target:v.image}))});
+  v.stage.emit('touchstart',ev([[1,80,250],[2,180,250]],1000));v.stage.emit('touchmove',ev([[1,210,250],[2,310,250]],1400));assert.equal(v.turnPreview,0);assert.equal(v.panX,130);v.stage.emit('touchend',ev([[1,210,250],[2,310,250]],1500));assert.equal(v.faceY,0);assert.equal(v.index,0);
+  v.reset();v.stage.emit('touchstart',ev([[1,100,200],[2,200,200]],2000));v.stage.emit('touchmove',ev([[1,150,150],[2,150,300]],2400));v.stage.emit('touchend',ev([[1,150,150],[2,150,300]],2500));assert.ok(v.scale>1);assert.ok(v.rotZ>80);assert.equal(v.faceY,0);assert.equal(v.index,0);v.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('fresh background swipes recover held offscreen photos at slow speeds and after pauses without changing card posing',async()=>{
+ environment();try{
+  const v=new CardViewer({immersive:true,physicalCard:true,paperBack:false,backgroundNavigation:true,sound:false});v.reduced.matches=true;const items=[{id:'first',src:'a.jpg'},{id:'middle',src:'b.jpg'},{id:'last',src:'c.jpg'}];const p=(x,y,t,target)=>({...pointer(x,y),timeStamp:t,target});
+  for(const side of [-1,1])for(const scale of [1,1.3])for(const edge of [100,300]){
+   v.open(items,1);v.rotZ=side*90;v.zoom(scale);v.down(p(200,300,1000,v.image));v.drag(p(200+side*800,300,2500,v.image));v.up(p(200+side*800,300,2800,v.image),true);assert.equal(v.index,1);assert.ok(Math.abs(v.panX)>=v.stage.clientWidth*.6);
+   v.down(p(edge,300,3500,v.stage));v.drag(p(edge-side*150,300,4300,v.stage));v.up(p(edge-side*150,300,4700,v.stage),true);await new Promise(r=>setImmediate(r));assert.equal(v.index,side>0?2:0);assert.equal(v.panX,0);assert.equal(v.scale,1);
+  }
+  v.open(items,1);v.down(p(200,300,1000,v.stage));v.drag(p(150,300,1500,v.stage));v.up(p(150,300,1800,v.stage),true);assert.equal(v.index,1,'short background pose does not navigate');
+  v.down(p(200,300,2000,v.image));v.drag(p(50,300,3000,v.image));v.up(p(50,300,3300,v.image),true);assert.equal(v.index,1,'slow card-start drag still retains its pose');v.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('background recovery never converts multi-touch or vertical gestures into horizontal navigation',async()=>{
+ environment();try{
+  let dismissed=0;const v=new CardViewer({immersive:true,physicalCard:true,backgroundNavigation:true,paperBack:false,sound:false,onDismiss:()=>dismissed++});v.reduced.matches=true;v.open([{src:'a.jpg'},{src:'b.jpg'}]);const p=(x,y,t,id=1)=>({...pointer(x,y,id),timeStamp:t,target:v.stage});
+  v.down(p(200,300,1000));v.down(p(250,300,1000,2));v.drag(p(0,300,1500));v.up(p(0,300,1700),true);v.up(p(100,300,1800,2),true);assert.equal(v.index,0);assert.equal(v.dialog.open,true);
+  v.down(p(200,300,2000));v.drag(p(100,400,2400));v.up(p(100,400,2700),true);assert.equal(v.index,0);v.down(p(200,200,3000));v.drag(p(200,560,3500));await Promise.resolve();assert.equal(dismissed,1);assert.equal(v.dialog.open,false);v.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('current Polaroid camera audio is the exact owner-selected recording and finite quiet PCM',()=>{
+ const wav=readFileSync('our-polaroid-project/audio/polaroid-650-eject-v42.wav');assert.equal(createHash('sha256').update(wav).digest('hex'),'c5d2c58c20451b4bd5a63cbc693977811c6732d2fc679dbebcf1a3ec47d8ffdf');assert.equal(wav.toString('ascii',0,4),'RIFF');assert.equal(wav.readUInt16LE(22),1);assert.equal(wav.readUInt32LE(24),24000);assert.ok((wav.length-44)/48000>.5&&(wav.length-44)/48000<.7);
+ const source=readFileSync('our-polaroid-project/paper-sound.js','utf8');assert.match(source,/audio\/polaroid-650-eject-v42.wav/);assert.doesNotMatch(source,/audio\/paper-floop-v33.wav/);const credits=readFileSync('our-polaroid-project/audio/POLAROID-650-EJECT-v42.txt','utf8');assert.match(credits,/larspriebe/);assert.match(credits,/CC0/);
+});
 
 test('owner diary corrections retain delayed Letterboxd provenance and separate researched Unseen dates',()=>{
  const emily=films.find(f=>f.id==='club-finding-emily'),paris=films.find(f=>f.id==='cinema2026-26'),dracula=films.find(f=>f.id==='cinema2026-30');

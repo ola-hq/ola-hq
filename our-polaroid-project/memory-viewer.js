@@ -1,5 +1,5 @@
-import {CardViewer} from '../assets/ola-worlds/card-viewer.js?v=20261125-physical41';
-import {PaperSound} from './paper-sound.js?v=20261125-polaroid41';
+import {CardViewer} from '../assets/ola-worlds/card-viewer.js?v=20261125-physical42';
+import {PaperSound} from './paper-sound.js?v=20261125-polaroid42';
 
 // Reuse every shared gesture; only Polaroid's sound backend differs from Cinema.
 export class PolaroidCardViewer extends CardViewer {
@@ -114,16 +114,19 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
   const downloadNote = element('p', 'memory-download-note');
   details.append(top, title, body, original, inline, share, downloadNote, status, browse, feedback); document.body.append(details);
 
-  const viewer = new PolaroidCardViewer({theme:'polaroid', immersive:true, physicalCard:true, intensity:18, loop,
+  const viewer = new PolaroidCardViewer({theme:'polaroid', immersive:true, physicalCard:true, paperBack:false, backgroundNavigation:true, intensity:18, loop,
     onDismiss:() => { pendingMemory = null; onClose?.(); },
     label:'Polaroid Wave photograph viewer', renderBack:renderPublicMemory,
     onNavigate:item => { index = items.indexOf(item); onNavigate?.(item); },
-    // A photograph tap opens real public memory details. Physical flip is plain paper;
-    // Escape and deliberate bottom-release return to the collection.
+    // A photograph tap opens real public memory details.
+    // Escape and the deliberate bottom-edge drag return to the collection.
     onActivate:item => { pendingMemory = item; }
   });
+  // The owner requested front-only browsing until a meaningful paper back is available.
+  viewer.flipButton.hidden = true;
+  viewer.flipButton.disabled = true;
   viewer.closeButton.textContent = 'Memory details';
-  viewer.stage.setAttribute('aria-label', 'Photograph. Drag to move and tilt. Pinch and twist with two fingers; sweep both fingers sideways to turn the card over. Flick sideways to browse, up to toss and return, or pull all the way down and release to leave. Tap the photograph for memory details or empty space for controls. Tab reveals controls. F flips, R rotates, Shift R rotates left, Up tosses, arrows browse, Escape returns to collection.');
+  viewer.stage.setAttribute('aria-label', 'Photograph. Drag to move and tilt. Pinch and twist with two fingers. Flick sideways to browse, up to toss and return, or pull all the way down and release to leave. Tap the photograph for memory details or empty space for controls. Tab reveals controls. R rotates, Shift R rotates left, Up tosses, arrows browse, Escape returns to collection.');
 
   const toGrid = viewer.button('Back to collection', () => { pendingMemory = null; viewer.close(); onClose?.(); });
   toGrid.className = 'polaroid-stage-return';
@@ -142,9 +145,9 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
   const controlsObserver = new MutationObserver(() => controls.setAttribute('aria-expanded', viewer.dialog.dataset.controls));
   controlsObserver.observe(viewer.dialog, {attributes:true, attributeFilter:['data-controls']});
   const audioLabel = () => {
-    viewer.soundButton.textContent = viewer.sound ? 'Paper sound on' : 'Paper sound off';
-    viewer.soundButton.title = 'Soft paper-flip sound. Turn off for silent browsing.';
-    viewer.soundButton.dataset.audioStatus = 'paper-flip';
+    viewer.soundButton.textContent = viewer.sound ? 'Camera sound on' : 'Camera sound off';
+    viewer.soundButton.title = 'Recorded Polaroid 650 eject. Turn off for silent browsing.';
+    viewer.soundButton.dataset.audioStatus = 'recorded-polaroid-650';
   };
   audioLabel(); viewer.soundButton.addEventListener('click', audioLabel);
 
@@ -204,7 +207,7 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
   let css = document.querySelector('link[data-polaroid-memory]');
   if (!css) {
     css = element('link'); css.rel = 'stylesheet';
-    css.href = new URL('./memory-viewer.css?v=20261125-polaroid41', import.meta.url);
+    css.href = new URL('./memory-viewer.css?v=20261125-polaroid42', import.meta.url);
     css.dataset.polaroidMemory = ''; document.head.append(css);
   }
   try { await Promise.all([stylesheetReady(css), stylesheetReady(document.querySelector('link[data-ola-viewer]'))]); }
