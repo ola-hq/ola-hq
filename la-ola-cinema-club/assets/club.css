@@ -151,3 +151,9 @@ body[data-film-id] .ocean-motion-control{position:static;inset:auto;min-height:4
 /* Let review captions and the latest-three label fit inside the original phone. */
 .hero-world .cinema-stage{aspect-ratio:auto}
 .hero-world .stage-footer{flex-shrink:0}
+/* The homepage array is oldest-to-newest in DOM order. Put the latest review
+   in the center/front, the previous one on the right, and the oldest behind. */
+.hero-world .stage-cards a:nth-child(1){order:1;z-index:1}
+.hero-world .stage-cards a:nth-child(2){order:3;z-index:2;transform:translateY(-5px) rotate(8deg)}
+.hero-world .stage-cards a:nth-child(3){order:2;z-index:3;transform:translateY(24px)}
+.hero-world .stage-cards a:hover,.hero-world .stage-cards a:focus-visible{transform:translateY(-14px) scale(1.04);z-index:5}
