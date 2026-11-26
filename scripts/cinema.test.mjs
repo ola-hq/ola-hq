@@ -16,7 +16,7 @@ test('mood journey excludes horror in both genre roles when gentle is selected',
  const picks=journeyPicks(films,{dark:'gentle',energy:'tense',world:'imaginative',perspective:'heart'});assert.equal(picks.length,3);assert.ok(picks.every(x=>current.some(f=>f.id===x.film.id)&&![x.film.genre,x.film.secondaryGenre].includes('Horror')));
 });
 test('reconciles 44 existing placeholders and 44 additions without losing historic IDs',()=>{
- assert.equal(films.length,234);assert.equal(new Set(films.map(f=>f.id)).size,234);assert.equal(current.length,88);
+ assert.equal(films.length,236);assert.equal(new Set(films.map(f=>f.id)).size,236);assert.equal(current.length,90);
  const legacy=JSON.parse(readFileSync(new URL('../blockbuster-wave/blockbuster-wave-complete-gallery.html',import.meta.url),'utf8').match(/id="data">(.*?)<\/script>/s)[1]);
  assert.equal(legacy.length,234);assert.equal(legacy.find(f=>f.id==='cinema2026-14').clubScore,9);
  assert.equal(JSON.parse(readFileSync(new URL('../la-ola-cinema-club/data/archives.json',import.meta.url))).length,125);

@@ -2576,6 +2576,38 @@
         1000,
         1500
       ]
+    },
+    "club-focker-in-law": {
+      "image": "assets/cards/club-focker-in-law.webp",
+      "thumbnail": "assets/cards/club-focker-in-law.webp",
+      "revision": "e3c7a8607c5df474",
+      "status": "approved",
+      "sha256": "e3c7a8607c5df4745c2687e972c6122f02c5eb694f2e81ac074ee1b7735c45d9",
+      "pendingRefresh": false,
+      "approvalReceipt": "Owner explicitly approved both posters and site publication November26 2026; additionally approved final12px rightward Focker title position via async reply. Saved native Canva designDAHb_wZ0Tu8, page1Focker/page2Bank;1000x1500 highPNG export visually checked.",
+      "sourceDesign": "DAHb_wZ0Tu8",
+      "sourcePage": 1,
+      "sourcePngSha256": "e176c640f223fae57460825502030a3e719e029037d145c4e024ac316af292a9",
+      "dimensions": [
+        1000,
+        1500
+      ]
+    },
+    "club-how-to-rob-a-bank": {
+      "image": "assets/cards/club-how-to-rob-a-bank.webp",
+      "thumbnail": "assets/cards/club-how-to-rob-a-bank.webp",
+      "revision": "d306cc261f241445",
+      "status": "approved",
+      "sha256": "d306cc261f241445f665deb705a75bce0462afdb69f72632368410ffe4b01e7a",
+      "pendingRefresh": false,
+      "approvalReceipt": "Owner explicitly approved both posters and site publication November26 2026; additionally approved final12px rightward Focker title position via async reply. Saved native Canva designDAHb_wZ0Tu8, page1Focker/page2Bank;1000x1500 highPNG export visually checked.",
+      "sourceDesign": "DAHb_wZ0Tu8",
+      "sourcePage": 2,
+      "sourcePngSha256": "164879c704f3594d9d1663da6e98c9019f7d3795297ad4ec68b35b6ac21b694b",
+      "dimensions": [
+        1000,
+        1500
+      ]
     }
   },
   "features": {
