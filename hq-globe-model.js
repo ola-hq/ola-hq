@@ -28,9 +28,9 @@
       const z=w0*xyz[a+2]+w1*xyz[b+2]+w2*xyz[c+2],at=y*size+x;if(z<=zbuffer[at])continue;
       const u=w0*p.uv[uva]+w1*p.uv[uvb]+w2*p.uv[uvc],v=w0*p.uv[uva+1]+w1*p.uv[uvb+1]+w2*p.uv[uvc+1];
       const tx=Math.max(0,Math.min(tex.width-1,Math.round(u*(tex.width-1)))),ty=Math.max(0,Math.min(tex.height-1,Math.round(v*(tex.height-1)))),source=(ty*tex.width+tx)*4;
-      const blank=tex.data[source+3]<90;if(blank&&p.material!==2)continue;
+      if(tex.data[source+3]<90)continue;
       const facing=Math.max(0,Math.min(1,z/.88)),shade=p.material!==1?.91+.09*facing:.73+.27*facing;
-      const dst=at*4;pixels[dst]=(blank?3:tex.data[source])*shade;pixels[dst+1]=(blank?20:tex.data[source+1])*shade;pixels[dst+2]=(blank?30:tex.data[source+2])*shade;pixels[dst+3]=255;zbuffer[at]=z;
+      const dst=at*4;pixels[dst]=tex.data[source]*shade;pixels[dst+1]=tex.data[source+1]*shade;pixels[dst+2]=tex.data[source+2]*shade;pixels[dst+3]=255;zbuffer[at]=z;
      }
     }
    });return pixels;
