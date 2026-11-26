@@ -1,11 +1,13 @@
-import {CardViewer} from '../assets/ola-worlds/card-viewer.js?v=20261125-physical43';
-import {PaperSound} from './paper-sound.js?v=20261125-polaroid43';
+import {CardViewer} from '../assets/ola-worlds/card-viewer.js?v=20261125-physical44';
+import {PaperSound} from './paper-sound.js?v=20261125-polaroid44';
 
 // Reuse every shared gesture; only Polaroid's sound backend differs from Cinema.
 export class PolaroidCardViewer extends CardViewer {
   constructor(options) { super(options); this.loopPhotos = options.loop !== false; }
   // A deliberate Polaroid fling requests its one-shot motion without changing the system preference.
   loft(options = {}) { return super.loft({playMotion:true, ...options}); }
+  // Keep the reduced-motion exit still while its short sound finishes, then close normally.
+  dismiss() { return super.dismiss({feedbackDelay:260}); }
   show() {
     super.show();
     if (!this.loopPhotos) {
@@ -17,7 +19,7 @@ export class PolaroidCardViewer extends CardViewer {
     if (!this.loopPhotos && (this.index + delta < 0 || this.index + delta >= this.items.length)) return;
     return super.toss(delta, options);
   }
-  unlockAudio() { if (this.sound) (this.projector || (this.projector = new PaperSound())).unlock(); }
+  unlockAudio() { if (this.sound) { const audio = this.projector || (this.projector = new PaperSound()); const ctx = audio.unlock(); audio.prepareExit(ctx); } }
   reelSound(action) { if (this.sound) (this.projector || (this.projector = new PaperSound())).burst(action); }
 }
 
@@ -116,11 +118,11 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
   const downloadNote = element('p', 'memory-download-note');
   details.append(top, title, body, original, inline, share, downloadNote, status, browse, feedback); document.body.append(details);
 
-  const viewer = new PolaroidCardViewer({theme:'polaroid', immersive:true, physicalCard:true, paperBack:false, backgroundNavigation:true, intensity:18, loop,
+  const viewer = new PolaroidCardViewer({theme:'polaroid', immersive:true, physicalCard:true, paperBack:false, backgroundNavigation:true, doubleTapDetails:true, intensity:18, loop,
     onDismiss:() => { pendingMemory = null; onClose?.(); },
     label:'Polaroid Wave photograph viewer', renderBack:renderPublicMemory,
     onNavigate:item => { index = items.indexOf(item); onNavigate?.(item); },
-    // A photograph tap opens real public memory details.
+    // A double tap opens real public memory details; a single tap leaves the card alone.
     // Escape and the deliberate bottom-edge drag return to the collection.
     onActivate:item => { pendingMemory = item; }
   });
@@ -128,7 +130,7 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
   viewer.flipButton.hidden = true;
   viewer.flipButton.disabled = true;
   viewer.closeButton.textContent = 'Memory details';
-  viewer.stage.setAttribute('aria-label', 'Photograph. Drag to move and tilt. Pinch and twist with two fingers. Flick sideways to browse, up to toss and return, or pull all the way down and release to leave. Tap the photograph for memory details or empty space for controls. Tab reveals controls. R rotates, Shift R rotates left, Up tosses, arrows browse, Escape returns to collection.');
+  viewer.stage.setAttribute('aria-label', 'Photograph. Drag to move and tilt. Pinch and twist with two fingers. Flick sideways to browse, up to toss and return, or pull all the way down and release to leave. Double-tap the photograph for memory details or empty space for controls. Tab reveals controls. R rotates, Shift R rotates left, Up tosses, arrows browse, Escape returns to collection.');
 
   const toGrid = viewer.button('Back to collection', () => { pendingMemory = null; viewer.close(); onClose?.(); });
   toGrid.className = 'polaroid-stage-return';
@@ -143,13 +145,13 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
   stageMark.setAttribute('aria-hidden', 'true');
   stageMark.append(element('span', 'polaroid-stage-wave', '≈'), element('span', '', 'OUR POLAROID WAVE'));
   viewer.dialog.append(stageMark, toGrid, controls);
-  viewer.stage.setAttribute('aria-label', 'Move and twist the photograph. Flick sideways to browse. Slide into the top quarter to spin and return centered; slide into the bottom quarter to return to the collection. Tap surrounding space for controls.');
+  viewer.stage.setAttribute('aria-label', 'Move and twist the photograph. Flick sideways to browse. Slide into the top quarter to spin and return centered; slide into the bottom quarter to return to the collection. Double-tap the photograph for memory details. Tap surrounding space for controls.');
   const controlsObserver = new MutationObserver(() => controls.setAttribute('aria-expanded', viewer.dialog.dataset.controls));
   controlsObserver.observe(viewer.dialog, {attributes:true, attributeFilter:['data-controls']});
   const audioLabel = () => {
     viewer.soundButton.textContent = viewer.sound ? 'Photo sound on' : 'Photo sound off';
-    viewer.soundButton.title = 'Camera eject for photo changes; paper swoosh for toss and return. Turn off for silent browsing.';
-    viewer.soundButton.dataset.audioStatus = 'recorded-polaroid-650';
+    viewer.soundButton.title = 'Camera eject for photo changes; return swoosh upward and a short exit whoosh downward. Turn off for silent browsing.';
+    viewer.soundButton.dataset.audioStatus = 'camera-return-exit';
   };
   audioLabel(); viewer.soundButton.addEventListener('click', audioLabel);
 
@@ -209,7 +211,7 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
   let css = document.querySelector('link[data-polaroid-memory]');
   if (!css) {
     css = element('link'); css.rel = 'stylesheet';
-    css.href = new URL('./memory-viewer.css?v=20261125-polaroid43', import.meta.url);
+    css.href = new URL('./memory-viewer.css?v=20261125-polaroid44', import.meta.url);
     css.dataset.polaroidMemory = ''; document.head.append(css);
   }
   try { await Promise.all([stylesheetReady(css), stylesheetReady(document.querySelector('link[data-ola-viewer]'))]); }

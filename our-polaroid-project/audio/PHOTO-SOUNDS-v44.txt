@@ -1,0 +1,15 @@
+Polaroid photo sounds — v44
+
+Left/right photo changes: unchanged owner-selected recorded Polaroid 650 short eject.
+File polaroid-650-eject-v42.wav; SHA256 c5d2c58c20451b4bd5a63cbc693977811c6732d2fc679dbebcf1a3ec47d8ffdf.
+Source, CC0 license and audition identity: POLAROID-650-EJECT-v42.txt.
+
+Upward toss and return: unchanged earlier 510ms soft paper swoosh.
+File paper-floop-v33.wav; SHA256 48f3accdbfddca47aebd4edf58e1324d9bed5c93009ea4b21a96f07468f11934.
+Procedural source/history: PAPER-SOUND.txt; this is not a camera recording.
+
+Downward exit: a separate short, one-way whoosh with a soft falling tail.
+File paper-exit-v44.wav; 240ms, mono24kHz16bitPCM; SHA256 bef31cda903618a9bb22aa6d5724f70d3e22f695438439ddd23575da2d677f3e.
+Derived solely from the existing paper swoosh's170ms–510ms tail, resampled to240ms, with12ms/150ms cosine fades and bakedgain0.85. No third-party recording or new claim of camera provenance.
+
+Playback gain1 for all three. One context and source; mute, close and destroy cancel pending/active playback. Preparing the exit buffer never plays it. Under reduced motion or a missing animation API, Polaroid may hold the still frame up to260ms so the short exit sound can finish, without overriding the system motion preference. Reset, navigation, close or destruction invalidates that delayed exit. No ambient autoplay.

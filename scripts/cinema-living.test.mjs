@@ -353,7 +353,9 @@ test('Polaroid factory keeps actual details/downloads distinct from paper revers
   tools.children.find(n=>n.textContent==='Memory details').onclick();assert.equal(details.open,true);assert.equal(dialog.open,false);assert.equal(details.dataset.photoId,'owner-approved');
   const link=details.children.find(n=>n.className==='memory-original');assert.equal(link.href,'original.jpg');assert.equal(link.download,'original-scan.jpg');assert.equal(details.children.find(n=>n.className==='memory-inline').href,'original.jpg?inline=1');
   details.children.find(n=>n.className==='memory-toolbar').children[0].emit('click',{});assert.equal(dialog.open,true);assert.equal(details.open,false);
-  stage.emit('touchstart',{changedTouches:[{identifier:1,clientX:200,clientY:100,target:stage.children[0]}]});stage.emit('touchend',{changedTouches:[{identifier:1,clientX:200,clientY:580,target:stage.children[0]}]});await Promise.resolve();
+  const tap=t=>{const point={identifier:7,clientX:200,clientY:300,target:stage.children[0]};stage.emit('touchstart',{timeStamp:t,changedTouches:[point]});stage.emit('touchend',{timeStamp:t+30,changedTouches:[point]});};
+  tap(2000);assert.equal(details.open,false,'factory single photo tap stays on photograph');tap(2350);assert.equal(details.open,true,'factory double tap opens the existing details menu');assert.equal(details.dataset.photoId,'owner-approved');details.children.find(n=>n.className==='memory-toolbar').children[0].emit('click',{});assert.equal(dialog.open,true);
+  stage.emit('touchstart',{changedTouches:[{identifier:1,clientX:200,clientY:100,target:stage.children[0]}]});stage.emit('touchend',{changedTouches:[{identifier:1,clientX:200,clientY:580,target:stage.children[0]}]});await new Promise(resolve=>setTimeout(resolve,280));
   assert.equal(dialog.open,false);assert.equal(details.open,false);assert.equal(closed,1);assert.equal(navigated,0);assert.equal(d.activeElement,opener);controller.destroy();
  }finally{if(oldObserver===undefined)delete globalThis.MutationObserver;else globalThis.MutationObserver=oldObserver;if(oldLocation===undefined)delete globalThis.location;else globalThis.location=oldLocation;delete globalThis.document;delete globalThis.matchMedia;}
 });
@@ -590,4 +592,51 @@ test('camera changes and return swoosh share one audio source and mute/destroy c
   a.burst();assert.equal(started.length,3);assert.match(started[2],/polaroid-650-eject-v42.wav/);assert.equal(stopped,2);a.stop();assert.equal(a.source,null);a.destroy();assert.equal(closed,1);
   for(const action of ['stop','destroy']){requests.clear();const b=new PaperSound();b.burst('return');b[action]();for(const release of requests.values())release();await flush();assert.equal(started.length,3,'pending swoosh must not start after '+action);if(action==='stop')b.destroy();}
  }finally{if(oldAudio===undefined)delete globalThis.AudioContext;else globalThis.AudioContext=oldAudio;globalThis.fetch=oldFetch;}
+});
+
+test('opt-in photo double tap ignores singles and native compatibility clicks, preserving keyboard and Cinema activation',()=>{
+ environment();try{
+  let activated=0;const v=new CardViewer({immersive:true,physicalCard:true,doubleTapDetails:true,sound:false,onActivate:()=>activated++});const items=[{id:'a',src:'a.jpg'},{id:'b',src:'b.jpg'}];const p=(t,y=300)=>({...pointer(200,y),timeStamp:t,pointerType:'native-touch',target:v.image});
+  v.open(items);v.down(p(1000));v.up(p(1040),true);assert.equal(activated,0);assert.equal(v.dialog.open,true);v.stage.emit('click',{target:v.image,timeStamp:1050,clientX:200,clientY:300});assert.equal(activated,0,'compatibility click is not another tap');v.down(p(1300));v.up(p(1340),true);assert.equal(activated,1);assert.equal(v.dialog.open,false);v.stage.emit('click',{target:v.image,timeStamp:1350});assert.equal(activated,1);
+  v.open(items);v.dialog.emit('keydown',{key:'Enter',target:v.stage});assert.equal(activated,2,'explicit keyboard details stays accessible');v.open(items);v.closeButton.onclick();assert.equal(activated,3,'explicit details control remains immediate');v.destroy();
+  const cinema=new CardViewer({immersive:true,sound:false,onActivate:()=>activated++});cinema.open(items);cinema.stage.emit('click',{target:cinema.image,timeStamp:2000});assert.equal(activated,4,'default Cinema single click unchanged');cinema.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('photo double tap uses a bounded nearby window and is cleared by background, pose, cancellation and lifecycle',()=>{
+ environment();try{
+  const items=[{id:'a',src:'a.jpg'},{id:'b',src:'b.jpg'}];const click=(v,t,x=200)=>v.stage.emit('click',{target:v.image,timeStamp:t,clientX:x,clientY:300});
+  let activated=0;const v=new CardViewer({immersive:true,physicalCard:true,doubleTapDetails:true,sound:false,onActivate:()=>activated++});v.open(items);click(v,1000);click(v,1700);assert.equal(activated,0,'expired first tap never opens later');click(v,1900,300);assert.equal(activated,0,'distant second tap is separate');click(v,2100,305);assert.equal(activated,1);v.destroy();
+  for(const action of ['background','drag','pinch','cancel','reset','rotate','zoom','show','close']){
+   const c=new CardViewer({immersive:true,physicalCard:true,doubleTapDetails:true,sound:false,onActivate:()=>activated++});c.open(items);click(c,3000);const count=activated;const p=(x,y,t,id=1)=>({...pointer(x,y,id),timeStamp:t,target:c.image});
+   if(action==='background')c.stage.emit('click',{target:c.stage,timeStamp:3100});
+   if(action==='drag'){c.down(p(200,300,3100));c.drag(p(220,320,3200));c.up(p(220,320,3250),true);}
+   if(action==='pinch'){c.down(p(180,300,3100));c.down(p(240,300,3100,2));c.up(p(180,300,3150),false);c.up(p(240,300,3150,2),false);}
+   if(action==='cancel'){c.down(p(200,300,3100));c.up(p(200,300,3150),false);}
+   if(action==='reset')c.reset();if(action==='rotate')c.rotate(90);if(action==='zoom')c.zoom(1.2);if(action==='show'){c.index=1;c.show();}if(action==='close'){c.close();c.open(items);}
+   c.suppressTap=false;click(c,3350);assert.equal(activated,count,action+' cancels previous tap');c.destroy();
+  }
+  const long=new CardViewer({immersive:true,physicalCard:true,doubleTapDetails:true,sound:false,onActivate:()=>activated++});long.open(items);const p=t=>({...pointer(200,300),pointerType:'native-touch',timeStamp:t,target:long.image});const count=activated;long.down(p(4000));long.up(p(4800),true);long.down(p(4900));long.up(p(4940),true);assert.equal(activated,count,'holding is not the first half of a double tap');long.destroy();
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('exit audio is distinct, finite and quiet while camera and return recordings stay exact',async()=>{
+ const file=readFileSync('our-polaroid-project/audio/paper-exit-v44.wav');assert.equal(createHash('sha256').update(file).digest('hex'),'bef31cda903618a9bb22aa6d5724f70d3e22f695438439ddd23575da2d677f3e');assert.equal(file.readUInt32LE(24),24000);assert.equal((file.length-44)/48000,.24);assert.equal(file.readInt16LE(44),0);assert.equal(file.readInt16LE(file.length-2),0);assert.equal(createHash('sha256').update(readFileSync('our-polaroid-project/audio/paper-floop-v33.wav')).digest('hex'),'48f3accdbfddca47aebd4edf58e1324d9bed5c93009ea4b21a96f07468f11934');
+ const {PaperSound}=await import('../our-polaroid-project/paper-sound.js');const oldAudio=globalThis.AudioContext,oldFetch=globalThis.fetch;const requests=new Map(),started=[];let stopped=0;
+ class Audio{constructor(){this.state='running';this.destination={}}resume(){return Promise.resolve()}decodeAudioData(bytes){return Promise.resolve({file:new TextDecoder().decode(bytes)})}createGain(){return{gain:{value:0},connect(){},disconnect(){}}}createBufferSource(){return{connect(){},disconnect(){},start(){started.push(this.buffer.file)},stop(){stopped++}}}close(){this.state='closed';return Promise.resolve()}}
+ globalThis.AudioContext=Audio;globalThis.fetch=url=>new Promise(resolve=>requests.set(String(url),()=>resolve({ok:true,arrayBuffer:async()=>new TextEncoder().encode(String(url)).buffer})));const flush=()=>new Promise(r=>setImmediate(r));
+ try{
+  const a=new PaperSound();a.prepareExit();for(const release of requests.values())release();await flush();assert.equal(started.length,0,'preparing audio never plays it');a.burst('exit');assert.match(started[0],/paper-exit-v44.wav/);assert.equal(a.source.loop,false);a.burst();assert.match(started[1],/polaroid-650-eject-v42.wav/);assert.equal(stopped,1);a.burst('return');for(const release of requests.values())release();await flush();assert.match(started[2],/paper-floop-v33.wav/);assert.equal(stopped,2);a.stop();assert.equal(a.source,null);a.destroy();
+  for(const action of ['stop','destroy']){requests.clear();const b=new PaperSound();b.burst('exit');b[action]();for(const release of requests.values())release();await flush();assert.equal(started.length,3,'cancel pending exit on '+action);if(action==='stop')b.destroy();}
+ }finally{if(oldAudio===undefined)delete globalThis.AudioContext;else globalThis.AudioContext=oldAudio;globalThis.fetch=oldFetch;}
+});
+
+test('Polaroid reduced-motion exit allows its short sound without movement and cannot close a reset or new viewer',async()=>{
+ const {PolaroidCardViewer}=await import('../our-polaroid-project/memory-viewer.js');environment();try{
+  for(const action of ['finish','close','reset','show','destroy']){
+   let exited=0,stopped=0;const sounds=[];const v=new PolaroidCardViewer({immersive:true,physicalCard:true,sound:false,onDismiss:()=>exited++});v.reduced.matches=true;v.open([{id:'a',src:'a.jpg'},{id:'b',src:'b.jpg'}]);v.sound=true;v.projector={stop(){stopped++},destroy(){stopped++}};v.reelSound=kind=>sounds.push(kind);v.card.animate=()=>{throw Error('reduced exit must not animate')};const pending=v.dismiss();assert.deepEqual(sounds,['exit']);assert.equal(v.dialog.open,true);assert.equal(v.exitWaiting,true);
+   if(action==='close')v.close();if(action==='reset')v.reset();if(action==='show'){v.index=1;v.show();}if(action==='destroy')v.destroy();await pending;
+   assert.equal(exited,action==='finish'?1:0);assert.equal(v.dialog.open,['reset','show'].includes(action));if(action==='show')assert.equal(v.items[v.index].id,'b');assert.equal(v.reduced.matches,true);if(action!=='destroy')v.destroy();
+  }
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
 });
