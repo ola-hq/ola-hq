@@ -7,7 +7,7 @@ function runtime({key='cinema',saved=null,reduced=false,target='',loaded=true,wi
  const tasks=[],frames=[],overlays=[],animations=[],callbacks=[];let removed=0;
  const rect={x:100,y:150,width:500,height:280};
  const ctx=new Proxy({}, {get:(_,key)=>key==='createRadialGradient'?()=>({addColorStop(){}}):()=>{}});
- const node=()=>({children:[],style:{},classList:{add(){}},setAttribute(){},addEventListener(){},append(...nodes){this.children.push(...nodes)},remove(){removed++},getContext:()=>ctx,getAnimations:()=>[],animate(keys,options){let resolve;const a={keys,options,finished:new Promise(r=>{resolve=r}),resolve:()=>resolve(),cancel(){}};animations.push(a);return a}});
+ const node=()=>({children:[],style:{},classList:{add(){}},setAttribute(){},addEventListener(){},append(...nodes){this.children.push(...nodes)},remove(){removed++},getContext:()=>ctx,getAnimations:()=>[],animate(keys,options){let resolve;const a={owner:this,keys,options,finished:new Promise(r=>{resolve=r}),resolve:()=>resolve(),cancel(){}};animations.push(a);return a}});
  const art={...node(),getBoundingClientRect:()=>rect};
  const img={src:'https://example.test/ola-hq/assets/portals-20261124/'+key+'.jpg',currentSrc:'',getAttribute:()=>'/ola-hq/assets/portals-20261124/'+key+'.jpg',closest:()=>art,getBoundingClientRect:()=>rect};
  const card={...node(),target,getAttribute:name=>name==='data-hq-portal'&&key==='deeper'?'deeper':null,querySelector:()=>img};
@@ -82,3 +82,5 @@ test('Deeper Waves is a collective portal with a real-destination transition',()
 test('surprise entry can start at the globe instead of an offscreen card',()=>{
  const r=runtime({key:'wave26'});assert.equal(r.api.primeOrigin(r.card,{x:190,y:340}),true);assert.equal(r.api.primeOrigin(r.card,{x:NaN,y:0}),false);assert.equal(r.api.primeOrigin({}, {x:10,y:10}),false);r.api.enter(r.card,()=>{});assert.ok(r.animations[0].keys[0].clipPath.includes('190px 340px'));
 });
+
+test('mystical sparks remain outside the clipped destination on mobile and desktop',()=>{for(const width of [390,1333]){const r=runtime({width,key:'wave26'});r.api.primeOrigin(r.card,{x:width/2,y:400});r.api.enter(r.card,()=>{});const overlay=r.overlays[0],scene=overlay.children[0],canvas=overlay.children[1];assert.equal(r.animations[0].owner,scene);assert.equal(overlay.style.background,'transparent');assert.equal(r.animations.some(a=>a.owner===overlay||a.owner===canvas),false);assert.ok(r.animations[0].keys[0].clipPath.includes('400px'))}});
