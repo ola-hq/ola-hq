@@ -135,7 +135,7 @@ Validation: 70 focused checks and the release guard pass, including closed-body 
 Live WebGL correction: post-deployment visual QA caught black marquee/wave faces because the exact original 1000×1000 source is a non-power-of-two texture. WebGL 1 cannot generate mipmaps for that size. The upload now generates mipmaps only for power-of-two images; the original-art faces use clamped linear sampling, while the 2048×1024 globe keeps mipmaps. Software and source pixels are unchanged. Cache reference `20261126-sculpted2` forces the corrected shared renderer on website and app. The initial v4 deployment is not the final acceptance evidence.
 
 
-## Current v5 repair — November 26 distortion, Safari touch and portal rim
+## Historical v5 repair — November 26 distortion, Safari touch and portal rim
 
 Owner device feedback showed a black/neon textured slit after rotation on Mac and iPhone, no useful phone spin in Safari or installed HQ, and a weak/glitchy triple-tap entry. The prior physical-device acceptance was never complete. The earlier topology/opaque-color tests proved the body geometry closed, but did not prove the real material was clean; prior passing desktop controls did not prove Safari touch worked. This section supersedes the v4 body bake and touch/portal claims where they differ.
 
