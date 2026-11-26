@@ -3,13 +3,13 @@ import assert from 'node:assert/strict';
 import {readFileSync,existsSync} from 'node:fs';
 import vm from 'node:vm';
 const source=readFileSync(new URL('../hq-world-portals.js',import.meta.url),'utf8');
-function runtime({key='cinema',saved=null,reduced=false,target='',loaded=true,width=390}={}){
+function runtime({key='cinema',saved=null,reduced=false,target='',loaded=true,width=390,suffix=''}={}){
  const tasks=[],frames=[],overlays=[],animations=[],callbacks=[];let removed=0;
  const rect={x:100,y:150,width:500,height:280};
  const ctx=new Proxy({}, {get:(_,key)=>key==='createRadialGradient'?()=>({addColorStop(){}}):()=>{}});
  const node=()=>({children:[],style:{},classList:{add(){}},setAttribute(){},addEventListener(){},append(...nodes){this.children.push(...nodes)},remove(){removed++},getContext:()=>ctx,getAnimations:()=>[],animate(keys,options){let resolve;const a={owner:this,keys,options,finished:new Promise(r=>{resolve=r}),resolve:()=>resolve(),cancel(){}};animations.push(a);return a}});
  const art={...node(),getBoundingClientRect:()=>rect};
- const img={src:'https://example.test/ola-hq/assets/portals-20261124/'+key+'.jpg',currentSrc:'',getAttribute:()=>'/ola-hq/assets/portals-20261124/'+key+'.jpg',closest:()=>art,getBoundingClientRect:()=>rect};
+ const img={src:'https://example.test/ola-hq/assets/portals-20261124/'+key+'.jpg'+suffix,currentSrc:'',getAttribute:()=>'/ola-hq/assets/portals-20261124/'+key+'.jpg'+suffix,closest:()=>art,getBoundingClientRect:()=>rect};
  const card={...node(),target,getAttribute:name=>name==='data-hq-portal'&&key==='deeper'?'deeper':null,querySelector:()=>img};
  const document={currentScript:{src:'https://example.test/ola-hq/hq-world-portals.js'},hidden:false,body:{append(n){overlays.push(n)}},createElement:()=>node(),querySelectorAll(selector){return selector.includes('a.room')?[card]:[]},querySelector:()=>null,addEventListener(){}};
  const window={OLAPressPeek:{attach(a,b,cb){callbacks.push(cb);return {cancel(){}}}}};
@@ -59,19 +59,19 @@ test('all public shell entrypoints load the shared controller in order',()=>{
 for(const key of ['polaroid','fpl','simulation']){
  test(key+': peek uses a correctly proportioned destination scene and mobile arrival uses the responsive page',()=>{
   const r=runtime({key});r.callbacks[0].start({clientX:250,clientY:300});r.frames[0](350);
-  const lens=r.art.children[0];assert.ok(lens.style.backgroundImage.includes(key+'-destination.webp'));
-  const [w,h]=lens.style.backgroundSize.split(' ').map(parseFloat);assert.ok(Math.abs(w/h-1333/926)<.00001);
+  const lens=r.art.children[0];assert.ok(lens.style.backgroundImage.includes(key==='polaroid'?'milky-way-great-wave-landscape-v47.jpg':key+'-destination.webp'));
+  const [w,h]=lens.style.backgroundSize.split(' ').map(parseFloat);assert.ok(Math.abs(w/h-(key==='polaroid'?1536/1024:1333/926))<.00001);
   const position=lens.style.backgroundPosition;
   r.callbacks[0].move({clientX:330,clientY:340});r.frames.at(-1)(450);assert.notEqual(lens.style.backgroundPosition,position);
   r.api.enter(r.card,()=>{});const arrival=r.overlays[0].children[0];
-  assert.ok(arrival.style.backgroundImage.includes(key+'-destination-mobile.webp'));
-  const [aw,ah]=arrival.style.backgroundSize.split(' ').map(parseFloat);assert.ok(Math.abs(aw/ah-375/844)<.00001);
+  assert.ok(arrival.style.backgroundImage.includes(key==='polaroid'?'milky-way-great-wave-portrait-v47.jpg':key+'-destination-mobile.webp'));
+  const [aw,ah]=arrival.style.backgroundSize.split(' ').map(parseFloat);assert.ok(Math.abs(aw/ah-(key==='polaroid'?1024/1536:375/844))<.00001);
  });
 }
 test('desktop page arrival keeps landscape proportions rather than stretching it square',()=>{
- const r=runtime({key:'polaroid',width:1333});r.api.enter(r.card,()=>{});
- const scene=r.overlays[0].children[0];assert.ok(scene.style.backgroundImage.includes('polaroid-destination.webp'));
- assert.equal(scene.style.backgroundSize,'1333px 926px');
+ const r=runtime({key:'polaroid',width:1536});r.api.enter(r.card,()=>{});
+ const scene=r.overlays[0].children[0];assert.ok(scene.style.backgroundImage.includes('milky-way-great-wave-landscape-v47.jpg'));
+ assert.equal(scene.style.backgroundSize,'1536px 1024px');
 });
 
 test('Deeper Waves is a collective portal with a real-destination transition',()=>{
@@ -84,3 +84,5 @@ test('surprise entry can start at the globe instead of an offscreen card',()=>{
 });
 
 test('mystical sparks remain outside the clipped destination on mobile and desktop',()=>{for(const width of [390,1333]){const r=runtime({width,key:'wave26'});r.api.primeOrigin(r.card,{x:width/2,y:400});r.api.enter(r.card,()=>{});const overlay=r.overlays[0],scene=overlay.children[0],canvas=overlay.children[1];assert.equal(r.animations[0].owner,scene);assert.equal(overlay.style.background,'transparent');assert.equal(r.animations.some(a=>a.owner===overlay||a.owner===canvas),false);assert.ok(r.animations[0].keys[0].clipPath.includes('400px'))}});
+
+test('versioned portal images retain canonical identity and Cinema keeps its own handoff',()=>{const p=runtime({key:'polaroid',suffix:'?v=cosmic49#art'});p.api.enter(p.card,()=>{});assert.equal(p.overlays.length,1);assert.ok(p.overlays[0].children[0].style.backgroundImage.includes('/ola-hq/our-polaroid-project/assets/space/milky-way-great-wave-portrait-v47.jpg'));const c=runtime({key:'cinema',suffix:'?v=49'});c.api.enter(c.card,()=>{});assert.equal(c.animations[0].options.duration,750);assert.ok(c.overlays[0].children[0].style.backgroundImage.includes('cinema-interior.webp'));});

@@ -134,6 +134,8 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
     scene.append(element('div', `polaroid-cosmic-wall polaroid-cosmic-wall--${face}`));
   }
   room.append(scene); viewer.dialog.append(room);
+  const roomVisibility = () => room.style.setProperty('--room-motion-state', document.hidden ? 'paused' : 'running');
+  roomVisibility(); document.addEventListener('visibilitychange', roomVisibility);
   // The owner requested front-only browsing until a meaningful paper back is available.
   viewer.flipButton.hidden = true;
   viewer.flipButton.disabled = true;
@@ -219,11 +221,11 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
   let css = document.querySelector('link[data-polaroid-memory]');
   if (!css) {
     css = element('link'); css.rel = 'stylesheet';
-    css.href = new URL('./memory-viewer.css?v=20261126-room48', import.meta.url);
+    css.href = new URL('./memory-viewer.css?v=20261126-stars49', import.meta.url);
     css.dataset.polaroidMemory = ''; document.head.append(css);
   }
   try { await Promise.all([stylesheetReady(css), stylesheetReady(document.querySelector('link[data-ola-viewer]'))]); }
-  catch (error) { controlsObserver.disconnect(); viewer.destroy(); details.remove(); throw error; }
+  catch (error) { document.removeEventListener('visibilitychange', roomVisibility); controlsObserver.disconnect(); viewer.destroy(); details.remove(); throw error; }
 
   return {
     open(photos, position, sourceOpener, context) {
@@ -238,6 +240,6 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
     },
     close() { pendingMemory = null; reopen = false; if (details.open) details.close(); viewer.close(); },
     destroy() { destroyed = true; pendingMemory = null; reopen = false;
-      controlsObserver.disconnect(); viewer.soundButton.removeEventListener('click', audioLabel); viewer.destroy(); details.remove(); }
+      document.removeEventListener('visibilitychange', roomVisibility); controlsObserver.disconnect(); viewer.soundButton.removeEventListener('click', audioLabel); viewer.destroy(); details.remove(); }
   };
 }

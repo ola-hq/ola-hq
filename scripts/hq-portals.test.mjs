@@ -16,6 +16,8 @@ test('all 14 existing worlds have matching artwork in website and app without lo
   }
   assert.ok(deeper.includes('assets/entrances/arsenal-academy-clubhouse.jpg'));
   assert.ok(app.includes('../assets/entrances/arsenal-academy-clubhouse.jpg'));
+  const firstHome=[...home.matchAll(/<a class="room" href="([^"]+)"/g)].slice(0,3).map(x=>x[1]);assert.deepEqual(firstHome,['la-ola-cinema-club/','our-polaroid-project/','la-ola-de-amor/']);
+  const firstApp=[...app.matchAll(/class="world-card portal-card" data-world="([^"]+)"/g)].slice(0,3).map(x=>x[1]);assert.deepEqual(firstApp,['blockbuster','polaroid','la-ola']);
   assert.ok(app.includes('data-world="what-wave"'));
   assert.ok(app.includes('Private beta · Pass required · Unofficial'));
 });
