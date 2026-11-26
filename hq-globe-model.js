@@ -13,7 +13,7 @@
  function software(model,textures){
   const projected=model.primitives.map(p=>new Float32Array(p.positions.length));
   return function(size,yaw,pitch){
-   const pixels=new Uint8ClampedArray(size*size*4),zbuffer=new Float32Array(size*size);zbuffer.fill(-Infinity);const half=size/2,scale=half*.93;
+   const pixels=new Uint8ClampedArray(size*size*4),zbuffer=new Float32Array(size*size);zbuffer.fill(-Infinity);const half=size/2,scale=half*.80;
    model.primitives.forEach((p,pi)=>{
     const xyz=typeof yaw==='number'?transform(p.positions,yaw,pitch,projected[pi]):transformMatrix(p.positions,yaw,projected[pi]),tex=textures[p.texture??p.material],ind=p.low;
     for(let n=0;n<xyz.length;n+=3){xyz[n]=half+xyz[n]*scale;xyz[n+1]=half-xyz[n+1]*scale}

@@ -1,11 +1,11 @@
 /* Continuous original-art globe: one closed body, one feathered UV material and a sculpted orbit. */
 (()=>{'use strict';
- const modelURL=new URL('assets/models/ola-hq-continuous-globe-v3.glb?v=20261126-continuous5',document.currentScript.src),motion=matchMedia('(prefers-reduced-motion: reduce)');
+ const modelURL=new URL('assets/models/ola-hq-sculpted-globe-v4.glb?v=20261126-sculpted1',document.currentScript.src),motion=matchMedia('(prefers-reduced-motion: reduce)');
  const vertex=`attribute vec3 position;attribute vec3 normal;attribute vec2 uv;uniform mat3 rotation;varying vec3 N;varying vec2 UV;varying float Z;
  vec3 turn(vec3 p){return rotation*p;}
- void main(){vec3 p=turn(position);N=turn(normal);UV=uv;Z=p.z;gl_Position=vec4(p.xy*.93,-p.z*.4,1.);}`;
+ void main(){vec3 p=turn(position);N=turn(normal);UV=uv;Z=p.z;gl_Position=vec4(p.xy*.80,-p.z*.4,1.);}`;
  const fragment=`precision mediump float;uniform sampler2D surface;uniform float front;varying vec3 N;varying vec2 UV;varying float Z;
- void main(){vec4 c=texture2D(surface,UV);if(c.a<.35)discard;vec3 n=normalize(N);float facing=clamp(Z/.88,0.,1.);float shade=mix(.73+.27*facing,.91+.09*facing,front);float sheen=pow(max(dot(n,normalize(vec3(-.35,.5,1.))),0.),56.)*.04*(1.-front);gl_FragColor=vec4(c.rgb*shade+vec3(1.,.87,.6)*sheen,1.);}`;
+ void main(){vec4 c=texture2D(surface,UV);if(c.a<.35)discard;vec3 n=normalize(N);float facing=clamp(Z/.88,0.,1.);float light=max(dot(n,normalize(vec3(-.35,.5,1.))),0.);float shade=mix(.48+.52*light,.76+.24*light,front);float sheen=pow(max(dot(n,normalize(vec3(-.35,.5,1.))),0.),56.)*.04*(1.-front);gl_FragColor=vec4(c.rgb*shade+vec3(1.,.87,.6)*sheen,1.);}`;
  function shader(gl,type,source){const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error('Globe shader');return s}
  async function image(bytes,mimeType){const url=URL.createObjectURL(new Blob([bytes],{type:mimeType}));try{const img=new Image();img.decoding='async';img.src=url;await img.decode();return img}finally{URL.revokeObjectURL(url)}}
  const asset=fetch(modelURL).then(async r=>{if(!r.ok)throw Error('Globe asset');const model=OLAGlobeModel.decode(await r.arrayBuffer()),images=await Promise.all(model.images.map(i=>image(i.bytes,i.mimeType)));return {model,images}});
@@ -54,11 +54,8 @@
     surpriseBusy=true;stop();const r=anchor.getBoundingClientRect(),point={x:r.x+r.width/2,y:r.y+r.height/2};
     window.OLAPortals?.primeOrigin?.(target,point);
     anchor.dataset.surpriseWorld=target.dataset.world||target.getAttribute('href');
-    burst=document.createElement('div');burst.className='hq-globe-warp';burst.setAttribute('aria-hidden','true');burst.style.setProperty('--warp-x',point.x+'px');burst.style.setProperty('--warp-y',point.y+'px');
-    for(let i=0;i<(motion.matches?1:3);i++){const ring=document.createElement('i');ring.className='hq-globe-warp-ring';ring.style.animationDelay=(i*65)+'ms';burst.append(ring)}
-    if(!motion.matches)for(let i=0;i<18;i++){const spark=document.createElement('i'),angle=i*Math.PI*2/18; spark.className='hq-globe-warp-spark';spark.style.setProperty('--spark-x',Math.cos(angle)*Math.max(innerWidth,innerHeight)*.8+'px');spark.style.setProperty('--spark-y',Math.sin(angle)*Math.max(innerWidth,innerHeight)*.8+'px');burst.append(spark)}
-    document.body.append(burst);
-    burstTimer=setTimeout(()=>{burstTimer=0;burst?.remove();burst=null;target.click()},motion.matches?120:420);
+    // Use the same mystical canvas portal and navigation policy as world cards.
+    target.click();
     cooldown=setTimeout(()=>{cooldown=0;surpriseBusy=false},3000);
    }
    canvas.className='hq-globe-canvas';canvas.setAttribute('aria-hidden','true');canvas.draggable=false;anchor.append(canvas);anchor.classList.add('has-3d-globe');anchor.dataset.globe3d='ready';anchor.dataset.globeEngine=engine;draw();
