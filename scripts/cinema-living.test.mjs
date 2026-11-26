@@ -467,3 +467,14 @@ test('mid-screen upward positioning stays put; short edge pulls and edge-start t
 test('Polaroid controls use a low safe-area inset and stage-only mark that cannot cover or intercept the scan',()=>{
  const css=readFileSync('our-polaroid-project/memory-viewer.css','utf8'),source=readFileSync('our-polaroid-project/memory-viewer.js','utf8');assert.match(css,/inset:auto 8px max\(4px,env\(safe-area-inset-bottom\)\)/);assert.match(css,/polaroid-stage-mark\{[^}]*pointer-events:none/);assert.match(css,/data-controls=true\]>.polaroid-stage-mark\{visibility:hidden/);assert.match(source,/stageMark.setAttribute\('aria-hidden', 'true'\)/);assert.match(source,/viewer.dialog.append\(stageMark, toGrid, controls\)/);
 });
+
+test('closing, resetting or destroying a held-edge return consumes its late releases without reopening or navigation',async()=>{
+ environment();try{
+  for(const action of ['close','reset','destroy']){
+   let resolve,nav=0;const v=new CardViewer({immersive:true,physicalCard:true,sound:false,onNavigate:()=>nav++});v.open([{src:'a.jpg'},{src:'b.jpg'}]);v.card.animate=()=>({finished:new Promise(r=>resolve=r),cancel(){resolve()}});
+   const p=(y,id=1)=>({...pointer(200,y,id),timeStamp:1000,target:v.image});v.down(p(350));v.drag(p(100));assert.equal(v.returning,true);v[action]();assert.equal(v.returning,false);assert.equal(v.pointers.size,0);
+   if(action==='reset'){v.down(p(400,2));assert.equal(v.pointers.size,0,'old held gesture prevents a new gesture during reset');v.up(p(400,2),false);}
+   v.up(p(580),true);await Promise.resolve();assert.equal(v.consumedPointers.size,0);assert.equal(v.index,0);assert.equal(nav,0);assert.equal(v.turning,false);assert.equal(v.dialog.open,action==='reset');if(action!=='destroy')v.destroy();
+  }
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
