@@ -17,9 +17,9 @@ requireThat(count(worldSection, /<a class="room(?: [^"]*)?" href="[^"]+"/g) === 
 requireThat(count(worldSection, /<div class="room-copy"><h2>/g) === 6, 'Homepage must retain six named world cards');
 requireThat(count(worldSection, /<span class="portal-label">[^<]+<\/span>/g) === 6, 'All six homepage banner labels must exist');
 const approvedLabels = [
-  'LOVE · PLACES · MEMORIES',
   'CINEMA · REVIEWS · COLLECTION',
   'INSTANT FILM · REAL MOMENTS',
+  'LOVE · PLACES · MEMORIES',
   'MUSIC · ALBUMS · EXPERIMENTS',
   'FANTASY FOOTBALL · THE CLUB',
   'AI ART · IMPOSSIBLE IDEAS',
