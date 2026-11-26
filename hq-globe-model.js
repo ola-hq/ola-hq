@@ -9,12 +9,13 @@
   return {json,primitives,images};
  }
  function transform(p,yaw,pitch,out){const ca=Math.cos(yaw),sa=Math.sin(yaw),cb=Math.cos(pitch),sb=Math.sin(pitch);for(let i=0;i<p.length;i+=3){const y=p[i+1]*cb-p[i+2]*sb,z=p[i+1]*sb+p[i+2]*cb;out[i]=p[i]*ca+z*sa;out[i+1]=y;out[i+2]=-p[i]*sa+z*ca}return out}
+ function transformMatrix(p,m,out){for(let i=0;i<p.length;i+=3){const x=p[i],y=p[i+1],z=p[i+2];out[i]=m[0]*x+m[3]*y+m[6]*z;out[i+1]=m[1]*x+m[4]*y+m[7]*z;out[i+2]=m[2]*x+m[5]*y+m[8]*z}return out}
  function software(model,textures){
   const projected=model.primitives.map(p=>new Float32Array(p.positions.length));
   return function(size,yaw,pitch){
    const pixels=new Uint8ClampedArray(size*size*4),zbuffer=new Float32Array(size*size);zbuffer.fill(-Infinity);const half=size/2,scale=half*.93;
    model.primitives.forEach((p,pi)=>{
-    const xyz=transform(p.positions,yaw,pitch,projected[pi]),tex=textures[p.texture??p.material],ind=p.low;
+    const xyz=typeof yaw==='number'?transform(p.positions,yaw,pitch,projected[pi]):transformMatrix(p.positions,yaw,projected[pi]),tex=textures[p.texture??p.material],ind=p.low;
     for(let n=0;n<xyz.length;n+=3){xyz[n]=half+xyz[n]*scale;xyz[n+1]=half-xyz[n+1]*scale}
     for(let f=0;f<ind.length;f+=3){
      const ai=ind[f],bi=ind[f+1],ci=ind[f+2],a=ai*3,b=bi*3,c=ci*3;
@@ -36,5 +37,5 @@
    });return pixels;
   };
  }
- const api={decode,transform,software};root.OLAGlobeModel=Object.freeze(api);if(typeof module!=='undefined')module.exports=api;
+ const api={decode,transform,transformMatrix,software};root.OLAGlobeModel=Object.freeze(api);if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);
