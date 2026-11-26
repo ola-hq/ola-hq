@@ -96,6 +96,11 @@ class OlaGallery extends HTMLElement {
       this.selectionPreview=this.preview&&(this.event.selectionOnly||this.recommendationPreview||new URLSearchParams(location.search).get('reviewSelection')==='1');
       if(this.selectionPreview)this.photos=this.photos.filter(p=>p.draftDecision==='include');
       this.shown = 36;
+      this.polaroidEntrance=this.getAttribute('brand')==='polaroid' && location.pathname.startsWith(new URL('our-polaroid-project/events/',ROOT).pathname);
+      if(this.polaroidEntrance){
+        try{const [{eventIntroduction},{eventFeatures}]=await Promise.all([import(new URL('our-polaroid-project/events/intro-copy.js?v=20261126-intro46',ROOT)),import(new URL('our-polaroid-project/events/entrance-features.js?v=20261126-intro46',ROOT))]);this.introduction=eventIntroduction(this.event);this.featureMarkup=eventFeatures(this.event,url);}catch{/* Existing event copy remains available if editorial enhancement cannot load. */}
+        if(!this.isConnected)return;
+      }
       this.render();
       // Opt in only the Events entrance. Dedicated Wedding/Guide viewers remain unchanged.
       if(this.getAttribute('brand')==='polaroid' && location.pathname.startsWith(new URL('our-polaroid-project/events/',ROOT).pathname)){
@@ -118,15 +123,15 @@ class OlaGallery extends HTMLElement {
   disconnectedCallback() { window.removeEventListener('hashchange',this.onHash); this.memoryViewer?.destroy(); }
   render() {
     const e=this.event,brand=this.getAttribute('brand')||'default';
-    const copy={eyebrow:'EVENT PHOTO ARCHIVE',heading:e.title,emphasis:'One frame at a time.',coverLabel:e.title+' · '+e.dateLabel,collectionLabel:'photographs',gridLabel:'Event photographs',emptyMessage:'The photographs are being prepared.',relatedPrefix:'',gridEyebrow:'A LITTLE PIECE OF THAT NIGHT',gridHeading:'Keep the feeling.',gridButton:'Find your people ↓',downloadHint:'Photographs need an internet connection. On iPhone, open the original and touch and hold to save it to Photos.',downloadsHeading:'A little wave. Or all of it.',downloadsDescription:'Choose a smaller part for your phone, or keep the complete collection.',...e.gallery,...e.gallery?.brands?.[brand]};
+    const copy={eyebrow:'EVENT PHOTO ARCHIVE',heading:e.title,emphasis:'One frame at a time.',coverLabel:e.title+' · '+e.dateLabel,collectionLabel:'photographs',gridLabel:'Event photographs',emptyMessage:'The photographs are being prepared.',relatedPrefix:'',gridEyebrow:'A LITTLE PIECE OF THAT NIGHT',gridHeading:'Keep the feeling.',gridButton:'Find your people ↓',downloadHint:'Photographs need an internet connection. On iPhone, open the original and touch and hold to save it to Photos.',downloadsHeading:'A little wave. Or all of it.',downloadsDescription:'Choose a smaller part for your phone, or keep the complete collection.',...e.gallery,...e.gallery?.brands?.[brand],...this.introduction};
     const covers = [this.photos.find(p=>p.id===e.coverId)||this.photos[0],this.photos.find(p=>p.id===e.secondaryCoverId)||this.photos[8]||this.photos[1]].filter(Boolean);
     const packages = (this.preview || e.publicationStatus==='approved') ? e.packages.filter(p=>(!this.selectionPreview||(!this.recommendationPreview&&p.selectionOnly))&&(this.preview||p.publicationStatus==='approved')) : [];
     this.innerHTML = `${this.preview?`<p class="og-review">PRIVATE REVIEW · ${this.recommendationPreview?'PROVISIONAL RECOMMENDATIONS · Owner choices take priority · No exclusion or publication approval':this.selectionPreview?'Saved owner selection · '+this.photos.length+' candidates · '+(e.heldCount||0)+' reversible holds · Selected ZIPs contain included originals only':'Photographs awaiting publication approval'}</p>`:''}
-      <section class="og-hero${e.archive?' og-hero--archive':''}"><div><p class="og-eyebrow">${esc(copy.eyebrow)}</p>
+      <section class="og-hero${e.archive?' og-hero--archive':''}${copy.celebration?' og-hero--celebration':''}"><div><p class="og-eyebrow">${esc(copy.eyebrow)}</p>
       <h1>${esc(copy.heading)}<br><em>${esc(copy.emphasis)}</em></h1>
-      <p class="og-description">${esc(e.description)}</p><p class="og-meta">${esc(e.dateLabel)}<br>${esc(e.location)}</p>
-      <a class="og-button" href="#photographs">${esc(copy.gridButton)}</a></div><div class="og-cover-stack" aria-hidden="true">${covers.map(p=>`<figure>${image({...p,caption:''},true)}<figcaption>${esc(copy.coverLabel)}</figcaption></figure>`).join('')||'<span class="og-ornament">✧</span>'}</div></section>
-      <nav class="og-collections" aria-label="Photo collections"><span>${this.photos.length?this.photos.length+' '+esc(copy.collectionLabel):esc(copy.collectionLabel)+' · coming soon'}</span>${(copy.collections||[]).map(link=>`<a href="${esc(url(link.href))}">${esc(link.label)}</a>`).join('')}</nav>
+      <p class="og-description">${esc(e.description||copy.fallbackDescription)}</p>${copy.editorialNote?`<p class="og-editorial-note">${esc(copy.editorialNote)}</p>`:''}<p class="og-meta">${esc(copy.dateLabel||e.dateLabel)}<br>${esc(e.location)}</p>
+      <a class="og-button" href="#photographs">${esc(copy.gridButton)}</a></div><div class="og-cover-stack" aria-hidden="true">${covers.map(p=>`<figure>${image({...p,caption:''},true)}${this.polaroidEntrance?'':`<figcaption>${esc(copy.coverLabel)}</figcaption>`}</figure>`).join('')||'<span class="og-ornament">✧</span>'}</div></section>
+      <nav class="og-collections" aria-label="Photo collections"><span>${this.photos.length?this.photos.length+' '+esc(copy.collectionLabel):esc(copy.collectionLabel)+' · coming soon'}</span>${(copy.collections||[]).map(link=>`<a${copy.promoteCollections?' class="og-button og-collection-primary"':''} href="${esc(url(link.href))}">${esc(link.label)}</a>`).join('')}</nav>${this.polaroidEntrance&&this.featureMarkup?'\n      '+this.featureMarkup:''}
       <section id="photographs" class="og-photos"><div class="og-heading"><div><p class="og-eyebrow">${esc(copy.gridEyebrow)}</p><h2>${esc(copy.gridHeading)}</h2></div><p>Open a frame. Save a memory.<br>Send it to someone who was there.</p></div>
       <p class="og-hint">${esc(copy.downloadHint)}</p>${e.missingAssetCount?`<p class="og-asset-warning" role="status">${e.missingAssetCount} archive previews are unavailable or unverified. No replacements have been substituted.</p>`:''}
       <div class="og-grid" aria-label="${esc(copy.gridLabel)}"></div><button class="og-button og-more" type="button">Show more photographs</button>

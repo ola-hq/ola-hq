@@ -1,0 +1,19 @@
+/* Polaroid documents only: a transparent ink layer over a quiet, scroll-driven universe. */
+body.opw-space-page{background:#05070d;background-image:radial-gradient(ellipse at 70% 15%,#28213e55,transparent 52%),radial-gradient(1px 1px at 20% 15%,#d7d8e1aa,transparent),radial-gradient(1px 1px at 72% 64%,#b6b9df88,transparent);background-size:auto,337px 291px,467px 389px;isolation:isolate;--paper:#0a0c13;--og-paper:#0a0c13}
+html[data-opw-space] body.opw-space-page{background:#05070d}
+.opw-universe{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden;contain:strict;background:#05070d}
+.opw-universe canvas{display:block;width:100%;height:100%;opacity:.9;pointer-events:none}
+body.opw-space-page::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#05070d88,#05070d30 40%,#05070d66),linear-gradient(0deg,#05070d5c,transparent 40%,#05070d33)}
+body.opw-space-page>.hq-return{background:#0a101bcc;backdrop-filter:blur(12px)}
+body.opw-space-page>header,body.opw-space-page>.site-nav{background:#080b1388;backdrop-filter:blur(12px);border-color:#c8c4e02b}
+body.opw-space-page main{background:linear-gradient(110deg,#080a1266,#080a1222 65%,#080a1244)}
+body.opw-space-page .og-event-entry>.opw-card-copy{background:linear-gradient(#070a1255,#070a12b8);padding-inline:10px}
+body.opw-space-page .journal-card,body.opw-space-page .event-card,body.opw-space-page .og-downloads{background:#0b101ac9}
+body.opw-space-page .collection img{background:#11141eaa}
+body.opw-space-page .photo-card{background:#11141bd9}
+body.opw-space-page footer{background:#070a1280;border-color:#c8c4e02b}
+body.opw-space-page .og-hero,body.opw-space-page .album-header{position:relative}
+body.opw-space-page .og-hero h1,body.opw-space-page .album-header h1{text-wrap:balance;text-shadow:0 4px 35px #0009}
+body.opw-space-page .og-description,body.opw-space-page .album-intro-lead{color:#c8c5ce}
+@media(prefers-contrast:more){.opw-universe{opacity:.3}body.opw-space-page::before{background:#05070de6}}
+@media(prefers-reduced-motion:reduce){body.opw-space-page{scroll-behavior:auto}}

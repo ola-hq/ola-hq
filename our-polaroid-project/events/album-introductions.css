@@ -1,0 +1,48 @@
+/* Scoped to Events album entrances; never the directory grid or dedicated Wedding site. */
+.og-exhibition ola-gallery[brand="polaroid"] .og-hero h1{font-size:clamp(42px,5.3vw,78px)}
+.og-exhibition ola-gallery[brand="polaroid"] .og-hero--celebration{padding-block:80px;min-height:700px}
+.og-exhibition ola-gallery[brand="polaroid"] .og-hero--celebration h1{font-size:clamp(52px,6.3vw,96px)}
+.og-exhibition ola-gallery[brand="polaroid"] .og-editorial-note{font:italic 20px/1.5 Georgia,serif;color:#dac18d;max-width:30ch;margin:24px 0}
+.og-exhibition ola-gallery[brand="polaroid"] .og-collections{align-items:center;gap:18px}
+.og-exhibition ola-gallery[brand="polaroid"] .og-collection-primary{background:#dac18d;border-color:#dac18d;color:#101112;min-height:56px;padding:16px 24px;font-size:15px;font-weight:700;text-decoration:none}
+.og-exhibition ola-gallery[brand="polaroid"] .og-collection-primary:hover{background:#f3e2ba;color:#101112!important}
+.opw-album-entrance .album-header{grid-template-columns:1.05fr 1fr;gap:clamp(24px,4vw,60px);padding-block:60px;min-height:620px;overflow:clip}
+.opw-album-entrance .album-header h1{font-size:clamp(46px,5.5vw,78px);letter-spacing:-.04em;overflow-wrap:anywhere}
+.opw-album-entrance .album-header h1 em{display:block;color:#dac18d;font-weight:400}
+.opw-album-entrance .album-intro-lead{max-width:39ch;color:#b6b4ad;font-size:17px;line-height:1.65}
+.opw-album-entrance .album-header .eyebrow{font-size:11px;color:#dac18d;letter-spacing:.16em}
+.opw-album-entrance .album-header .album-tools{margin-top:26px;gap:12px 18px}
+.opw-album-entrance .album-header .button{min-height:48px;display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:0}
+.opw-album-entrance .album-header .meta{display:block}
+.opw-album-entrance .album-cover{display:flex;align-items:center;min-height:400px;padding:22px 8%;margin:0}
+.opw-album-entrance .album-cover .cover-image{background:transparent;padding:0;border-radius:0;height:auto;flex:0 0 65%;transform:rotate(-7deg)}
+.opw-album-entrance .album-cover .cover-image+ .cover-image{margin-left:-18%;transform:translateY(36px) rotate(8deg)}
+.opw-album-entrance .album-cover img{width:100%;height:auto;max-height:410px;object-fit:contain;filter:drop-shadow(0 18px 20px #0007)}
+@media(max-width:850px){.opw-album-entrance .album-header{grid-template-columns:1fr;padding-block:35px;gap:10px;min-height:0}.opw-album-entrance .album-header h1{font-size:clamp(42px,8vw,64px)}.opw-album-entrance .album-cover{max-width:540px;width:100%;margin:auto;min-height:330px}.opw-album-entrance .album-cover img{max-height:300px}}
+@media(max-width:650px){.og-exhibition ola-gallery[brand="polaroid"] .og-hero--celebration{padding-block:38px 50px;min-height:0}.og-exhibition ola-gallery[brand="polaroid"] .og-hero--celebration h1{font-size:clamp(44px,11vw,60px)}.og-exhibition ola-gallery[brand="polaroid"] .og-collection-primary{width:100%;min-height:56px;text-align:center}.og-exhibition ola-gallery[brand="polaroid"] .og-editorial-note{font-size:19px}.opw-album-entrance .album-header h1{font-size:clamp(40px,10vw,54px)}.opw-album-entrance .album-intro-lead{font-size:16px}.opw-album-entrance .album-cover{min-height:290px}.opw-album-entrance .album-cover img{max-height:270px}}
+@media(prefers-reduced-motion:reduce){.opw-album-entrance .album-cover img{filter:none}}
+
+/* One photographic entrance language; special chapters get a larger editorial stage. */
+.og-exhibition ola-gallery[brand="polaroid"] .og-hero{padding-inline:clamp(0px,2vw,28px);min-height:610px;gap:clamp(22px,5vw,70px)}
+.og-exhibition ola-gallery[brand="polaroid"] .og-hero h1{line-height:1.02;max-width:13ch}
+.og-exhibition ola-gallery[brand="polaroid"] .og-cover-stack figure{background:transparent;padding:0;box-shadow:none;border:0}
+.og-exhibition ola-gallery[brand="polaroid"] .og-cover-stack img{filter:drop-shadow(0 22px 24px #0009);height:auto;max-height:440px;object-fit:contain}
+.og-exhibition ola-gallery[brand="polaroid"] .og-cover-stack{min-height:440px}
+.og-exhibition ola-gallery[brand="polaroid"] .og-hero--celebration{padding-block:clamp(64px,9vw,130px);min-height:760px}
+.og-exhibition ola-gallery[brand="polaroid"] .og-hero--celebration::before{content:"";position:absolute;inset:8% -8%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 65% 45%,#9b7b6136,transparent 57%)}
+.og-exhibition ola-gallery[brand="polaroid"] .og-collections{border-color:#dac18d44;background:#080c1680;padding-inline:22px;border-radius:2px}
+.opw-love-world{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:clamp(30px,7vw,105px);padding:clamp(52px,7vw,100px) clamp(0px,2vw,28px);border-bottom:1px solid #dac18d33}
+.opw-love-world h2{font:normal clamp(42px,5.6vw,82px)/1.02 Georgia,serif;letter-spacing:-.045em;margin:20px 0 25px}.opw-love-world h2 em{color:#dac18d;font-weight:400}
+.opw-love-copy>p:not(.og-eyebrow){max-width:41ch;color:#c8c5ce;font:17px/1.8 'Avenir Next',Arial,sans-serif}
+.opw-world-links{display:grid;gap:12px;margin-top:30px}.opw-world-link{display:grid;grid-template-columns:1fr auto;gap:9px 14px;padding:20px 22px;text-decoration:none;background:#101420c9;border:1px solid #dac18d40;border-radius:2px}.opw-world-link>span:first-child{grid-column:1/-1;font:10px/1.5 'Avenir Next',Arial,sans-serif;letter-spacing:.15em;color:#b9b3ca}.opw-world-link strong{font:normal 25px/1.2 Georgia,serif}.opw-world-link>span:last-child{align-self:end;font:11px/1.5 'Avenir Next',Arial,sans-serif;color:#dac18d}.opw-world-link--primary{background:#dac18d;color:#101112!important;border-color:#dac18d}.opw-world-link--primary>span{color:#383038!important}.opw-world-link:hover{border-color:#dac18d;background:#1a1b2be0}.opw-world-link--primary:hover{background:#ead5aa;color:#101112!important}
+.opw-film{width:min(100%,370px);margin:0 auto}.opw-film-label{display:flex;justify-content:space-between;gap:18px;font:10px/1.5 'Avenir Next',Arial,sans-serif;letter-spacing:.13em;color:#dac18d;margin-bottom:14px}.opw-film video{display:block;width:100%;height:auto;aspect-ratio:9/16;max-height:630px;background:#05060a;border:1px solid #dac18d4d;border-radius:2px;box-shadow:0 28px 70px #0008}.opw-film figcaption{font:11px/1.8 'Avenir Next',Arial,sans-serif;color:#b9b3c3;margin-top:16px}.opw-film figcaption a{display:inline-block;min-height:32px}
+body.opw-album-entrance .album-header{min-height:690px;padding-block:clamp(50px,7vw,100px)}
+body.opw-album-entrance .album-header .button{background:#dac18d;color:#101112}
+body.opw-album-entrance .album-header::before{content:"";position:absolute;inset:0 -3%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 72% 45%,#6c608633,transparent 58%)}
+body.opw-album-entrance .album-header .album-cover img{max-height:470px}
+body.opw-album-entrance .album-header .eyebrow{color:#dac18d}
+.opw-parent-hero{padding:45px 0 50px;min-height:600px;gap:55px}.opw-parent-hero h1{font-size:clamp(46px,5.8vw,82px)!important;line-height:1.04!important;margin-bottom:24px!important}.opw-parent-hero h1 em{color:#dac18d}.opw-parent-hero .og-cover-stack{min-height:410px}.opw-parent-hero .og-cover-stack figure{background:transparent;padding:0;box-shadow:none}.opw-parent-hero .og-cover-stack img{height:auto;max-height:410px;filter:drop-shadow(0 22px 20px #0009)}
+.opw-directory-opening{padding:12px 0 25px;max-width:850px}.opw-directory-opening h1{font-size:clamp(48px,7vw,88px)!important;line-height:1.02!important;margin:22px 0!important}.opw-directory-opening h1 em{font-weight:400;color:#dac18d}.opw-directory-opening>p:last-child{color:#bfbaca;max-width:44ch}
+@media(max-width:850px){.opw-love-world{grid-template-columns:1fr;gap:40px}.opw-love-copy{max-width:700px}.opw-film{width:min(100%,330px)}.opw-parent-hero{grid-template-columns:1fr;gap:20px;min-height:0}.opw-parent-hero .og-cover-stack{max-width:480px;margin:auto;min-height:330px}.opw-parent-hero .og-cover-stack img{max-height:310px}body.opw-album-entrance .album-header{min-height:0;padding-block:40px}body.opw-album-entrance .album-header .album-cover img{max-height:330px}}
+@media(max-width:650px){.og-exhibition ola-gallery[brand="polaroid"] .og-hero,.og-exhibition ola-gallery[brand="polaroid"] .og-hero--celebration{min-height:0;padding:40px 0 48px}.og-exhibition ola-gallery[brand="polaroid"] .og-cover-stack{min-height:310px}.og-exhibition ola-gallery[brand="polaroid"] .og-cover-stack img{max-height:310px}.og-exhibition ola-gallery[brand="polaroid"] .og-hero h1{font-size:clamp(40px,11vw,60px);max-width:none}.opw-love-world{padding-block:45px}.opw-love-world h2{font-size:48px}.opw-world-link{grid-template-columns:1fr;padding:20px}.opw-world-link strong{font-size:26px}.opw-film{width:min(100%,310px)}.opw-parent-hero h1{font-size:46px!important}.opw-directory-opening h1{font-size:48px!important}.opw-parent-hero .og-cover-stack{min-height:300px}}
+@media(prefers-reduced-motion:reduce){.opw-parent-hero .og-cover-stack img,.opw-film video{filter:none;box-shadow:none}}
