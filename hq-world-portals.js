@@ -46,6 +46,7 @@ if(!reducedEffects()){sceneEl.animate([{transform:'scale(.94)'},{transform:scene
 animation.finished.then(finish).catch(()=>{});
 }catch{finish()}
 }
-window.OLAPortals=Object.freeze({enter});
+function primeOrigin(card,point){if(!scenes.has(card)||!Number.isFinite(point?.x)||!Number.isFinite(point?.y))return false;origins.set(card,{x:point.x,y:point.y});preload(arrivalScene(scenes.get(card)));return true}
+window.OLAPortals=Object.freeze({enter,primeOrigin});
 addEventListener('scroll',cancelPeeks,{passive:true});document.addEventListener('pointerdown',e=>{if(e.isPrimary===false)cancelPeeks()},{passive:true});let width=innerWidth;addEventListener('resize',()=>{if(innerWidth!==width){reset();width=innerWidth}});document.addEventListener('visibilitychange',()=>{if(document.hidden)reset()});motion.addEventListener('change',cancelPeeks);addEventListener('pageshow',reset);addEventListener('pagehide',reset);addEventListener('keydown',e=>{if(e.key==='Escape')reset()});
 })();

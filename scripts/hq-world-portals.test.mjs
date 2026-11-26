@@ -79,3 +79,6 @@ test('Deeper Waves is a collective portal with a real-destination transition',()
  assert.ok(r.art.children[0].style.backgroundImage.includes('deeper-destination.webp'));
  let entered=0;r.api.enter(r.card,()=>entered++);assert.equal(r.animations[0].options.duration,2000);r.tasks[0]();assert.equal(entered,1);
 });
+test('surprise entry can start at the globe instead of an offscreen card',()=>{
+ const r=runtime({key:'wave26'});assert.equal(r.api.primeOrigin(r.card,{x:190,y:340}),true);assert.equal(r.api.primeOrigin(r.card,{x:NaN,y:0}),false);assert.equal(r.api.primeOrigin({}, {x:10,y:10}),false);r.api.enter(r.card,()=>{});assert.ok(r.animations[0].keys[0].clipPath.includes('190px 340px'));
+});
