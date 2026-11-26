@@ -13,23 +13,14 @@
   <link rel="icon" href="../assets/entrances/ola-hq-globe-only-favicon-20261007.png">
   <link rel="stylesheet" href="style.css?v=20261126-main-worlds">
   <style id="app-launch-centered-globe">
-    /* The globe is positioned against the launch screen itself, not a nested
-       flex/grid wrapper. This avoids iPhone Safari's displaced-bottom layout. */
-    #app-launch.hero { position:relative; }
-    #app-launch.hero > #hero-world-jump {
-      position:absolute!important;
-      top:50%!important;
-      left:50%!important;
-      right:auto!important;
-      bottom:auto!important;
-      margin:0!important;
-      transform:translate(-50%,-50%)!important;
-      z-index:2;
-    }
+    /* A full-width viewport stage centers the globe throughout the long orbit. */
+    #app-launch.hero {position:relative}
+    #app-launch.hero .globe-stage {width:100%;display:grid;place-items:center}
+    #app-launch.hero .globe-stage > #hero-world-jump {position:relative!important;inset:auto!important;margin:0!important;transform:none!important;z-index:2}
   </style>
-  <link rel="stylesheet" href="../hq-portals.css?v=20261126-layout"><link rel="stylesheet" href="../hq-globe.css?v=20261126-patch1"><script defer src="../hq-globe-input.js?v=20261126-patch1"></script><script defer src="../hq-globe-model.js?v=20261126-patch1"></script><script defer src="../hq-globe-motion.js?v=20261126-patch1"></script><script defer src="../hq-globe.js?v=20261126-patch1"></script><script defer src="../hq-portals.js?v=20261126-layout"></script><script defer src="../hq-press-peek.js?v=20261125-2"></script><script defer src="../hq-world-portals.js?v=20261126-patch1"></script><script defer src="app.js?v=wave26-20261126"></script>
+  <link rel="stylesheet" href="../hq-portals.css?v=20261126-space1"><link rel="stylesheet" href="../hq-globe.css?v=20261126-space1"><script defer src="../hq-globe-input.js?v=20261126-space1"></script><script defer src="../hq-globe-model.js?v=20261126-space1"></script><script defer src="../hq-globe-motion.js?v=20261126-space1"></script><script defer src="../hq-globe.js?v=20261126-space1"></script><script defer src="../hq-portals.js?v=20261126-space1"></script><script defer src="../hq-press-peek.js?v=20261125-2"></script><script defer src="../hq-world-portals.js?v=20261126-space1"></script><script defer src="app.js?v=wave26-20261126"></script>
   <title>OLA HQ · App MVP</title>
-</head>
+<link rel="stylesheet" href="../hq-entrance.css?v=20261126-space1"><script defer src="../hq-sound.js?v=20261126-space1"></script></head>
 <body>
   <a class="skip" href="#main">Skip to main content</a>
   <div class="app">
@@ -47,9 +38,9 @@
       <section id="universe" aria-label="Explore the OLA HQ universe">
         <section class="hero" id="app-launch" aria-label="The OLA HQ app entrance">
           <div class="starfield" aria-hidden="true"></div>
-          <a id="hero-world-jump" class="hero-globe-link" href="#worlds" aria-label="Fast travel to The Waves">
+          <div class="globe-stage"><a id="hero-world-jump" class="hero-globe-link" href="#worlds" aria-label="Fast travel to The Waves">
             <img class="hero-globe" src="../assets/entrances/ola-hq-floating-hero-20261007.webp" alt="OLA HQ globe" width="1000" height="1000">
-          </a>
+          </a></div>
         </section>
         <section class="world-intro" aria-labelledby="world-intro-title">
           <div class="world-intro-content">
@@ -59,7 +50,8 @@
             <a class="enter-hint" href="#worlds" aria-label="Go to The Waves"><span aria-hidden="true"><svg class="ui-arrow ui-arrow-down" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 3v14M4 11l6 6 6-6"/></svg></span></a>
           </div>
         </section>
-        <section id="worlds" class="worlds" aria-labelledby="worlds-title">
+        <section class="hq-wave-reveal" aria-label="An illustrated ocean wave comes into view"><div class="hq-wave-reveal-art" aria-hidden="true"></div></section>
+<section id="worlds" class="worlds" aria-labelledby="worlds-title">
           <div class="section-head"><p class="eyebrow">CHOOSE YOUR CURRENT</p><h2 id="worlds-title">The Waves</h2><p>Simple to enter. Endless to explore.</p></div>
           <div class="world-grid">
             <button id="world-la-ola" class="world-card portal-card" data-world="la-ola" data-tier="main" type="button"><img src="../assets/portals-20261124/la-ola.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="world-card-copy"><small>LOVE · FESTIVAL · MEMORY</small><strong>La Ola de Amor</strong><span>Step into our story <svg class="ui-arrow ui-arrow-out" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></span></span></button>
