@@ -124,8 +124,8 @@ function renderSongs(){
  const recordings=catalog.tracks.filter(t=>(group==='all'||group===groupOf(t))&&(!q||normal(label(t)).includes(q)||normal((t.aliases||[]).join(' ')).includes(q))).sort(collectionSort(group));
  const missing=new Map();
  for(const title of catalog.songbook)if(!mainByTitle.has(normal(title)))missing.set(normal(title),{title,groups:new Set(['singles'])});
- for(const a of catalog.albums)for(const t of a.trackEntries)if(!t.recordingId){const item=missing.get(normal(t.title))||{title:t.title,groups:new Set()};item.groups.add('album-'+a.id);missing.set(normal(t.title),item);}
- for(const t of catalog.showAudio)if(!t.recordingId){const item=missing.get(normal(t.title))||{title:t.title,groups:new Set()};item.groups.add('show');missing.set(normal(t.title),item);}
+ for(const a of catalog.albums)for(const t of a.trackEntries)if(!t.recordingId){const item=missing.get(normal(t.title))||{title:t.title,groups:new Set()};item.groups.delete('singles');item.groups.add('album-'+a.id);missing.set(normal(t.title),item);}
+ for(const t of catalog.showAudio)if(!t.recordingId){const item=missing.get(normal(t.title))||{title:t.title,groups:new Set()};item.groups.delete('singles');item.groups.add('show');missing.set(normal(t.title),item);}
  const loose=[...missing.values()].filter(t=>(group==='all'||group==='missing'||t.groups.has(group))&&(!q||normal(t.title).includes(q)));
  songQueue=recordings.map(t=>t.id);
  const items=group.startsWith('album-')?(()=>{const a=catalog.albums.find(a=>'album-'+a.id===group),position=t=>a.tracks.indexOf(t.title);return [...recordings,...loose].sort((a,b)=>position(a)-position(b)||sortSongs(a,b));})():[...recordings,...loose].sort(sortSongs);
