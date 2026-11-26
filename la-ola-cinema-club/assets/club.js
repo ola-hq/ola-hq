@@ -1,10 +1,10 @@
 import {initFilmFeedback} from './film-feedback.js?v=20261125-worlds35';
 import {initReviewNavigation} from './review-navigation.js?v=20261125-worlds35';
 import {initCinemaEvents} from './cinema-events.js?v=20261125-worlds35';
-import {initContactSheet} from './contact-sheet.js?v=20261125-worlds35';
+import {initContactSheet} from './contact-sheet.js?v=20261126-cinema49';
 import {scoreText, matchesDate, applyArtwork, artworkURL} from './collection-data.js?v=20261125-worlds35';
 export {scoreText} from './collection-data.js?v=20261125-worlds35';
-import {initArtViewer} from './art-viewer.js?v=20261125-worlds35';
+import {initArtViewer} from './art-viewer.js?v=20261126-cinema49';
 import {collectionStats} from './stats-data.js?v=20261125-worlds35';
 const base=new URL('../',import.meta.url);
 const $=(s,r=document)=>r.querySelector(s);
