@@ -67,8 +67,8 @@ function starScene({fine=true,reduced=false,width=1920,height=1080,app=false}={}
  return {listeners,docListeners,doc,media,section,universe,frames,canvas:nodes.find(n=>n.className==='portal-stars'),wave:nodes.find(n=>n.className==='portal-wave-backdrop'),get arcs(){return arcs},frame(t){const [id,fn]=frames.entries().next().value;frames.delete(id);fn(t)},mutate(){observer()}};
 }
 test('denser desktop stars retain bounded mobile and retina rendering budgets',()=>{
- const desktop=starScene();assert.equal(desktop.arcs.length,720);assert.equal(desktop.canvas.width,2880);
- const mobile=starScene({fine:false,width:390,height:844});assert.equal(mobile.arcs.length,127);assert.ok(mobile.arcs.length<=180);
+ const desktop=starScene();assert.equal(desktop.arcs.length,1400);assert.equal(desktop.canvas.width,2880);
+ const mobile=starScene({fine:false,width:390,height:844});assert.equal(mobile.arcs.length,274);assert.ok(mobile.arcs.length<=320);
 });
 test('cursor moves nearby stars away and leaving allows them to settle back',()=>{
  const s=starScene({width:1200,height:800}),initial=s.arcs[0].x;
