@@ -1,0 +1,51 @@
+/* A fitted reading spread; the original card remains visible beside long reviews. */
+body[data-film-id] main{max-width:1120px;padding:24px}
+body[data-film-id] .review-navigation{margin-bottom:16px;border-radius:12px}
+body[data-film-id] .film-layout{grid-template-columns:minmax(220px,300px) minmax(0,1fr);gap:32px;padding:24px;background:#0b1629cf}
+body[data-film-id] .film-layout>div{min-width:0}
+body[data-film-id] .film-layout .eyebrow{font-size:.7rem;letter-spacing:.15em;margin-bottom:10px}
+body[data-film-id] .review-title-row{align-items:center;gap:16px;margin-bottom:16px}
+body[data-film-id] .film-layout h1#review-details{font-size:clamp(2rem,3.4vw,3rem);line-height:1.08;margin:0;text-wrap:balance}
+body[data-film-id] .review-title-row .review-title-share{margin:0;max-width:none;font-size:.75rem;padding:8px 12px;white-space:nowrap}
+body[data-film-id] .film-genres{font-size:.85rem;gap:12px}
+body[data-film-id] .film-detail-meta{font-size:.85rem;line-height:1.6;margin:10px 0 18px}
+body[data-film-id] .ratings{gap:10px;margin:18px 0}
+body[data-film-id] .ratings .rating{padding:12px 14px;background:#14253bd9}
+body[data-film-id] .rating dt{font-size:.73rem}
+body[data-film-id] .ratings .rating dd{font-size:clamp(1.7rem,2.5vw,2.15rem);margin-top:4px}
+body[data-film-id] .watched-date{font-size:.85rem;margin:16px 0}
+body[data-film-id] .film-quote{font-size:1.5rem;line-height:1.35;padding-left:16px;margin:22px 0}
+body[data-film-id] .story{font-size:1rem;line-height:1.8;max-width:none}
+body[data-film-id] .story p{margin-bottom:18px}
+body[data-film-id] .reaction{padding:16px 0;font-size:.94rem;line-height:1.75}
+body[data-film-id] .reaction h3{font-size:.85rem;margin-bottom:10px}
+body[data-film-id] .stamp-note{padding:14px 16px;gap:16px;margin:18px 0;border-radius:12px}
+body[data-film-id] .stamp-note .stamp-art-link{width:58px}
+body[data-film-id] .stamp-note p{font-size:.8rem}
+body[data-film-id] .film-feedback{padding:20px;margin:22px 0;border-radius:12px;background:#0d1c2de6}
+body[data-film-id] .film-feedback h2{font-size:1.7rem;margin-bottom:14px}
+body[data-film-id] .film-feedback>p{font-size:.85rem}
+body[data-film-id] .feedback-reactions{margin:16px 0;gap:10px}
+body[data-film-id] .feedback-status:empty{min-height:0;margin:0}
+body[data-film-id] .film-layout .actions{margin:20px 0 0;gap:10px}
+@media(min-width:901px){
+ body[data-film-id] .film-layout>.film-art-column{position:sticky;top:88px;align-self:start;width:100%;max-width:min(300px,calc((100dvh - 112px)*2/3));margin:0 auto}
+ body[data-film-id] .film-art-column .film-main-art{max-height:calc(100dvh - 112px);object-fit:contain}
+}
+@media(min-width:701px) and (max-width:900px){
+ body[data-film-id] main{padding:20px}
+ body[data-film-id] .film-layout{grid-template-columns:minmax(190px,230px) minmax(0,1fr);gap:24px;padding:20px}
+ body[data-film-id] .review-title-row{flex-wrap:wrap;gap:10px}
+ body[data-film-id] .review-title-row .review-title-share{font-size:.7rem}
+}
+@media(max-width:700px){
+ body[data-film-id] main{padding:16px}
+ body[data-film-id] .film-layout{grid-template-columns:1fr;padding:16px;gap:26px}
+ body[data-film-id] .film-layout>.film-art-column{position:static;max-width:300px}
+ body[data-film-id] .review-title-row{align-items:flex-start;gap:12px}
+ body[data-film-id] .film-layout h1#review-details{font-size:clamp(1.8rem,7vw,2.5rem)}
+ body[data-film-id] .review-title-row .review-title-share{max-width:94px;white-space:normal;font-size:.7rem;padding:7px 10px}
+ body[data-film-id] .ratings .rating{padding:10px 8px}
+ body[data-film-id] .ratings .rating dd{font-size:1.75rem}
+ body[data-film-id] .film-feedback{padding:16px}
+}
