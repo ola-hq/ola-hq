@@ -34,7 +34,7 @@ function layoutCabin(focus){
  const stack=$('.scene-stack'),w=stack.clientWidth,h=stack.clientHeight;if(!w||!h)return;
  const board=$('.cabin-artboard'),fit=C.fitPanorama(w,h,focus??.36);
  board.style.width=fit.width+'px';board.style.height=fit.height+'px';board.style.top=fit.top+'px';
- if(typeof focus==='number')cabinScene.scrollTo({left:fit.scroll,behavior:motion.matches?'instant':'smooth'});
+ if(typeof focus==='number')cabinScene.scrollTo({left:fit.scroll,behavior:motion.matches?'auto':'smooth'});
 }
 
 function sceneStatus(text){$('#scene-load-status').textContent=text}
@@ -130,7 +130,7 @@ function draw(now){
  if(!still)energy*=.94;
 }
 function renderVessel(){
- const still=motion.matches,f=fly.state(),tourShip=walkthrough.state().running&&walkthrough.state().step?.scene==='ship';ship.hidden=!(tourShip||still||f.visible);const guided=Math.min(1,walkthrough.state().elapsed/1300),ease=1-Math.pow(1-guided,3);const x=tourShip?-120+(width*.5+65)*ease:still?width*.12:-110+f.progress*(width+110),y=height*.15+(still?0:Math.sin(f.progress*Math.PI)*height*.025);ship.style.transform='translate3d('+x+'px,'+y+'px,0)';
+ const still=motion.matches,f=fly.state(),tourShip=walkthrough.state().running&&walkthrough.state().step?.scene==='ship';ship.hidden=!(tourShip||still||f.visible);const guided=Math.min(1,walkthrough.state().elapsed/1300),ease=1-Math.pow(1-guided,3);const x=tourShip?(still?width*.5-60:-120+(width*.5+65)*ease):still?width*.12:-110+f.progress*(width+110),y=height*.15+(still?0:Math.sin(f.progress*Math.PI)*height*.025);ship.style.transform='translate3d('+x+'px,'+y+'px,0)';
 }
 function tick(now){frame=0;if(!active())return;const dt=last?Math.max(0,Math.min(100,now-last)):0;last=now;if(!motion.matches)fly.step(dt);renderVessel();if(skyClock.step(dt))draw(now);if(!motion.matches)frame=requestAnimationFrame(tick)}
 function start(){if(!active())return;if(motion.matches){draw(performance.now());return}if(!frame)frame=requestAnimationFrame(tick)}
