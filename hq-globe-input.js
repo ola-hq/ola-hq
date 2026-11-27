@@ -4,7 +4,8 @@
   let state=null,suppressUntil=0,tapCount=0,tapTimer=0,wheelTimer=0,nativeTouchUntil=0,committing=false;const listeners=[];
   const later=(fn,ms)=>(clock.setTimeout||root.setTimeout)(fn,ms),clear=id=>(clock.clearTimeout||root.clearTimeout)(id);
   const on=(name,fn,options)=>{element.addEventListener(name,fn,options);listeners.push([name,fn,options])};
-  const nativeTouch=typeof clock.TouchEvent!=='undefined';
+  // Safari variants may expose touch events without a TouchEvent constructor.
+  const nativeTouch=typeof clock.TouchEvent!=='undefined'||'ontouchstart' in clock||(clock.navigator?.maxTouchPoints||0)>0;
   const now=()=>clock.performance.now(),clamp=v=>Math.max(-24,Math.min(24,v)),modifier=e=>e.metaKey||e.ctrlKey||e.altKey||e.shiftKey;
   const clearTaps=()=>{clear(tapTimer);tapTimer=0;tapCount=0};
   function finish(cancelled=false){
@@ -37,15 +38,18 @@
    on('touchstart',e=>{
     nativeTouchUntil=now()+800;
     if(e.touches.length!==1){finish(true);clearTaps();return}
+    // Claim a one-finger globe gesture at contact, before WebKit starts native
+    // link handling/page panning. Waiting until touchmove is too late there.
+    if(e.cancelable)e.preventDefault();
     const point=e.touches[0];begin(point.identifier,point,true);
-   },{passive:true});
+   },{passive:false,capture:true});
    on('touchmove',e=>{
     if(!state?.touch)return;
     if(e.touches.length!==1){finish(true);clearTaps();return}
     const point=Array.from(e.touches).find(p=>p.identifier===state.id);if(!point){finish(true);return}
     // Safari needs a non-passive native touchmove, before it claims page scroll.
     if(e.cancelable)e.preventDefault();move(point,e);
-   },{passive:false});
+   },{passive:false,capture:true});
    on('touchend',e=>{
     if(!state?.touch)return;
     if(Array.from(e.touches).some(p=>p.identifier===state.id))return;
