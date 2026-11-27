@@ -744,3 +744,16 @@ test('two new approved reviews retain exact owner ratings, watched days, art app
  const bank=films.find(f=>f.id==='club-how-to-rob-a-bank');assert.ok(bank.order>films.find(f=>f.id==='club-wicker').order);assert.ok(bank.order<films.find(f=>f.id==='club-ebenezer').order);assert.equal(filterFilms(films)[0].id,'club-focker-in-law');
  const original=JSON.parse(execFileSync('git',['show','b87fea47:la-ola-cinema-club/data/films.json'],{encoding:'utf8'}));for(const f of original)assert.deepEqual(films.find(x=>x.id===f.id),f,'existing film data unchanged: '+f.id);
 });
+
+test('Cinema room stays inert behind card gestures and releases its visibility listener on destroy',()=>{
+ const d=environment();try{
+  const v=new CinemaCardViewer({sound:false});v.open([{id:'a',src:'a.webp'},{id:'b',src:'b.webp'}]);
+  assert.equal(v.room.inert,true);assert.equal(v.room.attributes['aria-hidden'],'true');
+  assert.equal(v.room.contains(v.stage),false);assert.equal(v.stage.contains(v.room),false);
+  assert.equal(v.room.style['--cinema-room-motion'],'running');d.hidden=true;
+  for(const listener of d.listeners.visibilitychange)listener();assert.equal(v.room.style['--cinema-room-motion'],'paused');
+  d.hidden=false;for(const listener of d.listeners.visibilitychange)listener();assert.equal(v.room.style['--cinema-room-motion'],'running');
+  const roomListener=v.roomVisibility;assert.ok(d.listeners.visibilitychange.includes(roomListener));v.destroy();
+  assert.ok(!d.listeners.visibilitychange.includes(roomListener));assert.equal(d.body.children.includes(v.dialog),false);
+ }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
