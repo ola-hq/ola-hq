@@ -8,7 +8,7 @@ const $=s=>document.querySelector(s),modals=()=>!!document.querySelector('dialog
 const active=()=>visible&&!document.hidden&&!modals();
 const cabin=$('#cabin'),secret=$('#secret-room'),cabinScene=$('#cabin-scene'),secretImage=$('#secret-image'),secretTitle=$('#secret-title'),secretText=$('#secret-text'),worldDialog=$('#world-visit');
 function toast(text,color='#cde9de'){const el=$('#return-greeting');clearTimeout(toastTimer);el.style.setProperty('--greeting-color',color);el.textContent=text;el.classList.add('is-visible');toastTimer=setTimeout(()=>{el.classList.remove('is-visible');el.textContent=''},6500)}
-function openDialog(dialog){cancelAnimationFrame(frame);frame=0;last=0;fly.hold(true);dialog.showModal()}
+function openDialog(dialog){document.documentElement.classList.add('scene-open');cancelAnimationFrame(frame);frame=0;last=0;fly.hold(true);dialog.showModal()}
 
 let revealTimer=0,sceneRevision=0,artPromise=null,artReady=false;
 const artFiles=['assets/cabin.png','assets/secret-rooms.png'];
@@ -24,44 +24,49 @@ function prepareArt(){
  if(!artPromise)artPromise=Promise.all(artFiles.map(loadImage)).then(()=>{artReady=true;return true}).catch(()=>{artPromise=null;return false});
  return artPromise;
 }
-function layoutCabin(){
- const stack=$('.scene-stack'),bounds=stack.getBoundingClientRect();
- if(!bounds.width||!bounds.height)return;
- const board=$('.cabin-artboard'),boardWidth=Math.min(bounds.width,bounds.height*1672/941);
- board.style.width=boardWidth+'px';
- const caption=$('.secret-caption').getBoundingClientRect().height;
- stack.style.setProperty('--room-size',Math.max(100,Math.min(bounds.width-28,bounds.height-caption-38))+'px');
+let subtitleTimer=0,lastSecret='chair';
+function subtitle(title,text=''){
+ clearTimeout(subtitleTimer);secretTitle.textContent=title;secretText.textContent=text;
+ cabin.classList.remove('has-subtitle');void secretTitle.offsetWidth;cabin.classList.add('has-subtitle');
+ subtitleTimer=setTimeout(()=>cabin.classList.remove('has-subtitle'),4200);
 }
+function layoutCabin(focus){
+ const stack=$('.scene-stack'),w=stack.clientWidth,h=stack.clientHeight;if(!w||!h)return;
+ const board=$('.cabin-artboard'),fit=C.fitPanorama(w,h,focus??.36);
+ board.style.width=fit.width+'px';board.style.height=fit.height+'px';board.style.top=fit.top+'px';
+ if(typeof focus==='number')cabinScene.scrollTo({left:fit.scroll,behavior:motion.matches?'instant':'smooth'});
+}
+
 function sceneStatus(text){$('#scene-load-status').textContent=text}
 function closeScene(){
  sceneRevision++;clearTimeout(revealTimer);secret.hidden=true;cabinScene.hidden=false;
  cabin.classList.remove('is-revealing');cabinScene.classList.remove('is-returning');
  void cabinScene.offsetWidth;cabinScene.classList.add('is-returning');
- $('#back-to-cabin').hidden=true;cabin.scrollTop=0;sceneStatus('');layoutCabin();
+ $('#back-to-cabin').hidden=true;cabin.scrollTop=0;sceneStatus('');cabin.classList.remove('has-subtitle');layoutCabin({chair:.36,bar:.08,window:.75}[lastSecret]);
 }
 async function openCabin(){
- closeScene();if(!cabin.open)openDialog(cabin);layoutCabin();
+ closeScene();if(!cabin.open)openDialog(cabin);layoutCabin({chair:.36,bar:.08,window:.75}[lastSecret]);
  const revision=sceneRevision;sceneStatus(artReady?'':'Preparing the cabin…');
  const ready=await prepareArt();if(revision!==sceneRevision||!cabin.open)return;
- sceneStatus(ready?'':'The cabin artwork could not load. Return to the sky and try again.');
+ sceneStatus(ready?'':'The cabin artwork could not load. Return to the sky and try again.');if(ready)subtitle('Every world leaves a little of itself behind.');
 }
 
-function openStar(){openDialog($('#star-message'))}
+function openStar(){if(cabin.open){subtitle('26','Some numbers keep bringing us home.');$('#map-star').classList.add('is-noticed');setTimeout(()=>$('#map-star').classList.remove('is-noticed'),2200)}else toast('26 — Some numbers keep bringing us home.','#d6eee5')}
 
 async function showSecret(key){
  const data={
- chair:{cell:0,origin:'36% 48%',title:'The quiet deck.',text:'A photograph found its way here. Some moments travel further than we do.',world:'polaroid'},
- bar:{cell:1,origin:'8% 45%',title:'A song tucked between worlds.',text:'A Wave26 sleeve. A ticket from the Cinema Club. Someone has been here before.',world:'wave26'},
- window:{cell:2,origin:'75% 23%',title:'A route still being drawn.',text:'One teal coordinate keeps returning. The rest is a possibility, not a promise.',world:'simulation'}
+ chair:{cell:0,origin:'36% 48%',title:'A moment, still travelling.',text:'',world:'polaroid'},
+ bar:{cell:1,origin:'8% 45%',title:'Some songs travel with us.',text:'',world:'wave26'},
+ window:{cell:2,origin:'75% 23%',title:'A route still being drawn.',text:'',world:'simulation'}
  }[key];
  if(!data)return false;
  const revision=++sceneRevision;clearTimeout(revealTimer);sceneStatus(artReady?'':'Opening the hidden room…');
  const ready=await prepareArt();if(revision!==sceneRevision||!cabin.open)return false;
  if(!ready){sceneStatus('The hidden room could not load. Tap the object to try again.');return false}
- sceneStatus('');cabin.scrollTop=0;cabinScene.hidden=false;secret.hidden=false;
+ sceneStatus('');lastSecret=key;layoutCabin({chair:.36,bar:.08,window:.75}[key]);await new Promise(resolve=>setTimeout(resolve,motion.matches?0:340));if(revision!==sceneRevision||!cabin.open)return false;cabin.scrollTop=0;cabinScene.hidden=false;secret.hidden=false;secret.scrollLeft=(Math.max($('.scene-stack').clientWidth,$('.scene-stack').clientHeight)-$('.scene-stack').clientWidth)/2;
  $('#back-to-cabin').hidden=false;secretImage.dataset.cell=data.cell;secretImage.setAttribute('aria-label',key==='chair'?'A secret pool deck inside the vessel':key==='bar'?'A hidden vinyl listening room':'The celestial navigation room');
- secretTitle.textContent=data.title;secretText.textContent=data.text;$('#follow-current').dataset.world=data.world;$('#map-star').hidden=key!=='window';layoutCabin();
- cabin.style.setProperty('--reveal-origin',data.origin);cabin.classList.remove('is-revealing');void secret.offsetWidth;cabin.classList.add('is-revealing');
+ subtitle(data.title,data.text);$('#follow-current').dataset.world=data.world;$('#follow-current').setAttribute('aria-label',key==='chair'?'Follow the photograph to Our Polaroid Wave':key==='bar'?'Follow the record to Wave26':'Follow the celestial route to Simulation Wave');$('#map-star').hidden=key!=='window';
+ cabin.classList.remove('is-revealing');void secret.offsetWidth;cabin.classList.add('is-revealing');
  $('#back-to-cabin').focus({preventScroll:true});
  revealTimer=setTimeout(()=>{if(revision!==sceneRevision)return;cabinScene.hidden=true;cabin.classList.remove('is-revealing')},motion.matches?0:1050);
  return true;
@@ -85,15 +90,24 @@ async function visitWorld(key){
 document.querySelectorAll('[data-secret]').forEach(b=>b.addEventListener('click',()=>{stopWalkthrough();showSecret(b.dataset.secret)}));
 document.querySelectorAll('[data-world]').forEach(b=>b.addEventListener('click',()=>visitWorld(b.dataset.world)));
 document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>{stopWalkthrough();document.getElementById(b.dataset.close).close()}));
-$('#back-to-cabin').addEventListener('click',()=>{stopWalkthrough();closeScene();$('#chair').focus({preventScroll:true})});
+$('#back-to-cabin').addEventListener('click',()=>{stopWalkthrough();closeScene();$('#'+lastSecret).focus({preventScroll:true})});
 $('#map-star').addEventListener('click',()=>{stopWalkthrough();openStar()});star.addEventListener('click',()=>{stopWalkthrough();openStar()});ship.addEventListener('click',()=>{stopWalkthrough();openCabin()});
 ship.addEventListener('pointerenter',()=>fly.hold(true));ship.addEventListener('pointerleave',()=>{if(document.activeElement!==ship&&!modals())fly.hold(false)});
 ship.addEventListener('pointerdown',()=>fly.hold(true));ship.addEventListener('focus',()=>fly.hold(true));ship.addEventListener('blur',()=>{if(!modals())fly.hold(false)});
-document.querySelectorAll('dialog').forEach(dialog=>{dialog.addEventListener('close',()=>{if(dialog===worldDialog)endWorld();if(!modals()){fly.hold(document.activeElement===ship);start()}})});
+document.querySelectorAll('dialog').forEach(dialog=>{dialog.addEventListener('close',()=>{if(dialog===worldDialog)endWorld();if(!modals()){document.documentElement.classList.remove('scene-open');fly.hold(document.activeElement===ship);start()}})});
 $('#try-vessel').addEventListener('click',()=>{stopWalkthrough();fly.hold(false);fly.summon();fly.step(1000);draw(performance.now());ship.focus()});
 $('#try-star').addEventListener('click',()=>{star.focus();star.classList.add('is-noticed');setTimeout(()=>star.classList.remove('is-noticed'),2500)});
 $('#direct-cabin').addEventListener('click',()=>{stopWalkthrough();openCabin()});
 $('#phone-width').addEventListener('click',e=>{document.body.classList.toggle('phone-study');e.currentTarget.setAttribute('aria-pressed',String(document.body.classList.contains('phone-study')));resize()});
+function installPan(view){
+ let dragStart=null,suppressClick=false;
+ view.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'&&walkthrough.state().running)stopWalkthrough();if(e.pointerType==='mouse')dragStart={x:e.clientX,scroll:view.scrollLeft,id:e.pointerId,moved:false}});
+ view.addEventListener('pointermove',e=>{if(!dragStart||e.pointerId!==dragStart.id)return;const dx=e.clientX-dragStart.x;if(Math.abs(dx)>5&&!dragStart.moved){dragStart.moved=true;stopWalkthrough();view.setPointerCapture(e.pointerId)}if(dragStart.moved){e.preventDefault();view.scrollLeft=dragStart.scroll-dx}});
+ const end=()=>{if(dragStart?.moved){suppressClick=true;setTimeout(()=>suppressClick=false,100)}dragStart=null};
+ view.addEventListener('pointerup',end);view.addEventListener('pointercancel',end);
+ view.addEventListener('click',e=>{if(suppressClick){e.preventDefault();e.stopImmediatePropagation()}},true);
+}
+installPan(cabinScene);installPan(secret);
 stage.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;const r=stage.getBoundingClientRect();pointer={x:(e.clientX-r.left)/r.width-.5,y:(e.clientY-r.top)/r.height-.5}},{passive:true});
 stage.addEventListener('pointerleave',()=>{pointer={x:0,y:0}});
 window.OLACosmos=Object.freeze({travel(a,b){if(!active()||!Array.isArray(a)||!Array.isArray(b))return;const dot=Math.min(1,Math.abs(a.reduce((s,v,i)=>s+v*b[i],0)));const amount=2*Math.acos(dot);if(Number.isFinite(amount))energy=Math.min(1,energy+amount*1.8)}});
@@ -116,14 +130,14 @@ function draw(now){
  if(!still)energy*=.94;
 }
 function renderVessel(){
- const still=motion.matches,f=fly.state(),tourShip=walkthrough.state().running&&walkthrough.state().step?.scene==='ship';ship.hidden=!(tourShip||still||f.visible);const x=tourShip?width*.5-55:still?width*.12:-110+f.progress*(width+110),y=height*.15+(still?0:Math.sin(f.progress*Math.PI)*height*.025);ship.style.transform='translate3d('+x+'px,'+y+'px,0)';
+ const still=motion.matches,f=fly.state(),tourShip=walkthrough.state().running&&walkthrough.state().step?.scene==='ship';ship.hidden=!(tourShip||still||f.visible);const guided=Math.min(1,walkthrough.state().elapsed/1300),ease=1-Math.pow(1-guided,3);const x=tourShip?-120+(width*.5+65)*ease:still?width*.12:-110+f.progress*(width+110),y=height*.15+(still?0:Math.sin(f.progress*Math.PI)*height*.025);ship.style.transform='translate3d('+x+'px,'+y+'px,0)';
 }
 function tick(now){frame=0;if(!active())return;const dt=last?Math.max(0,Math.min(100,now-last)):0;last=now;if(!motion.matches)fly.step(dt);renderVessel();if(skyClock.step(dt))draw(now);if(!motion.matches)frame=requestAnimationFrame(tick)}
 function start(){if(!active())return;if(motion.matches){draw(performance.now());return}if(!frame)frame=requestAnimationFrame(tick)}
 function pause(){cancelAnimationFrame(frame);frame=0;last=0;pointer={x:0,y:0};energy=0}
 if(typeof IntersectionObserver!=='undefined')new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible)start();else pause()}).observe(stage);
 addEventListener('resize',resize,{passive:true});document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();else start()});
-addEventListener('pagehide',()=>{stopWalkthrough();returnAllowed=false;visits.cancel();visitAbort?.abort();pause();clearTimeout(toastTimer)});
+addEventListener('pagehide',()=>{clearTimeout(subtitleTimer);stopWalkthrough();returnAllowed=false;visits.cancel();visitAbort?.abort();pause();clearTimeout(toastTimer)});
 addEventListener('pageshow',()=>{returnAllowed=true;start()});motion.addEventListener('change',()=>{pause();resize();start()});
 
 const walkthrough=C.createWalkthrough();
@@ -132,7 +146,7 @@ function tourControls(){
  const state=walkthrough.state();
  document.querySelectorAll('.tour-controls').forEach(el=>{el.hidden=!state.running});
  document.querySelectorAll('.tour-step').forEach(el=>{el.textContent=state.running?state.step.label:''});
- document.querySelectorAll('[data-tour-pause]').forEach(el=>{el.textContent=state.paused?'Resume walkthrough':'Pause walkthrough'});
+ document.querySelectorAll('[data-tour-pause]').forEach(el=>{el.textContent=state.paused?'▷':'Ⅱ';el.setAttribute('aria-label',state.paused?'Resume walkthrough':'Pause walkthrough');el.title=state.paused?'Resume walkthrough':'Pause walkthrough'});
  document.body.classList.toggle('tour-paused',state.paused);layoutCabin();
 }
 function stopWalkthrough(){
@@ -142,12 +156,12 @@ function stopWalkthrough(){
 }
 async function enterTourScene(){
  const revision=++tourRevision,state=walkthrough.state();tourBusy=true;tourControls();
- const starDialog=$('#star-message');
+ const starDialog=null;
  if(state.step.scene==='ship'){
-  if(starDialog.open)starDialog.close();if(cabin.open)cabin.close();
+  if(starDialog?.open)starDialog.close();if(cabin.open)cabin.close();
   stage.scrollIntoView({behavior:'auto',block:'start'});fly.hold(true);draw(performance.now());
  }else if(state.step.scene==='cabin'){
-  if(starDialog.open)starDialog.close();await openCabin();
+  if(starDialog?.open)starDialog.close();await openCabin();
  }else if(state.step.scene==='star'){openStar()}
  else {await showSecret(state.step.scene)}
  if(revision===tourRevision){tourBusy=false;tourLast=0}
@@ -158,7 +172,7 @@ function tourTick(now){
  if(!document.hidden&&!tourBusy){
   const after=walkthrough.step(dt);
   if(!after.running){
-   if($('#star-message').open)$('#star-message').close();if(cabin.open)cabin.close();
+   if(cabin.open)cabin.close();
    stopWalkthrough();$('#preview-load-status').textContent='Walkthrough complete. Replay it, or catch the ship and explore.';
    $('#watch-walkthrough').textContent='Replay the walkthrough';$('#watch-walkthrough').focus({preventScroll:true});$('#watch-walkthrough').scrollIntoView({behavior:'auto',block:'center'});return;
   }
@@ -178,7 +192,7 @@ $('#watch-walkthrough').addEventListener('click',startWalkthrough);
 document.querySelectorAll('[data-tour-pause]').forEach(b=>b.addEventListener('click',()=>{
  const state=walkthrough.state();walkthrough.pause(!state.paused);tourLast=0;cancelAnimationFrame(tourFrame);tourFrame=0;tourControls();if(!walkthrough.state().paused&&!document.hidden)tourFrame=requestAnimationFrame(tourTick);
 }));
-document.querySelectorAll('[data-tour-stop]').forEach(b=>b.addEventListener('click',()=>{stopWalkthrough();if(cabin.open)$('#back-to-cabin').hidden?$('#chair').focus({preventScroll:true}):$('#back-to-cabin').focus({preventScroll:true})}));
+document.querySelectorAll('[data-tour-stop]').forEach(b=>b.addEventListener('click',()=>{stopWalkthrough();if(cabin.open)$('#back-to-cabin').hidden?$('#'+lastSecret).focus({preventScroll:true}):$('#back-to-cabin').focus({preventScroll:true})}));
 document.querySelectorAll('dialog').forEach(d=>d.addEventListener('cancel',()=>stopWalkthrough()));
 document.addEventListener('visibilitychange',()=>{
  tourLast=0;if(document.hidden){cancelAnimationFrame(tourFrame);tourFrame=0}
