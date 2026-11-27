@@ -3,9 +3,10 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path');
 const {attach}=require('../hq-globe-input.js');
 class Target{
+ point={clientX:100,clientY:100};
  registrations=[];listeners={};addEventListener(n,fn,options){this.registrations.push({n,options});(this.listeners[n]||=[]).push(fn)}removeEventListener(n,fn){this.listeners[n]=(this.listeners[n]||[]).filter(f=>f!==fn)}
  setPointerCapture(){}releasePointerCapture(){}
- emit(n,extra={}){const e={pointerId:1,isPrimary:true,pointerType:'touch',button:0,clientX:100,clientY:100,detail:1,cancelable:true,prevented:false,stopped:false,preventDefault(){this.prevented=true},stopImmediatePropagation(){this.stopped=true},...extra};for(const fn of this.listeners[n]||[]){fn(e);if(e.stopped)break}return e}
+ emit(n,extra={}){if(n==='pointerdown')this.point={clientX:100,clientY:100};const e={pointerId:1,isPrimary:true,pointerType:'touch',button:0,...this.point,detail:1,cancelable:true,prevented:false,stopped:false,preventDefault(){this.prevented=true},stopImmediatePropagation(){this.stopped=true},...extra};if(n.startsWith('pointer'))this.point={clientX:e.clientX,clientY:e.clientY};for(const fn of this.listeners[n]||[]){fn(e);if(e.stopped)break}return e}
 }
 function controls(){let time=0;const e=new Target(),moves=[],releases=[];let resets=0;const c=attach(e,{rotate:(x,y)=>moves.push([x,y]),release:(x,y)=>releases.push([x,y]),reset:()=>resets++},{performance:{now:()=>time}});return {e,c,moves,releases,get resets(){return resets},tick(t){time+=t}}}
 test('tap keeps the native globe entrance available',()=>{const h=controls();h.e.emit('pointerdown');h.tick(50);h.e.emit('pointerup');assert.equal(h.e.emit('click').prevented,false);assert.equal(h.moves.length,0)});
@@ -82,3 +83,42 @@ test('the reference front survives ordinary 253-alpha source pixels',()=>{const 
 test('native touch claims the globe before WebKit starts a page or link gesture',()=>{const e=new Target(),registrations=e.registrations,moves=[];let t=0;const c=attach(e,{rotate:(x,y)=>moves.push([x,y]),release(){},press(){},reset(){}},{ontouchstart:null,performance:{now:()=>t},setTimeout(){return 1},clearTimeout(){}});const start=e.emit('touchstart',{touches:[{identifier:1,clientX:100,clientY:100}]});assert.equal(start.prevented,true);assert.deepEqual(registrations.find(r=>r.n==='touchstart').options,{passive:false,capture:true});assert.deepEqual(registrations.find(r=>r.n==='touchmove').options,{passive:false,capture:true});e.emit('pointercancel',{pointerType:'touch'});t=20;e.emit('touchmove',{touches:[{identifier:1,clientX:150,clientY:140}]});assert.deepEqual(moves,[[50,40]]);c.destroy()});
 test('touch-capable Safari without a TouchEvent constructor retains native flick input',()=>{const e=new Target(),moves=[];let t=0;const c=attach(e,{rotate:(x,y)=>moves.push([x,y]),release(){},press(){},reset(){}},{navigator:{maxTouchPoints:5},performance:{now:()=>t},setTimeout(){return 1},clearTimeout(){}});e.emit('touchstart',{touches:[{identifier:8,clientX:100,clientY:100}]});t=20;e.emit('touchmove',{touches:[{identifier:8,clientX:120,clientY:140}]});assert.deepEqual(moves,[[20,40]]);c.destroy()});
 test('gesture reservation is scoped to the globe and its actual canvas',()=>{const css=fs.readFileSync(path.join(__dirname,'../hq-globe.css'),'utf8');assert.match(css,/\.has-3d-globe\{[^}]*touch-action:none!important/);assert.match(css,/\.hq-globe-canvas\{[^}]*touch-action:none/);assert.doesNotMatch(css,/(?:body|html)\s*\{[^}]*touch-action:none/)});
+
+test('a fast native flick uses the release position even without an intermediate touchmove',()=>{
+ const h=gestureHarness(true);touch(h,'touchstart',[[100,100]]);h.advance(35);
+ h.e.emit('touchend',{touches:[],changedTouches:[{identifier:7,clientX:160,clientY:140}]});
+ assert.deepEqual(h.moves,[[60,40]]);assert.ok(h.flings.at(-1)[0]>0&&h.flings.at(-1)[1]>0);h.advance(400);assert.equal(h.enters,0);
+});
+test('a touch-capable browser can drive a complete captured pointer gesture without native touch events',()=>{
+ const h=gestureHarness(true);h.e.emit('pointerdown');h.advance(25);h.e.emit('pointermove',{clientX:145,clientY:130});h.e.emit('pointerup');
+ assert.deepEqual(h.moves,[[45,30]]);assert.ok(h.flings.at(-1)[0]>0);assert.equal(h.e.emit('click',{detail:0}).prevented,true);h.advance(400);assert.equal(h.enters,0);
+});
+test('native touch takes over the pointer stream without duplicate movement or a second press',()=>{
+ const h=gestureHarness(true);h.e.emit('pointerdown');touch(h,'touchstart',[[100,100]]);h.advance(20);
+ h.e.emit('pointermove',{clientX:130,clientY:120});touch(h,'touchmove',[[130,120]]);h.e.emit('pointerup');touch(h,'touchend');
+ assert.deepEqual(h.moves,[[30,20]]);assert.equal(h.flings.length,1);h.advance(400);assert.equal(h.enters,0);
+});
+test('a gesture begun on the globe keeps tracking and releases outside its element',()=>{
+ const e=new Target(),doc=new Target();e.ownerDocument=doc;let now=0;const moves=[],flings=[];
+ const c=attach(e,{press(){},rotate:(...v)=>moves.push(v),release:(...v)=>flings.push(v),reset(){}},{TouchEvent:class{},performance:{now:()=>now},setTimeout(){},clearTimeout(){}});
+ e.emit('touchstart',{touches:[{identifier:7,clientX:100,clientY:100}]});now=20;
+ doc.emit('touchmove',{touches:[{identifier:7,clientX:380,clientY:430}]});now=40;
+ doc.emit('touchend',{touches:[],changedTouches:[{identifier:7,clientX:400,clientY:450}]});
+ assert.deepEqual(moves,[[280,330],[20,20]]);assert.ok(flings.at(-1)[0]>0);c.destroy();assert.ok(Object.values(doc.listeners).every(list=>list.length===0));
+});
+test('release velocity uses event sampling times when rendering delayed their delivery',()=>{
+ const h=gestureHarness(true);h.advance(100);h.e.emit('touchstart',{timeStamp:100,touches:[{identifier:7,clientX:100,clientY:100}]});
+ h.advance(1000);h.e.emit('touchmove',{timeStamp:120,touches:[{identifier:7,clientX:140,clientY:130}]});
+ h.advance(1000);h.e.emit('touchend',{timeStamp:140,touches:[],changedTouches:[{identifier:7,clientX:160,clientY:150}]});
+ assert.ok(h.flings.at(-1)[0]>10&&h.flings.at(-1)[1]>10);
+});
+test('touchstart-before-pointerdown ordering also keeps one native contact',()=>{
+ const h=gestureHarness(true);touch(h,'touchstart',[[100,100]]);h.e.emit('pointerdown');h.advance(20);touch(h,'touchmove',[[145,125]]);h.e.emit('pointermove',{clientX:145,clientY:125});h.e.emit('pointerup');touch(h,'touchend');
+ assert.deepEqual(h.moves,[[45,25]]);assert.ok(h.flings.at(-1)[0]>0);h.advance(400);assert.equal(h.enters,0);
+});
+test('a document-tracked pointer survives losing capture and then releases normally',()=>{
+ const e=new Target(),doc=new Target();e.ownerDocument=doc;let now=0;const moves=[],flings=[];
+ const c=attach(e,{press(){},rotate:(...v)=>moves.push(v),release:(...v)=>flings.push(v),reset(){}},{performance:{now:()=>now},setTimeout(){},clearTimeout(){}});
+ e.emit('pointerdown',{pointerType:'mouse'});e.emit('lostpointercapture');now=20;doc.emit('pointermove',{pointerType:'mouse',clientX:400,clientY:300});doc.emit('pointerup',{pointerType:'mouse'});
+ assert.deepEqual(moves,[[300,200]]);assert.ok(flings.at(-1)[0]>0);c.destroy();
+});
