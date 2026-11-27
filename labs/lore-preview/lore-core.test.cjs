@@ -14,4 +14,27 @@ test('the cabin has three unmarked natural regions, not exposed collectible menu
 test('controller does not persist progress or invoke pilot/backend/sound systems',()=>{const js=fs.readFileSync(path.join(dir,'lore-preview.js'),'utf8');assert.doesNotMatch(js,/localStorage|sessionStorage|supabase|hq-orbit-board|AudioContext|new Audio/);assert.ok(js.includes("method:'HEAD'"));assert.ok(js.includes("credentials:'omit'"));assert.ok(js.includes("once:true"));assert.ok(js.includes('requestAnimationFrame'));new vm.Script(js)});
 test('both preview images decode as real PNG headers, not incomplete uploads',()=>{for(const [name,width,height]of [['cabin.png',1672,941],['secret-rooms.png',2172,724]]){const b=fs.readFileSync(path.join(dir,'assets',name));assert.equal(b.subarray(1,4).toString(),'PNG');assert.equal(b.readUInt32BE(16),width);assert.equal(b.readUInt32BE(20),height);assert.ok(b.length>100000)}});
 test('the bundle contains no external scripts or styles, and no production tracking',()=>{cp.execFileSync(process.execPath,[path.join(dir,'build-preview.cjs')],{cwd:path.resolve(dir,'../..'),stdio:'pipe'});const html=fs.readFileSync(path.resolve(dir,'../../preview-dist/OLA-HQ-hidden-currents-preview.html'),'utf8');assert.doesNotMatch(html,/<script src=|<link rel="stylesheet"/);assert.ok(html.includes('data:image/png;base64,'));assert.doesNotMatch(html,/analytics\.js|hq-orbit-board\.js|hq-cosmos\.js/);const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];assert.equal(scripts.length,7);for(const s of scripts)new vm.Script(s[1]);assert.ok(html.includes("globeMomentum='gesture'"))});
-test('only the isolated sample and its check workflow change',{skip:!process.env.LORE_HEAD_SHA},()=>{const files=cp.execFileSync('git',['diff','--name-only','83484897d7e4373947891296fc6a526e3d95c1ab',process.env.LORE_HEAD_SHA],{cwd:path.resolve(dir,'../..'),encoding:'utf8'}).trim().split('\n');for(const f of files)assert.ok(f.startsWith('labs/lore-preview/')||f==='.github/workflows/lore-preview.yml',f)});
+test('only the isolated sample and its check workflow change',{skip:!process.env.LORE_HEAD_SHA},()=>{const files=cp.execFileSync('git',['diff','--name-only',process.env.LORE_BASE_SHA||'e85f2e040553b3039795d4644f6902f47de4f08d',process.env.LORE_HEAD_SHA],{cwd:path.resolve(dir,'../..'),encoding:'utf8'}).trim().split('\n');for(const f of files)assert.ok(f.startsWith('labs/lore-preview/')||f==='.github/workflows/lore-preview.yml',f)});
+
+test('walkthrough visits every hidden room and ends without an endless replay',()=>{
+ const t=C.createWalkthrough(),seen=new Set();t.start();let count=0;
+ while(t.state().running&&count++<100){seen.add(t.state().step.scene);t.step(1000)}
+ assert.ok(count<100);assert.deepEqual([...seen],['ship','cabin','chair','bar','window','star']);assert.equal(t.state().running,false);assert.equal(t.state().index,-1)
+});
+test('paused or hidden walkthroughs retain their exact point; stopping cancels future scenes',()=>{
+ const t=C.createWalkthrough();t.start();t.step(700);t.pause(true);const paused=t.state();
+ for(let i=0;i<80;i++)t.step(1000);assert.deepEqual(t.state(),paused);
+ t.pause(false);const visible=t.state();for(let i=0;i<80;i++)t.step(1000,false);assert.deepEqual(t.state(),visible);
+ t.step(700);assert.equal(t.state().elapsed,1400);t.stop();for(let i=0;i<80;i++)t.step(1000);assert.equal(t.state().running,false);assert.equal(t.state().index,-1);
+ t.start();assert.equal(t.state().index,0);assert.equal(t.state().elapsed,0)
+});
+test('walkthrough tolerates invalid clock input and bounds one frame of delayed time',()=>{
+ const t=C.createWalkthrough();t.start();t.step(NaN);t.step(-100);assert.equal(t.state().elapsed,0);t.step(100000);assert.equal(t.state().elapsed,1000)
+});
+test('preview keeps replay explicit, loads rooms before reveal, and retains escape routes',()=>{
+ const html=fs.readFileSync(path.join(dir,'index.html'),'utf8'),js=fs.readFileSync(path.join(dir,'lore-preview.js'),'utf8'),css=fs.readFileSync(path.join(dir,'lore-preview.css'),'utf8');
+ assert.ok(html.includes('id="watch-walkthrough"'));assert.ok(html.includes('data-tour-stop'));assert.ok(html.includes('data-tour-pause'));
+ assert.ok(js.includes('await prepareArt()'));assert.ok(js.includes('sceneRevision'));assert.ok(js.includes('tourRevision'));assert.ok(js.includes('visibilitychange'));
+ assert.ok(css.includes('position:sticky'));assert.ok(css.includes('prefers-reduced-motion:reduce'));assert.ok(css.includes('var(--reveal-origin'));
+ assert.ok(!js.includes('startWalkthrough();'));assert.ok(js.includes('fly.step(1000)'))
+});

@@ -35,5 +35,28 @@ function createVisits(){
   current(){return active?{...active}:null}
  };
 }
-const api={ORIGIN,worlds,delay,createFlyby,constellationOpacity,matchesWorld,createVisits};root.OLALoreCore=Object.freeze(api);if(typeof module!=='undefined')module.exports=api;
+
+const walkthroughSteps=Object.freeze([
+ {scene:'ship',duration:2400,label:'A passage between worlds.'},
+ {scene:'cabin',duration:2600,label:'The quiet between worlds.'},
+ {scene:'chair',duration:4600,label:'A hidden deck, beyond the chair.'},
+ {scene:'cabin',duration:1700,label:'Back where we began.'},
+ {scene:'bar',duration:4600,label:'A song tucked between worlds.'},
+ {scene:'cabin',duration:1700,label:'One more secret in plain sight.'},
+ {scene:'window',duration:4600,label:'A route still being drawn.'},
+ {scene:'star',duration:3000,label:'Some numbers keep bringing us home.'}
+]);
+function createWalkthrough(){
+ let index=-1,elapsed=0,running=false,paused=false;
+ const state=()=>({index,elapsed,running,paused,step:walkthroughSteps[index]||null});
+ return {
+  start(){index=0;elapsed=0;running=true;paused=false;return state()},
+  step(ms,active=true){if(!running||paused||!active)return state();elapsed+=Math.max(0,Math.min(1000,Number(ms)||0));if(elapsed>=walkthroughSteps[index].duration){elapsed=0;index++;if(index===walkthroughSteps.length){running=false;index=-1}}return state()},
+  pause(on){paused=!!on;return state()},
+  stop(){running=false;paused=false;index=-1;elapsed=0;return state()},
+  state
+ };
+}
+
+const api={createWalkthrough,walkthroughSteps,ORIGIN,worlds,delay,createFlyby,constellationOpacity,matchesWorld,createVisits};root.OLALoreCore=Object.freeze(api);if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);
