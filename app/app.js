@@ -268,4 +268,3 @@ nativeInstall.addEventListener('click', async () => {
   nativeInstall.hidden = true;
   installDialog.close();
 });
-
