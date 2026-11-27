@@ -2,7 +2,7 @@
 (()=>{'use strict';
  // Optional on-device observation. It does not replace or drive these controls.
  if(new URL(location.href).searchParams.get('globeAudit')==='1'){
-  const audit=document.createElement('script');audit.src=new URL('hq-globe-audit.js?v=20261126-audit1',document.currentScript.src);document.head.append(audit);
+  const audit=document.createElement('script');audit.src=new URL('hq-globe-audit.js?v=20261126-audit2',document.currentScript.src);document.head.append(audit);
  }
  const modelURL=new URL('assets/models/ola-hq-sculpted-globe-v7.glb?v=20261126-reference1',document.currentScript.src),motion=matchMedia('(prefers-reduced-motion: reduce)');
  const vertex=`attribute vec3 position;attribute vec3 normal;attribute vec2 uv;uniform mat3 rotation;varying vec3 N;varying vec2 UV;varying float Z;
@@ -50,12 +50,15 @@
    // rendering on every move delays mobile samples and the release gesture.
    function queueDraw(){if(!paintFrame)paintFrame=requestAnimationFrame(()=>{paintFrame=0;draw(true)})}
    function spin(t){
-    frame=0;if(!visible||document.hidden||motion.matches){stop();draw();return}
+    frame=0;if(!visible||document.hidden){stop();draw();return}
     const dt=last?Math.min(80,t-last):16.667;if(engine==='canvas'&&last&&dt<40){frame=requestAnimationFrame(spin);return}last=t;
     const moving=ball.step(dt);anchor.classList.toggle('is-spinning',moving);anchor.style.setProperty('--globe-charge',Math.min(1,ball.speed*160).toFixed(2));draw(moving);
     if(moving)frame=requestAnimationFrame(spin);else{last=0;anchor.classList.remove('is-spinning');anchor.style.setProperty('--globe-charge','0')}
    }
-   function release(x,y){stop();if(!motion.matches&&visible&&!document.hidden){ball.release(x,y);if(ball.moving){anchor.classList.add('is-spinning');frame=requestAnimationFrame(spin);return}}draw()}
+   // This loop starts only from deliberate manipulation, never from autoplay.
+   // Preserve the requested bearing/flick even when the OS reduces decorative
+   // motion. Press/hold, Escape, leaving view or hiding the page still stop it.
+   function release(x,y){stop();if(visible&&!document.hidden){ball.release(x,y);if(ball.moving){anchor.classList.add('is-spinning');frame=requestAnimationFrame(spin);return}}draw()}
    function prepare(){if(preparedTarget)return;preparedTarget=OLAGlobeMotion.choose(surpriseTargets());if(preparedTarget){const r=anchor.getBoundingClientRect();window.OLAPortals?.primeOrigin?.(preparedTarget,{x:r.x+r.width/2,y:r.y+r.height/2})}}
    function surprise(){
     if(surpriseBusy)return;prepare();const target=preparedTarget;preparedTarget=null;if(!target){anchor.click();return}
@@ -66,7 +69,7 @@
     target.click();
     cooldown=setTimeout(()=>{cooldown=0;surpriseBusy=false},3000);
    }
-   canvas.className='hq-globe-canvas';canvas.setAttribute('aria-hidden','true');canvas.draggable=false;anchor.append(canvas);anchor.classList.add('has-3d-globe');anchor.dataset.globe3d='ready';anchor.dataset.globeEngine=engine;draw();
+   canvas.className='hq-globe-canvas';canvas.setAttribute('aria-hidden','true');canvas.draggable=false;anchor.append(canvas);anchor.classList.add('has-3d-globe');anchor.dataset.globe3d='ready';anchor.dataset.globeEngine=engine;anchor.dataset.globeMomentum='gesture';draw();
    anchor.draggable=false;anchor.querySelectorAll('img').forEach(img=>{img.draggable=false});
    controls=OLAGlobeInput.attach(anchor,{press(){stop();prepare()},rotate(dx,dy){if(surpriseBusy)return;ball.rotate(dx,dy);queueDraw()},release,reset(){stop();ball.reset();draw()},activate(){if(!surpriseBusy)anchor.click()},surprise});
    const help=document.createElement('span');help.className='hq-globe-help';help.id='hq-globe-help-'+index;help.textContent='Click and drag or use two fingers on a trackpad over the globe to spin it. Tap or press Enter to explore Waves. Arrow keys rotate; Home resets. Triple tap or press R for a surprise world.';anchor.setAttribute('aria-describedby',help.id);anchor.append(help);
