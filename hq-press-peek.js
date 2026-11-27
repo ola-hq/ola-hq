@@ -59,6 +59,8 @@
       if (nativeTouch && e.pointerType === 'touch') return;
       if (e.isPrimary === false) { cancel(); return; }
       begin(e.pointerId,e);
+      // Retain a held pen/touch aperture while crossing the gap to another card.
+      try{art.setPointerCapture?.(e.pointerId)}catch{}
     }, {passive:true});
     art.addEventListener('pointermove', e => {
       if (press && press.id === e.pointerId) explore(e,e);
@@ -67,7 +69,7 @@
       if (press && press.id === e.pointerId) release();
     }, {passive:true});
     art.addEventListener('pointercancel', e => {if(!(nativeTouch&&e.pointerType==='touch'))cancel()}, {passive:true});
-    art.addEventListener('pointerleave', e => { if (e.pointerType !== 'mouse' && !(nativeTouch&&e.pointerType==='touch')) cancel(); }, {passive:true});
+    art.addEventListener('pointerleave', e => { if (e.pointerType !== 'mouse' && !(nativeTouch&&e.pointerType==='touch') && !art.hasPointerCapture?.(e.pointerId)) cancel(); }, {passive:true});
     art.addEventListener('contextmenu', e => {
       if (press || now() < suppressUntil) e.preventDefault();
     });
