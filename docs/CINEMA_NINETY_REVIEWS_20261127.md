@@ -1,0 +1,13 @@
+# Ninety full Cinema Club reviews — November 27, 2026
+
+The owner explicitly requested publishing the ninety completed reviews as the starting batch, then recovering the rest. The existing site had ninety current cards but only thirteen full review bodies. This release adds the remaining seventy-seven full texts and publishes all ninety from the saved caption library.
+
+Every imported review matches its original film ID and saved caption. Narrative paragraphs and complete Brain/Heart reactions are retained without rewriting opinions. Three captions provide scores without reaction sentences; their existing card reactions are retained. The former short reactions and thirteen existing review bodies remain in history fields. The website publication authorization is recorded separately from Canva saving and social-post approval.
+
+Thirteen owner-confirmed score corrections and their approved, full-resolution source artwork are included so displayed ratings, full text, cards, share metadata and the complete index agree. Registry checksums and existing artwork approval receipts are enforced. All four prior source-resolution records remain, including The Dutchman's owner-directed printed total. No film, diary date, genre, archive position or existing conflict authority is removed or inferred.
+
+The collection retains 236 films: 90 full reviews and 146 archive films awaiting original written-review recovery. The 125 supporting archive items remain a separate dataset. The private recovery queue lists the 146 film IDs, titles, source references and original page references. Recovery should start with saved caption/doc archives and existing source pages, then verify any genuinely missing text with the owner; ratings or release chronology are not a substitute for original review prose.
+
+This request authorizes the coherent ninety-review website batch independently of the earlier combined Cinema60 release preparation. It retains the separately published room/trackpad64, later Polaroid51 and fresh public Letterboxd snapshot. Other prepared Stats/profile features, native Sheet synchronization, final Canva-reel selection/save approval and social posting remain separate. The private whole-site export hold still applies.
+
+Validation: 126 source checks passed, including all 90 static bodies/reactions, complete archive preservation, source hashes and approved artwork. Four isolated Chrome/WebKit 1440/390 cases passed 232 assertions across website and app. Actual production readback and release receipts are retained in the existing private Cinema records. Local WebKit's known community-service CORS restriction is recorded separately; physical device and production backend acceptance are not inferred from local checks.

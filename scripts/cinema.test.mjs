@@ -1,3 +1,4 @@
+import './cinema-reviews.test.mjs';
 import './cinema-trackpad.test.mjs';
 import './cinema-room-scene.test.mjs';
 import test from 'node:test';
