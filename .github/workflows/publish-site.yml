@@ -57,7 +57,7 @@ jobs:
       - name: Verify release, FPL and concurrency behavior
         run: |
           node scripts/verify-hq-release.mjs
-          node --test scripts/cinema.test.mjs scripts/cinema-living.test.mjs scripts/cinema-community.test.mjs scripts/hq-portals.test.mjs scripts/hq-press-peek.test.cjs scripts/hq-world-portals.test.mjs scripts/hq-globe.test.cjs scripts/hq-cosmos.test.cjs scripts/hq-orbit-board.test.mjs scripts/hq-sound.test.cjs scripts/wave26-player.test.cjs
+          node --test scripts/cinema.test.mjs scripts/cinema-living.test.mjs scripts/cinema-community.test.mjs scripts/hq-portals.test.mjs scripts/hq-press-peek.test.cjs scripts/hq-world-portals.test.mjs scripts/hq-globe.test.cjs scripts/hq-cosmos.test.cjs scripts/hq-journey.test.cjs scripts/hq-orbit-board.test.mjs scripts/hq-sound.test.cjs scripts/wave26-player.test.cjs
           node scripts/validate-fpl.mjs
           node --test scripts/football-manual.test.mjs
           node --test scripts/analytics.test.mjs
