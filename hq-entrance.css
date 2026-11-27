@@ -15,10 +15,7 @@
 .hq-wave-reveal.enhanced.is-revealed .hq-wave-reveal-art{opacity:.9;transform:translateY(0) scale(1)}
 .portal-hq .world-entrances .ola-portal-art.is-peeking>img,.world-grid .world-card .ola-portal-art.is-peeking>img{filter:brightness(.7) saturate(.94)!important;transition:filter .2s ease}
 .ola-peek-lens{filter:drop-shadow(0 0 9px #ffca6d55)}
-.hq-sound-toggle{position:fixed;right:18px;bottom:18px;z-index:30;min-height:44px;border:1px solid #e8c78642;border-radius:24px;background:#061325e8;color:#e9dab9;font:inherit;font-size:13px;font-weight:500;line-height:1.2;padding:11px 16px;cursor:pointer;backdrop-filter:blur(12px)}
-.hq-sound-toggle:focus-visible{outline:2px solid #e8c786;outline-offset:4px}
-body:has(#experience:not([hidden])) .hq-sound-toggle{display:none}
-@media(max-width:760px){.portal-hq .portal-launch{min-height:calc(200svh - var(--portal-header-height,64px));margin-top:0}.portal-hq .portal-globe-door{width:170px}.hq-wave-reveal{min-height:85svh}.hq-wave-reveal-art{background-position:29% center}.hq-sound-toggle{right:12px;bottom:calc(12px + env(safe-area-inset-bottom));font-size:12px}}
+@media(max-width:760px){.portal-hq .portal-launch{min-height:calc(200svh - var(--portal-header-height,64px));margin-top:0}.portal-hq .portal-globe-door{width:170px}.hq-wave-reveal{min-height:85svh}.hq-wave-reveal-art{background-position:29% center}}
 @media(prefers-reduced-motion:reduce){.globe-stage,#app-launch.hero>.globe-stage{position:relative!important;top:auto!important}.hq-wave-reveal.enhanced .hq-wave-reveal-art{opacity:.9;transform:none;transition:none}}
 /* Feather the illustrated ocean into the surrounding starfield on every edge. */
 .hq-wave-reveal{mask-image:linear-gradient(transparent,#000 18%,#000 80%,transparent),linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-composite:intersect;-webkit-mask-image:linear-gradient(transparent,#000 18%,#000 80%,transparent),linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);-webkit-mask-composite:source-in}
