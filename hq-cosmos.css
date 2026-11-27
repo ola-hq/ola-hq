@@ -63,3 +63,6 @@
 @media(max-width:600px){.hq-cosmos-ship{width:240px}.hq-cosmos-ship.is-owned:not(.is-flying){left:calc(50% - 105px)!important;top:12%!important;width:210px}.journey-copy{top:4%}.journey-sigil{top:27%;width:150px;height:150px}.journey-title{font-size:29px}.journey-kicker{margin-bottom:9px}.journey-note{margin-top:12px}}
 @media(prefers-reduced-motion:reduce){.journey-sigil{animation:none;opacity:.65}}
 .hq-supernova-scene::before{content:'';position:absolute;left:50%;top:50%;width:min(75vw,680px);aspect-ratio:1;transform:translate(-50%,-50%);background:url('assets/living-sky-20261127/ola-constellations.webp') 50% 50%/300% 100%;mix-blend-mode:screen;opacity:.2;pointer-events:none}
+
+/* Homeward is the fourth earned sky symbol; keep its milestone artwork separate from the atlas. */
+.journey-sigil[data-symbol="3"]{background-image:url("assets/living-sky-20261127/ola-homeward.webp");background-size:100% 100%;background-position:center}
