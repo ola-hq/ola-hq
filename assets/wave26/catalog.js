@@ -990,11 +990,15 @@ export const catalog = {
   "projects": [
     {
       "title": "Ground Control",
-      "desc": "Festival-floor transmissions about finding your people, checking in, moving through the crowd, and making it to next weekend."
+      "desc": "Festival-floor transmissions about finding your people, checking in, moving through the crowd, and making it to next weekend.",
+      "suno": "https://suno.com/playlist/7cf74bb4-e5c2-45ed-9408-8760346c58da"
     },
     {
-      "title": "Lorve",
-      "desc": "An early relationship-and-La Ola sketchbook where love songs, chants, and odd little experiments collected before they had a cleaner home."
+      "title": "Love Lore",
+      "desc": "The Love Lore EP: six songs from Brianna and Jonathan’s shared stories.",
+      "formerName": "Lorve",
+      "albumId": "lore",
+      "suno": "https://suno.com/playlist/b31ffd75-4492-4300-89c5-c2428973f640"
     },
     {
       "title": "Lore Runs Deep",

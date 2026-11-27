@@ -1,4 +1,4 @@
-import {musicClock} from './utils.js?v=wave26-polish-20261126-v2';
+import {musicClock} from './utils.js?v=wave26-show-20261126';
 const effects=[['lowpass','Low-pass','lowpassHz',300,18000,100,6000,'Hz'],['highpass','High-pass','highpassHz',20,4000,10,200,'Hz'],['delay','Echo','delayMix',0,.5,.01,.25,'%'],['reverb','Reverb','reverbMix',0,.5,.01,.2,'%'],['wah','Wah sweep','wahRate',.25,5,.05,.8,'Hz']];
 export function initDJStudio({root,session}){
  const studio=root.querySelector('.music-console'),get=id=>root.querySelector('#'+id);studio.classList.add('dj-studio');studio.setAttribute('aria-label','Wave26 DJ studio');
