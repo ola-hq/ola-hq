@@ -123,10 +123,10 @@ test('a document-tracked pointer survives losing capture and then releases norma
  assert.deepEqual(moves,[[300,200]]);assert.ok(flings.at(-1)[0]>0);c.destroy();
 });
 
-test('actual runtime release is disabled by reduced-motion even though the old movement-only check passes',async()=>{
+test('a deliberate flick keeps release momentum with or without the device reduced-motion preference',async()=>{
  const {audit}=require('./hq-globe-runtime-fixture.cjs'),normal=await audit(false),reduced=await audit(true);
  assert.equal(normal.rotatesWhileHeld,true);assert.equal(normal.postReleaseContinues,true);
- assert.equal(reduced.rotatesWhileHeld,true);assert.equal(reduced.postReleaseContinues,false);
+ assert.equal(reduced.rotatesWhileHeld,true);assert.equal(reduced.postReleaseContinues,true);
  assert.equal(normal.oldCheckWouldPass,true);assert.equal(reduced.oldCheckWouldPass,true);
 });
 
@@ -134,7 +134,7 @@ test('phone audit does not mistake final drag displacement for sustained release
  const {analyze}=require('../hq-globe-audit.js');
  const q=x=>[0,Math.sin(x/2),0,Math.cos(x/2)],samples=[{t:0,q:q(0),active:true},{t:100,q:q(.5),active:true},...[300,450,600,750].map(t=>({t,q:q(.7),active:false,releaseAt:100}))];
  const r=analyze({state:{ready:'ready',reduceMotion:true},counts:{touchstart:1},releaseAt:100,samples});
- assert.equal(r.postReleaseWindowObserved,true);assert.equal(r.releaseMomentumObserved,false);assert.match(r.finding,/Reduce Motion is on/);
+ assert.equal(r.postReleaseWindowObserved,true);assert.equal(r.releaseMomentumObserved,false);assert.match(r.finding,/recorded globe version blocks/);
 });
 test('phone audit identifies sustained post-release rotation separately from held travel',()=>{
  const {analyze}=require('../hq-globe-audit.js'),q=x=>[0,Math.sin(x/2),0,Math.cos(x/2)];
@@ -151,4 +151,14 @@ test('ordinary globe pages do not create diagnostic UI or observers',()=>{
  const vm=require('node:vm'),code=fs.readFileSync(path.join(__dirname,'../hq-globe-audit.js'),'utf8');
  const env={URL,location:{href:'https://test.invalid/'},document:new Proxy({},{get(){throw Error('Normal page must remain untouched')}})};env.window=env;
  assert.doesNotThrow(()=>vm.runInNewContext(code,env));
+});
+
+test('deliberate reduced-motion momentum still stops when held, hidden or outside the view',async()=>{
+ const {audit}=require('./hq-globe-runtime-fixture.cjs');
+ for(const option of [{stopAfterRelease:true},{hidden:true},{inView:false}])assert.equal((await audit(true,option)).postReleaseContinues,false);
+});
+test('audit2 does not blame Reduce Motion for a failed release under the gesture momentum policy',()=>{
+ const {analyze}=require('../hq-globe-audit.js'),q=[0,0,0,1];
+ const r=analyze({state:{ready:'ready',reduceMotion:true,momentumPolicy:'gesture'},counts:{touchstart:1},releaseAt:100,samples:[300,450,600,750].map(t=>({t,q,active:false,releaseAt:100}))});
+ assert.equal(r.releaseMomentumObserved,false);assert.doesNotMatch(r.finding,/blocks release momentum|Reduce Motion is on/);
 });
