@@ -148,7 +148,7 @@ function tourTick(now){
   if(!after.running){
    if($('#star-message').open)$('#star-message').close();if(cabin.open)cabin.close();
    stopWalkthrough();$('#preview-load-status').textContent='Walkthrough complete. Replay it, or catch the ship and explore.';
-   $('#watch-walkthrough').textContent='Replay the walkthrough';$('#watch-walkthrough').focus({preventScroll:true});return;
+   $('#watch-walkthrough').textContent='Replay the walkthrough';$('#watch-walkthrough').focus({preventScroll:true});$('#watch-walkthrough').scrollIntoView({behavior:'auto',block:'center'});return;
   }
   if(after.index!==before.index)enterTourScene();
  }
