@@ -12,7 +12,7 @@ Base source: 83484897d7e4373947891296fc6a526e3d95c1ab (includes the later Cinema
 4. Intentional return greetings: existing public main-world pages open inside a bounded dialog. A successful HEAD response with the exact allowed origin/path, frame-load event, minimum dwell and explicit return are all required. Failed/blocked verification produces no greeting. Each world's copy appears once per sample session. This is a sample wrapper, not production website/app navigation wiring.
 5. Layered sky: three star depths with slight cursor parallax, independent slow constellation fade cycles, and the existing breathing star art. No extra movement under Reduced Motion. Hidden tabs, offscreen sky and open dialogs pause the visual loop and ship clock.
 
-Review shortcuts are tucked into a collapsed “Preview controls and notes” section. They are not proposed production controls.
+A visible **Watch the walkthrough** button runs one review-only passage through ship, cabin, chair/pool, bar/vinyl, window/map and the 26th star. Pause/resume and Explore on my own remain available within each scene. The sequence never starts on arrival; it pauses its clock in hidden tabs, can be stopped with Escape or ordinary manual scene controls, and can be replayed. It does not visit worlds or earn mileage. Remaining shortcuts stay in the collapsed Preview controls and notes section. They are not proposed production controls.
 
 ## Art
 
@@ -30,6 +30,8 @@ Build: node labs/lore-preview/build-preview.cjs
 The Actions artifact contains one standalone HTML plus READ-ME.txt. Open the HTML in a desktop browser with internet access. Sample JS/CSS/cabin artwork are bundled; the HD globe model and existing celestial assets load from the public OLA site. The source folder can also be served from a checkout.
 
 The sample source never loads the production mileage companion or pilot board and its own code writes no browser storage. The standalone artifact also omits homepage analytics; the hosted HTML inherits the normal shared collector inserted by the existing publication pipeline. The collector and its settings are not modified. Deliberately opened public-world pages retain their own existing behavior/analytics. HEAD checks use omitted credentials and read no bodies. No authentication, database, notification or access-control changes are involved.
+
+Passage2 refines the study: decoded-image preflight and retry messages prevent blank room reveals; circular reveals originate at the chair/bar/window, with a brief depth settle and light sweep. These are layered 2D illustrations and CSS effects, not physically rigged 3D furniture or fluid simulation. Reduced Motion bypasses decorative transitions. Scene navigation remains sticky, room art fits viewport height, and hidden targets keep their original geometry. The vessel shortcut now brings the ship into the middle of its pass before holding focus, instead of freezing it at a clipped entry edge.
 
 The selected execution workspace was unavailable during preparation. Automated GitHub state/build/source checks can run, but visual browser QA and physical Safari/installed-app acceptance are **not claimed**. Publish only the unlinked sample folder after automated checks pass. Homepage/app activation remains pending Jon's sample review. Record any later live browser QA separately; physical phone acceptance is not implied. Production integration still needs the actual website/app entrance/return wiring, touch/Back navigation, font/scene-fit, image-load failure and performance checks.
 
