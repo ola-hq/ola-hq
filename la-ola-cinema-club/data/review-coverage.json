@@ -1,0 +1,729 @@
+{
+  "schemaVersion": 1,
+  "authorizedOn": "2026-11-27",
+  "totalFilms": 236,
+  "fullReviews": 90,
+  "archiveReviewsToRecover": 146,
+  "reviews": [
+    {
+      "filmId": "cinema2026-14",
+      "title": "28 Years Later: The Bone Temple",
+      "slug": "28-years-later-the-bone-temple-cinema2026-14",
+      "reviewSha256": "6fe652a05c888bbc4743b52af5079bb6a1c339b5e577cef7a118bc56d5895864",
+      "captionSha256": "8240c8f966888a4e517363b6df02a1ffc3e25abed58a57ac4e93113513ada5f4",
+      "paragraphs": 5
+    },
+    {
+      "filmId": "cinema2026-15",
+      "title": "Dead Man’s Wire",
+      "slug": "dead-mans-wire-cinema2026-15",
+      "reviewSha256": "1be04f7a6b4c484d599f74b8fa9e53af106f9909e27593b6a34bcfe3d08a27a8",
+      "captionSha256": "dd8a455690e31ae3cd4e0e51eccbfcc253dbb3985143313f728ec473f93773e5",
+      "paragraphs": 5
+    },
+    {
+      "filmId": "cinema2026-16",
+      "title": "The Choral",
+      "slug": "the-choral-cinema2026-16",
+      "reviewSha256": "673a201e2f823fa87bcdaa3b120568e3ab1aa80757e4a8f384ba5d452b20a907",
+      "captionSha256": "419a07bd33766affba3278c41fff1fe7319fffb8f0b6cfcacd8e5b6ebd4221dc",
+      "paragraphs": 5
+    },
+    {
+      "filmId": "cinema2026-17",
+      "title": "No Other Choice",
+      "slug": "no-other-choice-cinema2026-17",
+      "reviewSha256": "e32fa10ca3c3c21530249530bf0f25084de4c39d510f06845919c225341169bb",
+      "captionSha256": "0be1cac600417c5ded3017b5cc9e6848c7e904903dce2c72ba4c526a5f25ffa6",
+      "paragraphs": 6
+    },
+    {
+      "filmId": "cinema2026-18",
+      "title": "Night Patrol",
+      "slug": "night-patrol-cinema2026-18",
+      "reviewSha256": "33cf2ad643735c4979b90f873236bf502bb39f3d73c8a3e84a367670c1d6eb81",
+      "captionSha256": "c7981564c6bbb980f858a88f47d4eb6489d7bbea53721ad601d406b4c83da3ee",
+      "paragraphs": 5
+    },
+    {
+      "filmId": "cinema2026-19",
+      "title": "The Fire Raven",
+      "slug": "the-fire-raven-cinema2026-19",
+      "reviewSha256": "f63f18559461a4f644607d504926759ae58a38b6bfc3da36e8f2cc171aa2829f",
+      "captionSha256": "ae73bd9edcabea60a74c2a049f423ccd801cde884b84ab786eda4b59eb772557",
+      "paragraphs": 6
+    },
+    {
+      "filmId": "cinema2026-20",
+      "title": "Return to Silent Hill",
+      "slug": "return-to-silent-hill-cinema2026-20",
+      "reviewSha256": "362a16c91e10ee94ab325e1165ee51423ce16804c07a51873525428d00f6e11d",
+      "captionSha256": "76c0cd28f7f5a84c6297b257f893c1b490c6e05ab3f59d9260daea2c4f866d75",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "cinema2026-21",
+      "title": "Clika",
+      "slug": "clika-cinema2026-21",
+      "reviewSha256": "c9abf8a1afe261de81c704f850647fa0a46f410a8f838584b4b63961681d95c3",
+      "captionSha256": "6f55846556c04ff63089896ea4262efda82618cc0f422cfe89682310fe0eb705",
+      "paragraphs": 5
+    },
+    {
+      "filmId": "cinema2026-22",
+      "title": "H Is for Hawk",
+      "slug": "h-is-for-hawk-cinema2026-22",
+      "reviewSha256": "062fd4b401475f0cf6211cab0e5fab5d0d3ef28a0f6aadcdeda2892bec2f70c3",
+      "captionSha256": "bc9c11f6c3cbb4df168c72cae3fd8a92d663197b34d5b147c0175badb11b0a05",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "cinema2026-23",
+      "title": "Good Luck, Have Fun, Don’t Die",
+      "slug": "good-luck-have-fun-dont-die-cinema2026-23",
+      "reviewSha256": "05c615ced4f0a52460f1a942cecbad521a194aa5faac45a05ce9ea28a81ed514",
+      "captionSha256": "9c21d94e6993b167b3fda53ab658e967610d99afba5b96732f748f7401e9ca59",
+      "paragraphs": 6
+    },
+    {
+      "filmId": "cinema2026-24",
+      "title": "Whistle",
+      "slug": "whistle-cinema2026-24",
+      "reviewSha256": "8bd6ac0aac4e1dabef9b4cd73c1f4bb13d454226db29d296dd9a32489ec20289",
+      "captionSha256": "e251bdacb9446b7f05f189152fd6c3ad83acb71d35abbf4210ad9332fde8e0ee",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "cinema2026-25",
+      "title": "In Cold Light",
+      "slug": "in-cold-light-cinema2026-25",
+      "reviewSha256": "6e1baaabd4312043f6b6f2ad3f96eb59f67c692e95b055e3f1b8a3ed3485e6df",
+      "captionSha256": "f5488ae2f0f36d9f86914d1b754075161c61ec152a3a7c8e3536cfd325c7a9ee",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "cinema2026-26",
+      "title": "Infinite Icon: A Visual Memoir",
+      "slug": "infinite-icon-a-visual-memoir-cinema2026-26",
+      "reviewSha256": "d2f372815d8f7009e0f1858eb2ee0ac633ec9061b7acd7122c54c560ba64033e",
+      "captionSha256": "7e9e90ab8fafee050f10791d53601b80df6fb062fdf9a04e1375a1a2a2289089",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "cinema2026-27",
+      "title": "Send Help",
+      "slug": "send-help-cinema2026-27",
+      "reviewSha256": "c8bd26e8acfa6bdf5965c154585850ace991b7e024932447a59513ff5bcdfd93",
+      "captionSha256": "d252f596a070c4a8564e4d34e4f765938997dfa6e0b80356fc01c7aebf783637",
+      "paragraphs": 5
+    },
+    {
+      "filmId": "cinema2026-28",
+      "title": "Shelter",
+      "slug": "shelter-cinema2026-28",
+      "reviewSha256": "82aed0cae74263ba84675d4a16e20f8f3367d11caa841472b797b6beae70e159",
+      "captionSha256": "69e8c8d2c98d13682bcac340b5b55741ed20397b0f6507ca0292d50aaa7da61d",
+      "paragraphs": 5
+    },
+    {
+      "filmId": "cinema2026-29",
+      "title": "Melania",
+      "slug": "melania-cinema2026-29",
+      "reviewSha256": "771d55c242c53c0ed7e1068335e5002d5f30e314eb4f56d0d2e2c4563393f523",
+      "captionSha256": "a4da79e62acf6fea1af147172d9c58df9e4bb7c353263a07472192bd4ef4cb0c",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "cinema2026-30",
+      "title": "Dracula",
+      "slug": "dracula-cinema2026-30",
+      "reviewSha256": "1d065a510ececbfcaa0fe7b59f99f9bf5c3b5f6aefc7c841a513e2ddc56779d2",
+      "captionSha256": "6978715bb47b5ec855ab51279bfce85678ea849e70200784cda27958d0cdb980",
+      "paragraphs": 5
+    },
+    {
+      "filmId": "cinema2026-31",
+      "title": "The Moment",
+      "slug": "the-moment-cinema2026-31",
+      "reviewSha256": "5d6f4639fac6ad5aae977fc03c08752e5d7bc3c4c408c8cac80075e9f904a1b9",
+      "captionSha256": "f2d9797aa0e7abd84b2a003e57ab1e45ab074c6feed4d72e39cdb4e65aac04a4",
+      "paragraphs": 5
+    },
+    {
+      "filmId": "cinema2026-33",
+      "title": "Solo Mio",
+      "slug": "solo-mio-cinema2026-33",
+      "reviewSha256": "c279a54c978c28a4b91d9fbed34d14b8a0d76bcef506910380fd0917fba29138",
+      "captionSha256": "bd82cde99b82687e315511fb94e19ae5ca767207cd672c5bfbd29678c84b30ac",
+      "paragraphs": 5
+    },
+    {
+      "filmId": "cinema2026-34",
+      "title": "Wuthering Heights",
+      "slug": "wuthering-heights-cinema2026-34",
+      "reviewSha256": "825fe4fda2757519d7389eca2470ad55e207f057a6fa0905d30b80ef51d54079",
+      "captionSha256": "b2f978273bd1e62d44f64011ef5234e852f59438ccb2d14d2ef25c991c5e7377",
+      "paragraphs": 5
+    },
+    {
+      "filmId": "cinema2026-35",
+      "title": "Crime 101",
+      "slug": "crime-101-cinema2026-35",
+      "reviewSha256": "1ec35300ef556c993493d3ac882d1c3208b6a82cf99ab000d7c9ac7fdaae7faa",
+      "captionSha256": "e23756e568e527089b6275b458ad5046df41454e515c04a340e6c4c542ee574d",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "cinema2026-36",
+      "title": "Cold Storage",
+      "slug": "cold-storage-cinema2026-36",
+      "reviewSha256": "ed8c35688785a277e0d4841e86f0ee20f3958a3c291bbc599547a7b2656137f4",
+      "captionSha256": "4b9e25e27fc34f40e920438689dcdc0ee9f529645e23d41f31b98afb62d97573",
+      "paragraphs": 5
+    },
+    {
+      "filmId": "cinema2026-37",
+      "title": "Mimics",
+      "slug": "mimics-cinema2026-37",
+      "reviewSha256": "e05a2f87411913275d83fcd4cb0ace52e1056a933ec313ad002b7a7f10a3ea37",
+      "captionSha256": "98a7f7f9cea337308244cdcb58ba74ab81a87d54cd358bea605eca1a402e0305",
+      "paragraphs": 5
+    },
+    {
+      "filmId": "cinema2026-38",
+      "title": "EPiC: Elvis Presley in Concert",
+      "slug": "epic-elvis-presley-in-concert-cinema2026-38",
+      "reviewSha256": "71198efa48c7e89ee2143f095b274b671d2ce8a4dc477b2dce253a4c4fe38eac",
+      "captionSha256": "30da935621857b30a6c1e3dce7ad44b9b6eb361272758928ad209b3568e122e3",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "cinema2026-39",
+      "title": "Psycho Killer",
+      "slug": "psycho-killer-cinema2026-39",
+      "reviewSha256": "7ea6c25822168ee4cf93bed2c53ca9864759325c923e749c0fe6bbbe51eab206",
+      "captionSha256": "8661e1510cc317756cb28512c6ff866edde67c954c4101891cb628d6eac216ae",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "cinema2026-40",
+      "title": "How to Make a Killing",
+      "slug": "how-to-make-a-killing-cinema2026-40",
+      "reviewSha256": "bf11da94782ea58a315d29d4a3499400a9519229a32dc5ad04db4b1dbc932ad1",
+      "captionSha256": "fc4516866db3faf71740761055ca069aa69d877f2f9b3e0f981d5cf0b2c453b8",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "cinema2026-41",
+      "title": "K-Pops!",
+      "slug": "k-pops-cinema2026-41",
+      "reviewSha256": "0ada53c2568a1e302c64c3976a479c09c4093a5855c4caf6fc6e6e1e5b973e16",
+      "captionSha256": "fad2e56c6de708e1b301b659bcb96f531b4a5813a497546f930779455ed89165",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "cinema2026-42",
+      "title": "This Is Not a Test",
+      "slug": "this-is-not-a-test-cinema2026-42",
+      "reviewSha256": "5f361cf2e4a6e1898f33eaca290a68c6a030df2aa05b1ecc02b74baa39d841b5",
+      "captionSha256": "7d6044b3594d2badac0a7211ac5b5606bf3268335cbb1634c249ceb5e46662f1",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "cinema2026-43",
+      "title": "Pillion",
+      "slug": "pillion-cinema2026-43",
+      "reviewSha256": "d80638aa54f366ff18a82a2cd2c356286573e67810cc3635bf7f285665def7b2",
+      "captionSha256": "e307f11895e9e4085288f54fc9008109d23a868fcce58927e77037e469a06792",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "cinema2026-44",
+      "title": "The Revenant",
+      "slug": "the-revenant-cinema2026-44",
+      "reviewSha256": "cad7eebdb1c43b28f2915147d771308028aecc6f98991a471919036be74bb9f7",
+      "captionSha256": "259c21aef9cf833149a82d0ca5dab9dc6596330d974e1cab01adf32d610c20a8",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "cinema2026-45",
+      "title": "Scream 7",
+      "slug": "scream-7-cinema2026-45",
+      "reviewSha256": "8b201214020f7dedef4a3641f51e58d38b9512a15ee651cf9915edb98f33a518",
+      "captionSha256": "8817b6034750296fda9d552737bace6555c5e1f1fdd179701b4bddb5755991c9",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "cinema2026-46",
+      "title": "Hoppers",
+      "slug": "hoppers-cinema2026-46",
+      "reviewSha256": "d08314a716ecc0f16702e9fba957c466c9758a306fafba611a36d04e8cdda58a",
+      "captionSha256": "a9c356e2fd881381fc2135b31cece13dc9a7e7f9c0575478ee90329fcad8e79e",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "cinema2026-47",
+      "title": "The Good Boy / Heel",
+      "slug": "the-good-boy-heel-cinema2026-47",
+      "reviewSha256": "901ddc9a227db09b9e3f60cfb2589d0c95ca4ac0a23a77f6e98508f15cb7bec3",
+      "captionSha256": "b87903ca138e9ca764a5f74453524d57f52516c2c4fdd952bc9ac669a4a3dd29",
+      "paragraphs": 5
+    },
+    {
+      "filmId": "cinema2026-48",
+      "title": "Over Your Dead Body",
+      "slug": "over-your-dead-body-cinema2026-48",
+      "reviewSha256": "381b06922a7a57b405eba0effcabdfea4b18a69142a2948b18fec5211a0b1c58",
+      "captionSha256": "192f4de5c16e230f78a227f4a9e406570d83b4bdc3f27ebf44291194a5834f54",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "cinema2026-49",
+      "title": "The Drama",
+      "slug": "the-drama-cinema2026-49",
+      "reviewSha256": "c02efc419ae45863bcc15b5021b13bba7134f6caba54ac50d6e95374406cc1c7",
+      "captionSha256": "779504e4285f5e2136dd24d5fc47b2ec0801ba69c8d1bcabafc2f3cce8ce4e54",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "cinema2026-50",
+      "title": "Project Hail Mary",
+      "slug": "project-hail-mary-cinema2026-50",
+      "reviewSha256": "aed2df4b4d83420211d5d4ca6b3aacec94b6a8b4b6dc64e23c16721248725ace",
+      "captionSha256": "9b07fe4ab15c7aaac9ec519d752d440c655ce73aeeb65e9afd8e5bfdd669f319",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "cinema2026-51",
+      "title": "Reminders of Him",
+      "slug": "reminders-of-him-cinema2026-51",
+      "reviewSha256": "b2d0ea141f1ecfcd9557820525eac0da0b911aaccfe7d1710e9e0589c0ffdf05",
+      "captionSha256": "6ebc3879f022f7f12e3a5c45db180809ec2599bce30a3fe14a4407a53584c617",
+      "paragraphs": 2
+    },
+    {
+      "filmId": "cinema2026-52",
+      "title": "The Super Mario Galaxy Movie",
+      "slug": "the-super-mario-galaxy-movie-cinema2026-52",
+      "reviewSha256": "b40d25ddc68755cc2c3beb6beae84f23247bc2ed745bfdab2f5c043cb942f993",
+      "captionSha256": "5d097e364ed900b03afe9fc114f8654d1005fcb55c7547085637cba57bb567ab",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "cinema2026-53",
+      "title": "Ready or Not 2: Here I Come",
+      "slug": "ready-or-not-2-here-i-come-cinema2026-53",
+      "reviewSha256": "d77de41ac3b93e2e6c1d14e056da66ef9c620599fc7cf299dac20cc28ebe03ee",
+      "captionSha256": "43805844f8af68a26d4fd6106b026fbd81f56d55a9e56a6d3418d535d4fca88f",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "cinema2026-54",
+      "title": "Forbidden Fruits",
+      "slug": "forbidden-fruits-cinema2026-54",
+      "reviewSha256": "d5b74464f5623932ff53f4aae9249bed07c890f6acd80dcff2b732e9c6324f8d",
+      "captionSha256": "2feb93fb374624a41242f99a96b3f81fa2d03569f3f88c3953aca34def64f3ba",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "cinema2026-55",
+      "title": "They Will Kill You",
+      "slug": "they-will-kill-you-cinema2026-55",
+      "reviewSha256": "27d3b794a16b40ab737bc75b221717cdd5256fb6b42d4052e69b2bb9447f47a0",
+      "captionSha256": "b31c3a4c0efab6595caee16199c2a7aa7c2a1cd30e1e94e0e83c93993960fa2c",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "cinema2026-56",
+      "title": "You, Me & Tuscany",
+      "slug": "you-me-tuscany-cinema2026-56",
+      "reviewSha256": "e3196a31dfc4e5821d3321ea678f1fa09f35829a9e4ddcfeea23a1937ffeb149",
+      "captionSha256": "6d067a0587b99ac9090003b66846c1ff5a8ed7b36ebaba20440044f25f06a2e9",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "cinema2026-57",
+      "title": "Hunting Matthew Nichols",
+      "slug": "hunting-matthew-nichols-cinema2026-57",
+      "reviewSha256": "41fec4ac989fc0f802dcc960d2fb911106c07e2b274f6ed332f39f7be2345ef4",
+      "captionSha256": "170f826db4f5815fb205a3684bec095acde8b15b2100caecb160cdf0a924c9b3",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "cinema2026-58",
+      "title": "Faces of Death",
+      "slug": "faces-of-death-cinema2026-58",
+      "reviewSha256": "0cae75b748be2d02b458aa655417cab41a832a5e00b4a7bd5c714ee283617fc2",
+      "captionSha256": "f0d9cfeadbe8d4edc96a924c5b51c781c44d5795b4152f9cb4639059741b7a51",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-michael",
+      "title": "Michael",
+      "slug": "michael-club-michael",
+      "reviewSha256": "cb4d53bd0bc7f89b46ed092918fbe04d1ab505c7386a1efb1f5a0185213395eb",
+      "captionSha256": "0cdd736ec86e829af90659d9c17927e95ebfc88a42b3f1be2bb57dadee2b501e",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-busboys",
+      "title": "Busboys",
+      "slug": "busboys-club-busboys",
+      "reviewSha256": "834f81dc57a82ee1b7ab8a6525d86db878228066cf2bd555319f8ca71f753769",
+      "captionSha256": "39117dc64beaee2793dde9f01d8379cf450ce0587d75b3209a7a3fa4a5aaef9a",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-mother-mary",
+      "title": "Mother Mary",
+      "slug": "mother-mary-club-mother-mary",
+      "reviewSha256": "41d5877e631d56b6edfb59454c499b3f4549bc719193402c986af83267b6ba8c",
+      "captionSha256": "f175bc5322957a0dacd9f293a2c3655331c3c51f48600a3ea82bb69aa4fc8382",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-billie-eilish-hit-me-hard-and-soft-the-tour-live-in-3d",
+      "title": "Billie Eilish: Hit Me Hard and Soft — The Tour (Live in 3D)",
+      "slug": "billie-eilish-hit-me-hard-and-soft-the-tour-live-in-3d-club-billie-eilish-hit-me-hard-and-soft-the-tour-live-in-3d",
+      "reviewSha256": "c10a4d3b0fee80b465d2db92d1cf8808db545ca2d46b32cdfb16a5eaf899eafe",
+      "captionSha256": "ccba76183e4bd5d38a3ed422995069747f293f311a7a9ad4962831c8446142d6",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-the-devil-wears-prada-2",
+      "title": "The Devil Wears Prada 2",
+      "slug": "the-devil-wears-prada-2-club-the-devil-wears-prada-2",
+      "reviewSha256": "11e68d2b2386a848d86ae6cf3aa8b71917478629cefcf987be0275336a3184b4",
+      "captionSha256": "efb1bfb0dca874b025d462819100854e429981286f84a4f2b8e1e2ea2ea4c50d",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-erupcja",
+      "title": "Erupcja",
+      "slug": "erupcja-club-erupcja",
+      "reviewSha256": "e05e66b5fe1784f798018ceb4e94f3e95ffde8cccdc6c9a3dbf653ba474f8baf",
+      "captionSha256": "36ba764480e50fc5c447c6bd06297835942c1d489a9ae85affd5a763019c16f7",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-the-sheep-detectives",
+      "title": "The Sheep Detectives",
+      "slug": "the-sheep-detectives-club-the-sheep-detectives",
+      "reviewSha256": "54cca3e8bee222affc4cc2f9f3f922eadd7bacfbc70981ec3c37790bf463b6a6",
+      "captionSha256": "8f449e4a59ae3ab46847723b9794de553eae15fcc63d8c06bc2eaedb472d2f06",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-obsession",
+      "title": "Obsession",
+      "slug": "obsession-club-obsession",
+      "reviewSha256": "7085c2995d5888bb9a7175cc11139a63bf2b6d926cf245da19adacb187ffcca6",
+      "captionSha256": "ecbc410844c155c4a891c1229cf62944593c46c7ba6e8f1c38d12b82528ba7c8",
+      "paragraphs": 5
+    },
+    {
+      "filmId": "club-i-love-boosters",
+      "title": "I Love Boosters",
+      "slug": "i-love-boosters-club-i-love-boosters",
+      "reviewSha256": "13f3bae7f45c519f10448a217bb89ca49ec440bf88a4bd5d85794c28de002df4",
+      "captionSha256": "84b07ec873e7ad5271b0e6986bd29d92efb2c5160f6c743be9e34a6e9da44536",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-passenger",
+      "title": "Passenger",
+      "slug": "passenger-club-passenger",
+      "reviewSha256": "14378aa80ade6d0a35eca8b15673f84151bdbbcd38bcf146b100bd446aa2ac63",
+      "captionSha256": "eb34e42c55fe777081a5a959b7a3a78453011822443989d38a40771d8a9f3633",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-jackass-best-and-last",
+      "title": "Jackass: Best and Last",
+      "slug": "jackass-best-and-last-club-jackass-best-and-last",
+      "reviewSha256": "c5df52eac082decd5ccc66d8e8aa213291886059e525a9b53a42ff33fff2d062",
+      "captionSha256": "fca58f71c6b61aa348b1c343ee49400878e60a6655f54df3e507fbfa9de6ce42",
+      "paragraphs": 5
+    },
+    {
+      "filmId": "club-couture",
+      "title": "Couture",
+      "slug": "couture-club-couture",
+      "reviewSha256": "fedc59091605a549caed569b2d0fb5340ec15a1290ddc35193b695c714e84ea4",
+      "captionSha256": "5d09b6904a70bef493e1331f371d1b54f4622714e3c6c08db40ff06d4a5870f0",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-minions-monsters",
+      "title": "Minions & Monsters",
+      "slug": "minions-monsters-club-minions-monsters",
+      "reviewSha256": "f96f89748ab7a3cd9398bb797debe23c3cdf108cbed6e476b22ce5a2fafca38e",
+      "captionSha256": "b66d5e38817b608a8777233545b3d9c5ce98d162a13465681c67cb3ff23b126f",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-maddies-secret",
+      "title": "Maddie’s Secret",
+      "slug": "maddies-secret-club-maddies-secret",
+      "reviewSha256": "a6c1cadfadb622c272b4ecd5812fdbf71d8cf9d4b2499be2de727ab73c4ca6cd",
+      "captionSha256": "70d8b31294fe4227c1479e2c7390df3890fba41a1f57e9258e3ec9e7ca9d1dec",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-disclosure-day",
+      "title": "Disclosure Day",
+      "slug": "disclosure-day-club-disclosure-day",
+      "reviewSha256": "aaa1076ac132246540386f6db412ae0cb7079ba286498947ff142dc522d9eae0",
+      "captionSha256": "b3dfa9c0c6043cf89fe053b4ad4b7d3955042b32c3d60c2b2fec9fb60ae1feb9",
+      "paragraphs": 5
+    },
+    {
+      "filmId": "club-the-invite",
+      "title": "The Invite",
+      "slug": "the-invite-club-the-invite",
+      "reviewSha256": "69bea4f6e9dfda2eb6cd503a067b719b16ae24448f0db4a817df868c9fb165d0",
+      "captionSha256": "2492cf27f57fc155fbc3c29ea62a2e6d3eb27f00c3eac5b8114c1cca5046ddc8",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-her-private-hell",
+      "title": "Her Private Hell",
+      "slug": "her-private-hell-club-her-private-hell",
+      "reviewSha256": "e12ed80fa6daa6da8e0cfa14d2c6027d1b9d2061035218a103e3dff1e00f52b8",
+      "captionSha256": "ef6dd5c37463e5d63d3eaa286df339325fddfce9b13bf9638b97ae3d73bb0171",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-spider-man-brand-new-day",
+      "title": "Spider-Man: Brand New Day",
+      "slug": "spider-man-brand-new-day-club-spider-man-brand-new-day",
+      "reviewSha256": "f1ef421c1bdb390d97af7431f27e6a7dde242305c9ea9a5f12ef8d8934ef6120",
+      "captionSha256": "d16c0ead886e4b42877c6cce1eeb05784f71303b220ad08f769b57bbe97b44af",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-nimrods",
+      "title": "Nimrods",
+      "slug": "nimrods-club-nimrods",
+      "reviewSha256": "b09a663672070e20db97631f1d6a88c733493a40fb86ce569163238f44ba3139",
+      "captionSha256": "e5876973ddf7a6810de36c5bffaa941d01573482d34e6446b375f02f4cf4062d",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-the-end-of-oak-street",
+      "title": "The End of Oak Street",
+      "slug": "the-end-of-oak-street-club-the-end-of-oak-street",
+      "reviewSha256": "a5c3a1747d04f7a728180f6ae146cfe7a5a1d0aa322805f796c526399a08766a",
+      "captionSha256": "acee0f31c1d4e166a84ba97c7cdf78ee900c168d26e818ad64e2ff83d1a23481",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-the-wrong-girls",
+      "title": "The Wrong Girls",
+      "slug": "the-wrong-girls-club-the-wrong-girls",
+      "reviewSha256": "cc0b66f03d5c8ad463670bd1f0c7fa32b2198869b82331c675aa5c1b35e17b74",
+      "captionSha256": "faacdceedf3eeb5ea5afa245b6036d3c94524087ac853efbb86b27b511bb4366",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-idiots",
+      "title": "Idiots",
+      "slug": "idiots-club-idiots",
+      "reviewSha256": "a0186939a0880c8efeaa050ede4c2250da745622c2587d077efa369485a9d87d",
+      "captionSha256": "4193cc1db1a2d5daea633b0fc0fcfc11d2866c5529ba75e74ab1a3421e858e7c",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-coyote-vs-acme",
+      "title": "Coyote vs. Acme",
+      "slug": "coyote-vs-acme-club-coyote-vs-acme",
+      "reviewSha256": "38a7cf4ea67f93c4befb22a76ae577c012ebd3f1ae9c0eb3f5ca7c26af18dbe9",
+      "captionSha256": "5e2647bd23591495d7b6ff56e3b1d34291d2ade44ab8a336a6626899ecd6a98e",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-by-any-means",
+      "title": "By Any Means",
+      "slug": "by-any-means-club-by-any-means",
+      "reviewSha256": "802dd9ecc24a478536dc5ec62e8c6df12580339bff504c8376ce811cb2e79c8d",
+      "captionSha256": "e6932200fd9f426940b52e340f750ee708e9b568eb0e14b33c79b0118cec45eb",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-finding-emily",
+      "title": "Finding Emily",
+      "slug": "finding-emily-club-finding-emily",
+      "reviewSha256": "d4d7a26774b34fb1ccf48a1d641260d7f5c661fec9314644dd29996b486d9977",
+      "captionSha256": "e7dd48e151c9daf5dc2f096af5425635a605cced0e7a9d5c1889abb2f44e3b95",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-onslaught",
+      "title": "Onslaught",
+      "slug": "onslaught-club-onslaught",
+      "reviewSha256": "85cd021e6ef21584b5a2fb8228852e36838ad8f726cd24ec6246fa0091322009",
+      "captionSha256": "c920f483be9620ba0bf2f7c93b7122bda09e7eb5d636ee3dedc9a3c4984d820b",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-runner",
+      "title": "Runner",
+      "slug": "runner-club-runner",
+      "reviewSha256": "0f2fd8ba1a54bc6f20c854afe87ff205e0295f767c9175538879c569a731115e",
+      "captionSha256": "bde60c6a14642d863beef83f06cf7f227be9080c7f1952a34a3cbc0814735da4",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-practical-magic-2",
+      "title": "Practical Magic 2",
+      "slug": "practical-magic-2-club-practical-magic-2",
+      "reviewSha256": "b8c405a80ffac211716888531d3e0e05d6c33918527a6d86814ac72396513d76",
+      "captionSha256": "92470eec9190d2643a84a0cf7c24b0dde74f8d33162539f15c808be004d853c6",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-hope",
+      "title": "Hope",
+      "slug": "hope-club-hope",
+      "reviewSha256": "876c655fd683ddda96a244fed2565aefd8479e939f4f8916872fde97fd0ddd91",
+      "captionSha256": "e8a482f591ead47c83e1b0abae6d44d795c2b6166ee9bdcf500bcb28745b6f7b",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-verity",
+      "title": "Verity",
+      "slug": "verity-club-verity",
+      "reviewSha256": "e096849882e28c4d1546f8743da9b8b9bffbb954c4a35534bc9fd80b644a2082",
+      "captionSha256": "d5457c63ff26dc2492d4b9bf25809e9bc52dfcbe62a3c02d1a82883af8b80c5b",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-primetime",
+      "title": "Primetime",
+      "slug": "primetime-club-primetime",
+      "reviewSha256": "8e393865bc1afd94c1d2f2941b26d01b1180c9c56c4d6ec4755bea6165e26b70",
+      "captionSha256": "8d1b0f55e7ed54ae0446ed899009e2c7010c127153390977758ef2467dc43406",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-resident-evil",
+      "title": "Resident Evil",
+      "slug": "resident-evil-club-resident-evil",
+      "reviewSha256": "b45b55f75201dbcc6c0ca1170e271d6bda6689ddbaec0885add39c2bc74ef603",
+      "captionSha256": "2087a8f8b6ab07d0b80f6520320efdc0ec2e917ad516166177b4bd3a42d41eaa",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-heart-of-the-beast",
+      "title": "Heart of the Beast",
+      "slug": "heart-of-the-beast-club-heart-of-the-beast",
+      "reviewSha256": "48e1c3c7b69d1f69025cd327260081adfd2f8081fce3da4308eb166cd9d6c27c",
+      "captionSha256": "9555a28e311ef6c0cd40e3dea107cdc2b264bc74923f5fad6fd2d72cde38f898",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-street-fighter",
+      "title": "Street Fighter",
+      "slug": "street-fighter-club-street-fighter",
+      "reviewSha256": "ba9b47c9542a8f1772d0baa8f7d9ae2831a3f1f758482ee51e3650fd536ff9ee",
+      "captionSha256": "1200ffb390b038efc9f7ce2da704ddca5045080294bdf3fcb9a6159788949ae3",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-you-can-see-everything",
+      "title": "You Can See Everything",
+      "slug": "you-can-see-everything-club-you-can-see-everything",
+      "reviewSha256": "4c3672ab774af73ca3a1d2942ebd4dfd3c3e69eecadd072b7d07a221bf63d98e",
+      "captionSha256": "66fde5ace5795403fd4a47e0a8cc717bde428decab44dd8d33961e8ff5b8aa89",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-forgotten-island",
+      "title": "Forgotten Island",
+      "slug": "forgotten-island-club-forgotten-island",
+      "reviewSha256": "5b0be45cbb1e3211cd17f8d9b36d6119596082ccd9662ced68787ee68ecf0c9a",
+      "captionSha256": "baf824ecbd4ab562c37d38401063bee4642eb197a78ef105ed6a631e3dd30781",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-the-only-living-pickpocket-in-new-york",
+      "title": "The Only Living Pickpocket in New York",
+      "slug": "the-only-living-pickpocket-in-new-york-club-the-only-living-pickpocket-in-new-york",
+      "reviewSha256": "bdb8ab934e58f0f9172514e44621a4e106ebbb1f596419098710b7fcd8dc3fda",
+      "captionSha256": "d8616925345ef5b5a3b05a14ebb1aa0b7d39e02a14e7426a30f38fe7d35899a5",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-godzilla-minus-zero",
+      "title": "Godzilla Minus Zero",
+      "slug": "godzilla-minus-zero-club-godzilla-minus-zero",
+      "reviewSha256": "acb82502a9a50621b628518e640efdad98b615b695f6119e5702eb3c9b3f7e3a",
+      "captionSha256": "ccb506c6e044cf2394b8df269a4e5ab6c88bb70c1b068f66385d22937c5beafd",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-wild-horse-nine",
+      "title": "Wild Horse Nine",
+      "slug": "wild-horse-nine-club-wild-horse-nine",
+      "reviewSha256": "55085df9ecaae62fdd102ee65d9148ea5212cfa0470f44a37c922bbf854308da",
+      "captionSha256": "31fb1df6f4ee6d89cf97b97cd014414de4340a7e609c8278c6fde7b597a0a7d4",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "club-wicker",
+      "title": "Wicker",
+      "slug": "wicker-club-wicker",
+      "reviewSha256": "fb6cc2f834fc1635bce7badd90273834fec4c170ea3eba37f9093a0e99acb127",
+      "captionSha256": "f0f6ebd1d703ed2d2e98776866542126bf2d9c41a318b3f7c607b22187817a55",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "club-how-to-rob-a-bank",
+      "title": "How to Rob a Bank",
+      "slug": "how-to-rob-a-bank-club-how-to-rob-a-bank",
+      "reviewSha256": "def3c20074066e164e315e2e2699ee6c3cf7ddf6c9e6bb15bd30c88f2fe10f1c",
+      "captionSha256": "c8b0fac17e000dfd37413375f66a472721c489976a1a5930a057e361c784bb72",
+      "paragraphs": 2
+    },
+    {
+      "filmId": "club-ebenezer",
+      "title": "Ebenezer",
+      "slug": "ebenezer-club-ebenezer",
+      "reviewSha256": "5a0bb739f823a6c329395f06ef12f5d9e7b82f5fbca6783de60d648d0bf4065d",
+      "captionSha256": "0e70181b7e71b896e472e72d2244476c6c7c52fba30932d9b11bd581cc0955f5",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "club-victorian-psycho",
+      "title": "Victorian Psycho",
+      "slug": "victorian-psycho-club-victorian-psycho",
+      "reviewSha256": "a02e131c7e3629641f9a61243eb2674f505a3ae5390cc11964370e52f4bc4f24",
+      "captionSha256": "538e0af28e474c3dec52211ff4ee6c5dbebf36d64a260707cfa20d559f97fe03",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-club-kid",
+      "title": "Club Kid",
+      "slug": "club-kid-club-club-kid",
+      "reviewSha256": "225914f4bae75745c043421c651761d0d84bd565b7e8efacd236c7039409c7c9",
+      "captionSha256": "ccb90ad4db540cbf25466d2a91695f387f6780527479f84044eed26c6c963f0f",
+      "paragraphs": 4
+    },
+    {
+      "filmId": "club-the-hunger-games-sunrise-on-the-reaping",
+      "title": "The Hunger Games: Sunrise on the Reaping",
+      "slug": "the-hunger-games-sunrise-on-the-reaping-club-the-hunger-games-sunrise-on-the-reaping",
+      "reviewSha256": "cfd41b85126c5259d9bb1669ba831ddd9e85c1bd4a61a758cb13a2bf9c6f9a99",
+      "captionSha256": "84195794b1e5e3d33ed17c142212ad76f6196b86a7b0d1679bbe84f85cf80dca",
+      "paragraphs": 3
+    },
+    {
+      "filmId": "club-focker-in-law",
+      "title": "Focker In-Law",
+      "slug": "focker-in-law-club-focker-in-law",
+      "reviewSha256": "8e937b7e18bacd7739421904a5c2e611aecce4a08d21c736e2ac12a4d8548512",
+      "captionSha256": "5411aa85ceeeb34879600aabb33473a5ec0cc3c715973bf88148a99c5431a26f",
+      "paragraphs": 2
+    }
+  ]
+}
