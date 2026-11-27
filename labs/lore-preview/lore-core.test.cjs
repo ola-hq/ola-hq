@@ -38,3 +38,15 @@ test('preview keeps replay explicit, loads rooms before reveal, and retains esca
  assert.ok(css.includes('position:sticky'));assert.ok(css.includes('prefers-reduced-motion:reduce'));assert.ok(css.includes('var(--reveal-origin'));
  assert.ok(!js.includes('startWalkthrough();'));assert.ok(js.includes('fly.step(1000)'))
 });
+
+test('sky paint clock keeps a steady 30 paints over 60Hz and 120Hz displays',()=>{
+ for(const hz of [60,120]){const clock=C.createPaintClock(30);clock.step(0);let count=0;for(let i=0;i<hz;i++)if(clock.step(1000/hz))count++;assert.equal(count,30)}
+});
+test('sky paint clock recovers after invalid times and reset',()=>{
+ const clock=C.createPaintClock(30);clock.step(0);assert.equal(clock.step(NaN),false);assert.equal(clock.step(Infinity),false);assert.equal(clock.step(-100),false);assert.equal(clock.step(1000/30),true);clock.reset();assert.equal(clock.step(0),true)
+});
+test('stable scene frame and independent vessel motion replace resize/mask animation',()=>{
+ const js=fs.readFileSync(path.join(dir,'lore-preview.js'),'utf8'),css=fs.readFileSync(path.join(dir,'lore-preview.css'),'utf8'),html=fs.readFileSync(path.join(dir,'index.html'),'utf8');
+ assert.ok(html.includes('class="cabin-artboard"'));assert.ok(css.includes('#cabin{height:min(820px,94svh)'));assert.ok(css.includes('.secret-room{position:absolute;inset:0'));
+ assert.ok(css.includes('backdrop-filter:none'));assert.ok(js.includes('function renderVessel()'));assert.ok(js.includes('translate3d('));assert.ok(js.includes('skyClock.step(dt)'));assert.doesNotMatch(js,/now-last>=40/)
+});

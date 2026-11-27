@@ -54,3 +54,31 @@
  .is-revealing .secret-room,.is-revealing .cabin-view,.cabin-view.is-returning,.secret-visual,.secret-visual::after{animation:none!important;clip-path:none!important;transform:none!important;opacity:1}
  .is-revealing .secret-room::after{display:none}
 }
+
+/* Fixed scene geometry and compositor-friendly motion; preview only. */
+#cabin{height:min(820px,94svh);max-height:94svh;overflow:hidden}
+#cabin[open]{display:flex;flex-direction:column;animation:cabin-smooth-arrival .55s ease both}
+#cabin .dialog-header,#cabin .tour-controls,#scene-load-status{flex:none}
+dialog::backdrop{background:#020b15ed;backdrop-filter:none}
+.scene-stack{flex:1;min-height:0;display:block;width:100%;background:radial-gradient(ellipse at center,#0c2433,#071725 72%)}
+.cabin-view{position:absolute;inset:0;width:100%;height:100%;display:grid;place-items:center;margin:0;animation:none!important}
+.cabin-artboard{position:relative;width:100%;aspect-ratio:1672/941;max-width:100%}
+.cabin-artboard>img{width:100%;height:auto;display:block;aspect-ratio:1672/941}
+.secret-room{position:absolute;inset:0;width:100%;height:100%;overflow:auto;overscroll-behavior:contain;padding:14px;display:flex;flex-direction:column;align-items:center;gap:10px;animation:none}
+.secret-visual{flex:none;width:var(--room-size,240px);height:var(--room-size,240px);max-width:100%;max-height:none;aspect-ratio:1;animation:room-depth 4s ease-out both}
+.secret-caption{flex:none;width:100%;max-width:680px;padding:0;margin:0 auto;text-align:center}
+.secret-caption h3{font-size:24px;line-height:1.2;margin:0 0 8px}
+.secret-caption p{margin:6px 0;font-size:16px;line-height:1.45}
+.secret-caption .scene-follow{margin-top:4px}
+.is-revealing .secret-room{animation:room-smooth-arrival .7s ease both;clip-path:none}
+.is-revealing .cabin-view{animation:none}
+.is-revealing .cabin-artboard{animation:room-underlay .7s ease both}
+.cabin-view.is-returning .cabin-artboard{animation:cabin-smooth-return .45s ease both}
+.passing-vessel{left:0;top:0;will-change:transform}
+#cabin[open]::before{width:min(320px,70vw);background:none;-webkit-mask:none;mask:none;filter:none;border:2px solid #9bdfcd99;border-radius:50%;box-shadow:0 0 18px #98dece55,inset 0 0 18px #e9c89d33;animation:smooth-portal-ring .7s ease-out both}
+@keyframes cabin-smooth-arrival{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes room-smooth-arrival{from{opacity:0;transform:translateY(6px) scale(.99)}to{opacity:1;transform:none}}
+@keyframes room-underlay{to{opacity:.25}}
+@keyframes cabin-smooth-return{from{opacity:.5}to{opacity:1}}
+@keyframes smooth-portal-ring{0%{transform:translate(-50%,-50%) scale(.3);opacity:0}25%{opacity:.7}100%{transform:translate(-50%,-50%) scale(2);opacity:0}}
+@media(prefers-reduced-motion:reduce){#cabin[open],.is-revealing .secret-room,.is-revealing .cabin-artboard,.cabin-view.is-returning .cabin-artboard{animation:none!important;transform:none!important;clip-path:none!important}#cabin[open]::before{display:none}}
