@@ -4,3 +4,33 @@
 .cinema-stage-mark{position:absolute;bottom:max(18px,calc(env(safe-area-inset-bottom) + 10px));left:0;right:0;display:flex;align-items:center;justify-content:center;gap:8px;color:#efc56b;opacity:.3;font-size:10px;letter-spacing:.15em;pointer-events:none;user-select:none}
 .cinema-stage-mark img{width:24px;height:24px;object-fit:contain}.ola-card-immersive[data-theme=cinema][data-controls=true]>.cinema-stage-mark{visibility:hidden}
 .ola-card-immersive[data-theme=cinema] .ola-card-tools{padding:16px 0 0;background:linear-gradient(transparent,#081522f2 28%);border-radius:16px}
+
+/* The approved cinema interior is scenery; card gestures and controls stay in front. */
+.ola-card-immersive[data-theme=cinema]>.cinema-viewing-room{--room-depth:clamp(100px,14vw,220px);position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;user-select:none;background:#0a1524 url('../../assets/portal-interiors-20261125/cinema-interior.webp') center 46%/cover no-repeat;perspective:1000px;perspective-origin:50% 45%}
+.cinema-viewing-room::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 43%,#07101b0d 15%,#06101c59 70%,#02060b99 100%),linear-gradient(#07101b26,#06101c33 60%,#02060b80)}
+.cinema-room-scene{position:absolute;inset:0;transform-style:preserve-3d;pointer-events:none}
+.cinema-room-wall{position:absolute;box-sizing:border-box;pointer-events:none;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.cinema-room-wall--back{inset:0;transform:translateZ(calc(-1 * var(--room-depth)));background:radial-gradient(ellipse at 50% 30%,#f8d59a0d,transparent 68%)}
+.cinema-room-wall--left,.cinema-room-wall--right{top:0;width:var(--room-depth);height:100%;background:linear-gradient(90deg,#020813aa,#12223822);box-shadow:inset 0 0 50px #0003;border:1px solid #e5b66418}
+.cinema-room-wall--left{left:0;transform-origin:0 50%;transform:rotateY(90deg)}
+.cinema-room-wall--right{right:0;transform-origin:100% 50%;transform:rotateY(-90deg);background:linear-gradient(270deg,#020813aa,#12223822)}
+.cinema-room-wall--floor{bottom:0;left:0;width:100%;height:var(--room-depth);transform-origin:50% 100%;transform:rotateX(90deg);background:linear-gradient(#0c152400,#03070c99)}
+.cinema-room-wall--ceiling{top:0;left:0;width:100%;height:var(--room-depth);transform-origin:50% 0;transform:rotateX(-90deg);background:linear-gradient(#1b120c55,transparent)}
+.cinema-room-projector{position:absolute;top:22%;left:20%;width:60%;height:45%;pointer-events:none;background:radial-gradient(ellipse at 50% 0,#fff0c52b,transparent 62%);filter:blur(6px);opacity:.2;animation:cinema-room-light 12s ease-in-out infinite;animation-play-state:paused}
+.ola-card-immersive[data-theme=cinema][open] .cinema-room-projector{animation-play-state:var(--cinema-room-motion,running)}
+.ola-card-immersive[data-theme=cinema] .ola-card-stage{z-index:1}
+.ola-card-immersive[data-theme=cinema]>.cinema-stage-mark{z-index:2;text-shadow:0 2px 12px #000;opacity:.48}
+.ola-card-immersive[data-theme=cinema]::backdrop{background:#07101b}
+@keyframes cinema-room-light{0%,100%{opacity:.2}50%{opacity:.4}}
+@media(max-width:650px){.ola-card-immersive[data-theme=cinema]>.cinema-viewing-room{background-position:50% 45%;perspective:650px}.cinema-room-projector{top:25%;left:8%;width:84%}}
+@media(prefers-reduced-motion:reduce){.cinema-room-projector{animation:none;opacity:.24;filter:none}}
+@media(prefers-contrast:more){.cinema-viewing-room::after{background:#030811bb}.cinema-room-projector{display:none}}
+@supports not (perspective:1px){.cinema-room-scene{display:none}}
+
+/* Actual architectural planes retain the original photograph's registration at rest. */
+.cinema-room-canvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;opacity:0}
+.cinema-viewing-room[data-renderer=webgl]>.cinema-room-canvas{opacity:1}
+.cinema-viewing-room[data-renderer=webgl]>.cinema-room-scene{visibility:hidden}
+.cinema-viewing-room>.cinema-room-projector{z-index:1}
+.cinema-viewing-room::after{z-index:2}
+.ola-card-immersive[data-theme=cinema][data-trackpad=true] .ola-physical-card{transition:none}

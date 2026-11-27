@@ -1,5 +1,5 @@
 import {rememberBrowse} from './browse-context.js?v=20261125-worlds35';
-import {CinemaCardViewer} from './cinema-card-viewer.js?v=20261126-cinema49';
+import {CinemaCardViewer} from './cinema-card-viewer.js?v=20261127-trackpad64';
 const node=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text)e.textContent=text;return e;};
 // One full collection, sourced from the approved registry-resolved records used by the shelf.
 export function initContactSheet(){

@@ -1,5 +1,5 @@
 import {readBrowse,rememberBrowse,orderedReviews} from './browse-context.js?v=20261125-worlds35';
-import {CinemaCardViewer} from './cinema-card-viewer.js?v=20261126-cinema49';
+import {CinemaCardViewer} from './cinema-card-viewer.js?v=20261127-trackpad64';
 import {scoreText} from './collection-data.js?v=20261125-worlds35';
 export function tiltAt(x,y,b){const clamp=n=>Math.max(-1,Math.min(1,n));return {x:-clamp(b.height?(y-b.top)/b.height*2-1:0)*9,y:clamp(b.width?(x-b.left)/b.width*2-1:0)*12};}
 export function initArtViewer(){
