@@ -1,5 +1,9 @@
 /* Continuous original-art globe: one closed body, one feathered UV material and a sculpted orbit. */
 (()=>{'use strict';
+ // Optional on-device observation. It does not replace or drive these controls.
+ if(new URL(location.href).searchParams.get('globeAudit')==='1'){
+  const audit=document.createElement('script');audit.src=new URL('hq-globe-audit.js?v=20261126-audit1',document.currentScript.src);document.head.append(audit);
+ }
  const modelURL=new URL('assets/models/ola-hq-sculpted-globe-v7.glb?v=20261126-reference1',document.currentScript.src),motion=matchMedia('(prefers-reduced-motion: reduce)');
  const vertex=`attribute vec3 position;attribute vec3 normal;attribute vec2 uv;uniform mat3 rotation;varying vec3 N;varying vec2 UV;varying float Z;
  vec3 turn(vec3 p){return rotation*p;}
