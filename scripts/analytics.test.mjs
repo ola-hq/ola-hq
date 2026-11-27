@@ -5,12 +5,12 @@ import { runInNewContext } from 'node:vm';
 import { stripTypeScriptTypes } from 'node:module';
 import { webcrypto, createHash } from 'node:crypto';
 
-function browser({saved={},dnt='0',standalone=false,online=true}={}){
+function browser({saved={},dnt='0',standalone=false,online=true,preview=false,framePreview=false}={}){
  const storage=new Map(Object.entries(saved)),events={},requests=[];
  const listen=(name,fn)=>{const prev=events[name];events[name]=prev?(event=>{prev(event);fn(event)}):fn};
  class Element{constructor(tag='A',href='/ola-hq/la-ola-de-amor/scan/guide/?secret=nope#music'){this.tagName=tag;this.href=href;this.id='music-link';this.dataset={}}closest(selector){if(selector==='a,button,[role="button"],summary')return this;if(selector==='a[download]')return null;return this.private?this:null}getAttribute(){return this.href}}
- const context={crypto:webcrypto,URL,URLSearchParams,innerWidth:1200,innerHeight:800,scrollY:0,Element,Date,Set,JSON,Math,location:new URL('https://ola-hq.github.io/ola-hq/la-ola-de-amor/#/home?private=hello'),navigator:{doNotTrack:dnt,onLine:online,standalone},matchMedia:()=>({matches:false}),localStorage:{getItem:k=>storage.get(k)??null,setItem:(k,v)=>storage.set(k,v)},document:{referrer:'https://example.com/private?email=person',documentElement:{lang:'en'},addEventListener:listen},setInterval:()=>{},fetch:async(url,options)=>{requests.push(JSON.parse(options.body));return {ok:true}}};
- context.window=context;context.top=context;context.addEventListener=listen;
+ const context={crypto:webcrypto,URL,URLSearchParams,innerWidth:1200,innerHeight:800,scrollY:0,Element,Date,Set,JSON,Math,location:new URL('https://ola-hq.github.io/ola-hq/la-ola-de-amor/'+(preview?'?olaPortalPreview=1':'')+'#/home?private=hello'),navigator:{doNotTrack:dnt,onLine:online,standalone},matchMedia:()=>({matches:false}),localStorage:{getItem:k=>storage.get(k)??null,setItem:(k,v)=>storage.set(k,v)},document:{referrer:'https://example.com/private?email=person',documentElement:{lang:'en'},addEventListener:listen},setInterval:()=>{},fetch:async(url,options)=>{requests.push(JSON.parse(options.body));return {ok:true}}};
+ context.window=context;context.top=context;if(framePreview)context.frameElement={dataset:{olaPortalPreview:'true'}};context.addEventListener=listen;
  runInNewContext(readFileSync('analytics.js','utf8'),context);
  return {context,events,requests,storage,Element};
 }
@@ -59,3 +59,7 @@ test('report requires an active host token and rejects foreign origins',async()=
 test('Cinema custom actions use bounded labels without typed searches and respect opt-out',async()=>{
  const b=browser();b.context.location=new URL('https://ola-hq.github.io/ola-hq/la-ola-cinema-club/reviews/');await tick();b.events['ola:cinema']({detail:{action:'search_used',value:'nonempty'}});await tick();assert.equal(b.requests.at(-1).events[0].label,'cinema:search_used:nonempty');assert.equal(b.requests.at(-1).events[0].event_name,'engagement');assert.equal(b.requests.at(-1).events[0].duration_seconds,0);const count=b.requests.length;b.events['ola:cinema']({detail:{action:'not_allowed',value:'private'}});await tick();assert.equal(b.requests.length,count);b.context.location=new URL('https://ola-hq.github.io/ola-hq/our-polaroid-project/');b.events['ola:cinema']({detail:{action:'search_used',value:'private'}});await tick();assert.equal(b.requests.length,count);
 });
+
+test('decorative portal previews do not create visits, sessions, storage or collector requests',()=>{for(const options of [{preview:true},{framePreview:true}]){const b=browser(options);assert.equal(b.requests.length,0);assert.equal(b.storage.size,0);assert.deepEqual(Object.keys(b.events),[])}});
+
+test('a historical cached duplicate stays silent after either preview guard, while normal visits still track',async()=>{const historical=readFileSync('scripts/fixtures/analytics-before-portal-preview.js','utf8');for(const options of [{preview:true},{framePreview:true}]){const b=browser(options);assert.equal(b.context.__olaAnalyticsLoaded,true);runInNewContext(historical,b.context);await tick();assert.equal(b.requests.length,0);assert.equal(b.storage.size,0);assert.deepEqual(Object.keys(b.events),[])}const normal=browser();await tick();const requests=normal.requests.length;runInNewContext(historical,normal.context);await tick();assert.equal(normal.requests.length,requests);assert.equal(requests,1)});

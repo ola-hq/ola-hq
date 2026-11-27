@@ -102,3 +102,5 @@ for (const nativeTouch of [false,true]) {
   assert.equal(e.prevented,false);assert.deepEqual(h.calls,['peek','stop']);assert.equal(h.button.emit('click').prevented,true);
  });
 }
+
+test('captured pen keeps exploring across an art boundary; release still suppresses accidental navigation',()=>{const h=setup();let captured=false;h.art.setPointerCapture=()=>captured=true;h.art.hasPointerCapture=()=>captured;h.art.emit('pointerdown',{pointerType:'pen'});h.tick(220);h.art.emit('pointerleave',{pointerType:'pen'});h.art.emit('pointermove',{pointerType:'pen',clientY:450,cancelable:true});assert.deepEqual(h.calls,['peek','move']);h.art.emit('pointerup',{pointerType:'pen'});assert.deepEqual(h.calls,['peek','move','stop']);assert.equal(h.button.emit('click').prevented,true)});

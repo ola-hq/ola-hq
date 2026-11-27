@@ -133,3 +133,11 @@ body:has(#app-launch) .portal-wave-backdrop{z-index:0}
 }
 /* Orbital decoration must not create a horizontal scroll area on small phones. */
 .portal-hq .portal-launch{overflow-x:clip}
+
+/* A single viewport layer lets the aperture cross the space between worlds. */
+.ola-peek-stage{position:fixed;inset:0;z-index:10000;pointer-events:none!important;overflow:hidden;contain:layout paint style}
+.ola-peek-stage[hidden]{display:none!important}
+.ola-peek-stage>.ola-peek-canvas{position:absolute;inset:0;width:100%;height:100%}
+.ola-peek-stage>.ola-peek-lens{overflow:hidden;background-color:#071526}
+.ola-peek-page{position:absolute;left:0;top:0;max-width:none!important;border:0;transform-origin:0 0;pointer-events:none!important;transition:opacity .18s linear}
+@media(prefers-reduced-motion:reduce){.ola-peek-page{transition:none}}
