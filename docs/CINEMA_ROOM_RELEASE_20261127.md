@@ -1,0 +1,9 @@
+# Cinema room release — November 27, 2026 (63)
+
+The owner approved the room62 preview and explicitly requested seeing it live. This release brings only the completed room onto fresh public ff464fcd, preserving the later HQ sky work and all currently published Cinema data, artwork, Stats, shared gestures and audio.
+
+Source lineage: local room62 394aa548 on top of the combined Cinema60/61 preparation. Only the room renderer, Cinema adapter/owned CSS and consumer cache queries are projected here. The complete combined candidate remains preserved on codex/cinema-room-v61; none of its pending score/caption/Canva/Sheet work is silently promoted. The earlier combined-release hold remains in effect for that separate work; the owner's later explicit room publication request authorizes this self-contained room release.
+
+The approved cinema interior is projected onto actual ceiling, floor, back and side-wall planes. Restrained, eased camera movement adds depth while the foreground card remains stable and interactive. Touch movement is gentler; Reduced Motion remains centered. The inert decorative renderer uses a low-power context, caps DPR at 1.5, renders only while needed, pauses hidden/closed and releases resources on destruction. Unsupported/lost graphics leave the still room and functional card controls. No Polaroid sound, new art or external library is added. Single-image projection supports restrained offsets rather than unrestricted exploration.
+
+Validation and actual publication receipts are retained in the existing private Cinema records. Public publication is claimed only after the normal publisher and signed-out live revision/assets have been verified. Emulated phone/WebKit checks do not establish physical iPhone/PWA acceptance. Native caption/Sheet/reel synchronization, final Canva destination and prior Mac/credit issues are unaffected and remain open.
