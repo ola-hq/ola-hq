@@ -1,0 +1,31 @@
+name: Check isolated OLA lore study
+on:
+  pull_request:
+    paths:
+      - 'labs/lore-preview/**'
+      - '.github/workflows/lore-preview.yml'
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      LORE_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          sparse-checkout: labs/lore-preview
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check timing, hidden-room semantics, verified returns and isolated scope
+        run: node --test labs/lore-preview/lore-core.test.cjs
+      - name: Upload the standalone sample
+        uses: actions/upload-artifact@v4
+        with:
+          name: OLA-HQ-hidden-currents-preview
+          path: preview-dist/
+          retention-days: 30
