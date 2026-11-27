@@ -8,7 +8,7 @@ let mode='full';try{const saved=localStorage.getItem('ola-portal-motion');if(['f
 const reducedEffects=()=>mode==='gentle'||(mode==='system'&&motion.matches);
 let hoverFrame=0,activePeekArt=null,pressControllers=[],overlay=null,fxFrame=0,busy=false,run=0,fallbackTimer=0;
 const origins=new WeakMap(),scenes=new WeakMap(),loaded=new Map();
-const publicPages={'la-ola':'la-ola-de-amor/',cinema:'la-ola-cinema-club/',polaroid:'our-polaroid-project/',wave26:'wave-26.html',fpl:'fpl-wave.html',simulation:'simulation-wave/',gdb:'gdb-wave.html',arsenal:'arsenal-wave.html',offbrand:'offbrand-wave.html',willpwr:'willpwr-wave.html','wu-wei':'wu-wei-wave.html',capybara:'capybara-wave.html',deeper:'more-waves.html'};
+const publicPages={'la-ola':'la-ola-de-amor/',cinema:'la-ola-cinema-club/',polaroid:'our-polaroid-project/',wave26:'wave-26.html',fpl:'fpl-wave.html',simulation:'simulation-wave/',gdb:'gdb-university/',arsenal:'arsenal-wave.html',offbrand:'offbrand-wave.html',willpwr:'willpwr-wave.html','wu-wei':'wu-wei-wave.html',capybara:'capybara-wave.html',deeper:'more-waves.html'};
 const peekEntries=[];let peekStage=null,parkPeek=null,movePeek=null,livePage=null;
 function stage(){if(!peekStage){peekStage=document.createElement('div');peekStage.className='ola-peek-stage';peekStage.setAttribute('aria-hidden','true');document.body.append(peekStage)}peekStage.hidden=false;return peekStage}
 function dropPage(){livePage?.remove();livePage=null}

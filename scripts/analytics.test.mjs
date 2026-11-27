@@ -61,3 +61,5 @@ test('Cinema custom actions use bounded labels without typed searches and respec
 });
 
 test('decorative portal previews do not create visits, sessions, storage or collector requests',()=>{for(const options of [{preview:true},{framePreview:true}]){const b=browser(options);assert.equal(b.requests.length,0);assert.equal(b.storage.size,0);assert.deepEqual(Object.keys(b.events),[])}});
+
+test('a historical cached duplicate stays silent after either preview guard, while normal visits still track',async()=>{const historical=readFileSync('scripts/fixtures/analytics-before-portal-preview.js','utf8');for(const options of [{preview:true},{framePreview:true}]){const b=browser(options);assert.equal(b.context.__olaAnalyticsLoaded,true);runInNewContext(historical,b.context);await tick();assert.equal(b.requests.length,0);assert.equal(b.storage.size,0);assert.deepEqual(Object.keys(b.events),[])}const normal=browser();await tick();const requests=normal.requests.length;runInNewContext(historical,normal.context);await tick();assert.equal(normal.requests.length,requests);assert.equal(requests,1)});

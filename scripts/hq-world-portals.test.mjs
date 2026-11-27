@@ -111,7 +111,7 @@ test('gated and external portal previews never load an iframe',()=>{
  for(const key of ['homebase','arsenal-academy-clubhouse']){const r=runtime({key});r.callbacks[0].start({clientX:250,clientY:300});assert.equal(r.pages.length,0)}
 });
 test('all local public portals use their own actual website; previews cannot recursively create portals',()=>{
- const pages={polaroid:'our-polaroid-project/',cinema:'la-ola-cinema-club/','la-ola':'la-ola-de-amor/',wave26:'wave-26.html',fpl:'fpl-wave.html',simulation:'simulation-wave/',gdb:'gdb-wave.html',arsenal:'arsenal-wave.html',offbrand:'offbrand-wave.html',willpwr:'willpwr-wave.html','wu-wei':'wu-wei-wave.html',capybara:'capybara-wave.html',deeper:'more-waves.html'};
+ const pages={polaroid:'our-polaroid-project/',cinema:'la-ola-cinema-club/','la-ola':'la-ola-de-amor/',wave26:'wave-26.html',fpl:'fpl-wave.html',simulation:'simulation-wave/',gdb:'gdb-university/',arsenal:'arsenal-wave.html',offbrand:'offbrand-wave.html',willpwr:'willpwr-wave.html','wu-wei':'wu-wei-wave.html',capybara:'capybara-wave.html',deeper:'more-waves.html'};
  for(const [key,path] of Object.entries(pages)){const r=runtime({key});r.callbacks[0].start({clientX:250,clientY:300});assert.equal(new URL(r.pages[0].src).pathname,'/ola-hq/'+path)}
  const r=runtime({preview:true});assert.equal(r.api,undefined);assert.equal(r.callbacks.length,0);assert.equal(r.nodes.length,2);
 });

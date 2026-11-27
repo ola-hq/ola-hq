@@ -2,7 +2,7 @@
 (()=>{
  'use strict';
  // Doorway previews are decorative, not visits to another world.
- try{if(new URL(location.href).searchParams.get('olaPortalPreview')==='1'||window.frameElement?.dataset.olaPortalPreview==='true')return}catch{}
+ try{if(new URL(location.href).searchParams.get('olaPortalPreview')==='1'||window.frameElement?.dataset.olaPortalPreview==='true'){window.__olaAnalyticsLoaded=true;return}}catch{}
  if(window.__olaAnalyticsLoaded)return;
  window.__olaAnalyticsLoaded=true;
  const ROOT='/ola-hq/',API='https://fgtowzonkmirmugnzlsf.supabase.co/functions/v1/ola-analytics';
