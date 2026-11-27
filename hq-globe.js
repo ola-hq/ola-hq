@@ -32,6 +32,7 @@
  }
  function surpriseTargets(){return [...document.querySelectorAll('.home-six-waves>a.room,.world-card[data-tier="main"]')].filter(card=>card.target!=='_blank')}
  async function setup(anchor,index){
+  let travelAt=0;
   let canvas=document.createElement('canvas'),render,engine='webgl',frame=0,paintFrame=0,visible=true,last=0,controls,burst=null,burstTimer=0,cooldown=0,surpriseBusy=false,preparedTarget=null;
   const ball=OLAGlobeMotion.create();anchor.dataset.globe3d='loading';
   const stop=()=>{cancelAnimationFrame(frame);cancelAnimationFrame(paintFrame);frame=paintFrame=0;last=0;ball.stop();anchor.classList.remove('is-spinning');anchor.style.setProperty('--globe-charge','0')};
@@ -49,10 +50,11 @@
    // Keep every input delta, but paint once per display frame. Synchronous HD
    // rendering on every move delays mobile samples and the release gesture.
    function queueDraw(){if(!paintFrame)paintFrame=requestAnimationFrame(()=>{paintFrame=0;draw(true)})}
+   function reportTravel(before,dt){try{window.OLACosmos?.travel(before,ball.orientation,dt)}catch{}}
    function spin(t){
     frame=0;if(!visible||document.hidden){stop();draw();return}
     const dt=last?Math.min(80,t-last):16.667;if(engine==='canvas'&&last&&dt<40){frame=requestAnimationFrame(spin);return}last=t;
-    const moving=ball.step(dt);anchor.classList.toggle('is-spinning',moving);anchor.style.setProperty('--globe-charge',Math.min(1,ball.speed*160).toFixed(2));draw(moving);
+    const before=ball.orientation,moving=ball.step(dt);reportTravel(before,dt);anchor.classList.toggle('is-spinning',moving);anchor.style.setProperty('--globe-charge',Math.min(1,ball.speed*160).toFixed(2));draw(moving);
     if(moving)frame=requestAnimationFrame(spin);else{last=0;anchor.classList.remove('is-spinning');anchor.style.setProperty('--globe-charge','0')}
    }
    // This loop starts only from deliberate manipulation, never from autoplay.
@@ -71,7 +73,7 @@
    }
    canvas.className='hq-globe-canvas';canvas.setAttribute('aria-hidden','true');canvas.draggable=false;anchor.append(canvas);anchor.classList.add('has-3d-globe');anchor.dataset.globe3d='ready';anchor.dataset.globeEngine=engine;anchor.dataset.globeMomentum='gesture';draw();
    anchor.draggable=false;anchor.querySelectorAll('img').forEach(img=>{img.draggable=false});
-   controls=OLAGlobeInput.attach(anchor,{press(){stop();prepare()},rotate(dx,dy){if(surpriseBusy)return;ball.rotate(dx,dy);queueDraw()},release,reset(){stop();ball.reset();draw()},activate(){if(!surpriseBusy)anchor.click()},surprise});
+   controls=OLAGlobeInput.attach(anchor,{press(){stop();prepare();travelAt=performance.now()},rotate(dx,dy){if(surpriseBusy)return;const before=ball.orientation,now=performance.now();ball.rotate(dx,dy);reportTravel(before,travelAt?now-travelAt:0);travelAt=now;queueDraw()},release,reset(){stop();ball.reset();draw()},activate(){if(!surpriseBusy)anchor.click()},surprise});
    const help=document.createElement('span');help.className='hq-globe-help';help.id='hq-globe-help-'+index;help.textContent='Click and drag or use two fingers on a trackpad over the globe to spin it. Tap or press Enter to explore Waves. Arrow keys rotate; Home resets. Triple tap or press R for a surprise world.';anchor.setAttribute('aria-describedby',help.id);anchor.append(help);
    const cancel=()=>{stop();controls.cancel();cancelSurprise();draw()};
    const observer=typeof IntersectionObserver==='undefined'?null:new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(!visible){stop();controls.cancel()}else draw()});observer?.observe(anchor);
