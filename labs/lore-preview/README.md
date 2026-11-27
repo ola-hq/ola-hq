@@ -36,3 +36,12 @@ Passage2 refines the study: decoded-image preflight and retry messages prevent b
 The selected execution workspace was unavailable during preparation. Automated GitHub state/build/source checks can run, but visual browser QA and physical Safari/installed-app acceptance are **not claimed**. Publish only the unlinked sample folder after automated checks pass. Homepage/app activation remains pending Jon's sample review. Record any later live browser QA separately; physical phone acceptance is not implied. Production integration still needs the actual website/app entrance/return wiring, touch/Back navigation, font/scene-fit, image-load failure and performance checks.
 
 The separate archive-access issue was resolved in root's authorized lane; this sample does not reopen or touch it. CommandCenter remains the sole production acceptance queue.
+
+
+## Smooth3 repair — November 27
+
+The passage2 visual audit reproduced panel movement with decoded artwork: 36.88px upward on desktop and 176.35px at 390px width. Smooth3 gives the cabin and rooms a fixed-height dialog and overlaid scene layers, so hiding the underlying cabin does not change layout. The artboard is fitted to the actual scene bounds; hidden object targets remain aligned with the displayed image. Short-screen room content can scroll inside the stable frame.
+
+The preview no longer blurs and clips the entire dialog during entry. Transitions use opacity/transform and a smaller composited ring. The ship advances on every animation callback using translate3d, independently of the lighter sky's phase-preserving 30Hz paint clock; this replaces the former >=40ms gate that quantized to roughly 20Hz on 60Hz screens. Pausing the walkthrough cancels its own idle animation callback until resumed. These are implementation targets, not measured device FPS claims.
+
+Regression checks cover the 30Hz cadence at simulated 60/120Hz callbacks, invalid/reset times, stable-frame structure, independent vessel motion, existing walkthrough cancellation and bundled syntax. Browser geometry, full-tour behavior and physical-device limits are recorded in the existing CommandCenter acceptance item after validation. Main entrances and globe/input/model/motion remain untouched.

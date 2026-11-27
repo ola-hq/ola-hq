@@ -2,6 +2,7 @@
 (()=>{
 'use strict';
 const C=window.OLALoreCore,stage=document.querySelector('.globe-stage'),sky=document.querySelector('#living-sky'),ctx=sky.getContext('2d'),off=document.createElement('canvas'),offctx=off.getContext('2d'),motion=matchMedia('(prefers-reduced-motion: reduce)'),ship=document.querySelector('#passing-vessel'),star=document.querySelector('#star-26'),fly=C.createFlyby(),visits=C.createVisits();
+const skyClock=C.createPaintClock(30);
 let width=0,height=0,dpr=1,stars=[],frame=0,last=0,visible=true,energy=0,pointer={x:0,y:0},smooth={x:0,y:0},toastTimer=0,visitAbort=null,returnAllowed=true;
 const $=s=>document.querySelector(s),modals=()=>!!document.querySelector('dialog[open]');
 const active=()=>visible&&!document.hidden&&!modals();
@@ -23,15 +24,23 @@ function prepareArt(){
  if(!artPromise)artPromise=Promise.all(artFiles.map(loadImage)).then(()=>{artReady=true;return true}).catch(()=>{artPromise=null;return false});
  return artPromise;
 }
+function layoutCabin(){
+ const stack=$('.scene-stack'),bounds=stack.getBoundingClientRect();
+ if(!bounds.width||!bounds.height)return;
+ const board=$('.cabin-artboard'),boardWidth=Math.min(bounds.width,bounds.height*1672/941);
+ board.style.width=boardWidth+'px';
+ const caption=$('.secret-caption').getBoundingClientRect().height;
+ stack.style.setProperty('--room-size',Math.max(100,Math.min(bounds.width-28,bounds.height-caption-38))+'px');
+}
 function sceneStatus(text){$('#scene-load-status').textContent=text}
 function closeScene(){
  sceneRevision++;clearTimeout(revealTimer);secret.hidden=true;cabinScene.hidden=false;
  cabin.classList.remove('is-revealing');cabinScene.classList.remove('is-returning');
  void cabinScene.offsetWidth;cabinScene.classList.add('is-returning');
- $('#back-to-cabin').hidden=true;cabin.scrollTop=0;sceneStatus('');
+ $('#back-to-cabin').hidden=true;cabin.scrollTop=0;sceneStatus('');layoutCabin();
 }
 async function openCabin(){
- closeScene();if(!cabin.open)openDialog(cabin);
+ closeScene();if(!cabin.open)openDialog(cabin);layoutCabin();
  const revision=sceneRevision;sceneStatus(artReady?'':'Preparing the cabin…');
  const ready=await prepareArt();if(revision!==sceneRevision||!cabin.open)return;
  sceneStatus(ready?'':'The cabin artwork could not load. Return to the sky and try again.');
@@ -51,7 +60,7 @@ async function showSecret(key){
  if(!ready){sceneStatus('The hidden room could not load. Tap the object to try again.');return false}
  sceneStatus('');cabin.scrollTop=0;cabinScene.hidden=false;secret.hidden=false;
  $('#back-to-cabin').hidden=false;secretImage.dataset.cell=data.cell;secretImage.setAttribute('aria-label',key==='chair'?'A secret pool deck inside the vessel':key==='bar'?'A hidden vinyl listening room':'The celestial navigation room');
- secretTitle.textContent=data.title;secretText.textContent=data.text;$('#follow-current').dataset.world=data.world;$('#map-star').hidden=key!=='window';
+ secretTitle.textContent=data.title;secretText.textContent=data.text;$('#follow-current').dataset.world=data.world;$('#map-star').hidden=key!=='window';layoutCabin();
  cabin.style.setProperty('--reveal-origin',data.origin);cabin.classList.remove('is-revealing');void secret.offsetWidth;cabin.classList.add('is-revealing');
  $('#back-to-cabin').focus({preventScroll:true});
  revealTimer=setTimeout(()=>{if(revision!==sceneRevision)return;cabinScene.hidden=true;cabin.classList.remove('is-revealing')},motion.matches?0:1050);
@@ -93,7 +102,7 @@ function resize(){
  for(const c of [sky,off]){c.width=Math.round(width*dpr);c.height=Math.round(height*dpr)}
  ctx?.setTransform(dpr,0,0,dpr,0,0);offctx?.setTransform(dpr,0,0,dpr,0,0);
  stars=Array.from({length:Math.min(210,Math.round(width*height/4600))},(_,i)=>({x:Math.random(),y:Math.random(),depth:[.2,.55,1][i%3],phase:Math.random()*Math.PI*2,r:.4+Math.random()*.8}));
- draw(performance.now());
+ skyClock.reset();layoutCabin();draw(performance.now());
 }
 function draw(now){
  if(!ctx||!offctx||!width||!height)return;ctx.clearRect(0,0,width,height);offctx.clearRect(0,0,width,height);
@@ -103,10 +112,13 @@ function draw(now){
  const pw=off.width/2,ph=off.height/2;
  for(let i=0;i<4;i++){const x=i%2,y=Math.floor(i/2);ctx.globalAlpha=C.constellationOpacity(now,i,still);ctx.drawImage(off,x*pw,y*ph,pw,ph,x*width/2,y*height/2,width/2,height/2)}
  ctx.globalAlpha=1;
- const f=fly.state(),tourShip=walkthrough.state().running&&walkthrough.state().step?.scene==='ship';ship.hidden=!(tourShip||still||f.visible);ship.style.left=(tourShip?width*.5-55:still?width*.12:-55+f.progress*width)+'px';ship.style.top=(height*.15+(still?0:Math.sin(f.progress*Math.PI)*height*.025))+'px';
+ renderVessel();
  if(!still)energy*=.94;
 }
-function tick(now){frame=0;if(!active())return;if(!last||now-last>=40){const dt=last?now-last:40;last=now;if(!motion.matches)fly.step(dt);draw(now)}if(!motion.matches)frame=requestAnimationFrame(tick)}
+function renderVessel(){
+ const still=motion.matches,f=fly.state(),tourShip=walkthrough.state().running&&walkthrough.state().step?.scene==='ship';ship.hidden=!(tourShip||still||f.visible);const x=tourShip?width*.5-55:still?width*.12:-110+f.progress*(width+110),y=height*.15+(still?0:Math.sin(f.progress*Math.PI)*height*.025);ship.style.transform='translate3d('+x+'px,'+y+'px,0)';
+}
+function tick(now){frame=0;if(!active())return;const dt=last?Math.max(0,Math.min(100,now-last)):0;last=now;if(!motion.matches)fly.step(dt);renderVessel();if(skyClock.step(dt))draw(now);if(!motion.matches)frame=requestAnimationFrame(tick)}
 function start(){if(!active())return;if(motion.matches){draw(performance.now());return}if(!frame)frame=requestAnimationFrame(tick)}
 function pause(){cancelAnimationFrame(frame);frame=0;last=0;pointer={x:0,y:0};energy=0}
 if(typeof IntersectionObserver!=='undefined')new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible)start();else pause()}).observe(stage);
@@ -121,7 +133,7 @@ function tourControls(){
  document.querySelectorAll('.tour-controls').forEach(el=>{el.hidden=!state.running});
  document.querySelectorAll('.tour-step').forEach(el=>{el.textContent=state.running?state.step.label:''});
  document.querySelectorAll('[data-tour-pause]').forEach(el=>{el.textContent=state.paused?'Resume walkthrough':'Pause walkthrough'});
- document.body.classList.toggle('tour-paused',state.paused);
+ document.body.classList.toggle('tour-paused',state.paused);layoutCabin();
 }
 function stopWalkthrough(){
  tourLaunch++;tourRevision++;walkthrough.stop();cancelAnimationFrame(tourFrame);tourFrame=0;tourLast=0;tourBusy=false;tourControls();
@@ -152,7 +164,7 @@ function tourTick(now){
   }
   if(after.index!==before.index)enterTourScene();
  }
- if(!document.hidden)tourFrame=requestAnimationFrame(tourTick);
+ if(!document.hidden&&!walkthrough.state().paused)tourFrame=requestAnimationFrame(tourTick);
 }
 async function startWalkthrough(){
  stopWalkthrough();const launch=++tourLaunch;$('#watch-walkthrough').disabled=true;$('#preview-load-status').textContent='Preparing your passage…';
@@ -164,14 +176,15 @@ async function startWalkthrough(){
 }
 $('#watch-walkthrough').addEventListener('click',startWalkthrough);
 document.querySelectorAll('[data-tour-pause]').forEach(b=>b.addEventListener('click',()=>{
- const state=walkthrough.state();walkthrough.pause(!state.paused);tourLast=0;tourControls();
+ const state=walkthrough.state();walkthrough.pause(!state.paused);tourLast=0;cancelAnimationFrame(tourFrame);tourFrame=0;tourControls();if(!walkthrough.state().paused&&!document.hidden)tourFrame=requestAnimationFrame(tourTick);
 }));
 document.querySelectorAll('[data-tour-stop]').forEach(b=>b.addEventListener('click',()=>{stopWalkthrough();if(cabin.open)$('#back-to-cabin').hidden?$('#chair').focus({preventScroll:true}):$('#back-to-cabin').focus({preventScroll:true})}));
 document.querySelectorAll('dialog').forEach(d=>d.addEventListener('cancel',()=>stopWalkthrough()));
 document.addEventListener('visibilitychange',()=>{
  tourLast=0;if(document.hidden){cancelAnimationFrame(tourFrame);tourFrame=0}
- else if(walkthrough.state().running&&!tourFrame)tourFrame=requestAnimationFrame(tourTick);
+ else if(walkthrough.state().running&&!walkthrough.state().paused&&!tourFrame)tourFrame=requestAnimationFrame(tourTick);
 });
 
+if(typeof ResizeObserver!=='undefined')new ResizeObserver(layoutCabin).observe($('.scene-stack'));
 resize();window.OLAJourney?.load(()=>draw(performance.now()));start();
 })();
