@@ -55,3 +55,25 @@ body:has(.wave26-dock:not([hidden])){padding-bottom:90px}.wave26-deck button:foc
 @media(max-width:900px){.songbook{column-gap:26px}}
 @media(max-width:760px){.songbook{grid-template-columns:1fr}.deck-heading{align-items:center}.deck-view-options{gap:5px;flex-direction:column;align-items:flex-end}.deck-view-options>span{font-size:12px}.deck-view-options button{font-size:13px;padding:8px 10px}}
 @media(max-width:400px){.songbook .song{column-gap:6px;grid-template-columns:20px minmax(0,1fr) auto}.songbook .song h3{font-size:18px}.songbook-tools label{width:100%}.songbook-tools select{flex:1;min-width:0}.deck-heading{gap:8px}.deck-heading p{font-size:14px}}
+
+/* Show cues have their own stable mobile rows, separate from the Songbook. */
+#showGrid{display:block;min-width:0}
+#showGrid .show-card{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;min-width:0;padding:16px 0}
+#showGrid .show-card:before{display:none}
+.show-copy{min-width:0}
+#showGrid h3{font-size:21px;line-height:1.25;overflow-wrap:anywhere}
+#showGrid .show-cut{margin:5px 0 0;font:13px/1.5 Arial,sans-serif;color:#64717a}
+.show-action{display:flex;gap:5px;align-items:center;justify-content:flex-end}
+#showGrid .show-time{display:block;font:12px ui-monospace,monospace;white-space:nowrap;color:#657681;letter-spacing:normal;text-transform:none;font-weight:400}
+#showGrid button{display:grid;place-items:center;flex:none;width:44px;min-width:44px;height:44px;min-height:44px;padding:12px;margin:0;border:0;border-radius:50%;background:transparent;color:#163b5a;cursor:pointer}
+#showGrid button:hover{background:#e8dec8}
+#showGrid button.is-playing{background:#173b57;color:#fff5df}
+#showGrid .device-icon{display:block;width:18px;height:18px}
+.song-cuts,.show-cuts{margin-top:4px;min-width:0}
+.song-cuts summary,.show-cuts summary{display:list-item;min-height:32px;padding:7px 0;font:13px/1.4 Arial,sans-serif;color:#526778;cursor:pointer}
+.cut-option{display:flex;justify-content:space-between;align-items:center;gap:8px;min-width:0;padding:3px 0}
+.songbook .cut-option>span,#showGrid .cut-option>span{display:block;min-width:0;font:12px/1.5 Arial,sans-serif;color:#64717a;letter-spacing:normal;text-transform:none;font-weight:400;overflow-wrap:anywhere}
+.project-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+.project-actions a{min-height:44px;display:inline-flex;align-items:center}
+.show-cuts summary:focus-visible,.song-cuts summary:focus-visible,#showGrid button:focus-visible{outline:3px solid #cc9f45;outline-offset:3px}
+@media(max-width:620px){#showGrid .show-card{gap:8px}#showGrid h3{font-size:20px}.project-actions{justify-content:flex-start}.song-cuts summary,.show-cuts summary{min-height:44px;box-sizing:border-box;padding:12px 0}}

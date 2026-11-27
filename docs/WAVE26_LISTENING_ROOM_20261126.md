@@ -19,3 +19,12 @@ Source/media and application DOM checks accompany the update. DOM checks use con
 
 
 The final Songbook gap check adds 17 recordings covering 16 more existing titles, bringing the library to 79 recordings. Picture Portal preserves both supplied source cuts with explicit WAV/M4A cut labels. Other recovered titles include Paris Disappears, Yellow M&Ms, Half Past Four, Same Dumb Luck and Twelve Fake Therapists. These remain singles/sketches unless an album/project relationship is verified.
+
+
+## Show Audio mobile cleanup — November 26, 2026
+
+Show Audio uses explicit title/copy and compact-action columns, with readable durations and 44px playback targets. All six show recordings, including the Perreo Paraíso alternate, live only under the five Show Audio titles. They are excluded from regular Songbook results, song menus/presets, ordinary queues and Version Vault audio entries. The shared transport still supports playback from Show Audio.
+
+Picture Portal has one Songbook title row with its two labelled source cuts inside a disclosure; both original recordings remain available. Love Lore (formerly labelled Lorve in Projects) and Ground Control use the exact Suno playlist URLs confirmed by the owner. Ground Control retains its native playback option as well.
+
+Checks cover source/media/queue behavior, actual local-browser phone layouts and app-frame navigation. No original or published audio file was removed or rewritten.
