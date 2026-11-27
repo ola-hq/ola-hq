@@ -122,3 +122,33 @@ test('a document-tracked pointer survives losing capture and then releases norma
  e.emit('pointerdown',{pointerType:'mouse'});e.emit('lostpointercapture');now=20;doc.emit('pointermove',{pointerType:'mouse',clientX:400,clientY:300});doc.emit('pointerup',{pointerType:'mouse'});
  assert.deepEqual(moves,[[300,200]]);assert.ok(flings.at(-1)[0]>0);c.destroy();
 });
+
+test('actual runtime release is disabled by reduced-motion even though the old movement-only check passes',async()=>{
+ const {audit}=require('./hq-globe-runtime-fixture.cjs'),normal=await audit(false),reduced=await audit(true);
+ assert.equal(normal.rotatesWhileHeld,true);assert.equal(normal.postReleaseContinues,true);
+ assert.equal(reduced.rotatesWhileHeld,true);assert.equal(reduced.postReleaseContinues,false);
+ assert.equal(normal.oldCheckWouldPass,true);assert.equal(reduced.oldCheckWouldPass,true);
+});
+
+test('phone audit does not mistake final drag displacement for sustained release momentum',()=>{
+ const {analyze}=require('../hq-globe-audit.js');
+ const q=x=>[0,Math.sin(x/2),0,Math.cos(x/2)],samples=[{t:0,q:q(0),active:true},{t:100,q:q(.5),active:true},...[300,450,600,750].map(t=>({t,q:q(.7),active:false,releaseAt:100}))];
+ const r=analyze({state:{ready:'ready',reduceMotion:true},counts:{touchstart:1},releaseAt:100,samples});
+ assert.equal(r.postReleaseWindowObserved,true);assert.equal(r.releaseMomentumObserved,false);assert.match(r.finding,/Reduce Motion is on/);
+});
+test('phone audit identifies sustained post-release rotation separately from held travel',()=>{
+ const {analyze}=require('../hq-globe-audit.js'),q=x=>[0,Math.sin(x/2),0,Math.cos(x/2)];
+ const r=analyze({state:{ready:'ready',reduceMotion:false},counts:{pointerdown:1},releaseAt:100,samples:[{t:10,q:q(0),active:true},{t:90,q:q(.5),active:true},...[300,450,600,750].map((t,i)=>({t,q:q(.8+i*.3),active:false,releaseAt:100}))]});
+ assert.equal(r.releaseMomentumObserved,true);assert.ok(r.postReleaseRadians>.8);assert.equal(r.heldRadians,.5);
+});
+test('phone audit distinguishes missing contact, incomplete release observation and leaving the globe view',()=>{
+ const {analyze}=require('../hq-globe-audit.js');
+ assert.equal(analyze({counts:{},samples:[],releaseAt:null}).contactRecorded,false);
+ assert.match(analyze({counts:{touchstart:1},state:{ready:'ready'},samples:[],releaseAt:null}).finding,/not enough time/);
+ assert.match(analyze({counts:{touchstart:1},state:{ready:'ready'},endState:{onScreen:false},samples:[],releaseAt:0}).finding,/left the visible/);
+});
+test('ordinary globe pages do not create diagnostic UI or observers',()=>{
+ const vm=require('node:vm'),code=fs.readFileSync(path.join(__dirname,'../hq-globe-audit.js'),'utf8');
+ const env={URL,location:{href:'https://test.invalid/'},document:new Proxy({},{get(){throw Error('Normal page must remain untouched')}})};env.window=env;
+ assert.doesNotThrow(()=>vm.runInNewContext(code,env));
+});
