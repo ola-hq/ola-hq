@@ -33,3 +33,4 @@
 .cinema-viewing-room[data-renderer=webgl]>.cinema-room-scene{visibility:hidden}
 .cinema-viewing-room>.cinema-room-projector{z-index:1}
 .cinema-viewing-room::after{z-index:2}
+.ola-card-immersive[data-theme=cinema][data-trackpad=true] .ola-physical-card{transition:none}
