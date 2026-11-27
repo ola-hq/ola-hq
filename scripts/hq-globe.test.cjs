@@ -3,7 +3,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path');
 const {attach}=require('../hq-globe-input.js');
 class Target{
- listeners={};addEventListener(n,fn){(this.listeners[n]||=[]).push(fn)}removeEventListener(n,fn){this.listeners[n]=(this.listeners[n]||[]).filter(f=>f!==fn)}
+ registrations=[];listeners={};addEventListener(n,fn,options){this.registrations.push({n,options});(this.listeners[n]||=[]).push(fn)}removeEventListener(n,fn){this.listeners[n]=(this.listeners[n]||[]).filter(f=>f!==fn)}
  setPointerCapture(){}releasePointerCapture(){}
  emit(n,extra={}){const e={pointerId:1,isPrimary:true,pointerType:'touch',button:0,clientX:100,clientY:100,detail:1,cancelable:true,prevented:false,stopped:false,preventDefault(){this.prevented=true},stopImmediatePropagation(){this.stopped=true},...extra};for(const fn of this.listeners[n]||[]){fn(e);if(e.stopped)break}return e}
 }
@@ -77,3 +77,8 @@ test('Safari native compatibility mouse cannot cancel the pending single tap and
 test('active body bake excludes the transparent horizon and rear projection',()=>{const m=continuousModel();assert.equal(m.json.extras.alphaSafeBody,true);assert.deepEqual(m.json.extras.blendNormalZ,[.05,.25]);assert.ok(m.json.extras.sourceFit.radius>0)});
 
 test('the reference front survives ordinary 253-alpha source pixels',()=>{const m=continuousModel();assert.equal(m.json.extras.cleanAlphaThreshold,.90);assert.ok(m.json.extras.referenceFrontCoverage>.99);assert.deepEqual(m.json.extras.textureSize,[4096,2048])});
+
+
+test('native touch claims the globe before WebKit starts a page or link gesture',()=>{const e=new Target(),registrations=e.registrations,moves=[];let t=0;const c=attach(e,{rotate:(x,y)=>moves.push([x,y]),release(){},press(){},reset(){}},{ontouchstart:null,performance:{now:()=>t},setTimeout(){return 1},clearTimeout(){}});const start=e.emit('touchstart',{touches:[{identifier:1,clientX:100,clientY:100}]});assert.equal(start.prevented,true);assert.deepEqual(registrations.find(r=>r.n==='touchstart').options,{passive:false,capture:true});assert.deepEqual(registrations.find(r=>r.n==='touchmove').options,{passive:false,capture:true});e.emit('pointercancel',{pointerType:'touch'});t=20;e.emit('touchmove',{touches:[{identifier:1,clientX:150,clientY:140}]});assert.deepEqual(moves,[[50,40]]);c.destroy()});
+test('touch-capable Safari without a TouchEvent constructor retains native flick input',()=>{const e=new Target(),moves=[];let t=0;const c=attach(e,{rotate:(x,y)=>moves.push([x,y]),release(){},press(){},reset(){}},{navigator:{maxTouchPoints:5},performance:{now:()=>t},setTimeout(){return 1},clearTimeout(){}});e.emit('touchstart',{touches:[{identifier:8,clientX:100,clientY:100}]});t=20;e.emit('touchmove',{touches:[{identifier:8,clientX:120,clientY:140}]});assert.deepEqual(moves,[[20,40]]);c.destroy()});
+test('gesture reservation is scoped to the globe and its actual canvas',()=>{const css=fs.readFileSync(path.join(__dirname,'../hq-globe.css'),'utf8');assert.match(css,/\.has-3d-globe\{[^}]*touch-action:none!important/);assert.match(css,/\.hq-globe-canvas\{[^}]*touch-action:none/);assert.doesNotMatch(css,/(?:body|html)\s*\{[^}]*touch-action:none/)});
