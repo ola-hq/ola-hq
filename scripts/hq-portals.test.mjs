@@ -4,12 +4,12 @@ import {readFileSync,existsSync} from 'node:fs';
 import vm from 'node:vm';
 const read = p => readFileSync(new URL('../'+p, import.meta.url),'utf8');
 
-test('all 14 existing worlds have matching artwork in website and app without losing community', () => {
+test('all 15 worlds have matching artwork in website and app without losing community', () => {
   const home=read('index.html'), deeper=read('more-waves.html'), app=read('app/index.html');
   assert.equal((home.match(/<section class="rooms world-entrances home-six-waves"[\s\S]*?<\/section>/)[0].match(/<div class="room-copy"><h2>/g)||[]).length,6);
-  assert.equal((deeper.match(/<h2(?: id="academy-card-title")?>/g)||[]).length,8);
-  assert.equal((app.match(/class="world-card portal-card"/g)||[]).length,14);
-  for(const key of ['la-ola','cinema','polaroid','wave26','fpl','simulation','gdb','arsenal','offbrand','willpwr','wu-wei','homebase','capybara']) {
+  assert.equal((deeper.match(/<h2(?: id="academy-card-title")?>/g)||[]).length,9);
+  assert.equal((app.match(/class="world-card portal-card"/g)||[]).length,15);
+  for(const key of ['la-ola','cinema','polaroid','wave26','fpl','collectibles','simulation','gdb','arsenal','offbrand','willpwr','wu-wei','homebase','capybara']) {
     const path='assets/portals-20261124/'+key+'.jpg';
     assert.ok((home+deeper).includes(path),key+' website art'); assert.ok(app.includes('../'+path),key+' app art');
     assert.ok(existsSync(new URL('../'+path,import.meta.url)),key+' local asset');
@@ -29,6 +29,41 @@ test('app routes Cinema to the current Club and keeps gated worlds as direct ext
   assert.ok(html.includes('href="https://ola-hq.github.io/arsenal-academy-worlds/?v=presenter-entry-1" target="_blank"'));
   assert.ok(read('index.html').includes('class="portal-globe-door" href="#waves"'));
   assert.match(read('index.html').match(/<header[\s\S]*?<\/header>/)[0], /href="app\/"/);
+});
+test('Collectibles replaces only the sixth main world and Simulation remains in Deeper Waves', () => {
+  const home=read('index.html'), deeper=read('more-waves.html'), app=read('app/index.html');
+  const main=home.match(/<section class="rooms world-entrances home-six-waves"[\s\S]*?<\/section>/)[0];
+  const mainApp=[...app.matchAll(/data-world="([^"]+)" data-tier="main"/g)].map(m=>m[1]);
+  assert.deepEqual(mainApp,['blockbuster','polaroid','la-ola','wave26','fpl','collectibles']);
+  assert.ok(main.includes('href="collectibles/"'));
+  assert.ok(!main.includes('simulation-wave/'));
+  assert.equal((deeper.match(/href="simulation-wave\/"/g)||[]).length,1);
+  assert.ok(app.indexOf('data-world="simulation"')>app.indexOf('app-deeper-heading'));
+  assert.ok(app.includes('data-world="simulation" type="button"'));
+});
+test('Collectibles app routes and nested navigation remain same-origin public rooms', () => {
+  const js=read('app/app.js');
+  const registry=js.slice(js.indexOf('const worlds ='),js.indexOf('const rootPath'));
+  const functions=js.slice(js.indexOf('const urlFor ='),js.indexOf('function isWorldHome'));
+  const api=new Function('location',"const ROOT=new URL('../',location.href);let current=null;"+registry+"const rootPath=ROOT.pathname;"+functions+'return {isAllowed,matchWorld,urlFor};')({href:'https://example.test/ola-hq/app/'});
+  assert.equal(api.urlFor('collectibles').pathname,'/ola-hq/collectibles/');
+  assert.equal(api.matchWorld('https://example.test/ola-hq/collectibles/'),'collectibles');
+  assert.equal(api.matchWorld('https://example.test/ola-hq/collectibles/future-public-page'),'collectibles');
+  assert.equal(api.matchWorld('https://example.test/ola-hq/simulation-wave/'),'simulation');
+  assert.equal(api.isAllowed('https://private.example/'),false);
+});
+test('public Collectibles is a static brand room with no private inventory or Desk connection', () => {
+  const page=read('collectibles/index.html'), css=read('collectibles/room.css');
+  assert.ok(page.includes('https://www.ebay.com/usr/olacollectibles'));
+  assert.ok(page.includes('rel="noopener noreferrer" referrerpolicy="no-referrer"'));
+  assert.ok(page.includes('../app/?path=collectibles%2F'));
+  assert.ok(page.includes('id="main"')&&page.includes('href="#main"'));
+  for(const marker of ['.ts.net','127.0.0.1','localhost','sqlite','docs.google.com','/api/','type="password"','<form','<iframe'])assert.ok(!page.toLowerCase().includes(marker.toLowerCase()),marker+' must stay out of public room');
+  assert.doesNotMatch(page,/\b(?:CAP-\d{8}-|(?:CARD|ORDER)-[A-F0-9]{12,}|OLA-[A-F0-9]{12}\b)/i,'Internal record identifiers must stay private; the OLA HQ brand is public');
+  assert.equal((page.match(/<script/g)||[]).length,0);
+  assert.ok(css.includes('@media(max-width:620px)'));
+  assert.ok(css.includes('prefers-reduced-motion'));
+  const ids=[...page.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(ids).size,ids.length);
 });
 function atmosphere(reduced=false) {
   const tasks=[], raf=[], overlays=[]; let moved=0;

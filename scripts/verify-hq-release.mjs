@@ -22,12 +22,16 @@ const approvedLabels = [
   'LOVE · PLACES · MEMORIES',
   'MUSIC · ALBUMS · EXPERIMENTS',
   'FANTASY FOOTBALL · THE CLUB',
-  'AI ART · IMPOSSIBLE IDEAS',
+  'CARDS · FINDS · COLLECTION',
 ];
 const visibleLabels = [...worldSection.matchAll(/<span class="portal-label">([^<]+)<\/span>/g)].map(m => m[1]);
 requireThat(JSON.stringify(visibleLabels) === JSON.stringify(approvedLabels), 'Homepage banner label content or order changed');
 requireThat(worldSection.includes('<h2>FPL Wave</h2>'), 'The fifth homepage source label must be FPL Wave (La Ola FC is the destination)');
 requireThat(styles.includes('home-six-waves') && styles.includes('aspect-ratio:16/9'), 'Homepage six-card image treatment is missing');
+
+requireThat(worldSection.includes('href="collectibles/"') && worldSection.includes('<h2>OLA Collectibles</h2>'), 'OLA Collectibles must occupy its approved main-wave entrance');
+requireThat(!worldSection.includes('simulation-wave/'), 'Simulation Wave belongs in Deeper Waves, not the main six');
+requireThat(readFileSync('more-waves.html','utf8').includes('href="simulation-wave/"'), 'Simulation Wave must remain reachable in Deeper Waves');
 
 const cards=[...tools.matchAll(/<button type="button" class="ai-lab-card" data-key="([^"]+)"/g)].map(m=>m[1]);
 requireThat(JSON.stringify(cards)===JSON.stringify(['movie','handoff']), 'AI Toolbox must contain Movie Planner and AI Handoff only');
@@ -58,7 +62,7 @@ requireThat(tools.includes('<script src="tools.js?v='), 'Tools external JS must 
 const toolsJS=readFileSync('tools.js','utf8');
 try{new Function(toolsJS)}catch(e){failures.push('Everyday tools JS syntax failed: '+e.message)}
 requireThat(toolsJS.includes('const worldCatalog=')&&toolsJS.includes('const worldQuiz=')&&toolsJS.includes('function renderWorldQuiz('), 'World-discovery quiz logic missing');
-for(const id of ['love','cinema','polaroid','music','fpl','simulation','gdb','arsenal','offbrand','willpwr','wuwei','capybara'])requireThat(toolsJS.includes(id+":{name:"), 'World finder dropped a canonical world: '+id);
+for(const id of ['love','cinema','polaroid','music','fpl','collectibles','simulation','gdb','arsenal','offbrand','willpwr','wuwei','capybara'])requireThat(toolsJS.includes(id+":{name:"), 'World finder dropped a canonical world: '+id);
 requireThat(toolsJS.includes('function csvEntries(')&&toolsJS.includes('function parseCSV(')&&toolsJS.includes('function renderTopFilms('), 'CSV-driven Letterboxd ranking logic missing');
 requireThat(toolsJS.includes('movieSource=')&&toolsJS.includes('letterboxdEntries')&&toolsJS.includes('blockbusterTop5'), 'Independent film sources not implemented');
 requireThat(toolsJS.includes('const records=letterboxdRecords()')&&toolsJS.includes('No verified ratings have synced yet'), 'Unsourced Letterboxd ratings must remain transparently empty');
