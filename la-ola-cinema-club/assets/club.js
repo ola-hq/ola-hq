@@ -1,5 +1,5 @@
-import {initFilmFeedback} from './film-feedback.js?v=20261125-worlds35';
-import {initReviewNavigation} from './review-navigation.js?v=20261125-worlds35';
+import {initFilmFeedback} from './film-feedback.js?v=20261127-conversation67';
+import {initReviewNavigation} from './review-navigation.js?v=20261127-conversation67';
 import {initCinemaEvents} from './cinema-events.js?v=20261125-worlds35';
 import {initContactSheet} from './contact-sheet.js?v=20261127-trackpad64';
 import {scoreText, matchesDate, applyArtwork, artworkURL} from './collection-data.js?v=20261125-worlds35';

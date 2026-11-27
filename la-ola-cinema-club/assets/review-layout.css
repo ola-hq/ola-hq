@@ -29,7 +29,7 @@ body[data-film-id] .feedback-reactions{margin:16px 0;gap:10px}
 body[data-film-id] .feedback-status:empty{min-height:0;margin:0}
 body[data-film-id] .film-layout .actions{margin:20px 0 0;gap:10px}
 @media(min-width:901px){
- body[data-film-id] .film-layout>.film-art-column{position:sticky;top:88px;align-self:start;width:100%;max-width:min(300px,calc((100dvh - 112px)*2/3));margin:0 auto}
+ body[data-film-id] .film-layout>.film-art-column{position:sticky;top:min(88px,calc(100dvh - var(--review-sidebar-height,100dvh) - 24px));align-self:start;width:100%;max-width:min(300px,calc((100dvh - 112px)*2/3));margin:0 auto}
  body[data-film-id] .film-art-column .film-main-art{max-height:calc(100dvh - 112px);object-fit:contain}
 }
 @media(min-width:701px) and (max-width:900px){
@@ -49,3 +49,12 @@ body[data-film-id] .film-layout .actions{margin:20px 0 0;gap:10px}
  body[data-film-id] .ratings .rating dd{font-size:1.75rem}
  body[data-film-id] .film-feedback{padding:16px}
 }
+
+/* The audience conversation belongs to the card column, with its original form and controls. */
+body[data-film-id] .film-art-column .film-feedback{margin:20px 0 0;padding:16px}
+body[data-film-id] .film-art-column .film-feedback h2{font-size:1.4rem;line-height:1.15}
+body[data-film-id] .film-art-column .film-feedback h3{font-size:1rem}
+body[data-film-id] .film-art-column .film-feedback .button{font-size:.8rem;padding:10px 14px}
+body[data-film-id] .film-art-column .feedback-reactions{gap:8px}
+body[data-film-id] .film-art-column .visitor-review-form{font-size:.85rem}
+body[data-film-id] .film-art-column .visitor-review-form input,body[data-film-id] .film-art-column .visitor-review-form textarea{min-width:0;max-width:100%}
