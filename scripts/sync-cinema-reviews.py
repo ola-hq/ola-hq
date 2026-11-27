@@ -7,12 +7,24 @@ films=json.loads((site/'data/films.json').read_text());published=[f for f in fil
 def escape(value):return html.escape(str(value),quote=True)
 def score(value):return f'{value:g}'
 for f in published:
- assert f.get('review') and f.get('brainReaction') and f.get('heartReaction'),f['id']
+ assert f.get('review'),f['id']
  path=site/'films'/f['slug']/'index.html';text=path.read_text()
- start=text.index('</blockquote>',text.index('<blockquote class="film-quote">'))+len('</blockquote>');end=text.index('<div class="stamp-note">',start)
+ if '<blockquote class="film-quote">' in text:
+  start=text.index('</blockquote>',text.index('<blockquote class="film-quote">'))+len('</blockquote>')
+ elif 'data-full-review="'+escape(f['id'])+'"' in text:
+  start=text.index('<div class="story" data-full-review="'+escape(f['id'])+'">')
+ else:
+  start=text.index('<div class="actions">',text.index('<article class="film-layout">'))
+  signature=f.get('reviewPublication',{}).get('signature')
+  if signature:
+   quote='<blockquote class="film-quote">'+escape(signature)+'</blockquote>'
+   text=text[:start]+quote+text[start:];start+=len(quote)
+ marker='<div class="stamp-note">' if '<div class="stamp-note">' in text[start:] else '<div class="actions">'
+ end=text.index(marker,start)
  paragraphs=[p.strip() for p in re.split(r'\n\s*\n',f['review']) if p.strip()]
  body='<div class="story" data-full-review="'+escape(f['id'])+'">'+''.join('<p>'+escape(p)+'</p>' for p in paragraphs)+'</div>'
- for field,title in [('brainReaction','From the Brain'),('heartReaction','From the Heart')]:body+='<section class="reaction"><h3>'+title+'</h3><p>'+escape(f[field])+'</p></section>'
+ for field,title in [('brainReaction','From the Brain'),('heartReaction','From the Heart')]:
+  if f.get(field):body+='<section class="reaction"><h3>'+title+'</h3><p>'+escape(f[field])+'</p></section>'
  text=text[:start]+body+text[end:]
  description=escape(f"{f['title']} — Brain {score(f['brain'])}/5, Heart {score(f['heart'])}/5, Club {score(f['clubScore'])}/10.")
  text=re.sub(r'(<meta (?:name="description"|property="og:description") content=")[^"]*',lambda m:m[1]+description,text)
