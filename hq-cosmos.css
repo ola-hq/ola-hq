@@ -48,3 +48,18 @@
 @media(prefers-reduced-motion:reduce){.hq-journey-moment,.hq-journey-moment *{animation:none!important;filter:none!important}.journey-light,.journey-dust{display:none}.hq-transit-caption{transition:none}}
 
 .globe-stage:has(.hq-journey-moment)>.hq-cosmos-ship{opacity:.28}
+/* Living Sky: rendered celestial symbols and the owner's selected Passage vessel. */
+.hq-cosmos-ship{width:clamp(230px,25vw,380px);height:auto;aspect-ratio:3;filter:drop-shadow(0 0 14px #85eee835)}
+.hq-cosmos-ship.is-owned:not(.is-flying){left:calc(50% - 130px)!important;top:12%!important;transform:rotate(-3deg)!important;width:260px}
+.hq-cosmos-ship::before{content:'';position:absolute;right:86%;top:45%;width:85%;height:8%;background:linear-gradient(90deg,transparent,#8de9da66);filter:blur(5px);pointer-events:none;opacity:.8}
+.hq-cosmos-ship:not(.is-flying)::before{opacity:.2}.hq-transit-caption{font-size:10px;letter-spacing:.2em;top:105%}
+.hq-cosmos-aurora{background:radial-gradient(ellipse at 18% 24%,#277e9140,transparent 35%),radial-gradient(ellipse at 80% 75%,#218c8f30,transparent 38%),radial-gradient(ellipse at 72% 15%,#70669820,transparent 28%);filter:blur(30px)}
+.journey-sigil{position:absolute;left:50%;top:25%;width:210px;height:210px;transform:translate(-50%,-50%);background-image:url('assets/living-sky-20261127/ola-constellations.webp');background-size:300% 100%;background-position:0% 50%;mix-blend-mode:screen;opacity:.78;animation:journey-symbol 7.6s both;pointer-events:none}
+.journey-sigil[data-symbol="1"]{background-position:50% 50%}.journey-sigil[data-symbol="2"]{background-position:100% 50%}
+.journey-copy{top:5%}.journey-note{color:#c6dedc}.journey-light{top:24%;height:30%}.hq-supernova-scene{background:radial-gradient(ellipse at 50% 61%,#77c7bd55,#081827ec 66%)}
+.hq-supernova-scene>div{padding:24px}.hq-supernova-scene strong{color:#f8e3b7}.hq-supernova-scene p{color:#b9dfd9}
+@keyframes journey-symbol{0%{opacity:0;filter:blur(6px);transform:translate(-50%,-50%) scale(.94)}25%,75%{opacity:.75;filter:blur(0)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.03)}}
+.globe-stage:has(.hq-journey-moment)>.hq-cosmos-sky{opacity:.35}
+@media(max-width:600px){.hq-cosmos-ship{width:240px}.hq-cosmos-ship.is-owned:not(.is-flying){left:calc(50% - 105px)!important;top:12%!important;width:210px}.journey-copy{top:4%}.journey-sigil{top:27%;width:150px;height:150px}.journey-title{font-size:29px}.journey-kicker{margin-bottom:9px}.journey-note{margin-top:12px}}
+@media(prefers-reduced-motion:reduce){.journey-sigil{animation:none;opacity:.65}}
+.hq-supernova-scene::before{content:'';position:absolute;left:50%;top:50%;width:min(75vw,680px);aspect-ratio:1;transform:translate(-50%,-50%);background:url('assets/living-sky-20261127/ola-constellations.webp') 50% 50%/300% 100%;mix-blend-mode:screen;opacity:.2;pointer-events:none}
