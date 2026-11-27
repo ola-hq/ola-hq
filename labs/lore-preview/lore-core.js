@@ -62,5 +62,9 @@ function createPaintClock(hz=30){
  let accumulated=1000/hz;
  return {step(ms){const dt=Number(ms);accumulated+=Number.isFinite(dt)?Math.max(0,Math.min(250,dt)):0;const interval=1000/hz;if(accumulated+1e-6<interval)return false;accumulated=Math.max(0,accumulated-interval)%interval;return true},reset(){accumulated=1000/hz}};
 }
-const api={createPaintClock,createWalkthrough,walkthroughSteps,ORIGIN,worlds,delay,createFlyby,constellationOpacity,matchesWorld,createVisits};root.OLALoreCore=Object.freeze(api);if(typeof module!=='undefined')module.exports=api;
+function fitPanorama(width,height,focus=.36){
+ const w=Math.max(1,Number(width)||1),h=Math.max(1,Number(height)||1),scale=Math.max(w/1672,h/941),artWidth=1672*scale,artHeight=941*scale;
+ return {width:artWidth,height:artHeight,top:(h-artHeight)/2,scroll:Math.max(0,Math.min(artWidth-w,artWidth*focus-w/2))};
+}
+const api={fitPanorama,createPaintClock,createWalkthrough,walkthroughSteps,ORIGIN,worlds,delay,createFlyby,constellationOpacity,matchesWorld,createVisits};root.OLALoreCore=Object.freeze(api);if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);

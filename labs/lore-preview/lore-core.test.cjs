@@ -35,7 +35,7 @@ test('preview keeps replay explicit, loads rooms before reveal, and retains esca
  const html=fs.readFileSync(path.join(dir,'index.html'),'utf8'),js=fs.readFileSync(path.join(dir,'lore-preview.js'),'utf8'),css=fs.readFileSync(path.join(dir,'lore-preview.css'),'utf8');
  assert.ok(html.includes('id="watch-walkthrough"'));assert.ok(html.includes('data-tour-stop'));assert.ok(html.includes('data-tour-pause'));
  assert.ok(js.includes('await prepareArt()'));assert.ok(js.includes('sceneRevision'));assert.ok(js.includes('tourRevision'));assert.ok(js.includes('visibilitychange'));
- assert.ok(css.includes('position:sticky'));assert.ok(css.includes('prefers-reduced-motion:reduce'));assert.ok(css.includes('var(--reveal-origin'));
+ assert.ok(html.includes('aria-label="Passage"'));assert.ok(css.includes('prefers-reduced-motion:reduce'));assert.ok(js.includes('C.fitPanorama'));
  assert.ok(!js.includes('startWalkthrough();'));assert.ok(js.includes('fly.step(1000)'))
 });
 
@@ -47,6 +47,13 @@ test('sky paint clock recovers after invalid times and reset',()=>{
 });
 test('stable scene frame and independent vessel motion replace resize/mask animation',()=>{
  const js=fs.readFileSync(path.join(dir,'lore-preview.js'),'utf8'),css=fs.readFileSync(path.join(dir,'lore-preview.css'),'utf8'),html=fs.readFileSync(path.join(dir,'index.html'),'utf8');
- assert.ok(html.includes('class="cabin-artboard"'));assert.ok(css.includes('#cabin{height:min(820px,94svh)'));assert.ok(css.includes('.secret-room{position:absolute;inset:0'));
+ assert.ok(html.includes('class="cabin-artboard"'));assert.ok(css.includes('height:100svh;max-width:none;max-height:none'));assert.ok(css.includes('.secret-room{position:absolute;inset:0'));
  assert.ok(css.includes('backdrop-filter:none'));assert.ok(js.includes('function renderVessel()'));assert.ok(js.includes('translate3d('));assert.ok(js.includes('skyClock.step(dt)'));assert.doesNotMatch(js,/now-last>=40/)
+});
+
+test('panorama fitting preserves artwork ratio and covers portrait and landscape viewports',()=>{
+ for(const [w,h] of [[390,844],[844,390],[1476,794],[320,568]]){const r=C.fitPanorama(w,h);assert.ok(r.width>=w-1e-6&&r.height>=h-1e-6);assert.ok(Math.abs(r.width/r.height-1672/941)<1e-8);assert.ok(r.scroll>=0&&r.scroll<=r.width-w+1e-6)}
+});
+test('natural cabin discoveries can pan into view without moving the scene frame',()=>{
+ for(const x of [.08,.36,.75]){const r=C.fitPanorama(390,844,x),object=r.width*x-r.scroll;assert.ok(object>=0&&object<=390)}
 });
