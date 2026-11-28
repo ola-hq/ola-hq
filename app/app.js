@@ -12,6 +12,7 @@ const worlds = {
   polaroid: { name: 'Our Polaroid Wave', path: 'our-polaroid-project/', parent: null },
   blockbuster: { name: 'La Ola Cinema Club', path: 'la-ola-cinema-club/', parent: null },
   fpl: { name: 'FPL Wave', path: 'fpl-wave.html', parent: null },
+  collectibles: { name: 'OLA Collectibles', path: 'collectibles/', parent: null },
   simulation: { name: 'Simulation Wave', path: 'simulation-wave/', parent: null },
   gdb: { name: 'GDB Wave', path: 'gdb-university/', parent: null },
   arsenal: { name: 'Arsenal Wave', path: 'arsenal-wave.html', parent: 'fpl' },
@@ -52,6 +53,7 @@ function matchWorld(url) {
   if (/^la-ola-cinema-club\//.test(path)) return 'blockbuster';
   if (/^blockbuster-wave\//.test(path)) return 'blockbuster';
   if (/^our-polaroid-project\//.test(path)) return 'polaroid';
+  if (/^collectibles\//.test(path)) return 'collectibles';
   if (/^simulation-wave\//.test(path) || path === 'simulation-wave.html') return 'simulation';
   if (/^gdb-university\//.test(path) || path === 'gdb-wave.html') return 'gdb';
   if (path.startsWith('arsenal')) return 'arsenal';
@@ -266,4 +268,3 @@ nativeInstall.addEventListener('click', async () => {
   nativeInstall.hidden = true;
   installDialog.close();
 });
-

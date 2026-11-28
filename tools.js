@@ -76,6 +76,7 @@ cinema:{name:'La Ola Cinema Club',url:'la-ola-cinema-club/',about:'Movies, revie
 polaroid:{name:'Our Polaroid Wave',url:'our-polaroid-project/',about:'Photographs, captured nights, portraits, and little moments worth keeping.'},
 music:{name:'Wave26',url:'wave-26.html',about:'Music, releases, experiments, and feelings translated into sound.'},
 fpl:{name:'FPL Wave',url:'fpl-wave.html',about:'A fantasy-football clubhouse, fixtures, strategy, and shared competition.'},
+collectibles:{name:'OLA Collectibles',url:'collectibles/',about:'Cards, favorite finds, and the joy of collecting.'},
 simulation:{name:'Simulation Wave',url:'simulation-wave/',about:'AI art, impossible ideas, and playful creative worlds.'},
 gdb:{name:'GDB Wave',url:'gdb-wave.html',about:'A fictional university of sound, dancefloor culture, and musical mythology.'},
 arsenal:{name:'Arsenal',url:'arsenal-wave.html',about:'Real football fandom, matchday traditions, and the culture of the club.'},
