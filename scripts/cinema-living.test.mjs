@@ -778,3 +778,14 @@ test('Polaroid trackpad native twist and Alt rotation preserve pose; default Cin
   c=new CardViewer({immersive:true,physicalCard:true,sound:false});assert.equal(c.stage.listeners.wheel,undefined);c.destroy();assert.ok(d.body.children.length===0);
  }finally{if(v?.dialog.open)v.destroy();if(c?.dialog.open)c.destroy();delete globalThis.document;delete globalThis.matchMedia;}
 });
+
+test('explicit Polaroid rotation or zoom consumes an older wheel stroke without undoing the new control pose',async()=>{
+ const {PolaroidCardViewer}=await import('../our-polaroid-project/memory-viewer.js');environment();globalThis.matchMedia=query=>({matches:query.includes('hover')});let v;
+ try{
+  for(const action of ['rotate','zoom']){
+   v=new PolaroidCardViewer({immersive:true,physicalCard:true,paperBack:false,sound:false});v.open([{id:'a',src:'a.jpg'},{id:'b',src:'b.jpg'},{id:'c',src:'c.jpg'}],1);
+   const wheel=(x,time)=>v.stage.emit('wheel',{target:v.image,deltaX:x,deltaY:0,timeStamp:time});wheel(60,1000);if(action==='rotate')v.rotate(90);else v.zoom(2);wheel(50,1016);await new Promise(setImmediate);assert.equal(v.index,1,action+' owns pose');assert.equal(v.orientation,action==='rotate'?90:0);assert.equal(v.scale,action==='zoom'?2:1);assert.equal(v.trackpad.session,null);
+   v.trackpad.finish();wheel(120,1300);await new Promise(setImmediate);assert.equal(v.index,2,'fresh stroke rearms after control');v.destroy();
+  }
+ }finally{if(v?.dialog.open)v.destroy();delete globalThis.document;delete globalThis.matchMedia;}
+});

@@ -6,6 +6,8 @@ import {PolaroidTrackpad} from './trackpad.js?v=20261127-trackpad52';
 export class PolaroidCardViewer extends CardViewer {
   constructor(options) { super(options); this.loopPhotos = options.loop !== false; this.trackpad = new PolaroidTrackpad(this); }
   reset() { this.trackpad?.cancel(); return super.reset(); }
+  rotate(degrees) { this.trackpad?.cancel(); return super.rotate(degrees); }
+  zoom(scale, options) { if (!options?.keepPan) this.trackpad?.cancel(); return super.zoom(scale, options); }
   down(event) { this.trackpad?.cancel(); return super.down(event); }
   destroy() { this.trackpad.destroy(); return super.destroy(); }
   // A deliberate Polaroid fling requests its one-shot motion without changing the system preference.
