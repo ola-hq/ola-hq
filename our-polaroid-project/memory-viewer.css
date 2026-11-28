@@ -37,6 +37,10 @@
 @media(prefers-reduced-motion:reduce){.ola-card-immersive[data-theme="polaroid"] .ola-physical-card{transition:none;filter:none}.ola-card-immersive[data-theme="polaroid"] .ola-card-front::after{display:none}}
 
 .ola-card-immersive[data-theme="polaroid"][data-controls=true]>.polaroid-stage-return,.ola-card-immersive[data-theme="polaroid"][data-controls=true]>.polaroid-stage-controls{visibility:visible;opacity:1;pointer-events:auto}
+/* Desktop has room for persistent corner exits and a discoverable rotation menu. */
+@media(min-width:760px) and (hover:hover) and (pointer:fine){
+ .ola-card-immersive[data-theme="polaroid"]>.polaroid-stage-return,.ola-card-immersive[data-theme="polaroid"]>.polaroid-stage-controls{visibility:visible;opacity:1;pointer-events:auto}
+}
 .ola-card-immersive[data-theme="polaroid"] button:focus-visible{outline:3px solid #dac18d;outline-offset:3px}
 
 /* Polaroid-owned stage furniture, never printed onto a scan or placed in Safari chrome. */

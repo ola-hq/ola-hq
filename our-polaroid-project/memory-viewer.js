@@ -231,7 +231,7 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
   let css = document.querySelector('link[data-polaroid-memory]');
   if (!css) {
     css = element('link'); css.rel = 'stylesheet';
-    css.href = new URL('./memory-viewer.css?v=20261127-trackpad52', import.meta.url);
+    css.href = new URL('./memory-viewer.css?v=20261127-desktop53', import.meta.url);
     css.dataset.polaroidMemory = ''; document.head.append(css);
   }
   try { await Promise.all([stylesheetReady(css), stylesheetReady(document.querySelector('link[data-ola-viewer]'))]); }
