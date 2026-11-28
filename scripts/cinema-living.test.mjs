@@ -8,6 +8,7 @@ import {execFileSync,spawnSync} from 'node:child_process';
 import {scoreText,filmDate,matchesDate,historicalTrends,distribution,applyArtwork,artworkURL} from '../la-ola-cinema-club/assets/collection-data.js';
 import {filterFilms} from '../la-ola-cinema-club/assets/club.js';
 import {CardViewer,gestureAction,physicalGestureAction,physicalEdgeAction,downwardExit} from '../assets/ola-worlds/card-viewer.js';
+import './polaroid-trackpad.test.mjs';
 const films=JSON.parse(readFileSync('la-ola-cinema-club/data/films.json'));
 const manifest=JSON.parse(readFileSync('la-ola-cinema-club/data/artwork.json'));
 test('date filters preserve unknowns and distinguish recorded release years from verified watch days',()=>{
@@ -756,4 +757,24 @@ test('Cinema room stays inert behind card gestures and releases its visibility l
   const roomListener=v.roomVisibility;assert.ok(d.listeners.visibilitychange.includes(roomListener));v.destroy();
   assert.ok(!d.listeners.visibilitychange.includes(roomListener));assert.equal(d.body.children.includes(v.dialog),false);
  }finally{delete globalThis.document;delete globalThis.matchMedia;}
+});
+
+test('Polaroid desktop wheel delegates one physical flip to the shared engine, preserves sound hooks and Events endpoints',async()=>{
+ const {PolaroidCardViewer}=await import('../our-polaroid-project/memory-viewer.js');environment();globalThis.matchMedia=query=>({matches:query.includes('hover')});const made=[];
+ try{
+  for(const loop of [false,true]){
+   const moves=[],sounds=[];const v=new PolaroidCardViewer({immersive:true,physicalCard:true,paperBack:false,sound:false,loop,onNavigate:item=>moves.push(item.id)});made.push(v);v.open([{id:'a',src:'a.jpg'},{id:'b',src:'b.jpg'}]);v.orientation=90;v.rotZ=13;v.scale=1.7;v.reelSound=action=>sounds.push(action);let time=1000;
+   const wheel=x=>v.stage.emit('wheel',{target:v.image,deltaX:x,deltaY:0,deltaMode:0,timeStamp:time+=16});
+   wheel(120);for(let i=0;i<15;i++)wheel(120);await new Promise(setImmediate);assert.equal(v.index,1);assert.deepEqual(moves,['b']);assert.equal(sounds.length,1);assert.equal(v.image.src,'b.jpg');assert.equal(v.turning,false);
+   v.trackpad.finish();wheel(120);await new Promise(setImmediate);assert.equal(v.index,loop?0:1);assert.equal(moves.length,loop?2:1);assert.equal(v.dialog.open,true);v.destroy();
+  }
+ }finally{for(const v of made)if(v.dialog.open)v.destroy();delete globalThis.document;delete globalThis.matchMedia;}
+});
+test('Polaroid trackpad native twist and Alt rotation preserve pose; default Cinema has no Polaroid wheel listener',async()=>{
+ const {PolaroidCardViewer}=await import('../our-polaroid-project/memory-viewer.js');const d=environment();globalThis.matchMedia=query=>({matches:query.includes('hover')});let v,c;
+ try{
+  v=new PolaroidCardViewer({immersive:true,physicalCard:true,paperBack:false,sound:false});v.open([{id:'a',src:'a.jpg'}]);v.panX=40;v.panY=-50;v.rotZ=15;v.scale=1.2;v.stage.emit('wheel',{target:v.image,altKey:true,deltaX:100,deltaY:0,timeStamp:1000});assert.equal(v.rotZ,-30);assert.equal(v.panX,40);assert.equal(v.panY,-50);assert.equal(v.scale,1.2);assert.match(v.card.style.transform,/rotateZ\(-30deg\)/);
+  v.trackpad.finish();v.stage.emit('gesturestart',{target:v.image});v.stage.emit('gesturechange',{target:v.image,rotation:75,scale:1.5});assert.equal(v.rotZ,45);assert.ok(Math.abs(v.scale-1.8)<1e-9);assert.equal(v.panX,40);assert.equal(v.panY,-50);v.reset();assert.equal(v.rotZ,0);v.stage.emit('gesturechange',{target:v.image,rotation:90,scale:2});assert.equal(v.rotZ,0);v.destroy();assert.equal(v.stage.listeners.wheel.length,0);
+  c=new CardViewer({immersive:true,physicalCard:true,sound:false});assert.equal(c.stage.listeners.wheel,undefined);c.destroy();assert.ok(d.body.children.length===0);
+ }finally{if(v?.dialog.open)v.destroy();if(c?.dialog.open)c.destroy();delete globalThis.document;delete globalThis.matchMedia;}
 });

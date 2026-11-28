@@ -1,13 +1,17 @@
 import {CardViewer} from '../assets/ola-worlds/card-viewer.js?v=20261125-physical45';
 import {PaperSound} from './paper-sound.js?v=20261125-polaroid45';
+import {PolaroidTrackpad} from './trackpad.js?v=20261127-trackpad52';
 
 // Reuse every shared gesture; only Polaroid's sound backend differs from Cinema.
 export class PolaroidCardViewer extends CardViewer {
-  constructor(options) { super(options); this.loopPhotos = options.loop !== false; }
+  constructor(options) { super(options); this.loopPhotos = options.loop !== false; this.trackpad = new PolaroidTrackpad(this); }
+  reset() { this.trackpad?.cancel(); return super.reset(); }
+  down(event) { this.trackpad?.cancel(); return super.down(event); }
+  destroy() { this.trackpad.destroy(); return super.destroy(); }
   // A deliberate Polaroid fling requests its one-shot motion without changing the system preference.
-  loft(options = {}) { return super.loft({playMotion:true, ...options}); }
+  loft(options = {}) { this.trackpad?.cancel(); return super.loft({playMotion:true, ...options}); }
   // Keep the reduced-motion exit still while its short sound finishes, then close normally.
-  dismiss() { return super.dismiss({feedbackDelay:260}); }
+  dismiss() { this.trackpad?.cancel(); return super.dismiss({feedbackDelay:260}); }
   show() {
     super.show();
     if (!this.loopPhotos) {
@@ -16,6 +20,7 @@ export class PolaroidCardViewer extends CardViewer {
     }
   }
   async toss(delta, options) {
+    this.trackpad?.cancel();
     if (!this.loopPhotos && (this.index + delta < 0 || this.index + delta >= this.items.length)) return;
     return super.toss(delta, {paperFlip:true, playMotion:true, ...options});
   }
@@ -156,6 +161,9 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
   stageMark.append(element('span', 'polaroid-stage-wave', '≈'), element('span', '', 'OUR POLAROID WAVE'));
   viewer.dialog.append(stageMark, toGrid, controls);
   viewer.stage.setAttribute('aria-label', 'Move and twist the photograph. Flick sideways to browse. Slide into the top quarter to spin and return centered; slide into the bottom quarter to return to the collection. Double-tap the photograph for memory details. Tap surrounding space for controls.');
+  const trackpadHelp = element('p', 'polaroid-trackpad-help', 'Trackpad: swipe sideways for another photograph. Move slowly or hold Shift to position. Pinch to zoom. Hold Option (Alt) and slide to rotate; twist directly where supported.');
+  viewer.tools.append(trackpadHelp);
+  viewer.stage.setAttribute('aria-description', trackpadHelp.textContent);
   const controlsObserver = new MutationObserver(() => controls.setAttribute('aria-expanded', viewer.dialog.dataset.controls));
   controlsObserver.observe(viewer.dialog, {attributes:true, attributeFilter:['data-controls']});
   const audioLabel = () => {
@@ -221,7 +229,7 @@ export async function createPolaroidMemoryViewer({mountFeedback, onNavigate, onC
   let css = document.querySelector('link[data-polaroid-memory]');
   if (!css) {
     css = element('link'); css.rel = 'stylesheet';
-    css.href = new URL('./memory-viewer.css?v=20261126-stars49', import.meta.url);
+    css.href = new URL('./memory-viewer.css?v=20261127-trackpad52', import.meta.url);
     css.dataset.polaroidMemory = ''; document.head.append(css);
   }
   try { await Promise.all([stylesheetReady(css), stylesheetReady(document.querySelector('link[data-ola-viewer]'))]); }

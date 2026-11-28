@@ -1,4 +1,6 @@
 /* Polaroid-only presentation; shared physical-card behavior is explicitly opt-in. */
+.polaroid-trackpad-help{display:none}
+@media(hover:hover) and (pointer:fine){.ola-card-immersive[data-theme="polaroid"] .polaroid-trackpad-help{display:block;flex-basis:100%;max-width:52rem;margin:4px auto;font-size:14px;line-height:1.5;color:#d1cbc1;text-align:center}}
 .ola-card-immersive[data-theme="polaroid"]{background:#101112;color:#f3eee5;font-family:"Avenir Next",Arial,sans-serif}
 .ola-card-immersive[data-theme="polaroid"] .ola-physical-card{width:max-content;height:auto;max-width:90vw;max-height:82dvh;aspect-ratio:auto}
 .ola-card-immersive[data-theme="polaroid"] .ola-card-front{width:max-content;height:auto;max-width:90vw;max-height:82dvh}
