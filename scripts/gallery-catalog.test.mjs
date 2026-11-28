@@ -70,5 +70,5 @@ test('live catalog positions LIB 2026 before LIB 2025 and groups all confirmed y
  const data=JSON.parse(readFileSync(new URL('../data/events/index.json',import.meta.url),'utf8'));const rows=clean(scope.group(data)).rows;
  assert(rows.findIndex(e=>e.id==='lib-2026')<rows.findIndex(e=>e.id==='lib-2025'));
  const years=rows.filter(e=>e.year).map(e=>e.year);assert.deepEqual(years,[...years].sort((a,b)=>b-a));
- const unknown=rows.filter(e=>!e.year);assert.deepEqual(rows.slice(-unknown.length).map(e=>e.id),unknown.map(e=>e.id));
+ const unknown=rows.filter(e=>!e.year);assert.deepEqual((unknown.length?rows.slice(-unknown.length):[]).map(e=>e.id),unknown.map(e=>e.id));
 });

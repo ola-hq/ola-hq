@@ -28,7 +28,7 @@ test('parent, weekend, day, New Year and recovered-part identities survive',()=>
 });
 test('all uncertainty labels remain verbatim and no exact date is invented',()=>{
  for(const e of all.values())if(/unconfirmed|confirm/i.test(e.dateLabel))assert.equal(label(e).dateLabel,e.dateLabel);
- assert.deepEqual(label(all.get('event-54b8c286679f')),{title:'EDSEA',dateLabel:'November 1–9 · year unconfirmed'});
+ assert.deepEqual(label(all.get('event-54b8c286679f')),{title:'EDSEA',dateLabel:'2024 · trip dates unconfirmed'});
  assert.deepEqual(label(all.get('coachella-2022')),{title:'Coachella',dateLabel:'April 2022'});
 });
 test('brand acronyms, names and meaningful title punctuation are not title-cased',()=>{

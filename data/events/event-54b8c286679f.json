@@ -3,14 +3,14 @@
   "events": [
     {
       "id": "event-54b8c286679f",
-      "title": "EDSEA · November 1–9 · Year to confirm",
+      "title": "EDSEA · 2024",
       "route": "our-polaroid-project/events/event-54b8c286679f/",
-      "year": null,
+      "year": 2024,
       "date": null,
       "dateStart": null,
       "dateEnd": null,
-      "datePrecision": "MONTH_DAY_RANGE",
-      "dateLabel": "November 1–9 · year unconfirmed",
+      "datePrecision": "YEAR",
+      "dateLabel": "2024 · trip dates unconfirmed",
       "location": "",
       "description": "",
       "searchTerms": [
@@ -65,7 +65,8 @@
         "img20241114_22113505.jpg",
         "img20241114_22123150.jpg",
         "img20241114_22180006.jpg",
-        "img20241114_22351648.jpg"
+        "img20241114_22351648.jpg",
+        "2024"
       ],
       "coverId": "selected-71d9f0ff1f8757851468",
       "secondaryCoverId": null,
@@ -835,9 +836,9 @@
       "archive": true,
       "gallery": {
         "eyebrow": "OUR POLAROID WAVE · EVENTS",
-        "heading": "EDSEA · November 1–9 · Year to confirm",
+        "heading": "EDSEA · 2024",
         "emphasis": "A memory, kept.",
-        "coverLabel": "EDSEA · November 1–9 · Year to confirm",
+        "coverLabel": "EDSEA · 2024",
         "collectionLabel": "photographs",
         "gridLabel": "Event photographs",
         "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",
