@@ -26,7 +26,7 @@ test('Events entrance removes only decorative cover captions and promotes the ex
  for(const p of event.packages)assert.ok(markup.includes(p.filename));assert.equal(JSON.stringify(event),before);
 });
 test('all approved shared albums receive an introduction without altering saved metadata or memberships',()=>{
- const shared=catalog.events.filter(e=>e.manifest||e.id==='la-ola-de-amor-2026');assert.equal(shared.length,61);
+ const shared=catalog.events.filter(e=>e.manifest||e.id==='la-ola-de-amor-2026');assert.equal(shared.length,62);
  for(const summary of shared){const event=summary.manifest?JSON.parse(readFileSync(summary.manifest,'utf8')).events.find(e=>e.id===summary.id):summary;const before=JSON.stringify(event),intro=eventIntroduction(event),markup=hero(source,event);
   assert.equal(intro.heading,displayLabels(event).title);assert.ok(intro.emphasis);assert.ok(markup.includes('href="#photographs"'));assert.doesNotMatch(markup,/<figcaption>/);assert.equal(JSON.stringify(event),before);
   assert.ok(markup.includes(displayLabels(event).dateLabel.replaceAll('&','&amp;')));assert.ok(markup.includes('og-hero'));
