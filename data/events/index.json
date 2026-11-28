@@ -10168,6 +10168,78 @@
       },
       "manifest": "data/events/event-d7af7107537d.json",
       "parentEventId": "nft-la-2022"
+    },
+    {
+      "id": "dreamstate-2023",
+      "title": "Dreamstate · 2023",
+      "route": "our-polaroid-project/events/dreamstate-2023/",
+      "year": 2023,
+      "date": null,
+      "dateStart": "2023-11-17",
+      "dateEnd": "2023-11-18",
+      "datePrecision": "RANGE",
+      "dateLabel": "2023-11-17 – 2023-11-18",
+      "location": "",
+      "description": "A night on instant film.",
+      "searchTerms": [
+        "Dreamstate",
+        "Dreamstate 2023"
+      ],
+      "coverId": "dreamstate-e25f8583e69a2d721f85",
+      "secondaryCoverId": "dreamstate-2937b06ca98ffa8f6b53",
+      "photoCount": 19,
+      "publicationStatus": "approved",
+      "photos": [
+        {
+          "id": "dreamstate-e25f8583e69a2d721f85",
+          "order": 19,
+          "frameNumber": 19,
+          "caption": "Dreamstate · Frame 19",
+          "originalFilename": "dreamstate-e25f8583e69a2d721f85.jpg",
+          "width": 415,
+          "height": 672,
+          "thumbnail": "our-polaroid-project/events/dreamstate-2023/photos/dreamstate-e25f8583e69a2d721f85.jpg",
+          "display": "our-polaroid-project/events/dreamstate-2023/photos/dreamstate-e25f8583e69a2d721f85.jpg",
+          "download": "our-polaroid-project/events/dreamstate-2023/photos/dreamstate-e25f8583e69a2d721f85.jpg",
+          "downloadLabel": "Download JPEG (672 px)",
+          "inlineLabel": "Open JPEG to save",
+          "publicationStatus": "approved"
+        }
+      ],
+      "packages": [
+        {
+          "url": "our-polaroid-project/events/dreamstate-2023/downloads/dreamstate-2023.zip",
+          "filename": "dreamstate-2023.zip",
+          "label": "Album JPEGs · 672 px display copies",
+          "bytes": 818183,
+          "publicationStatus": "approved"
+        }
+      ],
+      "archive": false,
+      "gallery": {
+        "eyebrow": "OUR POLAROID WAVE · EVENTS",
+        "heading": "Dreamstate · 2023",
+        "emphasis": "One frame at a time.",
+        "coverLabel": "Dreamstate · 2023",
+        "collectionLabel": "photographs",
+        "gridLabel": "Dreamstate photographs",
+        "collections": [
+          {
+            "href": "our-polaroid-project/films/#dreamstate-2023",
+            "label": "Watch the film · 0:18"
+          }
+        ],
+        "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",
+        "downloadsHeading": "Keep the photographs.",
+        "downloadsDescription": "This album ZIP contains the same 672 px display JPEGs shown here.",
+        "related": [
+          {
+            "href": "our-polaroid-project/events/",
+            "label": "All events"
+          }
+        ]
+      },
+      "manifest": "data/events/dreamstate-2023.json"
     }
   ],
   "parentEvents": [
@@ -10259,11 +10331,11 @@
   "archivePublication": {
     "publishedHistoricalGalleries": 60,
     "publishedHistoricalPhotos": 1975,
-    "leafGalleryCount": 64,
-    "photoCount": 2293,
+    "leafGalleryCount": 65,
+    "photoCount": 2312,
     "parentEventCount": 2,
     "dayGalleryCount": 12,
-    "standaloneGalleryCount": 52,
-    "eventEntranceCount": 54
+    "standaloneGalleryCount": 53,
+    "eventEntranceCount": 55
   }
 }
