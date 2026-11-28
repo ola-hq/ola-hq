@@ -112,6 +112,12 @@
             "href": "our-polaroid-project/events/",
             "label": "← All events"
           }
+        ],
+        "collections": [
+          {
+            "href": "our-polaroid-project/films/#desert-air-2024",
+            "label": "Watch the film · 0:20"
+          }
         ]
       }
     }

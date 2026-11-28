@@ -3,21 +3,22 @@
   "events": [
     {
       "id": "event-d32df8a80a1a",
-      "title": "Cancun",
+      "title": "Cancun · 2021",
       "route": "our-polaroid-project/events/event-d32df8a80a1a/",
-      "year": null,
+      "year": 2021,
       "date": null,
       "dateStart": null,
       "dateEnd": null,
-      "datePrecision": "UNKNOWN",
-      "dateLabel": "Date/year unconfirmed",
+      "datePrecision": "YEAR",
+      "dateLabel": "2021 · exact dates unconfirmed",
       "location": "Cancun",
       "description": "",
       "searchTerms": [
         "Cancun",
         "3. Cancun Polaroids",
         "img20211215_18340561.jpg",
-        "img20211215_19235282.jpg"
+        "img20211215_19235282.jpg",
+        "2021"
       ],
       "coverId": "selected-2f91983ba9c66127ff13",
       "secondaryCoverId": null,
@@ -67,9 +68,9 @@
       "archive": true,
       "gallery": {
         "eyebrow": "OUR POLAROID WAVE · EVENTS",
-        "heading": "Cancun",
+        "heading": "Cancun · 2021",
         "emphasis": "A memory, kept.",
-        "coverLabel": "Cancun",
+        "coverLabel": "Cancun · 2021",
         "collectionLabel": "photographs",
         "gridLabel": "Event photographs",
         "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",

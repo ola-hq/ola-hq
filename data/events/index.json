@@ -6043,14 +6043,14 @@
     },
     {
       "id": "event-54b8c286679f",
-      "title": "EDSEA · November 1–9 · Year to confirm",
+      "title": "EDSEA · 2024",
       "route": "our-polaroid-project/events/event-54b8c286679f/",
-      "year": null,
+      "year": 2024,
       "date": null,
       "dateStart": null,
       "dateEnd": null,
-      "datePrecision": "MONTH_DAY_RANGE",
-      "dateLabel": "November 1–9 · year unconfirmed",
+      "datePrecision": "YEAR",
+      "dateLabel": "2024 · trip dates unconfirmed",
       "location": "",
       "description": "",
       "searchTerms": [
@@ -6105,7 +6105,8 @@
         "img20241114_22113505.jpg",
         "img20241114_22123150.jpg",
         "img20241114_22180006.jpg",
-        "img20241114_22351648.jpg"
+        "img20241114_22351648.jpg",
+        "2024"
       ],
       "coverId": "selected-71d9f0ff1f8757851468",
       "secondaryCoverId": null,
@@ -6140,9 +6141,9 @@
       "archive": true,
       "gallery": {
         "eyebrow": "OUR POLAROID WAVE · EVENTS",
-        "heading": "EDSEA · November 1–9 · Year to confirm",
+        "heading": "EDSEA · 2024",
         "emphasis": "A memory, kept.",
-        "coverLabel": "EDSEA · November 1–9 · Year to confirm",
+        "coverLabel": "EDSEA · 2024",
         "collectionLabel": "photographs",
         "gridLabel": "Event photographs",
         "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",
@@ -7869,6 +7870,12 @@
             "href": "our-polaroid-project/events/",
             "label": "← All events"
           }
+        ],
+        "collections": [
+          {
+            "href": "our-polaroid-project/films/#engagement-2024",
+            "label": "Watch the film · 0:21"
+          }
         ]
       },
       "manifest": "data/events/event-c0bf1edce3a2.json"
@@ -8135,12 +8142,12 @@
       "id": "event-7275089b9b8a",
       "title": "Europe Summer · Tomorrowland",
       "route": "our-polaroid-project/events/event-7275089b9b8a/",
-      "year": null,
+      "year": 2024,
       "date": null,
       "dateStart": null,
       "dateEnd": null,
-      "datePrecision": "UNKNOWN",
-      "dateLabel": "Summer · year unconfirmed",
+      "datePrecision": "YEAR",
+      "dateLabel": "Summer 2024 · exact dates unconfirmed",
       "location": "Europe",
       "description": "",
       "searchTerms": [
@@ -8165,7 +8172,8 @@
         "img20240807_15320644.jpg",
         "img20240807_15415921.jpg",
         "img20240807_15430659.jpg",
-        "img20240807_16321762.jpg"
+        "img20240807_16321762.jpg",
+        "2024"
       ],
       "coverId": "selected-23d4aeb6d7f47b99114f",
       "secondaryCoverId": null,
@@ -9608,6 +9616,12 @@
             "href": "our-polaroid-project/events/",
             "label": "← All events"
           }
+        ],
+        "collections": [
+          {
+            "href": "our-polaroid-project/films/#desert-air-2024",
+            "label": "Watch the film · 0:20"
+          }
         ]
       },
       "manifest": "data/events/event-31f06b8208a3.json"
@@ -9677,6 +9691,12 @@
           {
             "href": "our-polaroid-project/events/",
             "label": "← All events"
+          }
+        ],
+        "collections": [
+          {
+            "href": "our-polaroid-project/films/#llannely-freddy-2024",
+            "label": "Watch the film · 0:25"
           }
         ]
       },
@@ -9827,21 +9847,22 @@
     },
     {
       "id": "event-d32df8a80a1a",
-      "title": "Cancun",
+      "title": "Cancun · 2021",
       "route": "our-polaroid-project/events/event-d32df8a80a1a/",
-      "year": null,
+      "year": 2021,
       "date": null,
       "dateStart": null,
       "dateEnd": null,
-      "datePrecision": "UNKNOWN",
-      "dateLabel": "Date/year unconfirmed",
+      "datePrecision": "YEAR",
+      "dateLabel": "2021 · exact dates unconfirmed",
       "location": "Cancun",
       "description": "",
       "searchTerms": [
         "Cancun",
         "3. Cancun Polaroids",
         "img20211215_18340561.jpg",
-        "img20211215_19235282.jpg"
+        "img20211215_19235282.jpg",
+        "2021"
       ],
       "coverId": "selected-2f91983ba9c66127ff13",
       "secondaryCoverId": null,
@@ -9876,9 +9897,9 @@
       "archive": true,
       "gallery": {
         "eyebrow": "OUR POLAROID WAVE · EVENTS",
-        "heading": "Cancun",
+        "heading": "Cancun · 2021",
         "emphasis": "A memory, kept.",
-        "coverLabel": "Cancun",
+        "coverLabel": "Cancun · 2021",
         "collectionLabel": "photographs",
         "gridLabel": "Event photographs",
         "downloadHint": "Display JPEGs up to 672 px. On iPhone, open a JPEG and touch and hold to save it to Photos.",

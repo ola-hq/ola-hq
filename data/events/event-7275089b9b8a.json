@@ -5,12 +5,12 @@
       "id": "event-7275089b9b8a",
       "title": "Europe Summer · Tomorrowland",
       "route": "our-polaroid-project/events/event-7275089b9b8a/",
-      "year": null,
+      "year": 2024,
       "date": null,
       "dateStart": null,
       "dateEnd": null,
-      "datePrecision": "UNKNOWN",
-      "dateLabel": "Summer · year unconfirmed",
+      "datePrecision": "YEAR",
+      "dateLabel": "Summer 2024 · exact dates unconfirmed",
       "location": "Europe",
       "description": "",
       "searchTerms": [
@@ -35,7 +35,8 @@
         "img20240807_15320644.jpg",
         "img20240807_15415921.jpg",
         "img20240807_15430659.jpg",
-        "img20240807_16321762.jpg"
+        "img20240807_16321762.jpg",
+        "2024"
       ],
       "coverId": "selected-23d4aeb6d7f47b99114f",
       "secondaryCoverId": null,
